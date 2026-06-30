@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts"
+    "dev": "tsx watch --env-file=.env src/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -13,10 +13,12 @@
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^26.0.1",
+    "@types/pg": "^8.20.0",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "pg": "^8.22.0"
   }
 }
