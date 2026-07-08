@@ -105,3 +105,20 @@ export const deleteCard = async (req: Request, res: Response) => {
 
   return res.status(200).json({ message: "Kart silindi" });
 };
+
+export const getDueCards = async (req: Request, res: Response) => {
+  const { deckId } = req.params;
+
+  const result = await pool.query(
+    `SELECT cards.* FROM cards
+     JOIN decks ON cards.deck_id = decks.id
+     WHERE cards.deck_id = $1
+       AND decks.user_id = $2
+       AND cards.due_date <= NOW()
+     ORDER BY cards.due_date ASC
+     LIMIT 20`,
+    [deckId, req.userId],
+  );
+
+  return res.status(200).json({ cards: result.rows });
+};
