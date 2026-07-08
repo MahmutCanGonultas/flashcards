@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { calculateSrs } from "../services/srs.service.js";
 import { z } from "zod";
 import pool from "../db.js";
 
@@ -121,4 +122,59 @@ export const getDueCards = async (req: Request, res: Response) => {
   );
 
   return res.status(200).json({ cards: result.rows });
+};
+
+export const reviewCard = async (req: Request, res: Response) => {
+  const { deckId, cardId } = req.params;
+
+  // 1. Notu doğrula (0-5 arası olmalı)
+  const reviewSchema = z.object({
+    quality: z.number().min(0).max(5),
+  });
+
+  const validation = reviewSchema.safeParse(req.body);
+  if (!validation.success) {
+    return res.status(400).json({ error: "Not 0-5 arası olmalı" });
+  }
+
+  const { quality } = validation.data;
+
+  // 2. Kartı çek (mevcut durumu almak için) — güvenlik kontrolüyle
+  const cardResult = await pool.query(
+    `SELECT c.* FROM cards AS c
+     JOIN decks AS d ON c.deck_id = d.id
+     WHERE c.id = $1 AND c.deck_id = $2 AND d.user_id = $3`,
+    [cardId, deckId, req.userId],
+  );
+
+  if (cardResult.rows.length === 0) {
+    return res.status(404).json({ error: "Kart bulunamadı" });
+  }
+
+  const card = cardResult.rows[0];
+
+  // 3. Beyni çağır: kartın durumu + not → yeni durum
+  const updated = calculateSrs({
+    repetitions: card.repetitions,
+    interval: card.interval,
+    easeFactor: card.ease_factor,
+    quality: quality,
+  });
+
+  // 4. Yeni durumu veritabanına yaz
+  const result = await pool.query(
+    `UPDATE cards
+     SET repetitions = $1, interval = $2, ease_factor = $3, due_date = $4
+     WHERE id = $5
+     RETURNING *`,
+    [
+      updated.repetitions,
+      updated.interval,
+      updated.easeFactor,
+      updated.dueDate,
+      cardId,
+    ],
+  );
+
+  return res.status(200).json({ card: result.rows[0] });
 };

@@ -6,6 +6,7 @@ import {
   updateCard,
   deleteCard,
   getDueCards,
+  reviewCard,
 } from "../controllers/card.controller.js";
 
 const router = Router();
@@ -15,5 +16,6 @@ router.get("/:deckId/cards", requireAuth, getCards);
 router.put("/:deckId/cards/:cardId", requireAuth, updateCard);
 router.delete("/:deckId/cards/:cardId", requireAuth, deleteCard);
 router.get("/:deckId/cards/due", requireAuth, getDueCards);
+router.post("/:deckId/cards/:cardId/review", requireAuth, reviewCard);
 
 export default router;
