@@ -1,27 +1,42 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { api, ApiError, setToken } from "../lib/api";
 import Logo from "../components/Logo";
+import TextField from "../components/TextField";
+import Button from "../components/Button";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
-  const handleLogin = async () => {
-    const res = await fetch("http://localhost:3000/api/v1/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
+  const loginMutation = useMutation({
+    mutationFn: (credentials: { email: string; password: string }) =>
+      api.post<{ token: string }>("/auth/login", credentials),
+    onSuccess: (data) => {
+      setToken(data.token);
+      // Whoever was signed in before, their cached decks must not survive.
+      // removeQueries (not clear) leaves this in-flight mutation untouched.
+      queryClient.removeQueries();
+      navigate("/decks", { replace: true });
+    },
+  });
 
-    const data = await res.json();
-    localStorage.setItem("token", data.token);
-    navigate("/decks");
-  };
+  // Trimmed guard so a form of only whitespace can't be submitted.
+  const canSubmit = email.trim() !== "" && password.trim() !== "";
+
+  // ApiError carries UI-ready English copy; anything else gets a safe fallback.
+  const errorMessage = loginMutation.isError
+    ? loginMutation.error instanceof ApiError
+      ? loginMutation.error.message
+      : "Something went wrong. Please try again."
+    : null;
 
   return (
     <div className="min-h-screen flex bg-white">
-      {/* Sol panel — marka */}
+      {/* Left panel — brand */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-slate-900">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.4),transparent_55%),radial-gradient(circle_at_80%_80%,rgba(168,85,247,0.35),transparent_50%)]" />
         <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-indigo-500/20 blur-3xl" />
@@ -54,7 +69,7 @@ function Login() {
         </div>
       </div>
 
-      {/* Sağ panel — form */}
+      {/* Right panel — form */}
       <div className="flex-1 flex items-center justify-center px-6 py-12">
         <div className="w-full max-w-sm">
           <div className="lg:hidden mb-10">
@@ -68,49 +83,62 @@ function Login() {
             Welcome back. Enter your details to continue.
           </p>
 
-          <div className="space-y-5">
-            <div>
-              <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wide mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 focus:bg-white transition"
-              />
-            </div>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              if (!canSubmit || loginMutation.isPending) return;
+              loginMutation.mutate({ email, password });
+            }}
+            className="space-y-5"
+            noValidate
+          >
+            <TextField
+              label="Email"
+              type="email"
+              autoComplete="email"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
-            <div>
-              <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wide mb-2">
-                Password
-              </label>
-              <input
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 focus:bg-white transition"
-              />
-            </div>
+            <TextField
+              label="Password"
+              type="password"
+              autoComplete="current-password"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-            <button
-              onClick={handleLogin}
-              className="group w-full bg-slate-900 hover:bg-slate-800 text-white font-medium py-3 rounded-xl transition flex items-center justify-center gap-2"
+            {errorMessage && (
+              <div
+                role="alert"
+                className="rounded-xl bg-rose-100 px-4 py-3 text-sm font-medium text-rose-700"
+              >
+                {errorMessage}
+              </div>
+            )}
+
+            <Button
+              type="submit"
+              variant="dark"
+              fullWidth
+              disabled={!canSubmit}
+              isLoading={loginMutation.isPending}
+              loadingText="Signing in..."
             >
-              Sign in
-              <span className="transition-transform group-hover:translate-x-0.5">
-                →
-              </span>
-            </button>
-          </div>
+              Sign in <span aria-hidden>→</span>
+            </Button>
+          </form>
 
           <p className="text-sm text-slate-500 mt-8">
             Don't have an account?{" "}
-            <span className="text-slate-900 font-semibold cursor-pointer hover:underline">
+            <Link
+              to="/register"
+              className="text-slate-900 font-semibold cursor-pointer hover:underline"
+            >
               Create one
-            </span>
+            </Link>
           </p>
         </div>
       </div>
