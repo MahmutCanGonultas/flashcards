@@ -3,7 +3,7 @@ import type { FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError, setToken } from "../lib/api";
-import Logo from "../components/Logo";
+import AuthLayout from "../components/AuthLayout";
 import TextField from "../components/TextField";
 import Button from "../components/Button";
 
@@ -61,6 +61,7 @@ function Register() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (signUp.isPending) return;
 
     const nextErrors: FieldErrors = {};
     if (!EMAIL_PATTERN.test(email)) {
@@ -79,117 +80,73 @@ function Register() {
   const submitError = signUp.isError ? describeError(signUp.error) : null;
 
   return (
-    <div className="min-h-screen flex bg-white">
-      {/* Left panel — brand */}
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-slate-900">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.4),transparent_55%),radial-gradient(circle_at_80%_80%,rgba(168,85,247,0.35),transparent_50%)]" />
-        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-indigo-500/20 blur-3xl" />
+    <AuthLayout
+      headline={
+        <>
+          Build a habit,
+          <br />
+          one card at a time.
+        </>
+      }
+      subline="Start with a single deck today. Five minutes a day is all it takes to make it stick."
+      title="Create your account"
+      emoji="✨"
+      subtitle="It takes about ten seconds. No credit card, obviously."
+      footer={
+        <>
+          Already have an account?{" "}
+          <Link
+            to="/login"
+            className="font-bold text-violet-600 hover:text-violet-700 hover:underline"
+          >
+            Sign in
+          </Link>
+        </>
+      }
+    >
+      <form onSubmit={handleSubmit} noValidate className="space-y-5">
+        <TextField
+          label="Email"
+          type="email"
+          placeholder="you@example.com"
+          autoComplete="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          error={fieldErrors.email}
+          disabled={signUp.isPending}
+        />
 
-        <div className="relative z-10 flex flex-col justify-between p-12 text-white">
-          <div className="[&_span]:text-white">
-            <Logo size={36} withText />
+        <TextField
+          label="Password"
+          type="password"
+          placeholder="At least 6 characters"
+          autoComplete="new-password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          error={fieldErrors.password}
+          disabled={signUp.isPending}
+        />
+
+        {submitError && (
+          <div
+            role="alert"
+            className="rounded-xl bg-rose-100 px-4 py-3 text-sm font-medium text-rose-700 ring-1 ring-rose-200"
+          >
+            {submitError}
           </div>
+        )}
 
-          <div>
-            <h2 className="text-4xl font-bold leading-tight tracking-tight">
-              Build a habit,
-              <br />
-              one card at a time.
-            </h2>
-            <p className="mt-4 text-slate-300 max-w-sm leading-relaxed">
-              Create your first deck in seconds and let spaced repetition handle
-              the remembering for you.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-3 text-sm text-slate-400">
-            <div className="flex -space-x-2">
-              <div className="w-8 h-8 rounded-full bg-indigo-400 border-2 border-slate-900" />
-              <div className="w-8 h-8 rounded-full bg-purple-400 border-2 border-slate-900" />
-              <div className="w-8 h-8 rounded-full bg-pink-400 border-2 border-slate-900" />
-            </div>
-            <span>Join thousands of learners</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Right panel — form */}
-      <div className="flex-1 flex items-center justify-center px-6 py-12">
-        <div className="w-full max-w-sm">
-          <div className="lg:hidden mb-10">
-            <Logo size={36} withText />
-          </div>
-
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
-            Create your account
-          </h1>
-          <p className="text-slate-500 mt-1.5 text-sm">
-            It only takes a moment to start learning.
-          </p>
-
-          {submitError && (
-            <div
-              role="alert"
-              className="mt-6 rounded-xl border border-rose-100 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-600"
-            >
-              {submitError}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} noValidate className="mt-8 space-y-5">
-            <TextField
-              label="Email"
-              type="email"
-              autoComplete="email"
-              placeholder="you@example.com"
-              value={email}
-              error={fieldErrors.email}
-              onChange={(event) => {
-                setEmail(event.target.value);
-                if (fieldErrors.email) {
-                  setFieldErrors((prev) => ({ ...prev, email: undefined }));
-                }
-              }}
-            />
-
-            <TextField
-              label="Password"
-              type="password"
-              autoComplete="new-password"
-              placeholder="At least 6 characters"
-              value={password}
-              error={fieldErrors.password}
-              onChange={(event) => {
-                setPassword(event.target.value);
-                if (fieldErrors.password) {
-                  setFieldErrors((prev) => ({ ...prev, password: undefined }));
-                }
-              }}
-            />
-
-            <Button
-              type="submit"
-              variant="dark"
-              fullWidth
-              isLoading={signUp.isPending}
-              loadingText="Creating account..."
-            >
-              Create account
-            </Button>
-          </form>
-
-          <p className="text-sm text-slate-500 mt-8">
-            Already have an account?{" "}
-            <Link
-              to="/login"
-              className="text-slate-900 font-semibold hover:underline"
-            >
-              Sign in
-            </Link>
-          </p>
-        </div>
-      </div>
-    </div>
+        <Button
+          type="submit"
+          fullWidth
+          size="lg"
+          isLoading={signUp.isPending}
+          loadingText="Creating account..."
+        >
+          Create account
+        </Button>
+      </form>
+    </AuthLayout>
   );
 }
 
