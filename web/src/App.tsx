@@ -1,20 +1,7 @@
-import { useState, useEffect } from "react";
+import Login from "./pages/Login";
 
 function App() {
-  const [message, setMessage] = useState("Loading...");
-
-  useEffect(() => {
-    fetch("http://localhost:3000/")
-      .then((res) => res.text())
-      .then((data) => setMessage(data));
-  }, []);
-
-  return (
-    <div>
-      <h1>Flashcards</h1>
-      <p>{message}</p>
-    </div>
-  );
+  return <Login />;
 }
 
 export default App;
