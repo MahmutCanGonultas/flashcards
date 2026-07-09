@@ -14,10 +14,10 @@ type ReviewInput = { cardId: number; quality: ReviewQuality };
 
 /** The four SM-2 grades, in the order they appear on screen and on the keyboard. */
 const RATINGS = [
-  { label: "Again", emoji: "😵", quality: 1, variant: "danger" },
-  { label: "Hard", emoji: "😖", quality: 3, variant: "warning" },
-  { label: "Good", emoji: "🙂", quality: 4, variant: "info" },
-  { label: "Easy", emoji: "😎", quality: 5, variant: "success" },
+  { label: "Again", emoji: "😵", quality: 1, variant: "softDanger" },
+  { label: "Hard", emoji: "😖", quality: 3, variant: "softWarning" },
+  { label: "Good", emoji: "🙂", quality: 4, variant: "softInfo" },
+  { label: "Easy", emoji: "😎", quality: 5, variant: "softSuccess" },
 ] as const;
 
 /** Number keys 1-4 map to the ratings above once the card is flipped. */
@@ -27,6 +27,9 @@ const KEY_TO_QUALITY: Record<string, ReviewQuality> = {
   "3": 4,
   "4": 5,
 };
+
+const CARD_FACE =
+  "[grid-area:1/1] [backface-visibility:hidden] flex min-h-[17rem] flex-col items-center justify-center rounded-3xl p-8 text-center sm:p-10";
 
 function describeError(error: unknown): string {
   return error instanceof ApiError
@@ -43,8 +46,8 @@ function StudySkeleton() {
         <Skeleton className="h-4 w-12 rounded-full" />
       </div>
       <Skeleton className="mt-4 h-6 w-48 rounded-full" />
-      <Skeleton className="mt-4 h-3 w-full rounded-full" />
-      <Skeleton className="mt-6 min-h-[18rem] w-full rounded-3xl" />
+      <Skeleton className="mt-4 h-2.5 w-full rounded-full" />
+      <Skeleton className="mt-6 min-h-[19rem] w-full rounded-3xl" />
       <Skeleton className="mt-6 h-14 w-full rounded-2xl" />
     </div>
   );
@@ -198,7 +201,7 @@ function StudySession({
 
   if (finished) {
     return (
-      <div className="relative overflow-hidden rounded-3xl bg-white ring-2 ring-stone-200 p-10 sm:p-14 text-center">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-white to-emerald-50 ring-2 ring-emerald-100 shadow-[0_5px_0_0_var(--color-emerald-100)] p-10 sm:p-14 text-center">
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           <span className="absolute top-6 left-8 h-3 w-3 rounded-full bg-violet-300 animate-bounce" />
           <span className="absolute top-10 right-10 h-2 w-2 rounded-full bg-emerald-300" />
@@ -217,15 +220,13 @@ function StudySession({
           </h2>
           <p className="mt-2 text-stone-500">You're caught up.</p>
 
-          <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-2 font-bold text-emerald-700">
+          <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-2 font-bold text-emerald-700 ring-1 ring-emerald-200">
             <span aria-hidden="true">✅</span>
             Reviewed {queue.length} {queue.length === 1 ? "card" : "cards"}
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
-            <LinkButton to={`/decks/${deckId}`} variant="success">
-              Back to deck
-            </LinkButton>
+            <LinkButton to={`/decks/${deckId}`}>Back to deck</LinkButton>
             <LinkButton to="/decks" variant="secondary">
               All decks
             </LinkButton>
@@ -240,8 +241,6 @@ function StudySession({
     return <StudySkeleton />;
   }
 
-  const progress = (currentIndex / queue.length) * 100;
-
   const retryReview = () => {
     const lastInput = reviewMutation.variables;
     if (lastInput) mutateReview(lastInput);
@@ -249,7 +248,7 @@ function StudySession({
 
   return (
     <div>
-      <div className="mb-6">
+      <div className="mb-7">
         <div className="flex items-center justify-between gap-4">
           <Link
             to={`/decks/${deckId}`}
@@ -267,52 +266,80 @@ function StudySession({
           <span aria-hidden="true">🧠</span>
         </h1>
 
-        <div className="mt-3 h-3 rounded-full bg-stone-200 overflow-hidden">
-          <div
-            className="h-full rounded-full bg-violet-500 transition-all duration-300"
-            style={{ width: `${progress}%` }}
-            role="progressbar"
-            aria-valuenow={currentIndex}
-            aria-valuemin={0}
-            aria-valuemax={queue.length}
-            aria-label="Cards reviewed"
-          />
-        </div>
-      </div>
-
-      {/* 3D flip. Arbitrary properties so we don't rely on Tailwind 3D utility names. */}
-      <div className="[perspective:1200px]">
+        {/* One segment per card beats a bar that reads as empty on the first card. */}
         <div
-          className={`relative grid transition-transform duration-500 [transform-style:preserve-3d] motion-reduce:transition-none ${
-            isFlipped ? "[transform:rotateY(180deg)]" : ""
-          }`}
+          className="mt-3 flex gap-1.5"
+          role="progressbar"
+          aria-valuenow={currentIndex}
+          aria-valuemin={0}
+          aria-valuemax={queue.length}
+          aria-label="Cards reviewed"
         >
-          {/* Front / Question */}
-          <div className="[grid-area:1/1] [backface-visibility:hidden] flex min-h-[18rem] flex-col items-center justify-center rounded-3xl bg-white p-8 text-center ring-2 ring-stone-200 sm:p-10">
-            <span className="mb-4 text-xs font-bold uppercase tracking-widest text-violet-500">
-              Question
-            </span>
-            <p className="text-2xl font-extrabold text-stone-800 break-words sm:text-3xl">
-              {currentCard.front}
-            </p>
-          </div>
+          {queue.map((card, index) => (
+            <span
+              key={card.id}
+              className={`h-2.5 flex-1 rounded-full transition-colors duration-300 ${
+                index < currentIndex
+                  ? "bg-violet-500"
+                  : index === currentIndex
+                    ? "bg-violet-300"
+                    : "bg-stone-200"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
 
-          {/* Back / Answer */}
+      {/* Two static cards peek out behind the live one, so it reads as a deck. */}
+      <div className="relative">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 translate-y-5 scale-[0.93] rounded-3xl bg-white ring-2 ring-stone-200/70"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 translate-y-2.5 scale-[0.965] rounded-3xl bg-white ring-2 ring-stone-200/70"
+        />
+
+        {/* 3D flip. Arbitrary properties so we don't rely on Tailwind 3D utility names. */}
+        <div
+          className={`relative [perspective:1200px] ${isFlipped ? "" : "cursor-pointer"}`}
+          onClick={() => setIsFlipped(true)}
+        >
           <div
-            className="[grid-area:1/1] [backface-visibility:hidden] [transform:rotateY(180deg)] flex min-h-[18rem] flex-col items-center justify-center rounded-3xl bg-white p-8 text-center ring-2 ring-stone-200 sm:p-10"
-            aria-hidden={!isFlipped}
+            className={`relative grid transition-transform duration-500 [transform-style:preserve-3d] motion-reduce:transition-none ${
+              isFlipped ? "[transform:rotateY(180deg)]" : ""
+            }`}
           >
-            <span className="mb-4 text-xs font-bold uppercase tracking-widest text-emerald-500">
-              Answer
-            </span>
-            <p className="text-2xl font-extrabold text-stone-800 break-words sm:text-3xl">
-              {currentCard.back}
-            </p>
+            {/* Front / Question */}
+            <div
+              className={`${CARD_FACE} bg-gradient-to-br from-white via-violet-50 to-violet-100 ring-2 ring-violet-200`}
+            >
+              <span className="rounded-full bg-violet-200/70 px-3 py-1 text-[11px] font-extrabold uppercase tracking-widest text-violet-700">
+                Question
+              </span>
+              <p className="mt-6 text-2xl font-extrabold leading-snug text-stone-800 break-words sm:text-4xl">
+                {currentCard.front}
+              </p>
+            </div>
+
+            {/* Back / Answer */}
+            <div
+              className={`${CARD_FACE} [transform:rotateY(180deg)] bg-gradient-to-br from-white via-emerald-50 to-emerald-100 ring-2 ring-emerald-200`}
+              aria-hidden={!isFlipped}
+            >
+              <span className="rounded-full bg-emerald-200/70 px-3 py-1 text-[11px] font-extrabold uppercase tracking-widest text-emerald-700">
+                Answer
+              </span>
+              <p className="mt-6 text-2xl font-extrabold leading-snug text-stone-800 break-words sm:text-3xl">
+                {currentCard.back}
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-7">
         {!isFlipped ? (
           <Button size="lg" fullWidth onClick={() => setIsFlipped(true)}>
             Show answer
@@ -325,13 +352,17 @@ function StudySession({
                   key={rating.quality}
                   variant={rating.variant}
                   fullWidth
+                  className="flex-col"
                   disabled={isReviewing}
                   isLoading={
                     isReviewing && reviewMutation.variables?.quality === rating.quality
                   }
                   onClick={() => rate(rating.quality)}
                 >
-                  <span aria-hidden="true">{rating.emoji}</span> {rating.label}
+                  <span className="text-xl leading-none" aria-hidden="true">
+                    {rating.emoji}
+                  </span>
+                  {rating.label}
                 </Button>
               ))}
             </div>
@@ -357,9 +388,9 @@ function StudySession({
           </div>
         )}
 
-        <p className="mt-4 hidden text-center text-xs text-stone-500 sm:block">
+        <p className="mt-5 hidden text-center text-xs font-medium text-stone-500 sm:block">
           {!isFlipped
-            ? "Press Space or Enter to flip"
+            ? "Click the card, or press Space, to flip"
             : "1 Again · 2 Hard · 3 Good · 4 Easy"}
         </p>
       </div>
