@@ -1,15 +1,21 @@
 import { useState } from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueries, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError } from "../lib/api";
 import { themeFor } from "../lib/themes";
-import type { Deck } from "../types";
+import type { Card, Deck } from "../types";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import DeckCard from "../components/DeckCard";
+import type { DeckStats } from "../components/DeckCard";
 import DeckFormModal from "../components/DeckFormModal";
 import EmptyState from "../components/EmptyState";
 import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
+
+const countDue = (cards: Card[]) => {
+  const now = Date.now();
+  return cards.filter((card) => new Date(card.due_date).getTime() <= now).length;
+};
 
 function Decks() {
   const queryClient = useQueryClient();
@@ -20,9 +26,23 @@ function Decks() {
     queryFn: () => api.get<{ decks: Deck[] }>("/decks").then((r) => r.decks),
   });
 
+  // One request per deck, under the same key DeckDetail uses, so opening a deck
+  // afterwards is instant. It gives us both the card count and how many are due.
+  const cardQueries = useQueries({
+    queries: (data ?? []).map((deck) => ({
+      queryKey: ["cards", String(deck.id)],
+      queryFn: () =>
+        api.get<{ cards: Card[] }>(`/decks/${deck.id}/cards`).then((r) => r.cards),
+    })),
+  });
+
+  const statsFor = (index: number): DeckStats | undefined => {
+    const cards = cardQueries[index]?.data;
+    return cards ? { total: cards.length, due: countDue(cards) } : undefined;
+  };
+
   const createDeck = useMutation({
-    mutationFn: (name: string) =>
-      api.post<{ deck: Deck }>("/decks", { name }),
+    mutationFn: (name: string) => api.post<{ deck: Deck }>("/decks", { name }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["decks"] });
       setIsModalOpen(false);
@@ -46,7 +66,7 @@ function Decks() {
       <Header />
 
       <main className="max-w-5xl mx-auto px-6 py-10">
-        <div className="flex items-end justify-between mb-8">
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
             <h1 className="text-3xl font-extrabold text-stone-800 tracking-tight flex items-center gap-2">
               My Decks <span className="text-2xl">📚</span>
@@ -55,7 +75,10 @@ function Decks() {
               Pick a deck and keep your streak going!
             </p>
           </div>
-          <Button size="md" onClick={() => setIsModalOpen(true)}>
+          <Button
+            className="shrink-0 whitespace-nowrap"
+            onClick={() => setIsModalOpen(true)}
+          >
             <span className="text-xl leading-none">+</span> New deck
           </Button>
         </div>
@@ -63,7 +86,7 @@ function Decks() {
         {isLoading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[1, 2, 3].map((n) => (
-              <Skeleton key={n} className="h-44 rounded-3xl" />
+              <Skeleton key={n} className="h-52 rounded-3xl" />
             ))}
           </div>
         )}
@@ -91,7 +114,12 @@ function Decks() {
         {data && data.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {data.map((deck, i) => (
-              <DeckCard key={deck.id} deck={deck} theme={themeFor(i)} />
+              <DeckCard
+                key={deck.id}
+                deck={deck}
+                theme={themeFor(i)}
+                stats={statsFor(i)}
+              />
             ))}
           </div>
         )}
