@@ -10,7 +10,7 @@ CREATE TABLE decks(
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     name VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT NOW()
-)
+);
 
 CREATE TABLE cards(
     id SERIAL PRIMARY KEY,
@@ -22,4 +22,4 @@ CREATE TABLE cards(
     repetitions INTEGER NOT NULL DEFAULT 0,
     due_date TIMESTAMP DEFAULT NOW(),
     created_at TIMESTAMP DEFAULT NOW()
-)
+);
