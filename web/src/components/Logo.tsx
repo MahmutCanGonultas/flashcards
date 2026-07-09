@@ -37,7 +37,7 @@ function Logo({ size = 36, withText = false }: LogoProps) {
       </svg>
 
       {withText && (
-        <span className="font-semibold tracking-tight text-lg text-slate-900">
+        <span className="font-extrabold tracking-tight text-lg text-stone-800">
           Flashcards
         </span>
       )}
