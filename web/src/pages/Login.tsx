@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     const res = await fetch("http://localhost:3000/api/v1/auth/login", {
@@ -14,7 +16,7 @@ function Login() {
 
     const data = await res.json();
     localStorage.setItem("token", data.token);
-    console.log("Token kaydedildi!");
+    navigate("/decks");
   };
 
   return (
