@@ -162,7 +162,9 @@ Fly. Point it at the `backend` directory, `npm run build` to compile, `npm start
 | `CORS_ORIGIN` | where the client is served from; comma-separated for more than one |
 | `NODE_ENV` | `production`, so Express stops putting stack traces in error responses |
 
-`PORT` is set by the host and read from the environment; don't set it yourself.
+`PORT` is set by the host and read from the environment; don't set it yourself. If `DATABASE_URL` or
+`JWT_SECRET` is missing the server refuses to start, rather than booting green and failing on the
+first request. A trailing slash on `CORS_ORIGIN` is ignored, since browsers never send one.
 
 Then deploy the client with `web` as the project root. Vercel and Netlify both detect Vite. Set
 `VITE_API_URL` to the API's address including the path prefix — `https://your-api.onrender.com/api/v1`
