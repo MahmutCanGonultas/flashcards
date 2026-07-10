@@ -153,7 +153,18 @@ psql "$PRODUCTION_DATABASE_URL" -f backend/schema.sql
 
 Deploy the API first, because the client bakes the API's address into its bundle at build time and
 you need the URL before you can build it. Any host that runs `npm start` works — Render, Railway,
-Fly. Point it at the `backend` directory, `npm run build` to compile, `npm start` to run. It needs:
+Fly. Point it at the `backend` directory and run:
+
+```bash
+npm ci --include=dev && npm run build   # build
+npm start                               # run
+```
+
+`--include=dev` is not optional. Hosts set `NODE_ENV=production`, which makes npm skip
+devDependencies — and `typescript` and the `@types/*` packages live there, so a plain
+`npm install` leaves `tsc` with nothing to compile against and the build dies.
+
+The service needs:
 
 | Variable | Value |
 | --- | --- |
