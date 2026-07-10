@@ -188,6 +188,27 @@ Because the client is a single-page app, the host has to serve `index.html` for 
 Finally, come back to the API and set `CORS_ORIGIN` to the client's real URL. The API is deployed
 twice: once to learn its address, once to learn the client's.
 
+## Where it runs
+
+| Piece | Service | Address |
+| --- | --- | --- |
+| Web | Vercel, project root `web` | https://flashcards-two-black.vercel.app |
+| API | Render, service `flashcards-api`, root `backend` | https://flashcards-api-66g9.onrender.com |
+| Database | Neon, project `flashcards-prod` | — |
+
+Both platforms redeploy on every push to `main`.
+
+Two pieces of configuration live in a dashboard and in no committed file, so they would be lost if
+either service were recreated from scratch:
+
+- Render's **Build Command**: `npm ci --include=dev && npm run build`, for the reason above.
+- The environment variables listed in the previous section. `CORS_ORIGIN` has to be the frontend's
+  origin — no path, no trailing slash — and has to change whenever the frontend's URL does.
+
+Everything is on a free tier, which costs latency rather than money: Render sleeps after fifteen
+minutes of quiet and takes about a minute to wake, and Neon's compute sleeps after five and takes
+about half a second. The first visit after a long pause is slow; the rest are not.
+
 ## Rough edges
 
 Worth knowing before you build on this:
