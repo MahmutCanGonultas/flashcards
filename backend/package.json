@@ -5,6 +5,8 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch --env-file=.env src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
     "test": "vitest run"
   },
   "keywords": [],
@@ -29,5 +31,8 @@
     "jsonwebtoken": "^9.0.3",
     "pg": "^8.22.0",
     "zod": "^4.4.3"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
