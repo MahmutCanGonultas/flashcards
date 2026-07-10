@@ -140,6 +140,41 @@ The web client is checked with the compiler and the linter:
 cd web && npm run build && npm run lint
 ```
 
+## Deploying
+
+The two halves deploy separately. The database is already remote if you're on Neon, so there are
+three pieces: Postgres, the API, and the static client.
+
+Apply the schema to the production database once:
+
+```bash
+psql "$PRODUCTION_DATABASE_URL" -f backend/schema.sql
+```
+
+Deploy the API first, because the client bakes the API's address into its bundle at build time and
+you need the URL before you can build it. Any host that runs `npm start` works — Render, Railway,
+Fly. Point it at the `backend` directory, `npm run build` to compile, `npm start` to run. It needs:
+
+| Variable | Value |
+| --- | --- |
+| `DATABASE_URL` | your production Postgres connection string |
+| `JWT_SECRET` | a fresh secret, not the one from your laptop — `openssl rand -base64 32` |
+| `CORS_ORIGIN` | where the client is served from; comma-separated for more than one |
+| `NODE_ENV` | `production`, so Express stops putting stack traces in error responses |
+
+`PORT` is set by the host and read from the environment; don't set it yourself.
+
+Then deploy the client with `web` as the project root. Vercel and Netlify both detect Vite. Set
+`VITE_API_URL` to the API's address including the path prefix — `https://your-api.onrender.com/api/v1`
+— before the first build. It is compiled into the JavaScript, so changing it later means rebuilding.
+
+Because the client is a single-page app, the host has to serve `index.html` for routes like
+`/decks/12` instead of returning a 404. `web/vercel.json` does this on Vercel; on Netlify add a
+`_redirects` file containing `/* /index.html 200`.
+
+Finally, come back to the API and set `CORS_ORIGIN` to the client's real URL. The API is deployed
+twice: once to learn its address, once to learn the client's.
+
 ## Rough edges
 
 Worth knowing before you build on this:
