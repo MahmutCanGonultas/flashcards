@@ -10,6 +10,8 @@ export type Card = {
   deck_id: number;
   front: string;
   back: string;
+  /** Optional grouping label, e.g. "Day 3" for a multi-day program deck. */
+  tag: string | null;
   ease_factor: number;
   interval: number;
   repetitions: number;

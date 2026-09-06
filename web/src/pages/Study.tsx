@@ -3,12 +3,15 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError } from "../lib/api";
 import type { Card, Deck, ReviewQuality } from "../types";
+import { parseBack } from "../lib/cardBack";
+import { speak } from "../lib/speech";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import LinkButton from "../components/LinkButton";
 import EmptyState from "../components/EmptyState";
 import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
+import SpeakButton from "../components/SpeakButton";
 
 type ReviewInput = { cardId: number; quality: ReviewQuality };
 
@@ -29,7 +32,7 @@ const KEY_TO_QUALITY: Record<string, ReviewQuality> = {
 };
 
 const CARD_FACE =
-  "[grid-area:1/1] [backface-visibility:hidden] flex min-h-[17rem] flex-col items-center justify-center rounded-3xl p-8 text-center sm:p-10";
+  "[grid-area:1/1] [backface-visibility:hidden] flex min-h-[21rem] flex-col items-center justify-center rounded-3xl p-6 text-center sm:p-10";
 
 function describeError(error: unknown): string {
   return error instanceof ApiError
@@ -47,7 +50,7 @@ function StudySkeleton() {
       </div>
       <Skeleton className="mt-4 h-6 w-48 rounded-full" />
       <Skeleton className="mt-4 h-2.5 w-full rounded-full" />
-      <Skeleton className="mt-6 min-h-[19rem] w-full rounded-3xl" />
+      <Skeleton className="mt-6 min-h-[21rem] w-full rounded-3xl" />
       <Skeleton className="mt-6 h-14 w-full rounded-2xl" />
     </div>
   );
@@ -123,6 +126,15 @@ function StudySession({
       }
     };
   }, [queryClient, deckId]);
+
+  // Read the word aloud as soon as it becomes the current card — that's the
+  // point where a learner is looking at English with no meaning shown yet.
+  // Depending on currentCard?.id (not the object) means this fires exactly
+  // once per card, not on every flip or re-render.
+  useEffect(() => {
+    if (currentCard) void speak(currentCard.front);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentCard?.id]);
 
   // Keyboard shortcuts: Space/Enter flips, then 1-4 rate the flipped card.
   useEffect(() => {
@@ -246,6 +258,8 @@ function StudySession({
     if (lastInput) mutateReview(lastInput);
   };
 
+  const { pos, text: answerText, emoji } = parseBack(currentCard.back);
+
   return (
     <div>
       <div className="mb-7">
@@ -321,6 +335,14 @@ function StudySession({
               <p className="mt-6 text-2xl font-extrabold leading-snug text-stone-800 break-words sm:text-4xl">
                 {currentCard.front}
               </p>
+              <div className="mt-5 flex items-center gap-2">
+                {pos && (
+                  <span className="rounded-full bg-white/70 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-violet-600 ring-1 ring-violet-200">
+                    {pos}
+                  </span>
+                )}
+                <SpeakButton text={currentCard.front} size="md" />
+              </div>
             </div>
 
             {/* Back / Answer */}
@@ -331,9 +353,22 @@ function StudySession({
               <span className="rounded-full bg-emerald-200/70 px-3 py-1 text-[11px] font-extrabold uppercase tracking-widest text-emerald-700">
                 Answer
               </span>
-              <p className="mt-6 text-2xl font-extrabold leading-snug text-stone-800 break-words sm:text-3xl">
-                {currentCard.back}
+              {emoji && (
+                <div className="mt-4 text-5xl leading-none" aria-hidden="true">
+                  {emoji}
+                </div>
+              )}
+              {pos && (
+                <span className="mt-3 rounded-full bg-white/70 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-emerald-600 ring-1 ring-emerald-200">
+                  {pos}
+                </span>
+              )}
+              <p
+                className={`${emoji ? "mt-2" : "mt-6"} text-2xl font-extrabold leading-snug text-stone-800 break-words sm:text-3xl`}
+              >
+                {answerText}
               </p>
+              <SpeakButton text={currentCard.front} size="md" className="mt-4" />
             </div>
           </div>
         </div>

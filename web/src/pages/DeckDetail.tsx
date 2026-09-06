@@ -8,14 +8,13 @@ import {
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError } from "../lib/api";
 import type { Deck, Card as CardModel } from "../types";
-import { themeFor } from "../lib/themes";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import LinkButton from "../components/LinkButton";
 import Skeleton from "../components/Skeleton";
 import ErrorState from "../components/ErrorState";
 import EmptyState from "../components/EmptyState";
-import CardItem from "../components/CardItem";
+import CardGroups from "../components/CardGroups";
 import CardFormModal from "../components/CardFormModal";
 import type { CardFormValues } from "../components/CardFormModal";
 import DeckFormModal from "../components/DeckFormModal";
@@ -261,17 +260,12 @@ function DeckDetail() {
               )}
 
               {cardsQuery.isSuccess && cardsQuery.data.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  {cardsQuery.data.map((card, index) => (
-                    <CardItem
-                      key={card.id}
-                      card={card}
-                      theme={themeFor(index)}
-                      onEdit={() => setEditingCard(card)}
-                      onDelete={() => setDeletingCard(card)}
-                    />
-                  ))}
-                </div>
+                <CardGroups
+                  key={deckId}
+                  cards={cardsQuery.data}
+                  onEdit={setEditingCard}
+                  onDelete={setDeletingCard}
+                />
               )}
             </div>
           </>

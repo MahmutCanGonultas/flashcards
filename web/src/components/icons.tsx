@@ -79,6 +79,40 @@ export function ArrowRightIcon({ className = "" }: IconProps) {
   );
 }
 
+export function SpeakerIcon({ className = "" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M4 9.5v5h3.2L12 18.3V5.7L7.2 9.5H4Z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16 9.2a4 4 0 0 1 0 5.6M18.6 6.6a7.8 7.8 0 0 1 0 10.8"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function ChevronDownIcon({ className = "" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M5.5 8.5 12 15l6.5-6.5"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 /** Decorative fan of cards, tucked into the corner of a deck tile. */
 export function CardStackArt({ className = "" }: IconProps) {
   return (
