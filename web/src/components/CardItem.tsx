@@ -1,6 +1,8 @@
 import type { Card as CardModel } from "../types";
 import type { DeckTheme } from "../lib/themes";
+import { parseBack } from "../lib/cardBack";
 import { PencilIcon, TrashIcon } from "./icons";
+import SpeakButton from "./SpeakButton";
 
 type CardItemProps = {
   card: CardModel;
@@ -26,6 +28,8 @@ const iconButton =
 
 /** One flashcard on the deck page: the front, a perforation, then the back. */
 function CardItem({ card, theme, onEdit, onDelete }: CardItemProps) {
+  const { pos, text, emoji } = parseBack(card.back);
+
   return (
     <article
       className={`group relative flex h-full flex-col overflow-hidden rounded-3xl ${theme.itemSurface} p-6 pl-7 ring-2 ${theme.ringSoft} shadow-[0_4px_0_0_var(--color-stone-100)] transition-transform duration-150 hover:-translate-y-0.5`}
@@ -39,9 +43,17 @@ function CardItem({ card, theme, onEdit, onDelete }: CardItemProps) {
           >
             {scheduleLabel(card)}
           </span>
-          <h3 className="mt-2.5 text-lg font-extrabold leading-snug text-stone-800 break-words">
-            {card.front}
-          </h3>
+          <div className="mt-2.5 flex flex-wrap items-center gap-x-2 gap-y-1.5">
+            <h3 className="text-lg font-extrabold leading-snug text-stone-800 break-words">
+              {card.front}
+            </h3>
+            {pos && (
+              <span className="rounded-full bg-stone-900/5 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-stone-500">
+                {pos}
+              </span>
+            )}
+            <SpeakButton text={card.front} size="sm" />
+          </div>
         </div>
 
         <div className="flex shrink-0 items-center gap-0.5">
@@ -66,9 +78,16 @@ function CardItem({ card, theme, onEdit, onDelete }: CardItemProps) {
 
       <div className="my-4 border-t-2 border-dashed border-stone-900/10" />
 
-      <p className="text-stone-600 leading-relaxed break-words whitespace-pre-line">
-        {card.back}
-      </p>
+      <div className="flex items-center gap-3">
+        {emoji && (
+          <span className="text-3xl leading-none" aria-hidden="true">
+            {emoji}
+          </span>
+        )}
+        <p className="min-w-0 flex-1 text-stone-600 leading-relaxed break-words whitespace-pre-line">
+          {text}
+        </p>
+      </div>
     </article>
   );
 }

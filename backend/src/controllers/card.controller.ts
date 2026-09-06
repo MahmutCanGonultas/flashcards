@@ -7,6 +7,8 @@ import pool from "../db.js";
 const createCardSchema = z.object({
   front: z.string().min(1),
   back: z.string().min(1),
+  // Optional grouping label, e.g. "Day 3" for a multi-day program deck.
+  tag: z.string().max(50).nullable().optional(),
 });
 
 // Card Olusturma
@@ -18,7 +20,7 @@ export const createCard = async (req: Request, res: Response) => {
     return res.status(400).json({ error: "Kart Bilgileri Gecersiz" });
   }
 
-  const { front, back } = validation.data;
+  const { front, back, tag } = validation.data;
   const { deckId } = req.params;
 
   // 2-Bu deste gercekten bu kullanicinin mi ? kontrol et.
@@ -33,8 +35,8 @@ export const createCard = async (req: Request, res: Response) => {
 
   // 3-Deste bu kullanicinin - artik karti ekleyebiliriz
   const result = await pool.query(
-    "INSERT INTO cards (deck_id, front, back) VALUES ($1,$2,$3) RETURNING *",
-    [deckId, front, back],
+    "INSERT INTO cards (deck_id, front, back, tag) VALUES ($1,$2,$3,$4) RETURNING *",
+    [deckId, front, back, tag ?? null],
   );
 
   // 4-Olusan Karti Dondur
