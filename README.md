@@ -102,7 +102,7 @@ header; the auth routes don't.
 | PUT | `/decks/:id` | `{ name }` | `{ deck }` |
 | DELETE | `/decks/:id` | | `{ message }` |
 | GET | `/decks/:deckId/cards` | | `{ cards }` |
-| POST | `/decks/:deckId/cards` | `{ front, back }` | `{ card }` |
+| POST | `/decks/:deckId/cards` | `{ front, back, tag? }` | `{ card }` |
 | PUT | `/decks/:deckId/cards/:cardId` | `{ front, back }` | `{ card }` |
 | DELETE | `/decks/:deckId/cards/:cardId` | | `{ message }` |
 | GET | `/decks/:deckId/cards/due` | | `{ cards }` — due now, soonest first, max 20 |
@@ -124,6 +124,23 @@ The study screen is the one place that deliberately doesn't read live query data
 pushes its `due_date` into the future, so refetching the due list mid-session returns a shorter
 one, and anything indexing into it would skip cards. Instead the session snapshots the due list
 once, when the fetch settles, and works from that copy. The caches are refreshed when you leave.
+
+A card's `back` can optionally be written as `"(pos) meaning emoji"` — e.g. `"(verb) başarmak 🏆"`.
+`lib/cardBack.ts` pulls that apart so the part of speech and the emoji render as their own badge/icon
+instead of sitting inline in the text; a `back` that doesn't follow the convention just renders as
+plain text. Pronunciation (`lib/speech.ts`) reads a card's `front` aloud with the browser's own
+speech synthesis — no audio files, no backend involved.
+
+Cards can also carry a `tag` (e.g. `"Day 3"`) to group a large deck into a collapsible accordion
+(`components/CardGroups.tsx`) instead of listing every card at once; a deck with no tagged cards
+renders exactly as before.
+
+## Installing it as an app
+
+The web client is a PWA (`vite-plugin-pwa`, manifest + service worker + icons under
+`web/public/icons/`). On Android/desktop Chrome, the browser offers an "Install" prompt; on iOS
+Safari, use Share → Add to Home Screen. Either way it opens without browser chrome, using the icon
+and name from `web/vite.config.ts`'s `manifest` block.
 
 ## Tests
 
