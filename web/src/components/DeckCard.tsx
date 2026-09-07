@@ -7,7 +7,17 @@ import Skeleton from "./Skeleton";
 export type DeckStats = {
   total: number;
   due: number;
+  /** How many of `due` have never been reviewed vs. are coming back for a repeat. */
+  newDue: number;
+  reviewDue: number;
 };
+
+/** Makes the split between brand-new words and spaced-repetition reviews visible. */
+function dueLabel({ newDue, reviewDue }: DeckStats): string {
+  if (newDue > 0 && reviewDue > 0) return `${newDue} new · ${reviewDue} review`;
+  if (newDue > 0) return `${newDue} new`;
+  return `${reviewDue} review`;
+}
 
 type DeckCardProps = {
   deck: Deck;
@@ -46,7 +56,7 @@ function DeckCard({ deck, theme, stats }: DeckCardProps) {
           <span
             className={`shrink-0 rounded-full ${theme.badge} px-2.5 py-1 text-xs font-extrabold text-white shadow-sm`}
           >
-            {stats.due} due
+            {dueLabel(stats)}
           </span>
         ) : stats.total > 0 ? (
           <span className="shrink-0 rounded-full bg-white/70 px-2.5 py-1 text-xs font-bold text-stone-500 ring-1 ring-stone-900/5">
