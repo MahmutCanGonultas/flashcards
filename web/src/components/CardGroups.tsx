@@ -74,10 +74,14 @@ const statusDot: Record<BucketStatus, string> = {
 
 function CardGrid({
   cards,
+  themeOffset = 0,
   onEdit,
   onDelete,
 }: {
   cards: CardModel[];
+  /** Continues the colour cycle from where the previous group left off,
+   *  so every "Day N" doesn't open on the same violet-sky-rose sequence. */
+  themeOffset?: number;
   onEdit: (card: CardModel) => void;
   onDelete: (card: CardModel) => void;
 }) {
@@ -87,7 +91,7 @@ function CardGrid({
         <CardItem
           key={card.id}
           card={card}
-          theme={themeFor(index)}
+          theme={themeFor(themeOffset + index)}
           onEdit={() => onEdit(card)}
           onDelete={() => onDelete(card)}
         />
@@ -121,6 +125,15 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
   }
 
   const dayBuckets = buckets.filter((b) => b.key !== "__untagged__");
+
+  // Each bucket's colours continue the cycle where the previous one left
+  // off, so "Day 2" doesn't open on the exact same violet-sky-rose run
+  // "Day 1" did just because both start counting from card index 0.
+  const themeOffsets = new Map<string, number>();
+  buckets.reduce((offset, bucket) => {
+    themeOffsets.set(bucket.key, offset);
+    return offset + bucket.cards.length;
+  }, 0);
 
   return (
     <div>
@@ -192,7 +205,12 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
 
               {isOpen && (
                 <div className="border-t-2 border-stone-100 p-5">
-                  <CardGrid cards={bucket.cards} onEdit={onEdit} onDelete={onDelete} />
+                  <CardGrid
+                    cards={bucket.cards}
+                    themeOffset={themeOffsets.get(bucket.key)}
+                    onEdit={onEdit}
+                    onDelete={onDelete}
+                  />
                 </div>
               )}
             </div>

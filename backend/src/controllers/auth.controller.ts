@@ -73,7 +73,7 @@ export const login = async (req: Request, res: Response) => {
       id: user.id,
     },
     process.env.JWT_SECRET as string,
-    { expiresIn: "7d" },
+    { expiresIn: "180d" },
   );
 
   // 5-Tokeni dondur
