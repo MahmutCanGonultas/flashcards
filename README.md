@@ -27,6 +27,11 @@ that floor is what stops a card you keep failing from being scheduled every few 
 The web client exposes four of the six grades, which is what Anki does too: Again (1), Hard (3),
 Good (4), Easy (5). Grades 0 and 2 exist in the API but add little in practice.
 
+Whenever a deck has at least 4 cards, the study screen grades itself: instead of the four buttons
+above, it shows the front, then a 4-option multiple-choice quiz built from other cards' backs in
+the same deck (`lib/quiz.ts`), and maps a correct pick to Good (4) and a wrong one to Again (1).
+Decks too small to draw 3 distinct distractors from fall back to the plain self-graded reveal.
+
 See `backend/src/services/srs.service.ts` for the implementation and its tests.
 
 ## Stack
