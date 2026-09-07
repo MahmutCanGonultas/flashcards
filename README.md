@@ -239,7 +239,7 @@ Worth knowing before you build on this:
   codes to its own copy rather than showing whatever the server said.
 - There is no error-handling middleware, so an unhandled throw becomes a 500 with an HTML body.
   Registering an email that already exists is the case you'll actually hit.
-- Sessions are a seven-day JWT with no refresh. When it expires you sign in again.
+- Sessions are a 180-day JWT with no refresh. When it expires you sign in again.
 - The decks page fetches each deck's cards to show its counts, which is one request per deck.
   Fine for a personal deck list, not for hundreds.
 - `due` returns at most 20 cards. A long backlog is worked through 20 at a time.
