@@ -12,10 +12,13 @@ import EmptyState from "../components/EmptyState";
 import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
 
-const countDue = (cards: Card[]) => {
+/** Splits the due cards into brand-new ones and spaced-repetition repeats. */
+function dueStats(cards: Card[]): Pick<DeckStats, "due" | "newDue" | "reviewDue"> {
   const now = Date.now();
-  return cards.filter((card) => new Date(card.due_date).getTime() <= now).length;
-};
+  const due = cards.filter((card) => new Date(card.due_date).getTime() <= now);
+  const newDue = due.filter((card) => card.repetitions === 0).length;
+  return { due: due.length, newDue, reviewDue: due.length - newDue };
+}
 
 function Decks() {
   const queryClient = useQueryClient();
@@ -38,7 +41,7 @@ function Decks() {
 
   const statsFor = (index: number): DeckStats | undefined => {
     const cards = cardQueries[index]?.data;
-    return cards ? { total: cards.length, due: countDue(cards) } : undefined;
+    return cards ? { total: cards.length, ...dueStats(cards) } : undefined;
   };
 
   const createDeck = useMutation({

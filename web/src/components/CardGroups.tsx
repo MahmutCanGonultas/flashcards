@@ -142,7 +142,10 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
 
       <div className="space-y-3">
         {buckets.map((bucket) => {
-          const due = bucket.cards.filter(isDueNow).length;
+          const dueCards = bucket.cards.filter(isDueNow);
+          const due = dueCards.length;
+          const newDue = dueCards.filter((c) => c.repetitions === 0).length;
+          const reviewDue = due - newDue;
           const isOpen = openKey === bucket.key;
 
           const status = bucketStatus(bucket);
@@ -172,7 +175,11 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
                 <span className="flex shrink-0 items-center gap-2.5">
                   {due > 0 && (
                     <span className="rounded-full bg-violet-600 px-2.5 py-1 text-xs font-extrabold text-white">
-                      {due} due
+                      {newDue > 0 && reviewDue > 0
+                        ? `${newDue} new · ${reviewDue} review`
+                        : newDue > 0
+                          ? `${newDue} new`
+                          : `${reviewDue} review`}
                     </span>
                   )}
                   <ChevronDownIcon
