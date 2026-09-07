@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError } from "../lib/api";
 import type { Card, Deck, ReviewQuality } from "../types";
 import { parseBack } from "../lib/cardBack";
+import { buildQuizOptions } from "../lib/quiz";
 import { speak } from "../lib/speech";
 import Header from "../components/Header";
 import Button from "../components/Button";
@@ -12,6 +13,7 @@ import EmptyState from "../components/EmptyState";
 import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
 import SpeakButton from "../components/SpeakButton";
+import QuizOptions from "../components/QuizOptions";
 
 type ReviewInput = { cardId: number; quality: ReviewQuality };
 
@@ -30,6 +32,17 @@ const KEY_TO_QUALITY: Record<string, ReviewQuality> = {
   "3": 4,
   "4": 5,
 };
+
+/** In quiz mode, number keys 1-4 instead pick that option (0-indexed). */
+const KEY_TO_OPTION: Record<string, number> = {
+  "1": 0,
+  "2": 1,
+  "3": 2,
+  "4": 3,
+};
+
+/** How long the picked answer stays highlighted before the next card loads. */
+const QUIZ_ADVANCE_DELAY_MS = 1100;
 
 const CARD_FACE =
   "[grid-area:1/1] [backface-visibility:hidden] flex min-h-[21rem] flex-col items-center justify-center rounded-3xl p-6 text-center sm:p-10";
@@ -63,6 +76,8 @@ type StudySessionProps = {
   deckName?: string;
   /** Undefined while the deck's full card list is still loading, or if it failed. */
   deckCardCount?: number;
+  /** The deck's full card list, used to draw multiple-choice distractors from. */
+  deckCards?: Card[];
   deckCardsError: unknown;
   onRetryDeckCards: () => void;
 };
@@ -81,20 +96,46 @@ function StudySession({
   cards,
   deckName,
   deckCardCount,
+  deckCards,
   deckCardsError,
   onRetryDeckCards,
 }: StudySessionProps) {
   const queryClient = useQueryClient();
 
   const [queue] = useState(() => cards);
+  // Snapshotted for the same reason `queue` is: distractors should come from
+  // a fixed pool, not shift if the deck's card list refetches mid-session.
+  const [deckCardPool] = useState(() => deckCards ?? []);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
+  // Index of the picked option this card, in quiz mode; null until chosen.
+  const [quizAnswer, setQuizAnswer] = useState<number | null>(null);
 
   // Lets us skip the refresh entirely when the user leaves without reviewing.
   const didReviewRef = useRef(false);
+  const advanceTimeoutRef = useRef<number | undefined>(undefined);
+
+  useEffect(() => {
+    return () => {
+      if (advanceTimeoutRef.current !== undefined) {
+        window.clearTimeout(advanceTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const currentCard = currentIndex < queue.length ? queue[currentIndex] : null;
   const finished = queue.length > 0 && currentIndex >= queue.length;
+
+  // null when the pool is too small (or too repetitive) to draw 3 distinct
+  // distractors from -- callers fall back to the plain self-graded reveal.
+  // Depending on currentCard?.id (not the object) means this reshuffles
+  // exactly once per card, not on every re-render.
+  const quizOptions = useMemo(
+    () => (currentCard ? buildQuizOptions(currentCard, deckCardPool) : null),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [currentCard?.id, deckCardPool],
+  );
+  const canQuiz = quizOptions !== null;
 
   const reviewMutation = useMutation({
     mutationFn: ({ cardId, quality }: ReviewInput) =>
@@ -102,6 +143,7 @@ function StudySession({
     onSuccess: () => {
       didReviewRef.current = true;
       setIsFlipped(false);
+      setQuizAnswer(null);
       setCurrentIndex((index) => index + 1);
     },
   });
@@ -114,6 +156,21 @@ function StudySession({
       mutateReview({ cardId: currentCard.id, quality });
     },
     [currentCard, isReviewing, mutateReview],
+  );
+
+  // Picking an option grades itself: right away is "Good", wrong is "Again".
+  // The choice stays highlighted for a beat so the answer actually registers
+  // before the next card replaces it.
+  const selectQuizOption = useCallback(
+    (index: number) => {
+      if (!currentCard || isReviewing || quizAnswer !== null || !quizOptions) return;
+      setQuizAnswer(index);
+      const quality: ReviewQuality = quizOptions[index].isCorrect ? 4 : 1;
+      advanceTimeoutRef.current = window.setTimeout(() => {
+        mutateReview({ cardId: currentCard.id, quality });
+      }, QUIZ_ADVANCE_DELAY_MS);
+    },
+    [currentCard, isReviewing, quizAnswer, quizOptions, mutateReview],
   );
 
   // Refresh the deck's other screens when this one is left, so the due counts
@@ -160,6 +217,16 @@ function StudySession({
         return;
       }
 
+      if (canQuiz) {
+        if (quizAnswer !== null) return; // already answered; auto-advance is pending
+        const index = KEY_TO_OPTION[event.key];
+        if (index !== undefined && quizOptions && index < quizOptions.length) {
+          event.preventDefault();
+          selectQuizOption(index);
+        }
+        return;
+      }
+
       const quality = KEY_TO_QUALITY[event.key];
       if (quality) {
         event.preventDefault();
@@ -169,7 +236,7 @@ function StudySession({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentCard, isReviewing, isFlipped, rate]);
+  }, [currentCard, isReviewing, isFlipped, rate, canQuiz, quizAnswer, quizOptions, selectQuizOption]);
 
   // Nothing was due when we started: say why, in the way that actually helps.
   if (queue.length === 0) {
@@ -351,24 +418,35 @@ function StudySession({
               aria-hidden={!isFlipped}
             >
               <span className="rounded-full bg-emerald-200/70 px-3 py-1 text-[11px] font-extrabold uppercase tracking-widest text-emerald-700">
-                Answer
+                {canQuiz ? "Pick the meaning" : "Answer"}
               </span>
-              {emoji && (
-                <div className="mt-4 text-5xl leading-none" aria-hidden="true">
-                  {emoji}
-                </div>
+
+              {canQuiz && quizOptions ? (
+                <QuizOptions
+                  options={quizOptions}
+                  selectedIndex={quizAnswer}
+                  onSelect={selectQuizOption}
+                />
+              ) : (
+                <>
+                  {emoji && (
+                    <div className="mt-4 text-5xl leading-none" aria-hidden="true">
+                      {emoji}
+                    </div>
+                  )}
+                  {pos && (
+                    <span className="mt-3 rounded-full bg-white/70 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-emerald-600 ring-1 ring-emerald-200">
+                      {pos}
+                    </span>
+                  )}
+                  <p
+                    className={`${emoji ? "mt-2" : "mt-6"} text-2xl font-extrabold leading-snug text-stone-800 break-words sm:text-3xl`}
+                  >
+                    {answerText}
+                  </p>
+                  <SpeakButton text={currentCard.front} size="md" className="mt-4" />
+                </>
               )}
-              {pos && (
-                <span className="mt-3 rounded-full bg-white/70 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-emerald-600 ring-1 ring-emerald-200">
-                  {pos}
-                </span>
-              )}
-              <p
-                className={`${emoji ? "mt-2" : "mt-6"} text-2xl font-extrabold leading-snug text-stone-800 break-words sm:text-3xl`}
-              >
-                {answerText}
-              </p>
-              <SpeakButton text={currentCard.front} size="md" className="mt-4" />
             </div>
           </div>
         </div>
@@ -379,6 +457,25 @@ function StudySession({
           <Button size="lg" fullWidth onClick={() => setIsFlipped(true)}>
             Show answer
           </Button>
+        ) : canQuiz ? (
+          reviewMutation.isError && (
+            <div
+              role="alert"
+              className="rounded-2xl bg-rose-100 p-4 text-center ring-2 ring-rose-200"
+            >
+              <p className="text-sm font-medium text-rose-700">
+                {describeError(reviewMutation.error)}
+              </p>
+              <button
+                type="button"
+                onClick={retryReview}
+                disabled={isReviewing}
+                className="mt-2 text-sm font-bold text-rose-700 underline underline-offset-2 transition hover:text-rose-800 disabled:opacity-60"
+              >
+                Try again
+              </button>
+            </div>
+          )
         ) : (
           <div>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -426,7 +523,11 @@ function StudySession({
         <p className="mt-5 hidden text-center text-xs font-medium text-stone-500 sm:block">
           {!isFlipped
             ? "Click the card, or press Space, to flip"
-            : "1 Again · 2 Hard · 3 Good · 4 Easy"}
+            : canQuiz
+              ? quizAnswer === null
+                ? "Press 1-4 to choose"
+                : ""
+              : "1 Again · 2 Hard · 3 Good · 4 Easy"}
         </p>
       </div>
     </div>
@@ -451,7 +552,8 @@ function Study() {
     refetchOnReconnect: false,
   });
 
-  // Lets us tell "the deck is empty" apart from "nothing is due right now".
+  // Lets us tell "the deck is empty" apart from "nothing is due right now",
+  // and doubles as the distractor pool for the multiple-choice quiz.
   const cardsQuery = useQuery({
     queryKey: ["cards", deckId],
     queryFn: () =>
@@ -488,8 +590,11 @@ function Study() {
     // while it refetches. Mounting the session on that stale data would
     // snapshot cards that were already reviewed, so wait for the fetch to
     // settle. Once mounted, nothing refetches this query, so the session is
-    // never torn down mid-run.
-    if (!dueQuery.data || dueQuery.isFetching) {
+    // never torn down mid-run. Also wait for the deck's full card list on its
+    // first load only, so quiz mode doesn't flicker on for card 1 and off for
+    // card 2 -- a failure past that point just leaves quiz mode off instead
+    // of blocking the session.
+    if (!dueQuery.data || dueQuery.isFetching || cardsQuery.isLoading) {
       return <StudySkeleton />;
     }
 
@@ -500,6 +605,7 @@ function Study() {
         cards={dueQuery.data}
         deckName={decksQuery.data?.find((deck) => String(deck.id) === deckId)?.name}
         deckCardCount={cardsQuery.data?.length}
+        deckCards={cardsQuery.data}
         deckCardsError={cardsQuery.error}
         onRetryDeckCards={() => void cardsQuery.refetch()}
       />
