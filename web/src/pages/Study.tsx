@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError } from "../lib/api";
 import type { Card, Deck, ReviewQuality } from "../types";
@@ -537,6 +537,12 @@ function StudySession({
 function Study() {
   // Falls back to "" so the hooks below always run in the same order.
   const { deckId = "" } = useParams<{ deckId: string }>();
+  // ?mode=all: practice everything introduced so far, not just what's due
+  // today -- a self-serve way to double-check older days haven't faded,
+  // instead of only ever seeing a day's words once the algorithm brings
+  // them back.
+  const [searchParams] = useSearchParams();
+  const isReviewAll = searchParams.get("mode") === "all";
 
   const dueQuery = useQuery({
     queryKey: ["dueCards", deckId],
@@ -544,7 +550,7 @@ function Study() {
       api
         .get<{ cards: Card[] }>(`/decks/${deckId}/cards/due`)
         .then((response) => response.cards),
-    enabled: deckId !== "",
+    enabled: deckId !== "" && !isReviewAll,
     // The session snapshots this list, so it must never change underneath it:
     // no background refetch is allowed once the session is running.
     staleTime: Infinity,
@@ -576,6 +582,43 @@ function Study() {
   }
 
   const renderContent = () => {
+    const deckName = decksQuery.data?.find((deck) => String(deck.id) === deckId)?.name;
+
+    if (isReviewAll) {
+      if (cardsQuery.isError) {
+        return (
+          <ErrorState
+            title="Couldn't start studying"
+            message={describeError(cardsQuery.error)}
+            onRetry={() => void cardsQuery.refetch()}
+          />
+        );
+      }
+      if (cardsQuery.isLoading || !cardsQuery.data) {
+        return <StudySkeleton />;
+      }
+
+      // Everything that's ever been shown to the learner: already reviewed
+      // at least once, or unlocked (due) even if never opened yet. A future
+      // day's words that haven't come up yet stay excluded.
+      const introduced = cardsQuery.data.filter(
+        (card) => card.repetitions > 0 || new Date(card.due_date).getTime() <= Date.now(),
+      );
+
+      return (
+        <StudySession
+          key={`${deckId}-all`}
+          deckId={deckId}
+          cards={introduced}
+          deckName={deckName}
+          deckCardCount={cardsQuery.data.length}
+          deckCards={cardsQuery.data}
+          deckCardsError={cardsQuery.error}
+          onRetryDeckCards={() => void cardsQuery.refetch()}
+        />
+      );
+    }
+
     if (dueQuery.isError) {
       return (
         <ErrorState
@@ -603,7 +646,7 @@ function Study() {
         key={deckId}
         deckId={deckId}
         cards={dueQuery.data}
-        deckName={decksQuery.data?.find((deck) => String(deck.id) === deckId)?.name}
+        deckName={deckName}
         deckCardCount={cardsQuery.data?.length}
         deckCards={cardsQuery.data}
         deckCardsError={cardsQuery.error}
