@@ -206,6 +206,11 @@ function DeckDetail() {
               <LinkButton to={`/decks/${deckId}/study`} variant="primary">
                 Study 🚀
               </LinkButton>
+              {cardCount > 0 && (
+                <LinkButton to={`/decks/${deckId}/study?mode=all`} variant="secondary">
+                  Review everything 📖
+                </LinkButton>
+              )}
               <Button variant="secondary" onClick={() => setIsAddOpen(true)}>
                 + Add card
               </Button>
