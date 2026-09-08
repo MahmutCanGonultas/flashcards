@@ -6,6 +6,7 @@ import type { Card, Deck, ReviewQuality } from "../types";
 import { parseBack } from "../lib/cardBack";
 import { buildQuizOptions } from "../lib/quiz";
 import { speak } from "../lib/speech";
+import { playCorrect, playIncorrect } from "../lib/sound";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import LinkButton from "../components/LinkButton";
@@ -165,7 +166,10 @@ function StudySession({
     (index: number) => {
       if (!currentCard || isReviewing || quizAnswer !== null || !quizOptions) return;
       setQuizAnswer(index);
-      const quality: ReviewQuality = quizOptions[index].isCorrect ? 4 : 1;
+      const isCorrect = quizOptions[index].isCorrect;
+      if (isCorrect) playCorrect();
+      else playIncorrect();
+      const quality: ReviewQuality = isCorrect ? 4 : 1;
       advanceTimeoutRef.current = window.setTimeout(() => {
         mutateReview({ cardId: currentCard.id, quality });
       }, QUIZ_ADVANCE_DELAY_MS);
