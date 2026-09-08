@@ -39,7 +39,9 @@ function QuizOptions({ options, selectedIndex, onSelect }: QuizOptionsProps) {
               event.stopPropagation();
               onSelect(index);
             }}
-            className={`flex w-full items-center justify-between gap-2 rounded-2xl px-4 py-3 text-left font-bold transition disabled:cursor-default ${STATE_CLASSES[state]}`}
+            className={`flex w-full items-center justify-between gap-2 rounded-2xl px-4 py-3 text-left font-bold transition duration-200 disabled:cursor-default ${
+              index === selectedIndex ? "scale-[1.03]" : ""
+            } ${STATE_CLASSES[state]}`}
           >
             <span className="break-words">{option.text}</span>
             {(state === "correct" || state === "reveal") && (
