@@ -138,6 +138,13 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
   return (
     <div>
       {dayBuckets.length > 1 && (
+        <p className="mb-3 text-xs font-medium text-stone-400">
+          These groups are your lesson order, not a review timer — a word you know well is
+          reviewed less often than one you're still learning, no matter which group it's in.
+        </p>
+      )}
+
+      {dayBuckets.length > 1 && (
         <div
           className="mb-5 flex gap-1"
           role="img"
@@ -180,7 +187,9 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
                       ✅
                     </span>
                   )}
-                  <span className="font-extrabold text-stone-800">{bucket.label}</span>
+                  <span className="font-extrabold text-stone-800">
+                    {bucket.key === "__untagged__" ? bucket.label : `📘 ${bucket.label}`}
+                  </span>
                   <span className="shrink-0 text-sm font-medium text-stone-400">
                     {bucket.cards.length} {bucket.cards.length === 1 ? "card" : "cards"}
                   </span>

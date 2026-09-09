@@ -37,7 +37,7 @@ function DeckCard({ deck, theme, stats }: DeckCardProps) {
   return (
     <Link
       to={`/decks/${deck.id}`}
-      className={`group relative flex flex-col overflow-hidden rounded-3xl p-5 ring-2 ${theme.ring} ${theme.deckSurface} ${theme.shadow} ${theme.hoverShadow} transition-all duration-150 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-stone-300`}
+      className={`group relative flex flex-col overflow-hidden rounded-3xl p-5 ring-2 ${theme.ring} ${theme.deckSurface} ${theme.shadow} ${theme.hoverShadow} transition-all duration-150 hover:-translate-y-1 active:scale-[0.97] active:brightness-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-stone-300`}
     >
       <CardStackArt
         className={`pointer-events-none absolute -bottom-10 -right-10 h-44 w-44 rotate-[-6deg] ${theme.soft} opacity-30 transition-transform duration-300 group-hover:rotate-0 group-hover:scale-105`}

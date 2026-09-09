@@ -15,6 +15,10 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Installed-PWA/notch devices: keep content off the rounded corners and
+       home indicator (viewport-fit=cover is set in index.html for this). */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
 }
 

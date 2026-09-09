@@ -26,6 +26,19 @@ function errorMessage(error: unknown): string {
     : "Something went wrong. Please try again.";
 }
 
+/** Shaped like a real CardItem, so the loading grid doesn't jump around once data lands. */
+function CardItemSkeleton() {
+  return (
+    <div className="rounded-3xl bg-white p-6 pl-7 ring-2 ring-stone-100">
+      <Skeleton className="h-5 w-16 rounded-full" />
+      <Skeleton className="mt-2.5 h-5 w-2/3 rounded-full" />
+      <div className="my-4 h-px w-full bg-stone-100" />
+      <Skeleton className="h-4 w-full rounded-full" />
+      <Skeleton className="mt-2 h-4 w-4/5 rounded-full" />
+    </div>
+  );
+}
+
 function DeckDetail() {
   // Falls back to "" so every hook below runs in the same order on every
   // render; the missing-param guard runs once the hooks are done.
@@ -144,10 +157,10 @@ function DeckDetail() {
     <div className="min-h-screen bg-[#FDF9F3]">
       <Header />
 
-      <main className="max-w-5xl mx-auto px-6 py-10">
+      <main className="max-w-5xl mx-auto px-6 pt-10 pb-[max(2.5rem,env(safe-area-inset-bottom))]">
         <Link
           to="/decks"
-          className="inline-flex items-center gap-1.5 font-medium text-stone-500 hover:text-stone-800 transition"
+          className="-m-2 inline-flex items-center gap-1.5 p-2 font-medium text-stone-500 hover:text-stone-800 transition"
         >
           <span aria-hidden="true">←</span> All decks
         </Link>
@@ -236,7 +249,7 @@ function DeckDetail() {
               {cardsQuery.isLoading && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   {[0, 1, 2].map((n) => (
-                    <Skeleton key={n} className="h-32 rounded-3xl" />
+                    <CardItemSkeleton key={n} />
                   ))}
                 </div>
               )}

@@ -20,6 +20,21 @@ function dueStats(cards: Card[]): Pick<DeckStats, "due" | "newDue" | "reviewDue"
   return { due: due.length, newDue, reviewDue: due.length - newDue };
 }
 
+/** Shaped like a real DeckCard, so the loading grid doesn't jump around once data lands. */
+function DeckCardSkeleton() {
+  return (
+    <div className="rounded-3xl bg-white p-5 ring-2 ring-stone-100">
+      <div className="flex items-start justify-between gap-3">
+        <Skeleton className="h-12 w-12 rounded-2xl" />
+        <Skeleton className="h-6 w-20 rounded-full" />
+      </div>
+      <Skeleton className="mt-4 h-5 w-3/4 rounded-full" />
+      <Skeleton className="mt-2.5 h-4 w-24 rounded-full" />
+      <Skeleton className="mt-5 h-4 w-14 rounded-full" />
+    </div>
+  );
+}
+
 function Decks() {
   const queryClient = useQueryClient();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -68,8 +83,8 @@ function Decks() {
     <div className="min-h-screen bg-[#FDF9F3]">
       <Header />
 
-      <main className="max-w-5xl mx-auto px-6 py-10">
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+      <main className="max-w-5xl mx-auto px-6 pt-10 pb-[max(2.5rem,env(safe-area-inset-bottom))]">
+        <div className="mb-8 flex flex-col items-stretch gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h1 className="text-3xl font-extrabold text-stone-800 tracking-tight flex items-center gap-2">
               My Decks <span className="text-2xl">📚</span>
@@ -79,7 +94,7 @@ function Decks() {
             </p>
           </div>
           <Button
-            className="shrink-0 whitespace-nowrap"
+            className="w-full shrink-0 whitespace-nowrap sm:w-auto"
             onClick={() => setIsModalOpen(true)}
           >
             <span className="text-xl leading-none">+</span> New deck
@@ -89,7 +104,7 @@ function Decks() {
         {isLoading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[1, 2, 3].map((n) => (
-              <Skeleton key={n} className="h-52 rounded-3xl" />
+              <DeckCardSkeleton key={n} />
             ))}
           </div>
         )}

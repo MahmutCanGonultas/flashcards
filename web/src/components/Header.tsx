@@ -16,7 +16,10 @@ function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-10 bg-[#FDF9F3]/80 backdrop-blur border-b border-amber-900/5">
+    <header
+      className="sticky top-0 z-10 bg-[#FDF9F3]/80 backdrop-blur border-b border-amber-900/5"
+      style={{ paddingTop: "env(safe-area-inset-top)" }}
+    >
       <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/decks" aria-label="Go to your decks">
           <Logo size={32} withText />

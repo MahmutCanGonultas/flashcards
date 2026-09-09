@@ -11,24 +11,42 @@ type CardItemProps = {
   onDelete: () => void;
 };
 
-/** Turns the card's SM-2 state into something a person can read. */
-function scheduleLabel(card: CardModel): string {
-  if (card.repetitions === 0) return "New";
+type ScheduleTier = "new" | "learning" | "known";
+
+/**
+ * Turns the card's SM-2 state into something a person can read, colour-coded
+ * by how far out the next review is -- not by the card's decorative theme --
+ * so a glance at a row of cards actually shows which ones are personally
+ * further along, instead of a rainbow that means nothing.
+ */
+function scheduleInfo(card: CardModel): { label: string; tier: ScheduleTier } {
+  if (card.repetitions === 0) return { label: "New", tier: "new" };
 
   const dayMs = 24 * 60 * 60 * 1000;
   const remaining = new Date(card.due_date).getTime() - Date.now();
-  if (remaining <= 0) return "Due now";
+  if (remaining <= 0) return { label: "Due now", tier: "new" };
 
   const days = Math.ceil(remaining / dayMs);
-  return days === 1 ? "Due tomorrow" : `Due in ${days}d`;
+  const label = days === 1 ? "Reviews tomorrow" : `Reviews in ${days}d`;
+  return { label, tier: days < 10 ? "learning" : "known" };
 }
 
+const TIER_CLASSES: Record<ScheduleTier, string> = {
+  new: "bg-amber-100 text-amber-700 ring-amber-200",
+  learning: "bg-sky-100 text-sky-700 ring-sky-200",
+  known: "bg-emerald-100 text-emerald-700 ring-emerald-200",
+};
+
+const SCHEDULE_TITLE =
+  "Calculated for this word specifically — the better you know it, the longer until it comes back.";
+
 const iconButton =
-  "flex h-9 w-9 items-center justify-center rounded-xl text-stone-500 transition hover:bg-stone-900/5 hover:text-stone-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-300";
+  "flex h-11 w-11 items-center justify-center rounded-xl text-stone-500 transition hover:bg-stone-900/5 hover:text-stone-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-300";
 
 /** One flashcard on the deck page: the front, a perforation, then the back. */
 function CardItem({ card, theme, onEdit, onDelete }: CardItemProps) {
   const { pos, text, emoji } = parseBack(card.back);
+  const schedule = scheduleInfo(card);
 
   return (
     <article
@@ -39,9 +57,10 @@ function CardItem({ card, theme, onEdit, onDelete }: CardItemProps) {
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           <span
-            className={`inline-block rounded-full ${theme.chip} px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wide ring-1`}
+            title={SCHEDULE_TITLE}
+            className={`inline-block rounded-full ${TIER_CLASSES[schedule.tier]} px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wide ring-1`}
           >
-            {scheduleLabel(card)}
+            {schedule.label}
           </span>
           <div className="mt-2.5 flex flex-wrap items-center gap-x-2 gap-y-1.5">
             <h3 className="text-lg font-extrabold leading-snug text-stone-800 break-words">
@@ -56,7 +75,7 @@ function CardItem({ card, theme, onEdit, onDelete }: CardItemProps) {
           </div>
         </div>
 
-        <div className="flex shrink-0 items-center gap-0.5">
+        <div className="flex shrink-0 items-center gap-1.5">
           <button
             type="button"
             onClick={onEdit}
