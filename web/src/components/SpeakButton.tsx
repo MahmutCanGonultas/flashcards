@@ -10,7 +10,7 @@ type SpeakButtonProps = {
 };
 
 const sizeClasses: Record<NonNullable<SpeakButtonProps["size"]>, string> = {
-  sm: "h-9 w-9",
+  sm: "h-10 w-10",
   md: "h-11 w-11",
 };
 

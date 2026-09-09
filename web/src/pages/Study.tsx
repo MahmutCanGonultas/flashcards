@@ -284,7 +284,7 @@ function StudySession({
 
   if (finished) {
     return (
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-white to-emerald-50 ring-2 ring-emerald-100 shadow-[0_5px_0_0_var(--color-emerald-100)] p-10 sm:p-14 text-center">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-white to-emerald-50 ring-2 ring-emerald-100 shadow-[0_5px_0_0_var(--color-emerald-100)] p-10 sm:p-14 text-center animate-[pop-in_220ms_ease-out]">
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           <span className="absolute top-6 left-8 h-3 w-3 rounded-full bg-violet-300 animate-bounce" />
           <span className="absolute top-10 right-10 h-2 w-2 rounded-full bg-emerald-300" />
@@ -337,7 +337,7 @@ function StudySession({
         <div className="flex items-center justify-between gap-4">
           <Link
             to={`/decks/${deckId}`}
-            className="inline-flex items-center gap-1 text-sm font-medium text-stone-500 transition hover:text-stone-800"
+            className="-m-2 inline-flex items-center gap-1 p-2 text-sm font-medium text-stone-500 transition hover:text-stone-800"
           >
             <span aria-hidden="true">←</span> Back to deck
           </Link>
@@ -533,6 +533,15 @@ function StudySession({
                 : ""
               : "1 Again · 2 Hard · 3 Good · 4 Easy"}
         </p>
+        <p className="mt-5 block text-center text-xs font-medium text-stone-500 sm:hidden">
+          {!isFlipped
+            ? "Tap the card to flip"
+            : canQuiz
+              ? quizAnswer === null
+                ? "Tap an answer"
+                : ""
+              : "Tap a rating below"}
+        </p>
       </div>
     </div>
   );
@@ -662,7 +671,9 @@ function Study() {
   return (
     <div className="min-h-screen bg-[#FDF9F3]">
       <Header />
-      <main className="max-w-2xl mx-auto px-6 py-10">{renderContent()}</main>
+      <main className="max-w-2xl mx-auto px-6 pt-10 pb-[max(2.5rem,env(safe-area-inset-bottom))]">
+        {renderContent()}
+      </main>
     </div>
   );
 }

@@ -20,8 +20,6 @@ export type DeckTheme = {
   text: string;
   /** Solid accent for a small badge with white text. */
   badge: string;
-  /** Quiet accent chip. */
-  chip: string;
   /** Left edge accent on a card item. */
   bar: string;
   /** Decorative artwork colour, used with fill-current. */
@@ -39,7 +37,6 @@ export const themes: DeckTheme[] = [
     icon: "bg-gradient-to-br from-violet-500 to-violet-600",
     text: "text-violet-700",
     badge: "bg-violet-600",
-    chip: "bg-violet-100 text-violet-700 ring-violet-200",
     bar: "bg-violet-400",
     soft: "text-violet-300",
   },
@@ -53,7 +50,6 @@ export const themes: DeckTheme[] = [
     icon: "bg-gradient-to-br from-sky-500 to-sky-600",
     text: "text-sky-700",
     badge: "bg-sky-600",
-    chip: "bg-sky-100 text-sky-700 ring-sky-200",
     bar: "bg-sky-400",
     soft: "text-sky-300",
   },
@@ -67,7 +63,6 @@ export const themes: DeckTheme[] = [
     icon: "bg-gradient-to-br from-rose-500 to-rose-600",
     text: "text-rose-700",
     badge: "bg-rose-600",
-    chip: "bg-rose-100 text-rose-700 ring-rose-200",
     bar: "bg-rose-400",
     soft: "text-rose-300",
   },
@@ -81,7 +76,6 @@ export const themes: DeckTheme[] = [
     icon: "bg-gradient-to-br from-emerald-500 to-emerald-600",
     text: "text-emerald-700",
     badge: "bg-emerald-600",
-    chip: "bg-emerald-100 text-emerald-700 ring-emerald-200",
     bar: "bg-emerald-400",
     soft: "text-emerald-300",
   },
@@ -95,7 +89,6 @@ export const themes: DeckTheme[] = [
     icon: "bg-gradient-to-br from-amber-400 to-amber-500",
     text: "text-amber-700",
     badge: "bg-amber-600",
-    chip: "bg-amber-100 text-amber-800 ring-amber-200",
     bar: "bg-amber-400",
     soft: "text-amber-300",
   },
@@ -109,7 +102,6 @@ export const themes: DeckTheme[] = [
     icon: "bg-gradient-to-br from-fuchsia-500 to-fuchsia-600",
     text: "text-fuchsia-700",
     badge: "bg-fuchsia-600",
-    chip: "bg-fuchsia-100 text-fuchsia-700 ring-fuchsia-200",
     bar: "bg-fuchsia-400",
     soft: "text-fuchsia-300",
   },
@@ -123,7 +115,6 @@ export const themes: DeckTheme[] = [
     icon: "bg-gradient-to-br from-teal-500 to-teal-600",
     text: "text-teal-700",
     badge: "bg-teal-600",
-    chip: "bg-teal-100 text-teal-700 ring-teal-200",
     bar: "bg-teal-400",
     soft: "text-teal-300",
   },
@@ -137,7 +128,6 @@ export const themes: DeckTheme[] = [
     icon: "bg-gradient-to-br from-indigo-500 to-indigo-600",
     text: "text-indigo-700",
     badge: "bg-indigo-600",
-    chip: "bg-indigo-100 text-indigo-700 ring-indigo-200",
     bar: "bg-indigo-400",
     soft: "text-indigo-300",
   },
@@ -151,7 +141,6 @@ export const themes: DeckTheme[] = [
     icon: "bg-gradient-to-br from-orange-400 to-orange-500",
     text: "text-orange-700",
     badge: "bg-orange-600",
-    chip: "bg-orange-100 text-orange-800 ring-orange-200",
     bar: "bg-orange-400",
     soft: "text-orange-300",
   },
@@ -165,7 +154,6 @@ export const themes: DeckTheme[] = [
     icon: "bg-gradient-to-br from-cyan-500 to-cyan-600",
     text: "text-cyan-700",
     badge: "bg-cyan-600",
-    chip: "bg-cyan-100 text-cyan-700 ring-cyan-200",
     bar: "bg-cyan-400",
     soft: "text-cyan-300",
   },
