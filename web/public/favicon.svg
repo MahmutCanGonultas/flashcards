@@ -1,16 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+<svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="deckBg" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#6366F1"/>
       <stop offset="1" stop-color="#8B5CF6"/>
     </linearGradient>
-    <linearGradient id="deckFold" x1="50" y1="18" x2="66" y2="34" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#4338CA"/>
-      <stop offset="1" stop-color="#6D28D9"/>
+    <radialGradient id="hi" cx="26%" cy="18%" r="50%">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bar" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#F59E0B"/>
+      <stop offset="1" stop-color="#FB923C"/>
     </linearGradient>
+    <clipPath id="tile">
+      <rect width="96" height="96" rx="21"/>
+    </clipPath>
   </defs>
-  <rect width="96" height="96" rx="24" fill="url(#deckBg)"/>
-  <rect x="30" y="28" width="44" height="58" rx="10" fill="#FFFFFF" fill-opacity="0.4" transform="rotate(9 52 57)"/>
-  <path d="M32 18 L50 18 L66 34 L66 66 Q66 76 56 76 L32 76 Q22 76 22 66 L22 28 Q22 18 32 18 Z" fill="#FFFFFF"/>
-  <path d="M50 18 L66 18 L66 34 Z" fill="url(#deckFold)"/>
+
+  <rect width="96" height="96" rx="21" fill="url(#bgGrad)"/>
+  <rect width="96" height="96" rx="21" fill="url(#hi)" clip-path="url(#tile)"/>
+
+  <rect x="19" y="34" width="46" height="34" rx="8" fill="#3B0F82" opacity="0.35" transform="rotate(-8 42 51)"/>
+  <rect x="21" y="31" width="46" height="34" rx="8" fill="#FFFFFF" transform="rotate(5 44 48)"/>
+
+  <g transform="rotate(5 44 48)">
+    <rect x="29" y="43" width="20" height="4" rx="2" fill="#C4B5FD"/>
+    <rect x="29" y="51" width="13" height="4" rx="2" fill="#DDD6FE"/>
+  </g>
+
+  <g>
+    <rect x="60" y="16" width="7" height="17" rx="3.5" fill="url(#bar)"/>
+    <rect x="69" y="9"  width="7" height="31" rx="3.5" fill="url(#bar)"/>
+    <rect x="78" y="13" width="7" height="23" rx="3.5" fill="url(#bar)"/>
+  </g>
 </svg>
