@@ -13,6 +13,8 @@ const createCardSchema = z.object({
   // concrete-noun cards -- most vocabulary can't be shown as an image).
   exampleSentence: z.string().nullable().optional(),
   imageUrl: z.string().url().nullable().optional(),
+  // Optional memory aid, usually the word's root/etymology.
+  mnemonic: z.string().nullable().optional(),
 });
 
 // Card Olusturma
@@ -24,7 +26,7 @@ export const createCard = async (req: Request, res: Response) => {
     return res.status(400).json({ error: "Kart Bilgileri Gecersiz" });
   }
 
-  const { front, back, tag, exampleSentence, imageUrl } = validation.data;
+  const { front, back, tag, exampleSentence, imageUrl, mnemonic } = validation.data;
   const { deckId } = req.params;
 
   // 2-Bu deste gercekten bu kullanicinin mi ? kontrol et.
@@ -39,9 +41,9 @@ export const createCard = async (req: Request, res: Response) => {
 
   // 3-Deste bu kullanicinin - artik karti ekleyebiliriz
   const result = await pool.query(
-    `INSERT INTO cards (deck_id, front, back, tag, example_sentence, image_url)
-     VALUES ($1,$2,$3,$4,$5,$6) RETURNING *`,
-    [deckId, front, back, tag ?? null, exampleSentence ?? null, imageUrl ?? null],
+    `INSERT INTO cards (deck_id, front, back, tag, example_sentence, image_url, mnemonic)
+     VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
+    [deckId, front, back, tag ?? null, exampleSentence ?? null, imageUrl ?? null, mnemonic ?? null],
   );
 
   // 4-Olusan Karti Dondur
