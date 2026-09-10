@@ -18,6 +18,8 @@ export type Card = {
   image_url: string | null;
   /** Optional memory aid, usually the word's root/etymology. */
   mnemonic: string | null;
+  /** Optional lesson number. A deck whose cards carry these renders as a path. */
+  lesson: number | null;
   ease_factor: number;
   interval: number;
   repetitions: number;

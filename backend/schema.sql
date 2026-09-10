@@ -17,9 +17,13 @@ CREATE TABLE cards(
     deck_id INTEGER NOT NULL REFERENCES decks(id) ON DELETE CASCADE,
     front TEXT NOT NULL,
     back TEXT NOT NULL,
-    -- Optional grouping label ("Day 3") so a deck seeded as a multi-day
-    -- program can be browsed one day at a time instead of as one long list.
+    -- Optional grouping label. For a deck organised as a learning path this
+    -- holds the unit title the card's lesson belongs to.
     tag VARCHAR(50),
+    -- Optional lesson number (1, 2, 3...). When a deck's cards carry these,
+    -- the deck renders as a Duolingo-style path of lesson nodes instead of a
+    -- flat card list, and lessons unlock in order rather than by calendar.
+    lesson INTEGER,
     -- Optional: a sentence using `front` in context, and a photo for cards
     -- where a real image actually helps (concrete nouns) -- most words in a
     -- vocabulary deck are function/abstract words a photo can't represent.

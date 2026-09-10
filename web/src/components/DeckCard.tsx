@@ -10,6 +10,13 @@ export type DeckStats = {
   /** How many of `due` have never been reviewed vs. are coming back for a repeat. */
   newDue: number;
   reviewDue: number;
+  /** Set only for decks organised as a learning path. */
+  path?: {
+    lessonsDone: number;
+    totalLessons: number;
+    wordsLearned: number;
+    totalWords: number;
+  };
 };
 
 /** Makes the split between brand-new words and spaced-repetition reviews visible. */
@@ -69,9 +76,27 @@ function DeckCard({ deck, theme, stats }: DeckCardProps) {
         {deck.name}
       </h3>
 
-      <div className="relative mt-1 h-5">
+      <div className="relative mt-1">
         {cardLabel === null ? (
           <Skeleton className="h-4 w-24 rounded-full" />
+        ) : stats?.path ? (
+          <>
+            <p className="text-sm font-bold text-stone-600">
+              Lesson {Math.min(stats.path.lessonsDone + 1, stats.path.totalLessons)} of{" "}
+              {stats.path.totalLessons}
+            </p>
+            <div className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-white/70">
+              <div
+                className={`h-full rounded-full ${stats.path.wordsLearned > 0 ? theme.badge : ""} transition-[width] duration-500`}
+                style={{
+                  width: `${Math.round((stats.path.wordsLearned / Math.max(stats.path.totalWords, 1)) * 100)}%`,
+                }}
+              />
+            </div>
+            <p className="mt-1.5 text-xs font-medium text-stone-500">
+              {stats.path.wordsLearned}/{stats.path.totalWords} words
+            </p>
+          </>
         ) : (
           <p className="text-sm font-medium text-stone-500">{cardLabel}</p>
         )}
