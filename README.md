@@ -145,6 +145,11 @@ the meaning is) and `image_url` (a photo, shown instead of the emoji). `image_ur
 sparse in the seeded deck — a photo only helps for concrete nouns; most vocabulary (discourse
 markers, abstract adjectives, verbs) has no meaningful photo, so those cards keep their emoji.
 
+A fourth field, `mnemonic`, holds a memory aid — for the seeded deck, mostly the word's Latin/Greek
+root rather than a forced sound-alike pun, since a pun forced onto a function word like "however"
+reads as gimmicky and a root at least teaches something reusable. Shown as a collapsed "💡 Memory
+tip" disclosure so it doesn't clutter the default view.
+
 ## Installing it as an app
 
 The web client is a PWA (`vite-plugin-pwa`, manifest + service worker + icons under

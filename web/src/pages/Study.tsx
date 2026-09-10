@@ -445,7 +445,9 @@ function StudySession({
                     onSelect={selectQuizOption}
                   />
                   {quizAnswer !== null &&
-                    (currentCard.image_url || currentCard.example_sentence) && (
+                    (currentCard.image_url ||
+                      currentCard.example_sentence ||
+                      currentCard.mnemonic) && (
                       <div className="mt-4 w-full space-y-3">
                         {currentCard.image_url && (
                           <img
@@ -458,6 +460,16 @@ function StudySession({
                           <p className="text-left text-sm italic leading-relaxed text-stone-600 break-words">
                             {currentCard.example_sentence}
                           </p>
+                        )}
+                        {currentCard.mnemonic && (
+                          <details className="text-left">
+                            <summary className="flex cursor-pointer list-none items-center gap-1.5 text-xs font-bold text-amber-600 [&::-webkit-details-marker]:hidden hover:text-amber-700">
+                              <span aria-hidden="true">💡</span> Memory tip
+                            </summary>
+                            <p className="mt-1.5 rounded-xl bg-amber-50 p-3 text-sm leading-relaxed text-amber-900 break-words">
+                              {currentCard.mnemonic}
+                            </p>
+                          </details>
                         )}
                       </div>
                     )}
@@ -492,6 +504,16 @@ function StudySession({
                     <p className="mt-4 text-sm italic leading-relaxed text-stone-500 break-words">
                       {currentCard.example_sentence}
                     </p>
+                  )}
+                  {currentCard.mnemonic && (
+                    <details className="mt-3 w-full text-left">
+                      <summary className="flex cursor-pointer list-none items-center gap-1.5 text-xs font-bold text-amber-600 [&::-webkit-details-marker]:hidden hover:text-amber-700">
+                        <span aria-hidden="true">💡</span> Memory tip
+                      </summary>
+                      <p className="mt-1.5 rounded-xl bg-amber-50 p-3 text-sm leading-relaxed text-amber-900 break-words">
+                        {currentCard.mnemonic}
+                      </p>
+                    </details>
                   )}
                 </>
               )}

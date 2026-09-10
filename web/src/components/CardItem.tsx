@@ -122,6 +122,17 @@ function CardItem({ card, theme, onEdit, onDelete }: CardItemProps) {
           {card.example_sentence}
         </p>
       )}
+
+      {card.mnemonic && (
+        <details className="mt-3">
+          <summary className="flex cursor-pointer list-none items-center gap-1.5 text-xs font-bold text-amber-600 [&::-webkit-details-marker]:hidden hover:text-amber-700">
+            <span aria-hidden="true">💡</span> Memory tip
+          </summary>
+          <p className="mt-1.5 rounded-xl bg-amber-50 p-3 text-sm leading-relaxed text-amber-900 break-words">
+            {card.mnemonic}
+          </p>
+        </details>
+      )}
     </article>
   );
 }

@@ -25,6 +25,9 @@ CREATE TABLE cards(
     -- vocabulary deck are function/abstract words a photo can't represent.
     example_sentence TEXT,
     image_url TEXT,
+    -- Optional: a memory aid (usually the word's etymology/root) explaining
+    -- why it means what it means, rather than just asking you to memorize it.
+    mnemonic TEXT,
     ease_factor REAL NOT NULL DEFAULT 2.5,
     interval INTEGER NOT NULL DEFAULT 0,
     repetitions INTEGER NOT NULL DEFAULT 0,

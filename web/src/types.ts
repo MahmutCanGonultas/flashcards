@@ -16,6 +16,8 @@ export type Card = {
   example_sentence: string | null;
   /** Optional photo -- only set for cards where a real image helps (concrete nouns). */
   image_url: string | null;
+  /** Optional memory aid, usually the word's root/etymology. */
+  mnemonic: string | null;
   ease_factor: number;
   interval: number;
   repetitions: number;
