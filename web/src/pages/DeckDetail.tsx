@@ -15,6 +15,9 @@ import Skeleton from "../components/Skeleton";
 import ErrorState from "../components/ErrorState";
 import EmptyState from "../components/EmptyState";
 import CardGroups from "../components/CardGroups";
+import LearningPath from "../components/LearningPath";
+import PathHeader from "../components/PathHeader";
+import { buildPath, pathStats } from "../lib/path";
 import CardFormModal from "../components/CardFormModal";
 import type { CardFormValues } from "../components/CardFormModal";
 import DeckFormModal from "../components/DeckFormModal";
@@ -51,6 +54,7 @@ function DeckDetail() {
   const [deletingCard, setDeletingCard] = useState<CardModel | null>(null);
   const [isRenameOpen, setIsRenameOpen] = useState(false);
   const [isDeleteDeckOpen, setIsDeleteDeckOpen] = useState(false);
+  const [showAllCards, setShowAllCards] = useState(false);
 
   // No single-deck endpoint exists, so read the decks list and find this one.
   const decksQuery = useQuery({
@@ -153,6 +157,12 @@ function DeckDetail() {
         ? "1 card"
         : `${cardCount} cards`;
 
+  // A deck whose cards carry lesson numbers is walked as a path; everything
+  // else keeps the plain card list.
+  const units = buildPath(cardsQuery.data ?? []);
+  const isPath = units.length > 0;
+  const stats = pathStats(units);
+
   return (
     <div className="min-h-screen bg-[#FDF9F3]">
       <Header />
@@ -208,44 +218,46 @@ function DeckDetail() {
                 </span>
                 <span className="min-w-0 break-words">{deck.name}</span>
               </h1>
-              {cardsQuery.isSuccess ? (
+              {!isPath && cardsQuery.isSuccess ? (
                 <p className="text-stone-500 mt-1.5">{cardCountLabel}</p>
               ) : cardsQuery.isLoading ? (
                 <Skeleton className="h-5 w-24 rounded-full mt-2.5" />
               ) : null}
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <LinkButton to={`/decks/${deckId}/study`} variant="primary">
-                Study 🚀
-              </LinkButton>
-              {cardCount > 0 && (
-                <LinkButton to={`/decks/${deckId}/study?mode=all`} variant="secondary">
-                  Review everything 📖
-                </LinkButton>
-              )}
-              <Button variant="secondary" onClick={() => setIsAddOpen(true)}>
-                + Add card
-              </Button>
-              <div className="w-full sm:w-auto sm:ml-auto flex flex-wrap gap-3">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setIsRenameOpen(true)}
-                >
-                  Rename
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setIsDeleteDeckOpen(true)}
-                >
-                  Delete deck
-                </Button>
-              </div>
-            </div>
+            {isPath && (
+              <PathHeader
+                stats={stats}
+                onReview={() => navigate(`/decks/${deckId}/study`)}
+                onPractice={() => navigate(`/decks/${deckId}/study?mode=all`)}
+              />
+            )}
 
-            <div className="mt-10">
+            {!isPath && (
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <LinkButton to={`/decks/${deckId}/study`} variant="primary">
+                  Study 🚀
+                </LinkButton>
+                {cardCount > 0 && (
+                  <LinkButton to={`/decks/${deckId}/study?mode=all`} variant="secondary">
+                    Review everything 📖
+                  </LinkButton>
+                )}
+                <Button variant="secondary" size="sm" onClick={() => setIsAddOpen(true)}>
+                  + Add card
+                </Button>
+                <div className="w-full sm:w-auto sm:ml-auto flex flex-wrap gap-3">
+                  <Button variant="ghost" size="sm" onClick={() => setIsRenameOpen(true)}>
+                    Rename
+                  </Button>
+                  <Button variant="ghost" size="sm" onClick={() => setIsDeleteDeckOpen(true)}>
+                    Delete deck
+                  </Button>
+                </div>
+              </div>
+            )}
+
+            <div className="mt-8">
               {cardsQuery.isLoading && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   {[0, 1, 2].map((n) => (
@@ -277,7 +289,11 @@ function DeckDetail() {
                 />
               )}
 
-              {cardsQuery.isSuccess && cardsQuery.data.length > 0 && (
+              {cardsQuery.isSuccess && cardsQuery.data.length > 0 && isPath && !showAllCards && (
+                <LearningPath deckId={deckId} units={units} />
+              )}
+
+              {cardsQuery.isSuccess && cardsQuery.data.length > 0 && (!isPath || showAllCards) && (
                 <CardGroups
                   key={deckId}
                   cards={cardsQuery.data}
@@ -286,6 +302,25 @@ function DeckDetail() {
                 />
               )}
             </div>
+
+            {/* Deck housekeeping lives at the bottom in path mode — the path
+                itself is the point of the screen, not the admin controls. */}
+            {isPath && (
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-2 border-t border-stone-200/70 pt-6">
+                <Button variant="ghost" size="sm" onClick={() => setShowAllCards((v) => !v)}>
+                  {showAllCards ? "Hide word list" : "📋 All words"}
+                </Button>
+                <Button variant="ghost" size="sm" onClick={() => setIsAddOpen(true)}>
+                  + Add card
+                </Button>
+                <Button variant="ghost" size="sm" onClick={() => setIsRenameOpen(true)}>
+                  Rename
+                </Button>
+                <Button variant="ghost" size="sm" onClick={() => setIsDeleteDeckOpen(true)}>
+                  Delete deck
+                </Button>
+              </div>
+            )}
           </>
         )}
       </main>
