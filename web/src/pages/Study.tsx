@@ -197,6 +197,18 @@ function StudySession({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentCard?.id]);
 
+  // Start fetching the answer's photo the moment the card appears, not when
+  // the answer is revealed -- a fresh image load can easily take longer than
+  // the auto-advance delay, and by then the front has usually been on screen
+  // for a few seconds already.
+  useEffect(() => {
+    if (currentCard?.image_url) {
+      const preload = new Image();
+      preload.src = currentCard.image_url;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentCard?.id]);
+
   // Keyboard shortcuts: Space/Enter flips, then 1-4 rate the flipped card.
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -426,17 +438,44 @@ function StudySession({
               </span>
 
               {canQuiz && quizOptions ? (
-                <QuizOptions
-                  options={quizOptions}
-                  selectedIndex={quizAnswer}
-                  onSelect={selectQuizOption}
-                />
+                <>
+                  <QuizOptions
+                    options={quizOptions}
+                    selectedIndex={quizAnswer}
+                    onSelect={selectQuizOption}
+                  />
+                  {quizAnswer !== null &&
+                    (currentCard.image_url || currentCard.example_sentence) && (
+                      <div className="mt-4 w-full space-y-3">
+                        {currentCard.image_url && (
+                          <img
+                            src={currentCard.image_url}
+                            alt=""
+                            className="h-24 w-full rounded-2xl object-cover"
+                          />
+                        )}
+                        {currentCard.example_sentence && (
+                          <p className="text-left text-sm italic leading-relaxed text-stone-600 break-words">
+                            {currentCard.example_sentence}
+                          </p>
+                        )}
+                      </div>
+                    )}
+                </>
               ) : (
                 <>
-                  {emoji && (
-                    <div className="mt-4 text-5xl leading-none" aria-hidden="true">
-                      {emoji}
-                    </div>
+                  {currentCard.image_url ? (
+                    <img
+                      src={currentCard.image_url}
+                      alt=""
+                      className="mt-4 h-24 w-full rounded-2xl object-cover"
+                    />
+                  ) : (
+                    emoji && (
+                      <div className="mt-4 text-5xl leading-none" aria-hidden="true">
+                        {emoji}
+                      </div>
+                    )
                   )}
                   {pos && (
                     <span className="mt-3 rounded-full bg-white/70 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-emerald-600 ring-1 ring-emerald-200">
@@ -444,11 +483,16 @@ function StudySession({
                     </span>
                   )}
                   <p
-                    className={`${emoji ? "mt-2" : "mt-6"} text-2xl font-extrabold leading-snug text-stone-800 break-words sm:text-3xl`}
+                    className={`${emoji || currentCard.image_url ? "mt-2" : "mt-6"} text-2xl font-extrabold leading-snug text-stone-800 break-words sm:text-3xl`}
                   >
                     {answerText}
                   </p>
                   <SpeakButton text={currentCard.front} size="md" className="mt-4" />
+                  {currentCard.example_sentence && (
+                    <p className="mt-4 text-sm italic leading-relaxed text-stone-500 break-words">
+                      {currentCard.example_sentence}
+                    </p>
+                  )}
                 </>
               )}
             </div>

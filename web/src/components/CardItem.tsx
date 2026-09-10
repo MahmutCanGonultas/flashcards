@@ -97,8 +97,17 @@ function CardItem({ card, theme, onEdit, onDelete }: CardItemProps) {
 
       <div className="my-4 border-t-2 border-dashed border-stone-900/10" />
 
+      {card.image_url && (
+        <img
+          src={card.image_url}
+          alt=""
+          className="mb-3 h-28 w-full rounded-2xl object-cover"
+          loading="lazy"
+        />
+      )}
+
       <div className="flex items-center gap-3">
-        {emoji && (
+        {!card.image_url && emoji && (
           <span className="text-3xl leading-none" aria-hidden="true">
             {emoji}
           </span>
@@ -107,6 +116,12 @@ function CardItem({ card, theme, onEdit, onDelete }: CardItemProps) {
           {text}
         </p>
       </div>
+
+      {card.example_sentence && (
+        <p className="mt-3 border-l-2 border-stone-200 pl-3 text-sm italic leading-relaxed text-stone-500 break-words">
+          {card.example_sentence}
+        </p>
+      )}
     </article>
   );
 }
