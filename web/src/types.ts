@@ -12,6 +12,10 @@ export type Card = {
   back: string;
   /** Optional grouping label, e.g. "Day 3" for a multi-day program deck. */
   tag: string | null;
+  /** Optional: `front` used in a sentence. */
+  example_sentence: string | null;
+  /** Optional photo -- only set for cards where a real image helps (concrete nouns). */
+  image_url: string | null;
   ease_factor: number;
   interval: number;
   repetitions: number;

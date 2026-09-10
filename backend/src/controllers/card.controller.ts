@@ -9,6 +9,10 @@ const createCardSchema = z.object({
   back: z.string().min(1),
   // Optional grouping label, e.g. "Day 3" for a multi-day program deck.
   tag: z.string().max(50).nullable().optional(),
+  // Optional: front used in a sentence, and a photo (only meaningful for
+  // concrete-noun cards -- most vocabulary can't be shown as an image).
+  exampleSentence: z.string().nullable().optional(),
+  imageUrl: z.string().url().nullable().optional(),
 });
 
 // Card Olusturma
@@ -20,7 +24,7 @@ export const createCard = async (req: Request, res: Response) => {
     return res.status(400).json({ error: "Kart Bilgileri Gecersiz" });
   }
 
-  const { front, back, tag } = validation.data;
+  const { front, back, tag, exampleSentence, imageUrl } = validation.data;
   const { deckId } = req.params;
 
   // 2-Bu deste gercekten bu kullanicinin mi ? kontrol et.
@@ -35,8 +39,9 @@ export const createCard = async (req: Request, res: Response) => {
 
   // 3-Deste bu kullanicinin - artik karti ekleyebiliriz
   const result = await pool.query(
-    "INSERT INTO cards (deck_id, front, back, tag) VALUES ($1,$2,$3,$4) RETURNING *",
-    [deckId, front, back, tag ?? null],
+    `INSERT INTO cards (deck_id, front, back, tag, example_sentence, image_url)
+     VALUES ($1,$2,$3,$4,$5,$6) RETURNING *`,
+    [deckId, front, back, tag ?? null, exampleSentence ?? null, imageUrl ?? null],
   );
 
   // 4-Olusan Karti Dondur

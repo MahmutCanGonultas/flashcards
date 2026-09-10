@@ -20,6 +20,11 @@ CREATE TABLE cards(
     -- Optional grouping label ("Day 3") so a deck seeded as a multi-day
     -- program can be browsed one day at a time instead of as one long list.
     tag VARCHAR(50),
+    -- Optional: a sentence using `front` in context, and a photo for cards
+    -- where a real image actually helps (concrete nouns) -- most words in a
+    -- vocabulary deck are function/abstract words a photo can't represent.
+    example_sentence TEXT,
+    image_url TEXT,
     ease_factor REAL NOT NULL DEFAULT 2.5,
     interval INTEGER NOT NULL DEFAULT 0,
     repetitions INTEGER NOT NULL DEFAULT 0,

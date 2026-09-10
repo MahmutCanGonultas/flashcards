@@ -140,6 +140,11 @@ Cards can also carry a `tag` (e.g. `"Day 3"`) to group a large deck into a colla
 (`components/CardGroups.tsx`) instead of listing every card at once; a deck with no tagged cards
 renders exactly as before.
 
+Two more optional fields: `example_sentence` (front used in a sentence, shown in italics wherever
+the meaning is) and `image_url` (a photo, shown instead of the emoji). `image_url` is deliberately
+sparse in the seeded deck — a photo only helps for concrete nouns; most vocabulary (discourse
+markers, abstract adjectives, verbs) has no meaningful photo, so those cards keep their emoji.
+
 ## Installing it as an app
 
 The web client is a PWA (`vite-plugin-pwa`, manifest + service worker + icons under
