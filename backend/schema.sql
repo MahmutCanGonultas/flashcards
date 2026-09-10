@@ -2,6 +2,10 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     email VARCHAR(255) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
+    -- Consecutive days studied, and the local date the run was last extended.
+    -- The date comes from the client because the server's clock is UTC.
+    streak_count INTEGER NOT NULL DEFAULT 0,
+    last_study_date DATE,
     created_at TIMESTAMP DEFAULT NOW()
 );
 

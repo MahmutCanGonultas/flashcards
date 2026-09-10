@@ -15,6 +15,7 @@ import Skeleton from "../components/Skeleton";
 import SpeakButton from "../components/SpeakButton";
 import QuizOptions from "../components/QuizOptions";
 import Mascot from "../components/Mascot";
+import { useRecordStudyDay } from "../lib/streak";
 
 type ReviewInput = { cardId: number; quality: ReviewQuality };
 
@@ -90,6 +91,8 @@ function StudySession({
   const [failedReviews, setFailedReviews] = useState(0);
 
   const didReviewRef = useRef(false);
+  const recordedDayRef = useRef(false);
+  const recordStudyDay = useRecordStudyDay();
 
   const currentCard = currentIndex < queue.length ? queue[currentIndex] : null;
   const finished = queue.length > 0 && currentIndex >= queue.length;
@@ -116,6 +119,11 @@ function StudySession({
     retry: 2,
     onSuccess: () => {
       didReviewRef.current = true;
+      // One call per session is enough to keep the run alive.
+      if (!recordedDayRef.current) {
+        recordedDayRef.current = true;
+        recordStudyDay.mutate();
+      }
     },
     onError: () => {
       setFailedReviews((n) => n + 1);
@@ -267,6 +275,7 @@ function StudySession({
 
   if (finished) {
     const accuracy = Math.round((correctCount / queue.length) * 100);
+    const streakAfterSession = recordStudyDay.data?.streak ?? 0;
     return (
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-white to-emerald-50 p-8 text-center ring-2 ring-emerald-100 shadow-[0_5px_0_0_var(--color-emerald-100)] animate-[pop-in_220ms_ease-out] sm:p-12">
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -292,6 +301,14 @@ function StudySession({
               <p className="text-2xl font-extrabold text-violet-600">{accuracy}%</p>
               <p className="text-xs font-bold uppercase tracking-wide text-stone-400">Correct</p>
             </div>
+            {streakAfterSession > 0 && (
+              <div className="min-w-[6.5rem] rounded-2xl bg-white px-4 py-3 ring-2 ring-amber-100">
+                <p className="text-2xl font-extrabold text-amber-500">{streakAfterSession}</p>
+                <p className="text-xs font-bold uppercase tracking-wide text-stone-400">
+                  Day streak
+                </p>
+              </div>
+            )}
           </div>
 
           {failedReviews > 0 && (
@@ -457,12 +474,18 @@ function StudySession({
                 )}
               </div>
 
-              {currentCard.image_url && (
+              {currentCard.image_url ? (
                 <img
                   src={currentCard.image_url}
                   alt=""
-                  className="hidden h-20 w-24 shrink-0 rounded-2xl object-cover sm:block"
+                  className="h-16 w-16 shrink-0 rounded-2xl object-cover sm:h-20 sm:w-24"
                 />
+              ) : (
+                emoji && (
+                  <span aria-hidden="true" className="shrink-0 text-4xl leading-none">
+                    {emoji}
+                  </span>
+                )
               )}
             </div>
 
