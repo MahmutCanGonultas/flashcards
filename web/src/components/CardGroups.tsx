@@ -43,8 +43,20 @@ function bucketize(cards: CardModel[]): Bucket[] {
     cards: tagCards,
   }));
 
-  // "Day 2" before "Day 10": compare the number inside the label, not the text.
+  // Curriculum order first: a path deck's units sort by the lessons inside
+  // them, not by their titles. Otherwise fall back to the number in the label
+  // ("Day 2" before "Day 10"), then to the text.
+  const firstLesson = (bucket: Bucket) =>
+    bucket.cards.reduce<number | null>(
+      (min, card) =>
+        card.lesson === null ? min : min === null ? card.lesson : Math.min(min, card.lesson),
+      null,
+    );
+
   buckets.sort((a, b) => {
+    const la = firstLesson(a);
+    const lb = firstLesson(b);
+    if (la !== null && lb !== null) return la - lb;
     const na = Number(a.label.match(/\d+/)?.[0]);
     const nb = Number(b.label.match(/\d+/)?.[0]);
     if (!Number.isNaN(na) && !Number.isNaN(nb)) return na - nb;
