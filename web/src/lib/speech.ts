@@ -29,15 +29,65 @@ function ensureVoicesLoaded(): Promise<void> {
   });
 }
 
+/**
+ * iOS only lets a page start speech from inside a user gesture, and the first
+ * utterance of a session is the one it polices. `speak()` can't do this job
+ * itself: it awaits `ensureVoicesLoaded()` first, so by the time it reaches
+ * the synth the gesture window has closed.
+ *
+ * So the very first tap that leads into a session calls this synchronously —
+ * a silent, throwaway utterance that opens the door for everything after it.
+ */
+let primed = false;
+export function primeSpeech(): void {
+  if (!speechSupported || primed) return;
+  primed = true;
+  try {
+    const opener = new SpeechSynthesisUtterance("a");
+    opener.volume = 0;
+    opener.rate = 2;
+    opener.lang = "en-US";
+    window.speechSynthesis.speak(opener);
+  } catch {
+    // An unsupported or blocked synth just means no audio; never a crash.
+  }
+  void ensureVoicesLoaded();
+}
+
+const MUTE_KEY = "speech-muted";
+
+/**
+ * Mute silences the automatic pronunciations only. Tapping a speaker button
+ * is an explicit request and always plays — someone who muted the app on a
+ * bus still wants sound when they deliberately ask for it.
+ */
+export function isSpeechMuted(): boolean {
+  try {
+    return window.localStorage.getItem(MUTE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+export function setSpeechMuted(muted: boolean): void {
+  try {
+    window.localStorage.setItem(MUTE_KEY, muted ? "1" : "0");
+  } catch {
+    // Private browsing can refuse writes; the preference just won't persist.
+  }
+}
+
 type SpeakOptions = {
   lang?: string;
+  /** 1 is the engine's normal pace; the default here is a little slower. */
+  rate?: number;
   /** Fires when audio actually starts, so a button can show a "playing" state. */
   onStart?: () => void;
   onEnd?: () => void;
 };
 
 export async function speak(text: string, options: SpeakOptions = {}): Promise<void> {
-  const { lang = "en-US", onStart, onEnd } = options;
+  const { lang = "en-US", rate = 0.92, onStart, onEnd } = options;
   if (!speechSupported || !text.trim()) return;
 
   await ensureVoicesLoaded();
@@ -48,7 +98,7 @@ export async function speak(text: string, options: SpeakOptions = {}): Promise<v
 
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = lang;
-  utterance.rate = 0.92;
+  utterance.rate = rate;
   if (onStart) utterance.onstart = onStart;
   if (onEnd) {
     utterance.onend = onEnd;
@@ -56,3 +106,10 @@ export async function speak(text: string, options: SpeakOptions = {}): Promise<v
   }
   window.speechSynthesis.speak(utterance);
 }
+
+/** Speaks the automatic pronunciations, unless the learner has muted them. */
+export function speakAuto(text: string, options: SpeakOptions = {}): void {
+  if (isSpeechMuted()) return;
+  void speak(text, options);
+}
+

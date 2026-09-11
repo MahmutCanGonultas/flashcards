@@ -2,10 +2,19 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Navigate, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError } from "../lib/api";
-import type { Card, Deck, ReviewQuality } from "../types";
+import type { Card, Deck } from "../types";
 import { parseBack } from "../lib/cardBack";
-import { buildQuizOptions } from "../lib/quiz";
-import { speak } from "../lib/speech";
+import { buildQuizOptions, buildWordOptions, type QuizOption } from "../lib/quiz";
+import { blankOut, BLANK } from "../lib/sentence";
+import { hasStarted, buildPath } from "../lib/path";
+import {
+  buildLessonPlan,
+  buildReviewPlan,
+  repeatStep,
+  type Step,
+  type QuizFormat,
+} from "../lib/lessonPlan";
+import { speak, speakAuto, isSpeechMuted, setSpeechMuted, speechSupported } from "../lib/speech";
 import { playCorrect, playIncorrect } from "../lib/sound";
 import Button from "../components/Button";
 import LinkButton from "../components/LinkButton";
@@ -15,19 +24,22 @@ import Skeleton from "../components/Skeleton";
 import SpeakButton from "../components/SpeakButton";
 import QuizOptions from "../components/QuizOptions";
 import Mascot from "../components/Mascot";
+import MeetBody from "../components/MeetBody";
+import SoundMatch from "../components/SoundMatch";
+import RoundRail, { type RailStage } from "../components/RoundRail";
+import { SpeakerIcon } from "../components/icons";
 import { useRecordStudyDay } from "../lib/streak";
 
-type ReviewInput = { cardId: number; quality: ReviewQuality };
-
-/** The four SM-2 grades, used only by the self-graded fallback for tiny decks. */
-const RATINGS = [
-  { label: "Again", emoji: "😵", quality: 1, variant: "softDanger" },
-  { label: "Hard", emoji: "😖", quality: 3, variant: "softWarning" },
-  { label: "Good", emoji: "🙂", quality: 4, variant: "softInfo" },
-  { label: "Easy", emoji: "😎", quality: 5, variant: "softSuccess" },
-] as const;
+type ReviewInput = { cardId: number; quality: 1 | 4 };
+type SessionMode = "lesson" | "review";
 
 const KEY_TO_OPTION: Record<string, number> = { "1": 0, "2": 1, "3": 2, "4": 3 };
+
+/** Ignore taps landing within the cross-fade, so a double tap can't skip a step. */
+const TRANSITION_GUARD_MS = 180;
+
+/** From this attempt on, a repeated question narrows to two options. */
+const NARROW_FROM_ATTEMPT = 2;
 
 function describeError(error: unknown): string {
   return error instanceof ApiError
@@ -51,6 +63,7 @@ type StudySessionProps = {
   deckId: string;
   /** Snapshotted on mount; later changes to the queue are ignored on purpose. */
   cards: Card[];
+  mode: SessionMode;
   title: string;
   /** Undefined while the deck's full card list is still loading, or if it failed. */
   deckCardCount?: number;
@@ -64,6 +77,10 @@ type StudySessionProps = {
  * Drives one pass over a queue of cards — today's reviews, one lesson, or
  * everything learned so far.
  *
+ * A lesson teaches its new words before it tests them, and will not end while
+ * a word is still unanswered: a wrong answer sends that word to the back of
+ * the session, so a lesson can never be finished by getting everything wrong.
+ *
  * Grading a card pushes its due_date into the future, so refetching the queue
  * mid-session would make it shift underneath us and skip cards. The queue is
  * snapshotted once here and never re-read; the caches are refreshed when the
@@ -72,6 +89,7 @@ type StudySessionProps = {
 function StudySession({
   deckId,
   cards,
+  mode,
   title,
   deckCardCount,
   deckCards,
@@ -83,54 +101,71 @@ function StudySession({
 
   const [queue] = useState(() => cards);
   const [deckCardPool] = useState(() => deckCards ?? []);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [quizAnswer, setQuizAnswer] = useState<number | null>(null);
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [correctCount, setCorrectCount] = useState(0);
 
+  // Append-only. Never reorder and never remove: every other operation can
+  // shift an index that has already been consumed.
+  const [plan, setPlan] = useState<Step[]>(() =>
+    mode === "lesson" ? buildLessonPlan(cards) : buildReviewPlan(cards),
+  );
+  const [stepIndex, setStepIndex] = useState(0);
+  const [answer, setAnswer] = useState<number | null>(null);
+  const [outcomes, setOutcomes] = useState<Record<number, "right" | "wrong">>({});
   const [failedReviews, setFailedReviews] = useState(0);
+  const [muted, setMuted] = useState(() => isSpeechMuted());
 
   const didReviewRef = useRef(false);
   const recordedDayRef = useRef(false);
+  const gradedRef = useRef<Set<number>>(new Set());
+  const stepEnteredAtRef = useRef(0);
   const recordStudyDay = useRecordStudyDay();
 
-  const currentCard = currentIndex < queue.length ? queue[currentIndex] : null;
-  const finished = queue.length > 0 && currentIndex >= queue.length;
+  const byId = useMemo(() => {
+    const map = new Map<number, Card>();
+    for (const card of [...deckCardPool, ...queue]) map.set(card.id, card);
+    return map;
+  }, [deckCardPool, queue]);
 
-  // null when the pool is too small (or too repetitive) to draw 3 distinct
-  // distractors from — that deck falls back to a self-graded reveal.
-  // Depending on currentCard?.id reshuffles exactly once per card.
-  const quizOptions = useMemo(
-    () => (currentCard ? buildQuizOptions(currentCard, deckCardPool) : null),
+  const step: Step | undefined = plan[stepIndex];
+  const finished = plan.length > 0 && stepIndex >= plan.length;
+  const stepCard = step && step.kind !== "listen" ? byId.get(step.cardId) : undefined;
+
+  // Reshuffles exactly once per step — a repeated question gets fresh options,
+  // but re-rendering the same step never moves the answers under a tapping thumb.
+  const options = useMemo<QuizOption[] | null>(() => {
+    if (!step || step.kind !== "quiz" || !stepCard) return null;
+    const mates = step.mateIds
+      .map((id) => byId.get(id))
+      .filter((card): card is Card => card !== undefined);
+
+    // A word that keeps coming back narrows to a straight choice between two,
+    // so the loop that guards against a zero-score lesson always terminates.
+    const build = { mates, maxOptions: step.attempt >= NARROW_FROM_ATTEMPT ? 2 : 4 };
+
+    return step.format === "meaning"
+      ? buildQuizOptions(stepCard, deckCardPool, build)
+      : buildWordOptions(stepCard, deckCardPool, build);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [currentCard?.id, deckCardPool],
-  );
-  const canQuiz = quizOptions !== null;
-  const revealed = canQuiz ? quizAnswer !== null : isFlipped;
-  const answeredCorrectly =
-    canQuiz && quizAnswer !== null ? quizOptions![quizAnswer].isCorrect : null;
+  }, [step?.key, stepCard, deckCardPool, byId]);
 
-  // Grading is fire-and-forget so the next word appears the instant Continue
-  // is tapped. It retries on its own; anything that still fails after that is
-  // reported at the end of the lesson rather than silently swallowed.
+  const answered = answer !== null;
+  const answeredRight = answered && options ? options[answer].isCorrect : null;
+
   const reviewMutation = useMutation({
     mutationFn: ({ cardId, quality }: ReviewInput) =>
       api.post<{ card: Card }>(`/decks/${deckId}/cards/${cardId}/review`, { quality }),
     retry: 2,
     onSuccess: () => {
       didReviewRef.current = true;
-      // One call per session is enough to keep the run alive.
-      if (!recordedDayRef.current) {
-        recordedDayRef.current = true;
-        recordStudyDay.mutate();
-      }
     },
-    onError: () => {
-      setFailedReviews((n) => n + 1);
-    },
+    onError: () => setFailedReviews((n) => n + 1),
   });
+  const { mutate: mutateReview } = reviewMutation;
 
-  const { isPending: isReviewing, mutate: mutateReview } = reviewMutation;
+  const markStudied = useCallback(() => {
+    if (recordedDayRef.current) return;
+    recordedDayRef.current = true;
+    recordStudyDay.mutate();
+  }, [recordStudyDay]);
 
   // Refresh the deck's other screens when this one is left, so the path and
   // review counts reflect what just happened.
@@ -143,63 +178,89 @@ function StudySession({
     };
   }, [queryClient, deckId]);
 
-  // Read the word aloud the moment it appears — that's the point where the
-  // learner is looking at English with no meaning shown yet.
+  // Every photo in the session, fetched up front. Cards now appear several
+  // times, so preloading per card would fire late and repeatedly.
   useEffect(() => {
-    if (currentCard) void speak(currentCard.front);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentCard?.id]);
+    for (const card of queue) {
+      if (card.image_url) {
+        const preload = new Image();
+        preload.src = card.image_url;
+      }
+    }
+  }, [queue]);
 
-  // Start fetching the answer's photo now rather than when it's revealed, so
-  // it's decoded and ready by the time the feedback panel opens.
+  // Say the word whenever a step showing it opens. Keyed on the step, not the
+  // card: one word is now met, heard and asked about within a single session.
   useEffect(() => {
-    if (currentCard?.image_url) {
-      const preload = new Image();
-      preload.src = currentCard.image_url;
+    stepEnteredAtRef.current = Date.now();
+    if (!step || step.kind === "listen") return;
+    const card = byId.get(step.cardId);
+    // The sentence question would give its own answer away if it spoke.
+    if (card && !(step.kind === "quiz" && step.format === "context")) {
+      speakAuto(card.front);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentCard?.id]);
+  }, [step?.key]);
 
-  const goToNextCard = useCallback(() => {
-    setQuizAnswer(null);
-    setIsFlipped(false);
-    setCurrentIndex((index) => index + 1);
+  const advance = useCallback(() => {
+    if (Date.now() - stepEnteredAtRef.current < TRANSITION_GUARD_MS) return;
+    setAnswer(null);
+    setStepIndex((index) => index + 1);
   }, []);
 
-  // Grading is fired the instant an answer is picked, so the request flies
-  // while the feedback is being read.
-  const selectQuizOption = useCallback(
+  const chooseOption = useCallback(
     (index: number) => {
-      if (!currentCard || quizAnswer !== null || !quizOptions) return;
-      setQuizAnswer(index);
-      const isCorrect = quizOptions[index].isCorrect;
-      if (isCorrect) {
-        playCorrect();
-        setCorrectCount((n) => n + 1);
-      } else {
-        playIncorrect();
+      if (!step || step.kind !== "quiz" || !stepCard || !options || answer !== null) return;
+      const isCorrect = options[index].isCorrect;
+      setAnswer(index);
+
+      if (isCorrect) playCorrect();
+      else playIncorrect();
+
+      // Exactly one write per card per session. A second would silently take a
+      // word from interval 1 to interval 6 inside a single day.
+      if (step.graded && !gradedRef.current.has(stepCard.id)) {
+        gradedRef.current.add(stepCard.id);
+        mutateReview({ cardId: stepCard.id, quality: isCorrect ? 4 : 1 });
+        markStudied();
       }
-      mutateReview({ cardId: currentCard.id, quality: isCorrect ? 4 : 1 });
+
+      setOutcomes((previous) =>
+        previous[stepCard.id] ? previous : { ...previous, [stepCard.id]: isCorrect ? "right" : "wrong" },
+      );
+
+      // Missed words come back until they land. The repeat is never graded —
+      // the schedule already recorded the lapse.
+      if (!isCorrect && mode === "lesson") {
+        setPlan((previous) => [...previous, repeatStep(stepCard, step.format, step.attempt)]);
+      }
+
+      if (!isCorrect) speakAuto(stepCard.front);
     },
-    [currentCard, quizAnswer, quizOptions, mutateReview],
+    [step, stepCard, options, answer, mode, mutateReview, markStudied],
   );
 
-  const rate = useCallback(
-    (quality: ReviewQuality) => {
-      if (!currentCard || isReviewing) return;
-      if (quality >= 3) setCorrectCount((n) => n + 1);
-      mutateReview({ cardId: currentCard.id, quality });
-      goToNextCard();
-    },
-    [currentCard, isReviewing, mutateReview, goToNextCard],
-  );
+  const stages = useMemo<RailStage[]>(() => {
+    if (mode !== "lesson") return [];
+    const rail: RailStage[] = [];
+    if (plan.some((s) => s.kind === "meet")) rail.push({ id: "meet", label: "Meet" });
+    if (plan.some((s) => s.kind === "listen")) rail.push({ id: "listen", label: "Listen" });
+    rail.push({ id: "prove", label: "Prove" });
+    return rail;
+  }, [mode, plan]);
 
-  const handleContinue = useCallback(() => goToNextCard(), [goToNextCard]);
+  const activeStage = useMemo(() => {
+    if (!step) return stages.length - 1;
+    const id = step.kind === "quiz" ? "prove" : step.kind;
+    const found = stages.findIndex((stage) => stage.id === id);
+    return found === -1 ? stages.length - 1 : found;
+  }, [step, stages]);
 
-  // Keyboard: 1-4 pick an answer, then Enter/Space continues.
+  // Keyboard. Order matters: without the teaching branches first, pressing "2"
+  // on a screen with nothing to answer would grade a card unanswered.
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.repeat || !currentCard) return;
+      if (event.repeat || !step) return;
       const target = event.target;
       if (
         target instanceof HTMLElement &&
@@ -208,32 +269,38 @@ function StudySession({
         return;
       }
 
-      if (revealed) {
+      if (step.kind === "meet" || step.kind === "listen") {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          handleContinue();
+          if (step.kind === "meet") advance();
         }
         return;
       }
 
-      if (canQuiz) {
-        const index = KEY_TO_OPTION[event.key];
-        if (index !== undefined && quizOptions && index < quizOptions.length) {
+      if (answer !== null) {
+        if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          selectQuizOption(index);
+          advance();
         }
         return;
       }
 
-      if (event.key === " " || event.key === "Enter") {
+      const index = KEY_TO_OPTION[event.key];
+      if (index !== undefined && options && index < options.length) {
         event.preventDefault();
-        setIsFlipped(true);
+        chooseOption(index);
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentCard, revealed, canQuiz, quizOptions, selectQuizOption, handleContinue]);
+  }, [step, answer, options, advance, chooseOption]);
+
+  const toggleMute = () => {
+    const next = !muted;
+    setMuted(next);
+    setSpeechMuted(next);
+  };
 
   // Nothing in the queue: say why, in the way that actually helps.
   if (queue.length === 0) {
@@ -273,237 +340,422 @@ function StudySession({
     );
   }
 
-  if (finished) {
-    const accuracy = Math.round((correctCount / queue.length) * 100);
-    const streakAfterSession = recordStudyDay.data?.streak ?? 0;
+  // Without a pool there are no distractors and so no questions at all. Say so
+  // once, at the top, rather than failing card by card.
+  if (deckCardPool.length === 0) {
     return (
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-white to-emerald-50 p-8 text-center ring-2 ring-emerald-100 shadow-[0_5px_0_0_var(--color-emerald-100)] animate-[pop-in_220ms_ease-out] sm:p-12">
-        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <span className="absolute left-8 top-6 h-3 w-3 animate-bounce rounded-full bg-violet-300" />
-          <span className="absolute right-10 top-10 h-2 w-2 rounded-full bg-emerald-300" />
-          <span className="absolute left-1/2 top-16 h-2.5 w-2.5 animate-pulse rounded-full bg-amber-300" />
-          <span className="absolute bottom-12 left-12 h-2 w-2 animate-pulse rounded-full bg-sky-300" />
-          <span className="absolute bottom-14 right-16 h-3 w-3 animate-bounce rounded-full bg-rose-300" />
-        </div>
-
-        <div className="relative">
-          <Mascot mood="happy" size={132} className="mx-auto" />
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-stone-800">
-            Lesson complete!
-          </h2>
-
-          <div className="mt-6 flex justify-center gap-3">
-            <div className="min-w-[6.5rem] rounded-2xl bg-white px-4 py-3 ring-2 ring-emerald-100">
-              <p className="text-2xl font-extrabold text-emerald-600">{queue.length}</p>
-              <p className="text-xs font-bold uppercase tracking-wide text-stone-400">Words</p>
-            </div>
-            <div className="min-w-[6.5rem] rounded-2xl bg-white px-4 py-3 ring-2 ring-violet-100">
-              <p className="text-2xl font-extrabold text-violet-600">{accuracy}%</p>
-              <p className="text-xs font-bold uppercase tracking-wide text-stone-400">Correct</p>
-            </div>
-            {streakAfterSession > 0 && (
-              <div className="min-w-[6.5rem] rounded-2xl bg-white px-4 py-3 ring-2 ring-amber-100">
-                <p className="text-2xl font-extrabold text-amber-500">{streakAfterSession}</p>
-                <p className="text-xs font-bold uppercase tracking-wide text-stone-400">
-                  Day streak
-                </p>
-              </div>
-            )}
-          </div>
-
-          {failedReviews > 0 && (
-            <p
-              role="alert"
-              className="mx-auto mt-5 max-w-sm rounded-2xl bg-amber-50 p-3 text-sm font-medium text-amber-800 ring-1 ring-amber-200"
-            >
-              {failedReviews} answer
-              {failedReviews === 1 ? "" : "s"} couldn't be saved — check your
-              connection and study those words again.
-            </p>
-          )}
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <Button size="lg" onClick={() => navigate(`/decks/${deckId}`)}>
-              Continue
-            </Button>
-          </div>
-        </div>
-      </div>
+      <ErrorState
+        title="Couldn't load your words"
+        message="Your deck is fine — the app just couldn't reach it. Check your connection."
+        onRetry={onRetryDeckCards}
+      />
     );
   }
 
-  if (!currentCard) return <StudySkeleton />;
+  if (finished) {
+    return (
+      <LessonSummary
+        mode={mode}
+        queue={queue}
+        outcomes={outcomes}
+        newWords={queue.filter((card) => !hasStarted(card)).length}
+        streak={recordStudyDay.data?.streak ?? 0}
+        failedReviews={failedReviews}
+        onDone={() => navigate(`/decks/${deckId}`)}
+      />
+    );
+  }
 
-  const { pos, text: answerText, emoji } = parseBack(currentCard.back);
-  const progress = Math.round((currentIndex / queue.length) * 100);
-  const feedbackTone = answeredCorrectly === false ? "wrong" : "right";
+  if (!step) return <StudySkeleton />;
+
+  const answeredCount = plan
+    .slice(0, stepIndex)
+    .filter((s) => s.kind === "quiz").length;
+  const totalQuestions = plan.filter((s) => s.kind === "quiz").length;
+  const progress = totalQuestions === 0 ? 0 : Math.round((answeredCount / totalQuestions) * 100);
+
+  const actLabel = (() => {
+    if (step.kind === "meet") {
+      const meets = plan.filter((s) => s.kind === "meet");
+      const position = meets.findIndex((s) => s.key === step.key) + 1;
+      return `New word ${position} of ${meets.length}`;
+    }
+    if (step.kind === "listen") return "Sound check";
+    if (step.attempt > 0) return "One more time";
+    if (step.format === "context") return "Use it in a sentence";
+    return mode === "lesson" ? "Your turn" : title;
+  })();
 
   return (
-    <div className="pb-56">
-      {/* Lesson chrome: leave, and how far in you are. */}
+    <div className="pb-40">
+      {/* Session chrome: leave, where you are, and the sound switch. */}
       <div className="flex items-center gap-3">
         <button
           type="button"
           onClick={() => navigate(`/decks/${deckId}`)}
-          aria-label="Leave lesson"
+          aria-label={mode === "lesson" ? "Leave lesson" : "Leave review"}
           className="-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 text-2xl leading-none text-stone-400 transition hover:bg-stone-900/5 hover:text-stone-700"
         >
           ×
         </button>
-        <div className="h-4 flex-1 overflow-hidden rounded-full bg-stone-200">
+        {stages.length > 0 ? (
+          <div className="flex flex-1 justify-center">
+            <RoundRail stages={stages} activeIndex={activeStage} />
+          </div>
+        ) : (
+          <div className="h-4 flex-1 overflow-hidden rounded-full bg-stone-200">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 transition-[width] duration-300"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        )}
+        {speechSupported && (
+          <button
+            type="button"
+            onClick={toggleMute}
+            aria-label={muted ? "Turn pronunciation on" : "Turn pronunciation off"}
+            className={`-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 transition ${
+              muted ? "text-stone-300" : "text-violet-500"
+            }`}
+          >
+            <SpeakerIcon className="h-5 w-5" />
+          </button>
+        )}
+      </div>
+
+      {stages.length > 0 && (
+        <div className="mt-3 h-2 overflow-hidden rounded-full bg-stone-200">
           <div
             className="h-full rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 transition-[width] duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
-        <span className="shrink-0 text-sm font-extrabold text-stone-400">
-          {currentIndex + 1}/{queue.length}
-        </span>
-      </div>
+      )}
 
-      <p className="mt-6 text-center text-sm font-bold uppercase tracking-widest text-stone-400">
-        {title}
+      <p className="mt-5 text-center text-sm font-bold uppercase tracking-widest text-stone-400">
+        {actLabel}
       </p>
 
-      {/* The word being asked. */}
-      <div className="mt-4 rounded-3xl bg-gradient-to-br from-white via-violet-50 to-violet-100 p-6 text-center ring-2 ring-violet-200 shadow-[0_5px_0_0_var(--color-violet-200)] sm:p-8">
-        <p className="text-3xl font-extrabold leading-snug tracking-tight text-stone-800 break-words sm:text-5xl">
-          {currentCard.front}
-        </p>
-        <div className="mt-4 flex items-center justify-center gap-2">
-          {pos && (
-            <span className="rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-violet-600 ring-1 ring-violet-200">
-              {pos}
-            </span>
-          )}
-          <SpeakButton text={currentCard.front} size="md" />
-        </div>
-      </div>
-
-      {canQuiz && quizOptions ? (
-        <QuizOptions
-          options={quizOptions}
-          selectedIndex={quizAnswer}
-          onSelect={selectQuizOption}
+      {step.kind === "listen" ? (
+        <ListenStep
+          cards={step.cardIds
+            .map((id) => byId.get(id))
+            .filter((card): card is Card => card !== undefined)}
+          onComplete={markStudied}
+          onContinue={advance}
+        />
+      ) : stepCard ? (
+        <QuestionStep
+          card={stepCard}
+          step={step}
+          options={options}
+          answer={answer}
+          answeredRight={answeredRight}
+          onChoose={chooseOption}
+          onContinue={advance}
         />
       ) : (
-        <div className="mt-5">
-          {!isFlipped ? (
-            <Button size="lg" fullWidth onClick={() => setIsFlipped(true)}>
-              Show answer
-            </Button>
-          ) : (
-            <div className="rounded-3xl bg-gradient-to-br from-white to-emerald-50 p-6 text-center ring-2 ring-emerald-200">
-              {emoji && (
-                <div className="text-5xl leading-none" aria-hidden="true">
-                  {emoji}
-                </div>
+        <StudySkeleton />
+      )}
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------------- steps -- */
+
+function ListenStep({
+  cards,
+  onComplete,
+  onContinue,
+}: {
+  cards: Card[];
+  onComplete: () => void;
+  onContinue: () => void;
+}) {
+  const [done, setDone] = useState(false);
+
+  return (
+    <>
+      <SoundMatch
+        cards={cards}
+        onComplete={() => {
+          setDone(true);
+          onComplete();
+        }}
+      />
+      <BottomBar>
+        <Button size="lg" fullWidth disabled={!done} onClick={onContinue}>
+          {done ? "Start the quiz" : "Match all three"}
+        </Button>
+      </BottomBar>
+    </>
+  );
+}
+
+function QuestionStep({
+  card,
+  step,
+  options,
+  answer,
+  answeredRight,
+  onChoose,
+  onContinue,
+}: {
+  card: Card;
+  step: Step;
+  options: QuizOption[] | null;
+  answer: number | null;
+  answeredRight: boolean | null;
+  onChoose: (index: number) => void;
+  onContinue: () => void;
+}) {
+  const { pos, text: meaning } = parseBack(card.back);
+  const isMeet = step.kind === "meet";
+  const format: QuizFormat | null = step.kind === "quiz" ? step.format : null;
+  const blanked =
+    format === "context" && card.example_sentence
+      ? blankOut(card.example_sentence, card.front)
+      : null;
+
+  return (
+    <>
+      {/* The hero keeps the same shape on every step, so the word never jumps
+          between being taught and being asked about. */}
+      <div className="mt-4 min-h-[9.25rem] rounded-3xl bg-gradient-to-br from-white via-violet-50 to-violet-100 p-6 text-center ring-2 ring-violet-200 shadow-[0_5px_0_0_var(--color-violet-200)] sm:p-8">
+        {blanked ? (
+          <p className="text-xl font-bold leading-relaxed text-stone-800 break-words sm:text-2xl">
+            {blanked.text.split(BLANK).map((piece, index, all) => (
+              <span key={index}>
+                {piece}
+                {index < all.length - 1 && (
+                  <span className="mx-1 inline-block min-w-[4.5rem] border-b-4 border-violet-400 align-middle" />
+                )}
+              </span>
+            ))}
+          </p>
+        ) : (
+          <>
+            <p className="text-3xl font-extrabold leading-snug tracking-tight text-stone-800 break-words sm:text-5xl">
+              {card.front}
+            </p>
+            <div className="mt-4 flex items-center justify-center gap-2">
+              {pos && (
+                <span className="rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-violet-600 ring-1 ring-violet-200">
+                  {pos}
+                </span>
               )}
-              <p className="mt-2 text-2xl font-extrabold leading-snug text-stone-800 break-words">
-                {answerText}
-              </p>
-              <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {RATINGS.map((rating) => (
-                  <Button
-                    key={rating.quality}
-                    variant={rating.variant}
-                    fullWidth
-                    className="flex-col"
-                    disabled={isReviewing}
-                    onClick={() => rate(rating.quality)}
-                  >
-                    <span className="text-xl leading-none" aria-hidden="true">
-                      {rating.emoji}
-                    </span>
-                    {rating.label}
-                  </Button>
-                ))}
-              </div>
+              <SpeakButton text={card.front} size="md" />
             </div>
+          </>
+        )}
+      </div>
+
+      {isMeet ? (
+        <>
+          <div className="mt-3">
+            <MeetBody card={card} />
+          </div>
+          <BottomBar>
+            <Button size="lg" fullWidth onClick={onContinue}>
+              Got it
+            </Button>
+          </BottomBar>
+        </>
+      ) : options ? (
+        <>
+          <p className="mt-4 text-center text-sm font-semibold text-stone-500">
+            {format === "context" ? "Which word is missing?" : "What does it mean?"}
+          </p>
+          <QuizOptions options={options} selectedIndex={answer} onSelect={onChoose} />
+          {answer === null && (
+            <p className="mt-5 text-center text-xs font-medium text-stone-400">
+              Tap an answer · keys 1-4
+            </p>
           )}
-        </div>
+        </>
+      ) : (
+        <ErrorState
+          title="Couldn't build this question"
+          message="There aren't enough words in this deck to make a multiple-choice question yet."
+        />
       )}
 
-      {!revealed && (
-        <p className="mt-5 text-center text-xs font-medium text-stone-400">
-          {canQuiz ? "Tap an answer · keys 1-4" : "Tap the button to reveal"}
-        </p>
-      )}
-
-      {/* Duolingo-style feedback panel: everything worth reading about this
-          word, and nothing moves on until you say so. */}
-      {revealed && canQuiz && (
+      {/* Feedback. A wrong answer re-opens the full explanation — the moment
+          it is worth most is right after getting it wrong. */}
+      {answer !== null && (
         <div
-          className={`fixed inset-x-0 bottom-0 z-20 animate-[slide-up_220ms_ease-out] border-t-2 ${
-            feedbackTone === "right"
-              ? "border-emerald-200 bg-emerald-50"
-              : "border-rose-200 bg-rose-50"
+          className={`fixed inset-x-0 bottom-0 z-20 max-h-[70vh] overflow-y-auto animate-[slide-up_220ms_ease-out] border-t-2 ${
+            answeredRight ? "border-emerald-200 bg-emerald-50" : "border-rose-200 bg-rose-50"
           }`}
         >
           <div className="mx-auto max-w-2xl px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-4">
             <div className="flex items-start gap-3">
-              <Mascot
-                mood={feedbackTone === "right" ? "happy" : "sad"}
-                size={56}
-                className="shrink-0"
-              />
+              <Mascot mood={answeredRight ? "happy" : "sad"} size={56} className="shrink-0" />
               <div className="min-w-0 flex-1">
                 <p
                   className={`text-lg font-extrabold tracking-tight ${
-                    feedbackTone === "right" ? "text-emerald-700" : "text-rose-700"
+                    answeredRight ? "text-emerald-700" : "text-rose-700"
                   }`}
                 >
-                  {feedbackTone === "right" ? "Nice!" : `Answer: ${answerText}`}
+                  {answeredRight
+                    ? step.kind === "quiz" && step.attempt > 0
+                      ? "There it is."
+                      : "Nice!"
+                    : "Not quite."}
                 </p>
-
-                {currentCard.example_sentence && (
-                  <p className="mt-1 text-sm italic leading-relaxed text-stone-600 break-words">
-                    {currentCard.example_sentence}
+                {answeredRight && (
+                  <p className="mt-0.5 text-sm font-semibold text-emerald-800 break-words">
+                    {card.front} — {meaning}
                   </p>
                 )}
-
-                {currentCard.mnemonic && (
-                  <details className="mt-2">
-                    <summary className="flex cursor-pointer list-none items-center gap-1.5 text-xs font-bold text-amber-600 [&::-webkit-details-marker]:hidden hover:text-amber-700">
-                      <span aria-hidden="true">💡</span> Memory tip
-                    </summary>
-                    <p className="mt-1.5 rounded-xl bg-amber-50 p-2.5 text-sm leading-relaxed text-amber-900 break-words ring-1 ring-amber-100">
-                      {currentCard.mnemonic}
-                    </p>
-                  </details>
-                )}
               </div>
-
-              {currentCard.image_url ? (
-                <img
-                  src={currentCard.image_url}
-                  alt=""
-                  className="h-16 w-16 shrink-0 rounded-2xl object-cover sm:h-20 sm:w-24"
-                />
-              ) : (
-                emoji && (
-                  <span aria-hidden="true" className="shrink-0 text-4xl leading-none">
-                    {emoji}
-                  </span>
-                )
-              )}
             </div>
+
+            {!answeredRight && (
+              <div className="mt-3">
+                <MeetBody card={card} variant="panel" />
+              </div>
+            )}
 
             <Button
               size="lg"
               fullWidth
               className="mt-3"
-              variant={feedbackTone === "right" ? "primary" : "danger"}
-              onClick={handleContinue}
+              variant={answeredRight ? "primary" : "danger"}
+              onClick={onContinue}
             >
               Continue
             </Button>
           </div>
         </div>
       )}
+    </>
+  );
+}
+
+/** The fixed slot every forward button lives in, so it never moves between steps. */
+function BottomBar({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="fixed inset-x-0 bottom-0 z-10 border-t border-stone-200/70 bg-[#FDF9F3]/95 backdrop-blur">
+      <div className="mx-auto max-w-2xl px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3">
+        {children}
+      </div>
     </div>
   );
 }
+
+/* -------------------------------------------------------------- summary -- */
+
+function LessonSummary({
+  mode,
+  queue,
+  outcomes,
+  newWords,
+  streak,
+  failedReviews,
+  onDone,
+}: {
+  mode: SessionMode;
+  queue: Card[];
+  outcomes: Record<number, "right" | "wrong">;
+  newWords: number;
+  streak: number;
+  failedReviews: number;
+  onDone: () => void;
+}) {
+  const firstTimeRight = queue.filter((card) => outcomes[card.id] === "right").length;
+  const accuracy = queue.length === 0 ? 0 : Math.round((firstTimeRight / queue.length) * 100);
+
+  const heading =
+    mode === "review"
+      ? "Review done."
+      : newWords === 0
+        ? "Nice practice."
+        : newWords === 1
+          ? "1 new word."
+          : `${newWords} new words.`;
+
+  return (
+    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-white to-emerald-50 p-8 text-center ring-2 ring-emerald-100 shadow-[0_5px_0_0_var(--color-emerald-100)] animate-[pop-in_220ms_ease-out] sm:p-12">
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <span className="absolute left-8 top-6 h-3 w-3 animate-bounce rounded-full bg-violet-300" />
+        <span className="absolute right-10 top-10 h-2 w-2 rounded-full bg-emerald-300" />
+        <span className="absolute left-1/2 top-16 h-2.5 w-2.5 animate-pulse rounded-full bg-amber-300" />
+        <span className="absolute bottom-12 left-12 h-2 w-2 animate-pulse rounded-full bg-sky-300" />
+        <span className="absolute bottom-14 right-16 h-3 w-3 animate-bounce rounded-full bg-rose-300" />
+      </div>
+
+      <div className="relative">
+        <Mascot mood="happy" size={132} className="mx-auto" />
+        <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-stone-800">{heading}</h2>
+
+        {/* What you actually did, word by word — tap one to hear it again. */}
+        <div className="mx-auto mt-5 max-w-sm space-y-1.5">
+          {queue.map((card) => (
+            <button
+              key={card.id}
+              type="button"
+              onClick={() => void speak(card.front)}
+              className="flex w-full items-center gap-2 rounded-xl bg-white/70 px-3 py-2 text-left ring-1 ring-emerald-100 transition hover:bg-white"
+            >
+              <span className="shrink-0 text-xs" aria-hidden="true">
+                {outcomes[card.id] === "right" ? "✓" : "↺"}
+              </span>
+              <span className="min-w-0 flex-1 truncate font-extrabold text-stone-800">
+                {card.front}
+              </span>
+              <span className="min-w-0 flex-1 truncate text-right text-sm text-stone-500">
+                {parseBack(card.back).text}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-6 flex justify-center gap-3">
+          <div className="min-w-[6.5rem] rounded-2xl bg-white px-4 py-3 ring-2 ring-emerald-100">
+            <p className="text-2xl font-extrabold text-emerald-600">{queue.length}</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-stone-400">Words</p>
+          </div>
+          {mode === "review" && (
+            <div className="min-w-[6.5rem] rounded-2xl bg-white px-4 py-3 ring-2 ring-violet-100">
+              <p className="text-2xl font-extrabold text-violet-600">{accuracy}%</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-stone-400">Correct</p>
+            </div>
+          )}
+          {streak > 0 && (
+            <div className="min-w-[6.5rem] rounded-2xl bg-white px-4 py-3 ring-2 ring-amber-100">
+              <p className="text-2xl font-extrabold text-amber-500">{streak}</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-stone-400">Day streak</p>
+            </div>
+          )}
+        </div>
+
+        {failedReviews > 0 && (
+          <p
+            role="alert"
+            className="mx-auto mt-5 max-w-sm rounded-2xl bg-amber-50 p-3 text-sm font-medium text-amber-800 ring-1 ring-amber-200"
+          >
+            {failedReviews} answer{failedReviews === 1 ? "" : "s"} couldn't be saved — check your
+            connection and study those words again.
+          </p>
+        )}
+
+        <p className="mt-5 text-sm text-stone-500">
+          You'll see these again tomorrow. That's when it counts.
+        </p>
+
+        <div className="mt-6 flex justify-center">
+          <Button size="lg" onClick={onDone}>
+            Done
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ----------------------------------------------------------------- page -- */
 
 function Study() {
   // Falls back to "" so the hooks below always run in the same order.
@@ -568,25 +820,58 @@ function Study() {
       }
       if (cardsQuery.isLoading || !cardsQuery.data) return <StudySkeleton />;
 
-      const queue =
-        lessonNumber !== null
-          ? cardsQuery.data
-              .filter((card) => card.lesson === lessonNumber)
-              .sort((a, b) => a.id - b.id)
-          : // Everything ever shown: reviewed at least once, or already due.
-            cardsQuery.data.filter(
-              (card) =>
-                card.repetitions > 0 ||
-                card.interval > 0 ||
-                new Date(card.due_date).getTime() <= Date.now(),
-            );
+      if (lessonNumber !== null) {
+        const lesson = buildPath(cardsQuery.data)
+          .flatMap((unit) => unit.lessons)
+          .find((candidate) => candidate.number === lessonNumber);
 
+        if (!lesson) {
+          return (
+            <EmptyState
+              emoji="🤔"
+              title="No such lesson"
+              description="That lesson isn't in this deck."
+              action={<LinkButton to={`/decks/${deckId}`}>Back to the path</LinkButton>}
+            />
+          );
+        }
+        // Walking straight to a URL must not hand out words the path hasn't
+        // reached — three a day is the whole plan.
+        if (lesson.state === "locked") {
+          return (
+            <EmptyState
+              emoji="🔒"
+              title="Not yet"
+              description="Finish the lessons before this one first — three words a day is the whole plan."
+              action={<LinkButton to={`/decks/${deckId}`}>Back to the path</LinkButton>}
+            />
+          );
+        }
+
+        return (
+          <StudySession
+            key={`${deckId}-lesson-${lessonNumber}`}
+            deckId={deckId}
+            cards={[...lesson.cards].sort((a, b) => a.id - b.id)}
+            mode="lesson"
+            title={`Lesson ${lessonNumber}`}
+            deckCardCount={cardsQuery.data.length}
+            deckCards={cardsQuery.data}
+            deckCardsError={cardsQuery.error}
+            onRetryDeckCards={() => void cardsQuery.refetch()}
+          />
+        );
+      }
+
+      // Practice is only ever words already met. A never-seen word appearing
+      // here was the other way new words leaked out ahead of the path.
       return (
         <StudySession
-          key={`${deckId}-${lessonNumber ?? "all"}`}
+          key={`${deckId}-all`}
           deckId={deckId}
-          cards={queue}
-          title={lessonNumber !== null ? `Lesson ${lessonNumber}` : "Practice"}
+          cards={cardsQuery.data.filter(hasStarted)}
+          mode="review"
+          title="Practice"
           deckCardCount={cardsQuery.data.length}
           deckCards={cardsQuery.data}
           deckCardsError={cardsQuery.error}
@@ -616,9 +901,10 @@ function Study() {
 
     return (
       <StudySession
-        key={deckId}
+        key={`${deckId}-due`}
         deckId={deckId}
         cards={dueQuery.data}
+        mode="review"
         title={deckName ?? "Review"}
         deckCardCount={cardsQuery.data?.length}
         deckCards={cardsQuery.data}
@@ -628,13 +914,7 @@ function Study() {
     );
   };
 
-  return (
-    <div className="min-h-screen bg-[#FDF9F3]">
-      <main className="mx-auto max-w-2xl px-6 pt-6 pb-[max(2.5rem,env(safe-area-inset-bottom))]">
-        {renderContent()}
-      </main>
-    </div>
-  );
+  return <div className="mx-auto max-w-2xl">{renderContent()}</div>;
 }
 
 export default Study;
