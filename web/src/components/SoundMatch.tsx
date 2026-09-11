@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { Card } from "../types";
 import { parseBack } from "../lib/cardBack";
 import { speak, speechSupported, isSpeechMuted } from "../lib/speech";
-import { playCorrect, playIncorrect } from "../lib/sound";
+import { playMatch, playIncorrect } from "../lib/sound";
 import { SpeakerIcon } from "./icons";
 
 type SoundMatchProps = {
@@ -55,7 +55,7 @@ function SoundMatch({ cards, onComplete }: SoundMatchProps) {
   const resolve = useCallback(
     (soundId: number, meaningId: number) => {
       if (soundId === meaningId) {
-        playCorrect();
+        playMatch();
         setPickedSound(null);
         setPickedMeaning(null);
         const next = new Set(matched).add(soundId);

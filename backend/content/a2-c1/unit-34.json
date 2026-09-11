@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 34,
+    "level": "B2",
+    "title": "Science & Research"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "hypothesis",
+      "back": "(noun) hipotez, varsayım 🔬",
+      "example_sentence": "Her hypothesis was that sleep loss makes people take more risks.",
+      "mnemonic": "Türkçedeki 'hipotez' aynı Yunanca kökten: hypo- (alt) + thesis (koyma, önerme), yani tartışmanın 'altına konan' ön kabul. 'Tez'i zaten biliyorsun; hipotez, henüz kanıtlanmamış tezdir."
+    },
+    {
+      "lesson": 1,
+      "front": "experiment",
+      "back": "(noun) deney 🧪",
+      "example_sentence": "The experiment failed twice before the team found the faulty sensor.",
+      "mnemonic": "Latince experiri 'denemek, sınamak' kökünden; Türkçedeki 'eksper' (sigorta eksperi) de aynı kökten, 'deneyimle sınanmış kişi' demek. Experiment = bir fikri sınama; 'do/carry out an experiment' denir, 'make' denmez."
+    },
+    {
+      "lesson": 1,
+      "front": "analyze",
+      "back": "(verb) analiz etmek, çözümlemek 🔍",
+      "example_sentence": "We still need to analyze the blood samples from the second group.",
+      "mnemonic": "Türkçedeki 'analiz' bu fiilin isim hâli: Yunanca ana- (baştan sona) + lysis (çözme), yani bütünü parçalarına ayırıp çözmek. Kan tahlilindeki 'analiz'i düşün; İngiliz yazımı 'analyse', Amerikan yazımı 'analyze'."
+    },
+    {
+      "lesson": 2,
+      "front": "data",
+      "back": "(noun) veri 📊",
+      "example_sentence": "The data suggest that younger patients respond better to the new drug.",
+      "mnemonic": "Latince datum 'verilen şey' (dare = vermek); Türkçe 'veri' de tam bu mantıkla 'ver-' fiilinden türetildi. Bilimsel İngilizcede 'data' çoğuldur: 'the data show'; tekil parça ise 'a data point'."
+    },
+    {
+      "lesson": 2,
+      "front": "theory",
+      "back": "(noun) teori, kuram 💡",
+      "example_sentence": "Darwin's theory explained something that had puzzled naturalists for centuries.",
+      "mnemonic": "Türkçe 'teori' aynı kelime; Yunanca theoria 'seyretme, bakma' demek ve 'tiyatro' (theatron, seyir yeri) ile aynı kökten. Teori, olgulara geriden bakıp bütünü açıklayan çerçevedir; 'in theory' = 'teoride, kâğıt üstünde'."
+    },
+    {
+      "lesson": 2,
+      "front": "conclude",
+      "back": "(verb) sonuca varmak, bitirmek ✅",
+      "example_sentence": "After three years of trials, the researchers concluded the vaccine was safe.",
+      "mnemonic": "Latince con- + claudere 'kapatmak': konuyu kapatıp sonuca bağlamak. Türkçedeki 'klozet' bile aynı kökten (Fransızca closet = kapalı küçük oda); 'include/exclude' de öyle."
+    },
+    {
+      "lesson": 3,
+      "front": "significant",
+      "back": "(adjective) önemli, anlamlı 📈",
+      "example_sentence": "The difference between the two groups was small but statistically significant.",
+      "mnemonic": "Latince signum 'işaret' kökünden; Türkçedeki 'sinyal' aynı köktendir: significant = 'bir şeye işaret eden, anlam taşıyan'. İstatistikte 'statistically significant', farkın şansla açıklanamayacak kadar belirgin olduğunu söyler."
+    },
+    {
+      "lesson": 3,
+      "front": "variable",
+      "back": "(noun) değişken 🔀",
+      "example_sentence": "Temperature was the only variable they changed between the two runs.",
+      "mnemonic": "Türkçedeki 'varyasyon', 'varyant' ve 'varyete' aynı Latince variare 'değişmek' kökünden. Deneyde 'variable' bilerek değiştirdiğin şey, 'constant' sabit tuttuğun şeydir."
+    },
+    {
+      "lesson": 3,
+      "front": "evolve",
+      "back": "(verb) evrimleşmek, gelişmek 🧬",
+      "example_sentence": "The virus has evolved so quickly that last year's vaccine barely works.",
+      "mnemonic": "Latince e- (dışarı) + volvere (yuvarlamak, açmak): sarılı bir ruloyu açar gibi adım adım açılmak. Türkçedeki evrim/devrim ikilisinin İngilizce ikizi evolution/revolution; ikisi de volvere kökünden."
+    },
+    {
+      "lesson": 4,
+      "front": "phenomenon",
+      "back": "(noun) olgu, fenomen 🌌",
+      "example_sentence": "Scientists still can't fully explain the phenomenon of ball lightning.",
+      "mnemonic": "Türkçedeki 'fenomen' (sosyal medya fenomeni) aynı kelime, ama İngilizcede asıl anlamı bilimsel: gözlemlenen olay, olgu. Yunanca phainein 'görünmek' kökünden; çoğulu 'phenomena'dır, 'phenomenons' değil."
+    },
+    {
+      "lesson": 4,
+      "front": "accurate",
+      "back": "(adjective) doğru, isabetli 🎯",
+      "example_sentence": "The new thermometer is accurate to within a tenth of a degree.",
+      "mnemonic": "Latince ad- + cura 'özen' (manikür, pedikür ve 'kür'deki cura): özenle yapılmış, dolayısıyla tam isabetli. 'Precise' ölçümlerin birbirine yakınlığı, 'accurate' gerçek değere yakınlığıdır."
+    },
+    {
+      "lesson": 4,
+      "front": "estimate",
+      "back": "(verb) tahmin etmek, değer biçmek 📏",
+      "example_sentence": "Engineers estimated the repairs would cost twice what the council had budgeted.",
+      "mnemonic": "Latince aestimare 'değer biçmek'; 'esteem' (saygı, değer verme) aynı kökten. 'Guess' salladığın tahmin, 'estimate' hesaplayarak biçtiğin değerdir; isim hâlinde söyleyiş değişir: /ˈestɪmət/."
+    },
+    {
+      "lesson": 5,
+      "front": "sample",
+      "back": "(noun) örnek, numune 🧫",
+      "example_sentence": "The study's sample was too small to say anything about older adults.",
+      "mnemonic": "'Example' ile aynı Latince exemplum kökünden, baştaki hecenin düşmüş hâli; Türkçede parfüm 'sample'ı ve müzikte 'sample almak' zaten kullanılıyor. Bilimde: bütünü temsil etsin diye seçilen küçük grup, numune."
+    },
+    {
+      "lesson": 5,
+      "front": "observe",
+      "back": "(verb) gözlemlemek 👁️",
+      "example_sentence": "She observed that the mice stopped eating whenever the lights changed.",
+      "mnemonic": "Türkçede 'observatuvar' ve hastanedeki 'obzervasyon' aynı Latince observare 'dikkatle gözetmek' kökünden. Gözlemi yorumdan ayır: 'observe' ne gördüğün, 'conclude' ondan ne çıkardığındır."
+    },
+    {
+      "lesson": 5,
+      "front": "predict",
+      "back": "(verb) öngörmek, tahmin etmek 🔮",
+      "example_sentence": "The model predicted the storm's path almost perfectly three days ahead.",
+      "mnemonic": "Latince prae- (önce) + dicere (söylemek) = önceden söylemek; 'dikte' ve 'diksiyon' aynı dicere kökünden. İyi bir teori yalnızca açıklamaz, sınanabilir bir öngörüde bulunur: 'predict' eder."
+    }
+  ],
+  "dialogue": {
+    "title": "The Coffee Headline",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Your headline says coffee prevents heart disease. Did you read the study?",
+        "tr": "Manşetinde kahve kalp hastalığını önlüyor yazıyor. Çalışmayı okudun mu gerçekten?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Of course. The data showed a significant drop in heart attacks.",
+        "tr": "Tabii ki. Veriler kalp krizlerinde anlamlı bir düşüş gösteriyordu."
+      },
+      {
+        "speaker": "Elif",
+        "en": "In a sample of forty people, all from the same office?",
+        "tr": "Hepsi aynı ofisten kırk kişilik bir örneklemde mi?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "The researchers concluded there was a link, so I reported it.",
+        "tr": "Araştırmacılar bir bağlantı olduğu sonucuna varmış, ben de haberini yaptım."
+      },
+      {
+        "speaker": "Elif",
+        "en": "A link isn't a cause. Did they control any other variable?",
+        "tr": "Bağlantı, neden demek değil. Başka bir değişkeni kontrol ettiler mi peki?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Fine, it was a small experiment. But the hypothesis is still interesting.",
+        "tr": "Tamam, küçük bir deneydi. Ama hipotez yine de ilginç."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Interesting isn't accurate. You can't predict health from forty coffee drinkers.",
+        "tr": "İlginç olması doğru olduğu anlamına gelmez. Kırk kahve tiryakisinden sağlık öngörüsü çıkaramazsın."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Alright, I'll rewrite it. 'Small study observes possible link' sells fewer papers.",
+        "tr": "Peki, yeniden yazarım. 'Küçük çalışma olası bağlantı gözlemledi' daha az gazete sattırır ama."
+      }
+    ]
+  }
+}

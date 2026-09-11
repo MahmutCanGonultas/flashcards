@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 18,
+    "level": "A2",
+    "title": "Daily Life & Chores"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "shower",
+      "back": "(noun) duş 🚿",
+      "example_sentence": "I take a shower every morning before school.",
+      "mnemonic": "İngilizcede 'shower' hem duş hem kısa sağanak yağmurdur; ikisi de tepeden dökülen sudur. Kalıp: 'take a shower' (duş almak) — 'make' ya da 'do' değil."
+    },
+    {
+      "lesson": 1,
+      "front": "brush",
+      "back": "(verb) fırçalamak 🪥",
+      "example_sentence": "Brush your teeth before you go to bed.",
+      "mnemonic": "Paint ve Photoshop'taki 'Brush' aracı fırçadır; aynı kelime fiil olarak da kullanılır: 'brush your teeth / your hair' (dişini, saçını fırçalamak)."
+    },
+    {
+      "lesson": 1,
+      "front": "laundry",
+      "back": "(noun) çamaşır 🧺",
+      "example_sentence": "My mum does the laundry on Saturdays.",
+      "mnemonic": "'Laundry' Latince 'lavare' (yıkamak) kökünden gelir; Türkçedeki 'lavabo' da aynı köktendir ('yıkayacağım'). Kalıp: 'do the laundry' (çamaşır yıkamak)."
+    },
+    {
+      "lesson": 2,
+      "front": "dishes",
+      "back": "(noun) bulaşık, tabaklar 🍽️",
+      "example_sentence": "Who is going to do the dishes tonight?",
+      "mnemonic": "'Dish' Latince 'discus' (yassı yuvarlak şey) kökünden gelir; Türkçe 'disk' de aynı kökten, tabak da yassı bir disktir. 'Do the dishes' = bulaşık yıkamak."
+    },
+    {
+      "lesson": 2,
+      "front": "tidy",
+      "back": "(adjective) derli toplu, düzenli 🧹",
+      "example_sentence": "Her room is always tidy and clean.",
+      "mnemonic": "'Tidy' hem sıfattır ('a tidy room') hem fiil: 'tidy up your room' = odanı topla. Zıddıyla birlikte ezberle: tidy / messy (dağınık)."
+    },
+    {
+      "lesson": 2,
+      "front": "garbage",
+      "back": "(noun) çöp 🗑️",
+      "example_sentence": "Can you take out the garbage, please?",
+      "mnemonic": "Amerikan İngilizcesidir; İngilizler 'rubbish' der, 'trash' da yaygındır. Kalıp: 'take out the garbage' (çöpü çıkarmak); yazılımdaki 'garbage collector' da çöp toplayıcıdır."
+    },
+    {
+      "lesson": 3,
+      "front": "alarm",
+      "back": "(noun) alarm, çalar saat ⏰",
+      "example_sentence": "My alarm rings at seven every morning.",
+      "mnemonic": "Türkçedeki 'alarm' ile aynı kelime; kökü İtalyanca 'all'arme!' (silah başına!) çağrısıdır. Kalıp: 'set the alarm' (alarm kurmak), 'the alarm goes off' (alarm çalar)."
+    },
+    {
+      "lesson": 3,
+      "front": "hurry",
+      "back": "(verb) acele etmek 🏃",
+      "example_sentence": "Hurry up, the bus is leaving now!",
+      "mnemonic": "Günlük konuşmada en çok 'Hurry up!' (Çabuk ol!) haliyle duyulur. İsim olarak da kullanılır: 'I'm in a hurry' = acelem var."
+    },
+    {
+      "lesson": 3,
+      "front": "usually",
+      "back": "(adverb) genellikle 🔁",
+      "example_sentence": "I usually walk to school with Tom.",
+      "mnemonic": "'The Usual Suspects' (Olağan Şüpheliler) filmindeki 'usual' = her zamanki, olağan; '-ly' ile zarf olur: genellikle. Ana fiilin önüne gelir: 'I usually get up at seven.'"
+    },
+    {
+      "lesson": 4,
+      "front": "sometimes",
+      "back": "(adverb) bazen 🎲",
+      "example_sentence": "Sometimes we play football after school.",
+      "mnemonic": "'Some' (bazı) + 'times' (zamanlar) = bazı zamanlar, yani bazen. Bitişik ve sonu -s ile yazılır; ayrı yazılan 'some time' (biraz zaman) başka anlamdadır."
+    },
+    {
+      "lesson": 4,
+      "front": "never",
+      "back": "(adverb) asla, hiç ⛔",
+      "example_sentence": "Tom never eats breakfast on school days.",
+      "mnemonic": "'Ever' (herhangi bir zaman) başına n- alınca 'never' (hiçbir zaman) olur; Justin Bieber'ın 'Never Say Never' şarkısı 'asla asla deme' der. Tek olumsuz yeter: 'I never go', 'I don't never go' değil."
+    },
+    {
+      "lesson": 4,
+      "front": "often",
+      "back": "(adverb) sık sık 📅",
+      "example_sentence": "How often do you clean your room?",
+      "mnemonic": "'How often?' = Ne sıklıkla? — sıklık sorusunun kalıbı budur. Telaffuzda 't' genellikle okunmaz: 'ofın'."
+    },
+    {
+      "lesson": 5,
+      "front": "already",
+      "back": "(adverb) zaten, çoktan ✅",
+      "example_sentence": "I already cleaned my room this morning.",
+      "mnemonic": "'All' + 'ready' = tamamen hazır, iş çoktan bitmiş; ama tek 'l' ile yazılır: already. Olumlu cümlede kullanılır: 'It's already nine o'clock.'"
+    },
+    {
+      "lesson": 5,
+      "front": "still",
+      "back": "(adverb) hâlâ ⏳",
+      "example_sentence": "It's ten o'clock and he is still sleeping.",
+      "mnemonic": "'Still' aynı zamanda 'hareketsiz' demektir ('sit still' = kıpırdama, 'still water' = durgun su); kıpırdamayan şey olduğu yerde kalır, yani hâlâ aynı durumdadır. Fiilden önce gelir: 'He still lives here.'"
+    },
+    {
+      "lesson": 5,
+      "front": "yet",
+      "back": "(adverb) henüz, daha 🕐",
+      "example_sentence": "The laundry is not dry yet.",
+      "mnemonic": "'Yet' olumsuz cümlelerin ve soruların sonunda gelir: 'not ... yet' = henüz değil. Üçlüyü birlikte tut: already (çoktan, olumlu), still (hâlâ, sürüyor), yet (henüz, olumsuz/soru)."
+    }
+  ],
+  "dialogue": {
+    "title": "Saturday Morning Chores",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Tom, are you ready? Hurry up!",
+        "tr": "Tom, hazır mısın? Çabuk ol!"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Sorry, my alarm didn't ring this morning.",
+        "tr": "Kusura bakma, bu sabah alarmım çalmadı."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Did you take a shower yet?",
+        "tr": "Duşunu aldın mı bari?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Yes, but the dishes are still dirty.",
+        "tr": "Evet ama bulaşıklar hâlâ duruyor."
+      },
+      {
+        "speaker": "Elif",
+        "en": "I already did the dishes and laundry.",
+        "tr": "Ben bulaşığı da çamaşırı da çoktan hallettim."
+      },
+      {
+        "speaker": "Tom",
+        "en": "You're so tidy. I never finish on time.",
+        "tr": "Sen çok düzenlisin. Ben hiç zamanında bitiremiyorum."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Take out the garbage, then we go.",
+        "tr": "Çöpü çıkar, sonra çıkarız."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Okay! Mum usually does that, but fine.",
+        "tr": "Tamam! Onu genelde annem yapar ama olsun."
+      }
+    ]
+  }
+}

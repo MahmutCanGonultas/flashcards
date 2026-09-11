@@ -13,7 +13,12 @@ import { blankOut, BLANK } from "../lib/sentence";
 import { hasStarted } from "../lib/path";
 import { useUnits, useRecordUnitResult, UNIT_PASS_MARK } from "../lib/units";
 import { speakAuto } from "../lib/speech";
-import { playCorrect, playIncorrect } from "../lib/sound";
+import {
+  playCorrect,
+  playIncorrect,
+  playUnitPassed,
+  playUnitFailed,
+} from "../lib/sound";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import LinkButton from "../components/LinkButton";
@@ -22,6 +27,7 @@ import Skeleton from "../components/Skeleton";
 import QuizOptions from "../components/QuizOptions";
 import Mascot from "../components/Mascot";
 import SpeakButton from "../components/SpeakButton";
+import Confetti from "../components/Confetti";
 
 type Format = "meaning" | "context" | "reverse";
 
@@ -143,6 +149,8 @@ function TestSession({
       // recomputed here because `correct` for this answer has already landed.
       submittedRef.current = true;
       const finalScore = Math.round((correct.length / questions.length) * 100);
+      if (finalScore >= UNIT_PASS_MARK) playUnitPassed();
+      else playUnitFailed();
       submit(
         { unitId: unit.id, score: finalScore },
         {
@@ -322,6 +330,7 @@ function TestSession({
         </>
       )}
 
+      {finished && passed && <Confetti />}
       {finished && (
         <div
           className={`relative overflow-hidden rounded-3xl p-8 text-center ring-2 animate-[pop-in_220ms_ease-out] sm:p-12 ${

@@ -339,3 +339,56 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ----------------------------------------------------------- celebrations */
+
+/* A node that was just finished: swells and settles as the check lands. */
+@keyframes node-done-pop {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.22);
+  }
+  65% {
+    transform: scale(0.94);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* A ring that bursts outward from a just-finished node and fades. */
+@keyframes burst-ring {
+  from {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Confetti: each piece falls, drifts and tumbles on its own timing. */
+@keyframes confetti-fall {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--drift, 0px), 110vh, 0) rotate(720deg);
+    opacity: 0.85;
+  }
+}
+
+/* Tonton peeking beside the current lesson: a gentle sway, in and out. */
+@keyframes peek {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(3deg);
+  }
+}

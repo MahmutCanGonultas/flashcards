@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 35,
+    "level": "B2",
+    "title": "Business & Economy"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "revenue",
+      "back": "(noun) gelir, hasılat 💰",
+      "example_sentence": "Most of the company's revenue now comes from subscriptions rather than advertising.",
+      "mnemonic": "Fransızca 'revenir' (geri gelmek) fiilinden: satışlardan şirkete 'geri gelen' para; aynı 'venir' kökü 'konvansiyonel'de (bir araya gelmiş, alışılmış) de saklı. Kâr değil, giderler düşülmeden önceki toplam gelirdir."
+    },
+    {
+      "lesson": 1,
+      "front": "negotiate",
+      "back": "(verb) müzakere etmek, pazarlık etmek 🤝",
+      "example_sentence": "The union is negotiating a better pension deal with the management this week.",
+      "mnemonic": "Latince 'neg-otium', yani 'boş vakit yok': Romalılar için iş, dinlenmenin yokluğuydu. Bugün de 'negotiate a deal / a salary' dersin; pazarlık masasında mola olmaz."
+    },
+    {
+      "lesson": 1,
+      "front": "competitor",
+      "back": "(noun) rakip 🏁",
+      "example_sentence": "Our biggest competitor has just cut its prices by twenty percent.",
+      "mnemonic": "Latince 'competere' (aynı şeyin peşine birlikte düşmek) kökünden; Türkçedeki 'kompetan' (yetkin) da aynı aileden. Sondaki '-or' kişiyi gösterir: senin peşinde olduğun müşterinin peşindeki kişi."
+    },
+    {
+      "lesson": 2,
+      "front": "strategy",
+      "back": "(noun) strateji ♟️",
+      "example_sentence": "The board asked for a clear strategy before approving any new investment.",
+      "mnemonic": "Türkçe 'strateji' ile aynı; Yunanca 'strategos' (ordu komutanı: stratos 'ordu' + agein 'yönetmek') kökünden. İş dünyasında savaş değil pazar kazanılır, ama plan yine 'general'in planıdır."
+    },
+    {
+      "lesson": 2,
+      "front": "entrepreneur",
+      "back": "(noun) girişimci 💼",
+      "example_sentence": "She became an entrepreneur at 25, when she opened her first bakery.",
+      "mnemonic": "Fransızca 'entreprendre' (bir işe girişmek, üstlenmek) fiilinden; baştaki 'entre-' Türkçedeki 'antrepo' ve 'antrparantez'in 'antr-'ıyla aynı. Türkçe 'girişimci' de tıpkı bunun gibi 'girişmek'ten türer."
+    },
+    {
+      "lesson": 2,
+      "front": "recession",
+      "back": "(noun) ekonomik durgunluk, resesyon 📉",
+      "example_sentence": "During the last recession, thousands of small shops were forced to close.",
+      "mnemonic": "Ekonomi haberlerindeki 'resesyon'un ta kendisi. Latince 're-cedere' (geri çekilmek) kökünden; aynı 'cedere' (gitmek) kökü 'prosedür'de (ileri gitmek) de var."
+    },
+    {
+      "lesson": 3,
+      "front": "inflation",
+      "back": "(noun) enflasyon 🎈",
+      "example_sentence": "With inflation at nine percent, my salary buys less every month.",
+      "mnemonic": "Türkçe 'enflasyon'la aynı kelime; Latince 'inflare' (içine üflemek, şişirmek) kökünden. İngilizcede balon şişirmek de 'inflate a balloon'dur: fiyatlar da aynı balon gibi şişer."
+    },
+    {
+      "lesson": 3,
+      "front": "demand",
+      "back": "(noun) talep 📈",
+      "example_sentence": "Demand for electric cars has doubled since the government introduced tax cuts.",
+      "mnemonic": "Latince 'mandare' (buyurmak) kökünden; Türkçedeki 'kumanda' (Fransızca commande) ve 'manda' (mandat) da aynı aileden. Ekonomide 'demand', pazarın 'bunu istiyorum' buyruğudur: 'supply and demand' = arz ve talep."
+    },
+    {
+      "lesson": 3,
+      "front": "supply",
+      "back": "(noun) arz, tedarik 📦",
+      "example_sentence": "When the supply of chips fell, car factories had to stop production.",
+      "mnemonic": "Latince 'supplere' (eksiği doldurmak) kökünden; aynı 'plere' (doldurmak) kökü Türkçedeki 'komple'de (complet, tamamen dolu) de var. 'Supply and demand' ikilisini hep birlikte öğren: arz ve talep."
+    },
+    {
+      "lesson": 4,
+      "front": "shareholder",
+      "back": "(noun) hissedar, pay sahibi 📊",
+      "example_sentence": "The shareholders voted against the CEO's bonus at the annual meeting.",
+      "mnemonic": "Sosyal medyadan bildiğin 'share' (pay, paylaşmak) + 'holder' (tutan): şirket payını elinde tutan kişi. Türkçe 'hissedar' da birebir aynı mantık: 'hisse' + Farsça '-dar' (tutan, sahip), tıpkı 'bayraktar'daki gibi."
+    },
+    {
+      "lesson": 4,
+      "front": "merger",
+      "back": "(noun) şirket birleşmesi 🔗",
+      "example_sentence": "The merger between the two airlines created Europe's largest carrier.",
+      "mnemonic": "Latince 'mergere' (dalmak, batırmak): iki şirket birbirinin içine dalıp tek şirket olur. İş haberlerindeki 'M&A' kısaltmasının M'si budur ('mergers and acquisitions' = birleşme ve satın almalar)."
+    },
+    {
+      "lesson": 4,
+      "front": "launch",
+      "back": "(verb) piyasaya sürmek, başlatmak 🚀",
+      "example_sentence": "The company launched its delivery app in three cities last spring.",
+      "mnemonic": "Türkçedeki 'lanse etmek' ve 'lansman' ile aynı kök: Fransızca 'lancer' (fırlatmak). Roket fırlatmak da 'launch a rocket', yeni ürün çıkarmak da 'launch a product'tır."
+    },
+    {
+      "lesson": 5,
+      "front": "outsource",
+      "back": "(verb) dış kaynak kullanmak 📤",
+      "example_sentence": "Many banks have outsourced their customer service to call centres abroad.",
+      "mnemonic": "'Open source' (açık kaynak) diye bildiğin 'source' + 'out' (dışarı): işin kaynağını şirket dışına taşımak. Türk şirket jargonunda 'outsource etmek' zaten kullanılıyor."
+    },
+    {
+      "lesson": 5,
+      "front": "sustainable",
+      "back": "(adjective) sürdürülebilir ♻️",
+      "example_sentence": "Investors now ask whether a company's growth is sustainable in the long run.",
+      "mnemonic": "Latince 'sus-tinere' (alttan tutmak, ayakta tutmak) kökünden; aynı 'tenere' (tutmak) kökü Türkçedeki 'konteyner'de (içinde tutan) de var. Sürdürülebilir olan, kendi kendini ayakta tutabilendir."
+    },
+    {
+      "lesson": 5,
+      "front": "innovation",
+      "back": "(noun) yenilik, inovasyon 💡",
+      "example_sentence": "The prize rewards innovation, not just clever marketing of old ideas.",
+      "mnemonic": "Türkçe iş dilindeki 'inovasyon'un kendisi; Latince 'novus' (yeni) kökünden, 'renove etmek'teki 'nov' ile aynı. 'In-novare' = içine yenilik katmak; 'invention' bulur, 'innovation' işe yarar hale getirir."
+    }
+  ],
+  "dialogue": {
+    "title": "Merger Talk Over Coffee",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "So, is the merger really happening, or is that just a rumour?",
+        "tr": "Ee, birleşme gerçekten oluyor mu, yoksa sadece dedikodu mu?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "It's happening. The shareholders approved it on Friday.",
+        "tr": "Oluyor. Hissedarlar cuma günü onayladı."
+      },
+      {
+        "speaker": "Tom",
+        "en": "And what's the strategy, apart from cutting jobs to please investors?",
+        "tr": "Peki strateji ne, yatırımcıları mutlu etmek için işten adam çıkarmanın dışında?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Honestly? Our revenue has fallen for two years, and there's a recession coming.",
+        "tr": "Açıkçası mı? Gelirimiz iki yıldır düşüyor, üstüne bir de resesyon kapıda."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Every company says that when it wants to outsource half its staff.",
+        "tr": "Personelinin yarısını dışarıya vermek isteyen her şirket aynı şeyi söyler."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Our main competitor already did, and now they're launching cheaper products.",
+        "tr": "En büyük rakibimiz çoktan yaptı, şimdi de daha ucuz ürünler çıkarıyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Cheaper isn't innovation, Elif. Inflation will eat those margins anyway.",
+        "tr": "Ucuz olmak inovasyon değil Elif. Enflasyon o kâr marjlarını zaten yiyip bitirir."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Maybe. But I'd rather negotiate now than beg for a buyer later.",
+        "tr": "Belki. Ama sonradan alıcı bulmak için yalvarmaktansa şimdi pazarlık etmeyi yeğlerim."
+      }
+    ]
+  }
+}

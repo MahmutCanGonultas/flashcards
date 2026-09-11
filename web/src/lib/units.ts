@@ -33,3 +33,18 @@ export function useRecordUnitResult(deckId: string) {
     },
   });
 }
+
+type PlacementResponse = { level: string; skippedUnits: number; startUnit: number | null };
+
+/** Opens the path up to the first unit of `level`; A1 changes nothing. */
+export function useRecordPlacement(deckId: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (level: string) =>
+      api.post<PlacementResponse>(`/decks/${deckId}/placement`, { level }),
+    retry: 2,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["units", deckId] });
+    },
+  });
+}

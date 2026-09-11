@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 31,
+    "level": "B2",
+    "title": "Argument & Opinion"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "assume",
+      "back": "(verb) varsaymak, farz etmek 🤔",
+      "example_sentence": "I assumed the meeting was cancelled, so I didn't prepare anything.",
+      "mnemonic": "İngilizcenin ünlü ofis şakası: 'Never ASSUME — it makes an ASS of U and ME.' Sormadan doğru kabul edersen ikimizi de rezil eder; assume tam olarak budur: kanıtsız varsaymak."
+    },
+    {
+      "lesson": 1,
+      "front": "claim",
+      "back": "(verb) iddia etmek, talep etmek 📣",
+      "example_sentence": "The company claims its new phone battery lasts three full days.",
+      "mnemonic": "Türkçedeki 'reklam', Latince 'clamare' (bağırmak) kökünden gelir; 'claim' de aynı kökten. Reklam nasıl bağıra bağıra 'en iyisi biziz' derse, claim de yüksek sesle ileri sürülen, henüz kanıtlanmamış iddiadır."
+    },
+    {
+      "lesson": 1,
+      "front": "convince",
+      "back": "(verb) ikna etmek, inandırmak 🧠",
+      "example_sentence": "She finally convinced her parents that studying abroad was a good idea.",
+      "mnemonic": "Latince 'vincere' (yenmek) kökünden: Sezar'ın 'Veni, vidi, vici' sözündeki 'vici' ile akraba. Birini convince etmek, şüphelerini akıl yürüterek yenmektir; sonuç inançtır ('I'm convinced that…'), eylem değil."
+    },
+    {
+      "lesson": 2,
+      "front": "persuade",
+      "back": "(verb) ikna etmek, razı etmek 🤝",
+      "example_sentence": "Tom persuaded me to apply for the job even though I had doubts.",
+      "mnemonic": "Latince kökü (per + suadere: tatlılıkla yöneltmek) Türkçede iz bırakmamış, o yüzden kalıbı ezberle: 'persuade someone TO DO something'. Convince inandırır, persuade harekete geçirir; persuade'in sonunda biri mutlaka bir şey yapar."
+    },
+    {
+      "lesson": 2,
+      "front": "argue",
+      "back": "(verb) tartışmak, savunmak 🗣️",
+      "example_sentence": "He argued that remote work actually makes teams more productive, not less.",
+      "mnemonic": "Türkçedeki 'argüman' aynı kökten (Latince arguere: açıkça göstermek): argue etmek, argüman sunmaktır. Dikkat: 'argue with someone' kavga etmek, 'argue that…' ise bir görüşü savunmaktır."
+    },
+    {
+      "lesson": 2,
+      "front": "bias",
+      "back": "(noun) önyargı, taraflılık ⚖️",
+      "example_sentence": "The study was criticized for its obvious bias towards younger participants.",
+      "mnemonic": "Fransızca 'biais' (eğik, yan) kelimesinden: dümdüz değil, bir yana yatık bakış. En sık göreceğin biçimler 'confirmation bias' (doğrulama yanlılığı) ve 'unbiased' (tarafsız)."
+    },
+    {
+      "lesson": 3,
+      "front": "justify",
+      "back": "(verb) haklı çıkarmak, gerekçelendirmek 🛡️",
+      "example_sentence": "How can you justify spending half the budget on one advertisement?",
+      "mnemonic": "Latince 'jus/justus' (hukuk, haklı) kökünden; Türkçedeki 'jüri' de aynı köke dayanır. Justify etmek, bir kararın haklı olduğunu gerekçeyle göstermektir: 'How do you justify that?'"
+    },
+    {
+      "lesson": 3,
+      "front": "contradict",
+      "back": "(verb) çelişmek, aksini söylemek ❌",
+      "example_sentence": "The witness's story contradicted what he had told the police earlier.",
+      "mnemonic": "Türkçedeki 'kontra' (karşı) ve 'diksiyon' (söyleyiş) aynı iki Latince parçadır: contra + dicere = karşı söylemek. Kendi sözüyle çelişen biri için 'he contradicts himself' denir."
+    },
+    {
+      "lesson": 3,
+      "front": "emphasize",
+      "back": "(verb) vurgulamak ❗",
+      "example_sentence": "The doctor emphasized that the medicine must be taken with food.",
+      "mnemonic": "Yunanca 'phainein' (göstermek) kökünden; Türkçedeki 'fenomen' de oradan gelir. Dikkat: 'emphasize on' yoktur, doğrudan nesne alır: 'emphasize the importance'."
+    },
+    {
+      "lesson": 4,
+      "front": "imply",
+      "back": "(verb) ima etmek 😏",
+      "example_sentence": "Are you implying that I didn't read the report before the meeting?",
+      "mnemonic": "Türkçe 'ima etmek' ile aynı sesle başlar — akraba değiller ama ezber için birebir. Asıl kök Latince 'plicare' (katlamak; 'komplike' de oradan): imply, anlamı sözün içine katlamaktır; onu açan dinleyici ise 'infer' eder."
+    },
+    {
+      "lesson": 4,
+      "front": "nevertheless",
+      "back": "(adverb) yine de, buna rağmen",
+      "example_sentence": "The evidence was weak; nevertheless, the jury found him guilty.",
+      "mnemonic": "Üç parçaya böl: never-the-less, 'bundan ötürü hiç azalmaz': öncesinde söylenen, sonrakini engellemez. 'However' ile aynı iş, daha resmi; genelde cümle başında, virgülle."
+    },
+    {
+      "lesson": 4,
+      "front": "whereas",
+      "back": "(conjunction) oysa, halbuki ↔️",
+      "example_sentence": "Elif prefers working from home, whereas Tom needs the noise of an office.",
+      "mnemonic": "where + as: iki durumu yan yana koyar, ikisi de doğrudur, sadece farklıdır. 'While' da olur ama whereas daha resmidir; başına ayrıca 'but' ekleme."
+    },
+    {
+      "lesson": 5,
+      "front": "furthermore",
+      "back": "(adverb) ayrıca, dahası ➕",
+      "example_sentence": "The flat is too small; furthermore, the rent has just gone up again.",
+      "mnemonic": "further + more: 'daha ileri, daha fazla' — aynı yöndeki argümanların üstüne bir tane daha koyar. Yazıda cümle başında virgülle; konuşurken 'also' ya da 'on top of that' daha doğal."
+    },
+    {
+      "lesson": 5,
+      "front": "consequently",
+      "back": "(adverb) sonuç olarak, dolayısıyla ➡️",
+      "example_sentence": "The train was delayed; consequently, she missed the first hour of her interview.",
+      "mnemonic": "Latince 'sequi' (takip etmek) kökünden; Türkçedeki 'sekans' (ardışık sahneler) aynı kökten. Consequently, bir şeyin ardından kaçınılmaz olarak gelen sonucu bağlar: sebep → sonuç."
+    },
+    {
+      "lesson": 5,
+      "front": "moreover",
+      "back": "(adverb) üstelik, ayrıca ➕",
+      "example_sentence": "The plan is expensive; moreover, nobody on the team actually believes in it.",
+      "mnemonic": "more + over: 'bunun üstüne bir de' — Türkçedeki 'üstelik' (üst + -elik) ile aynı mantık. Furthermore ile eşdeğer; moreover genelde en güçlü, son argümanı getirir."
+    }
+  ],
+  "dialogue": {
+    "title": "The Missing Numbers",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "I read your article. You claim our whole industry hides its numbers.",
+        "tr": "Yazını okudum. Bütün sektörümüzün rakamlarını sakladığını iddia ediyorsun."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Three companies refused to publish their data. That implies something, doesn't it?",
+        "tr": "Üç şirket verilerini yayımlamayı reddetti. Bu bir şey ima ediyor, değil mi?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "It implies nothing. You assumed the worst, then went looking for evidence.",
+        "tr": "Hiçbir şey ima etmiyor. En kötüsünü varsaydın, sonra kanıt aramaya çıktın."
+      },
+      {
+        "speaker": "Tom",
+        "en": "You're accusing me of bias? Fine. Convince me the numbers are clean.",
+        "tr": "Beni önyargılı olmakla mı suçluyorsun? Peki. Rakamların temiz olduğuna beni ikna et."
+      },
+      {
+        "speaker": "Elif",
+        "en": "I can't, and that's my point. Nobody can justify a conclusion without data.",
+        "tr": "Edemem, zaten benim derdim de bu. Veri olmadan kimse bir sonucu gerekçelendiremez."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Nevertheless, silence from three companies is a story. You'd argue the same.",
+        "tr": "Yine de üç şirketin susması bir haberdir. Sen de aynısını savunurdun."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Maybe. But you emphasized the silence, whereas the real story is the ministry.",
+        "tr": "Belki. Ama sen sessizliği vurguladın, oysa asıl haber bakanlıkta."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Fine, you've persuaded me to dig further. Consequently, you're buying the coffee.",
+        "tr": "Tamam, beni daha derine inmeye ikna ettin. Dolayısıyla kahveleri sen alıyorsun."
+      }
+    ]
+  }
+}

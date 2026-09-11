@@ -69,5 +69,8 @@ CREATE TABLE unit_results(
     -- Percentage, 0-100.
     score INTEGER NOT NULL,
     passed BOOLEAN NOT NULL,
+    -- 'test' for a real attempt; 'placement' when the placement test let the
+    -- learner skip the unit, so the two are never confused in the history.
+    source VARCHAR(20) NOT NULL DEFAULT 'test',
     taken_at TIMESTAMP DEFAULT NOW()
 );

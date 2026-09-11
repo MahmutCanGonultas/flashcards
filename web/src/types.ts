@@ -44,8 +44,11 @@ export type UnitRecord = {
   /** CEFR level of the unit's words: "A1", "A2", "B1"... */
   level: string | null;
   dialogue: Dialogue | null;
-  /** Whether the learner has ever passed this unit's test. */
+  /** Whether the learner has ever passed this unit's test — or placed past it. */
   passed: boolean;
+  /** Skipped by the placement test rather than earned. */
+  placed: boolean;
+  /** Best real test score; placement doesn't count. */
   best_score: number | null;
   attempts: number;
 };

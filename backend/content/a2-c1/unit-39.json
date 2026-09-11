@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 39,
+    "level": "B2",
+    "title": "Planet & Future"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "renewable",
+      "back": "(adjective) yenilenebilir ♻️",
+      "example_sentence": "The village now gets all its electricity from renewable sources.",
+      "mnemonic": "Re- (yeniden) + new (yeni) + -able (-ebilir): 'yeniden yeni olabilen'. Türkçedeki 'renovasyon' da aynı mantıkla kurulur (re- + Latince novus, yeni); 'renewable energy' = yenilenebilir enerji."
+    },
+    {
+      "lesson": 1,
+      "front": "emission",
+      "back": "(noun) salım, emisyon 💨",
+      "example_sentence": "The new law forces factories to cut their carbon emissions by half.",
+      "mnemonic": "Türkçede 'emisyon' zaten var (karbon emisyonu). Latince e- (dışarı) + mittere (göndermek): dışarı gönderilen şey; 'misyon' (gönderilen görev) ve 'mesaj' da aynı kökten."
+    },
+    {
+      "lesson": 1,
+      "front": "biodiversity",
+      "back": "(noun) biyoçeşitlilik 🐝",
+      "example_sentence": "Scientists warn that the reef's biodiversity has dropped sharply since 2010.",
+      "mnemonic": "Biyo- (Yunanca bios, yaşam) tanıdık: biyoloji, biyografi. Diversity ise Latince diversus 'farklı yönlere dönmüş' demek; 'üniversite'deki uni-versus (tek yöne dönmüş) kelimesinin tam tersi."
+    },
+    {
+      "lesson": 2,
+      "front": "deforestation",
+      "back": "(noun) ormansızlaşma 🪓",
+      "example_sentence": "Deforestation in the Amazon has accelerated despite international pressure.",
+      "mnemonic": "De- ön eki 'kaldırma, yok etme' demek (deforme, deşifre, dekolonizasyon): forest'in, yani ormanın kaldırılması. Türkçe karşılığı da aynı mantıkla kurulmuş: orman-sız-laşma."
+    },
+    {
+      "lesson": 2,
+      "front": "conservation",
+      "back": "(noun) koruma, doğa koruma 🌳",
+      "example_sentence": "She left banking to work for a wildlife conservation charity in Kenya.",
+      "mnemonic": "'Konserve' ile aynı Latince kök: conservare, 'saklamak, korumak'. Konserve yiyeceği bozulmaktan korur, conservation doğayı korur; muhafazakâr anlamındaki 'konservatif' de aynı aileden."
+    },
+    {
+      "lesson": 2,
+      "front": "carbon",
+      "back": "(noun) karbon ⚫",
+      "example_sentence": "Flying to Rome doubled my carbon footprint for the year.",
+      "mnemonic": "Türkçe 'karbon' aynı kelime; Latince carbo 'kömür'. Karbonat, karbonhidrat, karbon kağıdı hep buradan; çevre bağlamında en sık kalıp 'carbon footprint' (karbon ayak izi)."
+    },
+    {
+      "lesson": 3,
+      "front": "ecosystem",
+      "back": "(noun) ekosistem 🌿",
+      "example_sentence": "Removing one predator can throw an entire ecosystem out of balance.",
+      "mnemonic": "Eko- Yunanca oikos, 'ev, hane': ekonomi (hane yönetimi), ekoloji (evin bilimi). Ekosistem, canlıların ortak evinin işleyen sistemi."
+    },
+    {
+      "lesson": 3,
+      "front": "endangered",
+      "back": "(adjective) nesli tükenmekte olan 🐢",
+      "example_sentence": "The loggerhead turtles nesting on this beach are officially endangered.",
+      "mnemonic": "En- ön eki 'içine sokmak' demek (enable, enrich gibi): tehlikenin (danger) içine sokulmuş. Kalıp 'endangered species'tir; WWF'in panda logosu bu kavramın simgesidir ve kelime çoğunlukla türler ile diller için kullanılır."
+    },
+    {
+      "lesson": 3,
+      "front": "contamination",
+      "back": "(noun) kirlenme, bulaşma ☣️",
+      "example_sentence": "Tests found contamination in the river three kilometres below the factory.",
+      "mnemonic": "Tıp ve laboratuvar dilinde 'kontamine olmak' zaten kullanılıyor. Kök, 'kontak'taki gibi Latince tangere (dokunmak): kirli bir şeyin temasıyla bozulma; pollution genel kirliliktir, contamination belirli bir maddenin bulaşmasıdır."
+    },
+    {
+      "lesson": 4,
+      "front": "restore",
+      "back": "(verb) eski haline getirmek 🛠️",
+      "example_sentence": "Volunteers have restored the wetland that was drained in the 1970s.",
+      "mnemonic": "'Restorasyon' ve 'restoran' aynı kökten: Latince restaurare, 'yeniden ayağa kaldırmak'. Restoran ilk başta insanı toparlayan çorba satan yerin adıydı; doğayı restore etmek de bozulan alanı eski haline getirmektir."
+    },
+    {
+      "lesson": 4,
+      "front": "urban",
+      "back": "(adjective) kentsel 🏙️",
+      "example_sentence": "Urban air quality improved noticeably when the city banned diesel cars.",
+      "mnemonic": "Latince urbs, 'şehir': Türkçedeki 'urbanizasyon' (kentleşme) ve 'urbanist' buradan. 'Kentsel dönüşüm' İngilizcede 'urban renewal'; karşıt çift olarak ezberle: urban–rural."
+    },
+    {
+      "lesson": 4,
+      "front": "rural",
+      "back": "(adjective) kırsal 🌾",
+      "example_sentence": "Broadband is still unreliable in many rural parts of the country.",
+      "mnemonic": "Dekorasyondaki 'rustik' (köy havası, kaba ahşap) ile aynı kök: Latince rus, 'kır'. Rural = kırsal; 'rural area', 'rural life' kalıplarıyla gelir, şehir tarafı için urban."
+    },
+    {
+      "lesson": 5,
+      "front": "infrastructure",
+      "back": "(noun) altyapı 🏗️",
+      "example_sentence": "The floods exposed how badly the city's infrastructure had been neglected.",
+      "mnemonic": "Türkçesi kelimenin birebir çevirisi: infra- 'altında' (enfraruj / infrared: kırmızının altı) + structure 'yapı' (strüktür). Alt + yapı = altyapı."
+    },
+    {
+      "lesson": 5,
+      "front": "overpopulation",
+      "back": "(noun) aşırı nüfus 👥",
+      "example_sentence": "Some economists argue overpopulation is a myth; the real problem is consumption.",
+      "mnemonic": "Over- 'aşırı' demek, 'overdoz'daki gibi; popülasyon (nüfus) ise 'popüler' ve 'pop' ile aynı Latince populus (halk) kökünden. Aşırı nüfus."
+    },
+    {
+      "lesson": 5,
+      "front": "scarcity",
+      "back": "(noun) kıtlık, azlık 🏜️",
+      "example_sentence": "Water scarcity is already forcing farmers here to abandon their land.",
+      "mnemonic": "Türkçede akrabası yok; ekonomi dersinin ilk cümlesi olarak ezberle: kaynaklar kıt, istekler sınırsız — scarcity. Sıfatı 'scarce' (kıt, az bulunur); 'water scarcity', 'food scarcity' kalıplarıyla gelir ve açlık demek olan 'famine' ile karıştırma."
+    }
+  ],
+  "dialogue": {
+    "title": "Green Power, Grey Areas",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "Your company's solar farm means clearing forty hectares of forest, Elif.",
+        "tr": "Şirketinizin güneş santrali kırk hektar ormanı kesmek demek, Elif."
+      },
+      {
+        "speaker": "Elif",
+        "en": "It's renewable energy, Tom. Every panel cuts carbon emissions for decades.",
+        "tr": "O yenilenebilir enerji, Tom. Her panel on yıllar boyunca karbon salımını azaltıyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Deforestation for green power? That ecosystem took centuries to grow.",
+        "tr": "Yeşil enerji uğruna ormansızlaştırma mı? O ekosistem yüzyıllarda oluştu."
+      },
+      {
+        "speaker": "Elif",
+        "en": "We're funding a conservation project to restore twice that area nearby.",
+        "tr": "Hemen yakında onun iki katı alanı eski haline getirecek bir koruma projesini finanse ediyoruz."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Biodiversity isn't a spreadsheet. You can't replant an endangered orchid.",
+        "tr": "Biyoçeşitlilik bir Excel tablosu değil. Nesli tükenmekte olan bir orkideyi yeniden dikemezsin."
+      },
+      {
+        "speaker": "Elif",
+        "en": "So where do we put it? Urban rooftops can't power a city.",
+        "tr": "Peki nereye kuralım? Şehir çatıları koca bir şehri besleyemez."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Rural land without trees exists. Grid infrastructure just costs more, that's all.",
+        "tr": "Ağaçsız kırsal arazi var. Sadece şebeke altyapısı daha pahalıya geliyor, hepsi bu."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Fine, write it. But come to the site first, then judge me.",
+        "tr": "Tamam, yaz. Ama önce sahaya gel, sonra beni yargıla."
+      }
+    ]
+  }
+}

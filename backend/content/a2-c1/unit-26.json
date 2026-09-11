@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 26,
+    "level": "B1",
+    "title": "Health & Body"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "injury",
+      "back": "(noun) yaralanma, sakatlık 🤕",
+      "example_sentence": "He couldn't play in the final because of a knee injury.",
+      "mnemonic": "Latince iniuria = haksızlık (in- + ius 'hak, hukuk'); Türkçedeki 'jüri' de aynı ius/iur- kökünden gelir. Futbolda 'injury time' = sakatlık uzatması."
+    },
+    {
+      "lesson": 1,
+      "front": "symptom",
+      "back": "(noun) belirti, semptom 🤒",
+      "example_sentence": "A high temperature is often the first symptom of flu.",
+      "mnemonic": "Türkçede de 'semptom' deriz: Yunanca syn- (birlikte) + piptein (düşmek), hastalıkla 'birlikte ortaya çıkan' şey. Sempati, senkron ve sentezdeki 'sem/sen-' de aynı 'birlikte' ön eki."
+    },
+    {
+      "lesson": 1,
+      "front": "medicine",
+      "back": "(noun) ilaç, tıp 💊",
+      "example_sentence": "If you take the medicine regularly, you'll feel better soon.",
+      "mnemonic": "Türkçedeki 'medikal' ile aynı kök: Latince medicus = hekim, mederi = iyileştirmek. İki anlamı unutma: 'take medicine' ilaç almak, 'study medicine' tıp okumak."
+    },
+    {
+      "lesson": 2,
+      "front": "prescription",
+      "back": "(noun) reçete 📝",
+      "example_sentence": "You can't buy these antibiotics without a prescription.",
+      "mnemonic": "Latince prae- (önceden) + scribere (yazmak): doktorun sen eczaneye gitmeden önce yazdığı kâğıt; üniversitedeki 'transkript' de aynı scribere kökünden. Kalıp: 'on prescription' = reçeteyle satılır."
+    },
+    {
+      "lesson": 2,
+      "front": "appointment",
+      "back": "(noun) randevu 📅",
+      "example_sentence": "I've made an appointment with the dentist for Thursday morning.",
+      "mnemonic": "Fransızca 'à point' (noktasına) kökünden: buluşmayı zamanda bir noktaya sabitlemek; Türkçedeki 'puan' da aynı Latince punctum'dan. Fiili 'make an appointment', 'take' değil."
+    },
+    {
+      "lesson": 2,
+      "front": "recover",
+      "back": "(verb) iyileşmek, toparlanmak 💪",
+      "example_sentence": "It took her three weeks to recover from the operation.",
+      "mnemonic": "Latince recuperare = geri almak: sağlığını geri alırsın; Android telefonlardaki 'recovery mode' da sistemi eski hâline döndürme demek. Kalıp: 'recover from' + hastalık/ameliyat."
+    },
+    {
+      "lesson": 3,
+      "front": "healthy",
+      "back": "(adjective) sağlıklı 🥗",
+      "example_sentence": "You'd feel much healthier if you walked to work every day.",
+      "mnemonic": "Eski İngilizce 'hal' = bütün, sağlam; 'heal' (iyileştirmek) ve 'whole' (bütün) aynı aileden. Türkçedeki 'sağlık' da 'sağ' (sağlam, bütün) kökünden; iki dil aynı fikri kurmuş."
+    },
+    {
+      "lesson": 3,
+      "front": "diet",
+      "back": "(noun) diyet, beslenme 🥦",
+      "example_sentence": "A balanced diet should include plenty of fruit and vegetables.",
+      "mnemonic": "Türkçedeki 'diyet' ile aynı: Yunanca diaita = yaşam biçimi. Dikkat, İngilizcede 'diet' çoğu zaman sadece 'ne yediğin' demektir (a healthy diet); zayıflamak için 'go on a diet' denir."
+    },
+    {
+      "lesson": 3,
+      "front": "exercise",
+      "back": "(noun) egzersiz, alıştırma 🏃",
+      "example_sentence": "Doctors say thirty minutes of exercise a day is enough.",
+      "mnemonic": "Türkçedeki 'egzersiz' Fransızcadan, İngilizcesi de aynı Latince exercere (çalıştırmak) kökünden. Fiil olarak da kullanılır ('I exercise every morning'); kitaptaki alıştırmalar da 'exercises'."
+    },
+    {
+      "lesson": 4,
+      "front": "weight",
+      "back": "(noun) ağırlık, kilo ⚖️",
+      "example_sentence": "He's lost a lot of weight since he started running.",
+      "mnemonic": "Boks ve MMA'deki 'heavyweight' (ağır sıklet) sözünden tanıdık. Kalıplar Türkçeyle örtüşür: lose weight = kilo vermek, put on / gain weight = kilo almak; fiili 'weigh' (tartmak)."
+    },
+    {
+      "lesson": 4,
+      "front": "breathe",
+      "back": "(verb) nefes almak 🌬️",
+      "example_sentence": "The doctor asked me to breathe deeply while she listened.",
+      "mnemonic": "Fiil breathe (/briːð/, uzun i), isim breath (/breθ/, kısa e): sondaki -e sesi uzatır. The Police'in 'Every Breath You Take' şarkısı isim hâli; fiil için 'breathe in, breathe out' (nefes al, ver) kalıbı."
+    },
+    {
+      "lesson": 4,
+      "front": "pain",
+      "back": "(noun) ağrı, acı 😣",
+      "example_sentence": "If the pain gets worse, you should see a doctor.",
+      "mnemonic": "Latince poena = ceza; futboldaki 'penaltı' aynı kökten, pain aslında 'cezanın acısı'. Spor salonlarındaki 'No pain, no gain' sözünü zaten biliyorsun; kalıp: 'in pain' = ağrı çekiyor."
+    },
+    {
+      "lesson": 5,
+      "front": "fever",
+      "back": "(noun) ateş 🌡️",
+      "example_sentence": "She's had a fever since last night, so she stayed home.",
+      "mnemonic": "Travolta'lı 'Saturday Night Fever' filminden tanıdık: dans 'ateşi'. Türkçedeki gibi 'ateşi var' = 'he has a fever', 'fire' denmez; 'hay fever' = saman nezlesi."
+    },
+    {
+      "lesson": 5,
+      "front": "wound",
+      "back": "(noun) yara 🩸",
+      "example_sentence": "The soldier's wound healed slowly, but it left a scar.",
+      "mnemonic": "Okunuşu /wuːnd/ (uzun u); 'wind'in geçmiş hâli olan wound /waʊnd/ ile karıştırma. 'Injury' genel sakatlık, 'wound' ise bıçak veya kurşunla açılan yara: 'gunshot wound' = kurşun yarası."
+    },
+    {
+      "lesson": 5,
+      "front": "bandage",
+      "back": "(noun) sargı bezi, bandaj 🩹",
+      "example_sentence": "Keep the bandage dry and change it every two days.",
+      "mnemonic": "Türkçedeki 'bandaj' aynı kelime: Fransızca bande (şerit) + -age; 'bant' da aynı kökten, yaraya sarılan şerit. Fiil olarak da olur: 'bandage the wound' = yarayı sarmak."
+    }
+  ],
+  "dialogue": {
+    "title": "Fever Before the Exam",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "You sound terrible, Elif. Have you still got a fever?",
+        "tr": "Sesin berbat geliyor Elif. Ateşin hâlâ var mı?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Yes, thirty-eight. And every symptom of flu you can imagine.",
+        "tr": "Evet, otuz sekiz. Üstüne bir de gribin akla gelen bütün belirtileri."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Have you made an appointment at the campus clinic yet?",
+        "tr": "Kampüs sağlık merkezinden randevu aldın mı bari?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "This morning. The doctor gave me a prescription for some medicine.",
+        "tr": "Bu sabah gittim. Doktor ilaçlar için reçete yazdı."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Good. Rest properly, or you won't recover before the exam.",
+        "tr": "İyi. Düzgün dinlen, yoksa sınava kadar iyileşemezsin."
+      },
+      {
+        "speaker": "Elif",
+        "en": "I will. I can hardly breathe through my nose right now.",
+        "tr": "Dinleneceğim. Şu an burnumdan nefes bile alamıyorum."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Once you're better, more exercise and a healthy diet, okay?",
+        "tr": "İyileşince daha çok spor ve sağlıklı beslenme, tamam mı?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Says the man who lives on pizza and energy drinks.",
+        "tr": "Pizza ve enerji içeceğiyle beslenen adam konuşuyor bir de."
+      }
+    ]
+  }
+}

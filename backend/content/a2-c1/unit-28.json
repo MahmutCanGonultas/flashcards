@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 28,
+    "level": "B1",
+    "title": "Work & Study Skills"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "deadline",
+      "back": "(noun) son teslim tarihi ⏰",
+      "example_sentence": "If I miss this deadline, my professor won't accept the essay.",
+      "mnemonic": "Dead (ölü) + line (çizgi): Amerikan İç Savaşı'ndaki esir kamplarında bu çizgiyi geçen vurulurdu; sonra gazeteciler 'bu saati geçen yazı ölür' anlamına taşıdı. Kalıplar: meet the deadline (yetiştirmek), miss the deadline (kaçırmak)."
+    },
+    {
+      "lesson": 1,
+      "front": "schedule",
+      "back": "(noun) program, zaman çizelgesi 📅",
+      "example_sentence": "My schedule is so full that I can't meet before Friday.",
+      "mnemonic": "Plaza Türkçesinde duyduğun 'şedül' tam bu kelime; Amerikalı 'skecul', İngiliz 'şecul' diye okur, ikisi de doğru. Kalıplar: on schedule (planlandığı gibi), behind schedule (programın gerisinde)."
+    },
+    {
+      "lesson": 1,
+      "front": "meeting",
+      "back": "(noun) toplantı 🤝",
+      "example_sentence": "We've had three meetings this week and decided nothing.",
+      "mnemonic": "Türkçedeki 'miting' bu kelimenin ta kendisi (meet: buluşmak + -ing), ama Türkçede yalnızca meydan toplantısı anlamına daraldı. İngilizcede iki kişilik ofis görüşmesi bile meeting'dir."
+    },
+    {
+      "lesson": 2,
+      "front": "presentation",
+      "back": "(noun) sunum 📊",
+      "example_sentence": "She gave a great presentation, although she was really nervous.",
+      "mnemonic": "Türkçedeki 'prezante etmek' (tanıtmak) ve 'prezantabl' aynı Latince kökten: praesentare, 'öne koymak'. Sunum yapmak 'give a presentation'dır, 'make' değil."
+    },
+    {
+      "lesson": 2,
+      "front": "report",
+      "back": "(noun) rapor 📝",
+      "example_sentence": "I have to finish the report before the manager gets back.",
+      "mnemonic": "Türkçe 'rapor' Fransızca rapport'tan, o da Latince reportare'den: re- (geri) + portare (taşımak), yani bilgiyi geri getirmek. Transport ve import'taki 'port' aynı kök."
+    },
+    {
+      "lesson": 2,
+      "front": "interview",
+      "back": "(noun) mülakat, röportaj 🎤",
+      "example_sentence": "If you get an interview, they'll probably ask about your weaknesses.",
+      "mnemonic": "Inter- (arasında) + view (görüş): iki kişinin karşılıklı görüşmesi, Fransızca entrevue'den. Türkçede iş için 'mülakat', gazeteci için 'röportaj' deriz; İngilizcede ikisi de interview."
+    },
+    {
+      "lesson": 3,
+      "front": "apply",
+      "back": "(verb) başvurmak, uygulamak 📩",
+      "example_sentence": "I've applied for three jobs, but nobody has replied yet.",
+      "mnemonic": "Latince applicare (ad- + plicare: bir şeye bitiştirmek); Türkçedeki 'aplike' (kumaşa dikilen parça) ve 'aplikasyon' aynı kök. Başvururken edat 'for'dur: apply for a job."
+    },
+    {
+      "lesson": 3,
+      "front": "hire",
+      "back": "(verb) işe almak, kiralamak 👔",
+      "example_sentence": "The café hired two new waiters because summer is busier.",
+      "mnemonic": "Vitrindeki 'We're hiring!' (eleman alıyoruz) tabelasını düşün; başvurunun cevabı 'hayır' değil 'hire' olsun. Amerika'da hire insan içindir, araba 'rent' edilir; İngiltere'de 'hire a car' da denir."
+    },
+    {
+      "lesson": 3,
+      "front": "promotion",
+      "back": "(noun) terfi, promosyon 📈",
+      "example_sentence": "If she gets the promotion, she'll manage the whole team.",
+      "mnemonic": "Türkçedeki 'promosyon' aynı kelime: Latince promovere, pro- (öne) + movere (hareket ettirmek; motor ve mobil de aynı kök). Ürünü öne itersen kampanya, çalışanı öne itersen terfi."
+    },
+    {
+      "lesson": 4,
+      "front": "skill",
+      "back": "(noun) beceri 🛠️",
+      "example_sentence": "My computer skills got me the job, not my degree.",
+      "mnemonic": "LinkedIn profilindeki 'Skills' bölümünü düşün: CV'de 'soft skills' (iletişim, takım çalışması) ve 'hard skills' (Excel, yabancı dil) diye ikiye ayrılır. Kalifiye işçi = skilled worker."
+    },
+    {
+      "lesson": 4,
+      "front": "research",
+      "back": "(noun) araştırma 🔬",
+      "example_sentence": "Her research shows that students sleep less during exams.",
+      "mnemonic": "Re- (tekrar) + search: 'search' Latince circare'den (daire çizerek dolaşmak), Türkçe 'sirk' ile aynı kök; yani döne döne aramak. Sayılamaz: 'a research' denmez, 'some research' ya da 'a study'."
+    },
+    {
+      "lesson": 4,
+      "front": "essay",
+      "back": "(noun) deneme, kompozisyon 📄",
+      "example_sentence": "I've written half the essay, but the conclusion is still missing.",
+      "mnemonic": "Fransızca essai = deneme; Montaigne'in 'Denemeler'i (Essais, 1580) türe adını verdi, yani bir konuyu yazarak 'denemek'. Okulda kompozisyon, üniversitede ödev: ikisi de essay."
+    },
+    {
+      "lesson": 5,
+      "front": "summary",
+      "back": "(noun) özet 📋",
+      "example_sentence": "Could you send me a short summary of yesterday's meeting?",
+      "mnemonic": "İngilizce 'sum' (toplam) ile aynı kök, Latince summa: metnin toplamını birkaç cümleye sığdırmak. Kalıplar: in summary (özetle), to sum up (özetlemek gerekirse)."
+    },
+    {
+      "lesson": 5,
+      "front": "degree",
+      "back": "(noun) diploma, derece 🎓",
+      "example_sentence": "She's just finished her degree and is looking for work.",
+      "mnemonic": "Latince gradus (basamak): de- + gradus; 'graduate' (mezun olmak) aynı kök, basamağı çıkınca degree alırsın. Türkçe 'derece' Arapçadan gelir ama mantık aynı: sıcaklıkta da okulda da bir basamak."
+    },
+    {
+      "lesson": 5,
+      "front": "scholarship",
+      "back": "(noun) burs 💰",
+      "example_sentence": "Without the scholarship, I couldn't afford to study abroad.",
+      "mnemonic": "Scholar (öğrenci, bilgin) + -ship: öğrenciye verilen destek. Kök Latince schola (okul); Türkçe 'skolastik' aynı kökten, 'okul' kelimesi de 1935'te Fransızca école'e benzesin diye türetildi."
+    }
+  ],
+  "dialogue": {
+    "title": "The Internship Interview",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Tom, I've got an interview for that internship on Friday!",
+        "tr": "Tom, cuma günü o staj için mülakata çağrıldım!"
+      },
+      {
+        "speaker": "Tom",
+        "en": "That's amazing! Didn't you apply only last week?",
+        "tr": "Harika! Sen daha geçen hafta başvurmamış mıydın?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Yes, but my essay deadline is the same day.",
+        "tr": "Evet ama ödevimin son teslim tarihi de aynı gün."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Ouch. Have you finished the research at least?",
+        "tr": "Eyvah. En azından araştırma kısmını bitirdin mi?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Mostly. I just need to write the summary tonight.",
+        "tr": "Çoğunu. Bu gece bir de özetini yazmam lazım."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Then let's practise the interview tomorrow. I'll schedule a video call.",
+        "tr": "O zaman yarın mülakat provası yapalım. Görüntülü arama ayarlarım."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Deal. What if they ask about my presentation skills?",
+        "tr": "Tamam. Ya sunum becerilerimi sorarlarsa?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Relax, they'd be lucky to hire you.",
+        "tr": "Sakin ol, seni işe alırlarsa şanslı onlar."
+      }
+    ]
+  }
+}

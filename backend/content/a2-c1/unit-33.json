@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 33,
+    "level": "B2",
+    "title": "Society & Politics"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "policy",
+      "back": "(noun) politika 📋",
+      "example_sentence": "The new housing policy was announced without consulting local councils.",
+      "mnemonic": "Türkçedeki 'politika' ile aynı Yunanca kökten gelir: 'polis' (şehir-devlet). Ama dikkat: İngilizcede 'politics' siyaset demekken 'policy' somut bir kural ya da plandır — 'return policy', 'foreign policy'."
+    },
+    {
+      "lesson": 1,
+      "front": "election",
+      "back": "(noun) seçim 🗳️",
+      "example_sentence": "Turnout in the local election was the lowest in twenty years.",
+      "mnemonic": "Latince 'eligere' (seçmek) kökünden; Türkçedeki 'elit' de aynı kökten gelir ve aslında 'seçilmişler' demektir. Elect = seçmek, election = seçim, electorate = seçmenler."
+    },
+    {
+      "lesson": 1,
+      "front": "candidate",
+      "back": "(noun) aday 🙋",
+      "example_sentence": "Neither candidate had explained how they would pay for their promises.",
+      "mnemonic": "Latince 'candidus' (bembeyaz) kökünden: Antik Roma'da makam adayları temizliği simgeleyen beyaz toga giyerdi. Aynı 'parlaklık' kökü (candere) 'candle' ve Türkçedeki 'kandil'de de yaşar."
+    },
+    {
+      "lesson": 2,
+      "front": "campaign",
+      "back": "(noun) kampanya 📣",
+      "example_sentence": "Her campaign focused on housing costs, which most voters cared about.",
+      "mnemonic": "Türkçedeki 'kampanya' aynı kelime; Fransızca 'campagne' (kır, açık arazi) yoluyla Latince 'campus'tan (alan) gelir. Ordular sefere açık arazide çıktığı için önce askeri, sonra siyasi 'sefer' anlamı kazandı; 'kamp' da aynı kökten."
+    },
+    {
+      "lesson": 2,
+      "front": "democracy",
+      "back": "(noun) demokrasi 🏛️",
+      "example_sentence": "He argued that democracy cannot survive without a free press.",
+      "mnemonic": "Yunanca 'demos' (halk) + 'kratos' (güç, yönetim): Türkçe 'demokrasi' ile birebir aynı. Aynı '-krasi' ekini 'bürokrasi', 'aristokrasi' ve 'teknokrasi'de, 'demos'u ise 'demografi'de görürsün."
+    },
+    {
+      "lesson": 2,
+      "front": "citizen",
+      "back": "(noun) vatandaş, yurttaş 🪪",
+      "example_sentence": "Every citizen over eighteen has the right to vote in national elections.",
+      "mnemonic": "'City' ile aynı köktendir: Latince 'civis' (şehirli). Türkçedeki 'sivil' de buradan gelir; 'civilization' (medeniyet) ise şehirli olmaktan doğar."
+    },
+    {
+      "lesson": 3,
+      "front": "protest",
+      "back": "(noun) protesto, eylem ✊",
+      "example_sentence": "Thousands joined the protest against the new pension law last weekend.",
+      "mnemonic": "Türkçedeki 'protesto' aynı kelime: Latince 'pro-' (açıkça, önünde) + 'testari' (tanıklık etmek), yani açıkça beyan etmek. 'Protestan' mezhebi de adını 1529'da Katolik Kilisesi'ni protesto eden Alman prenslerinden alır."
+    },
+    {
+      "lesson": 3,
+      "front": "reform",
+      "back": "(noun) reform, düzenleme 🔧",
+      "example_sentence": "The pension reform was passed despite weeks of strikes.",
+      "mnemonic": "Türkçe 'reform' ile aynı: Latince 're-' (yeniden) + 'formare' (biçimlendirmek), yani yeniden biçim vermek. 'Form', 'formül', 'üniforma' ve 'Reformasyon' hepsi aynı kökten."
+    },
+    {
+      "lesson": 3,
+      "front": "inequality",
+      "back": "(noun) eşitsizlik ⚖️",
+      "example_sentence": "Inequality between cities and villages has widened since the crisis.",
+      "mnemonic": "'in-' (olumsuzluk) + 'equal' (eşit): Latince 'aequus' kökünden. Türkçedeki 'ekvator' da aynı kökten gelir — dünyayı iki eşit yarıya bölen çizgi."
+    },
+    {
+      "lesson": 4,
+      "front": "welfare",
+      "back": "(noun) refah, sosyal yardım 🤝",
+      "example_sentence": "She lost her job and had to live on welfare for a year.",
+      "mnemonic": "'Well' (iyi) + 'fare' (gitmek, geçinmek — 'farewell'deki 'fare' ile aynı): iyi geçinme, refah. 'Welfare state' sosyal devlet demektir; ABD İngilizcesinde 'on welfare' sosyal yardımla geçinmek anlamına gelir."
+    },
+    {
+      "lesson": 4,
+      "front": "legislation",
+      "back": "(noun) mevzuat, yasa 📜",
+      "example_sentence": "New legislation on data privacy comes into force next January.",
+      "mnemonic": "Latince 'lex, legis' (yasa) kökünden; Türkçede günlük dilde kullanılan 'legal' ve 'illegal' de buradan gelir. 'Legislate' yasa yapmak, 'legislature' yasama meclisi, 'legislation' çıkarılan yasaların tümü."
+    },
+    {
+      "lesson": 4,
+      "front": "authority",
+      "back": "(noun) yetki, otorite 👮",
+      "example_sentence": "Only the mayor has the authority to cancel the festival.",
+      "mnemonic": "Türkçedeki 'otorite' aynı kelime; Latince 'auctor' (yaratan, kaynak) kökünden gelir ve 'author' (yazar) ile akrabadır: yetki, bir şeyin kaynağı olmaktan doğar. Çoğulu 'the authorities' ise 'yetkililer, makamlar' demektir."
+    },
+    {
+      "lesson": 5,
+      "front": "corruption",
+      "back": "(noun) yolsuzluk 💸",
+      "example_sentence": "The minister resigned after journalists exposed corruption in his department.",
+      "mnemonic": "Latince 'corrumpere' (tamamen bozmak, çürütmek) kökünden: 'cor-' (tamamen) + 'rumpere' (kırmak). Bilgisayardaki 'corrupted file' (bozuk dosya) aynı kelimedir; 'interrupt' ve 'rupture' da aynı 'kırma' kökünden gelir."
+    },
+    {
+      "lesson": 5,
+      "front": "minority",
+      "back": "(noun) azınlık 🔹",
+      "example_sentence": "The party won only a minority of seats and needed a coalition partner.",
+      "mnemonic": "Latince 'minor' (daha küçük) kökünden; Türkçedeki 'minör', 'minimum' ve 'minibüs' aynı aileden. Azınlık = küçük taraf; zıddı 'majority'."
+    },
+    {
+      "lesson": 5,
+      "front": "majority",
+      "back": "(noun) çoğunluk 🔷",
+      "example_sentence": "The majority of voters said they trusted neither side.",
+      "mnemonic": "Latince 'major' (daha büyük) kökünden; Türkçedeki 'majör' ve 'majüskül' (büyük harf) aynı aileden. Dikkat: İngilizcede 'the most of' denmez; 'most of' ya da 'the majority of' kullanılır."
+    }
+  ],
+  "dialogue": {
+    "title": "The Election Argument",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "I covered the candidates' debate last night. Honestly, it was depressing.",
+        "tr": "Dün gece adayların açık oturumunu haber yaptım. Açıkçası iç karartıcıydı."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Depressing how? At least one of them talked about inequality.",
+        "tr": "Neden iç karartıcı? En azından biri eşitsizlikten bahsetti."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Talking is cheap. His whole campaign is slogans, not actual policy.",
+        "tr": "Lafla peynir gemisi yürümez. Bütün kampanyası slogan, ortada gerçek bir politika yok."
+      },
+      {
+        "speaker": "Elif",
+        "en": "And the other one? Half his party is under investigation for corruption.",
+        "tr": "Ya öteki? Partisinin yarısı yolsuzluktan soruşturma altında."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Which is exactly why turnout matters. Democracy dies when citizens stay home.",
+        "tr": "İşte tam da bu yüzden katılım önemli. Vatandaş evde kalınca demokrasi ölür."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Sure, but my one vote won't fix welfare or pass real reform.",
+        "tr": "Tamam da benim tek oyum sosyal yardımı düzeltmez, gerçek bir reform da geçirmez."
+      },
+      {
+        "speaker": "Tom",
+        "en": "No, but a majority of angry votes changes what legislation gets passed.",
+        "tr": "Hayır, ama öfkeli oyların çoğunluğu hangi yasaların geçeceğini değiştirir."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Fine, I'll vote. But if nothing changes, I'm joining the protest.",
+        "tr": "Peki, oy vereceğim. Ama hiçbir şey değişmezse protestoya katılıyorum."
+      }
+    ]
+  }
+}

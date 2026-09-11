@@ -86,6 +86,45 @@ type SpeakOptions = {
   onEnd?: () => void;
 };
 
+/**
+ * Devices ship several English voices and the default is rarely the best.
+ * iOS has "Enhanced" and "Premium" downloads that sound like a person; a
+ * handful of named voices are reliably good. Pick the best on offer once.
+ */
+const PREFERRED_NAMES = [
+  "Samantha",
+  "Daniel",
+  "Karen",
+  "Moira",
+  "Ava",
+  "Allison",
+  "Google US English",
+  "Google UK English Female",
+  "Microsoft Aria",
+  "Microsoft Jenny",
+];
+
+let chosenVoice: SpeechSynthesisVoice | null | undefined;
+
+function pickVoice(): SpeechSynthesisVoice | null {
+  if (chosenVoice !== undefined) return chosenVoice;
+  const voices = window.speechSynthesis.getVoices().filter((v) => v.lang.startsWith("en"));
+  if (voices.length === 0) return null;
+
+  const score = (v: SpeechSynthesisVoice) => {
+    let s = 0;
+    if (/premium|enhanced|natural|neural/i.test(v.name)) s += 40;
+    const named = PREFERRED_NAMES.findIndex((n) => v.name.startsWith(n));
+    if (named !== -1) s += 30 - named;
+    if (v.lang === "en-US" || v.lang === "en-GB") s += 5;
+    if (v.localService) s += 3;
+    if (/compact|eloquence|fred|zarvox|whisper|bad news|bells|boing|bubbles/i.test(v.name)) s -= 50;
+    return s;
+  };
+  chosenVoice = [...voices].sort((a, b) => score(b) - score(a))[0] ?? null;
+  return chosenVoice;
+}
+
 export async function speak(text: string, options: SpeakOptions = {}): Promise<void> {
   const { lang = "en-US", rate = 0.92, onStart, onEnd } = options;
   if (!speechSupported || !text.trim()) return;
@@ -99,6 +138,8 @@ export async function speak(text: string, options: SpeakOptions = {}): Promise<v
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = lang;
   utterance.rate = rate;
+  const voice = pickVoice();
+  if (voice) utterance.voice = voice;
   if (onStart) utterance.onstart = onStart;
   if (onEnd) {
     utterance.onend = onEnd;

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import Mascot from "./Mascot";
 import { primeSpeech } from "../lib/speech";
 import type { Lesson, Unit } from "../lib/path";
 import { themeFor } from "../lib/themes";
@@ -29,9 +30,13 @@ type Accent = { face: string; slab: string; ring: string; stroke: string };
  * dialogue that uses their words, then the test that opens the next unit.
  */
 type PathItem =
-  | { kind: "lesson"; lesson: Lesson; state: "done" | "current" | "locked" }
+  | { kind: "lesson"; lesson: Lesson; state: "done" | "current" | "open" | "locked" }
   | { kind: "dialogue"; state: "open" | "locked" }
-  | { kind: "test"; state: "passed" | "open" | "locked"; bestScore: number | null };
+  | {
+      kind: "test";
+      state: "passed" | "open" | "locked";
+      bestScore: number | null;
+    };
 
 function itemsFor(unit: Unit): PathItem[] {
   const items: PathItem[] = unit.lessons.map((lesson) => ({
@@ -43,7 +48,8 @@ function itemsFor(unit: Unit): PathItem[] {
   if (unit.id === null) return items;
 
   const tailOpen = unit.state !== "locked" && unit.lessonsDone;
-  if (unit.dialogue) items.push({ kind: "dialogue", state: tailOpen ? "open" : "locked" });
+  if (unit.dialogue)
+    items.push({ kind: "dialogue", state: tailOpen ? "open" : "locked" });
   items.push({
     kind: "test",
     state: unit.state === "passed" ? "passed" : tailOpen ? "open" : "locked",
@@ -55,10 +61,18 @@ function itemsFor(unit: Unit): PathItem[] {
 /** Trail colour is decided by where a segment leads. */
 function trailTone(item: PathItem): "done" | "active" | "locked" {
   if (item.kind === "lesson") {
-    return item.state === "done" ? "done" : item.state === "current" ? "active" : "locked";
+    return item.state === "done"
+      ? "done"
+      : item.state === "current"
+        ? "active"
+        : "locked";
   }
   if (item.kind === "test") {
-    return item.state === "passed" ? "done" : item.state === "open" ? "active" : "locked";
+    return item.state === "passed"
+      ? "done"
+      : item.state === "open"
+        ? "active"
+        : "locked";
   }
   return item.state === "open" ? "active" : "locked";
 }
@@ -75,7 +89,10 @@ function NodeShell({
   // The offset and the entrance live on different elements: the entrance
   // animates `transform`, and would otherwise wipe the translateX when it ends.
   return (
-    <div className="relative h-[70px]" style={{ transform: `translateX(${offset}px)` }}>
+    <div
+      className="relative h-[70px]"
+      style={{ transform: `translateX(${offset}px)` }}
+    >
       <div
         className="relative flex h-[70px] items-center justify-center animate-[node-in_420ms_ease-out_both]"
         style={{ animationDelay: `${Math.min(entrance, 14) * 45}ms` }}
@@ -90,13 +107,19 @@ function LessonNode({
   lesson,
   state,
   accent,
+  offset,
+  justDone,
   onOpen,
   onBlocked,
   isBlockedShaking,
 }: {
   lesson: Lesson;
-  state: "done" | "current" | "locked";
+  state: "done" | "current" | "open" | "locked";
   accent: Accent;
+  /** Where the node sits on the wave, so Tonton can stand on the roomier side. */
+  offset: number;
+  /** The lesson the learner just walked back from — it gets its moment. */
+  justDone: boolean;
   onOpen: () => void;
   onBlocked: () => void;
   isBlockedShaking: boolean;
@@ -107,6 +130,28 @@ function LessonNode({
 
   return (
     <>
+      {/* Tonton keeps you company at the lesson you're on, standing on
+          whichever side the wave has left room. */}
+      {current && (
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute top-1/2 -translate-y-1/2 animate-[peek_2.6s_ease-in-out_infinite] ${
+            offset > 0 ? "right-full mr-1" : "left-full ml-1"
+          }`}
+        >
+          <Mascot
+            mood="idle"
+            size={52}
+            className={offset > 0 ? "" : "-scale-x-100"}
+          />
+        </div>
+      )}
+      {justDone && (
+        <span
+          aria-hidden="true"
+          className={`absolute inset-0 rounded-full ${accent.ring} animate-[burst-ring_700ms_ease-out_forwards]`}
+        />
+      )}
       {/* Off-flow, so the node grid stays regular and the trail lines up. */}
       {current && (
         <div className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 animate-[bob_1.4s_ease-in-out_infinite] whitespace-nowrap rounded-2xl bg-white px-3 py-1.5 text-xs font-extrabold uppercase tracking-wide text-violet-600 shadow-[0_3px_0_0_var(--color-stone-200)] ring-2 ring-stone-100">
@@ -120,11 +165,11 @@ function LessonNode({
         aria-label={
           locked
             ? `Lesson ${lesson.number}, locked`
-            : `Lesson ${lesson.number}, ${done ? "completed" : "start"}`
+            : `Lesson ${lesson.number}, ${done ? "completed" : state === "open" ? "optional" : "start"}`
         }
         className={`relative flex items-center justify-center rounded-full transition-transform duration-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-violet-300 ${
           current ? "h-[76px] w-[76px]" : "h-[70px] w-[70px]"
-        } ${
+        } ${justDone ? "animate-[node-done-pop_600ms_cubic-bezier(0.34,1.56,0.64,1)_1]" : ""} ${
           locked
             ? `bg-stone-200 text-stone-400 shadow-[0_4px_0_0_var(--color-stone-300)] ${isBlockedShaking ? "animate-[shake_400ms_ease-in-out]" : ""}`
             : `${accent.face} text-white ${accent.slab} hover:-translate-y-0.5 active:translate-y-[3px] active:shadow-none`
@@ -237,7 +282,11 @@ function TestNode({
         type="button"
         onClick={locked ? onBlocked : onOpen}
         aria-label={
-          locked ? "Unit test, locked" : passed ? "Unit test, passed" : "Take the unit test"
+          locked
+            ? "Unit test, locked"
+            : passed
+              ? "Unit test, passed"
+              : "Take the unit test"
         }
         className={`relative flex h-[76px] w-[76px] items-center justify-center rounded-full text-3xl transition-transform duration-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-amber-300 ${
           locked
@@ -289,7 +338,10 @@ function Trail({
 }) {
   const height = items.length * NODE + (items.length - 1) * GAP;
   const centerX = COLUMN_WIDTH / 2;
-  const at = (index: number) => ({ x: centerX + offsets[index], y: NODE / 2 + index * PITCH });
+  const at = (index: number) => ({
+    x: centerX + offsets[index],
+    y: NODE / 2 + index * PITCH,
+  });
 
   return (
     <svg
@@ -309,7 +361,15 @@ function Trail({
         const stroke = to.kind === "test" ? "stroke-amber-400" : accent.stroke;
 
         if (tone === "done") {
-          return <path key={i} d={d} className={stroke} strokeWidth="8" strokeLinecap="round" />;
+          return (
+            <path
+              key={i}
+              d={d}
+              className={stroke}
+              strokeWidth="8"
+              strokeLinecap="round"
+            />
+          );
         }
         if (tone === "active") {
           return (
@@ -339,8 +399,53 @@ function Trail({
   );
 }
 
+const LEVEL_NAMES: Record<string, string> = {
+  A1: "Beginner",
+  A2: "Elementary",
+  B1: "Intermediate",
+  B2: "Upper intermediate",
+  C1: "Advanced",
+};
+
+/** The big marker where one CEFR level hands over to the next. */
+function LevelMilestone({
+  level,
+  reached,
+}: {
+  level: string;
+  reached: boolean;
+}) {
+  return (
+    <div className="mx-auto my-6 flex max-w-md items-center gap-3">
+      <span
+        className={`h-px flex-1 ${reached ? "bg-amber-300" : "bg-stone-200"}`}
+      />
+      <div
+        className={`flex items-center gap-3 rounded-full px-4 py-2 ring-2 ${
+          reached
+            ? "bg-gradient-to-r from-amber-300 to-amber-500 text-white ring-amber-200 shadow-[0_4px_0_0_var(--color-amber-600)]"
+            : "bg-white text-stone-400 ring-stone-200"
+        }`}
+      >
+        <span className="text-2xl font-extrabold tracking-tight">{level}</span>
+        <span className="text-[11px] font-extrabold uppercase tracking-widest">
+          {LEVEL_NAMES[level] ?? ""}
+        </span>
+      </div>
+      <span
+        className={`h-px flex-1 ${reached ? "bg-amber-300" : "bg-stone-200"}`}
+      />
+    </div>
+  );
+}
+
 function LearningPath({ deckId, units }: LearningPathProps) {
   const navigate = useNavigate();
+  const location = useLocation();
+  // Set by the lesson screen on the way back, so the node can celebrate once.
+  const justCompleted =
+    (location.state as { completedLesson?: number } | null)?.completedLesson ??
+    null;
   const [shaking, setShaking] = useState<string | null>(null);
   const currentRef = useRef<HTMLDivElement>(null);
 
@@ -355,7 +460,8 @@ function LearningPath({ deckId, units }: LearningPathProps) {
   // in that scrolling there is a chore, so early on they still land on the
   // stats and the review button above the path.
   useEffect(() => {
-    if (currentIndexInPath > 5) currentRef.current?.scrollIntoView({ block: "center" });
+    if (currentIndexInPath > 5)
+      currentRef.current?.scrollIntoView({ block: "center" });
   }, [currentIndexInPath]);
 
   const shake = (key: string) => {
@@ -403,8 +509,18 @@ function LearningPath({ deckId, units }: LearningPathProps) {
         const unitLocked = unit.state === "locked";
         const doneCount = unit.lessons.filter((l) => l.state === "done").length;
 
+        const previous = placed[unit.index - 2]?.unit;
+        const startsLevel =
+          unit.level !== null && unit.level !== (previous?.level ?? null);
+
         return (
           <section key={unit.index} className="mb-2">
+            {startsLevel && unit.level && (
+              <LevelMilestone
+                level={unit.level}
+                reached={unit.state !== "locked"}
+              />
+            )}
             <header
               className={`sticky top-16 z-[5] mx-auto mb-12 mt-8 flex max-w-md items-center justify-between gap-3 rounded-2xl px-5 py-3 ${
                 unitLocked
@@ -422,14 +538,18 @@ function LearningPath({ deckId, units }: LearningPathProps) {
                   {unit.level && (
                     <span
                       className={`rounded-md px-1.5 py-0.5 text-[10px] ${
-                        unitLocked ? "bg-stone-300 text-stone-500" : "bg-white/20"
+                        unitLocked
+                          ? "bg-stone-300 text-stone-500"
+                          : "bg-white/20"
                       }`}
                     >
                       {unit.level}
                     </span>
                   )}
                 </p>
-                <h2 className="truncate text-lg font-extrabold tracking-tight">{unit.title}</h2>
+                <h2 className="truncate text-lg font-extrabold tracking-tight">
+                  {unit.title}
+                </h2>
               </div>
               {unitLocked ? (
                 <LockIcon className="h-5 w-5 shrink-0 text-stone-400" />
@@ -460,14 +580,22 @@ function LearningPath({ deckId, units }: LearningPathProps) {
                       lesson={item.lesson}
                       state={item.state}
                       accent={accent}
-                      onOpen={() => open(`/decks/${deckId}/study?lesson=${item.lesson.number}`)}
+                      offset={offsets[i]}
+                      justDone={justCompleted === item.lesson.number}
+                      onOpen={() =>
+                        open(
+                          `/decks/${deckId}/study?lesson=${item.lesson.number}`,
+                        )
+                      }
                       onBlocked={() => shake(key)}
                       isBlockedShaking={shaking === key}
                     />
                   ) : item.kind === "dialogue" ? (
                     <DialogueNode
                       state={item.state}
-                      onOpen={() => open(`/decks/${deckId}/units/${unit.id}/dialogue`)}
+                      onOpen={() =>
+                        open(`/decks/${deckId}/units/${unit.id}/dialogue`)
+                      }
                       onBlocked={() => shake(key)}
                       isBlockedShaking={shaking === key}
                     />
@@ -475,13 +603,16 @@ function LearningPath({ deckId, units }: LearningPathProps) {
                     <TestNode
                       state={item.state}
                       bestScore={item.bestScore}
-                      onOpen={() => open(`/decks/${deckId}/units/${unit.id}/test`)}
+                      onOpen={() =>
+                        open(`/decks/${deckId}/units/${unit.id}/test`)
+                      }
                       onBlocked={() => shake(key)}
                       isBlockedShaking={shaking === key}
                     />
                   );
 
-                const isCurrent = item.kind === "lesson" && item.state === "current";
+                const isCurrent =
+                  item.kind === "lesson" && item.state === "current";
                 return (
                   <div
                     key={key}

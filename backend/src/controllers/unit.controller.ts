@@ -15,8 +15,9 @@ export const getUnits = async (req: Request, res: Response) => {
   const result = await pool.query(
     `SELECT units.id, units.position, units.title, units.level, units.dialogue,
             COALESCE(BOOL_OR(unit_results.passed), FALSE) AS passed,
-            MAX(unit_results.score) AS best_score,
-            COUNT(unit_results.id)::int AS attempts
+            COALESCE(BOOL_OR(unit_results.source = 'placement'), FALSE) AS placed,
+            MAX(unit_results.score) FILTER (WHERE unit_results.source = 'test') AS best_score,
+            COUNT(unit_results.id) FILTER (WHERE unit_results.source = 'test')::int AS attempts
      FROM units
      JOIN decks ON decks.id = units.deck_id
      LEFT JOIN unit_results
@@ -74,5 +75,58 @@ export const recordUnitResult = async (req: Request, res: Response) => {
     passed,
     bestScore: best.rows[0].best_score,
     everPassed: best.rows[0].passed,
+  });
+};
+
+const placementSchema = z.object({
+  /** The CEFR level the learner placed into: the first unit of it becomes current. */
+  level: z.enum(["A1", "A2", "B1", "B2", "C1"]),
+});
+
+/**
+ * Records a placement: every unit before the first unit of `level` is marked
+ * passed, so the path opens straight to where the learner belongs. Marked
+ * with source 'placement' so a skipped unit is never mistaken for a real
+ * test result. Placing at A1 clears nothing and changes nothing.
+ */
+export const recordPlacement = async (req: Request, res: Response) => {
+  const validation = placementSchema.safeParse(req.body);
+  if (!validation.success) {
+    return res.status(400).json({ error: "Gecersiz seviye" });
+  }
+
+  const { deckId } = req.params;
+  const { level } = validation.data;
+
+  const units = await pool.query(
+    `SELECT units.id, units.position, units.level FROM units
+     JOIN decks ON decks.id = units.deck_id
+     WHERE units.deck_id = $1 AND decks.user_id = $2
+     ORDER BY units.position`,
+    [deckId, req.userId],
+  );
+  if (units.rows.length === 0) {
+    return res.status(404).json({ error: "Deste bulunamadi" });
+  }
+
+  const firstOfLevel = units.rows.find((unit) => unit.level === level);
+  const cutoff = firstOfLevel ? firstOfLevel.position : Number.POSITIVE_INFINITY;
+  const toSkip = units.rows.filter((unit) => unit.position < cutoff);
+
+  for (const unit of toSkip) {
+    await pool.query(
+      `INSERT INTO unit_results (user_id, unit_id, score, passed, source)
+       SELECT $1, $2, 100, TRUE, 'placement'
+       WHERE NOT EXISTS (
+         SELECT 1 FROM unit_results WHERE user_id = $1 AND unit_id = $2 AND passed
+       )`,
+      [req.userId, unit.id],
+    );
+  }
+
+  return res.status(201).json({
+    level,
+    skippedUnits: toSkip.length,
+    startUnit: firstOfLevel?.position ?? null,
   });
 };

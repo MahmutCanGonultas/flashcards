@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 36,
+    "level": "B2",
+    "title": "Law & Crime"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "suspect",
+      "back": "(noun) şüpheli, zanlı 🕵️",
+      "example_sentence": "The police arrested the main suspect two days after the robbery.",
+      "mnemonic": "Ünlü film 'The Usual Suspects' Türkçeye 'Olağan Şüpheliler' diye çevrildi. Kök Latince 'sub' (altından) + 'specere' (bakmak) — 'perspektif' ve 'spektrum'daki aynı kök; şüpheli, gizlice göz altında tutulan kişidir."
+    },
+    {
+      "lesson": 1,
+      "front": "witness",
+      "back": "(noun) tanık, şahit 👁️",
+      "example_sentence": "The only witness said she had seen a man running away.",
+      "mnemonic": "Kökü eski İngilizce 'wit' (bilgi, akıl; 'witty' = hazırcevap): tanık, olanı bilen kişidir. Kalıplar: 'eyewitness' = görgü tanığı, 'witness stand' = tanık kürsüsü."
+    },
+    {
+      "lesson": 1,
+      "front": "trial",
+      "back": "(noun) yargılama, deneme ⚖️",
+      "example_sentence": "The trial lasted three weeks before the jury reached a decision.",
+      "mnemonic": "Uygulamalardaki 'free trial' (ücretsiz deneme) ile aynı sözcük: 'try' hem denemek hem yargılamak demektir. Mahkeme sanığı 'dener' — 'stand trial' = yargılanmak, 'trial and error' = deneme yanılma."
+    },
+    {
+      "lesson": 2,
+      "front": "verdict",
+      "back": "(noun) jüri kararı, hüküm 🔨",
+      "example_sentence": "After two days, the jury finally returned a verdict of not guilty.",
+      "mnemonic": "Latince 'vere dictum' = 'doğru söylenmiş söz'. 'Dictum' parçası Türkçedeki 'dikte' ve 'diksiyon'la aynı kök (söylemek); jürinin doğru sözü = karar."
+    },
+    {
+      "lesson": 2,
+      "front": "sentence",
+      "back": "(noun) ceza kararı, cümle ⛓️",
+      "example_sentence": "The judge gave him a five-year sentence for armed robbery.",
+      "mnemonic": "Latince 'sententia' = görüş, yargı; 'sentire' (hissetmek, düşünmek) kökünden gelir — 'santimantal' ve 'konsensüs'le akraba. Hâkimin 'görüşü' cezadır; dilbilgisindeki cümle de tam bir 'düşünce'dir."
+    },
+    {
+      "lesson": 2,
+      "front": "guilty",
+      "back": "(adjective) suçlu 😔",
+      "example_sentence": "He pleaded guilty to fraud and was sentenced the same afternoon.",
+      "mnemonic": "Sosyal medyadan bildiğiniz 'guilty pleasure' (utanılası zevk) aynı sözcük: guilty hem mahkemede 'suçlu' hem günlük dilde 'suçluluk duyan'. Mahkeme kalıpları: 'found guilty' = suçlu bulundu, 'plead guilty' = suçu kabul etmek."
+    },
+    {
+      "lesson": 3,
+      "front": "innocent",
+      "back": "(adjective) masum, suçsuz 🕊️",
+      "example_sentence": "She kept insisting she was innocent, even after the verdict.",
+      "mnemonic": "Latince 'in-' (değil) + 'nocere' (zarar vermek): zarar vermemiş kişi. Hukukun temel ilkesi 'innocent until proven guilty' = 'aksi kanıtlanana dek masum' (masumiyet karinesi)."
+    },
+    {
+      "lesson": 3,
+      "front": "lawyer",
+      "back": "(noun) avukat 💼",
+      "example_sentence": "My lawyer advised me not to answer any questions without her present.",
+      "mnemonic": "'Law' (hukuk, yasa) + '-yer' (o işi yapan kişi). Günlük dilde her avukat 'lawyer'; 'attorney' ABD'de, 'solicitor' ve 'barrister' İngiltere'de kullanılan resmî çeşitleridir."
+    },
+    {
+      "lesson": 3,
+      "front": "court",
+      "back": "(noun) mahkeme, kort 🏛️",
+      "example_sentence": "The case will be heard in court next Monday morning.",
+      "mnemonic": "Tenis 'kortu' aynı sözcük: Türkçeye Fransızcadan geçen 'kort', İngilizce 'court'. Kök Latince 'cohors' (çevrili avlu); davalar kralın avlusunda görüldüğü için mahkeme anlamı da oradan doğdu."
+    },
+    {
+      "lesson": 4,
+      "front": "jury",
+      "back": "(noun) jüri 👥",
+      "example_sentence": "The jury took only two hours to find him guilty.",
+      "mnemonic": "Türkçedeki 'jüri' (Fransızca 'jury') birebir aynı sözcük; fark şu: Türkiye'de jüri yarışmalarda vardır, İngiltere ve ABD'de ise mahkemede on iki sıradan vatandaş kararı verir. Kök Latince 'iurare' = yemin etmek; jüri, yeminli kişilerdir."
+    },
+    {
+      "lesson": 4,
+      "front": "fraud",
+      "back": "(noun) dolandırıcılık, sahtekârlık 🎭",
+      "example_sentence": "The accountant was charged with fraud after two million pounds disappeared.",
+      "mnemonic": "Türkçede akrabası yok; kökü Latince 'fraus' (aldatma). Kalıplarla öğrenin: 'credit card fraud', 'tax fraud'; dolandırıcı kişi 'fraudster', hatta 'He's a fraud' = 'O bir sahtekâr'."
+    },
+    {
+      "lesson": 4,
+      "front": "offense",
+      "back": "(noun) suç, gücenme ⚠️",
+      "example_sentence": "Driving without insurance is a serious offense in this country.",
+      "mnemonic": "Futboldaki 'ofansif' (hücum eden) aynı kök: Latince 'offendere' = çarpmak, saldırmak. Hukukta offense yasaya 'saldırı', yani suç; günlük dilde 'No offense!' = 'Alınma!' (İngiliz yazımı: offence)."
+    },
+    {
+      "lesson": 5,
+      "front": "penalty",
+      "back": "(noun) ceza, penaltı 🟥",
+      "example_sentence": "The maximum penalty for tax fraud has been raised to ten years.",
+      "mnemonic": "Futboldaki 'penaltı' doğrudan bu sözcük: kural ihlalinin cezası. Kök Latince 'poena' (ceza) — İngilizce 'pain' ve 'punish' de aynı aileden; 'death penalty' = idam cezası."
+    },
+    {
+      "lesson": 5,
+      "front": "appeal",
+      "back": "(noun) temyiz, cazibe 📣",
+      "example_sentence": "The defense filed an appeal the day after the sentence was announced.",
+      "mnemonic": "Türkçedeki 'seksapel' (sex appeal = cinsel çekicilik) aynı sözcük: appeal = çağrı, cazibe. Kök Latince 'appellare' (seslenmek); hukukta üst mahkemeye 'seslenmek' = temyiz, 'appeal against a verdict' = karara itiraz etmek."
+    },
+    {
+      "lesson": 5,
+      "front": "prosecute",
+      "back": "(verb) kovuşturmak, dava açmak ⚖️",
+      "example_sentence": "Shoplifters will be prosecuted, the sign at the entrance warned.",
+      "mnemonic": "Latince 'prosequi' = peşine düşmek ('sekans'taki 'sequi' kökü); Türkçe 'kovuşturmak' da 'kovmak'tan gelir — savcı (prosecutor) suçun peşine düşer. 'Persecute' (zulmetmek) ile karıştırmayın."
+    }
+  ],
+  "dialogue": {
+    "title": "The Verdict Is In",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "I was in court all day. The jury finally reached a verdict.",
+        "tr": "Bütün gün mahkemedeydim. Jüri sonunda kararını verdi."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Guilty, I hope? I was a witness, Tom. I saw those invoices.",
+        "tr": "Umarım suçlu? Ben tanıktım Tom, o faturaları kendi gözlerimle gördüm."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Not guilty of fraud. Just guilty of a minor offense.",
+        "tr": "Dolandırıcılıktan suçsuz. Sadece küçük bir suçtan suçlu bulundu."
+      },
+      {
+        "speaker": "Elif",
+        "en": "That's absurd. Everyone in the company knows what he did.",
+        "tr": "Saçmalık bu. Şirkette herkes ne yaptığını biliyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Knowing isn't proving. The trial ran three weeks and the evidence was thin.",
+        "tr": "Bilmek, kanıtlamak değil. Duruşma üç hafta sürdü, kanıtlar zayıftı."
+      },
+      {
+        "speaker": "Elif",
+        "en": "So what's the sentence? A fine and a lecture from the judge?",
+        "tr": "Peki cezası ne? Para cezası ve hâkimden bir nutuk mu?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "A suspended sentence and a penalty of forty thousand. His lawyer looked relieved.",
+        "tr": "Ertelenmiş hapis cezası ve kırk bin para cezası. Avukatı rahatlamış görünüyordu."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Forty thousand? He stole millions. I hope the prosecutors appeal.",
+        "tr": "Kırk bin mi? Adam milyonlar çaldı. Umarım savcılık temyize gider."
+      }
+    ]
+  }
+}

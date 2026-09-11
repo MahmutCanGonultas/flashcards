@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 48,
+    "level": "C1",
+    "title": "Science & Mind"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "cognition",
+      "back": "(noun) biliş, kavrama 🧠",
+      "example_sentence": "Sleep loss hits cognition first; by Friday I couldn't follow a simple email thread.",
+      "mnemonic": "Psikolojideki 'kognitif terapi' aynı Latince kökten gelir: cognoscere = bilmek, tanımak; Türkçede 'bilişsel' ile 'kognitif' eş anlamlıdır. İngilizce 'recognize' (tanımak) da aynı ailedendir."
+    },
+    {
+      "lesson": 1,
+      "front": "empirical",
+      "back": "(adjective) ampirik, deneye dayalı 🔬",
+      "example_sentence": "Nice theory, but where's the empirical evidence? Show me the trial data, not the slides.",
+      "mnemonic": "Türkçedeki 'ampirik' (ampirik veri, ampirik araştırma) Fransızca üzerinden aynı Yunanca kökten gelir: empeiría = deneyim. Masa başı teorinin zıddı, ölçülüp gözlenmiş olan."
+    },
+    {
+      "lesson": 1,
+      "front": "correlation",
+      "back": "(noun) korelasyon, bağıntı 📈",
+      "example_sentence": "There's a strong correlation between ice-cream sales and drownings, which proves nothing about ice cream.",
+      "mnemonic": "İstatistikteki 'korelasyon' birebir aynı kelime: co- (birlikte) + relation (ilişki). Bilimin en ünlü uyarısını ezberleyin: 'Correlation is not causation' — birlikte değişen iki şey, birinin diğerine yol açtığını kanıtlamaz."
+    },
+    {
+      "lesson": 2,
+      "front": "causation",
+      "back": "(noun) nedensellik 🔗",
+      "example_sentence": "Proving causation is the hard part; anyone can spot two lines rising together.",
+      "mnemonic": "İçindeki cause (neden) kelimesini 'because' (by cause = nedeniyle) sayesinde zaten biliyorsunuz; causation, neden-sonuç bağının kendisidir. Correlation ile hep çift olarak anılır: biri 'birlikte görülme', diğeri 'yol açma'."
+    },
+    {
+      "lesson": 2,
+      "front": "anomaly",
+      "back": "(noun) anomali, sapma ⚠️",
+      "example_sentence": "The sensor logged one anomaly at 3 a.m., and nobody has explained it since.",
+      "mnemonic": "Türkçedeki 'anomali' birebir aynı kelime: Yunanca an- (değil) + homalós (düz, eşit), yani düzgün kalıba uymayan şey. Bilimde bir anomali çoğu zaman hata değil, yeni bir keşfin kapısıdır."
+    },
+    {
+      "lesson": 2,
+      "front": "synthesis",
+      "back": "(noun) sentez 🧩",
+      "example_sentence": "Her final chapter is a genuine synthesis, not just three literature reviews stapled together.",
+      "mnemonic": "Türkçedeki 'sentez' (fotosentez, tez–antitez–sentez) aynı kelime: Yunanca syn- (birlikte) + thésis (koyma). Parçaları bir araya koyup yeni bir bütün çıkarmak; analysis (çözümleme) bunun tam tersidir."
+    },
+    {
+      "lesson": 3,
+      "front": "extrapolate",
+      "back": "(verb) veriden ötesini kestirmek 🔮",
+      "example_sentence": "You can't extrapolate from one good quarter to a decade of growth, however tempting.",
+      "mnemonic": "Matematikteki 'enterpolasyon / ekstrapolasyon' çiftinden tanıdık: inter- bilinen noktaların arasını doldurur, extra- (dışarı) ise çizgiyi verinin ötesine uzatır. Günlük dilde 'küçük örnekten büyük sonuç çıkarmak' anlamında, çoğu zaman uyarı tonuyla kullanılır."
+    },
+    {
+      "lesson": 3,
+      "front": "quantify",
+      "back": "(verb) sayısallaştırmak, ölçmek 🔢",
+      "example_sentence": "We all feel the office is noisier, but can anyone actually quantify it?",
+      "mnemonic": "Türkçedeki 'kantitatif' (nicel) ve 'kuantum' aynı Latince kökten: quantus = ne kadar. Quantify, bir şeye 'ne kadar?' sorusunun sayısal cevabını vermektir; 'hard to quantify' çok sık duyulan bir kalıptır."
+    },
+    {
+      "lesson": 3,
+      "front": "replicate",
+      "back": "(verb) tekrarlamak, kopyalamak 🔁",
+      "example_sentence": "Half the famous psychology findings failed to replicate when other labs tried them.",
+      "mnemonic": "Türkçedeki 'replika' (birebir kopya) ve biyolojideki 'DNA replikasyonu' aynı Latince kökten: re- (yeniden) + plicare (katlamak). Bilimde bir bulgunun değeri, başka bir laboratuvarın onu replicate edebilmesiyle ölçülür."
+    },
+    {
+      "lesson": 4,
+      "front": "rigorous",
+      "back": "(adjective) titiz, sıkı 📏",
+      "example_sentence": "The peer review was rigorous to the point of cruelty, and the paper improved.",
+      "mnemonic": "Latince rigor 'katılık, sertlik' demek; dizilerden bildiğiniz 'rigor mortis' (ölüm katılığı) ve mühendislikteki 'rijit' aynı aileden. Rigorous bir yöntem, kuralları esnetilmeyen, sıkı yöntemdir."
+    },
+    {
+      "lesson": 4,
+      "front": "intuition",
+      "back": "(noun) sezgi 💡",
+      "example_sentence": "My intuition said hire her on the spot; the spreadsheet took a week to agree.",
+      "mnemonic": "Latince in- (içe) + tuērī (bakmak): kanıt toplamadan 'içine bakıp' görmek. Bilimsel yazıda çok sık geçen 'counter-intuitive' (sezgiye aykırı) kalıbını da buradan tanıyın."
+    },
+    {
+      "lesson": 4,
+      "front": "perception",
+      "back": "(noun) algı 👁️",
+      "example_sentence": "Public perception of nuclear power shifted long before the safety numbers did.",
+      "mnemonic": "Sonundaki -ception, Türkçede bildiğiniz 'resepsiyon' ile aynı: Latince capere = almak. Per-ception, dünyayı duyularla 'alıp' zihne yerleştirmek; 'algı yönetimi' İngilizcede tam olarak perception management."
+    },
+    {
+      "lesson": 5,
+      "front": "susceptible",
+      "back": "(adjective) yatkın, -e açık 🤧",
+      "example_sentence": "Tired minds are far more susceptible to flattery, which every good salesman knows.",
+      "mnemonic": "Yine capere (almak) ailesi: sus-ceptible = 'altına alabilen', etkiyi içine kabul eden; 'resepsiyon' ve 'kapasite' de aynı kökten. Hep 'susceptible to' + isim kalıbıyla gelir: susceptible to infection, to flattery, to pressure."
+    },
+    {
+      "lesson": 5,
+      "front": "unprecedented",
+      "back": "(adjective) görülmemiş, emsalsiz 🆕",
+      "example_sentence": "Three resignations in a week is unprecedented, even by this government's standards.",
+      "mnemonic": "İçindeki precedent = emsal, daha önce olmuş örnek (Latince prae- 'önce' + cedere 'gitmek'); un- ile 'öncesi olmayan'. Pandemi döneminin 'in these unprecedented times' klişesi o kadar sık kullanıldı ki şaka konusu oldu."
+    },
+    {
+      "lesson": 5,
+      "front": "catalyst",
+      "back": "(noun) katalizör, tetikleyici ⚗️",
+      "example_sentence": "The leaked memo wasn't the cause of the strike, just the catalyst.",
+      "mnemonic": "Kimyadaki 'katalizör' ve arabalardaki 'katalitik konvertör' aynı kelime: Yunanca katá + lýein (çözmek). Tepkimeye kendisi girmeden onu hızlandıran madde; mecazda değişimi yapmayan ama başlatan kişi ya da olay."
+    }
+  ],
+  "dialogue": {
+    "title": "Correlation Over Espresso",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Your paper says coffee drinkers live longer. I'm ordering a third espresso.",
+        "tr": "Senin gazetende kahve içenler daha uzun yaşıyormuş. Üçüncü espressoyu söylüyorum."
+      },
+      {
+        "speaker": "Tom",
+        "en": "That's a correlation, Elif, not causation. Rich people drink more coffee and see doctors.",
+        "tr": "O korelasyon, Elif, nedensellik değil. Zenginler hem daha çok kahve içiyor hem doktora gidiyor."
+      },
+      {
+        "speaker": "Elif",
+        "en": "My intuition says the espresso is doing something. Possibly keeping me awake through your lecture.",
+        "tr": "Sezgim espressonun bir işe yaradığını söylüyor. Muhtemelen vaazın boyunca beni uyanık tutuyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Intuition is what rigorous studies exist to check. Half of them don't even replicate.",
+        "tr": "Sezgi, titiz çalışmaların denetlemek için var olduğu şeyin ta kendisi. Üstelik yarısı tekrar edilemiyor bile."
+      },
+      {
+        "speaker": "Elif",
+        "en": "So the empirical position is: nobody knows anything, but say it with confidence.",
+        "tr": "Yani ampirik tutum şu: kimse hiçbir şey bilmiyor ama kendinden emin söylüyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Roughly. One anomaly in the data and my editor wants an unprecedented breakthrough by Tuesday.",
+        "tr": "Aşağı yukarı. Veride tek bir anomali görsün, editörüm salıya kadar eşi görülmemiş bir buluş istiyor."
+      },
+      {
+        "speaker": "Elif",
+        "en": "We do the same with sales. One good quarter and everyone extrapolates to world domination.",
+        "tr": "Biz de satışta aynısını yapıyoruz. Tek bir iyi çeyrek, herkes hemen dünya hâkimiyeti hesapları yapıyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "We're both susceptible, then. Order the espresso; call it a catalyst for dessert.",
+        "tr": "İkimiz de yatkınız o zaman. Söyle espressoyu; tatlının katalizörü olsun."
+      }
+    ]
+  }
+}

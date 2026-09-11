@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 50,
+    "level": "C1",
+    "title": "Judgement & Nuance"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "discern",
+      "back": "(verb) ayırt etmek, fark etmek 🔍",
+      "example_sentence": "It takes years to discern which complaints are real and which are just noise.",
+      "mnemonic": "Latince cernere 'elemek, ayırmak' kökünden: dis- (ayrı) + cernere. Aynı fiilin sıfatı certus 'kesin' Türkçedeki 'sertifika'yı verir; discern etmek, karışıklığı eleyip kesin olanı görmektir."
+    },
+    {
+      "lesson": 1,
+      "front": "deliberate",
+      "back": "(verb) enine boyuna düşünmek ⚖️",
+      "example_sentence": "The jury deliberated for three days before returning a verdict nobody had expected.",
+      "mnemonic": "Latince libra 'terazi' kökünden: de-librare, teraziye koyup tartmak. Aynı libra, Terazi burcunun adı (Libra) ve yarım kiloluk 'libre' ölçüsüdür; sıfat olarak (dı-LI-bırıt okunur) 'kasıtlı' anlamına da gelir."
+    },
+    {
+      "lesson": 1,
+      "front": "ambivalent",
+      "back": "(adjective) ikircikli, kararsız 🤷",
+      "example_sentence": "I'm deeply ambivalent about the promotion: more money, yes, but goodbye to my weekends.",
+      "mnemonic": "Psikolojideki 'ambivalans' terimi Türkçede de kullanılır: ambi- (her iki) + valere (güçlü olmak), yani iki zıt duygunun aynı anda aynı güçte olması. Kararsızlıktan farkı, seçememek değil, ikisini birden hissetmektir."
+    },
+    {
+      "lesson": 2,
+      "front": "conscientious",
+      "back": "(adjective) titiz, sorumluluk sahibi ✅",
+      "example_sentence": "She's the most conscientious editor I know; not a single comma slips past her.",
+      "mnemonic": "'Conscientious objector' Türkçede 'vicdani retçi'dir: kök, Latince conscientia = vicdan. Conscientious kişi, işini vicdanı izliyormuş gibi titizlikle yapar; 'conscientious student / worker' en doğal kullanımlarıdır."
+    },
+    {
+      "lesson": 2,
+      "front": "impartial",
+      "back": "(adjective) tarafsız 🧑‍⚖️",
+      "example_sentence": "An impartial referee would have sent both of them off, frankly.",
+      "mnemonic": "Latince pars 'parça, taraf': Türkçedeki 'parti' (siyasi taraf) ve 'parsel' aynı kökten. Partial = taraf tutan; im-partial = hiçbir tarafa ait olmayan, hakem gibi tarafsız."
+    },
+    {
+      "lesson": 2,
+      "front": "speculative",
+      "back": "(adjective) tahmine dayalı, spekülatif 🔮",
+      "example_sentence": "Any talk of a merger is purely speculative at this stage, so don't quote me.",
+      "mnemonic": "Türkçedeki 'spekülasyon' ve 'spekülatör' aynı kökten: Latince speculari 'gözetlemek', specula 'gözetleme kulesi'. Speculative olan, kanıta değil, uzaktan bakıp tahmin etmeye dayanır."
+    },
+    {
+      "lesson": 3,
+      "front": "dubious",
+      "back": "(adjective) şüpheli, kuşkulu 🤨",
+      "example_sentence": "Those sales figures look dubious to me; nobody triples revenue in a single quarter.",
+      "mnemonic": "Latince dubius 'iki yöne sallanan', duo (iki) kökünden; 'düet', 'dubleks', 'dublör' de aynı duo'dan gelir. İki ihtimal arasında kalmış zihnin şüphesi: dubious claim, dubious honour (pek de gurur duyulmayacak 'şeref')."
+    },
+    {
+      "lesson": 3,
+      "front": "unequivocal",
+      "back": "(adjective) kesin, tartışmasız 🎯",
+      "example_sentence": "The board's answer was unequivocal: no bonuses this year, and no discussion either.",
+      "mnemonic": "Latince aequus (eşit) + vox (ses): equivocal, iki eşit sesle konuşan, muğlak. Türkçedeki 'ekvator' (Dünya'yı eşit bölen) ve 'vokal' aynı köklerden; un-equivocal ise tek sesli, tartışmaya yer bırakmayan."
+    },
+    {
+      "lesson": 3,
+      "front": "tenuous",
+      "back": "(adjective) zayıf, dayanaksız 🕸️",
+      "example_sentence": "The link between the two cases is tenuous at best, and the prosecution knows it.",
+      "mnemonic": "Latince tenuis 'ince, gerilip incelmiş': aynı eski 'germek' kökü Türkçedeki 'tansiyon'da (gerilim) da vardır. Tenuous bir bağ, kopmak üzere olan ince bir ip gibidir; 'tenuous link / connection / grip' en sık eşdizimleridir."
+    },
+    {
+      "lesson": 4,
+      "front": "salient",
+      "back": "(adjective) göze çarpan, en önemli 📌",
+      "example_sentence": "Let me pull out the salient points, since nobody's going to read forty pages.",
+      "mnemonic": "Latince salire 'sıçramak': salient olan, gözün önüne sıçrayan şeydir. Türkçedeki 'salto' (sıçrayarak atılan takla) aynı kökten; 'the salient points' = öne çıkan noktalar."
+    },
+    {
+      "lesson": 4,
+      "front": "prudent",
+      "back": "(adjective) ihtiyatlı, sağduyulu 🧭",
+      "example_sentence": "It would be prudent to put six months' rent aside before you quit.",
+      "mnemonic": "Latince providens 'ileriyi gören' sözcüğünün kısalmış hâli: pro- (ön) + videre (görmek). Türkçedeki 'vizyon', 'video' ve bankacılıktaki 'provizyon' aynı kökten; prudent kişi sonrasını görüp ona göre davranır."
+    },
+    {
+      "lesson": 4,
+      "front": "reckless",
+      "back": "(adjective) pervasız, umursamaz ⚠️",
+      "example_sentence": "Overtaking on that bend wasn't brave, it was reckless, and you know it.",
+      "mnemonic": "Eski İngilizce reck 'aldırmak, umursamak' + -less: sonuçlara aldırmayan. Kökten değil sesten bir hatırlatıcı: reckless sürüşün sonu wreck (enkaz) olur; 'reckless driving' trafik hukukunun sabit terimidir."
+    },
+    {
+      "lesson": 5,
+      "front": "discreet",
+      "back": "(adjective) ketum, göze batmayan 🤫",
+      "example_sentence": "Be discreet about the offer; half the office would kill for that job.",
+      "mnemonic": "Discern ile aynı kökten (Latince discernere → discretus 'ayırt edilmiş'): neyi kime söyleyeceğini ayırt edebilen, ketum. Yazımına dikkat: discreet = ketum, discrete = ayrık (matematikteki 'diskret')."
+    },
+    {
+      "lesson": 5,
+      "front": "astute",
+      "back": "(adjective) keskin zekâlı, uyanık 🦊",
+      "example_sentence": "It was an astute move to buy the flat before the metro line was announced.",
+      "mnemonic": "Latince astus 'kurnazlık'tan gelir; Türkçede yakın bir akrabası yok. Kullanım notu: 'kurnaz' hafif olumsuzdur, astute ise övgüdür, durumu herkesten önce okuyup doğru hamleyi yapan kişi için; 'an astute observer / investor / move' en doğal eşdizimleridir."
+    },
+    {
+      "lesson": 5,
+      "front": "magnanimous",
+      "back": "(adjective) yüce gönüllü, bağışlayıcı 🕊️",
+      "example_sentence": "Having won by a landslide, she was magnanimous enough to praise her rival's campaign.",
+      "mnemonic": "Latince magnus 'büyük' (Magnum, Magna Carta) + animus 'ruh, can' ('animasyon' = cansız resme can verme): büyük ruhlu. Kazandığında rakibini ezmeyen, gücü varken bağışlayan kişi için kullanılır; 'magnanimous in victory' klasik kalıptır."
+    }
+  ],
+  "dialogue": {
+    "title": "A Small, Discreet Cheque",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Deniz wants me to put money into his startup. I've been deliberating all week.",
+        "tr": "Deniz girişimine para koymamı istiyor. Bir haftadır düşünüp duruyorum."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Still ambivalent after a week? Elif, that is an answer in itself.",
+        "tr": "Bir hafta sonra hâlâ ikircikli misin? Elif, bu başlı başına bir cevap."
+      },
+      {
+        "speaker": "Elif",
+        "en": "The plan is speculative and the numbers are tenuous, but Deniz himself is astute.",
+        "tr": "Plan tamamen tahmine dayalı, rakamlar çürük; ama Deniz'in kendisi gerçekten zeki."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Astute people write dubious spreadsheets too. I'm speaking as an impartial observer, obviously.",
+        "tr": "Zeki insanlar da şüpheli tablolar hazırlar. Tarafsız bir gözlemci olarak söylüyorum tabii."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Impartial? You've disliked him since he corrected your Turkish at my birthday.",
+        "tr": "Tarafsız mı? Doğum günümde Türkçeni düzelttiğinden beri ondan hazzetmiyorsun."
+      },
+      {
+        "speaker": "Tom",
+        "en": "I was magnanimous enough to forgive him; I'm not reckless enough to bankroll him.",
+        "tr": "Onu affedecek kadar yüce gönüllüyüm; ona para yatıracak kadar pervasız değilim."
+      },
+      {
+        "speaker": "Elif",
+        "en": "So the prudent move is a small, discreet cheque and no board seat.",
+        "tr": "Yani akıllıca olan, ufak ve sessiz bir çek yazmak, yönetim kurulundan da uzak durmak."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Unequivocally yes. And since I'm so wise tonight, you're getting the bill.",
+        "tr": "Kesinlikle evet. Bu akşam bu kadar bilge olduğuma göre hesap da senden."
+      }
+    ]
+  }
+}

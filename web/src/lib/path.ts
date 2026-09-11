@@ -1,6 +1,11 @@
 import type { Card, Dialogue, UnitRecord } from "../types";
 
-export type LessonState = "done" | "current" | "locked";
+/**
+ * "open" is a lesson in a unit that was passed without finishing every lesson
+ * — placed past, or tested out of. It can be studied any time but it never
+ * holds the path up, so "current" moves on to the first unit still owed.
+ */
+export type LessonState = "done" | "current" | "open" | "locked";
 
 export type Lesson = {
   number: number;
@@ -118,6 +123,7 @@ export function buildPath(cards: Card[], units: UnitRecord[] = []): Unit[] {
       else byLesson.set(card.lesson!, [card]);
     }
     const unitOpen = unitStates[i] !== "locked";
+    const unitPassed = unitStates[i] === "passed";
 
     const lessons: Lesson[] = [...byLesson.keys()]
       .sort((a, b) => a - b)
@@ -126,6 +132,7 @@ export function buildPath(cards: Card[], units: UnitRecord[] = []): Unit[] {
         const learned = lessonCards.filter(hasStarted).length;
         let state: LessonState = "locked";
         if (learned === lessonCards.length) state = "done";
+        else if (unitPassed) state = "open";
         else if (unitOpen && !currentFound) {
           state = "current";
           currentFound = true;
@@ -148,7 +155,7 @@ export function buildPath(cards: Card[], units: UnitRecord[] = []): Unit[] {
       dialogue: bucket.dialogue,
       lessons,
       state: unitStates[i],
-      lessonsDone: lessons.every((lesson) => lesson.state === "done"),
+      lessonsDone: unitPassed || lessons.every((lesson) => lesson.state === "done"),
       bestScore: bucket.record?.best_score ?? null,
     };
   });

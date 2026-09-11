@@ -30,7 +30,7 @@ import {
   setSpeechMuted,
   speechSupported,
 } from "../lib/speech";
-import { playCorrect, playIncorrect } from "../lib/sound";
+import { playCorrect, playIncorrect, playLessonComplete } from "../lib/sound";
 import Button from "../components/Button";
 import LinkButton from "../components/LinkButton";
 import EmptyState from "../components/EmptyState";
@@ -62,6 +62,21 @@ const TRANSITION_GUARD_MS = 180;
 /** From this attempt on, a repeated question narrows to two options. */
 const NARROW_FROM_ATTEMPT = 2;
 
+/**
+ * Typed answers are judged on the letters, not the typing: case, stray
+ * spaces, apostrophe style and trailing punctuation are all forgiven.
+ */
+function spellingMatches(typed: string, expected: string): boolean {
+  const norm = (value: string) =>
+    value
+      .toLowerCase()
+      .replace(/[\u2019\u2018]/g, "'")
+      .replace(/[.!?,;:]+$/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  return norm(typed) === norm(expected);
+}
+
 function describeError(error: unknown): string {
   return error instanceof ApiError
     ? error.message
@@ -86,6 +101,9 @@ type StudySessionProps = {
   cards: Card[];
   mode: SessionMode;
   title: string;
+  /** CEFR level of the lesson's unit; decides which extra rounds a lesson gets. */
+  level?: string | null;
+  lessonNumber?: number;
   /** Undefined while the deck's full card list is still loading, or if it failed. */
   deckCardCount?: number;
   /** The deck's full card list, used to draw multiple-choice distractors from. */
@@ -112,6 +130,8 @@ function StudySession({
   cards,
   mode,
   title,
+  level = null,
+  lessonNumber = 0,
   deckCardCount,
   deckCards,
   deckCardsError,
@@ -126,8 +146,12 @@ function StudySession({
   // Append-only. Never reorder and never remove: every other operation can
   // shift an index that has already been consumed.
   const [plan, setPlan] = useState<Step[]>(() =>
-    mode === "lesson" ? buildLessonPlan(cards) : buildReviewPlan(cards),
+    mode === "lesson"
+      ? buildLessonPlan(cards, level, lessonNumber)
+      : buildReviewPlan(cards),
   );
+  // Only the typed round uses this; the multiple-choice rounds use `answer`.
+  const [typedRight, setTypedRight] = useState<boolean | null>(null);
   const [stepIndex, setStepIndex] = useState(0);
   const [answer, setAnswer] = useState<number | null>(null);
   const [outcomes, setOutcomes] = useState<Record<number, "right" | "wrong">>(
@@ -156,7 +180,8 @@ function StudySession({
   // Reshuffles exactly once per step — a repeated question gets fresh options,
   // but re-rendering the same step never moves the answers under a tapping thumb.
   const options = useMemo<QuizOption[] | null>(() => {
-    if (!step || step.kind !== "quiz" || !stepCard) return null;
+    if (!step || step.kind !== "quiz" || !stepCard || step.format === "type")
+      return null;
     const mates = step.mateIds
       .map((id) => byId.get(id))
       .filter((card): card is Card => card !== undefined);
@@ -175,7 +200,12 @@ function StudySession({
   }, [step?.key, stepCard, deckCardPool, byId]);
 
   const answered = answer !== null;
-  const answeredRight = answered && options ? options[answer].isCorrect : null;
+  const answeredRight =
+    step?.kind === "quiz" && step.format === "type"
+      ? typedRight
+      : answered && options
+        ? options[answer].isCorrect
+        : null;
 
   const reviewMutation = useMutation({
     mutationFn: ({ cardId, quality }: ReviewInput) =>
@@ -224,31 +254,27 @@ function StudySession({
     stepEnteredAtRef.current = Date.now();
     if (!step || step.kind === "listen") return;
     const card = byId.get(step.cardId);
-    // The sentence question would give its own answer away if it spoke.
-    if (card && !(step.kind === "quiz" && step.format === "context")) {
-      speakAuto(card.front);
-    }
+    // Hearing the word is the whole point of "meet" and "listen"; for the
+    // rounds that ask for the English, it would be the answer.
+    const silent =
+      step.kind === "quiz" &&
+      ["context", "reverse", "type"].includes(step.format);
+    if (card && !silent) speakAuto(card.front);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step?.key]);
 
   const advance = useCallback(() => {
     if (Date.now() - stepEnteredAtRef.current < TRANSITION_GUARD_MS) return;
     setAnswer(null);
+    setTypedRight(null);
     setStepIndex((index) => index + 1);
   }, []);
 
-  const chooseOption = useCallback(
-    (index: number) => {
-      if (
-        !step ||
-        step.kind !== "quiz" ||
-        !stepCard ||
-        !options ||
-        answer !== null
-      )
-        return;
-      const isCorrect = options[index].isCorrect;
-      setAnswer(index);
+  // Everything that happens once an answer is in, whichever way it arrived:
+  // sounds, the single SM-2 write, the ledger, and the come-back-later repeat.
+  const settleAnswer = useCallback(
+    (isCorrect: boolean) => {
+      if (!step || step.kind !== "quiz" || !stepCard) return;
 
       if (isCorrect) playCorrect();
       else playIncorrect();
@@ -278,7 +304,28 @@ function StudySession({
 
       if (!isCorrect) speakAuto(stepCard.front);
     },
-    [step, stepCard, options, answer, mode, mutateReview, markStudied],
+    [step, stepCard, mode, mutateReview, markStudied],
+  );
+
+  const chooseOption = useCallback(
+    (index: number) => {
+      if (!options || answer !== null) return;
+      setAnswer(index);
+      settleAnswer(options[index].isCorrect);
+    },
+    [options, answer, settleAnswer],
+  );
+
+  const submitTyped = useCallback(
+    (text: string) => {
+      if (!stepCard || typedRight !== null) return;
+      const isCorrect = spellingMatches(text, stepCard.front);
+      setTypedRight(isCorrect);
+      // Typing has no option index; the sentinel marks "answered".
+      setAnswer(0);
+      settleAnswer(isCorrect);
+    },
+    [stepCard, typedRight, settleAnswer],
   );
 
   const stages = useMemo<RailStage[]>(() => {
@@ -406,7 +453,11 @@ function StudySession({
         newWords={queue.filter((card) => !hasStarted(card)).length}
         streak={recordStudyDay.data?.streak ?? 0}
         failedReviews={failedReviews}
-        onDone={() => navigate(`/decks/${deckId}`)}
+        onDone={() =>
+          navigate(`/decks/${deckId}`, {
+            state: mode === "lesson" ? { completedLesson: lessonNumber } : null,
+          })
+        }
       />
     );
   }
@@ -430,8 +481,14 @@ function StudySession({
     }
     if (step.kind === "listen") return "Sound check";
     if (step.attempt > 0) return "One more time";
-    if (step.format === "context") return "Use it in a sentence";
-    return mode === "lesson" ? "Your turn" : title;
+    const byFormat: Record<QuizFormat, string> = {
+      meaning: mode === "lesson" ? "Your turn" : title,
+      context: "Use it in a sentence",
+      listen: "Listen closely",
+      reverse: "Say it in English",
+      type: "Write it",
+    };
+    return byFormat[step.format];
   })();
 
   return (
@@ -506,6 +563,7 @@ function StudySession({
             answer={answer}
             answeredRight={answeredRight}
             onChoose={chooseOption}
+            onSubmitTyped={submitTyped}
             onContinue={advance}
           />
         ) : (
@@ -554,6 +612,7 @@ function QuestionStep({
   answer,
   answeredRight,
   onChoose,
+  onSubmitTyped,
   onContinue,
 }: {
   card: Card;
@@ -562,11 +621,13 @@ function QuestionStep({
   answer: number | null;
   answeredRight: boolean | null;
   onChoose: (index: number) => void;
+  onSubmitTyped: (text: string) => void;
   onContinue: () => void;
 }) {
-  const { pos, text: meaning } = parseBack(card.back);
+  const { pos, text: meaning, emoji } = parseBack(card.back);
   const isMeet = step.kind === "meet";
   const format: QuizFormat | null = step.kind === "quiz" ? step.format : null;
+  const attempt = step.kind === "quiz" ? step.attempt : 0;
   const blanked =
     format === "context" && card.example_sentence
       ? blankOut(card.example_sentence, card.front)
@@ -588,6 +649,24 @@ function QuestionStep({
               </span>
             ))}
           </p>
+        ) : format === "listen" ? (
+          <ListenHero word={card.front} revealed={answer !== null} />
+        ) : format === "reverse" || format === "type" ? (
+          <>
+            {emoji && (
+              <p className="text-4xl leading-none" aria-hidden="true">
+                {emoji}
+              </p>
+            )}
+            <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-stone-800 break-words sm:text-4xl">
+              {meaning}
+            </p>
+            {pos && (
+              <span className="mt-3 inline-block rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-violet-600 ring-1 ring-violet-200">
+                {pos}
+              </span>
+            )}
+          </>
         ) : (
           <>
             <p className="text-3xl font-extrabold leading-snug tracking-tight text-stone-800 break-words sm:text-5xl">
@@ -616,12 +695,24 @@ function QuestionStep({
             </Button>
           </BottomBar>
         </>
+      ) : format === "type" ? (
+        <TypeAnswer
+          key={step.key}
+          expected={card.front}
+          attempt={attempt}
+          answered={answer !== null}
+          onSubmit={onSubmitTyped}
+        />
       ) : options ? (
         <>
           <p className="mt-4 text-center text-sm font-semibold text-stone-500">
             {format === "context"
               ? "Which word is missing?"
-              : "What does it mean?"}
+              : format === "listen"
+                ? "Which word did you hear?"
+                : format === "reverse"
+                  ? "Which word is this?"
+                  : "What does it mean?"}
           </p>
           <QuizOptions
             options={options}
@@ -700,6 +791,125 @@ function QuestionStep({
   );
 }
 
+/**
+ * The listening round's hero: no text, just the sound. The word appears in
+ * the same slot the instant an answer is in, so what was heard and how it's
+ * spelled land together.
+ */
+function ListenHero({ word, revealed }: { word: string; revealed: boolean }) {
+  const [playing, setPlaying] = useState(false);
+  const play = (rate?: number) =>
+    void speak(word, {
+      rate,
+      onStart: () => setPlaying(true),
+      onEnd: () => setPlaying(false),
+    });
+
+  if (revealed) {
+    return (
+      <p className="text-3xl font-extrabold leading-snug tracking-tight text-stone-800 break-words sm:text-5xl animate-[pop-in_200ms_ease-out]">
+        {word}
+      </p>
+    );
+  }
+
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <button
+        type="button"
+        onClick={() => play()}
+        aria-label="Play the word"
+        className={`flex h-20 w-20 items-center justify-center rounded-full transition ${
+          playing
+            ? "bg-violet-600 text-white scale-105"
+            : "bg-violet-100 text-violet-600 hover:bg-violet-200"
+        }`}
+      >
+        <SpeakerIcon className={`h-9 w-9 ${playing ? "animate-pulse" : ""}`} />
+      </button>
+      <button
+        type="button"
+        onClick={() => play(0.65)}
+        className="text-xs font-bold text-violet-500 hover:text-violet-700"
+      >
+        🐢 Slower
+      </button>
+    </div>
+  );
+}
+
+/**
+ * The production round: write the English from the Turkish. Judged on the
+ * letters only (see spellingMatches). After a miss the word comes back with
+ * its first letter shown, then its shape, so the repeat always ends.
+ */
+function TypeAnswer({
+  expected,
+  attempt,
+  answered,
+  onSubmit,
+}: {
+  expected: string;
+  attempt: number;
+  answered: boolean;
+  onSubmit: (text: string) => void;
+}) {
+  const [text, setText] = useState("");
+  const hint =
+    attempt >= 2
+      ? expected
+          .replace(/[a-z]/gi, (ch, i) => (i === 0 ? ch : "_"))
+          .replace(/_/g, " _")
+      : attempt === 1
+        ? `${expected[0]}…`
+        : null;
+
+  return (
+    <form
+      className="mt-4"
+      onSubmit={(event) => {
+        event.preventDefault();
+        if (text.trim()) onSubmit(text);
+      }}
+    >
+      <p className="text-center text-sm font-semibold text-stone-500">
+        Write it in English
+      </p>
+      {hint && (
+        <p className="mt-1 text-center font-mono text-sm tracking-widest text-violet-500">
+          {hint}
+        </p>
+      )}
+      <input
+        type="text"
+        value={text}
+        onChange={(event) => setText(event.target.value)}
+        disabled={answered}
+        autoFocus
+        autoCapitalize="none"
+        autoCorrect="off"
+        autoComplete="off"
+        spellCheck={false}
+        enterKeyHint="done"
+        aria-label="Your answer"
+        placeholder="type here"
+        className="mt-3 w-full rounded-2xl border-2 border-stone-200 bg-white px-4 py-4 text-center text-2xl font-extrabold text-stone-800 outline-none transition placeholder:font-semibold placeholder:text-stone-300 focus:border-violet-400 focus:ring-4 focus:ring-violet-100 disabled:bg-stone-50"
+      />
+      {!answered && (
+        <Button
+          type="submit"
+          size="lg"
+          fullWidth
+          className="mt-3"
+          disabled={!text.trim()}
+        >
+          Check
+        </Button>
+      )}
+    </form>
+  );
+}
+
 /** The fixed slot every forward button lives in, so it never moves between steps. */
 function BottomBar({ children }: { children: React.ReactNode }) {
   return (
@@ -730,6 +940,11 @@ function LessonSummary({
   failedReviews: number;
   onDone: () => void;
 }) {
+  // One fanfare, when the summary first appears.
+  useEffect(() => {
+    playLessonComplete();
+  }, []);
+
   const firstTimeRight = queue.filter(
     (card) => outcomes[card.id] === "right",
   ).length;
@@ -910,9 +1125,13 @@ function Study() {
       }
 
       if (lessonNumber !== null) {
-        const lesson = buildPath(cardsQuery.data, unitsQuery.data ?? [])
-          .flatMap((unit) => unit.lessons)
-          .find((candidate) => candidate.number === lessonNumber);
+        const path = buildPath(cardsQuery.data, unitsQuery.data ?? []);
+        const unit = path.find((candidate) =>
+          candidate.lessons.some((lesson) => lesson.number === lessonNumber),
+        );
+        const lesson = unit?.lessons.find(
+          (candidate) => candidate.number === lessonNumber,
+        );
 
         if (!lesson) {
           return (
@@ -952,6 +1171,8 @@ function Study() {
             cards={[...lesson.cards].sort((a, b) => a.id - b.id)}
             mode="lesson"
             title={`Lesson ${lessonNumber}`}
+            level={unit?.level ?? null}
+            lessonNumber={lessonNumber}
             deckCardCount={cardsQuery.data.length}
             deckCards={cardsQuery.data}
             deckCardsError={cardsQuery.error}

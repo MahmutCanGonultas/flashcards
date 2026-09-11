@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 20,
+    "level": "A2",
+    "title": "Nature & Seasons"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "spring",
+      "back": "(noun) ilkbahar, bahar 🌸",
+      "example_sentence": "We are going to plant flowers this spring.",
+      "mnemonic": "'Bahar rulosu' İngilizcede 'spring roll'dur. Fiil olarak 'spring' = fırlamak, sıçramak; mevsimin adı bitkilerin topraktan 'fırladığı' zaman anlamından gelir."
+    },
+    {
+      "lesson": 1,
+      "front": "summer",
+      "back": "(noun) yaz 🌞",
+      "example_sentence": "We swim in the sea every summer.",
+      "mnemonic": "Türkçede kök akrabası yok; Bryan Adams'ın 'Summer of '69' şarkısını ve üniversitelerin 'summer school'unu (yaz okulu) hatırla. En sık kalıp: 'summer holiday' = yaz tatili."
+    },
+    {
+      "lesson": 1,
+      "front": "autumn",
+      "back": "(noun) sonbahar 🍂",
+      "example_sentence": "The leaves turn yellow and red in autumn.",
+      "mnemonic": "Fransızca 'automne' ile aynı Latince kökten (autumnus) gelir; sondaki 'n' okunmaz: /ôtım/. Amerikalılar aynı mevsime, yapraklar düştüğü için 'fall' der."
+    },
+    {
+      "lesson": 2,
+      "front": "winter",
+      "back": "(noun) kış ❄️",
+      "example_sentence": "It snows a lot here in winter.",
+      "mnemonic": "Game of Thrones'un ünlü repliği 'Winter is coming' (Kış geliyor) bu kelimeyi herkese ezberletti. 'Winter sports' = kış sporları, 'winter coat' = kışlık mont."
+    },
+    {
+      "lesson": 2,
+      "front": "season",
+      "back": "(noun) mevsim, sezon 🗓️",
+      "example_sentence": "Autumn is my favourite season of the year.",
+      "mnemonic": "Türkçe 'sezon' aynı kelimenin Fransızcadan (saison) gelmiş hali; ikisi de Latince 'satio' (ekim zamanı) kökünden. Dizilerdeki '1. sezon' = 'season 1'; mevsim anlamı da aynı kelime."
+    },
+    {
+      "lesson": 2,
+      "front": "river",
+      "back": "(noun) nehir, ırmak 🏞️",
+      "example_sentence": "We walked along the river after lunch.",
+      "mnemonic": "Antalya kıyılarına 'Türk Rivierası' denir: 'Riviera' ve 'river' aynı Latince 'ripa' (kıyı) kökünden gelir. Yiruma'nın ünlü piyano parçası 'River Flows in You'yu da hatırla."
+    },
+    {
+      "lesson": 3,
+      "front": "lake",
+      "back": "(noun) göl 🛶",
+      "example_sentence": "The water in the lake is very cold.",
+      "mnemonic": "Çaykovski'nin balesi 'Kuğu Gölü' İngilizcede 'Swan Lake'. Dikkat: İngilizcede 'Lake' isimden önce gelir: Van Gölü = Lake Van."
+    },
+    {
+      "lesson": 3,
+      "front": "forest",
+      "back": "(noun) orman 🌲",
+      "example_sentence": "We got lost in the forest last Sunday.",
+      "mnemonic": "Robin Hood'un saklandığı 'Sherwood Forest' ve 'Forrest Gump' filmi (isimde çift 'r' var) kelimeyi taşır. Türkçedeki 'orman' ile bağ yok; 'get lost in the forest' = ormanda kaybolmak."
+    },
+    {
+      "lesson": 3,
+      "front": "island",
+      "back": "(noun) ada 🏝️",
+      "example_sentence": "We took a boat to the small island.",
+      "mnemonic": "Sondaki 's' okunmaz: /aylınd/. Bu 's' sonradan, Latince 'insula' (ada) kökenli Fransızca 'isle' etkisiyle eklendi; Türkçe 'izole' de aynı 'insula'dan gelir: izole = adaya çevrilmiş."
+    },
+    {
+      "lesson": 4,
+      "front": "beach",
+      "back": "(noun) plaj, kumsal 🏖️",
+      "example_sentence": "The children are playing on the beach now.",
+      "mnemonic": "Çeşme'deki 'beach club'lar ve 'plaj voleybolu' = 'beach volleyball' kelimeyi zaten kullandırıyor. Uzun 'ii' ile söyle: /biiç/; kısa okursan kaba bir kelimeye dönüşür."
+    },
+    {
+      "lesson": 4,
+      "front": "warm",
+      "back": "(adjective) ılık, sıcak 🌤️",
+      "example_sentence": "It's warm today, so wear a T-shirt.",
+      "mnemonic": "'Küresel ısınma' = 'global warming'; sporda 'warm-up' = ısınma. 'Warm', 'hot'tan yumuşaktır: ılık ile sıcak arası, hoş bir sıcaklık."
+    },
+    {
+      "lesson": 4,
+      "front": "cool",
+      "back": "(adjective) serin, havalı 🌬️",
+      "example_sentence": "Take a jacket because the evenings are cool.",
+      "mnemonic": "Türkçe günlük dilde 'çok cool' (havalı) diye zaten kullanılıyor; hava için anlamı 'serin'. 'Cold' (soğuk) ile aynı kökten, ama daha hafif: serin, soğuk değil."
+    },
+    {
+      "lesson": 5,
+      "front": "dry",
+      "back": "(adjective) kuru 🏜️",
+      "example_sentence": "It was a very dry summer this year.",
+      "mnemonic": "'Kuru temizleme' dükkânlarının tabelasındaki 'Dry Cleaning' bu kelime. 'Hair dryer' = saç kurutma makinesi; 'dry' hem havayı hem çamaşırı anlatır."
+    },
+    {
+      "lesson": 5,
+      "front": "wet",
+      "back": "(adjective) ıslak 💧",
+      "example_sentence": "My shoes are wet because of the rain.",
+      "mnemonic": "Islak mendil paketlerinde yazan 'wet wipes' bu kelime. 'Water' (su) ile aynı eski kökten gelir; 'wet paint' = 'dikkat, boya ıslak' uyarısı."
+    },
+    {
+      "lesson": 5,
+      "front": "sunny",
+      "back": "(adjective) güneşli ☀️",
+      "example_sentence": "It's sunny, so let's go to the beach.",
+      "mnemonic": "'Sun' (güneş) + '-y' eki = güneşli; aynı ek rain→rainy, wind→windy, cloud→cloudy yapar, hava tarifinde bu dörtlüyü birlikte öğren. 'Sunny side up' = tek yüzü pişmiş sahanda yumurta."
+    }
+  ],
+  "dialogue": {
+    "title": "The Last Warm Weekend",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "It's sunny again! Let's go outside on Saturday.",
+        "tr": "Yine güneşli! Cumartesi dışarı çıkalım."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Good idea. Beach or lake this time?",
+        "tr": "İyi fikir. Bu sefer plaj mı, göl mü?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "The lake. The water is still warm there.",
+        "tr": "Göl. Oradaki su hâlâ sıcak."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Really? It's nearly autumn, the evenings are cool.",
+        "tr": "Sahi mi? Neredeyse sonbahar, akşamlar serin oluyor."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Then let's walk through the forest first.",
+        "tr": "O zaman önce ormanda yürüyelim."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Last summer we got so wet there!",
+        "tr": "Geçen yaz orada sırılsıklam olduk!"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Yes, you fell in the river! So funny.",
+        "tr": "Evet, sen nehre düştün! Çok komikti."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Very funny. This time I stay dry, okay?",
+        "tr": "Çok komik. Bu sefer kuru kalıyorum, tamam mı?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 40,
+    "level": "B2",
+    "title": "Thinking Tools"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "concept",
+      "back": "(noun) kavram, konsept 💡",
+      "example_sentence": "The concept of a four-day week sounds great, but who pays for it?",
+      "mnemonic": "Türkçedeki 'konsept' (konsept mağaza, konsept parti) aynı kelime; Latince 'concipere' = kavramak, içine almak. Türkçe 'kavram' da 'kavramak'tan türer — iki dil aynı mantıkla kurmuş."
+    },
+    {
+      "lesson": 1,
+      "front": "perspective",
+      "back": "(noun) bakış açısı, perspektif 👁️",
+      "example_sentence": "From a nurse's perspective, the new shift system is a disaster.",
+      "mnemonic": "Türkçedeki 'perspektif' aynı kelime: resimde derinlik tekniği de, bakış açısı da. Latince 'per-' (içinden) + 'specere' (bakmak); 'spektakl' ve 'spekülasyon' da aynı 'bakmak' kökünden."
+    },
+    {
+      "lesson": 1,
+      "front": "context",
+      "back": "(noun) bağlam 🧩",
+      "example_sentence": "Taken out of context, her comment sounds far ruder than it was.",
+      "mnemonic": "Latince 'con-' (birlikte) + 'texere' (dokumak): 'tekstil' ve 'text' ile aynı kök. Bağlam, bir sözün etrafına dokunmuş kumaştır; sözü kumaştan koparırsan anlamı değişir."
+    },
+    {
+      "lesson": 2,
+      "front": "criteria",
+      "back": "(plural noun) ölçütler, kriterler 📋",
+      "example_sentence": "The main criteria for the grant are originality and clear social impact.",
+      "mnemonic": "Türkçedeki 'kriter' aynı kelime; Yunanca 'krinein' (yargılamak, ayırmak) kökünden — 'kritik' ve 'kriz' de oradan. Dikkat: 'criteria' çoğuldur, tekili 'criterion'."
+    },
+    {
+      "lesson": 2,
+      "front": "framework",
+      "back": "(noun) çerçeve 🧱",
+      "example_sentence": "The EU has proposed a legal framework for regulating artificial intelligence.",
+      "mnemonic": "'Frame' (çerçeve) + 'work' (yapı): fikirlerin içine oturduğu iskelet. Yazılımcıların bildiği 'framework' (React, Django) da aynı kelime — kodunu üzerine kurduğun hazır çerçeve."
+    },
+    {
+      "lesson": 2,
+      "front": "approach",
+      "back": "(noun) yaklaşım, yöntem 🧭",
+      "example_sentence": "Her approach to difficult clients is simple: listen first, then argue.",
+      "mnemonic": "Latince 'ad-' (-e doğru) + 'prope' (yakın): fiil olarak 'yaklaşmak', isim olarak 'yaklaşım'. Türkçe 'yaklaşım' da 'yaklaşmak'tan türer; iki dilde de aynı mantık, o yüzden birebir karşılık."
+    },
+    {
+      "lesson": 3,
+      "front": "aspect",
+      "back": "(noun) yön, taraf 🔍",
+      "example_sentence": "Cost is only one aspect; we also need to consider staff morale.",
+      "mnemonic": "Latince 'ad-' + 'specere' (bakmak): bir şeye baktığında gördüğün yüzü. 'Perspective' ile aynı kök; bir konunun aspect'leri, ona farklı yerlerden bakınca ortaya çıkan yönleridir."
+    },
+    {
+      "lesson": 3,
+      "front": "dimension",
+      "back": "(noun) boyut 📐",
+      "example_sentence": "Social media has added a whole new dimension to political campaigns.",
+      "mnemonic": "'3D' filmdeki D bu kelimedir: 'three-dimensional' = üç boyutlu. Soyut anlamı da aynı: 'the political dimension of the crisis' = krizin siyasi boyutu."
+    },
+    {
+      "lesson": 3,
+      "front": "assess",
+      "back": "(verb) değerlendirmek ⚖️",
+      "example_sentence": "The insurer sent someone to assess the damage after the flood.",
+      "mnemonic": "Latince 'assidere' = yargıcın yanında oturmak; vergi memuru mülkün başına oturup değer biçerdi. İş hayatında 'risk assessment' ve 'self-assessment' olarak sık karşına çıkar."
+    },
+    {
+      "lesson": 4,
+      "front": "distinguish",
+      "back": "(verb) ayırt etmek 🔀",
+      "example_sentence": "At two, children can't yet distinguish between fantasy and reality.",
+      "mnemonic": "'Distinct' (belirgin, ayrı) ve 'distinguished' (seçkin — kalabalıktan ayrılmış) ile aynı Latince aile: 'distinguere' = ayırmak. Kalıbıyla öğren: 'distinguish between X and Y'."
+    },
+    {
+      "lesson": 4,
+      "front": "relevant",
+      "back": "(adjective) konuyla ilgili, alakalı 🎯",
+      "example_sentence": "Only include work experience that is relevant to the job you want.",
+      "mnemonic": "Zıddı 'irrelevant' (alakasız) İngilizce konuşmalarda çok sık geçer: 'That's irrelevant!' 'Related' (ilişkili) ile karıştırma: 'relevant' konuyla bağlantılı VE önemli demektir; kalıp 'relevant to'."
+    },
+    {
+      "lesson": 4,
+      "front": "coherent",
+      "back": "(adjective) tutarlı, anlaşılır 🔗",
+      "example_sentence": "After two hours of questions, he could no longer give coherent answers.",
+      "mnemonic": "Latince 'co-' (birlikte) + 'haerere' (yapışmak): parçaları birbirine tutunan, dağılmayan. Zıddı 'incoherent', sarhoş ya da ateşli birinin anlaşılmaz konuşması için de kullanılır."
+    },
+    {
+      "lesson": 5,
+      "front": "subsequent",
+      "back": "(adjective) sonraki, müteakip ⏭️",
+      "example_sentence": "The first trial failed, but subsequent tests proved the vaccine worked.",
+      "mnemonic": "Latince 'sequi' (takip etmek) kökü: filmdeki 'sekans', 'sequel' (devam filmi) ve 'consequence' hep buradan. 'Subsequent' = ardından gelen; resmî yazıda 'subsequently', 'later'ın şık hali."
+    },
+    {
+      "lesson": 5,
+      "front": "inevitable",
+      "back": "(adjective) kaçınılmaz 🌊",
+      "example_sentence": "With so much debt, the company's collapse was inevitable.",
+      "mnemonic": "Avengers: Endgame'de Thanos'un ünlü repliği: 'I am inevitable.' — 'Ben kaçınılmazım.' Latince 'in-' (değil) + 'evitare' (kaçınmak): kaçınılamayan."
+    },
+    {
+      "lesson": 5,
+      "front": "arbitrary",
+      "back": "(adjective) keyfi, rastgele 🎲",
+      "example_sentence": "The 30-day limit seems arbitrary; nobody could explain why it was chosen.",
+      "mnemonic": "Latince 'arbiter' (hakem) kökünden: finanstaki 'arbitraj' ve satranç hakemi 'arbiter' buradan. Hakemin salt kendi keyfine göre verdiği karar → gerekçesi olmayan, keyfi; örn. 'an arbitrary deadline'."
+    }
+  ],
+  "dialogue": {
+    "title": "Notes on Tom's Draft",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "I read your draft twice, Tom. Honestly, it isn't coherent yet.",
+        "tr": "Taslağını iki kez okudum Tom. Açıkçası henüz tutarlı değil."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Ouch. Which part? The concept is clear in my head.",
+        "tr": "Ah. Neresi? Kafamda fikir gayet net."
+      },
+      {
+        "speaker": "Elif",
+        "en": "In your head, yes. The reader needs context first, then the argument.",
+        "tr": "Kafanda evet. Okuyucunun önce bağlama, sonra tezine ihtiyacı var."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Fair. From my perspective, everyone already knows the rent-control debate.",
+        "tr": "Haklısın. Ama bana göre kira sınırı tartışmasını herkes zaten biliyor."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Also, half your quotes aren't relevant. Cut them, or explain why they matter.",
+        "tr": "Bir de alıntıların yarısı konuyla alakasız. Ya çıkar ya da neden önemli olduklarını anlat."
+      },
+      {
+        "speaker": "Tom",
+        "en": "You sound like my editor. What about the economic aspect?",
+        "tr": "Editörüm gibi konuşuyorsun. Peki ekonomik tarafı nasıl?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "That's the strongest section. But you need criteria to assess the policy fairly.",
+        "tr": "En güçlü bölüm o. Ama politikayı adil değerlendirmek için ölçütlerin olmalı."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Otherwise my conclusion looks arbitrary. Okay, I'll rewrite it tonight.",
+        "tr": "Yoksa sonucum keyfi görünür. Tamam, bu gece baştan yazarım."
+      }
+    ]
+  }
+}
