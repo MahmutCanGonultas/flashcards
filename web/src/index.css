@@ -1,4 +1,12 @@
 @import "tailwindcss";
+/* Self-hosted so the installed app still has its typeface offline. Rounded
+   terminals, a proper heavy weight for headings, and full Turkish coverage
+   (ğ ş ı İ ç ö ü) in the latin-ext subset. */
+@import "@fontsource-variable/nunito";
+
+@theme {
+  --font-sans: "Nunito Variable", system-ui, "Segoe UI", Roboto, sans-serif;
+}
 
 @layer base {
   :root {
@@ -11,7 +19,7 @@
   }
 
   body {
-    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -20,7 +28,16 @@
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
   }
+
+  /* Nunito's bold weights sit a touch wide; pull headings in slightly. */
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.015em;
+  }
 }
+
+/* ------------------------------------------------------------ transitions */
 
 @keyframes fade-in {
   from {
@@ -35,6 +52,19 @@
   from {
     opacity: 0;
     transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* One study step giving way to the next. Short enough that a fast tapper
+   never notices it, long enough that the screen doesn't flash. */
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.985);
   }
   to {
     opacity: 1;
@@ -82,5 +112,230 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Path nodes arriving one after another as the path first renders. */
+@keyframes node-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* A check mark drawing itself onto a lesson that just got finished. */
+@keyframes draw-check {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* The trail behind the path nodes, dashes flowing toward the next lesson. */
+@keyframes trail-flow {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+/* ----------------------------------------------------------------- Tonton */
+
+/* Every moving part pivots from where it joins the body, not from the
+   drawing's corner: fill-box makes the percentages relative to the part. */
+.tt-mascot .tt-body,
+.tt-mascot .tt-head,
+.tt-mascot .tt-ear,
+.tt-mascot .tt-arm-r {
+  transform-box: fill-box;
+  will-change: transform;
+}
+.tt-mascot {
+  transform-origin: 50% 100%;
+}
+.tt-mascot .tt-body {
+  transform-origin: 50% 100%;
+}
+.tt-mascot .tt-head {
+  transform-origin: 50% 92%;
+}
+.tt-mascot .tt-ear-l {
+  transform-origin: 86% 90%;
+}
+.tt-mascot .tt-ear-r {
+  transform-origin: 14% 90%;
+}
+.tt-mascot .tt-arm-r {
+  transform-origin: 10% 90%;
+}
+
+/* Breathing: barely there, which is exactly what makes a still drawing
+   read as alive rather than as a looping GIF. */
+@keyframes tt-breathe {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.008, 1.02);
+  }
+}
+@keyframes tt-head-breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.4px);
+  }
+}
+
+/* Ears: still almost all of the time, then one quick flick. Left and right
+   run on different delays so they never move together. */
+@keyframes tt-twitch-l {
+  0%,
+  86%,
+  100% {
+    transform: rotate(0);
+  }
+  89% {
+    transform: rotate(-7deg);
+  }
+  93% {
+    transform: rotate(4deg);
+  }
+  97% {
+    transform: rotate(-2deg);
+  }
+}
+@keyframes tt-twitch-r {
+  0%,
+  86%,
+  100% {
+    transform: rotate(0);
+  }
+  89% {
+    transform: rotate(7deg);
+  }
+  93% {
+    transform: rotate(-4deg);
+  }
+  97% {
+    transform: rotate(2deg);
+  }
+}
+
+/* Happy: one hop from the feet, a wave with the raised arm, ears perked. */
+@keyframes tt-hop {
+  0% {
+    transform: translateY(0);
+  }
+  28% {
+    transform: translateY(-9px) scale(0.98, 1.04);
+  }
+  52% {
+    transform: translateY(0) scale(1.03, 0.96);
+  }
+  70% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes tt-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-18deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  75% {
+    transform: rotate(-12deg);
+  }
+}
+@keyframes tt-perk-l {
+  to {
+    transform: rotate(6deg);
+  }
+}
+@keyframes tt-perk-r {
+  to {
+    transform: rotate(-6deg);
+  }
+}
+
+/* Sad: the whole head settles down a little and the ears fold. */
+@keyframes tt-droop-head {
+  to {
+    transform: translateY(3px) rotate(1.5deg);
+  }
+}
+@keyframes tt-droop-l {
+  to {
+    transform: rotate(-12deg);
+  }
+}
+@keyframes tt-droop-r {
+  to {
+    transform: rotate(12deg);
+  }
+}
+
+.tt-mascot .tt-body {
+  animation: tt-breathe 3.4s ease-in-out infinite;
+}
+.tt-mascot .tt-head {
+  animation: tt-head-breathe 3.4s ease-in-out infinite;
+}
+.tt-mascot .tt-ear-l {
+  animation: tt-twitch-l 7s ease-in-out infinite;
+}
+.tt-mascot .tt-ear-r {
+  animation: tt-twitch-r 7s ease-in-out 3.1s infinite;
+}
+
+.tt-happy {
+  animation: tt-hop 620ms cubic-bezier(0.34, 1.56, 0.64, 1) 1;
+}
+.tt-happy .tt-arm-r {
+  animation: tt-wave 700ms ease-in-out 2;
+}
+.tt-happy .tt-ear-l {
+  animation: tt-perk-l 260ms ease-out forwards;
+}
+.tt-happy .tt-ear-r {
+  animation: tt-perk-r 260ms ease-out forwards;
+}
+
+.tt-sad .tt-head {
+  animation: tt-droop-head 420ms ease-out forwards;
+}
+.tt-sad .tt-ear-l {
+  animation: tt-droop-l 420ms ease-out forwards;
+}
+.tt-sad .tt-ear-r {
+  animation: tt-droop-r 420ms ease-out forwards;
+}
+
+/* ---------------------------------------------------------- reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

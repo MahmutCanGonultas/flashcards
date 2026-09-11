@@ -11,9 +11,9 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["favicon.svg", "icons.svg", "icons/apple-touch-icon.png"],
       manifest: {
-        name: "Flashcards — Learn faster, remember longer",
-        short_name: "Flashcards",
-        description: "Spaced repetition flashcards with pronunciation audio.",
+        name: "Kelimece — English, one word at a time",
+        short_name: "Kelimece",
+        description: "Learn English one word at a time — meet it, hear it, use it, and keep it.",
         theme_color: "#FDF9F3",
         background_color: "#FDF9F3",
         display: "standalone",

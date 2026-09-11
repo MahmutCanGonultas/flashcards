@@ -13,6 +13,11 @@ type MascotProps = {
  * Inline SVG rather than an image file, so it stays crisp at every size and can
  * change expression instantly with nothing to fetch mid-answer. Only the mouth
  * and brows differ between moods; the body is shared.
+ *
+ * Motion lives in index.css, keyed off the `tt-*` classes: the body breathes,
+ * the ears twitch now and then, a happy Tonton hops and waves, a sad one
+ * droops. Nothing here waits on any of it, and prefers-reduced-motion stills
+ * all of it.
  */
 function Mascot({ mood = "idle", size = 96, className = "" }: MascotProps) {
   const mouth =
@@ -64,7 +69,15 @@ function Mascot({ mood = "idle", size = 96, className = "" }: MascotProps) {
     );
 
   return (
-    <svg width={size} height={size} className={className} aria-label="Mascot" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img">
+    <svg
+      width={size}
+      height={size}
+      className={`tt-mascot tt-${mood} ${className}`}
+      aria-label="Tonton"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 200 200"
+      role="img"
+    >
       <defs>
         <radialGradient id="tt-head" gradientUnits="userSpaceOnUse" cx="72" cy="56" r="96">
           <stop offset="0" stopColor="#D2C7FF"/>
@@ -181,7 +194,7 @@ function Mascot({ mood = "idle", size = 96, className = "" }: MascotProps) {
         <ellipse cx="75" cy="180.5" rx="17" ry="4.5" fill="#231941" opacity="0.38" filter="url(#tt-b2)"/>
         <ellipse cx="125" cy="180.5" rx="17" ry="4.5" fill="#231941" opacity="0.38" filter="url(#tt-b2)"/>
       </g>
-      <g>
+      <g className="tt-ear tt-ear-l">
         <path d="M40.8 21.4C52.8 15.8 69.4 25.8 77.8 43.9C86.2 61.9 83.2 81 71.2 86.6C59.2 92.2 42.7 82.2 34.3 64.1C25.9 46.1 28.8 27 40.8 21.4Z" fill="url(#tt-earL)"/>
         <path d="M44.4 32.3C52.4 28.6 63.7 35.7 69.5 48.2C75.3 60.8 73.6 73.9 65.6 77.7C57.6 81.4 46.3 74.3 40.5 61.8C34.7 49.2 36.4 36.1 44.4 32.3Z" fill="url(#tt-canL)"/>
         <g clipPath="url(#tt-cCanL)">
@@ -198,7 +211,7 @@ function Mascot({ mood = "idle", size = 96, className = "" }: MascotProps) {
           <path d="M40.8 21.4C52.8 15.8 69.4 25.8 77.8 43.9C86.2 61.9 83.2 81 71.2 86.6C59.2 92.2 42.7 82.2 34.3 64.1C25.9 46.1 28.8 27 40.8 21.4Z" fill="none" stroke="url(#tt-rim)" strokeWidth="6"/>
         </g>
       </g>
-      <g>
+      <g className="tt-ear tt-ear-r">
         <path d="M159.2 21.4C147.2 15.8 130.6 25.8 122.2 43.9C113.8 61.9 116.8 81 128.8 86.6C140.8 92.2 157.3 82.2 165.7 64.1C174.1 46.1 171.2 27 159.2 21.4Z" fill="url(#tt-earR)"/>
         <path d="M155.6 32.3C147.6 28.6 136.3 35.7 130.5 48.2C124.7 60.8 126.4 73.9 134.4 77.7C142.4 81.4 153.7 74.3 159.5 61.8C165.3 49.2 163.6 36.1 155.6 32.3Z" fill="url(#tt-canR)"/>
         <g clipPath="url(#tt-cCanR)">
@@ -215,7 +228,7 @@ function Mascot({ mood = "idle", size = 96, className = "" }: MascotProps) {
           <path d="M159.2 21.4C147.2 15.8 130.6 25.8 122.2 43.9C113.8 61.9 116.8 81 128.8 86.6C140.8 92.2 157.3 82.2 165.7 64.1C174.1 46.1 171.2 27 159.2 21.4Z" fill="none" stroke="url(#tt-rim)" strokeWidth="6"/>
         </g>
       </g>
-      <g>
+      <g className="tt-body">
         <ellipse cx="100" cy="145" rx="42" ry="35" fill="url(#tt-body)"/>
         <g clipPath="url(#tt-cBody)">
           <ellipse cx="70" cy="140" rx="17" ry="9" transform="rotate(-32 70 140)" fill="#FFFFFF" opacity="0.26" filter="url(#tt-b4)"/>
@@ -234,19 +247,19 @@ function Mascot({ mood = "idle", size = 96, className = "" }: MascotProps) {
           <ellipse cx="100" cy="145" rx="42" ry="35" fill="none" stroke="url(#tt-rim)" strokeWidth="7"/>
         </g>
       </g>
-      <g>
+      <g className="tt-arm-l">
         <path d="M71 130Q58 142 55 157" fill="none" stroke="#2C1C77" strokeWidth="21" strokeLinecap="round" opacity="0.55" transform="translate(2.5,2.5)"/>
         <path d="M71 130Q58 142 55 157" fill="none" stroke="url(#tt-armL)" strokeWidth="19" strokeLinecap="round"/>
         <path d="M69 132Q58.5 142 56 153" fill="none" stroke="#D5C9FF" strokeWidth="5.5" strokeLinecap="round" opacity="0.42" filter="url(#tt-b1)" transform="translate(-3,-2.5)"/>
       </g>
-      <g>
+      <g className="tt-arm-r">
         <path d="M133 141Q154 133 164 111" fill="none" stroke="#2C1C77" strokeWidth="20" strokeLinecap="round" opacity="0.55" transform="translate(2.5,2.5)"/>
         <path d="M133 141Q154 133 164 111" fill="none" stroke="url(#tt-armR)" strokeWidth="18" strokeLinecap="round"/>
         <path d="M136 139Q153.5 132 162 114" fill="none" stroke="#D5C9FF" strokeWidth="5" strokeLinecap="round" opacity="0.40" filter="url(#tt-b1)" transform="translate(-2.5,-3)"/>
         <ellipse cx="163" cy="110.5" rx="6" ry="7" transform="rotate(-26 163 110.5)" fill="#FFF3E2" opacity="0.92"/>
         <ellipse cx="161.5" cy="108" rx="3.6" ry="4.2" transform="rotate(-26 161.5 108)" fill="#FFFFFF" opacity="0.5" filter="url(#tt-b1)"/>
       </g>
-      <g>
+      <g className="tt-feet">
         <ellipse cx="75" cy="171" rx="19.5" ry="10.5" fill="url(#tt-foot)"/>
         <g clipPath="url(#tt-cFootL)">
           <ellipse cx="71" cy="166" rx="12" ry="5" fill="#FFFFFF" opacity="0.55" filter="url(#tt-b2)"/>
@@ -262,7 +275,7 @@ function Mascot({ mood = "idle", size = 96, className = "" }: MascotProps) {
           <ellipse cx="125" cy="171" rx="19.5" ry="10.5" fill="none" stroke="url(#tt-rimWarm)" strokeWidth="5"/>
         </g>
       </g>
-      <g>
+      <g className="tt-head">
         <ellipse cx="100" cy="88" rx="50" ry="46" fill="url(#tt-head)"/>
         <g clipPath="url(#tt-cHead)">
           <ellipse cx="70" cy="55" rx="25" ry="15" transform="rotate(-28 70 55)" fill="#FFFFFF" opacity="0.30" filter="url(#tt-b6)"/>

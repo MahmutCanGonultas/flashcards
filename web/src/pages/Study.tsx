@@ -1,10 +1,19 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Navigate, useNavigate, useParams, useSearchParams } from "react-router-dom";
+import {
+  Navigate,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError } from "../lib/api";
 import type { Card, Deck } from "../types";
 import { parseBack } from "../lib/cardBack";
-import { buildQuizOptions, buildWordOptions, type QuizOption } from "../lib/quiz";
+import {
+  buildQuizOptions,
+  buildWordOptions,
+  type QuizOption,
+} from "../lib/quiz";
 import { blankOut, BLANK } from "../lib/sentence";
 import { hasStarted, buildPath } from "../lib/path";
 import {
@@ -14,7 +23,13 @@ import {
   type Step,
   type QuizFormat,
 } from "../lib/lessonPlan";
-import { speak, speakAuto, isSpeechMuted, setSpeechMuted, speechSupported } from "../lib/speech";
+import {
+  speak,
+  speakAuto,
+  isSpeechMuted,
+  setSpeechMuted,
+  speechSupported,
+} from "../lib/speech";
 import { playCorrect, playIncorrect } from "../lib/sound";
 import Button from "../components/Button";
 import LinkButton from "../components/LinkButton";
@@ -33,7 +48,12 @@ import { useRecordStudyDay } from "../lib/streak";
 type ReviewInput = { cardId: number; quality: 1 | 4 };
 type SessionMode = "lesson" | "review";
 
-const KEY_TO_OPTION: Record<string, number> = { "1": 0, "2": 1, "3": 2, "4": 3 };
+const KEY_TO_OPTION: Record<string, number> = {
+  "1": 0,
+  "2": 1,
+  "3": 2,
+  "4": 3,
+};
 
 /** Ignore taps landing within the cross-fade, so a double tap can't skip a step. */
 const TRANSITION_GUARD_MS = 180;
@@ -109,7 +129,9 @@ function StudySession({
   );
   const [stepIndex, setStepIndex] = useState(0);
   const [answer, setAnswer] = useState<number | null>(null);
-  const [outcomes, setOutcomes] = useState<Record<number, "right" | "wrong">>({});
+  const [outcomes, setOutcomes] = useState<Record<number, "right" | "wrong">>(
+    {},
+  );
   const [failedReviews, setFailedReviews] = useState(0);
   const [muted, setMuted] = useState(() => isSpeechMuted());
 
@@ -127,7 +149,8 @@ function StudySession({
 
   const step: Step | undefined = plan[stepIndex];
   const finished = plan.length > 0 && stepIndex >= plan.length;
-  const stepCard = step && step.kind !== "listen" ? byId.get(step.cardId) : undefined;
+  const stepCard =
+    step && step.kind !== "listen" ? byId.get(step.cardId) : undefined;
 
   // Reshuffles exactly once per step — a repeated question gets fresh options,
   // but re-rendering the same step never moves the answers under a tapping thumb.
@@ -139,7 +162,10 @@ function StudySession({
 
     // A word that keeps coming back narrows to a straight choice between two,
     // so the loop that guards against a zero-score lesson always terminates.
-    const build = { mates, maxOptions: step.attempt >= NARROW_FROM_ATTEMPT ? 2 : 4 };
+    const build = {
+      mates,
+      maxOptions: step.attempt >= NARROW_FROM_ATTEMPT ? 2 : 4,
+    };
 
     return step.format === "meaning"
       ? buildQuizOptions(stepCard, deckCardPool, build)
@@ -152,7 +178,9 @@ function StudySession({
 
   const reviewMutation = useMutation({
     mutationFn: ({ cardId, quality }: ReviewInput) =>
-      api.post<{ card: Card }>(`/decks/${deckId}/cards/${cardId}/review`, { quality }),
+      api.post<{ card: Card }>(`/decks/${deckId}/cards/${cardId}/review`, {
+        quality,
+      }),
     retry: 2,
     onSuccess: () => {
       didReviewRef.current = true;
@@ -210,7 +238,14 @@ function StudySession({
 
   const chooseOption = useCallback(
     (index: number) => {
-      if (!step || step.kind !== "quiz" || !stepCard || !options || answer !== null) return;
+      if (
+        !step ||
+        step.kind !== "quiz" ||
+        !stepCard ||
+        !options ||
+        answer !== null
+      )
+        return;
       const isCorrect = options[index].isCorrect;
       setAnswer(index);
 
@@ -226,13 +261,18 @@ function StudySession({
       }
 
       setOutcomes((previous) =>
-        previous[stepCard.id] ? previous : { ...previous, [stepCard.id]: isCorrect ? "right" : "wrong" },
+        previous[stepCard.id]
+          ? previous
+          : { ...previous, [stepCard.id]: isCorrect ? "right" : "wrong" },
       );
 
       // Missed words come back until they land. The repeat is never graded —
       // the schedule already recorded the lapse.
       if (!isCorrect && mode === "lesson") {
-        setPlan((previous) => [...previous, repeatStep(stepCard, step.format, step.attempt)]);
+        setPlan((previous) => [
+          ...previous,
+          repeatStep(stepCard, step.format, step.attempt),
+        ]);
       }
 
       if (!isCorrect) speakAuto(stepCard.front);
@@ -243,8 +283,10 @@ function StudySession({
   const stages = useMemo<RailStage[]>(() => {
     if (mode !== "lesson") return [];
     const rail: RailStage[] = [];
-    if (plan.some((s) => s.kind === "meet")) rail.push({ id: "meet", label: "Meet" });
-    if (plan.some((s) => s.kind === "listen")) rail.push({ id: "listen", label: "Listen" });
+    if (plan.some((s) => s.kind === "meet"))
+      rail.push({ id: "meet", label: "Meet" });
+    if (plan.some((s) => s.kind === "listen"))
+      rail.push({ id: "listen", label: "Listen" });
     rail.push({ id: "prove", label: "Prove" });
     return rail;
   }, [mode, plan]);
@@ -264,7 +306,9 @@ function StudySession({
       const target = event.target;
       if (
         target instanceof HTMLElement &&
-        (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable)
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.isContentEditable)
       ) {
         return;
       }
@@ -372,7 +416,10 @@ function StudySession({
     .slice(0, stepIndex)
     .filter((s) => s.kind === "quiz").length;
   const totalQuestions = plan.filter((s) => s.kind === "quiz").length;
-  const progress = totalQuestions === 0 ? 0 : Math.round((answeredCount / totalQuestions) * 100);
+  const progress =
+    totalQuestions === 0
+      ? 0
+      : Math.round((answeredCount / totalQuestions) * 100);
 
   const actLabel = (() => {
     if (step.kind === "meet") {
@@ -414,7 +461,9 @@ function StudySession({
           <button
             type="button"
             onClick={toggleMute}
-            aria-label={muted ? "Turn pronunciation on" : "Turn pronunciation off"}
+            aria-label={
+              muted ? "Turn pronunciation on" : "Turn pronunciation off"
+            }
             className={`-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 transition ${
               muted ? "text-stone-300" : "text-violet-500"
             }`}
@@ -437,27 +486,31 @@ function StudySession({
         {actLabel}
       </p>
 
-      {step.kind === "listen" ? (
-        <ListenStep
-          cards={step.cardIds
-            .map((id) => byId.get(id))
-            .filter((card): card is Card => card !== undefined)}
-          onComplete={markStudied}
-          onContinue={advance}
-        />
-      ) : stepCard ? (
-        <QuestionStep
-          card={stepCard}
-          step={step}
-          options={options}
-          answer={answer}
-          answeredRight={answeredRight}
-          onChoose={chooseOption}
-          onContinue={advance}
-        />
-      ) : (
-        <StudySkeleton />
-      )}
+      {/* Keyed on the step so each one arrives with a short settle rather
+          than snapping into place. */}
+      <div key={step.key} className="animate-[step-in_180ms_ease-out]">
+        {step.kind === "listen" ? (
+          <ListenStep
+            cards={step.cardIds
+              .map((id) => byId.get(id))
+              .filter((card): card is Card => card !== undefined)}
+            onComplete={markStudied}
+            onContinue={advance}
+          />
+        ) : stepCard ? (
+          <QuestionStep
+            card={stepCard}
+            step={step}
+            options={options}
+            answer={answer}
+            answeredRight={answeredRight}
+            onChoose={chooseOption}
+            onContinue={advance}
+          />
+        ) : (
+          <StudySkeleton />
+        )}
+      </div>
     </div>
   );
 }
@@ -565,9 +618,15 @@ function QuestionStep({
       ) : options ? (
         <>
           <p className="mt-4 text-center text-sm font-semibold text-stone-500">
-            {format === "context" ? "Which word is missing?" : "What does it mean?"}
+            {format === "context"
+              ? "Which word is missing?"
+              : "What does it mean?"}
           </p>
-          <QuizOptions options={options} selectedIndex={answer} onSelect={onChoose} />
+          <QuizOptions
+            options={options}
+            selectedIndex={answer}
+            onSelect={onChoose}
+          />
           {answer === null && (
             <p className="mt-5 text-center text-xs font-medium text-stone-400">
               Tap an answer · keys 1-4
@@ -586,12 +645,18 @@ function QuestionStep({
       {answer !== null && (
         <div
           className={`fixed inset-x-0 bottom-0 z-20 max-h-[70vh] overflow-y-auto animate-[slide-up_220ms_ease-out] border-t-2 ${
-            answeredRight ? "border-emerald-200 bg-emerald-50" : "border-rose-200 bg-rose-50"
+            answeredRight
+              ? "border-emerald-200 bg-emerald-50"
+              : "border-rose-200 bg-rose-50"
           }`}
         >
           <div className="mx-auto max-w-2xl px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-4">
             <div className="flex items-start gap-3">
-              <Mascot mood={answeredRight ? "happy" : "sad"} size={56} className="shrink-0" />
+              <Mascot
+                mood={answeredRight ? "happy" : "sad"}
+                size={56}
+                className="shrink-0"
+              />
               <div className="min-w-0 flex-1">
                 <p
                   className={`text-lg font-extrabold tracking-tight ${
@@ -664,8 +729,11 @@ function LessonSummary({
   failedReviews: number;
   onDone: () => void;
 }) {
-  const firstTimeRight = queue.filter((card) => outcomes[card.id] === "right").length;
-  const accuracy = queue.length === 0 ? 0 : Math.round((firstTimeRight / queue.length) * 100);
+  const firstTimeRight = queue.filter(
+    (card) => outcomes[card.id] === "right",
+  ).length;
+  const accuracy =
+    queue.length === 0 ? 0 : Math.round((firstTimeRight / queue.length) * 100);
 
   const heading =
     mode === "review"
@@ -688,7 +756,9 @@ function LessonSummary({
 
       <div className="relative">
         <Mascot mood="happy" size={132} className="mx-auto" />
-        <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-stone-800">{heading}</h2>
+        <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-stone-800">
+          {heading}
+        </h2>
 
         {/* What you actually did, word by word — tap one to hear it again. */}
         <div className="mx-auto mt-5 max-w-sm space-y-1.5">
@@ -714,19 +784,29 @@ function LessonSummary({
 
         <div className="mt-6 flex justify-center gap-3">
           <div className="min-w-[6.5rem] rounded-2xl bg-white px-4 py-3 ring-2 ring-emerald-100">
-            <p className="text-2xl font-extrabold text-emerald-600">{queue.length}</p>
-            <p className="text-xs font-bold uppercase tracking-wide text-stone-400">Words</p>
+            <p className="text-2xl font-extrabold text-emerald-600">
+              {queue.length}
+            </p>
+            <p className="text-xs font-bold uppercase tracking-wide text-stone-400">
+              Words
+            </p>
           </div>
           {mode === "review" && (
             <div className="min-w-[6.5rem] rounded-2xl bg-white px-4 py-3 ring-2 ring-violet-100">
-              <p className="text-2xl font-extrabold text-violet-600">{accuracy}%</p>
-              <p className="text-xs font-bold uppercase tracking-wide text-stone-400">Correct</p>
+              <p className="text-2xl font-extrabold text-violet-600">
+                {accuracy}%
+              </p>
+              <p className="text-xs font-bold uppercase tracking-wide text-stone-400">
+                Correct
+              </p>
             </div>
           )}
           {streak > 0 && (
             <div className="min-w-[6.5rem] rounded-2xl bg-white px-4 py-3 ring-2 ring-amber-100">
               <p className="text-2xl font-extrabold text-amber-500">{streak}</p>
-              <p className="text-xs font-bold uppercase tracking-wide text-stone-400">Day streak</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-stone-400">
+                Day streak
+              </p>
             </div>
           )}
         </div>
@@ -736,8 +816,8 @@ function LessonSummary({
             role="alert"
             className="mx-auto mt-5 max-w-sm rounded-2xl bg-amber-50 p-3 text-sm font-medium text-amber-800 ring-1 ring-amber-200"
           >
-            {failedReviews} answer{failedReviews === 1 ? "" : "s"} couldn't be saved — check your
-            connection and study those words again.
+            {failedReviews} answer{failedReviews === 1 ? "" : "s"} couldn't be
+            saved — check your connection and study those words again.
           </p>
         )}
 
@@ -764,7 +844,8 @@ function Study() {
   // introduced so far; no parameter means today's reviews.
   const [searchParams] = useSearchParams();
   const lessonParam = Number(searchParams.get("lesson"));
-  const lessonNumber = Number.isInteger(lessonParam) && lessonParam > 0 ? lessonParam : null;
+  const lessonNumber =
+    Number.isInteger(lessonParam) && lessonParam > 0 ? lessonParam : null;
   const isReviewAll = searchParams.get("mode") === "all";
   const usesDueQueue = lessonNumber === null && !isReviewAll;
 
@@ -805,7 +886,9 @@ function Study() {
   }
 
   const renderContent = () => {
-    const deckName = decksQuery.data?.find((deck) => String(deck.id) === deckId)?.name;
+    const deckName = decksQuery.data?.find(
+      (deck) => String(deck.id) === deckId,
+    )?.name;
 
     // Both non-due modes read their queue straight from the deck's card list.
     if (!usesDueQueue) {
@@ -831,7 +914,11 @@ function Study() {
               emoji="🤔"
               title="No such lesson"
               description="That lesson isn't in this deck."
-              action={<LinkButton to={`/decks/${deckId}`}>Back to the path</LinkButton>}
+              action={
+                <LinkButton to={`/decks/${deckId}`}>
+                  Back to the path
+                </LinkButton>
+              }
             />
           );
         }
@@ -843,7 +930,11 @@ function Study() {
               emoji="🔒"
               title="Not yet"
               description="Finish the lessons before this one first — three words a day is the whole plan."
-              action={<LinkButton to={`/decks/${deckId}`}>Back to the path</LinkButton>}
+              action={
+                <LinkButton to={`/decks/${deckId}`}>
+                  Back to the path
+                </LinkButton>
+              }
             />
           );
         }
