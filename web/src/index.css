@@ -382,6 +382,25 @@
   }
 }
 
+/* Tonton hopping down the line from the station just finished to the next. */
+@keyframes tt-arrive {
+  0% {
+    transform: translateY(-76px);
+  }
+  25% {
+    transform: translateY(-62px) translateX(5px);
+  }
+  50% {
+    transform: translateY(-38px);
+  }
+  75% {
+    transform: translateY(-14px) translateX(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 /* Tonton peeking beside the current lesson: a gentle sway, in and out. */
 @keyframes peek {
   0%,

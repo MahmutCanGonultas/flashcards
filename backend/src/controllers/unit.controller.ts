@@ -13,7 +13,7 @@ export const getUnits = async (req: Request, res: Response) => {
   const { deckId } = req.params;
 
   const result = await pool.query(
-    `SELECT units.id, units.position, units.title, units.level, units.dialogue,
+    `SELECT units.id, units.position, units.title, units.title_tr, units.level, units.dialogue, units.grammar,
             COALESCE(BOOL_OR(unit_results.passed), FALSE) AS passed,
             COALESCE(BOOL_OR(unit_results.source = 'placement'), FALSE) AS placed,
             MAX(unit_results.score) FILTER (WHERE unit_results.source = 'test') AS best_score,

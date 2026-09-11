@@ -70,13 +70,70 @@ const A4 = 440.0;
 const F4 = 349.23;
 const G4 = 392.0;
 
-/** A right answer: a quick, bright three-note lift. */
-export function playCorrect(): void {
+/**
+ * A right answer: a quick, bright three-note lift. Pass the streak and the
+ * lift climbs with it — one extra note per answer in a row, up to a full
+ * octave run at five, so a hot streak sounds like one.
+ */
+export function playCorrect(streak = 1): void {
   const ctx = getContext();
   if (!ctx) return;
-  tone(ctx, C5, 0, 0.16, 0.1);
-  tone(ctx, E5, 0.07, 0.18, 0.1);
-  tone(ctx, G5, 0.14, 0.3, 0.11);
+  const run = [C5, E5, G5, C6, E5 * 2];
+  const notes = Math.min(Math.max(streak, 1) + 2, run.length);
+  for (let i = 0; i < notes; i++) {
+    const last = i === notes - 1;
+    tone(ctx, run[i], i * 0.07, last ? 0.3 : 0.16, last ? 0.11 : 0.1);
+  }
+}
+
+/** A soft tick under every tap, so the whole app feels physical. */
+export function playTap(): void {
+  const ctx = getContext();
+  if (!ctx) return;
+  tone(ctx, C6, 0, 0.05, 0.035, "sine");
+}
+
+/** A station opening on the map: a short two-note "doors opening" chime. */
+export function playStation(): void {
+  const ctx = getContext();
+  if (!ctx) return;
+  tone(ctx, G5, 0, 0.1, 0.07);
+  tone(ctx, C6, 0.08, 0.22, 0.08);
+}
+
+/** Tonton's chirp when you tap him — two quick high notes with a little slide. */
+export function playChirp(): void {
+  const ctx = getContext();
+  if (!ctx || !bus) return;
+  const start = ctx.currentTime;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = "triangle";
+  osc.frequency.setValueAtTime(E5 * 2, start);
+  osc.frequency.exponentialRampToValueAtTime(G5 * 2, start + 0.08);
+  osc.frequency.exponentialRampToValueAtTime(E5 * 2, start + 0.16);
+  gain.gain.setValueAtTime(0, start);
+  gain.gain.linearRampToValueAtTime(0.07, start + 0.01);
+  gain.gain.exponentialRampToValueAtTime(0.001, start + 0.22);
+  osc.connect(gain);
+  gain.connect(bus);
+  osc.start(start);
+  osc.stop(start + 0.25);
+  tone(ctx, C6 * 2, 0.2, 0.12, 0.05);
+}
+
+/** A locked station tapped: one dull low knock. */
+export function playLocked(): void {
+  const ctx = getContext();
+  if (!ctx) return;
+  tone(ctx, G4 / 2, 0, 0.12, 0.06, "sine");
+}
+
+/** A word revealed / a card flipped: a single soft note. */
+export function playReveal(): void {
+  const ctx = getContext();
+  if (!ctx) return;
+  tone(ctx, E5, 0, 0.14, 0.06, "sine");
 }
 
 /** A wrong answer: two soft notes stepping down -- a nudge, not a punishment. */

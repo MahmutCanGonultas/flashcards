@@ -1,0 +1,55 @@
+{
+  "unit": 44,
+  "title_en": "Nominalisation: Verbs Into Nouns",
+  "title_tr": "Adlaştırma: Fiilden İsme",
+  "hook": "'We implemented the policy and it failed' konuşma dilidir; 'The implementation of the policy failed' rapor dilidir — aynı olay, farklı takım elbise; hangisini ne zaman giyeceğini öğreniyoruz.",
+  "rules": [
+    {
+      "rule": "Adlaştırma, bir fiili ya da sıfatı isme çevirmektir: implement → implementation, analyse → analysis, ambiguous → ambiguity. Akademik ve resmî İngilizce olayları isim olarak paketler; Türkçedeki '-ma/-me' ve '-lık/-lik' ekleri aynı işi görür.",
+      "example_en": "The discrepancy between the two reports raised questions about the legitimacy of the data.",
+      "example_tr": "İki rapor arasındaki tutarsızlık, verinin meşruiyeti hakkında sorular doğurdu."
+    },
+    {
+      "rule": "En sık ekler: -tion/-sion (decide → decision), -ment (assess → assessment), -ance/-ence (rely → reliance, differ → difference), -ity (autonomous → autonomy... dikkat: autonomy), -ness (aware → awareness). Sözlükte ismi ayrıca kontrol et; kural yarıya kadar götürür.",
+      "example_en": "Their reliance on a single premise weakened the whole argument.",
+      "example_tr": "Tek bir öncüle bel bağlamaları bütün argümanı zayıflattı."
+    },
+    {
+      "rule": "Adlaştırınca özne ve nesne 'of' ve iyelikle bağlanır: 'the government reformed the system' → 'the government's reform of the system'. Fiil gidince zaman da gider; gerekiyorsa başka bir fiil ekle (was, led to, resulted in).",
+      "example_en": "The committee's rejection of the proposal led to a paradigm shift in the department.",
+      "example_tr": "Komitenin teklifi reddetmesi, bölümde bir paradigma değişimine yol açtı."
+    },
+    {
+      "rule": "Adlaştırma cümleyi kısaltır ve nesnelleştirir; bu yüzden özetlerde, başlıklarda ve bilimsel metinlerde değerlidir. Ama üst üste üç isim bir 'isim yığını' yaratır ve okur boğulur; bir cümlede bir-iki adlaştırma yeter.",
+      "example_en": "Consensus on the notion of integrity proved impossible.",
+      "example_tr": "Dürüstlük kavramı üzerinde uzlaşı sağlamak imkânsız çıktı."
+    },
+    {
+      "rule": "Konuşurken ve açık yazarken tersini yap: ismi tekrar fiile çevir. 'The implementation of X' yerine 'when we implemented X' hem daha canlı hem daha nettir. İki yönü de bilen yazar, tonu seçebilen yazardır.",
+      "example_en": "Instead of 'the paradox's resolution', just say 'how they resolved the paradox'.",
+      "example_tr": "'Paradoksun çözümü' yerine 'paradoksu nasıl çözdükleri' de, yeter."
+    }
+  ],
+  "watch_out": "Ekleri tahmin etmek tehlikelidir: ✗ implementment, ✗ analyzation, ✗ ambiguousness. ✓ implementation, ✓ analysis, ✓ ambiguity. Bir de adlaştırılmış isim çoğu zaman sayılamaz: ✗ an evidence, ✗ researches → ✓ evidence, ✓ research.",
+  "memory_trick": "Adlaştırma bir dondurma işlemidir: hareket eden fiil (implement) donup bir nesneye (implementation) dönüşür; artık raflara konabilir, sayılabilir, 'of' ile bağlanabilir. Yazıyı canlandırmak istediğinde buzu çöz, fiile geri dön.",
+  "quiz": [
+    {
+      "question": "Which is the correct noun form of 'analyse'?",
+      "options": ["analysation", "analysis", "analysement", "analysity"],
+      "answer": 1,
+      "explain": "'Analyse' fiilinin ismi 'analysis'tir; çoğulu 'analyses'."
+    },
+    {
+      "question": "'The board rejected the plan.' → 'The board's ___ of the plan surprised everyone.'",
+      "options": ["reject", "rejecting", "rejection", "rejectment"],
+      "answer": 2,
+      "explain": "Adlaştırma -tion ekiyle yapılır: rejection; nesne 'of' ile bağlanır."
+    },
+    {
+      "question": "Which sentence over-uses nominalisation and would read better with verbs?",
+      "options": ["We decided to leave early.", "The finalisation of the implementation of the reform is under consideration.", "They resolved the dilemma quickly.", "Her integrity impressed the jury."],
+      "answer": 1,
+      "explain": "Üç adlaştırma üst üste bir isim yığını oluşturur; 'We are considering when to finish implementing the reform' çok daha açıktır."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "unit": 4,
+  "title_en": "I like / I don't like",
+  "title_tr": "Severim / sevmem",
+  "hook": "Bir kafede sadece 'coffee!' deyip parmakla göstermek işe yarar ama 'I'd like a coffee, please' dersen garson gülümser; bugün o gülümsemenin gramerini öğreniyoruz.",
+  "rules": [
+    {
+      "rule": "Sevdiğin bir şeyi söylemek için önce 'I like', sonra sevdiğin şey gelir. Türkçenin tam tersi: İngilizcede fiil sona değil, hemen 'I'nın yanına yerleşir.",
+      "example_en": "I like tea.",
+      "example_tr": "Çay severim."
+    },
+    {
+      "rule": "Sevmediğini söylemek için 'like'ın önüne 'don't' koyarsın, 'like' hiç değişmez. Türkçede -mi- fiilin içine giriyor (sev-mi-yorum), İngilizcede ise fiilin önüne ayrı bir kelime olarak çıkıyor.",
+      "example_en": "I don't like coffee.",
+      "example_tr": "Kahve sevmem."
+    },
+    {
+      "rule": "Soru sormak için cümlenin başına 'Do' gelir; Türkçede sondaki 'mı/mi' İngilizcede başa geçmiş gibi düşün. Cevap kısacık: 'Yes, I do.' ya da 'No, I don't.' — 'like' demene gerek yok.",
+      "example_en": "Do you like milk? — No, I don't.",
+      "example_tr": "Süt sever misin? — Hayır, sevmem."
+    },
+    {
+      "rule": "'I want' = 'istiyorum', dosdoğru ve biraz sert; kafede ya da lokantada sipariş verirken 'I'd like' de, bu 'I want'ın gülümseyen, kibar hâli. Sonuna bir de 'please' eklersen garson seni sever.",
+      "example_en": "I'd like a coffee, please.",
+      "example_tr": "Bir kahve alayım, lütfen."
+    }
+  ],
+  "watch_out": "Birinci üniteden gelen 'am' burada işe karışmasın: 'like' zaten fiil, yanına 'am' istemez. ✗ I am like tea. ✗ I am not like coffee. → ✓ I like tea. ✓ I don't like coffee.",
+  "memory_trick": "Türkçe olumsuzu fiilin içine gömer: sev-mi-yorum. İngilizce onu dışarı çıkarıp fiilin önüne koyar: don't like. 'like' hiç değişmez; değişen tek şey önündeki küçük kelime: don't ya da Do.",
+  "quiz": [
+    {
+      "question": "I ___ like coffee.",
+      "options": [
+        "am not",
+        "don't",
+        "not",
+        "no"
+      ],
+      "answer": 1,
+      "explain": "Olumsuzda 'like'ın önüne 'don't' gelir; 'am' bu cümlede yok."
+    },
+    {
+      "question": "Do you like milk? — Yes, I ___.",
+      "options": [
+        "like",
+        "am",
+        "do",
+        "yes"
+      ],
+      "answer": 2,
+      "explain": "Kısa cevapta 'like' tekrarlanmaz, onun yerine 'do' geçer: Yes, I do."
+    },
+    {
+      "question": "In a café: '___ a coffee, please.'",
+      "options": [
+        "I'd like",
+        "I like",
+        "I am like",
+        "Like I"
+      ],
+      "answer": 0,
+      "explain": "Sipariş verirken kibar olan 'I'd like'; 'I like' sadece genel olarak sevdiğini anlatır."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "unit": 9,
+  "title_en": "Where Is...? and Giving Directions",
+  "title_tr": "Nerede? ve Yol Tarifi",
+  "hook": "Yabancı bir şehirde kaybolmak kolay ama kurtulmak da kolay: üç kelime — 'Where is the...?' — ve tarifi anlayacak birkaç fiil yeter.",
+  "rules": [
+    {
+      "rule": "Bir yeri sormak için cümleye 'Where is' ile başla, sonra yerin adını söyle. Türkçede 'nerede' cümlenin sonunda, İngilizcede 'Where' en başında durur.",
+      "example_en": "Excuse me, where is the bank?",
+      "example_tr": "Affedersiniz, banka nerede?"
+    },
+    {
+      "rule": "Cevap verirken 'It's' ile başla, ardından yerin nerede olduğunu söyle: near (yakınında), next to (yanında), behind (arkasında).",
+      "example_en": "It's near the park.",
+      "example_tr": "Parkın yakınında."
+    },
+    {
+      "rule": "Yol tarifi verirken fiili tek başına, öznesiz kullan; 'you' demene gerek yok. Sen de siz de aynı kısa şekli duyar: Go, Turn, Stop, Wait.",
+      "example_en": "Go straight and turn left.",
+      "example_tr": "Düz git ve sola dön."
+    },
+    {
+      "rule": "Bir şeyi yapmamasını söylemek için fiilin önüne 'Don't' koy; fiil yine yalın kalır, ek almaz.",
+      "example_en": "Don't turn right. Wait here.",
+      "example_tr": "Sağa dönme. Burada bekle."
+    }
+  ],
+  "watch_out": "'Sola dön' derken Türkçedeki '-a' eki yüzünden araya 'to' sokma; İngilizcede 'turn' doğrudan yönle birleşir. ✗ Turn to left. ✓ Turn left. Aynı şey düz gitmek için de geçerli: ✗ Go to straight. ✓ Go straight.",
+  "memory_trick": "Türkçeyle birebir aynı mantık: 'Git!' = 'Go!', ikisi de çıplak fiil. Fark yasakta: Türkçe sona '-me' ekler (Gitme!), İngilizce başa 'Don't' koyar (Don't go!). Ek sonda, Don't başta.",
+  "quiz": [
+    {
+      "question": "Excuse me, ___ the bank?",
+      "options": [
+        "is where",
+        "the where is",
+        "where is",
+        "where"
+      ],
+      "answer": 2,
+      "explain": "İngilizcede soru kelimesi 'Where' en başa, 'is' hemen arkasına gelir."
+    },
+    {
+      "question": "___ straight and turn left.",
+      "options": [
+        "Go",
+        "Goes",
+        "Going",
+        "To go"
+      ],
+      "answer": 0,
+      "explain": "Yol tarifinde fiil yalın hâliyle ve öznesiz kullanılır."
+    },
+    {
+      "question": "___ turn right. Go straight.",
+      "options": [
+        "No",
+        "Not",
+        "Doesn't",
+        "Don't"
+      ],
+      "answer": 3,
+      "explain": "Olumsuz komut için fiilin önüne 'Don't' gelir; 'No' ya da 'Not' olmaz."
+    }
+  ]
+}

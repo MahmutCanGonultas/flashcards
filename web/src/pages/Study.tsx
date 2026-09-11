@@ -154,6 +154,10 @@ function StudySession({
   const [typedRight, setTypedRight] = useState<boolean | null>(null);
   const [stepIndex, setStepIndex] = useState(0);
   const [answer, setAnswer] = useState<number | null>(null);
+  // Right answers in a row, this session. The ref is what the sound reads
+  // inside the handler; the state is what the feedback bar shows.
+  const runRef = useRef(0);
+  const [run, setRun] = useState(0);
   const [outcomes, setOutcomes] = useState<Record<number, "right" | "wrong">>(
     {},
   );
@@ -276,8 +280,16 @@ function StudySession({
     (isCorrect: boolean) => {
       if (!step || step.kind !== "quiz" || !stepCard) return;
 
-      if (isCorrect) playCorrect();
-      else playIncorrect();
+      // The lift climbs with the run of right answers, and drops back to
+      // the plain nudge the moment one is missed.
+      if (isCorrect) {
+        playCorrect(runRef.current + 1);
+        runRef.current += 1;
+      } else {
+        playIncorrect();
+        runRef.current = 0;
+      }
+      setRun(runRef.current);
 
       // Exactly one write per card per session. A second would silently take a
       // word from interval 1 to interval 6 inside a single day.
@@ -562,6 +574,7 @@ function StudySession({
             options={options}
             answer={answer}
             answeredRight={answeredRight}
+            run={run}
             onChoose={chooseOption}
             onSubmitTyped={submitTyped}
             onContinue={advance}
@@ -611,6 +624,7 @@ function QuestionStep({
   options,
   answer,
   answeredRight,
+  run,
   onChoose,
   onSubmitTyped,
   onContinue,
@@ -620,6 +634,8 @@ function QuestionStep({
   options: QuizOption[] | null;
   answer: number | null;
   answeredRight: boolean | null;
+  /** Right answers in a row, for the feedback bar to crow about. */
+  run: number;
   onChoose: (index: number) => void;
   onSubmitTyped: (text: string) => void;
   onContinue: () => void;
@@ -758,8 +774,17 @@ function QuestionStep({
                   {answeredRight
                     ? step.kind === "quiz" && step.attempt > 0
                       ? "There it is."
-                      : "Nice!"
+                      : run >= 5
+                        ? "Unstoppable!"
+                        : run >= 3
+                          ? "On a roll!"
+                          : "Nice!"
                     : "Not quite."}
+                  {answeredRight && run >= 3 && (
+                    <span className="ml-2 inline-block rounded-full bg-amber-100 px-2 py-0.5 align-middle text-xs font-extrabold text-amber-700 ring-1 ring-amber-200 animate-[pop-in_220ms_cubic-bezier(0.34,1.56,0.64,1)]">
+                      🔥 {run} in a row
+                    </span>
+                  )}
                 </p>
                 {answeredRight && (
                   <p className="mt-0.5 text-sm font-semibold text-emerald-800 break-words">

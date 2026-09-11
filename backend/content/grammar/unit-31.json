@@ -1,0 +1,70 @@
+{
+  "unit": 31,
+  "title_en": "Linking Words: Contrast, Cause, Result",
+  "title_tr": "Bağlaçlar: Zıtlık, Sebep, Sonuç",
+  "hook": "Tartışmada haklı olmak yetmez; 'however' ile 'although' arasındaki farkı bilmeyen, en güçlü fikrini bile yarım cümleyle çöpe atar.",
+  "rules": [
+    {
+      "rule": "Zıtlık için 'although' bir cümlenin içinde çalışır: arkasına özne ve fiil gelir, iki cümleyi tek cümlede birleştirir. 'However' ise iki AYRI cümleyi bağlar; yeni cümlenin başına gelir ve arkasına virgül alır.",
+      "example_en": "Although the argument was strong, nobody changed their mind. The argument was strong. However, nobody changed their mind.",
+      "example_tr": "Argüman güçlü olmasına rağmen kimse fikrini değiştirmedi. Argüman güçlüydü. Ancak kimse fikrini değiştirmedi."
+    },
+    {
+      "rule": "'Despite' ve 'in spite of' aynı anlamdadır ama arkalarına cümle değil, isim ya da -ing gelir. Cümle kurmak istiyorsan 'despite the fact that' dersin.",
+      "example_en": "Despite losing the debate, she defended her opinion with confidence.",
+      "example_tr": "Münazarayı kaybetmesine rağmen fikrini özgüvenle savundu."
+    },
+    {
+      "rule": "'Whereas' iki farklı durumu yan yana koyup karşılaştırır, 'although' gibi beklenmedik bir sonuç anlatmaz. Genellikle ortasında virgül olan tek bir cümlede kullanılır.",
+      "example_en": "My brother believes in strict rules, whereas I think people learn from mistakes.",
+      "example_tr": "Kardeşim katı kurallara inanır, bense insanların hatalardan öğrendiğini düşünürüm."
+    },
+    {
+      "rule": "Sonuç bildirmek için 'therefore' kullanılır: önce sebep, sonra 'therefore' ve arkasına virgül. Bu resmi bir kelimedir; 'so' ile aynı anlam, ama yazıda daha güçlü durur.",
+      "example_en": "The evidence was weak. Therefore, the committee rejected the proposal.",
+      "example_tr": "Kanıtlar zayıftı. Bu yüzden komite teklifi reddetti."
+    },
+    {
+      "rule": "'However' cümlenin ortasına da girebilir; o zaman iki tarafına virgül konur. 'Although' asla böyle gezmez, hep kendi yan cümlesinin başında durur.",
+      "example_en": "The plan, however, has one serious problem: money.",
+      "example_tr": "Planın ise ciddi bir sorunu var: para."
+    }
+  ],
+  "watch_out": "Türkçede 'rağmen' hem 'yağmura rağmen' hem 'yağmasına rağmen' diyebildiği için 'despite' arkasına cümle konuyor. ✗ Despite it was late, we kept arguing. ✓ Although it was late, we kept arguing. / ✓ Despite the late hour, we kept arguing.",
+  "memory_trick": "'Although' Türkçedeki '-e rağmen'in fiilli hâli, 'despite' ise isimli hâli: 'gelmesine rağmen' = although, 'gelişine rağmen' = despite. Ekin fiile mi isme mi yapıştığına bak, bağlacı seç.",
+  "quiz": [
+    {
+      "question": "___ the price was high, the report was worth every penny.",
+      "options": [
+        "Despite",
+        "Although",
+        "However",
+        "Therefore"
+      ],
+      "answer": 1,
+      "explain": "Arkasında özne ve fiil olan tam bir cümle var, bu yüzden 'although' gerekir."
+    },
+    {
+      "question": "She has read all the studies. ___, she still disagrees with the conclusion.",
+      "options": [
+        "Whereas",
+        "Although",
+        "However",
+        "Despite"
+      ],
+      "answer": 2,
+      "explain": "İki ayrı cümleyi zıtlıkla bağlayan ve virgülle devam eden kelime 'however'dır."
+    },
+    {
+      "question": "The survey included only ten people; ___, its results cannot be trusted.",
+      "options": [
+        "therefore",
+        "despite",
+        "although",
+        "whereas"
+      ],
+      "answer": 0,
+      "explain": "Önce sebep verilmiş, sonra sonuç geliyor; sonuç bildiren bağlaç 'therefore'dur."
+    }
+  ]
+}

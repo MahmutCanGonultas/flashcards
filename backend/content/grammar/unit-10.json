@@ -1,0 +1,70 @@
+{
+  "unit": 10,
+  "title_en": "It's Sunny and I Can Swim",
+  "title_tr": "Hava Güneşli ve Yüzebilirim",
+  "hook": "İngilizce havadan bahsederken 'it' der, yani 'o' — kim o, kimse bilmez, ama 'it' olmadan yağmur bile yağamaz!",
+  "rules": [
+    {
+      "rule": "Havayı anlatmak için 'It's + sıfat' yeter: It's cold, It's hot, It's sunny. Türkçede 'Soğuk.' deyip geçeriz ama İngilizce özne ister; havanın öznesi 'it', başına 'weather' koymana gerek yok.",
+      "example_en": "It's sunny today.",
+      "example_tr": "Bugün hava güneşli."
+    },
+    {
+      "rule": "Yağmur ve kar 'şu an olan' şeylerdir, o yüzden -ing'li kalıp kullanılır: It's raining, It's snowing. Şimdilik bunları kalıp olarak ezberle, -ing'in sırrını ileride çözeceğiz.",
+      "example_en": "Look! It's snowing.",
+      "example_tr": "Bak! Kar yağıyor."
+    },
+    {
+      "rule": "Bir şeyi yapabildiğini söylemek için 'can + fiil' kullan. Fiil hep yalın kalır (ne 'to' ne -s) ve 'can' herkes için aynıdır: she can swim.",
+      "example_en": "Birds can fly. Fish can swim.",
+      "example_tr": "Kuşlar uçabilir. Balıklar yüzebilir."
+    },
+    {
+      "rule": "Yapamıyorsan 'can't' de (uzun hali 'cannot'). Yine fiil yalın kalır: I can't drive.",
+      "example_en": "It's raining. We can't play outside.",
+      "example_tr": "Yağmur yağıyor. Dışarıda oynayamayız."
+    },
+    {
+      "rule": "Soru için 'can'i başa al, 'do' kullanma: Can you swim? Kısa cevap: Yes, I can. / No, I can't.",
+      "example_en": "Can you swim? — Yes, I can!",
+      "example_tr": "Yüzebilir misin? — Evet, yüzebilirim!"
+    }
+  ],
+  "watch_out": "'Want to', 'like to' alışkanlığıyla ✗ I can to swim demek çok yaygın. 'Can' arkasına 'to' istemez: ✓ I can swim. Aynısı 'can't' için de geçerli: ✗ I can't to drive, ✓ I can't drive.",
+  "memory_trick": "Türkçede -ebil fiilin kuyruğuna takılır: yüz-ebil-irim. İngilizcede aynı iş 'can' ile fiilin önünde yapılır: can swim. Aynı ek, ters yön; 'to' ya da -s için yer yok.",
+  "quiz": [
+    {
+      "question": "___ cold today.",
+      "options": [
+        "Is",
+        "It's",
+        "Are",
+        "The"
+      ],
+      "answer": 1,
+      "explain": "Hava cümlesi öznesiz olmaz; İngilizce hava için 'it' der."
+    },
+    {
+      "question": "A bird ___ fly.",
+      "options": [
+        "can to",
+        "cans",
+        "can",
+        "is can"
+      ],
+      "answer": 2,
+      "explain": "'Can' herkes için aynıdır ve fiil yalın gelir: can fly."
+    },
+    {
+      "question": "___ you swim? — Yes, I can.",
+      "options": [
+        "Can",
+        "Do",
+        "Are",
+        "Is"
+      ],
+      "answer": 0,
+      "explain": "Soruda 'can' başa geçer, 'do' kullanılmaz."
+    }
+  ]
+}

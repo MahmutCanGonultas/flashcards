@@ -1,0 +1,70 @@
+{
+  "unit": 15,
+  "title_en": "Bigger, the Biggest: Comparing Things",
+  "title_tr": "Daha Büyük, En Büyük: Karşılaştırma",
+  "hook": "Türkçede 'daha soğuk' deriz ama İngilizler soğuğun kuyruğuna -er takar: colder — peki 'more' ne zaman devreye giriyor, işte bugün onu çözüyoruz.",
+  "rules": [
+    {
+      "rule": "Kısa sıfatlara (cold, hot, big gibi tek heceliler) -er takıyoruz; Türkçedeki '-den' ise 'than' olur ama ismin önüne geçer: than Antalya. Yazımda ufak bir oyun var: hot→hotter, big→bigger, sunny→sunnier.",
+      "example_en": "Istanbul is colder than Antalya in winter.",
+      "example_tr": "Kışın İstanbul, Antalya'dan daha soğuk."
+    },
+    {
+      "rule": "Uzun sıfatlar (expensive, comfortable, delicious) -er taşımaz; onların önüne 'more' koyarız, 'than' yine yerinde kalır.",
+      "example_en": "This sofa is more comfortable than the old one.",
+      "example_tr": "Bu koltuk eskisinden daha rahat."
+    },
+    {
+      "rule": "'En' demek için kısa sıfata -est, uzun sıfatın önüne 'most' gelir — ve ikisinin de başında mutlaka 'the' vardır.",
+      "example_en": "The kitchen is the warmest room, but the bedroom is the most comfortable.",
+      "example_tr": "Mutfak en sıcak oda ama yatak odası en rahatı."
+    },
+    {
+      "rule": "Birkaç sıfat kuralı hiç dinlemez, onları ezberleyeceğiz: good→better→best, bad→worse→worst.",
+      "example_en": "The weather is bad today, but yesterday it was worse.",
+      "example_tr": "Bugün hava kötü ama dün daha da kötüydü."
+    },
+    {
+      "rule": "İki şey eşitse sıfatı iki 'as' arasına alırız: as hot as = kadar sıcak. Olumsuzunda 'not as ... as' deriz, yani 'o kadar ... değil'.",
+      "example_en": "My tea is not as hot as yours.",
+      "example_tr": "Benim çayım seninki kadar sıcak değil."
+    }
+  ],
+  "watch_out": "Türkçede 'daha' her sıfatın önüne geldiği için 'more' da her yere gider sanıyoruz; oysa -er almış bir sıfat bir daha 'more' almaz. ✗ Today is more hotter than yesterday. ✓ Today is hotter than yesterday. Aynı tuzak: ✗ more better, ✓ better.",
+  "memory_trick": "Sıfatı eline al ve tart: tek heceyse hafiftir, sırtına -er/-est yükle (colder, coldest). Uzunsa ağırdır, sırt yük almaz; önüne 'more/most' koy, çeksin (more expensive). 'En' dedin mi 'the' de yanına gelsin.",
+  "quiz": [
+    {
+      "question": "Ankara is ___ than Antalya in winter.",
+      "options": [
+        "more cold",
+        "cold",
+        "colder",
+        "the coldest"
+      ],
+      "answer": 2,
+      "explain": "'cold' tek heceli, kısa bir sıfat; 'more' değil -er alır ve yanına 'than' gelir."
+    },
+    {
+      "question": "This is ___ restaurant in our street.",
+      "options": [
+        "the most expensive",
+        "more expensive",
+        "expensiver",
+        "most expensive"
+      ],
+      "answer": 0,
+      "explain": "'expensive' uzun bir sıfat, 'en' için önüne 'the most' gelir; 'the' olmadan olmaz."
+    },
+    {
+      "question": "My soup is bad, but yours is ___ than mine.",
+      "options": [
+        "badder",
+        "more bad",
+        "the worst",
+        "worse"
+      ],
+      "answer": 3,
+      "explain": "'bad' kuralsızdır: iki şeyi karşılaştırırken 'worse', en kötüsü için 'the worst' deriz."
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import type { Card, Dialogue, UnitRecord } from "../types";
+import type { Card, Dialogue, GrammarNote, UnitRecord } from "../types";
 
 /**
  * "open" is a lesson in a unit that was passed without finishing every lesson
@@ -26,8 +26,10 @@ export type Unit = {
   /** The units row, when the deck has one; null for decks grouped by tag only. */
   id: number | null;
   title: string;
+  titleTr: string | null;
   level: string | null;
   dialogue: Dialogue | null;
+  grammar: GrammarNote | null;
   lessons: Lesson[];
   state: UnitState;
   /** Every lesson done — the dialogue and the test are open from here. */
@@ -44,11 +46,30 @@ export const hasStarted = (card: Card): boolean => card.repetitions > 0 || card.
 
 export const isDue = (card: Card): boolean => new Date(card.due_date).getTime() <= Date.now();
 
+export type WordTier = "new" | "learning" | "known";
+
+/**
+ * Getting a word right once is not knowing it. A word counts as known once
+ * it has come back after real gaps and still been recalled — three
+ * successful reviews in SM-2 puts its next return about two weeks out.
+ * Until then it is "learning": met, but still being held in place by the
+ * schedule.
+ */
+export const KNOWN_REPETITIONS = 3;
+export const KNOWN_INTERVAL_DAYS = 15;
+
+export function wordTier(card: Card): WordTier {
+  if (card.repetitions >= KNOWN_REPETITIONS || card.interval >= KNOWN_INTERVAL_DAYS) return "known";
+  return hasStarted(card) ? "learning" : "new";
+}
+
 type Bucket = {
   id: number | null;
   title: string;
+  titleTr: string | null;
   level: string | null;
   dialogue: Dialogue | null;
+  grammar: GrammarNote | null;
   record: UnitRecord | null;
   cards: Card[];
 };
@@ -67,8 +88,10 @@ function bucketCards(cards: Card[], records: UnitRecord[]): Bucket[] {
       .map<Bucket>((record) => ({
         id: record.id,
         title: record.title,
+        titleTr: record.title_tr,
         level: record.level,
         dialogue: record.dialogue,
+        grammar: record.grammar,
         record,
         cards: [],
       }));
@@ -85,7 +108,7 @@ function bucketCards(cards: Card[], records: UnitRecord[]): Bucket[] {
     const title = card.tag ?? "";
     const last = buckets[buckets.length - 1];
     if (last && last.title === title) last.cards.push(card);
-    else buckets.push({ id: null, title, level: null, dialogue: null, record: null, cards: [card] });
+    else buckets.push({ id: null, title, titleTr: null, level: null, dialogue: null, grammar: null, record: null, cards: [card] });
   }
   return buckets;
 }
@@ -151,8 +174,10 @@ export function buildPath(cards: Card[], units: UnitRecord[] = []): Unit[] {
       index: i + 1,
       id: bucket.id,
       title: bucket.title,
+      titleTr: bucket.titleTr,
       level: bucket.level,
       dialogue: bucket.dialogue,
+      grammar: bucket.grammar,
       lessons,
       state: unitStates[i],
       lessonsDone: unitPassed || lessons.every((lesson) => lesson.state === "done"),
@@ -167,7 +192,12 @@ export type PathStats = {
   totalLessons: number;
   doneLessons: number;
   currentLesson: number | null;
+  /** Words met at least once — the old, too-generous "learned". */
   wordsLearned: number;
+  /** Words that have survived spaced returns. */
+  wordsKnown: number;
+  /** Met, but still being held up by the schedule. */
+  wordsLearning: number;
   totalWords: number;
   dueNow: number;
   /** The unit whose test is the next gate, if its lessons are all done. */
@@ -182,6 +212,8 @@ export function pathStats(units: Unit[]): PathStats {
     doneLessons: lessons.filter((l) => l.state === "done").length,
     currentLesson: lessons.find((l) => l.state === "current")?.number ?? null,
     wordsLearned: cards.filter(hasStarted).length,
+    wordsKnown: cards.filter((card) => wordTier(card) === "known").length,
+    wordsLearning: cards.filter((card) => wordTier(card) === "learning").length,
     totalWords: cards.length,
     dueNow: cards.filter(isDue).length,
     testReady:

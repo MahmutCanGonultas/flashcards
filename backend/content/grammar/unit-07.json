@@ -1,0 +1,70 @@
+{
+  "unit": 7,
+  "title_en": "a, an, the and Plurals",
+  "title_tr": "a, an, the ve Çoğullar",
+  "hook": "Türkçede 'kalem' deyip geçersin; İngilizcede tek bir kalem bile yalnız dolaşamaz, yanında hep minik bir 'a' olur!",
+  "rules": [
+    {
+      "rule": "Tek bir şeyden söz ederken ismin önüne 'a' koyarız; Türkçedeki 'bir' gibi ama İngilizcede asla atlanmaz.",
+      "example_en": "I have a red bag.",
+      "example_tr": "Kırmızı bir çantam var."
+    },
+    {
+      "rule": "İsim ünlü harfle (a, e, i, o, u) başlıyorsa 'a' yerine 'an' deriz; 'a apple' demek zor, araya n girince akıp gidiyor.",
+      "example_en": "She has an apple and an orange.",
+      "example_tr": "Onun bir elması ve bir portakalı var."
+    },
+    {
+      "rule": "İkimiz de hangi şeyden bahsettiğimizi biliyorsak 'the' kullanırız; 'the' demek 'hani şu, o' demek.",
+      "example_en": "Give me the green book, please.",
+      "example_tr": "Bana yeşil kitabı ver lütfen."
+    },
+    {
+      "rule": "Birden fazla şey varsa ismin sonuna -s ekleriz, -s/-x/-ch/-sh ile bitenlere -es; çoğulda 'a/an' düşer. Birkaç isim kuralı bozar: child → children, man → men.",
+      "example_en": "There are three boxes and two children in the room.",
+      "example_tr": "Odada üç kutu ve iki çocuk var."
+    },
+    {
+      "rule": "Renk gibi sıfatlar Türkçedeki gibi ismin önüne gelir ama 'a' en başa geçer: biz 'kırmızı bir araba' deriz, İngilizce 'a red car' der. Çoğulda sıfat değişmez: red cars.",
+      "example_en": "She has a small white cat and two black dogs.",
+      "example_tr": "Onun küçük beyaz bir kedisi ve iki siyah köpeği var."
+    }
+  ],
+  "watch_out": "Türkçede 'üç kitap' deriz, sayıdan sonra çoğul eki koymayız; İngilizcede sayı varsa -s de şart. ✗ I have three book. ✓ I have three books.",
+  "memory_trick": "Türkçede 'kitabı, arabayı' der gibi ismin sonuna -ı/-i geliyorsa, İngilizcede başına 'the' gelir: Kitap oku = Read a book, kitabı oku = Read the book.",
+  "quiz": [
+    {
+      "question": "She has ___ orange and ___ banana.",
+      "options": [
+        "a / a",
+        "an / a",
+        "an / an",
+        "a / an"
+      ],
+      "answer": 1,
+      "explain": "'orange' ünlü harfle başladığı için 'an', 'banana' ünsüzle başladığı için 'a' alır."
+    },
+    {
+      "question": "Where is ___ green pen? It's on the table.",
+      "options": [
+        "the",
+        "a",
+        "an",
+        "-"
+      ],
+      "answer": 0,
+      "explain": "Hangi yeşil kalemi sorduğumuzu ikimiz de biliyoruz, belirli bir kalem olduğu için 'the'."
+    },
+    {
+      "question": "There are two ___ in the park.",
+      "options": [
+        "child",
+        "childs",
+        "children",
+        "childrens"
+      ],
+      "answer": 2,
+      "explain": "'child' kural dışı bir isim, çoğulu -s ile değil 'children' olarak yapılır."
+    }
+  ]
+}

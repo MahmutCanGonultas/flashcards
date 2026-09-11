@@ -1,0 +1,65 @@
+{
+  "unit": 8,
+  "title_en": "Have, Has and Feelings",
+  "title_tr": "Have, Has ve Duygular",
+  "hook": "İngilizler başları ağrıyınca 'başım ağrıyor' demez, 'bir baş ağrım var' der — ağrıya bile sahip çıkarlar, gel şu tuhaf ama kolay kuralı öğrenelim!",
+  "rules": [
+    {
+      "rule": "Bir şeyin sende olduğunu söylemek için 'have' kullanırız; he, she ve it için ise 'has'. Türkçedeki '-im var' burada 'I have' oluyor.",
+      "example_en": "I have brown eyes. My mother has green eyes.",
+      "example_tr": "Benim gözlerim kahverengi, annemin gözleri yeşil."
+    },
+    {
+      "rule": "Olumsuzu 'don't have' ile yaparız; he, she, it için 'doesn't have'. 'doesn't' geldiği an -s gider, yani 'has' değil 'have' kalır.",
+      "example_en": "I don't have a dog. He doesn't have a cat.",
+      "example_tr": "Köpeğim yok. Onun kedisi yok."
+    },
+    {
+      "rule": "Ağrılar ve hastalıklar İngilizcede 'sahip olunur': Türkçede 'başım ağrıyor' deriz, İngilizce 'I have a headache' der. Soğuk algınlığı da aynı: I have a cold.",
+      "example_en": "I have a headache and my dad has a cold.",
+      "example_tr": "Başım ağrıyor, babam da üşütmüş."
+    },
+    {
+      "rule": "Duygular için 'have' yok! 'I feel + sıfat' ya da 'I'm + sıfat' deriz; he ve she için 'feels' ve 'is' olur.",
+      "example_en": "I feel tired, but my little brother is happy.",
+      "example_tr": "Kendimi yorgun hissediyorum ama küçük kardeşim mutlu."
+    }
+  ],
+  "watch_out": "Türkçede 'onun var' derken hiçbir şey değişmediği için he/she/it'in -s'i sık unutulur: ✗ She have a headache. ✓ She has a headache. Olumsuzda ise tam tersi, -s'i 'doesn't' alır: ✗ She doesn't has a cold. ✓ She doesn't have a cold.",
+  "memory_trick": "Türkçe 'var' = have, 'yok' = don't have. 'İki gözüm var' → I have two eyes. 'Köpeğim yok' → I don't have a dog. Ağrıyı da 'var'la düşün: 'Baş ağrım var' → I have a headache.",
+  "quiz": [
+    {
+      "question": "My sister ___ a cat.",
+      "options": [
+        "don't have",
+        "doesn't have",
+        "doesn't has",
+        "no have"
+      ],
+      "answer": 1,
+      "explain": "'My sister' = she, o yüzden 'doesn't' gelir ve ondan sonra fiil hep yalın kalır: doesn't have."
+    },
+    {
+      "question": "I ___ a headache today.",
+      "options": [
+        "am",
+        "feel",
+        "have",
+        "is"
+      ],
+      "answer": 2,
+      "explain": "İngilizcede baş ağrısı 'sahip olunur', bu yüzden 'I have a headache' deriz."
+    },
+    {
+      "question": "I ___ very happy today!",
+      "options": [
+        "feel",
+        "have",
+        "has",
+        "feel a"
+      ],
+      "answer": 0,
+      "explain": "Duygular için 'have' değil 'feel' (ya da 'am') kullanılır: I feel happy."
+    }
+  ]
+}

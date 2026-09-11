@@ -1,0 +1,70 @@
+{
+  "unit": 23,
+  "title_en": "Modal Verbs: Advice, Duty, Possibility",
+  "title_tr": "Modal Fiiller: Tavsiye, Zorunluluk, İhtimal",
+  "hook": "'You mustn't come' ile 'You don't have to come' arasında uçurum var: biri yasak koyar, öteki 'keyfine kalmış' der — karıştırırsan davetin tehdide dönüşür!",
+  "rules": [
+    {
+      "rule": "Modal'lar (should, must, might, could) hiç şekil değiştirmez: -s almaz, peşine 'to' gelmez, hemen ardından fiilin yalın hali gelir. Soruda başa geçer, olumsuzda 'not' alırlar.",
+      "example_en": "We must leave now. Should we take a taxi?",
+      "example_tr": "Hemen çıkmalıyız. Taksiye mi binsek?"
+    },
+    {
+      "rule": "should, yumuşak bir '-malı/-meli': tavsiye verir, 'bence iyi olur' der, kimseyi zorlamaz. shouldn't de 'yapmasan daha iyi' demektir.",
+      "example_en": "You should arrive ten minutes early for an interview.",
+      "example_tr": "Mülakata on dakika erken gelmelisin."
+    },
+    {
+      "rule": "must ve have to ikisi de 'zorunda' ama kaynak farklı: must, konuşanın kendi kararı ya da hissi; have to, dışarıdan gelen kural veya durum. have to normal fiil gibi çekilir (has to, had to); must'ın geçmişi yoktur, onun yerine de had to kullanılır.",
+      "example_en": "I must sleep earlier — and anyway I have to be at work by eight.",
+      "example_tr": "Daha erken yatmalıyım — zaten en geç sekizde işte olmak zorundayım."
+    },
+    {
+      "rule": "Olumsuzda yollar ayrılır: mustn't = yasak, sakın yapma; don't have to = gerek yok, istersen yap. Yani must'ın olumsuzu ile have to'nun olumsuzu bambaşka iki şey söyler.",
+      "example_en": "You mustn't be late for the exam, but you don't have to come at seven.",
+      "example_tr": "Sınava sakın geç kalma, ama yedide gelmene de gerek yok."
+    },
+    {
+      "rule": "might ve could ihtimal bildirir: 'belki, olabilir'. İkisi de yaklaşık aynı güçtedir; bir şeyden emin değilsen must yerine bunlara sarıl.",
+      "example_en": "It might rain tonight, so the match could start late.",
+      "example_tr": "Bu gece yağmur yağabilir, o yüzden maç geç başlayabilir."
+    }
+  ],
+  "watch_out": "Türkçe 'zorunda değilsin'i kelime kelime çevirince 'must not' çıkıyor — ama mustn't yasak demek, 'gerek yok' değil. ✗ You mustn't come early, the shop opens at ten. ✓ You don't have to come early, the shop opens at ten.",
+  "memory_trick": "Dört ses düşün: should fısıldayan arkadaş, must içindeki kararlı ses, have to kural kitabı, might omuz silken hava tahmini. Bir de kilit: mustn't = 'sakın!', don't have to = 'gerek yok'.",
+  "quiz": [
+    {
+      "question": "She ___ leave before the meeting ends.",
+      "options": [
+        "must to",
+        "musts",
+        "must",
+        "have to"
+      ],
+      "answer": 2,
+      "explain": "Modal'lar -s ve 'to' almaz; 'have to' da 'she' ile 'has to' olurdu."
+    },
+    {
+      "question": "It's a casual party, so you ___ wear a suit.",
+      "options": [
+        "mustn't",
+        "don't have to",
+        "must",
+        "should"
+      ],
+      "answer": 1,
+      "explain": "Takım elbise yasak değil, sadece gerekli değil; mustn't deseydik yasaklamış olurduk."
+    },
+    {
+      "question": "I'm not sure — the train ___ be late again.",
+      "options": [
+        "might",
+        "must",
+        "has to",
+        "should"
+      ],
+      "answer": 0,
+      "explain": "Emin olmadığımız ihtimallerde might (ya da could) kullanırız; must kesinlik verirdi."
+    }
+  ]
+}

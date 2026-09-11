@@ -1,0 +1,55 @@
+{
+  "unit": 48,
+  "title_en": "Cause, Effect and Concession",
+  "title_tr": "Sebep, Sonuç ve Ödün Yapıları",
+  "hook": "'Because' A2'de öğrenilir; C1'de ise 'owing to', 'thereby', 'albeit' ve 'notwithstanding' ile aynı sebebi dört farklı ciddiyette söylersin — bilim insanı gibi.",
+  "rules": [
+    {
+      "rule": "Sebep için 'because' bir cümle alır; 'because of', 'owing to', 'due to', 'on account of' ise isim ya da -ing alır. Resmî yazıda 'owing to' ve 'due to' tercih edilir; 'due to' kılı kırk yaranlara göre 'be' fiilinden sonra en doğru durur.",
+      "example_en": "The anomaly was dismissed, owing to a lack of replication rather than a lack of interest.",
+      "example_tr": "Anomali, ilgi eksikliğinden değil, tekrar edilememesinden ötürü göz ardı edildi."
+    },
+    {
+      "rule": "Sonuç için 'therefore', 'consequently', 'hence' cümle başına gelip virgül alır; 'thereby' ise doğrudan -ing'e bağlanır ve 'böylece, o yoldan' der: 'X did Y, thereby doing Z'.",
+      "example_en": "The team quantified every variable, thereby making the study rigorous enough to replicate.",
+      "example_tr": "Ekip her değişkeni sayısallaştırdı, böylece çalışmayı tekrarlanabilecek kadar titiz hâle getirdi."
+    },
+    {
+      "rule": "Ödün (concession) beklenmeyen sonucu anlatır: 'although' cümle alır, 'despite / in spite of' isim alır, 'albeit' ise yalnızca kısa bir öbek alır ve cümlenin sonuna tutunur: 'a success, albeit a modest one'.",
+      "example_en": "The correlation held, albeit weakly, across every sample.",
+      "example_tr": "Korelasyon, zayıf da olsa, her örneklemde geçerli kaldı."
+    },
+    {
+      "rule": "'Notwithstanding' hem edat hem zarf olarak çalışır ve ismin arkasına da gelebilir: 'the evidence notwithstanding' = kanıta rağmen. 'For all + isim' de aynı işi yapar: 'for all its rigour' = bütün titizliğine rağmen.",
+      "example_en": "For all its intuition, the model failed; the data notwithstanding, the author kept the theory.",
+      "example_tr": "Bütün sezgiselliğine rağmen model çuvalladı; veriye rağmen yazar teoriden vazgeçmedi."
+    },
+    {
+      "rule": "'So ... that' ve 'such ... that' sebep-sonucu tek cümlede kurar: 'so' sıfatla, 'such' isimle. Vurgu için başa alınınca devrik olur: 'So susceptible was the sample that...'",
+      "example_en": "The catalyst was so effective that the reaction finished before anyone had started the timer.",
+      "example_tr": "Katalizör o kadar etkiliydi ki tepkime, kimse kronometreyi başlatmadan bitti."
+    }
+  ],
+  "watch_out": "Bu kelimelerin arkasına ne geldiği hayati: ✗ Owing to the sample was small, ✗ Despite it rained. ✓ Owing to the small sample, ✓ Despite the rain / Although it rained. 'Albeit' asla tam cümle almaz: ✗ albeit it was weak, ✓ albeit weak.",
+  "memory_trick": "Üç kutu düşün: CÜMLE kutusu (because, although, whereas), İSİM kutusu (owing to, despite, notwithstanding, for all), ÖBEK kutusu (albeit, thereby + -ing). Kelimeyi seçmeden önce arkasına ne koyacağına bak, kutuyu ona göre aç.",
+  "quiz": [
+    {
+      "question": "The trial was halted ___ an unprecedented number of side effects.",
+      "options": ["owing to", "although", "albeit", "because"],
+      "answer": 0,
+      "explain": "Arkasında isim öbeği var; 'owing to' isim alır, 'because' ve 'although' cümle ister."
+    },
+    {
+      "question": "They replicated the experiment, ___ confirming the original result.",
+      "options": ["therefore", "thereby", "albeit", "hence"],
+      "answer": 1,
+      "explain": "-ing'e doğrudan bağlanan sonuç bağlacı 'thereby'dır; 'therefore' yeni cümle başlatır."
+    },
+    {
+      "question": "The hypothesis survived, ___ narrowly.",
+      "options": ["despite", "although", "albeit", "notwithstanding"],
+      "answer": 2,
+      "explain": "Kısa bir öbekle ödün bildiren 'albeit'tir; 'although' cümle, 'despite' isim ister."
+    }
+  ]
+}

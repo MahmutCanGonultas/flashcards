@@ -1,0 +1,70 @@
+{
+  "unit": 34,
+  "title_en": "Passive Voice in Every Tense",
+  "title_tr": "Her Zamanda Edilgen Yapı",
+  "hook": "Bilim insanları 'ben ölçtüm' demez, 'ölçüldü' der; kişiyi sahneden indirip sonucu öne çıkaran bu edilgen dil, laboratuvarın anadilidir.",
+  "rules": [
+    {
+      "rule": "Edilgen cümlenin çekirdeği 'be + V3'tür: zamanı 'be' taşır, V3 (past participle) hiç değişmez. Eylemi kimin yaptığı önemsizse ya da bilinmiyorsa bu yapı devreye girer.",
+      "example_en": "The samples are stored at minus eighty degrees.",
+      "example_tr": "Örnekler eksi seksen derecede saklanır."
+    },
+    {
+      "rule": "Perfect zamanlarda 'have/has/had + been + V3', continuous zamanlarda ise 'am/is/are/was/were + being + V3' kullanılır. 'been' bitmişliği, 'being' sürmekte olmayı işaretler.",
+      "example_en": "The theory has been tested many times, and it is still being studied today.",
+      "example_tr": "Teori defalarca test edildi ve bugün hâlâ inceleniyor."
+    },
+    {
+      "rule": "Gelecek ve modal yapılarda 'be' yalın kalır: will be + V3, can/must/should be + V3; bir tarihe kadar bitecek işler için will have been + V3.",
+      "example_en": "The data will have been analysed by Friday, so the report can be written next week.",
+      "example_tr": "Veriler cumaya kadar analiz edilmiş olacak, böylece rapor haftaya yazılabilir."
+    },
+    {
+      "rule": "Kaynağı belirsiz genel bir görüşü aktarmak için 'It is said/believed/thought/known that + cümle' kalıbı kullanılır; Türkçedeki '-dığı söyleniyor / inanılıyor'un tam karşılığıdır.",
+      "example_en": "It is believed that the universe is about fourteen billion years old.",
+      "example_tr": "Evrenin yaklaşık on dört milyar yaşında olduğuna inanılıyor."
+    },
+    {
+      "rule": "Aynı anlam kişiyi özne yaparak da kurulur: 'Özne + is said/thought/known + to + fiil'. Aktarılan eylem daha önce olup bitmişse 'to have + V3' gelir.",
+      "example_en": "Einstein is said to have failed maths at school, but that story is known to be false.",
+      "example_tr": "Einstein'ın okulda matematikten kaldığı söylenir, ama bu hikâyenin uydurma olduğu biliniyor."
+    }
+  ],
+  "watch_out": "Türkçede 'olay yaşandı' dediğimiz için 'happen', 'occur', 'die', 'appear' gibi nesnesiz fiilleri edilgen yapmak çok cazip gelir; ama İngilizcede bu fiiller asla edilgen olmaz. ✗ The explosion was happened during the experiment. ✓ The explosion happened during the experiment.",
+  "memory_trick": "Edilgen bir trendir: V3 hep son vagondur ve hiç değişmez; zamanı gösteren tek şey 'be' lokomotifidir — is, was, has been, will be, is being... Lokomotifi değiştir, vagon aynı kalsın.",
+  "quiz": [
+    {
+      "question": "Right now the samples ___ in the lab.",
+      "options": [
+        "are being analysed",
+        "are analysing",
+        "have been analysing",
+        "are been analysed"
+      ],
+      "answer": 0,
+      "explain": "Şu an sürmekte olan bir işlem için am/is/are + being + V3 kullanılır."
+    },
+    {
+      "question": "The scientist ___ the mistake years ago.",
+      "options": [
+        "is said that he made",
+        "is said to have made",
+        "is said to make",
+        "said to have made"
+      ],
+      "answer": 1,
+      "explain": "Geçmişte olmuş bir eylemi aktarırken 'is said to have + V3' kalıbı gerekir."
+    },
+    {
+      "question": "By next year the study ___.",
+      "options": [
+        "will have completed",
+        "will be completing",
+        "will have been completing",
+        "will have been completed"
+      ],
+      "answer": 3,
+      "explain": "'By + gelecek bir zaman' ile bitmiş edilgen bir iş için will have been + V3 kullanılır."
+    }
+  ]
+}

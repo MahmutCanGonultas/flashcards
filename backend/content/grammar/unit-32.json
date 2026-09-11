@@ -1,0 +1,70 @@
+{
+  "unit": 32,
+  "title_en": "Narrative Tenses: Telling the Story",
+  "title_tr": "Hikâye Zamanları: Olayı Anlatmak",
+  "hook": "Bir hikâyede 'geldi, gördü, ağladı' demek yetmez; iyi anlatıcı, hangi olayın arka planda sürdüğünü ve hangisinin daha önce bittiğini tek bir fiil ekiyle gösterir.",
+  "rules": [
+    {
+      "rule": "Hikâyenin ana olayları, yani sırayla olup biten şeyler, past simple ile anlatılır. Bu tenselerin omurgasıdır; diğerleri onun etrafına dizilir.",
+      "example_en": "She opened the letter, read it twice and burst into tears.",
+      "example_tr": "Mektubu açtı, iki kez okudu ve gözyaşlarına boğuldu."
+    },
+    {
+      "rule": "Past continuous (was/were + -ing), ana olay gerçekleştiği sırada arka planda süren durumu anlatır. Türkçedeki '-yordu' gibi düşün: sahneyi kurar, olayı taşımaz.",
+      "example_en": "It was raining and I was feeling lonely when the phone rang.",
+      "example_tr": "Yağmur yağıyordu ve kendimi yalnız hissediyordum, derken telefon çaldı."
+    },
+    {
+      "rule": "Past perfect (had + V3), hikâyedeki bir andan daha önce bitmiş olayı gösterir. Anlatıcı geçmişin içinden bir adım daha geriye bakar; Türkçedeki '-mişti' bunun tam karşılığıdır.",
+      "example_en": "By the time he apologised, she had already forgiven him.",
+      "example_tr": "O özür dilediğinde, kadın onu çoktan affetmişti."
+    },
+    {
+      "rule": "'While' genellikle uzun, süren eylemle (past continuous), 'when' ise kısa, kesen eylemle (past simple) kullanılır. Hangi bağlacı seçtiğin, hangi eylemin arka plan olduğunu belirler.",
+      "example_en": "While we were talking about my father, I suddenly realised how much I missed him.",
+      "example_tr": "Babam hakkında konuşurken, onu ne kadar özlediğimi birden fark ettim."
+    },
+    {
+      "rule": "Olaylar zaten oluş sırasıyla anlatılıyorsa past perfect gerekmez; past simple yeter. Past perfect'i yalnızca sırayı bozup geriye döndüğünde kullan.",
+      "example_en": "I got home, made tea and sat down. Then I noticed the note she had left.",
+      "example_tr": "Eve geldim, çay yaptım ve oturdum. Sonra onun bıraktığı notu fark ettim."
+    }
+  ],
+  "watch_out": "Türkçe konuşanlar 'when' cümlesinde kesen eylemi de -ing yapmaya eğilimlidir. ✗ I was crying when she was calling me. ✓ I was crying when she called me. Kesen kısa eylem past simple kalır; süren arka plan past continuous olur.",
+  "memory_trick": "Sahne–olay–geri plan üçlüsü: -yordu (was doing) sahneyi kurar, -di (did) olayı yaşatır, -mişti (had done) daha eskiye gider. Türkçedeki bu üç ek, İngilizce üç zamanla neredeyse birebir örtüşür.",
+  "quiz": [
+    {
+      "question": "When I finally told him the truth, he ___ silent for a long time.",
+      "options": [
+        "was staying",
+        "stayed",
+        "had stayed",
+        "stays"
+      ],
+      "answer": 1,
+      "explain": "'Told' ile başlayan olay zincirinde sıradaki ana olay past simple ile anlatılır."
+    },
+    {
+      "question": "She ___ about her childhood when she suddenly started to cry.",
+      "options": [
+        "talked",
+        "had talked",
+        "was talking",
+        "has talked"
+      ],
+      "answer": 2,
+      "explain": "Arka planda süren eylem past continuous, onu kesen kısa eylem past simple olur."
+    },
+    {
+      "question": "He felt guilty because he ___ her birthday again.",
+      "options": [
+        "forgot",
+        "was forgetting",
+        "forgets",
+        "had forgotten"
+      ],
+      "answer": 3,
+      "explain": "Unutma, suçluluk hissinden daha önce olmuş bir olay olduğu için past perfect gerekir."
+    }
+  ]
+}

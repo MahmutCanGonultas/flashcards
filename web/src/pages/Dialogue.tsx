@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useUnits } from "../lib/units";
 import { speak, speechSupported } from "../lib/speech";
+import { playReveal } from "../lib/sound";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import LinkButton from "../components/LinkButton";
@@ -125,7 +126,7 @@ function Dialogue() {
               <Mascot mood="idle" size={64} className="shrink-0" />
               <div className="min-w-0">
                 <p className="text-[11px] font-extrabold uppercase tracking-widest text-stone-400">
-                  Unit {unit.position} · {unit.level} · Dialogue
+                  Unit {unit.position} · {unit.title}{unit.title_tr && ` (${unit.title_tr})`} · {unit.level}
                 </p>
                 <h1 className="text-2xl font-extrabold tracking-tight text-stone-800">
                   {unit.dialogue.title}
@@ -146,7 +147,10 @@ function Dialogue() {
                 ))}
               <button
                 type="button"
-                onClick={() => setShowTurkish((v) => !v)}
+                onClick={() => {
+                  playReveal();
+                  setShowTurkish((v) => !v);
+                }}
                 className="rounded-full bg-white px-3 py-1.5 text-xs font-extrabold text-stone-600 ring-1 ring-stone-200 transition hover:bg-stone-50"
               >
                 {showTurkish ? "Hide Turkish" : "Show Turkish"}

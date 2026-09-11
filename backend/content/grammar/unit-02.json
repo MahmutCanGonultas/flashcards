@@ -1,0 +1,70 @@
+{
+  "unit": 2,
+  "title_en": "This Is My Family",
+  "title_tr": "Bu Benim Ailem",
+  "hook": "Türkçede 'annem' tek kelime, İngilizcede iki: my mother — ama iyi haber şu, 'my' o kadar tembel ki annem, evim, kedim… hepsinde aynı kalıyor.",
+  "rules": [
+    {
+      "rule": "Türkçede 'annem, annen' diye ek kelimenin sonuna gelir; İngilizcede ek yok, 'my' (benim) ya da 'your' (senin) kelimenin ÖNÜNE gelir ve kelimenin kendisi hiç değişmez.",
+      "example_en": "My family is big.",
+      "example_tr": "Ailem kalabalık."
+    },
+    {
+      "rule": "Birini tanıştırırken 'This is ...' (Bu ...) deriz. Aradaki 'is' küçük ama zorunlu; Türkçede 'Bu annem' deriz, İngilizce 'is'siz cümle kurmaz.",
+      "example_en": "This is my mother.",
+      "example_tr": "Bu benim annem."
+    },
+    {
+      "rule": "Türkçede 'onun' tek kelimedir; İngilizce ise kişinin cinsiyetine bakar: erkekse 'his', kadınsa 'her'.",
+      "example_en": "This is my sister. Her name is Ayşe.",
+      "example_tr": "Bu kız kardeşim. Adı Ayşe."
+    },
+    {
+      "rule": "'Bizim' için 'our', 'onların' için 'their' kullanırız; bunlar da tıpkı 'my' gibi kelimenin önüne gelir.",
+      "example_en": "Our house is big, their house is small.",
+      "example_tr": "Bizim evimiz büyük, onların evi küçük."
+    },
+    {
+      "rule": "Bir ismin sonuna 's eklersen 'onun' anlamı gelir: Tom's sister = Tom'un kız kardeşi. Türkçedeki -ın/-in ekinin İngilizcesi işte bu küçük 's.",
+      "example_en": "My father's name is Mehmet.",
+      "example_tr": "Babamın adı Mehmet."
+    }
+  ],
+  "watch_out": "Türkçede 'onun' cinsiyet ayırmaz, o yüzden en sık hata his ile her'i karıştırmak: ✗ This is my mother. His name is Ayşe. ✓ This is my mother. Her name is Ayşe. Anne kadın, yani 'her'.",
+  "memory_trick": "Türkçede ek sona yapışır: anne-m, anne-n, anne-si. İngilizce aynı ekleri söküp öne koyar: MY mother, YOUR mother, HIS/HER mother. Ek arkadan öne geçti, o kadar.",
+  "quiz": [
+    {
+      "question": "This is my father. ___ name is Ahmet.",
+      "options": [
+        "Her",
+        "His",
+        "My",
+        "Your"
+      ],
+      "answer": 1,
+      "explain": "Baba erkek, o yüzden 'onun' için 'his' kullanırız."
+    },
+    {
+      "question": "This is ___ sister.",
+      "options": [
+        "Tom's",
+        "Toms",
+        "Tom is",
+        "Tom"
+      ],
+      "answer": 0,
+      "explain": "'Tom'un' demek için ismin sonuna 's ekleriz."
+    },
+    {
+      "question": "Ali and Ayşe are my friends. ___ house is big.",
+      "options": [
+        "Our",
+        "His",
+        "Their",
+        "Her"
+      ],
+      "answer": 2,
+      "explain": "Ali ve Ayşe iki kişi, 'onların' demek için 'their' kullanırız."
+    }
+  ]
+}

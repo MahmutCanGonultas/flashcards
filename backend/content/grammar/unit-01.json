@@ -1,0 +1,65 @@
+{
+  "unit": 1,
+  "title_en": "Am, Is, Are: The Verb Be",
+  "title_tr": "Am, Is, Are: Olmak Fiili",
+  "hook": "'I am Tonton' dediğin an İngilizcenin en çok kullanılan fiilini söylemiş oldun bile; şimdi onun üç yüzüyle — am, is, are — tanışma vakti.",
+  "rules": [
+    {
+      "rule": "am, is, are aslında tek bir fiil, üç kılığa giriyor: 'I' ile am; tek bir kişi ya da şeyle (he, she, it) is; geri kalan herkesle (you, we, they) are — 'you' tek kişi olsa bile.",
+      "example_en": "I am Tonton. She is my friend.",
+      "example_tr": "Ben Tonton'um. O benim arkadaşım."
+    },
+    {
+      "rule": "Konuşurken bu fiil genelde öznesine yapışıp kısalır: I am → I'm, you are → you're, she is → she's, it is → it's. Kesme işareti, düşen harfin yerini tutar.",
+      "example_en": "Hello! I'm Ayşe and she's my friend.",
+      "example_tr": "Merhaba! Ben Ayşe, o da arkadaşım."
+    },
+    {
+      "rule": "Olumsuz için fiilin hemen arkasına 'not' koyuyorsun, o kadar: I am not → I'm not, is not → isn't, are not → aren't.",
+      "example_en": "I'm not tired. I'm happy.",
+      "example_tr": "Yorgun değilim. Mutluyum."
+    },
+    {
+      "rule": "Soru için yeni kelime gerekmez, fiil öznenin önüne geçer: 'You are Ali.' → 'Are you Ali?' Kısa cevap da aynı fiille verilir: Yes, I am. / No, I'm not.",
+      "example_en": "Are you Ali? — No, I'm not. I'm Can.",
+      "example_tr": "Sen Ali misin? — Hayır, değilim. Ben Can'ım."
+    }
+  ],
+  "watch_out": "Türkçede 'Ben yorgunum' derken ortada ayrı bir fiil yok, o yüzden İngilizcede de atlamak çok kolay — ama İngilizce cümle bu fiilsiz ayakta duramaz. ✗ I tired. ✗ She my friend. ✓ I am tired. ✓ She is my friend.",
+  "memory_trick": "am, is, are aslında Türkçedeki -im, -dir, -iz eklerinin İngilizcesi; sadece kelimenin kuyruğundan kopup öznenin hemen arkasına geçmişler: yorgun-um → I am tired, yorgun-dur → she is tired, yorgun-uz → we are tired.",
+  "quiz": [
+    {
+      "question": "She ___ my friend.",
+      "options": [
+        "am",
+        "are",
+        "is",
+        "be"
+      ],
+      "answer": 2,
+      "explain": "'She' tek bir kişi, o yüzden 'is' gelir; 'am' yalnızca 'I' ile kullanılır."
+    },
+    {
+      "question": "I'm ___ tired. I'm happy.",
+      "options": [
+        "not",
+        "no",
+        "don't",
+        "isn't"
+      ],
+      "answer": 0,
+      "explain": "Olumsuz için am/is/are'dan hemen sonra 'not' gelir: I'm not tired."
+    },
+    {
+      "question": "___ you Ali? — No, I'm not.",
+      "options": [
+        "You are",
+        "Is",
+        "Am",
+        "Are"
+      ],
+      "answer": 3,
+      "explain": "'You' ile 'are' gelir ve soruda fiil öznenin önüne geçer: Are you...?"
+    }
+  ]
+}

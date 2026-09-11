@@ -1,0 +1,65 @@
+{
+  "unit": 12,
+  "title_en": "Past Simple: Irregular Verbs",
+  "title_tr": "Geçmiş Zaman: Düzensiz Fiiller",
+  "hook": "İngilizcenin en sık kullanılan on fiilinin onu da düzensiz, yani -ed burada işe yaramıyor; ama iyi haber şu: yirmi kelime ezberle, dünkü gününü baştan sona anlatırsın.",
+  "rules": [
+    {
+      "rule": "Bazı fiiller geçmişte -ed almaz, kılık değiştirir: go→went, have→had, see→saw, take→took, come→came, get→got. Bunların kuralı yok; altısını da ezbere bileceksin.",
+      "example_en": "I went to work by bus yesterday.",
+      "example_tr": "Dün işe otobüsle gittim."
+    },
+    {
+      "rule": "Geçmiş hali herkes için aynıdır: I went, she went, they went. Türkçedeki gibi kişiye göre ek değişmez (gittim, gitti, gittiler ayrımı yok), -s de yok.",
+      "example_en": "I got a job and she got a job too.",
+      "example_tr": "Ben iş buldum, o da iş buldu."
+    },
+    {
+      "rule": "Olumsuz ve soruda geçmişi 'did' üstlenir, fiil yalın hale döner: didn't go, Did you see...? Yani cümlede sadece bir tane geçmiş işareti olur.",
+      "example_en": "Did you see a doctor? — No, I didn't have time.",
+      "example_tr": "Doktora gittin mi? — Hayır, vaktim olmadı."
+    },
+    {
+      "rule": "Bu altıya en çok kullanacağın on dördü ekle, listen tamam: do→did, make→made, say→said, know→knew, think→thought, give→gave, find→found, tell→told, eat→ate, drink→drank, buy→bought, write→wrote, leave→left, feel→felt.",
+      "example_en": "We left the hotel at nine and found a nice café.",
+      "example_tr": "Dokuzda otelden çıktık ve güzel bir kafe bulduk."
+    }
+  ],
+  "watch_out": "Türkçede olumsuzda bile geçmiş eki durur ('gitmedim'), o yüzden İngilizcede de fiili ikinci kez geçmişe çekmek istersin: ✗ I didn't went to work. ✓ I didn't go to work. Geçmişi zaten 'did' taşıyor; fiil yalın kalır, 'Did you saw?' değil 'Did you see?'.",
+  "memory_trick": "'See-saw' İngilizcede tahterevalli demek: bir tarafı see (bugün), öbür tarafı saw (dün). Diğerlerini de böyle ikili ritimle söyle: go-went, take-took, come-came, get-got, have-had.",
+  "quiz": [
+    {
+      "question": "Last summer we ___ to Italy by plane.",
+      "options": [
+        "goed",
+        "go",
+        "went",
+        "wented"
+      ],
+      "answer": 2,
+      "explain": "'Go' düzensizdir, geçmişi 'went' olur; -ed almaz."
+    },
+    {
+      "question": "Did you ___ the doctor yesterday?",
+      "options": [
+        "saw",
+        "see",
+        "seen",
+        "sees"
+      ],
+      "answer": 1,
+      "explain": "Soruda geçmişi 'did' taşır, fiil yalın kalır: see."
+    },
+    {
+      "question": "She ___ a new job last month.",
+      "options": [
+        "got",
+        "gets",
+        "getted",
+        "get"
+      ],
+      "answer": 0,
+      "explain": "Özne 'she' olsa da geçmişte -s yok; 'get' herkes için 'got' olur."
+    }
+  ]
+}

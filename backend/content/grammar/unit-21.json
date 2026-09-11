@@ -1,0 +1,70 @@
+{
+  "unit": 21,
+  "title_en": "Present Perfect: Have You Ever?",
+  "title_tr": "Present Perfect: Hiç Yaptın mı?",
+  "hook": "İngilizler \"Paris'e gittim\" derken NE ZAMAN gittiğini söylemez; o küçük \"have\" kelimesi tüm hayatını tek cümleye sığdırıyor.",
+  "rules": [
+    {
+      "rule": "Present perfect = have/has + fiilin 3. hali (past participle). I/you/we/they ile have, he/she/it ile has kullanılır; konuşurken genelde kısaltılır: I've, she's, they've.",
+      "example_en": "I've read the news today.",
+      "example_tr": "Bugün haberleri okudum."
+    },
+    {
+      "rule": "Bu zaman, hayatındaki bir deneyimi ZAMAN VERMEDEN anlatır. \"Ne zaman\" önemli değildir, önemli olan yaşanmış olmasıdır. Ne zaman olduğunu söylersen (yesterday, last week, in 2019) past simple'a geçersin.",
+      "example_en": "She has watched that film three times.",
+      "example_tr": "O filmi üç kez izledi (hayatında)."
+    },
+    {
+      "rule": "Sorularda ever (hiç), olumsuzlarda never (hiç ... -medi) kullanılır. Ever soru kelimesi değildir, Have/Has ile soru kurulur ve ever özneden sonra gelir. Never zaten olumsuzdur, yanına not gelmez.",
+      "example_en": "Have you ever played tennis? No, I've never tried it.",
+      "example_tr": "Hiç tenis oynadın mı? Hayır, hiç denemedim."
+    },
+    {
+      "rule": "Been ve gone ikisi de go fiilinin 3. hali gibi çalışır ama anlamları farklı: been = gitti ve döndü (deneyim), gone = gitti, hâlâ orada.",
+      "example_en": "Tom has been to London. Anna has gone to London.",
+      "example_tr": "Tom Londra'ya gitti (ve döndü). Anna Londra'ya gitti (hâlâ orada)."
+    },
+    {
+      "rule": "Türkçedeki -miş ile karıştırma: -miş \"duydum ama görmedim\" demektir, present perfect ise kendi deneyimini anlatır. Türkçeye çoğu zaman düz -di ile çevrilir; fark İngilizcede zaman belirtmeme kuralındadır.",
+      "example_en": "I've heard this song before.",
+      "example_tr": "Bu şarkıyı daha önce duydum."
+    }
+  ],
+  "watch_out": "En yaygın hata, present perfect'i geçmiş bir zaman ifadesiyle birlikte kullanmaktır; İngilizcede bu ikisi aynı cümlede olamaz. ✗ I have seen this film last week. ✓ I saw this film last week. Ne zaman olduğunu söylüyorsan past simple, söylemiyorsan present perfect.",
+  "memory_trick": "Present perfect'i tarih yazılmamış bir fotoğraf albümü gibi düşün: \"Bunu yaşadım\" der ama takvim yoktur. Cümleye tarih koyduğun an albümü kapatır, past simple'a geçersin.",
+  "quiz": [
+    {
+      "question": "My sister ___ never been to a concert.",
+      "options": [
+        "have",
+        "has",
+        "is",
+        "was"
+      ],
+      "answer": 1,
+      "explain": "Özne he/she/it grubundaysa (my sister = she) present perfect'te has kullanılır."
+    },
+    {
+      "question": "___ you ever read the news in English?",
+      "options": [
+        "Do",
+        "Did",
+        "Have",
+        "Are"
+      ],
+      "answer": 2,
+      "explain": "Deneyim sorusu ever ile kurulur ve yardımcı fiil Have/Has olur: Have you ever...?"
+    },
+    {
+      "question": "Where is Mark? He ___ to the cinema, he's not here.",
+      "options": [
+        "has gone",
+        "has been",
+        "went",
+        "goes"
+      ],
+      "answer": 0,
+      "explain": "Mark hâlâ sinemada ve dönmedi; bu yüzden gone kullanılır, been olsaydı dönmüş olurdu."
+    }
+  ]
+}

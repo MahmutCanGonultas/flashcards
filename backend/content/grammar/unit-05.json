@@ -1,0 +1,65 @@
+{
+  "unit": 5,
+  "title_en": "There is / are, in / on / under",
+  "title_tr": "Var – Yok ve in / on / under",
+  "hook": "Türkçede tek bir 'var' ile hallettiğin işi İngilizce ikiye bölüyor, çünkü önce sayıyor: bir sandalye mi, iki sandalye mi?",
+  "rules": [
+    {
+      "rule": "Bir tane şey varsa 'There is a ...' dersin; bu bizim 'var'ımız. Nerede olduğunu da cümlenin sonuna eklersin.",
+      "example_en": "There is a table in the kitchen.",
+      "example_tr": "Mutfakta bir masa var."
+    },
+    {
+      "rule": "İki ya da daha çok şey varsa 'is' gider, 'are' gelir: 'There are ...'. Eşyanın sonundaki -s'yi de unutma.",
+      "example_en": "There are two chairs in my room.",
+      "example_tr": "Odamda iki sandalye var."
+    },
+    {
+      "rule": "'Yok' demek için 'not' ekle: There isn't / There aren't. Soru sormak için de yer değiştir: Is there...? Are there...?",
+      "example_en": "Is there a TV in your room? No, there isn't.",
+      "example_tr": "Odanda televizyon var mı? Hayır, yok."
+    },
+    {
+      "rule": "in = içinde, on = üstünde, under = altında, next to = yanında. Türkçenin tersine bu sözcük eşyanın ÖNÜNE gelir: under the bed.",
+      "example_en": "The cat is under the bed.",
+      "example_tr": "Kedi yatağın altında."
+    }
+  ],
+  "watch_out": "Türkçede 'var' hiç değişmez, o yüzden 'is' her yere yapışır: ✗ There is two chairs. ✓ There are two chairs. Bir de: buradaki 'there' 'orada' demek değil, sadece 'var'ın bir parçası.",
+  "memory_trick": "in–İçinde: ikisi de i ile başlar. on'daki o, masanın ÜSTÜNDE duran bir top. under'daki u ise bir çukur: altına giriyorsun.",
+  "quiz": [
+    {
+      "question": "___ three books on the table.",
+      "options": [
+        "There are",
+        "There is",
+        "Is there",
+        "They are"
+      ],
+      "answer": 0,
+      "explain": "Üç kitap var, yani çoğul; çoğulda 'There are' deriz."
+    },
+    {
+      "question": "___ a bed in your room? Yes, there is.",
+      "options": [
+        "There is",
+        "Are there",
+        "Is there",
+        "Is it"
+      ],
+      "answer": 2,
+      "explain": "Tek bir yatak soruyoruz; soruda 'Is' başa geçer: Is there...?"
+    },
+    {
+      "question": "The picture is ___ the wall.",
+      "options": [
+        "in",
+        "on",
+        "under",
+        "next to"
+      ],
+      "answer": 1,
+      "explain": "Resim duvara yapışık durur; böyle bir yüzeye temas eden şeyler için 'on' deriz."
+    }
+  ]
+}
