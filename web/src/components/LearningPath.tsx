@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { primeSpeech } from "../lib/speech";
 import type { Lesson, Unit } from "../lib/path";
 import { themeFor } from "../lib/themes";
 import { CheckIcon, LockIcon, StarIcon } from "./icons";
@@ -145,7 +146,12 @@ function LearningPath({ deckId, units }: LearningPathProps) {
                     lesson={lesson}
                     offset={offsetByLesson.get(lesson.number) ?? 0}
                     accent={accent}
-                    onOpen={() => navigate(`/decks/${deckId}/study?lesson=${lesson.number}`)}
+                    onOpen={() => {
+                      // Inside the tap, before the route changes: iOS only
+                      // unlocks speech from a user gesture.
+                      primeSpeech();
+                      navigate(`/decks/${deckId}/study?lesson=${lesson.number}`);
+                    }}
                     onBlocked={() => shake(lesson.number)}
                     isBlockedShaking={shakingLesson === lesson.number}
                   />
