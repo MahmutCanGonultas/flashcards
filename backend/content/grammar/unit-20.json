@@ -1,70 +1,70 @@
 {
   "unit": 20,
-  "title_en": "In, On, At: Time and Place",
-  "title_tr": "In, On, At: Zaman ve Yer",
-  "hook": "Türkçede tek bir '-de' ekiyle hallettiğin işi İngilizce üçe bölmüş — in, on, at — ama sakin ol, arkasında büyükten küçüğe giden basit bir mantık var.",
+  "title_en": "Where Frequency Adverbs Go",
+  "title_tr": "Sıklık Zarfları Nereye Gelir?",
+  "hook": "İngilizcede 'always' cümlenin başına değil, tam ortasına oturur; yanlış koltuğa koyarsan çamaşır yine yıkanır ama cümle yabancı kokar — doğru yeri gösteriyorum.",
   "rules": [
     {
-      "rule": "Geniş, uzun zaman dilimleri 'in' alır: yıllar, aylar, mevsimler ve günün bölümleri. in 2020, in May, in winter, in the morning.",
-      "example_en": "The trees are green in spring.",
-      "example_tr": "İlkbaharda ağaçlar yeşil olur."
+      "rule": "Sıklık zarfları bir merdivendir: always (%100) en üstte, sonra usually, often, sometimes aşağı iner, never (%0) en altta durur.",
+      "example_en": "I always make my bed in the morning.",
+      "example_tr": "Sabahları yatağımı her zaman toplarım."
     },
     {
-      "rule": "Günler ve tarihler 'on' alır: on Monday, on 5 May, on my birthday. Cümlede bir gün adı ya da tarih görüyorsan cevap 'on'.",
-      "example_en": "It snowed on Monday.",
-      "example_tr": "Pazartesi günü kar yağdı."
+      "rule": "Türkçede zarf cümlenin neresine gelse olur; İngilizcede sabit bir koltuğu var: özne ile ana fiilin tam arasında.",
+      "example_en": "We often clean the kitchen on Sundays.",
+      "example_tr": "Pazarları mutfağı sık sık temizleriz."
     },
     {
-      "rule": "Saatler ve birkaç sabit kalıp 'at' alır: at 6, at noon, at night, at the weekend. (Amerikalılar 'on the weekend' der, ikisi de doğru.)",
-      "example_en": "The birds wake up at 5.",
-      "example_tr": "Kuşlar saat 5'te uyanır."
+      "rule": "Fiil am / is / are ise koltuk değişir: zarf 'be'den SONRA gelir.",
+      "example_en": "The kitchen is always a mess after dinner.",
+      "example_tr": "Akşam yemeğinden sonra mutfak her zaman dağınık olur."
     },
     {
-      "rule": "Yer için de aynı üçlü iş görür: bir alanın içindeysen 'in' (in the park, in the sea), bir yüzeyin üstündeysen 'on' (on the beach, on the grass), belli bir noktadaysan 'at' (at home, at the bus stop).",
-      "example_en": "We sit on the beach and swim in the sea.",
-      "example_tr": "Plajda oturup denizde yüzüyoruz."
+      "rule": "'already' (çoktan) ve 'still' (hâlâ) de aynı koltuğa oturur: ana fiilden önce, 'be'den sonra.",
+      "example_en": "I've already washed the dishes, but Dad is still cooking.",
+      "example_tr": "Bulaşıkları çoktan yıkadım ama babam hâlâ yemek pişiriyor."
     },
     {
-      "rule": "every, next, last, this'ten önce edat yok: every morning, next summer, last night. Türkçede de 'her sabah', 'gelecek yaz' derken -de eki düşer, aynı mantık.",
-      "example_en": "We go to the mountains every summer.",
-      "example_tr": "Her yaz dağlara gideriz."
+      "rule": "'yet' (henüz) ise farklıdır: cümlenin en sonuna gider ve yalnızca soru ile olumsuz cümlelerde kullanılır.",
+      "example_en": "Have you taken out the rubbish yet?",
+      "example_tr": "Çöpü henüz çıkardın mı?"
     }
   ],
-  "watch_out": "Türkçede yaz, pazartesi, saat altı, ev, plaj — hepsi aynı '-de/-da' ekini aldığı için en sık hata her yere 'in' yapıştırmak. ✗ I was in home in Monday. ✓ I was at home on Monday.",
-  "memory_trick": "Bir huni düşün: en üstte kocaman 'in' (yıl, mevsim, ay, park), ortada 'on' (gün, tarih, plaj yüzeyi), en altta ince uç 'at' (saat, ev, durak). Zaman ya da yer büyüdükçe yukarı, küçüldükçe aşağı.",
+  "watch_out": "Türkçede 'asla' olumsuz fiil ister (asla yıkamam), ama İngilizcede 'never' tek başına olumsuzdur; fiil olumlu kalır. ✗ I never don't wash the dishes. ✓ I never wash the dishes.",
+  "memory_trick": "Sandviç kuralı: özne ve fiil iki dilim ekmek, zarf aradaki peynir — I · always · wash. Tek istisna 'be': peynir ekmeğin üstüne gelir — I am · always · tired.",
   "quiz": [
     {
-      "question": "The flowers open ___ spring.",
+      "question": "She ___ the dishes after dinner.",
       "options": [
-        "on",
-        "at",
-        "in",
-        "to"
+        "washes usually",
+        "usually wash",
+        "wash usually",
+        "usually washes"
       ],
-      "answer": 2,
-      "explain": "Mevsimler geniş bir zaman dilimidir, 'in' alır: in spring."
+      "answer": 3,
+      "explain": "Zarf özne ile ana fiilin arasına girer ve 'she' için fiil -s alır: usually washes."
     },
     {
-      "question": "The stars come out ___ night.",
+      "question": "My brother ___ late for school.",
       "options": [
-        "at",
-        "in",
-        "on",
-        "of"
+        "is never",
+        "never is",
+        "never be",
+        "is being never"
       ],
       "answer": 0,
-      "explain": "'night' sabit bir kalıptır, her zaman 'at night' denir."
+      "explain": "Fiil 'be' olunca zarf ondan sonra gelir: is never."
     },
     {
-      "question": "The fish live ___ the sea.",
+      "question": "I haven't cleaned my room ___.",
       "options": [
-        "on",
-        "in",
-        "at",
-        "to"
+        "already",
+        "still",
+        "yet",
+        "always"
       ],
-      "answer": 1,
-      "explain": "Deniz, içine girilen bir alandır; 'in the sea' denir."
+      "answer": 2,
+      "explain": "Olumsuz cümlede 'henüz' anlamı için cümle sonuna 'yet' gelir."
     }
   ]
 }

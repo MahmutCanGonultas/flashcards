@@ -1,65 +1,70 @@
 {
   "unit": 16,
-  "title_en": "Some, Any, Much and Many",
-  "title_tr": "Some, Any, Much ve Many",
-  "hook": "İngilizler ekmeği, suyu, hatta parayı sayamaz — o yüzden 'iki ekmek' diyemezler ama 'iki gömlek' derler; bu küçük fark, mağazada doğru soruyu sormanın anahtarı.",
+  "title_en": "Question Words and Word Order",
+  "title_tr": "Soru Kelimeleri ve Kelime Sırası",
+  "hook": "Türkçede 'Nerede okuyorsun?' derken 'nerede' ortada sakin sakin bekler; İngilizcede aynı kelime kuyruğa girmez, doğruca en öne geçer — ve bir de yanına 'do' diye bir arkadaş alır.",
   "rules": [
     {
-      "rule": "İngilizcede isimler ikiye ayrılır: sayılanlar (shirt, bag, shoe) tek tek sayılır ve çoğul olur; sayılamayanlar (money, water, bread) çoğul olmaz, başına 'a' da almaz.",
-      "example_en": "I bought two shirts and a bag, and I spent all my money.",
-      "example_tr": "İki gömlek ve bir çanta aldım, bütün paramı harcadım."
+      "rule": "Altı soru kelimesi, altı Türkçe karşılık: who = kim, what = ne, where = nerede, when = ne zaman, why = neden, how = nasıl. Cümle 'is/are' ile kuruluyorsa soru kelimesinden hemen sonra is/are gelir, 'do' gerekmez.",
+      "example_en": "Who is your favourite teacher?",
+      "example_tr": "En sevdiğin öğretmen kim?"
     },
     {
-      "rule": "'Some' olumlu cümlede, 'any' soru ve olumsuz cümlede kullanılır; ikisi de hem sayılan hem sayılmayan isimle olur. Tek istisna: ikram ya da rica sorusunda 'some' kalır — Would you like some help?",
-      "example_en": "I have some money, but I don't have any shoes.",
-      "example_tr": "Biraz param var ama hiç ayakkabım yok."
+      "rule": "Fiilli cümlelerde sıra hep aynı: soru kelimesi + do/does + kişi + yalın fiil. Türkçede 'nerede' fiilin yanında durur, İngilizcede en başa taşınır; 'does' geldiğinde fiil -s almaz.",
+      "example_en": "Where does your best friend study?",
+      "example_tr": "En iyi arkadaşın nerede okuyor?"
     },
     {
-      "rule": "'Many' sayılanlarla, 'much' sayılamayanlarla gider: How many shirts? How much money? İkisi de en çok soru ve olumsuz cümlede kullanılır.",
-      "example_en": "How many shirts do you want? — Not many, I don't have much money.",
-      "example_tr": "Kaç gömlek istiyorsun? — Çok değil, fazla param yok."
+      "rule": "Geçmişi sorarken do/does'un yerini 'did' alır, fiil yine yalın kalır — geçmiş bilgisi tek başına 'did'in içinde taşınır.",
+      "example_en": "Why did you miss the lesson yesterday?",
+      "example_tr": "Dün dersi neden kaçırdın?"
     },
     {
-      "rule": "Olumlu cümlede 'much/many' yerine 'a lot of' çok daha doğal ve her iki isimle de olur. Az bir miktar için sayılamayan isimle 'a bit of' kullan.",
-      "example_en": "There are a lot of shops here, but I only have a bit of time.",
-      "example_tr": "Burada bir sürü mağaza var ama sadece birazcık vaktim var."
+      "rule": "'How' tek başına 'nasıl' demek, ama yanına bir kelime alınca yeni sorular doğar: how many = kaç tane, how often = ne sıklıkla, how long = ne kadar süre, how old = kaç yaşında.",
+      "example_en": "How many students are there in your class?",
+      "example_tr": "Sınıfında kaç öğrenci var?"
+    },
+    {
+      "rule": "Cevap 'kim yapıyor?' ise, yani soru kelimesi cümlenin öznesiyse do/does kullanılmaz: who/what'tan hemen sonra fiil gelir ve fiil -s alır.",
+      "example_en": "Who teaches English at your school?",
+      "example_tr": "Okulunda İngilizceyi kim öğretiyor?"
     }
   ],
-  "watch_out": "Türkçede 'Kaç para?' deriz, o yüzden dil hemen 'How many money?' demeye kayar; ama 'money' sayılamaz. ✗ How many money do you have? ✓ How much money do you have? Fiyat sorarken en kısası: ✓ How much is this shirt?",
-  "memory_trick": "Türkçe 'tane' testi: 'Kaç tane gömlek?' diyebiliyorsan sayılır → many, a few. 'Kaç tane para?' olmuyor, 'Ne kadar para?' oluyorsa sayılmaz → much, a bit of. Tane varsa many, tane yoksa much.",
+  "watch_out": "Türkçede yardımcı fiil olmadığı için en sık unutulan parça 'do/does': ✗ Where you live? ✓ Where do you live? 'Does' geldiğinde de fiildeki -s düşer: ✗ Where does she lives? ✓ Where does she live?",
+  "memory_trick": "Dört adımlık bir ritim tut: SORU – DO – KİM – FİİL. 'Where – do – you – live?', 'What – does – she – want?', 'Why – did – they – leave?' Hangi soru kelimesi olursa olsun ritim değişmez; sadece 'do' zamanla kılık değiştirir.",
   "quiz": [
     {
-      "question": "Sorry, we don't have ___ black T-shirts.",
+      "question": "Which one is correct?",
       "options": [
-        "some",
-        "any",
-        "much",
-        "a"
+        "Where you live?",
+        "Where do you live?",
+        "Where live you?",
+        "Where you do live?"
       ],
       "answer": 1,
-      "explain": "Olumsuz cümlede 'some' değil 'any' kullanırız."
+      "explain": "Sıra hiç değişmez: soru kelimesi + do + kişi + yalın fiil."
     },
     {
-      "question": "How ___ shoes do you have?",
+      "question": "___ do you play football? — Every Saturday.",
       "options": [
-        "much",
-        "a bit of",
-        "many",
-        "any"
+        "How long",
+        "How many",
+        "How old",
+        "How often"
+      ],
+      "answer": 3,
+      "explain": "Cevap sıklık bildiriyor ('her cumartesi'), sıklığı da 'how often' sorar."
+    },
+    {
+      "question": "Who ___ in that big house?",
+      "options": [
+        "do live",
+        "does live",
+        "lives",
+        "live"
       ],
       "answer": 2,
-      "explain": "'Shoes' sayılabilir bir isim, o yüzden 'how many' deriz."
-    },
-    {
-      "question": "I have only ___ time, so let's be quick.",
-      "options": [
-        "a bit of",
-        "many",
-        "a few",
-        "much"
-      ],
-      "answer": 0,
-      "explain": "'Time' sayılamaz ve az bir miktar için 'a bit of' deriz."
+      "explain": "'Who' burada cümlenin öznesi; do/does gelmez, fiil doğrudan gelip -s alır."
     }
   ]
 }

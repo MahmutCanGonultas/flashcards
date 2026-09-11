@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 36,
+    "level": "B1",
+    "title": "Relationships"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "get along",
+      "back": "(phrasal verb) iyi geçinmek 🤝",
+      "example_sentence": "My brother and I have always got along well.",
+      "mnemonic": "'Along' 'birlikte, yan yana' demek ('come along' = benimle gel); iki kişi aynı yolda yan yana ilerleyebiliyorsa 'get along' — iyi geçiniyorlar. Kalıp: get along WITH someone."
+    },
+    {
+      "lesson": 1,
+      "front": "break up",
+      "back": "(phrasal verb) ayrılmak 💔",
+      "example_sentence": "If you keep lying, she'll break up with you.",
+      "mnemonic": "'Break' kırmak: kalp kırılır, ilişki kırılıp dağılır (up). Neil Sedaka'nın klasiği 'Breaking Up Is Hard to Do' — ayrılmak zordur; kalıp: break up WITH someone."
+    },
+    {
+      "lesson": 1,
+      "front": "make up",
+      "back": "(phrasal verb) barışmak 🕊️",
+      "example_sentence": "They argued all night but made up by breakfast.",
+      "mnemonic": "Kozmetikteki 'make-up' yüzü toparlar; bu fiil de kavgadan sonra ilişkiyi toparlar: 'kiss and make up' = öpüşüp barışmak. (Aynı fiil 'make up a story' derken 'uydurmak' olur.)"
+    },
+    {
+      "lesson": 2,
+      "front": "gossip",
+      "back": "(noun) dedikodu 🗣️",
+      "example_sentence": "Don't believe the gossip about her new boyfriend.",
+      "mnemonic": "Eski İngilizce 'god-sibb' = vaftiz akrabası ('sibling' ile aynı 'sibb' kökü): en yakınların baş başa verip konuştuğu şey zamanla dedikodu olmuş. Kalıp: 'juicy gossip', 'gossip ABOUT someone'."
+    },
+    {
+      "lesson": 2,
+      "front": "compliment",
+      "back": "(noun) iltifat, kompliman 💐",
+      "example_sentence": "My boss paid me a compliment in front of everyone.",
+      "mnemonic": "Türkçedeki 'kompliman' zaten bu kelime (Fransızca 'compliment'). Yazımı: iltifat 'i' ile — 'I like compliments'; 'e' ile 'complement' ise 'tamamlayıcı' demek."
+    },
+    {
+      "lesson": 2,
+      "front": "forgive",
+      "back": "(verb) affetmek, bağışlamak 🙏",
+      "example_sentence": "I've forgiven him, but I haven't forgotten what he said.",
+      "mnemonic": "Türkçe 'bağışlamak' hem 'vermek' (bağış) hem 'affetmek' demek — İngilizce 'for-give' de 'give' (vermek) üstüne kurulmuş, aynı mantık. 'Pardon' bile Latince 'per-donare' = tamamen vermek; kalıp: 'forgive and forget'."
+    },
+    {
+      "lesson": 3,
+      "front": "generous",
+      "back": "(adjective) cömert 🎁",
+      "example_sentence": "It was generous of you to pay for everyone's dinner.",
+      "mnemonic": "Latince 'genus' (soy) kökünden, 'jenerasyon' ve 'gen' ile akraba: 'generous' önce 'soylu doğmuş' demekti, soylunun da eli açık olur diye anlam kaymış. Kalıp: 'generous WITH money/time', 'a generous portion'."
+    },
+    {
+      "lesson": 3,
+      "front": "stubborn",
+      "back": "(adjective) inatçı 🫏",
+      "example_sentence": "He's too stubborn to admit he was wrong.",
+      "mnemonic": "'As stubborn as a mule' — Türkçedeki 'katır inadı' ile birebir aynı benzetme. Kalıp: 'stubborn ABOUT something', 'too stubborn to admit it'."
+    },
+    {
+      "lesson": 3,
+      "front": "sensitive",
+      "back": "(adjective) hassas, duyarlı 🥺",
+      "example_sentence": "Don't mention his weight; he's very sensitive about it.",
+      "mnemonic": "'Sensör' ile aynı Latince kök (sentire = hissetmek): hassas insan sensör gibi en ufak şeyi hisseder. Tuzak: 'sensible' hassas değil, 'mantıklı, makul' demek; 'sensitive ABOUT/TO something'."
+    },
+    {
+      "lesson": 4,
+      "front": "promise",
+      "back": "(verb) söz vermek 🤞",
+      "example_sentence": "Promise me you won't tell anyone about this.",
+      "mnemonic": "'Misyon', 'komisyon', 'emisyon'daki Latince 'mittere' (göndermek) kökü: pro-mittere = 'öne göndermek', sözünü şimdiden geleceğe yollamak. Kalıp: 'make / keep / break a promise'."
+    },
+    {
+      "lesson": 4,
+      "front": "complain",
+      "back": "(verb) şikâyet etmek, yakınmak 😤",
+      "example_sentence": "She keeps complaining about the mess in the kitchen.",
+      "mnemonic": "Kalıp: complain TO someone ABOUT something — 'complain to the manager about the noise'. 'How are you?' sorusuna klasik cevap 'Can't complain!' = 'Şikâyetim yok, fena değil'."
+    },
+    {
+      "lesson": 4,
+      "front": "remind",
+      "back": "(verb) hatırlatmak ⏰",
+      "example_sentence": "Remind me to call Grandma on her birthday.",
+      "mnemonic": "'Re-' + 'mind' (zihin): bir şeyi birinin zihnine yeniden koymak — telefondaki 'Reminders' (Anımsatıcılar) uygulaması bunu yapar. 'Remember' hatırlamak, 'remind' hatırlatmak: hep nesne alır, 'remind ME to…'."
+    },
+    {
+      "lesson": 5,
+      "front": "loyal",
+      "back": "(adjective) sadık, vefalı 🐕",
+      "example_sentence": "She's been a loyal friend to me since primary school.",
+      "mnemonic": "'Legal' ile aynı Latince kelime (legalis); Fransızcada 'loyal'a dönüşmüş: yasaya, yemine bağlı kalan — sadık. Kalıp: 'loyal TO someone', 'a loyal friend/customer' (loyalty card = sadakat kartı)."
+    },
+    {
+      "lesson": 5,
+      "front": "caring",
+      "back": "(adjective) şefkatli, ilgili 🤗",
+      "example_sentence": "My grandmother was the most caring person I've ever known.",
+      "mnemonic": "'Care' = önemsemek, bakmak ('take care', 'skin care'); 'caring' insan karşısını umursayıp ona bakan kişidir. Zıddı için Ed Sheeran'ın 'I Don't Care'ini hatırla: umursamamak."
+    },
+    {
+      "lesson": 5,
+      "front": "flatmate",
+      "back": "(noun) ev arkadaşı 🏠",
+      "example_sentence": "My flatmate and I share the rent and the chores.",
+      "mnemonic": "'Flat' (Britanya İngilizcesinde daire) + 'mate' (arkadaş: 'classmate', 'teammate'): daire arkadaşı. İngiliz 'flatmate', Amerikalı 'roommate' der; Türkçede ikisi de 'ev arkadaşı'."
+    }
+  ],
+  "dialogue": {
+    "title": "The Flatmate Fight",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "You look exhausted. Is your flatmate still complaining about the dishes?",
+        "tr": "Bitkin görünüyorsun. Ev arkadaşın hâlâ bulaşıklardan mı şikâyet ediyor?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Worse. We had a huge fight and now we don't speak.",
+        "tr": "Daha kötü. Kocaman bir kavga ettik, artık konuşmuyoruz."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Really? But you two always got along so well.",
+        "tr": "Sahi mi? Ama siz ikiniz hep çok iyi geçinirdiniz."
+      },
+      {
+        "speaker": "Elif",
+        "en": "She's so stubborn! She never says sorry first.",
+        "tr": "O kadar inatçı ki! Asla önce o özür dilemez."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Maybe she's just sensitive. Someone has to make the first move.",
+        "tr": "Belki sadece hassastır. Birinin ilk adımı atması lazım."
+      },
+      {
+        "speaker": "Elif",
+        "en": "So I should forgive her? She started it, Tom!",
+        "tr": "Yani onu affedeyim mi? O başlattı, Tom!"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Forgive her, make up, and I promise you'll sleep better.",
+        "tr": "Affet, barışın; söz veriyorum daha rahat uyursun."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Fine. Remind me again why I always listen to you?",
+        "tr": "Peki. Sana neden hep kulak verdiğimi bir daha hatırlatsana?"
+      }
+    ]
+  }
+}

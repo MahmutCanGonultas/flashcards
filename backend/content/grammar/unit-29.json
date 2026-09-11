@@ -1,65 +1,70 @@
 {
   "unit": 29,
-  "title_en": "Used to, Would and Be Used To",
-  "title_tr": "Used to, Would ve Be Used To",
-  "hook": "Eskiden nakit ödediğimiz her şeyi artık telefonla ödüyoruz; işte İngilizcede o 'eskiden'i dört kelimeyle anlatmanın yolu var, hem de içinde tuzak saklı.",
+  "title_en": "The Passive Voice",
+  "title_tr": "Edilgen Çatı",
+  "hook": "Bir haber, bir sözleşme ya da bir ürün etiketi okuduğunda karşına çıkan cümlelerin yarısı 'yapan kişi'yi hiç söylemez; işte o gizli yapı bugün senin oluyor.",
   "rules": [
     {
-      "rule": "Geçmişte olan ama artık olmayan bir alışkanlık ya da durum için 'used to + fiilin yalın hali' kullanılır. Türkçedeki 'eskiden ...-rdım' anlamını verir; artık öyle olmadığını da içinde taşır.",
-      "example_en": "I used to pay for everything in cash, but now I use my phone.",
-      "example_tr": "Eskiden her şeyi nakit öderdim, ama şimdi telefonumu kullanıyorum."
+      "rule": "Edilgen cümle iki parçadan kurulur: 'be' fiili + fiilin üçüncü hâli (past participle). Nesne başa geçer, işi yapan kişi geride kalır.",
+      "example_en": "These phones are made in Turkey.",
+      "example_tr": "Bu telefonlar Türkiye'de üretiliyor."
     },
     {
-      "rule": "Olumsuz ve soru cümlelerinde 'did' devreye girer, 'used' de 'use' olur: didn't use to, Did you use to...? Çünkü geçmiş zaman işaretini 'did' zaten taşıyor.",
-      "example_en": "We didn't use to buy so many things online. Did you use to save money?",
-      "example_tr": "Eskiden internetten bu kadar çok şey almazdık. Sen eskiden para biriktirir miydin?"
+      "rule": "Edilgeni, işi kim yaptığı önemsizse, bilinmiyorsa ya da zaten belliyse seçersin. Konu, yapan değil, yapılan iştir.",
+      "example_en": "The meeting was cancelled.",
+      "example_tr": "Toplantı iptal edildi."
     },
     {
-      "rule": "'Would' da geçmişteki tekrarlanan eylemler için kullanılır ama sadece eylemler için; 'have', 'live', 'be' gibi durum fiilleriyle olmaz. Bunun için 'used to' kullanılır.",
-      "example_en": "Every Saturday my grandmother would go to the market and count her coins.",
-      "example_tr": "Her cumartesi büyükannem pazara gider ve bozukluklarını sayardı."
+      "rule": "Yapanı söylemek gerçekten gerekiyorsa cümlenin sonuna 'by + kişi' eklersin; gerekmiyorsa hiç eklemezsin.",
+      "example_en": "The company was founded by two students.",
+      "example_tr": "Şirket iki öğrenci tarafından kuruldu."
     },
     {
-      "rule": "'Be used to + isim / -ing' bambaşka bir şey: 'alışkın olmak' demek. Zaman geçmiş olmak zorunda değil, her zamanda kullanılabilir. 'Get used to' ise alışma sürecini anlatır.",
-      "example_en": "I'm used to paying by card now; at first I had to get used to it.",
-      "example_tr": "Artık kartla ödemeye alışkınım; başta buna alışmam gerekti."
+      "rule": "Zamanı sadece 'be' fiili taşır, past participle hiç değişmez: is/are (geniş zaman), was/were (geçmiş), will be (gelecek).",
+      "example_en": "Your order will be sent tomorrow.",
+      "example_tr": "Siparişiniz yarın gönderilecek."
+    },
+    {
+      "rule": "Soru ve olumsuzda da yalnızca 'be' ile oynarsın: 'be' başa gelir ya da 'not' alır, past participle yerinde kalır.",
+      "example_en": "Is English spoken in this office? No, it isn't spoken here.",
+      "example_tr": "Bu ofiste İngilizce konuşuluyor mu? Hayır, burada konuşulmuyor."
     }
   ],
-  "watch_out": "Türkçe konuşanlar 'alışkınım' demek isterken 'be' fiilini atlıyor, cümle de 'eskiden yapardım' anlamına dönüyor. ✗ I used to shop online. (Bu 'eskiden alışveriş yapardım' demek.) ✓ I'm used to shopping online. ('Alışkınım' demek; 'be' fiili şart, arkasından fiil -ing alır.)",
-  "memory_trick": "'Used to' tek başınaysa geçmişte kaldı: eskiden. Önünde am/is/are/get varsa şimdi alışkınsın ve arkası -ing ile devam eder. Kural basit: önünde 'be' varsa 'alışkın', yoksa 'eskiden'.",
+  "watch_out": "Türkçe '-ıl/-il' ekini fiile yapıştırdığı için Türkler 'be'yi atlayıp yalnızca past participle kullanır. ✗ 'The report sent yesterday.' ✓ 'The report was sent yesterday.' 'be' olmadan edilgen olmaz; 'sent' tek başına cümle kuramaz.",
+  "memory_trick": "Türkçede edilgen tek harfle biter: yap-ıl-dı. İngilizcede o '-ıl' ayrı bir kelime olup fiilin önüne geçer: was + built. '-ıl' görünce 'be' ara.",
   "quiz": [
     {
-      "question": "My father ___ a small shop in our town, but he sold it last year.",
+      "question": "This bread ___ fresh every morning.",
       "options": [
-        "would have",
-        "used to have",
-        "is used to have",
-        "use to have"
+        "makes",
+        "is made",
+        "made",
+        "is make"
       ],
       "answer": 1,
-      "explain": "'Have' bir durum fiilidir, geçmişte kalan durumlar için 'used to' kullanılır; 'would' burada olmaz."
+      "explain": "Edilgen için 'be' + past participle gerekir: 'is made'."
     },
     {
-      "question": "___ you ___ spend all your money on the weekend?",
+      "question": "The new bridge ___ last year.",
       "options": [
-        "Did / use to",
-        "Did / used to",
-        "Do / used to",
-        "Were / use to"
+        "was built",
+        "is built",
+        "built",
+        "will be built"
       ],
       "answer": 0,
-      "explain": "Soru cümlesinde geçmiş zamanı 'did' taşır, bu yüzden 'used' değil 'use' yazılır."
+      "explain": "'last year' geçmişi gösterir, bu yüzden 'was' + 'built' kullanılır."
     },
     {
-      "question": "I moved to London last month. I'm slowly ___ the high prices.",
+      "question": "The letter was written ___ the manager.",
       "options": [
-        "used to pay",
-        "getting used to",
-        "use to",
-        "would pay"
+        "from",
+        "with",
+        "for",
+        "by"
       ],
-      "answer": 1,
-      "explain": "Alışma sürecini anlatmak için 'get used to + isim' kullanılır; anlam 'alışıyorum', 'eskiden' değil."
+      "answer": 3,
+      "explain": "Edilgen cümlede işi yapan kişi 'by' ile verilir."
     }
   ]
 }

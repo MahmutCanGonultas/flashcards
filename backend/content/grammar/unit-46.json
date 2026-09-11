@@ -1,55 +1,70 @@
 {
   "unit": 46,
-  "title_en": "The Subjunctive and Inverted Conditionals",
-  "title_tr": "Dilek Kipi ve Devrik Koşullar",
-  "hook": "'I suggest that he be removed' cümlesindeki 'be', yanlış yazılmış bir 'is' değil — İngilizcenin neredeyse unuttuğu ama mahkeme salonlarında ve kurul odalarında hâlâ yaşayan bir kipin izi.",
+  "title_en": "Participle Clauses",
+  "title_tr": "Ortaç Cümlecikleri",
+  "hook": "Türkçede -ken, -ince, -dikten sonra diye ayrı ayrı eklediğin her şeyi İngilizce tek bir 'walking' ya da 'having finished' ile hallediyor — cümlen birden romandan fırlamış gibi duruyor.",
   "rules": [
     {
-      "rule": "Subjunctive, 'that' cümleciğinde fiilin yalın hâlde kalmasıdır: suggest, demand, insist, recommend, propose, request gibi fiillerden sonra 'that + özne + yalın fiil' gelir; 'he be', 'she leave', 'it be done'. -s de yok, 'to' da yok.",
-      "example_en": "The committee insisted that every member be treated as an equal.",
-      "example_tr": "Komite her üyeye eşit davranılmasında ısrar etti."
+      "rule": "Aynı özneli iki cümleyi birleştirirken ikincil eylemi -ing'e çevirip bağlacı (while, because) atıyorsun. Bu -ing hem 'aynı anda' (-ken/-erek) hem 'çünkü' (-diği için) anlamı taşıyabilir; hangisi olduğunu bağlam söyler.",
+      "example_en": "Weighing the evidence carefully, she reached a different conclusion.",
+      "example_tr": "Kanıtları dikkatle tartarak farklı bir sonuca vardı."
     },
     {
-      "rule": "Aynı yapı 'It is essential/vital/important that...' kalıplarından sonra da gelir; olumsuzu 'not + yalın fiil'dir, 'doesn't' değil.",
-      "example_en": "It is vital that the community not be marginalized in the process.",
-      "example_tr": "Süreçte topluluğun kenara itilmemesi hayati önem taşıyor."
+      "rule": "Yan cümledeki eylem ana eylemden ÖNCE bitmişse 'having + V3' kullan (-dikten sonra). 'Finishing the report, he called' iki iş aynı anda demek; 'Having finished the report, he called' önce bitirdi, sonra aradı demek.",
+      "example_en": "Having considered every option, the committee chose the simplest one.",
+      "example_tr": "Her seçeneği değerlendirdikten sonra komite en basitini seçti."
     },
     {
-      "rule": "'Were' subjunctive: gerçek dışı durumlarda 'was' yerine her kişiyle 'were' kullanılır — If I were you, as if she were a stranger, I wish it were simpler. Resmî ve yazılı dilde 'was' bu yerde hata sayılır.",
-      "example_en": "He speaks of his heritage as if it were a burden rather than a gift.",
-      "example_tr": "Mirasından bir armağan değil de bir yükmüş gibi söz ediyor."
+      "rule": "Özne eylemi yapmıyor, eyleme maruz kalıyorsa (edilgen) yalnızca V3 kullan; 'being' genellikle düşer. 'Written in 1950' aslında 'because/although it was written in 1950' demektir.",
+      "example_en": "Asked a difficult question, the speaker paused to think it through.",
+      "example_tr": "Zor bir soru sorulunca konuşmacı iyice düşünmek için durakladı."
     },
     {
-      "rule": "Devrik koşul: 'if'i atıp yardımcı fiili başa alırsın. 'Were it not for' = if it were not for; 'Had it not been for' = if it had not been for; 'Should you need' = if you need. Ton anında resmîleşir.",
-      "example_en": "Had it not been for one dissenting voice, the vote would have been unanimous.",
-      "example_tr": "Tek bir karşı ses olmasaydı oylama oybirliğiyle geçecekti."
+      "rule": "Olumsuz için 'not' en başa gelir: 'Not knowing...', 'Not having slept...'. Anlam bulanık kalacaksa bağlacı koruyabilirsin: 'after / before / while / when + -ing' hem doğru hem daha nettir.",
+      "example_en": "Not having slept much, I found it hard to think clearly before deciding.",
+      "example_tr": "Pek uyumadığım için karar vermeden önce net düşünmekte zorlandım."
     },
     {
-      "rule": "'Should + özne + fiil' devrik koşulu geleceğe dair ihtimal için kullanılır ve mektup dilinde çok yaygındır: 'Should you have any questions, please contact us'. Olumsuzunda kısaltma yapılmaz: 'Should you not...' (✗ Shouldn't you...).",
-      "example_en": "Should the proposal be rejected, we will seek a secular alternative.",
-      "example_tr": "Teklif reddedilirse laik bir alternatif arayacağız."
+      "rule": "Participle'ın görünmeyen öznesi her zaman ana cümlenin öznesidir; -ing'i yapan kişiyle ana fiili yapan kişi aynı olmalı. Aynı değilse ya özneyi açıkça yaz ya da tam bir yan cümle kur.",
+      "example_en": "Reading the argument a second time, I noticed the hidden assumption.",
+      "example_tr": "Argümanı ikinci kez okuyunca gizli varsayımı fark ettim."
     }
   ],
-  "watch_out": "En sık hata, 'suggest'ten sonra Türkçe mantığıyla 'to' koymak: ✗ I suggest him to leave. ✓ I suggest that he leave. / ✓ I suggest leaving. İkinci tuzak, subjunctive'de -s eklemek: ✗ They demanded that she resigns. ✓ They demanded that she resign.",
-  "memory_trick": "Subjunctive'i bir emir kipi gibi duy: 'I suggest that he LEAVE' aslında 'Leave!' emrini 'that' kutusuna koymaktır; emir kipinde -s olmadığı için burada da yok. Devrik koşulu ise 'if'i düşürüp yardımcı fiili öne alma oyunu olarak gör.",
+  "watch_out": "Türkçede 'Eve yürürken yağmur başladı' gayet doğal — ama İngilizcede participle'ın öznesi ana cümleninkiyle aynı olmak zorunda. ✗ Walking home, the rain started. (Yağmur mu yürüyor?) ✓ Walking home, I got caught in the rain. / As I was walking home, the rain started.",
+  "memory_trick": "Üç kalıp, üç Türkçe ek: -ing → -erek/-ken, having + V3 → -dikten sonra, tek başına V3 → -ilince. Participle bir gölgedir: sahibi hep ana cümlenin öznesi, gölge tek başına dolaşamaz.",
   "quiz": [
     {
-      "question": "The board recommended that the director ___ immediately.",
-      "options": ["resigns", "resigned", "resign", "to resign"],
+      "question": "___ the data twice, the analyst was sure of her numbers.",
+      "options": [
+        "Checking",
+        "Having checked",
+        "Checked",
+        "To check"
+      ],
+      "answer": 1,
+      "explain": "Kontrol etme işi emin olmadan önce bitmiş; önce biten eylem için 'having + V3' kullanılır."
+    },
+    {
+      "question": "___ in plain language, the argument was easy to follow.",
+      "options": [
+        "Written",
+        "Writing",
+        "Having written",
+        "To write"
+      ],
+      "answer": 0,
+      "explain": "Argüman yazma işini yapmıyor, yazılıyor; edilgen anlam için tek başına V3 (written) yeter."
+    },
+    {
+      "question": "Which sentence is correct?",
+      "options": [
+        "Reading the report, the mistake was obvious.",
+        "Reading the report, the mistake became clear to me.",
+        "Reading the report, I spotted the mistake at once.",
+        "Reading the report, it was clear there was a mistake."
+      ],
       "answer": 2,
-      "explain": "'Recommend that' subjunctive alır: fiil yalın kalır, -s yok."
-    },
-    {
-      "question": "___ for the philanthropist's donation, the museum would have closed.",
-      "options": ["If it not were", "Were it not", "Was it not", "It were not"],
-      "answer": 1,
-      "explain": "Devrik koşul: 'if it were not for' → 'were it not for'; 'were' başa gelir."
-    },
-    {
-      "question": "She treats the tradition as if it ___ her own invention.",
-      "options": ["was", "were", "is", "be"],
-      "answer": 1,
-      "explain": "'As if' gerçek dışı bir kıyas kurar; resmî dilde 'were' subjunctive kullanılır."
+      "explain": "Raporu okuyan 'I' olduğu için participle'ın gizli öznesi ana cümlenin öznesiyle aynı olmalı."
     }
   ]
 }

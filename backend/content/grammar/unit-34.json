@@ -1,70 +1,70 @@
 {
   "unit": 34,
-  "title_en": "Passive Voice in Every Tense",
-  "title_tr": "Her Zamanda Edilgen Yapı",
-  "hook": "Bilim insanları 'ben ölçtüm' demez, 'ölçüldü' der; kişiyi sahneden indirip sonucu öne çıkaran bu edilgen dil, laboratuvarın anadilidir.",
+  "title_en": "Reported Speech: Said and Told",
+  "title_tr": "Dolaylı Anlatım: Said ve Told",
+  "hook": "Arkadaşın dün \"I'm tired\" dedi; bugün bunu birine aktarırken İngilizce'de zaman bir adım geriye kayar — buna 'backshift' diyoruz ve ilk başta herkesi şaşırtıyor.",
   "rules": [
     {
-      "rule": "Edilgen cümlenin çekirdeği 'be + V3'tür: zamanı 'be' taşır, V3 (past participle) hiç değişmez. Eylemi kimin yaptığı önemsizse ya da bilinmiyorsa bu yapı devreye girer.",
-      "example_en": "The samples are stored at minus eighty degrees.",
-      "example_tr": "Örnekler eksi seksen derecede saklanır."
+      "rule": "Birinin sözünü aktarırken fiil bir zaman geriye gider: present simple → past simple, present continuous → past continuous. 'that' isteğe bağlıdır.",
+      "example_en": "Direct: \"I love the sea.\" → She said (that) she loved the sea.",
+      "example_tr": "Doğrudan: \"Denizi seviyorum.\" → Denizi sevdiğini söyledi."
     },
     {
-      "rule": "Perfect zamanlarda 'have/has/had + been + V3', continuous zamanlarda ise 'am/is/are/was/were + being + V3' kullanılır. 'been' bitmişliği, 'being' sürmekte olmayı işaretler.",
-      "example_en": "The theory has been tested many times, and it is still being studied today.",
-      "example_tr": "Teori defalarca test edildi ve bugün hâlâ inceleniyor."
+      "rule": "Yardımcı fiiller de geriye kayar: will → would, can → could, am/is going to → was/were going to, have seen → had seen.",
+      "example_en": "Direct: \"We will recycle more.\" → They said they would recycle more.",
+      "example_tr": "Doğrudan: \"Daha çok geri dönüşüm yapacağız.\" → Daha çok geri dönüşüm yapacaklarını söylediler."
     },
     {
-      "rule": "Gelecek ve modal yapılarda 'be' yalın kalır: will be + V3, can/must/should be + V3; bir tarihe kadar bitecek işler için will have been + V3.",
-      "example_en": "The data will have been analysed by Friday, so the report can be written next week.",
-      "example_tr": "Veriler cumaya kadar analiz edilmiş olacak, böylece rapor haftaya yazılabilir."
+      "rule": "'say' tek başına kullanılır, 'tell' ise mutlaka kime söylendiğini ister: said that... ama told me / told us / told the guide that...",
+      "example_en": "The guide told us that the beach was clean.",
+      "example_tr": "Rehber bize plajın temiz olduğunu söyledi."
     },
     {
-      "rule": "Kaynağı belirsiz genel bir görüşü aktarmak için 'It is said/believed/thought/known that + cümle' kalıbı kullanılır; Türkçedeki '-dığı söyleniyor / inanılıyor'un tam karşılığıdır.",
-      "example_en": "It is believed that the universe is about fourteen billion years old.",
-      "example_tr": "Evrenin yaklaşık on dört milyar yaşında olduğuna inanılıyor."
+      "rule": "Evet/hayır sorularını aktarırken 'asked if' (veya 'whether') kullanılır ve soru sırası bozulur: özne fiilden önce gelir, do/does/did kaybolur.",
+      "example_en": "Direct: \"Do you have a ticket?\" → He asked if I had a ticket.",
+      "example_tr": "Doğrudan: \"Biletin var mı?\" → Biletim olup olmadığını sordu."
     },
     {
-      "rule": "Aynı anlam kişiyi özne yaparak da kurulur: 'Özne + is said/thought/known + to + fiil'. Aktarılan eylem daha önce olup bitmişse 'to have + V3' gelir.",
-      "example_en": "Einstein is said to have failed maths at school, but that story is known to be false.",
-      "example_tr": "Einstein'ın okulda matematikten kaldığı söylenir, ama bu hikâyenin uydurma olduğu biliniyor."
+      "rule": "Soru kelimeli soruları aktarırken 'asked where / what / why...' kullanılır; yine düz cümle sırası: asked where the station was.",
+      "example_en": "Direct: \"Where is the train station?\" → She asked where the train station was.",
+      "example_tr": "Doğrudan: \"Tren istasyonu nerede?\" → Tren istasyonunun nerede olduğunu sordu."
     }
   ],
-  "watch_out": "Türkçede 'olay yaşandı' dediğimiz için 'happen', 'occur', 'die', 'appear' gibi nesnesiz fiilleri edilgen yapmak çok cazip gelir; ama İngilizcede bu fiiller asla edilgen olmaz. ✗ The explosion was happened during the experiment. ✓ The explosion happened during the experiment.",
-  "memory_trick": "Edilgen bir trendir: V3 hep son vagondur ve hiç değişmez; zamanı gösteren tek şey 'be' lokomotifidir — is, was, has been, will be, is being... Lokomotifi değiştir, vagon aynı kalsın.",
+  "watch_out": "Türkçede 'söyledi' hem 'say' hem 'tell' anlamına gelir, bu yüzden 'said me' hatası çok yaygın. ✗ He said me that the hotel was full. ✓ He told me that the hotel was full. / ✓ He said that the hotel was full.",
+  "memory_trick": "'Tell' bir muhatap ister: TELL + kişi (told me). 'Say' yalnız gezer: SAY + that. Türkçesi: 'tell'in yanında hep biri var, 'say' tek başına.",
   "quiz": [
     {
-      "question": "Right now the samples ___ in the lab.",
+      "question": "Direct: \"I'm going to Rome.\" → Anna said that she ___ to Rome.",
       "options": [
-        "are being analysed",
-        "are analysing",
-        "have been analysing",
-        "are been analysed"
-      ],
-      "answer": 0,
-      "explain": "Şu an sürmekte olan bir işlem için am/is/are + being + V3 kullanılır."
-    },
-    {
-      "question": "The scientist ___ the mistake years ago.",
-      "options": [
-        "is said that he made",
-        "is said to have made",
-        "is said to make",
-        "said to have made"
+        "is going",
+        "was going",
+        "will go",
+        "goes"
       ],
       "answer": 1,
-      "explain": "Geçmişte olmuş bir eylemi aktarırken 'is said to have + V3' kalıbı gerekir."
+      "explain": "Present continuous aktarılırken bir zaman geriye kayar ve past continuous olur: is going → was going."
     },
     {
-      "question": "By next year the study ___.",
+      "question": "Direct: \"I will plant a tree.\" → He said he ___ plant a tree.",
       "options": [
-        "will have completed",
-        "will be completing",
-        "will have been completing",
-        "will have been completed"
+        "would",
+        "will",
+        "can",
+        "is"
       ],
-      "answer": 3,
-      "explain": "'By + gelecek bir zaman' ile bitmiş edilgen bir iş için will have been + V3 kullanılır."
+      "answer": 0,
+      "explain": "Dolaylı anlatımda 'will' bir adım geriye kayarak 'would' olur."
+    },
+    {
+      "question": "The tourist ___ me that the museum was closed.",
+      "options": [
+        "said",
+        "said to",
+        "told",
+        "asked"
+      ],
+      "answer": 2,
+      "explain": "'told' doğrudan kişi alır (told me); 'said me' yanlıştır."
     }
   ]
 }

@@ -1,55 +1,70 @@
 {
   "unit": 44,
-  "title_en": "Nominalisation: Verbs Into Nouns",
-  "title_tr": "Adlaştırma: Fiilden İsme",
-  "hook": "'We implemented the policy and it failed' konuşma dilidir; 'The implementation of the policy failed' rapor dilidir — aynı olay, farklı takım elbise; hangisini ne zaman giyeceğini öğreniyoruz.",
+  "title_en": "Wish, If Only, Would Rather, It's Time",
+  "title_tr": "Keşke, Tercih ve Vakit Geldi Kalıpları",
+  "hook": "İngilizcede pişmanlık için fiili bir adım geriye atarsın: şimdiki hâl için geçmiş, geçmiş için de daha geçmiş — 'keşke'nin gizli kuralı işte bu.",
   "rules": [
     {
-      "rule": "Adlaştırma, bir fiili ya da sıfatı isme çevirmektir: implement → implementation, analyse → analysis, ambiguous → ambiguity. Akademik ve resmî İngilizce olayları isim olarak paketler; Türkçedeki '-ma/-me' ve '-lık/-lik' ekleri aynı işi görür.",
-      "example_en": "The discrepancy between the two reports raised questions about the legitimacy of the data.",
-      "example_tr": "İki rapor arasındaki tutarsızlık, verinin meşruiyeti hakkında sorular doğurdu."
+      "rule": "Şu anki durumdan memnun değilsen 'wish' veya 'if only'den sonra geçmiş zaman (past simple) kullan; anlam bugüne aittir, geçmişe değil. 'Were' bütün öznelerle kullanılabilir.",
+      "example_en": "I wish I were less anxious before every doctor's appointment.",
+      "example_tr": "Keşke her doktor randevusundan önce bu kadar kaygılı olmasam."
     },
     {
-      "rule": "En sık ekler: -tion/-sion (decide → decision), -ment (assess → assessment), -ance/-ence (rely → reliance, differ → difference), -ity (autonomous → autonomy... dikkat: autonomy), -ness (aware → awareness). Sözlükte ismi ayrıca kontrol et; kural yarıya kadar götürür.",
-      "example_en": "Their reliance on a single premise weakened the whole argument.",
-      "example_tr": "Tek bir öncüle bel bağlamaları bütün argümanı zayıflattı."
+      "rule": "Geçmişteki bir olaya pişmanlık duyuyorsan 'wish' veya 'if only'den sonra past perfect (had + V3) gelir. 'If only' aynı yapıyı kullanır, sadece duygu daha yoğundur.",
+      "example_en": "If only I had taken the medicine as the doctor prescribed.",
+      "example_tr": "Keşke ilacı doktorun yazdığı gibi alsaydım."
     },
     {
-      "rule": "Adlaştırınca özne ve nesne 'of' ve iyelikle bağlanır: 'the government reformed the system' → 'the government's reform of the system'. Fiil gidince zaman da gider; gerekiyorsa başka bir fiil ekle (was, led to, resulted in).",
-      "example_en": "The committee's rejection of the proposal led to a paradigm shift in the department.",
-      "example_tr": "Komitenin teklifi reddetmesi, bölümde bir paradigma değişimine yol açtı."
+      "rule": "Başkasının rahatsız edici davranışının değişmesini istiyorsan 'wish + özne + would' kullan; bu bir şikâyettir. Kendi durumun için 'I wish I would' denmez.",
+      "example_en": "I wish you would stop checking your symptoms online at three in the morning.",
+      "example_tr": "Keşke belirtilerini sabahın üçünde internette aramayı bıraksan."
     },
     {
-      "rule": "Adlaştırma cümleyi kısaltır ve nesnelleştirir; bu yüzden özetlerde, başlıklarda ve bilimsel metinlerde değerlidir. Ama üst üste üç isim bir 'isim yığını' yaratır ve okur boğulur; bir cümlede bir-iki adlaştırma yeter.",
-      "example_en": "Consensus on the notion of integrity proved impossible.",
-      "example_tr": "Dürüstlük kavramı üzerinde uzlaşı sağlamak imkânsız çıktı."
+      "rule": "Başkasının bir şeyi yapmasını ya da yapmamasını tercih ediyorsan 'would rather + özne + past simple' kullan. Kendi tercihin için ise 'would rather + yalın fiil' yeterlidir.",
+      "example_en": "I'd rather you didn't tell my mother about the diagnosis yet; I'd rather explain it myself.",
+      "example_tr": "Teşhisi anneme henüz söylememeni tercih ederim; kendim anlatmayı yeğlerim."
     },
     {
-      "rule": "Konuşurken ve açık yazarken tersini yap: ismi tekrar fiile çevir. 'The implementation of X' yerine 'when we implemented X' hem daha canlı hem daha nettir. İki yönü de bilen yazar, tonu seçebilen yazardır.",
-      "example_en": "Instead of 'the paradox's resolution', just say 'how they resolved the paradox'.",
-      "example_tr": "'Paradoksun çözümü' yerine 'paradoksu nasıl çözdükleri' de, yeter."
+      "rule": "'It's time' bir şeyin çoktan yapılması gerektiğini söyler ve ardından past simple gelir; 'it's high time' bu aciliyeti daha da vurgular.",
+      "example_en": "It's time we talked honestly about your sleep problems.",
+      "example_tr": "Artık uyku sorunların hakkında dürüstçe konuşmamızın vakti geldi."
     }
   ],
-  "watch_out": "Ekleri tahmin etmek tehlikelidir: ✗ implementment, ✗ analyzation, ✗ ambiguousness. ✓ implementation, ✓ analysis, ✓ ambiguity. Bir de adlaştırılmış isim çoğu zaman sayılamaz: ✗ an evidence, ✗ researches → ✓ evidence, ✓ research.",
-  "memory_trick": "Adlaştırma bir dondurma işlemidir: hareket eden fiil (implement) donup bir nesneye (implementation) dönüşür; artık raflara konabilir, sayılabilir, 'of' ile bağlanabilir. Yazıyı canlandırmak istediğinde buzu çöz, fiile geri dön.",
+  "watch_out": "Türkçede 'keşke' zamana göre değişmez, bu yüzden en yaygın hata 'wish'ten sonra şimdiki zaman kullanmaktır. ✗ I wish I have more energy. ✓ I wish I had more energy. Aynı şekilde 'I'd rather you don't' değil, ✓ I'd rather you didn't.",
+  "memory_trick": "Bunu 'bir adım geri' kuralı olarak düşün: 'wish', 'would rather' ve 'it's time' zamanı bir basamak geriye iter. Bugün için had, dün için had + V3.",
   "quiz": [
     {
-      "question": "Which is the correct noun form of 'analyse'?",
-      "options": ["analysation", "analysis", "analysement", "analysity"],
+      "question": "I wish I ___ so tired all the time.",
+      "options": [
+        "am not",
+        "wasn't",
+        "hadn't been",
+        "wouldn't be"
+      ],
       "answer": 1,
-      "explain": "'Analyse' fiilinin ismi 'analysis'tir; çoğulu 'analyses'."
+      "explain": "Şu anki durumla ilgili pişmanlık olduğu için 'wish'ten sonra past simple gelir."
     },
     {
-      "question": "'The board rejected the plan.' → 'The board's ___ of the plan surprised everyone.'",
-      "options": ["reject", "rejecting", "rejection", "rejectment"],
-      "answer": 2,
-      "explain": "Adlaştırma -tion ekiyle yapılır: rejection; nesne 'of' ile bağlanır."
+      "question": "If only I ___ the doctor sooner. Now the infection is worse.",
+      "options": [
+        "saw",
+        "had seen",
+        "see",
+        "would see"
+      ],
+      "answer": 1,
+      "explain": "Geçmişte olup bitmiş bir olaya pişmanlık olduğu için past perfect kullanılır."
     },
     {
-      "question": "Which sentence over-uses nominalisation and would read better with verbs?",
-      "options": ["We decided to leave early.", "The finalisation of the implementation of the reform is under consideration.", "They resolved the dilemma quickly.", "Her integrity impressed the jury."],
+      "question": "I'd rather you ___ your phone during the therapy session.",
+      "options": [
+        "don't use",
+        "didn't use",
+        "won't use",
+        "not to use"
+      ],
       "answer": 1,
-      "explain": "Üç adlaştırma üst üste bir isim yığını oluşturur; 'We are considering when to finish implementing the reform' çok daha açıktır."
+      "explain": "Başkasının davranışıyla ilgili tercih için 'would rather + özne + past simple' kalıbı kullanılır."
     }
   ]
 }

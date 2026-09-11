@@ -1,70 +1,70 @@
 {
   "unit": 17,
-  "title_en": "Present Continuous: Now and Plans",
-  "title_tr": "Şimdiki Zaman: Şu An ve Planlar",
-  "hook": "İyi haber: İngilizcenin 'şu an oluyor' zamanı Türkçedeki -yor'un neredeyse birebir kopyası, o yüzden bu dersin yarısını zaten biliyorsun.",
+  "title_en": "Bigger, the Biggest: Comparing Things",
+  "title_tr": "Daha Büyük, En Büyük: Karşılaştırma",
+  "hook": "Türkçede 'daha soğuk' deriz ama İngilizler soğuğun kuyruğuna -er takar: colder — peki 'more' ne zaman devreye giriyor, işte bugün onu çözüyoruz.",
   "rules": [
     {
-      "rule": "Şu anda olan bir şey için formül: am / is / are + fiil-ing. Konuşurken kısaltırız: I'm, she's, they're.",
-      "example_en": "I'm waiting for the bus and Ayşe is walking home.",
-      "example_tr": "Ben otobüsü bekliyorum, Ayşe eve yürüyor."
+      "rule": "Kısa sıfatlara (cold, hot, big gibi tek heceliler) -er takıyoruz; Türkçedeki '-den' ise 'than' olur ama ismin önüne geçer: than Antalya. Yazımda ufak bir oyun var: hot→hotter, big→bigger, sunny→sunnier.",
+      "example_en": "Istanbul is colder than Antalya in winter.",
+      "example_tr": "Kışın İstanbul, Antalya'dan daha soğuk."
     },
     {
-      "rule": "Soru için am / is / are başa geçer, olumsuz için arkasına 'not' gelir. Türkçede soru eki en sona gider (gidiyor mu?), İngilizcede yardımcı fiil en başa koşar.",
-      "example_en": "Is this bus going to the airport? — No, it isn't.",
-      "example_tr": "Bu otobüs havalimanına gidiyor mu? — Hayır, gitmiyor."
+      "rule": "Uzun sıfatlar (expensive, comfortable, delicious) -er taşımaz; onların önüne 'more' koyarız, 'than' yine yerinde kalır.",
+      "example_en": "This sofa is more comfortable than the old one.",
+      "example_tr": "Bu koltuk eskisinden daha rahat."
     },
     {
-      "rule": "Yazımda iki küçük oyun var: sondaki sessiz e düşer (take → taking), kısa fiillerde son harf ikizlenir (run → running, sit → sitting).",
-      "example_en": "We're taking the metro and Ali is running to the station.",
-      "example_tr": "Biz metroya biniyoruz, Ali istasyona koşuyor."
+      "rule": "'En' demek için kısa sıfata -est, uzun sıfatın önüne 'most' gelir — ve ikisinin de başında mutlaka 'the' vardır.",
+      "example_en": "The kitchen is the warmest room, but the bedroom is the most comfortable.",
+      "example_tr": "Mutfak en sıcak oda ama yatak odası en rahatı."
     },
     {
-      "rule": "Aynı yapı, günü belli olan yakın planlar için de kullanılır; yanına bir zaman ifadesi koyman yeter. Türkçe de tam böyle yapar: 'Yarın İstanbul'a gidiyorum.'",
-      "example_en": "I'm flying to İzmir on Friday.",
-      "example_tr": "Cuma günü İzmir'e uçuyorum."
+      "rule": "Birkaç sıfat kuralı hiç dinlemez, onları ezberleyeceğiz: good→better→best, bad→worse→worst.",
+      "example_en": "The weather is bad today, but yesterday it was worse.",
+      "example_tr": "Bugün hava kötü ama dün daha da kötüydü."
     },
     {
-      "rule": "know, like, want, need, understand gibi 'durum' fiilleri -ing almaz; o an geçerli olsa bile yalın hâlde kalırlar.",
-      "example_en": "I know this road, I don't need a map.",
-      "example_tr": "Bu yolu biliyorum, haritaya ihtiyacım yok."
+      "rule": "İki şey eşitse sıfatı iki 'as' arasına alırız: as hot as = kadar sıcak. Olumsuzunda 'not as ... as' deriz, yani 'o kadar ... değil'.",
+      "example_en": "My tea is not as hot as yours.",
+      "example_tr": "Benim çayım seninki kadar sıcak değil."
     }
   ],
-  "watch_out": "Türkçede yardımcı fiil olmadığı için en sık hata am / is / are'ı unutmak. ✗ She waiting for the train. ✓ She's waiting for the train. -ing tek başına cümle kuramaz.",
-  "memory_trick": "Türkçedeki -yor, İngilizcede -ing: bekliyor → waiting, gidiyor → going. Tek fark, -ing'in hep bir bileti olmalı: am, is ya da are. Biletsiz -ing otobüse binemez.",
+  "watch_out": "Türkçede 'daha' her sıfatın önüne geldiği için 'more' da her yere gider sanıyoruz; oysa -er almış bir sıfat bir daha 'more' almaz. ✗ Today is more hotter than yesterday. ✓ Today is hotter than yesterday. Aynı tuzak: ✗ more better, ✓ better.",
+  "memory_trick": "Sıfatı eline al ve tart: tek heceyse hafiftir, sırtına -er/-est yükle (colder, coldest). Uzunsa ağırdır, sırt yük almaz; önüne 'more/most' koy, çeksin (more expensive). 'En' dedin mi 'the' de yanına gelsin.",
   "quiz": [
     {
-      "question": "Look! Ayşe ___ for the bus.",
+      "question": "Ankara is ___ than Antalya in winter.",
       "options": [
-        "is waiting",
-        "waiting",
-        "wait",
-        "is wait"
-      ],
-      "answer": 0,
-      "explain": "Şu an olan bir şey için is + fiil-ing gerekir, ikisi birden."
-    },
-    {
-      "question": "Dad is ___ the car today.",
-      "options": [
-        "driveing",
-        "drive",
-        "driving",
-        "drivving"
+        "more cold",
+        "cold",
+        "colder",
+        "the coldest"
       ],
       "answer": 2,
-      "explain": "drive'ın sondaki sessiz e'si düşer: driving."
+      "explain": "'cold' tek heceli, kısa bir sıfat; 'more' değil -er alır ve yanına 'than' gelir."
     },
     {
-      "question": "I ___ this street very well.",
+      "question": "This is ___ restaurant in our street.",
       "options": [
-        "am knowing",
-        "know",
-        "knowing",
-        "am know"
+        "the most expensive",
+        "more expensive",
+        "expensiver",
+        "most expensive"
       ],
-      "answer": 1,
-      "explain": "know bir durum fiili, -ing almaz; Türkçe 'biliyorum' dese de İngilizce 'I know' der."
+      "answer": 0,
+      "explain": "'expensive' uzun bir sıfat, 'en' için önüne 'the most' gelir; 'the' olmadan olmaz."
+    },
+    {
+      "question": "My soup is bad, but yours is ___ than mine.",
+      "options": [
+        "badder",
+        "more bad",
+        "the worst",
+        "worse"
+      ],
+      "answer": 3,
+      "explain": "'bad' kuralsızdır: iki şeyi karşılaştırırken 'worse', en kötüsü için 'the worst' deriz."
     }
   ]
 }

@@ -1,0 +1,70 @@
+{
+  "unit": 57,
+  "title_en": "Fronting and Emphasis",
+  "title_tr": "Öne Alma ve Vurgu",
+  "hook": "Churchill 'We shall never surrender' demedi de 'Never shall we surrender' deseydi daha güçlü olurdu — kelimeleri yerinden oynatmak, İngilizcede masaya vurmadan sesini yükseltmenin yoludur.",
+  "rules": [
+    {
+      "rule": "Fronting: normalde sonda olan nesneyi ya da tümleci başa alırsın; özne-fiil sırası bozulmaz. Vurgu ve zıtlık doğar: 'This I can accept; that I cannot.' Türkçenin serbest kelime sırasına en yakın İngilizce kalıp budur.",
+      "example_en": "The metaphor I liked; the cliché that followed it I could not forgive.",
+      "example_tr": "Metaforu beğendim; ardından gelen klişeyi ise affedemedim."
+    },
+    {
+      "rule": "'So + sıfat' ve 'Such + isim' başa alınınca yardımcı fiil özneden önce gelir: 'So lucid was the speech that...', 'Such was the irony that...'. Bu, retoriğin en klasik hamlesidir.",
+      "example_en": "So succinct was her reply that the interviewer had nothing left to ask.",
+      "example_tr": "Cevabı o kadar kısa ve özdü ki muhabirin soracak sorusu kalmadı."
+    },
+    {
+      "rule": "'Little did they know', 'Only later did we realise', 'Not until midnight did he speak': 'little', 'only + zaman', 'not until' başa gelince ana cümle devrik olur. Hikâye anlatımında ve köşe yazısında gerilim yaratır.",
+      "example_en": "Little did the audience know that every anecdote had been invented that morning.",
+      "example_tr": "Seyircinin haberi yoktu: her anekdot o sabah uydurulmuştu."
+    },
+    {
+      "rule": "Vurgulu 'do': olumlu cümlede 'do/does/did' eklemek fiilin altını çizer, genellikle bir itiraza cevaptır. 'I did read it' = 'Okudum ama' / 'Vallahi okudum'. Konuşurken 'do' vurgulu söylenir.",
+      "example_en": "The satire does make a serious point, whatever the critics say.",
+      "example_tr": "Eleştirmenler ne derse desin, o hiciv gerçekten ciddi bir şey söylüyor."
+    },
+    {
+      "rule": "Yer ve hareket zarfları başa gelince özne ile fiil yer değiştirir, ama yardımcı fiil eklenmez: 'Here comes the train', 'Out of the fog appeared a ship'. Özne zamirse devrik olmaz: 'Here it comes'.",
+      "example_en": "Out of that single euphemism grew an entire vocabulary of evasion.",
+      "example_tr": "O tek örtmeceden koca bir kaçamak sözcük dağarcığı türedi."
+    }
+  ],
+  "watch_out": "Fronting ile devrik yapıyı karıştırma: nesneyi öne alınca özne-fiil sırası KALIR ('This I know'), ama olumsuz/kısıtlayıcı zarf öne gelince sıra BOZULUR ('Never have I known'). ✗ Never I have seen. ✓ Never have I seen. ✗ Only then he understood. ✓ Only then did he understand.",
+  "memory_trick": "İki düğme var: FRONT düğmesi kelimeyi öne taşır, düzeni korur ('That I doubt'). FLIP düğmesi hem taşır hem çevirir; yalnızca olumsuz/kısıtlayıcı başlangıçlarda ve so/such'ta basılır ('So rare was it that...'). Başlangıç kelimesi olumsuz kokuyorsa FLIP.",
+  "quiz": [
+    {
+      "question": "___ was the hyperbole that nobody believed a word.",
+      "options": [
+        "So",
+        "Such",
+        "Very",
+        "Too"
+      ],
+      "answer": 1,
+      "explain": "'Hyperbole' bir isim; isimle 'such', sıfatla 'so' kullanılır ve devrik yapı gelir."
+    },
+    {
+      "question": "Only after the speech ___ how much rhetoric it contained.",
+      "options": [
+        "we realised",
+        "did we realise",
+        "we did realise",
+        "realised we"
+      ],
+      "answer": 1,
+      "explain": "'Only + zaman ifadesi' başa gelince ana cümle devrik olur: did we realise."
+    },
+    {
+      "question": "Which sentence uses fronting correctly without inversion?",
+      "options": [
+        "The jargon I could tolerate; the smugness I could not.",
+        "The jargon could I tolerate.",
+        "Tolerate the jargon I could.",
+        "Could I the jargon tolerate."
+      ],
+      "answer": 0,
+      "explain": "Nesne öne alınmış ama özne-fiil sırası korunmuş; olumsuz zarf olmadığı için devrik yapı gerekmez."
+    }
+  ]
+}

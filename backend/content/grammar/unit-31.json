@@ -1,70 +1,70 @@
 {
   "unit": 31,
-  "title_en": "Linking Words: Contrast, Cause, Result",
-  "title_tr": "Bağlaçlar: Zıtlık, Sebep, Sonuç",
-  "hook": "Tartışmada haklı olmak yetmez; 'however' ile 'although' arasındaki farkı bilmeyen, en güçlü fikrini bile yarım cümleyle çöpe atar.",
+  "title_en": "Relative Clauses: who, which, that",
+  "title_tr": "İlgi Cümlecikleri: who, which, that",
+  "hook": "Türkçede 'indirdiğim uygulama' dersin; İngilizce tam tersini yapar: önce uygulamayı söyler, sonra kimin indirdiğini — bu ters düzeni çözersen iki kısa cümleyi tek nefeste birleştirirsin.",
   "rules": [
     {
-      "rule": "Zıtlık için 'although' bir cümlenin içinde çalışır: arkasına özne ve fiil gelir, iki cümleyi tek cümlede birleştirir. 'However' ise iki AYRI cümleyi bağlar; yeni cümlenin başına gelir ve arkasına virgül alır.",
-      "example_en": "Although the argument was strong, nobody changed their mind. The argument was strong. However, nobody changed their mind.",
-      "example_tr": "Argüman güçlü olmasına rağmen kimse fikrini değiştirmedi. Argüman güçlüydü. Ancak kimse fikrini değiştirmedi."
+      "rule": "Bir ismi açıklamak için o ismin hemen ARKASINA küçük bir cümlecik eklersin: insanlar için who, nesneler ve hayvanlar için which.",
+      "example_en": "The friend who called me last night works in a tech company.",
+      "example_tr": "Dün gece beni arayan arkadaşım bir teknoloji şirketinde çalışıyor."
     },
     {
-      "rule": "'Despite' ve 'in spite of' aynı anlamdadır ama arkalarına cümle değil, isim ya da -ing gelir. Cümle kurmak istiyorsan 'despite the fact that' dersin.",
-      "example_en": "Despite losing the debate, she defended her opinion with confidence.",
-      "example_tr": "Münazarayı kaybetmesine rağmen fikrini özgüvenle savundu."
+      "rule": "Günlük dilde that, hem who'nun hem which'in yerine geçebilir; virgülsüz (tanımlayan) cümleciklerde en sık duyacağın kelime budur.",
+      "example_en": "This is the app that I downloaded yesterday.",
+      "example_tr": "Bu, dün indirdiğim uygulama."
     },
     {
-      "rule": "'Whereas' iki farklı durumu yan yana koyup karşılaştırır, 'although' gibi beklenmedik bir sonuç anlatmaz. Genellikle ortasında virgül olan tek bir cümlede kullanılır.",
-      "example_en": "My brother believes in strict rules, whereas I think people learn from mistakes.",
-      "example_tr": "Kardeşim katı kurallara inanır, bense insanların hatalardan öğrendiğini düşünürüm."
+      "rule": "Yerden bahsediyorsan where, sahiplikten (Türkçedeki '-in, -ın' eki) bahsediyorsan whose kullanırsın; whose'dan sonra mutlaka bir isim gelir.",
+      "example_en": "This is the website where I read the news every morning.",
+      "example_tr": "Bu, her sabah haberleri okuduğum site."
     },
     {
-      "rule": "Sonuç bildirmek için 'therefore' kullanılır: önce sebep, sonra 'therefore' ve arkasına virgül. Bu resmi bir kelimedir; 'so' ile aynı anlam, ama yazıda daha güçlü durur.",
-      "example_en": "The evidence was weak. Therefore, the committee rejected the proposal.",
-      "example_tr": "Kanıtlar zayıftı. Bu yüzden komite teklifi reddetti."
+      "rule": "Bağlaçtan hemen sonra yeni bir özne (I, you, she, my brother...) geliyorsa that/who/which'i tamamen atabilirsin; konuşmada bu daha doğal duyulur.",
+      "example_en": "The video I watched last night was really funny.",
+      "example_tr": "Dün gece izlediğim video gerçekten komikti."
     },
     {
-      "rule": "'However' cümlenin ortasına da girebilir; o zaman iki tarafına virgül konur. 'Although' asla böyle gezmez, hep kendi yan cümlesinin başında durur.",
-      "example_en": "The plan, however, has one serious problem: money.",
-      "example_tr": "Planın ise ciddi bir sorunu var: para."
+      "rule": "Zaten belli olan bir şeye sadece ek bilgi veriyorsan cümleciği iki virgül arasına alırsın; virgüllü cümlecikte that kullanılmaz, who ya da which gerekir.",
+      "example_en": "My laptop, which is five years old, still works fine.",
+      "example_tr": "Beş yaşındaki laptopum hâlâ gayet iyi çalışıyor."
     }
   ],
-  "watch_out": "Türkçede 'rağmen' hem 'yağmura rağmen' hem 'yağmasına rağmen' diyebildiği için 'despite' arkasına cümle konuyor. ✗ Despite it was late, we kept arguing. ✓ Although it was late, we kept arguing. / ✓ Despite the late hour, we kept arguing.",
-  "memory_trick": "'Although' Türkçedeki '-e rağmen'in fiilli hâli, 'despite' ise isimli hâli: 'gelmesine rağmen' = although, 'gelişine rağmen' = despite. Ekin fiile mi isme mi yapıştığına bak, bağlacı seç.",
+  "watch_out": "Türkçede 'beni arayan arkadaş' derken bağlaç yoktur, o yüzden İngilizcede de who'yu atlamak çok cazip gelir; ama who/which cümleciğin ÖZNESİYSE asla atılamaz. ✗ The friend called me is a developer. ✓ The friend who called me is a developer. (Atmak sadece nesneyken serbest: the app I downloaded.)",
+  "memory_trick": "Bağlaçlar aslında soru kelimeleri: who = kim? (insan), which = hangisi? (şey), where = nerede? (yer), whose = kimin? (sahiplik). Cümlecik hangi soruya cevap veriyorsa onu seç; that, virgülsüz cümlelerde who ve which'in jokeri.",
   "quiz": [
     {
-      "question": "___ the price was high, the report was worth every penny.",
+      "question": "The girl ___ made this video is only twelve years old.",
       "options": [
-        "Despite",
-        "Although",
-        "However",
-        "Therefore"
+        "which",
+        "who",
+        "where",
+        "whose"
       ],
       "answer": 1,
-      "explain": "Arkasında özne ve fiil olan tam bir cümle var, bu yüzden 'although' gerekir."
+      "explain": "Kişiden bahsediyoruz ve who burada cümleciğin öznesi; kişi için which olmaz, özne olduğu için de atlanamaz."
     },
     {
-      "question": "She has read all the studies. ___, she still disagrees with the conclusion.",
+      "question": "I have a friend ___ phone is older than mine.",
       "options": [
-        "Whereas",
-        "Although",
-        "However",
-        "Despite"
+        "who",
+        "which",
+        "whose",
+        "where"
       ],
       "answer": 2,
-      "explain": "İki ayrı cümleyi zıtlıkla bağlayan ve virgülle devam eden kelime 'however'dır."
+      "explain": "'Arkadaşımın telefonu' — sahiplik var, bu yüzden whose; hemen arkasından phone ismi geliyor."
     },
     {
-      "question": "The survey included only ten people; ___, its results cannot be trusted.",
+      "question": "My laptop, ___ I bought in 2019, is still fast.",
       "options": [
-        "therefore",
-        "despite",
-        "although",
-        "whereas"
+        "which",
+        "that",
+        "who",
+        "where"
       ],
       "answer": 0,
-      "explain": "Önce sebep verilmiş, sonra sonuç geliyor; sonuç bildiren bağlaç 'therefore'dur."
+      "explain": "Virgüllü ek bilgi cümleciğinde that kullanılmaz; laptop bir eşya olduğu için which gerekir."
     }
   ]
 }

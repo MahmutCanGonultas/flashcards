@@ -1,70 +1,65 @@
 {
   "unit": 14,
-  "title_en": "Question Words and Word Order",
-  "title_tr": "Soru Kelimeleri ve Kelime Sırası",
-  "hook": "Türkçede 'Nerede okuyorsun?' derken 'nerede' ortada sakin sakin bekler; İngilizcede aynı kelime kuyruğa girmez, doğruca en öne geçer — ve bir de yanına 'do' diye bir arkadaş alır.",
+  "title_en": "Past Simple: Irregular Verbs",
+  "title_tr": "Geçmiş Zaman: Düzensiz Fiiller",
+  "hook": "İngilizcenin en sık kullanılan on fiilinin onu da düzensiz, yani -ed burada işe yaramıyor; ama iyi haber şu: yirmi kelime ezberle, dünkü gününü baştan sona anlatırsın.",
   "rules": [
     {
-      "rule": "Altı soru kelimesi, altı Türkçe karşılık: who = kim, what = ne, where = nerede, when = ne zaman, why = neden, how = nasıl. Cümle 'is/are' ile kuruluyorsa soru kelimesinden hemen sonra is/are gelir, 'do' gerekmez.",
-      "example_en": "Who is your favourite teacher?",
-      "example_tr": "En sevdiğin öğretmen kim?"
+      "rule": "Bazı fiiller geçmişte -ed almaz, kılık değiştirir: go→went, have→had, see→saw, take→took, come→came, get→got. Bunların kuralı yok; altısını da ezbere bileceksin.",
+      "example_en": "I went to work by bus yesterday.",
+      "example_tr": "Dün işe otobüsle gittim."
     },
     {
-      "rule": "Fiilli cümlelerde sıra hep aynı: soru kelimesi + do/does + kişi + yalın fiil. Türkçede 'nerede' fiilin yanında durur, İngilizcede en başa taşınır; 'does' geldiğinde fiil -s almaz.",
-      "example_en": "Where does your best friend study?",
-      "example_tr": "En iyi arkadaşın nerede okuyor?"
+      "rule": "Geçmiş hali herkes için aynıdır: I went, she went, they went. Türkçedeki gibi kişiye göre ek değişmez (gittim, gitti, gittiler ayrımı yok), -s de yok.",
+      "example_en": "I got a job and she got a job too.",
+      "example_tr": "Ben iş buldum, o da iş buldu."
     },
     {
-      "rule": "Geçmişi sorarken do/does'un yerini 'did' alır, fiil yine yalın kalır — geçmiş bilgisi tek başına 'did'in içinde taşınır.",
-      "example_en": "Why did you miss the lesson yesterday?",
-      "example_tr": "Dün dersi neden kaçırdın?"
+      "rule": "Olumsuz ve soruda geçmişi 'did' üstlenir, fiil yalın hale döner: didn't go, Did you see...? Yani cümlede sadece bir tane geçmiş işareti olur.",
+      "example_en": "Did you see a doctor? — No, I didn't have time.",
+      "example_tr": "Doktora gittin mi? — Hayır, vaktim olmadı."
     },
     {
-      "rule": "'How' tek başına 'nasıl' demek, ama yanına bir kelime alınca yeni sorular doğar: how many = kaç tane, how often = ne sıklıkla, how long = ne kadar süre, how old = kaç yaşında.",
-      "example_en": "How many students are there in your class?",
-      "example_tr": "Sınıfında kaç öğrenci var?"
-    },
-    {
-      "rule": "Cevap 'kim yapıyor?' ise, yani soru kelimesi cümlenin öznesiyse do/does kullanılmaz: who/what'tan hemen sonra fiil gelir ve fiil -s alır.",
-      "example_en": "Who teaches English at your school?",
-      "example_tr": "Okulunda İngilizceyi kim öğretiyor?"
+      "rule": "Bu altıya en çok kullanacağın on dördü ekle, listen tamam: do→did, make→made, say→said, know→knew, think→thought, give→gave, find→found, tell→told, eat→ate, drink→drank, buy→bought, write→wrote, leave→left, feel→felt.",
+      "example_en": "We left the hotel at nine and found a nice café.",
+      "example_tr": "Dokuzda otelden çıktık ve güzel bir kafe bulduk."
     }
   ],
-  "watch_out": "Türkçede yardımcı fiil olmadığı için en sık unutulan parça 'do/does': ✗ Where you live? ✓ Where do you live? 'Does' geldiğinde de fiildeki -s düşer: ✗ Where does she lives? ✓ Where does she live?",
-  "memory_trick": "Dört adımlık bir ritim tut: SORU – DO – KİM – FİİL. 'Where – do – you – live?', 'What – does – she – want?', 'Why – did – they – leave?' Hangi soru kelimesi olursa olsun ritim değişmez; sadece 'do' zamanla kılık değiştirir.",
+  "watch_out": "Türkçede olumsuzda bile geçmiş eki durur ('gitmedim'), o yüzden İngilizcede de fiili ikinci kez geçmişe çekmek istersin: ✗ I didn't went to work. ✓ I didn't go to work. Geçmişi zaten 'did' taşıyor; fiil yalın kalır, 'Did you saw?' değil 'Did you see?'.",
+  "memory_trick": "'See-saw' İngilizcede tahterevalli demek: bir tarafı see (bugün), öbür tarafı saw (dün). Diğerlerini de böyle ikili ritimle söyle: go-went, take-took, come-came, get-got, have-had.",
   "quiz": [
     {
-      "question": "Which one is correct?",
+      "question": "Last summer we ___ to Italy by plane.",
       "options": [
-        "Where you live?",
-        "Where do you live?",
-        "Where live you?",
-        "Where you do live?"
-      ],
-      "answer": 1,
-      "explain": "Sıra hiç değişmez: soru kelimesi + do + kişi + yalın fiil."
-    },
-    {
-      "question": "___ do you play football? — Every Saturday.",
-      "options": [
-        "How long",
-        "How many",
-        "How old",
-        "How often"
-      ],
-      "answer": 3,
-      "explain": "Cevap sıklık bildiriyor ('her cumartesi'), sıklığı da 'how often' sorar."
-    },
-    {
-      "question": "Who ___ in that big house?",
-      "options": [
-        "do live",
-        "does live",
-        "lives",
-        "live"
+        "goed",
+        "go",
+        "went",
+        "wented"
       ],
       "answer": 2,
-      "explain": "'Who' burada cümlenin öznesi; do/does gelmez, fiil doğrudan gelip -s alır."
+      "explain": "'Go' düzensizdir, geçmişi 'went' olur; -ed almaz."
+    },
+    {
+      "question": "Did you ___ the doctor yesterday?",
+      "options": [
+        "saw",
+        "see",
+        "seen",
+        "sees"
+      ],
+      "answer": 1,
+      "explain": "Soruda geçmişi 'did' taşır, fiil yalın kalır: see."
+    },
+    {
+      "question": "She ___ a new job last month.",
+      "options": [
+        "got",
+        "gets",
+        "getted",
+        "get"
+      ],
+      "answer": 0,
+      "explain": "Özne 'she' olsa da geçmişte -s yok; 'get' herkes için 'got' olur."
     }
   ]
 }

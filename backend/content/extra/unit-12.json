@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 12,
+    "level": "A1",
+    "title": "Jobs & Actions"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "doctor",
+      "back": "(noun) doktor 🩺",
+      "example_sentence": "The doctor looks at my arm.",
+      "mnemonic": "Türkçedeki 'doktor' aynı kelime: Latince 'docere' (öğretmek) kökünden, Fransızca üzerinden geldi. 'Doktora' unvanı da aynı kökten; doktor aslında 'öğreten kişi' demek."
+    },
+    {
+      "lesson": 1,
+      "front": "nurse",
+      "back": "(noun) hemşire 💉",
+      "example_sentence": "The nurse asks my name.",
+      "mnemonic": "Modern hemşireliğin kurucusu Florence Nightingale, Kırım Savaşı'nda Üsküdar Selimiye Kışlası'nda hemşirelik yaptı; bugün orada müzesi var. Kelime Latince 'nutrire' (beslemek, bakmak) kökünden gelir."
+    },
+    {
+      "lesson": 1,
+      "front": "driver",
+      "back": "(noun) şoför, sürücü 🚗",
+      "example_sentence": "The bus driver says good morning.",
+      "mnemonic": "Bilgisayardaki 'driver' (ekran kartı sürücüsü) ile aynı kelime: 'drive' sürmek, 'driver' süren. Yazılım donanımı 'sürer', şoför de arabayı."
+    },
+    {
+      "lesson": 2,
+      "front": "waiter",
+      "back": "(noun) garson 🍽️",
+      "example_sentence": "The waiter brings two teas.",
+      "mnemonic": "'Wait' beklemek, ama 'wait on someone' birine hizmet etmek demektir; garson masaların başında bekleyip hizmet eden kişi. Kadın garson 'waitress'."
+    },
+    {
+      "lesson": 2,
+      "front": "farmer",
+      "back": "(noun) çiftçi 🚜",
+      "example_sentence": "The farmer has forty sheep.",
+      "mnemonic": "Oyuncuların 'farmlamak' dediği şey de buradan: 'farm' çiftlik, 'farmer' onu işleyen çiftçi. Kök Latince 'firmare' (sağlamlaştırmak): 'farm' önce sabit kirayla tutulan toprak demekti; Türkçedeki 'firma' da aynı kökten."
+    },
+    {
+      "lesson": 2,
+      "front": "pilot",
+      "back": "(noun) pilot ✈️",
+      "example_sentence": "The pilot flies to London today.",
+      "mnemonic": "Türkçedeki 'pilot' aynı kelime, Fransızca 'pilote'tan. 'Pilot bölüm' ya da 'pilot uygulama' da aynı mantık: yolu ilk gösteren, öncü."
+    },
+    {
+      "lesson": 3,
+      "front": "sing",
+      "back": "(verb) şarkı söylemek 🎤",
+      "example_sentence": "I sing in the shower.",
+      "mnemonic": "'Sing' ile 'song' (şarkı) aynı köktendir, kalıp 'sing a song'; şarkıcı da 'singer'. Düzensiz fiil: sing–sang–sung."
+    },
+    {
+      "lesson": 3,
+      "front": "dance",
+      "back": "(verb) dans etmek 💃",
+      "example_sentence": "I can't dance, but I try.",
+      "mnemonic": "Türkçedeki 'dans' aynı kelime, Fransızca 'danse'tan; 'dans etmek' = 'to dance'. İngilizcede tek fiil, 'etmek'e gerek yok: 'I dance.'"
+    },
+    {
+      "lesson": 3,
+      "front": "swim",
+      "back": "(verb) yüzmek 🏊",
+      "example_sentence": "My dog can swim very well.",
+      "mnemonic": "Otel tabelalarındaki 'swimming pool' (yüzme havuzu) bu fiilden. 'Go swimming' = yüzmeye gitmek; düzensiz fiil: swim–swam–swum."
+    },
+    {
+      "lesson": 4,
+      "front": "speak",
+      "back": "(verb) konuşmak 🗣️",
+      "example_sentence": "I speak Turkish and a little English.",
+      "mnemonic": "Türkçedeki 'spiker' (haber spikeri) İngilizce 'speaker'dan gelir: konuşan kişi. Bluetooth 'speaker' (hoparlör) da aynı kök; 'speak' konuşmak, 'speaker' konuşan."
+    },
+    {
+      "lesson": 4,
+      "front": "learn",
+      "back": "(verb) öğrenmek 📚",
+      "example_sentence": "I learn three new words every day.",
+      "mnemonic": "Kurs ilanlarındaki 'Learn English' bu fiil. Ayrım: 'study' ders çalışmaktır (çaba), 'learn' öğrenmektir (sonuç): 'I study a lot and learn fast.'"
+    },
+    {
+      "lesson": 4,
+      "front": "ask",
+      "back": "(verb) sormak, istemek ❓",
+      "example_sentence": "Can I ask you a question?",
+      "mnemonic": "Türkçe 'aşk' gibi okunur ve gerçekten bir aşk kalıbı vardır: 'ask someone out' = birine çıkma teklif etmek. Hem sormak hem istemek: 'ask a question', 'ask for help'."
+    },
+    {
+      "lesson": 5,
+      "front": "answer",
+      "back": "(verb) cevap vermek 💬",
+      "example_sentence": "Tom, please answer the phone.",
+      "mnemonic": "Hem isim hem fiil: 'the answer' cevap, 'to answer' cevap vermek; 'Q&A' (question & answer) kısaltması buradan. Telefonu açmak da 'answer the phone'."
+    },
+    {
+      "lesson": 5,
+      "front": "look",
+      "back": "(verb) bakmak 👀",
+      "example_sentence": "Look at that big elephant!",
+      "mnemonic": "Moda dilindeki 'look' (görünüm, kombin) aynı kelime: bakılan, görülen şey. Fiil olarak 'look at' = bakmak; 'Look!' = 'Bak!'"
+    },
+    {
+      "lesson": 5,
+      "front": "give",
+      "back": "(verb) vermek 🎁",
+      "example_sentence": "Give me the red pen, please.",
+      "mnemonic": "Instagram'daki 'giveaway' (çekiliş) aslında 'give away' = bedava vermek, dağıtmak. Düzensiz fiil: give–gave–given; 'give me five' = çak bir beşlik."
+    }
+  ],
+  "dialogue": {
+    "title": "My Dad's Taxi",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Look! That's my dad's taxi.",
+        "tr": "Bak! Şu babamın taksisi."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Your dad is a taxi driver?",
+        "tr": "Baban taksi şoförü mü?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Yes, and he sings in the taxi.",
+        "tr": "Evet, hem de takside şarkı söylüyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Ha! What does your mum do?",
+        "tr": "Ha ha! Peki annen ne iş yapıyor?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "She's a nurse. She works at night.",
+        "tr": "Hemşire. Geceleri çalışıyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "My mum is a pilot.",
+        "tr": "Benim annem pilot."
+      },
+      {
+        "speaker": "Elif",
+        "en": "A pilot! Does she speak Turkish?",
+        "tr": "Pilot mu? Türkçe biliyor mu?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Ask her! She learns Turkish with me.",
+        "tr": "Ona sor! Benimle birlikte Türkçe öğreniyor."
+      }
+    ]
+  }
+}

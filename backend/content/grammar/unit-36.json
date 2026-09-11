@@ -1,70 +1,70 @@
 {
   "unit": 36,
-  "title_en": "Modals of Deduction",
-  "title_tr": "Çıkarım Bildiren Modallar",
-  "hook": "Sherlock Holmes'un bütün sırrı üç kelimede saklı: must, can't, might — kanıta bakıp 'kesin o yaptı' ya da 'olamaz' demenin İngilizcesi bu.",
+  "title_en": "Question tags: you know, don't you?",
+  "title_tr": "Kuyruk sorular: biliyorsun, değil mi?",
+  "hook": "'You love me, don't you?' — ses inerse sarılma, ses çıkarsa sorgu; İngilizcede bir ilişkinin havasını bazen iki kelimelik bir kuyruk belirler.",
   "rules": [
     {
-      "rule": "Elindeki kanıt seni tek bir sonuca götürüyorsa must + fiilin yalın hâlini kullan; burada must zorunluluk değil, 'kesin öyledir' anlamında çıkarım bildirir.",
-      "example_en": "Her fingerprints are all over the safe — she must be involved.",
-      "example_tr": "Parmak izleri kasanın her yerinde — bu işin içinde olmalı."
+      "rule": "Cümle olumluysa kuyruk olumsuz olur. Türkçede cümlenin sonuna eklediğimiz 'değil mi?' işte bu kuyruk — ama tek kelime değil, cümleye göre şekil değiştirir.",
+      "example_en": "You're coming to the wedding, aren't you?",
+      "example_tr": "Düğüne geliyorsun, değil mi?"
     },
     {
-      "rule": "Bir şeyin imkânsız olduğuna eminsen can't kullan; çıkarımda must'ın olumsuzu mustn't değil, can't'tir.",
-      "example_en": "The suspect can't be guilty — he was in prison that night.",
-      "example_tr": "Şüpheli suçlu olamaz — o gece hapisteydi."
+      "rule": "Cümle olumsuzsa kuyruk olumlu olur ve kuyruk cümledeki yardımcı fiili (is, can, will, have...) aynen alır — kendi kafasından fiil uydurmaz.",
+      "example_en": "She hasn't met your parents yet, has she?",
+      "example_tr": "Ailenle daha tanışmadı, değil mi?"
     },
     {
-      "rule": "Emin değilsen, yalnızca bir ihtimalden söz ediyorsan might, may ya da could kullan; üçü de 'olabilir' demektir ve aralarında ciddi bir fark yoktur.",
-      "example_en": "The witness might be lying, but we have no proof yet.",
-      "example_tr": "Tanık yalan söylüyor olabilir ama henüz elimizde kanıt yok."
+      "rule": "Görünürde yardımcı fiil yoksa — geniş zaman (like, live) veya geçmiş zaman (met, forgot) — kuyrukta gizli görevli do/does/did ortaya çıkar.",
+      "example_en": "They got married last year, didn't they?",
+      "example_tr": "Geçen yıl evlendiler, değil mi?"
     },
     {
-      "rule": "Geçmişteki bir olay hakkında çıkarım yapıyorsan modal değişmez, ardına have + V3 gelir: must have done, can't have done, might have done.",
-      "example_en": "The lock isn't broken, so the burglar must have used a key.",
-      "example_tr": "Kilit kırılmamış, yani hırsız bir anahtar kullanmış olmalı."
+      "rule": "'I am' ile başlayan cümlenin kuyruğu 'amn't I' değil 'aren't I' olur; İngilizcenin küçük bir kaçamağı bu, ezberle geç.",
+      "example_en": "I'm still your best friend, aren't I?",
+      "example_tr": "Hâlâ en iyi arkadaşınım, değil mi?"
     },
     {
-      "rule": "might not ile can't aynı şey değil: might not 'belki değildir' der, can't 'kesinlikle değildir'. Dikkat, could have 'olmuş olabilir' demekken couldn't have tam tersine can't have gibi imkânsızlık bildirir.",
-      "example_en": "She might not have seen the attacker's face, but she can't have missed the car — it was parked right outside her window.",
-      "example_tr": "Saldırganın yüzünü görmemiş olabilir ama arabayı kaçırmış olamaz — tam penceresinin önünde park hâlindeydi."
+      "rule": "Kuyruğu inen sesle söylersen cevabı zaten biliyorsundur, sadece onay istersin; çıkan sesle söylersen gerçekten soruyorsundur. Aynı cümle, iki farklı niyet.",
+      "example_en": "You told her about the party, didn't you?",
+      "example_tr": "Ona partiden bahsettin, değil mi? (↘ eminim / ↗ gerçekten soruyorum)"
     }
   ],
-  "watch_out": "Türkçede 'olmalı'nın olumsuzu 'olmamalı' olduğu için elimiz mustn't'a gider, ama İngilizcede mustn't yalnızca yasak bildirir; çıkarımın olumsuzu can't'tir. ✗ He mustn't be the thief, he was abroad. ✓ He can't be the thief, he was abroad.",
-  "memory_trick": "Türkçedeki üçlüyü kopyala: 'olmalı' = must, 'olamaz' = can't, 'olabilir' = might. Geçmişe geçince Türkçede '-mış' eklersin, İngilizcede 'have + V3': 'yapmış olmalı' = must have done.",
+  "watch_out": "Türkçede her cümleye tek bir 'değil mi?' yettiği için Türkler İngilizcede de her cümleye 'isn't it?' yapıştırır; oysa kuyruk, cümlenin öznesini ve yardımcı fiilini kopyalamak zorundadır. ✗ You love her, isn't it? → ✓ You love her, don't you?",
+  "memory_trick": "Kuyruk bir ayna: cümledeki yardımcı fiili aynen yansıtır, sadece işaretini ters çevirir (olumlu ↔ olumsuz). Yardımcı fiil görünmüyorsa aynada do/does/did belirir.",
   "quiz": [
     {
-      "question": "The alarm is ringing and the window is broken — someone ___ inside.",
+      "question": "Your sister has been married before, ___ she?",
       "options": [
-        "can't be",
-        "mustn't be",
-        "must be",
-        "might not be"
-      ],
-      "answer": 2,
-      "explain": "Kırık cam ve çalan alarm güçlü kanıt; olumlu ve kesin çıkarım için must be kullanılır."
-    },
-    {
-      "question": "He ___ the robber — he was in court all morning, in front of the judge.",
-      "options": [
-        "can't be",
-        "mustn't be",
-        "must be",
-        "may be"
+        "hasn't",
+        "isn't",
+        "doesn't",
+        "wasn't"
       ],
       "answer": 0,
-      "explain": "Kesinlikle imkânsız diyorsak can't be kullanılır; mustn't yasak anlatır, çıkarım değil."
+      "explain": "Cümlenin yardımcı fiili 'has', kuyruk da onu olumsuz olarak yansıtır: hasn't she?"
     },
     {
-      "question": "The safe is empty but the lock isn't broken. The thief ___ a key.",
+      "question": "Your parents don't know about us yet, ___ they?",
       "options": [
-        "must use",
-        "must had",
-        "must have use",
-        "must have used"
+        "don't",
+        "aren't",
+        "do",
+        "are"
+      ],
+      "answer": 2,
+      "explain": "Cümle olumsuz olduğu için kuyruk olumlu olur; 'know' geniş zamanda görünür yardımcı fiil taşımadığı için gizli 'do' ortaya çıkar."
+    },
+    {
+      "question": "I'm invited to your wedding too, ___?",
+      "options": [
+        "amn't I",
+        "am I",
+        "don't I",
+        "aren't I"
       ],
       "answer": 3,
-      "explain": "Geçmişle ilgili çıkarımda kalıp must + have + V3'tür: must have used."
+      "explain": "'I am' ile başlayan cümlenin kuyruğu istisna olarak 'aren't I' olur; 'amn't I' İngilizcede yoktur."
     }
   ]
 }

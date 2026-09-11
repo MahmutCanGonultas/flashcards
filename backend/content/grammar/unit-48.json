@@ -1,55 +1,70 @@
 {
   "unit": 48,
-  "title_en": "Cause, Effect and Concession",
-  "title_tr": "Sebep, Sonuç ve Ödün Yapıları",
-  "hook": "'Because' A2'de öğrenilir; C1'de ise 'owing to', 'thereby', 'albeit' ve 'notwithstanding' ile aynı sebebi dört farklı ciddiyette söylersin — bilim insanı gibi.",
+  "title_en": "Sharper Comparisons",
+  "title_tr": "Daha Keskin Karşılaştırmalar",
+  "hook": "'Bigger' demek herkesin harcı; 'by far the biggest, but nowhere near as expensive' diyebilmek ise pasaportuna B2 damgası vurur.",
   "rules": [
     {
-      "rule": "Sebep için 'because' bir cümle alır; 'because of', 'owing to', 'due to', 'on account of' ise isim ya da -ing alır. Resmî yazıda 'owing to' ve 'due to' tercih edilir; 'due to' kılı kırk yaranlara göre 'be' fiilinden sonra en doğru durur.",
-      "example_en": "The anomaly was dismissed, owing to a lack of replication rather than a lack of interest.",
-      "example_tr": "Anomali, ilgi eksikliğinden değil, tekrar edilememesinden ötürü göz ardı edildi."
+      "rule": "İki şey birlikte değişiyorsa 'the + karşılaştırma, the + karşılaştırma' kalıbı devrede; Türkçedeki '-dikçe' ya da 'ne kadar..., o kadar...' ile birebir aynı iş. İki 'the' de şart, biri düşerse cümle raydan çıkar.",
+      "example_en": "The further you get from the tourist centre, the cheaper the food becomes.",
+      "example_tr": "Turist merkezinden ne kadar uzaklaşırsan, yemekler o kadar ucuzluyor."
     },
     {
-      "rule": "Sonuç için 'therefore', 'consequently', 'hence' cümle başına gelip virgül alır; 'thereby' ise doğrudan -ing'e bağlanır ve 'böylece, o yoldan' der: 'X did Y, thereby doing Z'.",
-      "example_en": "The team quantified every variable, thereby making the study rigorous enough to replicate.",
-      "example_tr": "Ekip her değişkeni sayısallaştırdı, böylece çalışmayı tekrarlanabilecek kadar titiz hâle getirdi."
+      "rule": "Kat farkı için 'twice / three times / half + as + sıfat + as' kullanılır: Türkçe 'iki kat daha' derken İngilizce 'daha' demez, 'as ... as' der. 'Twice' asla 'more than' ile yan yana gelmez.",
+      "example_en": "The ferry takes three times as long as the flight but costs half as much.",
+      "example_tr": "Feribot uçağın üç katı sürüyor ama yarı fiyatına."
     },
     {
-      "rule": "Ödün (concession) beklenmeyen sonucu anlatır: 'although' cümle alır, 'despite / in spite of' isim alır, 'albeit' ise yalnızca kısa bir öbek alır ve cümlenin sonuna tutunur: 'a success, albeit a modest one'.",
-      "example_en": "The correlation held, albeit weakly, across every sample.",
-      "example_tr": "Korelasyon, zayıf da olsa, her örneklemde geçerli kaldı."
+      "rule": "En-üstünlük derecesini vurgulamak için önüne 'by far the' ya da 'easily the' koyarsın; Türkçedeki 'açık ara'nın tam karşılığı. 'By far' sona da kayabilir: 'the best by far'.",
+      "example_en": "Kyoto was by far the most beautiful city on our trip.",
+      "example_tr": "Kyoto, gezimizin açık ara en güzel şehriydi."
     },
     {
-      "rule": "'Notwithstanding' hem edat hem zarf olarak çalışır ve ismin arkasına da gelebilir: 'the evidence notwithstanding' = kanıta rağmen. 'For all + isim' de aynı işi yapar: 'for all its rigour' = bütün titizliğine rağmen.",
-      "example_en": "For all its intuition, the model failed; the data notwithstanding, the author kept the theory.",
-      "example_tr": "Bütün sezgiselliğine rağmen model çuvalladı; veriye rağmen yazar teoriden vazgeçmedi."
+      "rule": "Fark uçurum kadarsa 'nowhere near as ... as' ya da 'not nearly as ... as' dersin — 'o kadar olmaktan çok uzak' demenin İngilizcesi.",
+      "example_en": "The hostel was nowhere near as clean as the photos suggested.",
+      "example_tr": "Hostel, fotoğraflardaki kadar temiz olmaktan çok uzaktı."
     },
     {
-      "rule": "'So ... that' ve 'such ... that' sebep-sonucu tek cümlede kurar: 'so' sıfatla, 'such' isimle. Vurgu için başa alınınca devrik olur: 'So susceptible was the sample that...'",
-      "example_en": "The catalyst was so effective that the reaction finished before anyone had started the timer.",
-      "example_tr": "Katalizör o kadar etkiliydi ki tepkime, kimse kronometreyi başlatmadan bitti."
+      "rule": "Fark ufaksa 'not quite as ... as': 'tam o kadar değil ama yakın'. Aynı cümlede 'nowhere near' hayal kırıklığı, 'not quite' nazik bir çekincedir — hangisini seçtiğin tüm mesajı değiştirir.",
+      "example_en": "Lisbon isn't quite as cheap as it was five years ago.",
+      "example_tr": "Lizbon artık beş yıl önceki kadar ucuz sayılmaz."
     }
   ],
-  "watch_out": "Bu kelimelerin arkasına ne geldiği hayati: ✗ Owing to the sample was small, ✗ Despite it rained. ✓ Owing to the small sample, ✓ Despite the rain / Although it rained. 'Albeit' asla tam cümle almaz: ✗ albeit it was weak, ✓ albeit weak.",
-  "memory_trick": "Üç kutu düşün: CÜMLE kutusu (because, although, whereas), İSİM kutusu (owing to, despite, notwithstanding, for all), ÖBEK kutusu (albeit, thereby + -ing). Kelimeyi seçmeden önce arkasına ne koyacağına bak, kutuyu ona göre aç.",
+  "watch_out": "Türkçede 'iki kat daha pahalı' dediğimiz için 'daha'yı İngilizceye taşımak çok cazip; ama 'twice' yalnızca 'as ... as' ile çalışır, 'more ... than' ile değil. ✗ Taxis are twice more expensive than trains. ✓ Taxis are twice as expensive as trains.",
+  "memory_trick": "Bir mesafe cetveli düşün: 'nowhere near' çok uzak, 'not quite' bir adım geride, 'as ... as' aynı noktada, 'twice as' iki kat ileride, 'by far the' ufkun ötesinde.",
   "quiz": [
     {
-      "question": "The trial was halted ___ an unprecedented number of side effects.",
-      "options": ["owing to", "although", "albeit", "because"],
-      "answer": 0,
-      "explain": "Arkasında isim öbeği var; 'owing to' isim alır, 'because' ve 'although' cümle ister."
-    },
-    {
-      "question": "They replicated the experiment, ___ confirming the original result.",
-      "options": ["therefore", "thereby", "albeit", "hence"],
+      "question": "___ you travel, the more open-minded you become.",
+      "options": [
+        "More",
+        "The more",
+        "How much more",
+        "Most"
+      ],
       "answer": 1,
-      "explain": "-ing'e doğrudan bağlanan sonuç bağlacı 'thereby'dır; 'therefore' yeni cümle başlatır."
+      "explain": "İki taraflı değişimde iki 'the' de şart: 'The more you travel, the more...'."
     },
     {
-      "question": "The hypothesis survived, ___ narrowly.",
-      "options": ["despite", "although", "albeit", "notwithstanding"],
-      "answer": 2,
-      "explain": "Kısa bir öbekle ödün bildiren 'albeit'tir; 'although' cümle, 'despite' isim ister."
+      "question": "The night bus takes ___ the plane, but it's much cheaper.",
+      "options": [
+        "twice more long than",
+        "two times longer as",
+        "twice longer than",
+        "twice as long as"
+      ],
+      "answer": 3,
+      "explain": "Kat farkı 'twice as + sıfat + as' ister; araya 'more' ya da 'than' giremez."
+    },
+    {
+      "question": "The water was ___ as warm as the brochure promised — I couldn't even put a toe in.",
+      "options": [
+        "nowhere near",
+        "not quite",
+        "by far",
+        "slightly"
+      ],
+      "answer": 0,
+      "explain": "Ayak parmağını bile sokamamak koca bir fark demek; büyük fark için 'nowhere near as'."
     }
   ]
 }

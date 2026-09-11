@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 35,
+    "level": "B1",
+    "title": "Cooking & Restaurants"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "menu",
+      "back": "(noun) menü, yemek listesi 📋",
+      "example_sentence": "The menu has changed since we last came here.",
+      "mnemonic": "Türkçe 'menü' Fransızca 'menu'dan; İngilizce de aynı kelimeyi Fransızcadan almış. Kök Latince 'minutus' (küçük, ayrıntılı): menü aslında yemeklerin ayrıntılı listesi; İngilizcede 'MEN-yu' diye okunur."
+    },
+    {
+      "lesson": 1,
+      "front": "dessert",
+      "back": "(noun) tatlı 🍰",
+      "example_sentence": "I'm too full for dessert, but I could share yours.",
+      "mnemonic": "Fransızca 'desservir' (masayı toplamak) kökünden: tatlı, ana yemek kaldırılıp sofra toplandıktan sonra gelen 'servis'; Türkçe 'servis' de aynı aileden. Dikkat: çift s'li 'dessert' tatlı, tek s'li 'desert' çöl."
+    },
+    {
+      "lesson": 1,
+      "front": "chef",
+      "back": "(noun) şef, aşçıbaşı 👨‍🍳",
+      "example_sentence": "The chef came out to ask how we liked the lamb.",
+      "mnemonic": "Türkçe 'şef' Fransızca 'chef' (baş, reis) kelimesinden; İngilizceye 'chef de cuisine' (mutfak şefi) kısalarak girmiş. Dikkat: İngilizcede 'chef' yalnızca aşçı demek, iş yerindeki şefiniz 'boss' ya da 'manager'."
+    },
+    {
+      "lesson": 2,
+      "front": "boil",
+      "back": "(verb) kaynatmak, haşlamak 🫧",
+      "example_sentence": "Boil the eggs for seven minutes if you want them hard.",
+      "mnemonic": "Türkçedeki 'boyler' (sıcak su tankı) İngilizce 'boiler', yani suyu kaynatan cihaz; 'boil' de o kaynatma. Yumurta 'boiled egg', kaynayan su 'boiling water', bunaltıcı sıcak için de 'It's boiling today!' denir."
+    },
+    {
+      "lesson": 2,
+      "front": "fry",
+      "back": "(verb) kızartmak 🍳",
+      "example_sentence": "I've never fried fish at home because of the smell.",
+      "mnemonic": "Türkçe 'fritöz' Fransızca 'friteuse'den, kökü 'frire' = kızartmak; İngilizce 'fry' de aynı Latince 'frigere' kökünden gelir. 'French fries' (patates kızartması) ve mutfaktaki 'airfryer' aynı aile."
+    },
+    {
+      "lesson": 2,
+      "front": "chop",
+      "back": "(verb) doğramak 🔪",
+      "example_sentence": "Could you chop some garlic while I make the sauce?",
+      "mnemonic": "Hem fiil hem isim: 'chop' doğramak, 'lamb chop' ise kuzu pirzola, yani kemikten doğranmış parça. Mutfakta 'chopping board' (kesme tahtası) ve konservedeki 'chopped tomatoes' ile sık karşılaşırsınız."
+    },
+    {
+      "lesson": 3,
+      "front": "delicious",
+      "back": "(adjective) lezzetli, nefis 😋",
+      "example_sentence": "That was the most delicious soup I've had in years.",
+      "mnemonic": "Manavdaki 'Golden' ve 'Starking' elmalarının tam adı 'Golden Delicious' ve 'Starking Delicious', yani lezzetli elma. Kök Latince 'deliciae' (haz, keyif); 'delight' (keyif) de aynı aileden."
+    },
+    {
+      "lesson": 3,
+      "front": "bitter",
+      "back": "(adjective) acı (kahve gibi), buruk ☕",
+      "example_sentence": "Dark chocolate is more bitter, but it's better for you.",
+      "mnemonic": "Türkçede 'bitter çikolata' zaten var: şekersiz, acı kakao tadı. Dikkat: biber acısı için 'hot' ya da 'spicy', kahve ve kakao acısı için 'bitter' kullanılır; ikisine de 'acı' demek İngilizcede işe yaramaz."
+    },
+    {
+      "lesson": 3,
+      "front": "sour",
+      "back": "(adjective) ekşi 🍋",
+      "example_sentence": "The milk has gone sour, so don't use it.",
+      "mnemonic": "Almanca 'sauer' ile aynı Cermen kökü: 'Sauerkraut' ekşi lahana, yani lahana turşusu. Çin lokantasındaki 'sweet and sour' sos tatlı-ekşidir; bozulan süt için 'the milk has gone sour' (süt ekşimiş) kalıbını ezberleyin."
+    },
+    {
+      "lesson": 4,
+      "front": "vegetarian",
+      "back": "(noun) vejetaryen 🥗",
+      "example_sentence": "My sister has been a vegetarian since she was fourteen.",
+      "mnemonic": "Türkçe 'vejetaryen' Fransızcadan, o da İngilizce 'vegetable' + '-arian' ('librarian'daki gibi kişi eki) kalıbından. Vurgu 'TE' hecesinde: ve-ci-TE-ri-ın; 'vegan' ise süt ve yumurtayı da bırakan daha katı hâli."
+    },
+    {
+      "lesson": 4,
+      "front": "portion",
+      "back": "(noun) porsiyon 🍽️",
+      "example_sentence": "The portions here are so big that we could share one.",
+      "mnemonic": "Türkçe 'porsiyon' Fransızca 'portion'dan, birebir aynı kelime; Latince 'portio' = pay, parça. Lokantada 'a half portion' (yarım porsiyon), 'a generous portion' (bol porsiyon) diye kullanılır."
+    },
+    {
+      "lesson": 4,
+      "front": "leftovers",
+      "back": "(noun) artan yemek 🥡",
+      "example_sentence": "We've got leftovers from last night if you're hungry.",
+      "mnemonic": "'Left' burada 'leave' fiilinin geçmişi, 'over' fazladan: sofradan artıp geride kalan. Yemek anlamında hep çoğul, 'the leftovers'; sıfat olarak tekil, 'leftover rice' (dünden kalan pilav)."
+    },
+    {
+      "lesson": 5,
+      "front": "snack",
+      "back": "(noun) atıştırmalık 🍿",
+      "example_sentence": "I usually have a snack around four, or I can't concentrate.",
+      "mnemonic": "Kökü Felemenkçe 'snacken' (kapmak, ısırmak): iki öğün arasında bir lokma kapmak. Fiil olarak da kullanılır: 'I snack on nuts' = fındık atıştırırım; gece yarısı buzdolabına gitmek de 'midnight snack'."
+    },
+    {
+      "lesson": 5,
+      "front": "takeaway",
+      "back": "(noun) paket servis, paket yemek 🛵",
+      "example_sentence": "If nobody feels like cooking, we could order a takeaway.",
+      "mnemonic": "'Take away' = alıp götürmek; kasadaki 'Eat in or take away?' sorusu 'burada mı, paket mi?' demek. İngiliz İngilizcesinde 'takeaway', Amerikan'da 'takeout' ya da 'to go'; bir sunumun 'takeaway'i ise oradan akılda kalan ana ders."
+    },
+    {
+      "lesson": 5,
+      "front": "tip",
+      "back": "(noun) bahşiş, ipucu 💸",
+      "example_sentence": "Have you left a tip, or shall I add one?",
+      "mnemonic": "Sahte dost: Türkçe 'tip' (insan tipi) İngilizcede 'type'; İngilizce 'tip' ise bahşiş ya da ipucu. 'To Insure Promptness' kısaltması olduğu hikâyesi uydurmadır; 'leave a tip' (bahşiş bırakmak) ve 'a handy tip' (işe yarar ipucu) kalıplarıyla öğrenin."
+    }
+  ],
+  "dialogue": {
+    "title": "Too Broke for Takeaway",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "Shall we just get a takeaway? I've been travelling all day.",
+        "tr": "Paket söylesek mi? Bütün gün yoldaydım."
+      },
+      {
+        "speaker": "Elif",
+        "en": "We can't afford it. I've got leftovers and some rice.",
+        "tr": "Paramız yetmez. Dünden artan yemek var, biraz da pirinç."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Fine, chef. What do you want me to do?",
+        "tr": "Peki şefim, bana ne iş düşüyor?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Chop those onions while I boil the rice.",
+        "tr": "Ben pirinci haşlarken sen şu soğanları doğra."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Done. Can I fry them with a bit of garlic?",
+        "tr": "Bitti. Biraz sarımsakla kavursam olur mu?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Careful, if you burn the garlic it'll taste bitter.",
+        "tr": "Dikkat et, sarımsağı yakarsan tadı acı olur."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Too late. Still, it smells delicious. Is there dessert?",
+        "tr": "Yandı bile. Ama yine de mis gibi kokuyor. Tatlı var mı?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Dessert? Here's a tip, chef: you're washing up first.",
+        "tr": "Tatlı mı? Sana bir ipucu şef: önce bulaşıkları yıkıyorsun."
+      }
+    ]
+  }
+}

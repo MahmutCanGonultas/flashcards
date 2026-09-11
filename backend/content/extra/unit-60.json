@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 60,
+    "level": "C1",
+    "title": "Ethics & Argument"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "complicit",
+      "back": "(adjective) suça ortak 🤝",
+      "example_sentence": "Anyone who knew about the fraud and stayed silent was complicit in it.",
+      "mnemonic": "Türkçedeki 'komplike' ile aynı Latince kökten: com- 'birlikte' + plicare 'katlamak', yani suça 'birlikte katlanmış', karışmış olan. İngilizce 'accomplice' (suç ortağı) da aynı aileden; kalıp: complicit in a crime."
+    },
+    {
+      "lesson": 1,
+      "front": "culpable",
+      "back": "(adjective) kusurlu, kabahatli 👉",
+      "example_sentence": "The report found the airline culpable, though no single manager was ever named.",
+      "mnemonic": "Latince culpa 'kabahat': 'mea culpa' (kabahat bende) sözündeki culpa. Aynı kökten 'culprit' (fail); culpable ise kabahatin size yüklenebileceğini söyler, 'culpable negligence' (ağır ihmal) gibi."
+    },
+    {
+      "lesson": 1,
+      "front": "exonerate",
+      "back": "(verb) aklamak, temize çıkarmak ✅",
+      "example_sentence": "DNA evidence finally exonerated him after nineteen years behind bars.",
+      "mnemonic": "Latince ex- 'dışarı' + onus 'yük': birinin sırtındaki suç yükünü alıp atmak. İngilizcede 'the onus is on you' (sorumluluk sende) deyişindeki onus budur."
+    },
+    {
+      "lesson": 2,
+      "front": "hypocrisy",
+      "back": "(noun) ikiyüzlülük, riyakârlık 🎭",
+      "example_sentence": "It's sheer hypocrisy to preach thrift while flying private every other weekend.",
+      "mnemonic": "Eski Yunanca hypokritēs 'tiyatro oyuncusu' demekti: maske takıp rol kesen kişi. Türkçedeki 'kritik' ve 'kriter' ile aynı krinein ('yargılamak') kökünden; ikiyüzlü, sahnede oynayan adamdır."
+    },
+    {
+      "lesson": 2,
+      "front": "double standard",
+      "back": "(noun) çifte standart ⚖️",
+      "example_sentence": "There's a glaring double standard: he's 'assertive', she's 'difficult', for identical behaviour.",
+      "mnemonic": "Türkçedeki 'çifte standart' bu deyimin bire bir çevirisi; 'standart' da Fransızca standard'dan. Kalıplar: 'apply a double standard' ve 'there's a double standard at play'."
+    },
+    {
+      "lesson": 2,
+      "front": "impunity",
+      "back": "(noun) cezasızlık 🛡️",
+      "example_sentence": "For years the militia operated with total impunity, and everyone in town knew it.",
+      "mnemonic": "Latince in- 'sız' + poena 'ceza': futboldaki 'penaltı' da aynı poena kökünden. Neredeyse hep 'with impunity' kalıbında: cezasız kalacağını bile bile yapmak."
+    },
+    {
+      "lesson": 3,
+      "front": "slippery slope",
+      "back": "(noun) kaygan zemin (safsatası) ⛷️",
+      "example_sentence": "Banning one book is a slippery slope; where exactly do you stop?",
+      "mnemonic": "Kaygan bayırda bir adım atınca tepeden aşağı yuvarlanırsın: 'Buna izin verirsek sonu felaket' argümanı. Türkçe mantık kitaplarında 'kaygan zemin safsatası'; kalıp: 'a slippery slope to/towards something'."
+    },
+    {
+      "lesson": 3,
+      "front": "straw man",
+      "back": "(noun) korkuluk safsatası 🌾",
+      "example_sentence": "Nobody said 'abolish all rules'; that's a straw man you're knocking down.",
+      "mnemonic": "Bostan korkuluğu gibi samandan bir rakip dikip onu yumruklarsın: karşı tarafın söylemediği zayıf bir iddiayı çürütüp kazanmış gibi yapmak. Türkçesi 'korkuluk safsatası'; kalıp: 'set up / knock down a straw man'."
+    },
+    {
+      "lesson": 3,
+      "front": "red herring",
+      "back": "(noun) dikkat dağıtıcı, yanıltmaca 🐟",
+      "example_sentence": "The missing laptop turned out to be a red herring; the leak came from inside.",
+      "mnemonic": "Tütsülenmiş ringa balığı kızıla döner ve keskin kokar; av köpeklerini izden saptırmak için kullanıldığı anlatılır. Polisiye romanların vazgeçilmezi: asıl konudan dikkati kaçıran sahte ipucu."
+    },
+    {
+      "lesson": 4,
+      "front": "vindicate",
+      "back": "(verb) haklı çıkarmak 🙌",
+      "example_sentence": "Her warnings were dismissed for years, but the inquiry has finally vindicated her.",
+      "mnemonic": "Latince vindicare 'hakkını savunmak, öcünü almak': İngilizce revenge ve vendetta da aynı kökten. Exonerate suçtan aklar, vindicate ise 'sen haklıydın' der; yıllar sonra haklı çıkmak: 'feel vindicated'."
+    },
+    {
+      "lesson": 4,
+      "front": "condone",
+      "back": "(verb) göz yummak, hoş görmek 🙈",
+      "example_sentence": "I don't condone what he did, but I can see why he snapped.",
+      "mnemonic": "Latince donare 'bağışlamak' (Türkçedeki 'donör' de buradan): con-done, kusuru bağışlayıp görmezden gelmek. Neredeyse hep olumsuz cümlede duyulur: 'I don't condone violence'."
+    },
+    {
+      "lesson": 4,
+      "front": "denounce",
+      "back": "(verb) kınamak, açıkça suçlamak 📢",
+      "example_sentence": "The party's own MPs lined up to denounce the leader's remarks.",
+      "mnemonic": "Türkçedeki 'anons' ile aynı Latince kökten (nuntiare: bildirmek): an-nounce duyurur, de-nounce ise birini herkesin önünde suçlar. İkinci anlamı 'ihbar etmek': neighbours denounced him to the police."
+    },
+    {
+      "lesson": 5,
+      "front": "altruism",
+      "back": "(noun) özgecilik, diğerkâmlık 💝",
+      "example_sentence": "Was it pure altruism, or did he want his name on the building?",
+      "mnemonic": "Türkçeye de 'altruizm' olarak girmiş; Auguste Comte'un Latince alter 'öteki' ('alternatif'teki alter) kökünden türettiği terim. 'Diğerkâm' tam karşılığı: diğer + kâm (murat), başkasının iyiliğini isteyen."
+    },
+    {
+      "lesson": 5,
+      "front": "coercion",
+      "back": "(noun) zorlama, baskı ⛓️",
+      "example_sentence": "A confession obtained under coercion is worthless, however detailed it sounds.",
+      "mnemonic": "Latince co- + arcere 'kapatmak, dizginlemek': birini köşeye sıkıştırıp istediğini yaptırmak. Karşıtı 'consent' (rıza); hukukta 'coercion or consent' ikilisi, günlük dilde 'under coercion' kalıbı."
+    },
+    {
+      "lesson": 5,
+      "front": "conscience",
+      "back": "(noun) vicdan 🧭",
+      "example_sentence": "Take the money if you like; I couldn't do it with a clear conscience.",
+      "mnemonic": "Latince con- + scire 'bilmek' (science'taki scire): 'kendinle birlikte bilmek', içindeki tanık. 'Conscious' (bilinçli) ile karıştırma; kalıplar: 'a guilty conscience', 'it's on my conscience'."
+    }
+  ],
+  "dialogue": {
+    "title": "Splitting the Blame",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "I signed that open letter denouncing the CEO. You should too, honestly.",
+        "tr": "O CEO'yu kınayan açık mektubu imzaladım. Açıkçası sen de imzalamalısın."
+      },
+      {
+        "speaker": "Elif",
+        "en": "My company runs on their software, Tom. Does that make me complicit?",
+        "tr": "Şirketim onların yazılımıyla dönüyor Tom. Bu beni suç ortağı mı yapar?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Knowing what they did and paying them anyway? A little, yes.",
+        "tr": "Ne yaptıklarını bilip yine de para ödemek mi? Biraz, evet."
+      },
+      {
+        "speaker": "Elif",
+        "en": "That's a slippery slope. By that logic, anyone with a phone is culpable.",
+        "tr": "Bu kaygan zemin. O mantıkla telefonu olan herkes kusurlu sayılır."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Nice straw man. I never said phones; I said a two-million-euro contract.",
+        "tr": "Korkuluk safsatası, güzel. Telefon demedim ki; iki milyon euroluk sözleşme dedim."
+      },
+      {
+        "speaker": "Elif",
+        "en": "And your paper's ad money comes from where, exactly? Smells like a double standard.",
+        "tr": "Peki senin gazetenin reklam geliri tam olarak nereden geliyor? Çifte standart kokuyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "That's a red herring, and you know it. Fine. Nobody's exonerated tonight.",
+        "tr": "Konuyu saptırıyorsun, sen de biliyorsun. Tamam. Bu gece kimse aklanmıyor."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Good. Then let's split the dessert, and both keep a slightly guilty conscience.",
+        "tr": "Güzel. O zaman tatlıyı paylaşalım, ikimizin de vicdanı biraz sızlasın."
+      }
+    ]
+  }
+}

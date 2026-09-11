@@ -10,15 +10,44 @@
  * ("support" -> "supports"), and some headwords are phrases ("give up",
  * "look forward to") that a single-word search misses entirely.
  *
- * Verified against all 150 cards of the seeded deck: every one resolves.
+ * Verified against every card in the course: all 900 resolve.
  */
 
 const SUFFIXES = ["s", "es", "ed", "d", "ing", "ly", "er", "est", "ment"];
 
+/**
+ * Irregular verbs the course's sentences actually inflect. Suffix rules
+ * can't get from "get along" to "got along" or "make up" to "made up".
+ */
+const IRREGULAR: Record<string, string[]> = {
+  arise: ["arose", "arisen"], be: ["am", "is", "are", "was", "were", "been"], bear: ["bore", "borne"],
+  beat: ["beaten"], become: ["became"], begin: ["began", "begun"], bend: ["bent"], bite: ["bit", "bitten"],
+  blow: ["blew", "blown"], break: ["broke", "broken"], bring: ["brought"], build: ["built"], buy: ["bought"],
+  catch: ["caught"], choose: ["chose", "chosen"], cling: ["clung"], come: ["came"], deal: ["dealt"],
+  dig: ["dug"], draw: ["drew", "drawn"], drink: ["drank", "drunk"], drive: ["drove", "driven"],
+  eat: ["ate", "eaten"], fall: ["fell", "fallen"], feed: ["fed"], feel: ["felt"], fight: ["fought"],
+  find: ["found"], flee: ["fled"], fly: ["flew", "flown"], forbid: ["forbade", "forbidden"],
+  forget: ["forgot", "forgotten"], forgive: ["forgave", "forgiven"], freeze: ["froze", "frozen"],
+  get: ["got", "gotten"], give: ["gave", "given"], go: ["went", "gone"], grow: ["grew", "grown"],
+  hang: ["hung"], have: ["has", "had"], hide: ["hid", "hidden"], hold: ["held"], keep: ["kept"],
+  know: ["knew", "known"], lay: ["laid"], lead: ["led"], leave: ["left"], lend: ["lent"], lie: ["lay", "lain"],
+  light: ["lit"], lose: ["lost"], make: ["made"], mean: ["meant"], meet: ["met"], mistake: ["mistook", "mistaken"],
+  overcome: ["overcame"], pay: ["paid"], ride: ["rode", "ridden"], ring: ["rang", "rung"], rise: ["rose", "risen"],
+  run: ["ran"], say: ["said"], see: ["saw", "seen"], seek: ["sought"], sell: ["sold"], send: ["sent"],
+  shake: ["shook", "shaken"], shoot: ["shot"], shrink: ["shrank", "shrunk"], sing: ["sang", "sung"],
+  sink: ["sank", "sunk"], sit: ["sat"], sleep: ["slept"], speak: ["spoke", "spoken"], spend: ["spent"],
+  spin: ["spun"], spring: ["sprang", "sprung"], stand: ["stood"], steal: ["stole", "stolen"], stick: ["stuck"],
+  strike: ["struck"], sweep: ["swept"], swim: ["swam", "swum"], swing: ["swung"], take: ["took", "taken"],
+  teach: ["taught"], tear: ["tore", "torn"], tell: ["told"], think: ["thought"], throw: ["threw", "thrown"],
+  understand: ["understood"], undergo: ["underwent", "undergone"], undertake: ["undertook", "undertaken"],
+  uphold: ["upheld"], wake: ["woke", "woken"], wear: ["wore", "worn"], weep: ["wept"], win: ["won"],
+  withdraw: ["withdrew", "withdrawn"], withhold: ["withheld"], write: ["wrote", "written"],
+};
+
 /** One part of a headword, plus the inflected forms English shows it in. */
 function formsOf(word: string): Set<string> {
   const base = word.toLowerCase();
-  const forms = new Set([base]);
+  const forms = new Set([base, ...(IRREGULAR[base] ?? [])]);
 
   // "have" -> "having" drops the e; "stop" -> "stopped" doubles the consonant.
   for (const stem of [base, base.replace(/e$/, ""), base + base.slice(-1)]) {
@@ -36,10 +65,14 @@ function formsOf(word: string): Set<string> {
 
 type Token = { word: string; start: number; end: number };
 
-/** Word tokens with their offsets, so a span can be spliced back into the original. */
+/**
+ * Word tokens with their offsets, so a span can be spliced back into the
+ * original. Letters in any script, so "cliché" is one token; hyphens stay
+ * inside a word, so "well-being" is too.
+ */
 function tokenize(sentence: string): Token[] {
   const tokens: Token[] = [];
-  const pattern = /[A-Za-z']+/g;
+  const pattern = /\p{L}[\p{L}'-]*/gu;
   let match: RegExpExecArray | null;
   while ((match = pattern.exec(sentence)) !== null) {
     tokens.push({ word: match[0], start: match.index, end: match.index + match[0].length });

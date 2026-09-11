@@ -1,70 +1,70 @@
 {
   "unit": 27,
-  "title_en": "Relative Clauses: who, which, that",
-  "title_tr": "İlgi Cümlecikleri: who, which, that",
-  "hook": "Türkçede 'indirdiğim uygulama' dersin; İngilizce tam tersini yapar: önce uygulamayı söyler, sonra kimin indirdiğini — bu ters düzeni çözersen iki kısa cümleyi tek nefeste birleştirirsin.",
+  "title_en": "Modal Verbs: Advice, Duty, Possibility",
+  "title_tr": "Modal Fiiller: Tavsiye, Zorunluluk, İhtimal",
+  "hook": "'You mustn't come' ile 'You don't have to come' arasında uçurum var: biri yasak koyar, öteki 'keyfine kalmış' der — karıştırırsan davetin tehdide dönüşür!",
   "rules": [
     {
-      "rule": "Bir ismi açıklamak için o ismin hemen ARKASINA küçük bir cümlecik eklersin: insanlar için who, nesneler ve hayvanlar için which.",
-      "example_en": "The friend who called me last night works in a tech company.",
-      "example_tr": "Dün gece beni arayan arkadaşım bir teknoloji şirketinde çalışıyor."
+      "rule": "Modal'lar (should, must, might, could) hiç şekil değiştirmez: -s almaz, peşine 'to' gelmez, hemen ardından fiilin yalın hali gelir. Soruda başa geçer, olumsuzda 'not' alırlar.",
+      "example_en": "We must leave now. Should we take a taxi?",
+      "example_tr": "Hemen çıkmalıyız. Taksiye mi binsek?"
     },
     {
-      "rule": "Günlük dilde that, hem who'nun hem which'in yerine geçebilir; virgülsüz (tanımlayan) cümleciklerde en sık duyacağın kelime budur.",
-      "example_en": "This is the app that I downloaded yesterday.",
-      "example_tr": "Bu, dün indirdiğim uygulama."
+      "rule": "should, yumuşak bir '-malı/-meli': tavsiye verir, 'bence iyi olur' der, kimseyi zorlamaz. shouldn't de 'yapmasan daha iyi' demektir.",
+      "example_en": "You should arrive ten minutes early for an interview.",
+      "example_tr": "Mülakata on dakika erken gelmelisin."
     },
     {
-      "rule": "Yerden bahsediyorsan where, sahiplikten (Türkçedeki '-in, -ın' eki) bahsediyorsan whose kullanırsın; whose'dan sonra mutlaka bir isim gelir.",
-      "example_en": "This is the website where I read the news every morning.",
-      "example_tr": "Bu, her sabah haberleri okuduğum site."
+      "rule": "must ve have to ikisi de 'zorunda' ama kaynak farklı: must, konuşanın kendi kararı ya da hissi; have to, dışarıdan gelen kural veya durum. have to normal fiil gibi çekilir (has to, had to); must'ın geçmişi yoktur, onun yerine de had to kullanılır.",
+      "example_en": "I must sleep earlier — and anyway I have to be at work by eight.",
+      "example_tr": "Daha erken yatmalıyım — zaten en geç sekizde işte olmak zorundayım."
     },
     {
-      "rule": "Bağlaçtan hemen sonra yeni bir özne (I, you, she, my brother...) geliyorsa that/who/which'i tamamen atabilirsin; konuşmada bu daha doğal duyulur.",
-      "example_en": "The video I watched last night was really funny.",
-      "example_tr": "Dün gece izlediğim video gerçekten komikti."
+      "rule": "Olumsuzda yollar ayrılır: mustn't = yasak, sakın yapma; don't have to = gerek yok, istersen yap. Yani must'ın olumsuzu ile have to'nun olumsuzu bambaşka iki şey söyler.",
+      "example_en": "You mustn't be late for the exam, but you don't have to come at seven.",
+      "example_tr": "Sınava sakın geç kalma, ama yedide gelmene de gerek yok."
     },
     {
-      "rule": "Zaten belli olan bir şeye sadece ek bilgi veriyorsan cümleciği iki virgül arasına alırsın; virgüllü cümlecikte that kullanılmaz, who ya da which gerekir.",
-      "example_en": "My laptop, which is five years old, still works fine.",
-      "example_tr": "Beş yaşındaki laptopum hâlâ gayet iyi çalışıyor."
+      "rule": "might ve could ihtimal bildirir: 'belki, olabilir'. İkisi de yaklaşık aynı güçtedir; bir şeyden emin değilsen must yerine bunlara sarıl.",
+      "example_en": "It might rain tonight, so the match could start late.",
+      "example_tr": "Bu gece yağmur yağabilir, o yüzden maç geç başlayabilir."
     }
   ],
-  "watch_out": "Türkçede 'beni arayan arkadaş' derken bağlaç yoktur, o yüzden İngilizcede de who'yu atlamak çok cazip gelir; ama who/which cümleciğin ÖZNESİYSE asla atılamaz. ✗ The friend called me is a developer. ✓ The friend who called me is a developer. (Atmak sadece nesneyken serbest: the app I downloaded.)",
-  "memory_trick": "Bağlaçlar aslında soru kelimeleri: who = kim? (insan), which = hangisi? (şey), where = nerede? (yer), whose = kimin? (sahiplik). Cümlecik hangi soruya cevap veriyorsa onu seç; that, virgülsüz cümlelerde who ve which'in jokeri.",
+  "watch_out": "Türkçe 'zorunda değilsin'i kelime kelime çevirince 'must not' çıkıyor — ama mustn't yasak demek, 'gerek yok' değil. ✗ You mustn't come early, the shop opens at ten. ✓ You don't have to come early, the shop opens at ten.",
+  "memory_trick": "Dört ses düşün: should fısıldayan arkadaş, must içindeki kararlı ses, have to kural kitabı, might omuz silken hava tahmini. Bir de kilit: mustn't = 'sakın!', don't have to = 'gerek yok'.",
   "quiz": [
     {
-      "question": "The girl ___ made this video is only twelve years old.",
+      "question": "She ___ leave before the meeting ends.",
       "options": [
-        "which",
-        "who",
-        "where",
-        "whose"
-      ],
-      "answer": 1,
-      "explain": "Kişiden bahsediyoruz ve who burada cümleciğin öznesi; kişi için which olmaz, özne olduğu için de atlanamaz."
-    },
-    {
-      "question": "I have a friend ___ phone is older than mine.",
-      "options": [
-        "who",
-        "which",
-        "whose",
-        "where"
+        "must to",
+        "musts",
+        "must",
+        "have to"
       ],
       "answer": 2,
-      "explain": "'Arkadaşımın telefonu' — sahiplik var, bu yüzden whose; hemen arkasından phone ismi geliyor."
+      "explain": "Modal'lar -s ve 'to' almaz; 'have to' da 'she' ile 'has to' olurdu."
     },
     {
-      "question": "My laptop, ___ I bought in 2019, is still fast.",
+      "question": "It's a casual party, so you ___ wear a suit.",
       "options": [
-        "which",
-        "that",
-        "who",
-        "where"
+        "mustn't",
+        "don't have to",
+        "must",
+        "should"
+      ],
+      "answer": 1,
+      "explain": "Takım elbise yasak değil, sadece gerekli değil; mustn't deseydik yasaklamış olurduk."
+    },
+    {
+      "question": "I'm not sure — the train ___ be late again.",
+      "options": [
+        "might",
+        "must",
+        "has to",
+        "should"
       ],
       "answer": 0,
-      "explain": "Virgüllü ek bilgi cümleciğinde that kullanılmaz; laptop bir eşya olduğu için which gerekir."
+      "explain": "Emin olmadığımız ihtimallerde might (ya da could) kullanırız; must kesinlik verirdi."
     }
   ]
 }

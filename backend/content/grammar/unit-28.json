@@ -1,70 +1,70 @@
 {
   "unit": 28,
-  "title_en": "Gerunds and Infinitives",
-  "title_tr": "Fiilden Sonra -ing mi, to mu?",
-  "hook": "İngilizcede 'stop smoking' ile 'stop to smoke' taban tabana zıt anlama gelir; ikisi arasındaki fark sadece iki harf, ama biri sigarayı bırakmak, öteki sigara içmek için durmak.",
+  "title_en": "First Conditional: If and Will",
+  "title_tr": "Birinci Koşul: If ve Will",
+  "hook": "Küçücük bir 'if', koca bir 'will'i kapı dışarı eder; 'will' de küsmez, gider sonucun yanına oturur.",
   "rules": [
     {
-      "rule": "İngilizcede bir fiilden sonra ikinci bir fiil geliyorsa, ilk fiil ikincisinin şeklini belirler. Bazı fiiller arkasına -ing ister: enjoy, finish, avoid, mind, keep, suggest, practise.",
-      "example_en": "I enjoy studying with music, but I avoid checking my phone.",
-      "example_tr": "Müzikle ders çalışmayı seviyorum ama telefonuma bakmaktan kaçınıyorum."
+      "rule": "Gelecekte olması mümkün bir şart ve sonucu için: 'if' yarısı present simple, sonuç yarısı 'will' alır. Türkçedeki '-se/-sa' ekinin İngilizcesi budur.",
+      "example_en": "If you feel better tomorrow, we'll go out.",
+      "example_tr": "Yarın daha iyi hissedersen dışarı çıkarız."
     },
     {
-      "rule": "Başka bir grup fiil ise arkasına 'to + fiil' ister: want, decide, hope, plan, need, learn, promise, would like.",
-      "example_en": "She decided to learn Excel, and she hopes to find a better job.",
-      "example_tr": "Excel öğrenmeye karar verdi ve daha iyi bir iş bulmayı umuyor."
+      "rule": "'If' yarısı cümlenin başına da sonuna da gelebilir; başa gelirse araya virgül konur, sona gelirse virgül yoktur.",
+      "example_en": "I'll be happier if I pass the exam.",
+      "example_tr": "Sınavı geçersem daha mutlu olurum."
     },
     {
-      "rule": "Bir edattan (preposition) sonra fiil geliyorsa, kural sabittir: her zaman -ing. 'good at', 'interested in', 'before', 'after', 'without' gibi kelimelerden sonra asla 'to' gelmez.",
-      "example_en": "He is good at solving problems without asking for help.",
-      "example_tr": "Yardım istemeden problem çözmede iyidir."
+      "rule": "'Unless' tek kelimeyle 'if ... not' demektir; bu yüzden 'unless'ten sonra bir daha olumsuz yapılmaz.",
+      "example_en": "Unless you sleep well, you'll feel tired all day.",
+      "example_tr": "İyi uyumazsan bütün gün kendini yorgun hissedersin."
     },
     {
-      "rule": "'stop' iki şekli de alır ama anlam değişir: 'stop doing' bir şeyi bırakmak (artık yapmamak), 'stop to do' ise başka bir şey yapmak için durmak demektir. 'remember' ve 'forget' da benzer şekilde anlam değiştirir.",
-      "example_en": "I stopped working at 6 and stopped to buy coffee on the way home.",
-      "example_tr": "Saat 6'da çalışmayı bıraktım ve eve dönerken kahve almak için durdum."
+      "rule": "'When' olayın kesin olacağını, 'if' sadece olabileceğini söyler; Türkçedeki '-ince' ile '-se' farkı gibi. İkisinden sonra da present simple gelir.",
+      "example_en": "When I finish work, I'll call you — if I'm not too tired.",
+      "example_tr": "İşim bitince seni ararım — çok yorgun olmazsam."
     },
     {
-      "rule": "Bazı fiiller iki şekli de anlam farkı olmadan kabul eder: like, love, hate, start, begin, continue. Bunlarda hangisini seçtiğiniz önemli değildir.",
-      "example_en": "I started to read the report, then I continued reading at home.",
-      "example_tr": "Raporu okumaya başladım, sonra evde okumaya devam ettim."
+      "rule": "Her zaman doğru olan şeyler (bilimsel gerçekler, alışkanlıklar) için iki yarıda da present simple kullanılır; buna 'zero conditional' denir, 'will' hiç yoktur.",
+      "example_en": "If you compare prices online, you usually pay less.",
+      "example_tr": "İnternette fiyatları karşılaştırırsan genelde daha az ödersin."
     }
   ],
-  "watch_out": "Türkçede 'çalışmayı bitirdim' derken '-mayı' bir ek olduğu için İngilizcede otomatik olarak 'to' koymak isteriz; oysa finish, enjoy, avoid gibi fiiller 'to' kabul etmez. ✗ I finished to write the essay. ✓ I finished writing the essay. Aynı hata 'look forward to' ile de olur: 'to' burada edattır, arkası -ing olur: ✓ I look forward to meeting you.",
-  "memory_trick": "Türkçe '-mayı/-meyi' her zaman -ing demek değildir. Şöyle düşün: geleceğe bakan fiiller (want, hope, plan, decide) 'to' alır, çünkü 'to' bir yön işaretidir; halihazırda yapılan ya da biten şeyler (enjoy, finish, keep, avoid) -ing alır.",
+  "watch_out": "En sık hata, 'if' yarısına da 'will' koymak: Türkçede 'yağarsa' derken zihin geleceği düşünür, 'will' de oraya kaçar. ✗ If it will rain, we'll stay in. ✓ If it rains, we'll stay in.",
+  "memory_trick": "Türkçe düşün: '-se/-sa' gördüğün yerde 'if + geniş zaman', sonucu söylediğin yerde 'will'. Yağarsa → if it rains; kalırız → we'll stay.",
   "quiz": [
     {
-      "question": "I finished ___ the report at midnight.",
+      "question": "If she ___ the news, she'll be very happy.",
       "options": [
-        "to write",
-        "writing",
-        "write",
-        "wrote"
+        "will hear",
+        "heard",
+        "is hearing",
+        "hears"
       ],
-      "answer": 1,
-      "explain": "'finish' fiilinden sonra her zaman -ing gelir, 'to' gelmez."
+      "answer": 3,
+      "explain": "'If' yarısında 'will' olmaz, present simple gelir; 'will' zaten sonuç yarısında."
     },
     {
-      "question": "We're interested ___ a new course next month.",
+      "question": "___ you hurry, you'll miss the bus.",
       "options": [
-        "to take",
-        "taking",
-        "in taking",
-        "in to take"
+        "If",
+        "When",
+        "Unless",
+        "Because"
       ],
       "answer": 2,
-      "explain": "'interested in' edatla biter ve edattan sonra fiil -ing alır."
+      "explain": "'Unless' = 'if you don't': acele etmezsen otobüsü kaçırırsın."
     },
     {
-      "question": "He stopped ___ coffee because he couldn't sleep at night.",
+      "question": "I always get home at 7. ___ I get home tonight, I'll call you.",
       "options": [
-        "drinking",
-        "to drink",
-        "drink",
-        "for drinking"
+        "When",
+        "If",
+        "Unless",
+        "Until"
       ],
       "answer": 0,
-      "explain": "'stop drinking' içmeyi bırakmak demektir; 'stop to drink' ise içmek için durmak anlamına gelirdi ve cümleye uymaz."
+      "explain": "Eve gelmek kesin olduğu için 'when'; 'if' olayı belirsiz gösterirdi."
     }
   ]
 }

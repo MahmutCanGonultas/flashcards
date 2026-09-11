@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 24,
+    "level": "A2",
+    "title": "Celebrations"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "birthday",
+      "back": "(noun) doğum günü 🎂",
+      "example_sentence": "It's my sister's birthday, so we're baking a cake.",
+      "mnemonic": "birth (doğum) + day (gün): Türkçesiyle birebir aynı kalıpla kurulmuş. 'Happy birthday to you' şarkısından zaten tanıdığın bir kelime."
+    },
+    {
+      "lesson": 1,
+      "front": "wedding",
+      "back": "(noun) düğün 💒",
+      "example_sentence": "We danced all night at my cousin's wedding.",
+      "mnemonic": "'Wedding dress' (gelinlik), 'wedding planner' (düğün organizatörü) sözlerini duymuşsundur: wed = evlenmek, wedding = düğün. 'Marriage' ile karıştırma: marriage evlilik (durum), wedding düğün (tören)."
+    },
+    {
+      "lesson": 1,
+      "front": "party",
+      "back": "(noun) parti 🎉",
+      "example_sentence": "Are you coming to Ayşe's party on Friday?",
+      "mnemonic": "Türkçe 'parti' de İngilizce 'party' de Fransızca partie'den gelir. İki dilde de hem eğlence partisi hem siyasi parti anlamı var."
+    },
+    {
+      "lesson": 2,
+      "front": "gift",
+      "back": "(noun) hediye 🎁",
+      "example_sentence": "I'm looking for a gift for my mum.",
+      "mnemonic": "Gift, 'give' (vermek) fiiliyle aynı kökten: verilen şey. Havalimanındaki 'gift shop' tabelasını ve 'gift card'ı düşün."
+    },
+    {
+      "lesson": 2,
+      "front": "guest",
+      "back": "(noun) misafir, konuk 🤝",
+      "example_sentence": "We have thirty guests, so we need more chairs.",
+      "mnemonic": "Otel ve ofislerdeki 'Guest WiFi' ağı misafirler içindir. Dizilerdeki 'guest star' da konuk oyuncu demek."
+    },
+    {
+      "lesson": 2,
+      "front": "cake",
+      "back": "(noun) pasta, kek 🍰",
+      "example_sentence": "Mum is making a chocolate cake for the party.",
+      "mnemonic": "Türkçe 'kek' zaten İngilizce cake'ten gelir; ama İngilizcede kremalı pasta da cake'tir (birthday cake). Dikkat: İngilizce 'pasta' makarna demek!"
+    },
+    {
+      "lesson": 3,
+      "front": "cousin",
+      "back": "(noun) kuzen 👥",
+      "example_sentence": "My cousin is coming from Izmir for the wedding.",
+      "mnemonic": "Türkçe 'kuzen' Fransızca cousin'den; İngilizcede aynı yazılır, 'kazın' gibi okunur. Kuzen de kuzin de cousin: cinsiyet ayrımı yok."
+    },
+    {
+      "lesson": 3,
+      "front": "aunt",
+      "back": "(noun) teyze, hala 👩",
+      "example_sentence": "My aunt is bringing her famous baklava tonight.",
+      "mnemonic": "Teyze, hala ve yenge — İngilizcede tek kelime: aunt. Spider-Man'in Aunt May'i bile aslında amcasının eşi, yani yengesi."
+    },
+    {
+      "lesson": 3,
+      "front": "uncle",
+      "back": "(noun) amca, dayı 👨",
+      "example_sentence": "My uncle tells the same jokes at every party.",
+      "mnemonic": "Amca, dayı ve enişte — hepsi uncle. ABD'nin simgesi 'Uncle Sam' ve Spider-Man'in amcası 'Uncle Ben' aklında kalsın."
+    },
+    {
+      "lesson": 4,
+      "front": "celebrate",
+      "back": "(verb) kutlamak 🥳",
+      "example_sentence": "How are you going to celebrate your birthday?",
+      "mnemonic": "Kool & the Gang'in 'Celebration' şarkısı: 'Celebrate good times, come on!' Aynı kökten 'celebrity' (ünlü) de herkesin alkışladığı, kutladığı kişi demek."
+    },
+    {
+      "lesson": 4,
+      "front": "prepare",
+      "back": "(verb) hazırlamak, hazırlanmak 📋",
+      "example_sentence": "Let's prepare the salads before the guests arrive.",
+      "mnemonic": "Latince prae (önceden) + parare (hazır etmek): önceden hazır etmek. Aslan Kral'da Scar'ın 'Be Prepared' şarkısını hatırla; 'prepare for the exam' = sınava hazırlanmak."
+    },
+    {
+      "lesson": 4,
+      "front": "decorate",
+      "back": "(verb) süslemek 🎈",
+      "example_sentence": "We decorated the room with balloons and lights.",
+      "mnemonic": "Türkçe 'dekor', 'dekorasyon', 'dekoratif' aynı kökten (Fransızca décor). Decorate = dekore etmek, yani süslemek."
+    },
+    {
+      "lesson": 5,
+      "front": "married",
+      "back": "(adjective) evli 💍",
+      "example_sentence": "My brother got married last summer in Bodrum.",
+      "mnemonic": "Düğün arabalarının arkasındaki 'Just Married' yazısı: yeni evli. Dikkat: 'married to' denir, 'married with' değil; 'get married' = evlenmek."
+    },
+    {
+      "lesson": 5,
+      "front": "together",
+      "back": "(adverb) birlikte, beraber 👫",
+      "example_sentence": "We always have breakfast together on Sundays.",
+      "mnemonic": "to + gather (toplamak): bir araya toplanmış, yani birlikte. 'Better Together', 'Forever Together' gibi şarkı sözlerinden kulağın aşinadır."
+    },
+    {
+      "lesson": 5,
+      "front": "holiday",
+      "back": "(noun) tatil, bayram 🏖️",
+      "example_sentence": "Are you going anywhere on holiday this summer?",
+      "mnemonic": "holy (kutsal) + day (gün): önce dini bayram, sonra her tatil. İngilizler tatile 'holiday' der ('on holiday' = tatilde); Amerikalılar tatile 'vacation', bayrama 'holiday'."
+    }
+  ],
+  "dialogue": {
+    "title": "Five Hundred Guests",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "My cousin gets married on Saturday. Come with me!",
+        "tr": "Kuzenim cumartesi evleniyor. Benimle gel!"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Really? Is it like an English wedding?",
+        "tr": "Cidden mi? İngiliz düğünlerine benziyor mu?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "No! It's a huge party, five hundred guests.",
+        "tr": "Yok canım! Kocaman bir parti, beş yüz misafir."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Five hundred? Wow. What gift do I bring?",
+        "tr": "Beş yüz mü? Vay. Ne hediye götüreyim?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Not a gift. Guests give gold or money.",
+        "tr": "Hediye değil. Misafirler altın ya da para takar."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Gold? At a wedding? That's new to me!",
+        "tr": "Altın mı? Düğünde mi? İlk kez duyuyorum!"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Yes! Then everyone dances together, even my uncles.",
+        "tr": "Evet! Sonra herkes birlikte oynar, dayılarım bile."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Okay, I'm in. Let's celebrate! What do I wear?",
+        "tr": "Tamam, varım. Kutlayalım! Peki ne giyeyim?"
+      }
+    ]
+  }
+}
