@@ -5,6 +5,7 @@ import Button from "./Button";
 import { clearToken } from "../lib/api";
 import { useStreak } from "../lib/streak";
 import { FlameIcon } from "./icons";
+import MusicToggle from "./MusicToggle";
 
 function Header() {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ function Header() {
           <Logo size={32} withText />
         </Link>
         <div className="flex items-center gap-1">
+          <MusicToggle />
           {streak > 0 && (
             <span
               className="flex items-center gap-1 rounded-full bg-amber-100 px-3 py-1.5 text-sm font-extrabold text-amber-600 ring-1 ring-amber-200"
