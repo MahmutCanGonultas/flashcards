@@ -1,5 +1,6 @@
 import type { Card } from "../types";
 import { parseBack } from "./cardBack";
+import { hasStarted } from "./path";
 
 export type QuizOption = {
   text: string;
@@ -7,8 +8,17 @@ export type QuizOption = {
   isCorrect: boolean;
 };
 
-/** Need the card itself plus at least 3 others to draw distinct distractors from. */
-const MIN_DECK_SIZE_FOR_QUIZ = 4;
+type BuildOptions = {
+  /** The other words in the same lesson. At most one is ever used. */
+  mates?: Card[];
+  /**
+   * Total options to offer, including the correct one. Defaults to 4; a word
+   * being asked again after a miss narrows to 2, so the repeat always ends.
+   */
+  maxOptions?: number;
+};
+
+const DEFAULT_MAX_OPTIONS = 4;
 
 function shuffle<T>(items: T[]): T[] {
   const result = [...items];
@@ -20,28 +30,133 @@ function shuffle<T>(items: T[]): T[] {
 }
 
 /**
- * Builds 4 multiple-choice options for `card` (1 correct + 3 distractors
- * drawn from other cards in the same deck), in random order. Returns null
- * when the deck is too small, or too repetitive, to draw 3 distinct
- * distractors from — callers should fall back to a plain reveal in that case.
+ * Distractors are drawn in tiers, best first:
+ *
+ *   1. one word from the same lesson — near enough to be a real choice
+ *   2. up to two already-learned words of the same part of speech
+ *   3. any already-learned word
+ *   4. anything left in the deck
+ *
+ * Only ONE lesson-mate, deliberately. A lesson is three words taught together
+ * and they are often close in meaning; offering all three as options turns the
+ * question into a coin flip on the day they are introduced.
+ *
+ * Preferring already-learned words above unseen ones matters too — every
+ * distractor is read, and reading the gloss of a word you haven't met yet
+ * teaches it out of order, badly.
  */
-export function buildQuizOptions(card: Card, deckCards: Card[]): QuizOption[] | null {
-  if (deckCards.length < MIN_DECK_SIZE_FOR_QUIZ) return null;
+function pickDistractors(
+  card: Card,
+  deckCards: Card[],
+  mates: Card[],
+  wanted: number,
+  glossOf: (card: Card) => string,
+  toOption: (card: Card) => QuizOption,
+): QuizOption[] {
+  const taken = new Set([glossOf(card)]);
+  const used = new Set([card.id]);
+  const chosen: QuizOption[] = [];
+
+  const take = (candidates: Card[], limit: number) => {
+    for (const other of shuffle(candidates)) {
+      if (chosen.length >= wanted || limit <= 0) return;
+      if (used.has(other.id)) continue;
+      const gloss = glossOf(other);
+      if (taken.has(gloss)) continue;
+      taken.add(gloss);
+      used.add(other.id);
+      chosen.push(toOption(other));
+      limit--;
+    }
+  };
+
+  const pos = parseBack(card.back).pos;
+  const rest = deckCards.filter((other) => other.id !== card.id);
+  const started = rest.filter(hasStarted);
+
+  take(mates, 1);
+  take(
+    started.filter((other) => pos !== null && parseBack(other.back).pos === pos),
+    2,
+  );
+  take(started, wanted);
+  take(rest, wanted);
+
+  return chosen;
+}
+
+/**
+ * Options are the Turkish meanings: "what does this English word mean?"
+ *
+ * Returns 2–4 options rather than always 4 — a tiny deck should still get a
+ * real question. Returns null only when there is nothing at all to contrast
+ * against, and the caller must then say so rather than showing one option.
+ */
+export function buildQuizOptions(
+  card: Card,
+  deckCards: Card[],
+  options: BuildOptions = {},
+): QuizOption[] | null {
+  const glossOf = (c: Card) => parseBack(c.back).text;
+  const toOption = (c: Card): QuizOption => {
+    const parsed = parseBack(c.back);
+    return { text: parsed.text, emoji: parsed.emoji, isCorrect: false };
+  };
+
+  const distractors = pickDistractors(
+    card,
+    deckCards,
+    options.mates ?? [],
+    (options.maxOptions ?? DEFAULT_MAX_OPTIONS) - 1,
+    glossOf,
+    toOption,
+  );
+  if (distractors.length === 0) return null;
 
   const correct = parseBack(card.back);
-  const seenText = new Set([correct.text]);
-  const distractors: QuizOption[] = [];
+  return shuffle([
+    ...distractors,
+    { text: correct.text, emoji: correct.emoji, isCorrect: true },
+  ]);
+}
 
-  const pool = shuffle(deckCards.filter((c) => c.id !== card.id));
-  for (const other of pool) {
-    const parsed = parseBack(other.back);
-    if (seenText.has(parsed.text)) continue;
-    seenText.add(parsed.text);
-    distractors.push({ text: parsed.text, emoji: parsed.emoji, isCorrect: false });
-    if (distractors.length === 3) break;
-  }
+/**
+ * Options are the English words themselves — for "which word did you hear?"
+ * and "which word is missing from this sentence?".
+ *
+ * Carries no emoji on purpose: the emoji encodes the meaning, and showing it
+ * next to the English word would let you answer by matching pictures instead
+ * of by hearing or reading.
+ */
+export function buildWordOptions(
+  card: Card,
+  deckCards: Card[],
+  options: BuildOptions = {},
+): QuizOption[] | null {
+  const glossOf = (c: Card) => c.front.toLowerCase();
+  const toOption = (c: Card): QuizOption => ({
+    text: c.front,
+    emoji: null,
+    isCorrect: false,
+  });
 
-  if (distractors.length < 3) return null;
+  // Words of a similar length make a fairer choice than "however" against
+  // "up", so the deck is narrowed before the tiers pick from it.
+  const nearest = [...deckCards].sort(
+    (a, b) =>
+      Math.abs(a.front.length - card.front.length) -
+      Math.abs(b.front.length - card.front.length),
+  );
 
-  return shuffle([...distractors, { text: correct.text, emoji: correct.emoji, isCorrect: true }]);
+  const distractors = pickDistractors(
+    card,
+    nearest.slice(0, 24),
+    options.mates ?? [],
+    (options.maxOptions ?? DEFAULT_MAX_OPTIONS) - 1,
+    glossOf,
+    toOption,
+  );
+  if (distractors.length === 0) return null;
+
+  return shuffle([...distractors, { text: card.front, emoji: null, isCorrect: true }]);
 }
