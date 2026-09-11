@@ -42,3 +42,32 @@ CREATE TABLE cards(
     due_date TIMESTAMP DEFAULT NOW(),
     created_at TIMESTAMP DEFAULT NOW()
 );
+-- A unit is one themed stretch of a deck's path: a handful of lessons, a
+-- dialogue that puts their words to work, and a test that gates the next
+-- unit. Cards point at their unit; the path is drawn from that.
+CREATE TABLE units(
+    id SERIAL PRIMARY KEY,
+    deck_id INTEGER NOT NULL REFERENCES decks(id) ON DELETE CASCADE,
+    position INTEGER NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    -- CEFR level of the unit's words: A1, A2, B1...
+    level VARCHAR(10),
+    -- { title, lines: [{ speaker, en, tr }] } -- a short conversation that
+    -- uses the unit's vocabulary, shown after its lessons and before its test.
+    dialogue JSONB,
+    UNIQUE (deck_id, position)
+);
+
+ALTER TABLE cards ADD COLUMN unit_id INTEGER REFERENCES units(id) ON DELETE SET NULL;
+
+-- Every attempt at a unit's test. One pass is enough to open the next unit;
+-- failed attempts are kept so the score history is honest.
+CREATE TABLE unit_results(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    unit_id INTEGER NOT NULL REFERENCES units(id) ON DELETE CASCADE,
+    -- Percentage, 0-100.
+    score INTEGER NOT NULL,
+    passed BOOLEAN NOT NULL,
+    taken_at TIMESTAMP DEFAULT NOW()
+);

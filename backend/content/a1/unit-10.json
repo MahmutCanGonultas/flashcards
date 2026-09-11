@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 10,
+    "level": "A1",
+    "title": "Weather & Nature"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "sun",
+      "back": "(noun) güneş ☀️",
+      "example_sentence": "The sun is very hot.",
+      "mnemonic": "'Sunday' = sun + day, yani GÜNEŞ günü; haftanın bu günü Eski İngilizce'den beri güneşe adanmış. 'Sunglasses' de güneş gözlüğü."
+    },
+    {
+      "lesson": 1,
+      "front": "rain",
+      "back": "(noun) yağmur 🌧️",
+      "example_sentence": "I like the sound of rain.",
+      "mnemonic": "'Rainbow' (gökkuşağı) = rain + bow (yay): YAĞMURdan sonra gökte beliren yay. Yağmur yoksa gökkuşağı da yok."
+    },
+    {
+      "lesson": 1,
+      "front": "snow",
+      "back": "(noun) kar ❄️",
+      "example_sentence": "Children love playing in the snow.",
+      "mnemonic": "'Snowboard' Türkçe'de de aynen kullanılıyor: KAR üstünde kayılan tahta. Pamuk Prenses'in orijinal adı da 'Snow White' (kar beyazı)."
+    },
+    {
+      "lesson": 2,
+      "front": "wind",
+      "back": "(noun) rüzgar 💨",
+      "example_sentence": "The wind is strong today.",
+      "mnemonic": "'Window' (pencere) Eski İskandinav dilinde 'vindauga' = wind + eye, yani 'RÜZGAR gözü' demek: rüzgarın girdiği delik. 'Windsurf' de rüzgar sörfü."
+    },
+    {
+      "lesson": 2,
+      "front": "cloud",
+      "back": "(noun) bulut ☁️",
+      "example_sentence": "Look at that big cloud.",
+      "mnemonic": "Telefonundaki 'iCloud' ve 'bulut depolama' aynı kelime: dosyaların gökteki bir BULUTta duruyor gibi. Bulut = cloud."
+    },
+    {
+      "lesson": 2,
+      "front": "weather",
+      "back": "(noun) hava, hava durumu 🌤️",
+      "example_sentence": "How is the weather today?",
+      "mnemonic": "Telefondaki hava durumu uygulamasının İngilizce adı 'Weather'. Dikkat: soluduğun hava 'air', gökteki durum (yağmur, güneş, rüzgar) 'weather'."
+    },
+    {
+      "lesson": 3,
+      "front": "tree",
+      "back": "(noun) ağaç 🌳",
+      "example_sentence": "There is a big tree in the garden.",
+      "mnemonic": "'Family tree' = soy AĞACI, Türkçe'deki benzetmenin aynısı. Her yılbaşı gördüğün 'Christmas tree' de aynı kelime."
+    },
+    {
+      "lesson": 3,
+      "front": "flower",
+      "back": "(noun) çiçek 🌸",
+      "example_sentence": "This flower smells nice.",
+      "mnemonic": "Türkçe'deki 'flora' (bitki örtüsü) ile aynı Latince kökten: 'flos' = çiçek. 'Sunflower' = sun + flower = ayÇİÇEĞİ."
+    },
+    {
+      "lesson": 3,
+      "front": "dog",
+      "back": "(noun) köpek 🐕",
+      "example_sentence": "My dog runs in the park.",
+      "mnemonic": "'Hot dog' (sosisli) adını, uzun sosisin dachshund cinsi KÖPEĞE benzetilmesinden alır; Türkçe'de de aynen 'hot dog'. 'Bulldog' da bir dog."
+    },
+    {
+      "lesson": 4,
+      "front": "cat",
+      "back": "(noun) kedi 🐈",
+      "example_sentence": "The cat sleeps on the sofa.",
+      "mnemonic": "'Catwoman' = KEDİ Kadın; 'Tom ve Jerry'deki Tom da bir cat. Türkçe 'kedi' gibi 'cat' de k sesiyle başlar."
+    },
+    {
+      "lesson": 4,
+      "front": "bird",
+      "back": "(noun) kuş 🐦",
+      "example_sentence": "A small bird sings in the tree.",
+      "mnemonic": "'Angry Birds' oyunu = Kızgın KUŞlar. Twitter'ın eski mavi logosu da bir kuştu: 'the Twitter bird'."
+    },
+    {
+      "lesson": 4,
+      "front": "sea",
+      "back": "(noun) deniz 🌊",
+      "example_sentence": "We swim in the sea in summer.",
+      "mnemonic": "'Seafood' (deniz ürünleri) = sea + food. 'See' (görmek) ile aynı okunur: 'see the sea' = DENİZi gör."
+    },
+    {
+      "lesson": 5,
+      "front": "mountain",
+      "back": "(noun) dağ ⛰️",
+      "example_sentence": "The mountain is very high.",
+      "mnemonic": "Türkçe 'monte etmek' (yukarı çıkarıp takmak) Fransızca 'monter'dan, o da Latince 'mons' = DAĞ'dan gelir. 'Mount Everest' de aynı kök."
+    },
+    {
+      "lesson": 5,
+      "front": "sky",
+      "back": "(noun) gökyüzü 🌌",
+      "example_sentence": "The sky is blue today.",
+      "mnemonic": "'Skyscraper' (gökdelen) = sky + scraper (kazıyan): GÖKYÜZÜnü kazıyan bina, Türkçe 'gök-delen' ile aynı mantık. 'Sky' Eski İskandinav dilinde 'bulut' demekti."
+    },
+    {
+      "lesson": 5,
+      "front": "world",
+      "back": "(noun) dünya 🌍",
+      "example_sentence": "I want to see the world.",
+      "mnemonic": "'World Cup' = DÜNYA Kupası; internet adreslerindeki 'www' = World Wide Web (dünya çapında ağ). Gezegen 'Earth', insanların dünyası 'world'."
+    }
+  ],
+  "dialogue": {
+    "title": "Sea and Sky",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "Look, Elif! The sky is so blue.",
+        "tr": "Bak Elif! Gökyüzü ne kadar mavi."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Yes! No clouds, no rain today.",
+        "tr": "Evet! Bugün ne bulut var ne yağmur."
+      },
+      {
+        "speaker": "Tom",
+        "en": "The weather is perfect for the sea.",
+        "tr": "Hava deniz için mükemmel."
+      },
+      {
+        "speaker": "Elif",
+        "en": "The sun is hot, the wind is cool.",
+        "tr": "Güneş sıcak, rüzgar serin."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Look at that bird over the mountain!",
+        "tr": "Dağın üstündeki şu kuşa bak!"
+      },
+      {
+        "speaker": "Elif",
+        "en": "I see it! The world is so beautiful.",
+        "tr": "Görüyorum! Dünya ne kadar güzel."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Ten units, Elif. You speak English now!",
+        "tr": "On ünite, Elif. Artık İngilizce konuşuyorsun!"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Thanks to you, Tom. Let's swim!",
+        "tr": "Senin sayende Tom. Hadi yüzelim!"
+      }
+    ]
+  }
+}

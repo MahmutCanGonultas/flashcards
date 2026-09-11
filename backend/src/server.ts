@@ -4,6 +4,7 @@ import authRouter from "./routes/auth.routes.js";
 import deckRouter from "./routes/deck.routes.js";
 import cardRouter from "./routes/card.routes.js";
 import streakRouter from "./routes/streak.routes.js";
+import unitRouter from "./routes/unit.routes.js";
 
 // Without these the server still boots and answers the platform's health check,
 // then fails on the first real request. Refuse to start instead.
@@ -35,6 +36,7 @@ app.use(cors({ origin: allowedOrigins }));
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/decks", deckRouter);
 app.use("/api/v1/decks", cardRouter);
+app.use("/api/v1/decks", unitRouter);
 app.use("/api/v1/streak", streakRouter);
 
 app.get("/", (req, res) => {

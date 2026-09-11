@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 2,
+    "level": "A1",
+    "title": "My Family"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "mother",
+      "back": "(noun) anne 👩",
+      "example_sentence": "My mother is a teacher.",
+      "mnemonic": "'Mother', Latince 'mater' ve Farsça 'mader' ile aynı Hint-Avrupa kökündendir; kökün bebeğin ilk sesi 'ma'dan doğduğu düşünülür. 'Metropol' de 'ana şehir' demektir: Yunanca mētēr (anne) + polis (şehir)."
+    },
+    {
+      "lesson": 1,
+      "front": "father",
+      "back": "(noun) baba 👨",
+      "example_sentence": "My father drinks tea every morning.",
+      "mnemonic": "'Father', Latince 'pater' ve Farsça 'peder' ile aynı köktendir (Germen dillerinde p sesi f olur: pater → father); Türkçedeki 'peder' de budur. İş yerindeki 'patron' da 'pater'den gelir: koruyan baba figürü."
+    },
+    {
+      "lesson": 1,
+      "front": "family",
+      "back": "(noun) aile 👨‍👩‍👧",
+      "example_sentence": "I have a big family.",
+      "mnemonic": "Türkçede 'familya' (baklagiller familyası, 'bütün familya geldi') zaten var; Latince 'familia' (ev halkı) sözcüğünden gelir ve İngilizcede 'family' oldu. Romalılar için 'familia', hizmetkârlar dâhil evdeki herkesti."
+    },
+    {
+      "lesson": 2,
+      "front": "sister",
+      "back": "(noun) kız kardeş, abla 👭",
+      "example_sentence": "This is my sister, Zeynep.",
+      "mnemonic": "Türkçe 'hemşire', Farsçada 'kız kardeş' demektir (hem + şîr: aynı sütü emen); İngiltere'de de başhemşireye 'Sister' denir. İki dil de kız kardeşi hastabakıcıya çevirmiş."
+    },
+    {
+      "lesson": 2,
+      "front": "brother",
+      "back": "(noun) erkek kardeş, abi 👬",
+      "example_sentence": "My brother plays football.",
+      "mnemonic": "Türkçe 'birader', Farsça 'berâder'den gelir ve İngilizce 'brother' ile aynı Hint-Avrupa köküne dayanır: b-r-d-r ↔ b-r-th-r. Aynı sözcük, biri İran'dan biri İngiltere'den gelmiş iki kardeş gibidir."
+    },
+    {
+      "lesson": 2,
+      "front": "baby",
+      "back": "(noun) bebek 👶",
+      "example_sentence": "We have a new baby at home.",
+      "mnemonic": "'Baby' de 'bebek' de aynı yerden doğar: bebeğin çıkardığı 'ba-ba, be-be' seslerinden; iki dil de sözcüğü bebek dilinden kopyalamış. Şarkılardaki 'baby'yi zaten bilirsin, aslında 'bebeğim' demektir."
+    },
+    {
+      "lesson": 3,
+      "front": "man",
+      "back": "(noun) adam, erkek 🧔",
+      "example_sentence": "That man is my father.",
+      "mnemonic": "'Superman', 'Batman', 'Spider-Man': hepsinin sonundaki 'man' adam demektir. Eski İngilizcede 'mann', kadın-erkek fark etmeden 'insan' demekti; 'mankind' (insanlık) o eski anlamı hâlâ taşır."
+    },
+    {
+      "lesson": 3,
+      "front": "woman",
+      "back": "(noun) kadın 👩‍🦰",
+      "example_sentence": "The woman in the photo is my mother.",
+      "mnemonic": "'Woman' = 'wife' (kadın, eş) + 'man' (insan): eski İngilizce 'wīfmann', yani 'kadın insan'. Çoğulu 'women' ise 'vimin' diye okunur; o da eski 'wimman' biçiminin izidir."
+    },
+    {
+      "lesson": 3,
+      "front": "child",
+      "back": "(noun) çocuk 🧒",
+      "example_sentence": "I am an only child.",
+      "mnemonic": "Arabaların arka kapısındaki 'child lock' (çocuk kilidi) yazısını çoğu kişi görmüştür. Sözcük eski İngilizce 'cild'den gelir; çoğulu 'children' ise iki çoğul ekinin üst üste binmesiyle ('childer' + '-en') oluşmuş ender bir biçimdir."
+    },
+    {
+      "lesson": 4,
+      "front": "boy",
+      "back": "(noun) erkek çocuk, oğlan 👦",
+      "example_sentence": "Is the baby a boy or a girl?",
+      "mnemonic": "Türkçeye girmiş 'kovboy' (cowboy), 'cow' (inek) + 'boy' (oğlan) demektir: sığır güden delikanlı. 'Playboy' ve 'boy band' de aynı 'boy'; Türkçe 'boy'la (uzunluk) ilgisi yoktur."
+    },
+    {
+      "lesson": 4,
+      "front": "girl",
+      "back": "(noun) kız 👧",
+      "example_sentence": "That girl is my best friend.",
+      "mnemonic": "Orta Çağ İngilizcesinde 'girl', cinsiyet fark etmeden 'çocuk' demekti; zamanla yalnızca kız çocuğuna daraldı. 'Spice Girls' ve 'cover girl' (kapak kızı) sözlerinden zaten tanıyorsun."
+    },
+    {
+      "lesson": 4,
+      "front": "old",
+      "back": "(adjective) yaşlı, eski 👴",
+      "example_sentence": "How old is your sister?",
+      "mnemonic": "'How old are you?' (Kaç yaşındasın?) kalıbını herkes bilir; kelimesi kelimesine 'ne kadar yaşlısın' demektir. Kökü 'büyümüş, yetişmiş' anlamındadır; 'adult' (yetişkin) ile aynı Hint-Avrupa kökünden gelir."
+    },
+    {
+      "lesson": 5,
+      "front": "young",
+      "back": "(adjective) genç 🧑",
+      "example_sentence": "My mother is very young.",
+      "mnemonic": "Türkçe 'civan' (delikanlı; 'civanmert') Farsça 'cevân'dan, 'jön' (jön prömiye) Fransızca 'jeune'den gelir; ikisi de İngilizce 'young' ile aynı Hint-Avrupa kökündendir. 'Junior' (küçük) da aynı aileden."
+    },
+    {
+      "lesson": 5,
+      "front": "love",
+      "back": "(verb) sevmek ❤️",
+      "example_sentence": "I love my family.",
+      "mnemonic": "'I love you', herkesin bildiği ilk İngilizce cümledir. Kökü Hint-Avrupa 'leubh-' (hoşlanmak, arzulamak); Almanca 'Liebe' ve Freud'un 'libido'su da aynı kökten gelir."
+    },
+    {
+      "lesson": 5,
+      "front": "live",
+      "back": "(verb) yaşamak, oturmak 🏠",
+      "example_sentence": "I live in Istanbul with my family.",
+      "mnemonic": "Instagram'daki 'live' (canlı yayın) aynı sözcüğün sıfat hâlidir: canlı olan, yaşıyor olandır. Dikkat: fiil 'live' kısa okunur ('liv'), sıfat 'live' ise 'layv'; 'life' (hayat) da aynı kökten gelir."
+    }
+  ],
+  "dialogue": {
+    "title": "A Family Photo",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Tom, look! This is my family.",
+        "tr": "Tom, bak! Bu benim ailem."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Nice photo! Who is this woman?",
+        "tr": "Güzel fotoğraf! Bu kadın kim?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "My mother. And that man is my father.",
+        "tr": "Annem. Şu adam da babam."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Is this boy your brother?",
+        "tr": "Bu oğlan erkek kardeşin mi?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Yes. He is six years old.",
+        "tr": "Evet. Altı yaşında."
+      },
+      {
+        "speaker": "Tom",
+        "en": "And the girl with the baby?",
+        "tr": "Ya kucağında bebek olan kız?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "My sister. The baby is her child.",
+        "tr": "Ablam. Bebek de onun çocuğu."
+      },
+      {
+        "speaker": "Tom",
+        "en": "What a big family! I love this photo.",
+        "tr": "Ne büyük bir aile! Bu fotoğrafa bayıldım."
+      }
+    ]
+  }
+}

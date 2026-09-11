@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 4,
+    "level": "A1",
+    "title": "Food & Drink"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "water",
+      "back": "(noun) su 💧",
+      "example_sentence": "Can I have some water?",
+      "mnemonic": "Water, Rusça 'voda' (su) ile aynı Hint-Avrupa kökünden gelir; 'votka' bile aslında 'küçük su' demektir. Voda, votka, water — hepsi su."
+    },
+    {
+      "lesson": 1,
+      "front": "bread",
+      "back": "(noun) ekmek 🍞",
+      "example_sentence": "I want bread and cheese, please.",
+      "mnemonic": "Bread, Almanca 'Brot' ile aynı Cermen ailesindendir; Almanya'da akrabası olan herkes Brot'u duymuştur. İki dilde de ekmek 'br-' ile başlar."
+    },
+    {
+      "lesson": 1,
+      "front": "milk",
+      "back": "(noun) süt 🥛",
+      "example_sentence": "My cat likes milk.",
+      "mnemonic": "Kafelerdeki 'milkshake', milk (süt) + shake (çalkalamak) demektir: çalkalanmış süt. Milkshake'i bilen milk'i unutmaz."
+    },
+    {
+      "lesson": 2,
+      "front": "egg",
+      "back": "(noun) yumurta 🥚",
+      "example_sentence": "She cooks two eggs for me.",
+      "mnemonic": "Okunuşu 'eg', Türkçe 'ek' gibi: kahvaltı tabağına bir ek daha — bir egg daha. Sabah tabağa eklenen yumurta."
+    },
+    {
+      "lesson": 2,
+      "front": "apple",
+      "back": "(noun) elma 🍎",
+      "example_sentence": "I have an apple in my bag.",
+      "mnemonic": "Telefonlardaki ısırılmış elma logosu boşuna değil: Apple şirketi adını doğrudan elmadan alır. Logoyu gör, elmayı hatırla."
+    },
+    {
+      "lesson": 2,
+      "front": "rice",
+      "back": "(noun) pirinç, pilav 🍚",
+      "example_sentence": "We eat rice with chicken.",
+      "mnemonic": "İtalyan restoranlarındaki 'risotto', riso'dan yani pirinçten yapılır; İtalyanca riso ile İngilizce rice aynı kelimedir. Menüde risotto görünce rice'ı hatırla."
+    },
+    {
+      "lesson": 3,
+      "front": "meat",
+      "back": "(noun) et 🥩",
+      "example_sentence": "My brother doesn't eat meat.",
+      "mnemonic": "Meat ile 'meet' (tanışmak — 'Nice to meet you') aynı okunur: 'miit'. Kasapla meet edersin, meat alırsın."
+    },
+    {
+      "lesson": 3,
+      "front": "fish",
+      "back": "(noun) balık 🐟",
+      "example_sentence": "I like fish and rice.",
+      "mnemonic": "Fish, Latince 'piscis' ile akrabadır; burçlardaki 'Pisces' yani Balık burcu aynı kelimedir. Balıkçıdan aldığın 'fiş' de sesi hatırlatsın."
+    },
+    {
+      "lesson": 3,
+      "front": "tea",
+      "back": "(noun) çay 🍵",
+      "example_sentence": "Turkish people drink a lot of tea.",
+      "mnemonic": "Tea de çay da Çinceden gelir; aynı bitki, iki farklı yol. Deniz yoluyla yayılan Min Çincesi 'te' İngilizcede tea oldu, İpek Yolu'yla karadan gelen Mandarin 'çá' ise Farsça üzerinden Türkçede çay."
+    },
+    {
+      "lesson": 4,
+      "front": "coffee",
+      "back": "(noun) kahve ☕",
+      "example_sentence": "I drink coffee with milk.",
+      "mnemonic": "Coffee kelimesi doğrudan Türkçe 'kahve'den gelir: Arapça qahwa → Osmanlı kahve → İtalyanca caffè → İngilizce coffee. Avrupa kahveyi de kelimesini de Osmanlı'dan öğrendi."
+    },
+    {
+      "lesson": 4,
+      "front": "eat",
+      "back": "(verb) yemek 🍴",
+      "example_sentence": "What do you eat for breakfast?",
+      "mnemonic": "Yazılışına bak: e-a-t içinde 'et' saklı. Et yemek, apple yemek, hepsi eat; okunuşu 'iit'."
+    },
+    {
+      "lesson": 4,
+      "front": "drink",
+      "back": "(verb) içmek 🥤",
+      "example_sentence": "Do you drink tea or coffee?",
+      "mnemonic": "Market rafındaki 'energy drink' kutusu enerji içeceği demektir; drink hem 'içmek' hem 'içecek'. Enerji içeceğini bilen drink'i bilir."
+    },
+    {
+      "lesson": 5,
+      "front": "hungry",
+      "back": "(adjective) aç 🤤",
+      "example_sentence": "I am hungry after school.",
+      "mnemonic": "Angry Birds'ün 'angry'si (kızgın) ile hungry (aç) kafiyelidir; İngilizler açlıktan sinirlenene 'hangry' der. Aç insan kızgın olur: hungry."
+    },
+    {
+      "lesson": 5,
+      "front": "breakfast",
+      "back": "(noun) kahvaltı 🍳",
+      "example_sentence": "We have breakfast at eight.",
+      "mnemonic": "Breakfast = break (bozmak) + fast (oruç): gecenin 'orucunu' sabah açmak, tıpkı iftar gibi. Türkçe 'kahvaltı' da kahve + altı'dan gelir; iki dil de sabah öğününü birleşik sözcükle anlatır."
+    },
+    {
+      "lesson": 5,
+      "front": "dinner",
+      "back": "(noun) akşam yemeği 🍽️",
+      "example_sentence": "My family eats dinner together.",
+      "mnemonic": "Dinner de köken olarak breakfast gibi 'orucu açmak' demektir: Latince dis-ieiunare → Fransızca dîner → İngilizce dinner. Zamanla günün en büyük öğününe, yani akşam yemeğine kaydı."
+    }
+  ],
+  "dialogue": {
+    "title": "Breakfast at Elif's",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Good morning, Tom! Are you hungry?",
+        "tr": "Günaydın Tom! Aç mısın?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Yes, very hungry. What's for breakfast?",
+        "tr": "Evet, çok açım. Kahvaltıda ne var?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Bread, eggs, cheese and tea.",
+        "tr": "Ekmek, yumurta, peynir ve çay."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Tea? I drink coffee in the morning.",
+        "tr": "Çay mı? Ben sabahları kahve içerim."
+      },
+      {
+        "speaker": "Elif",
+        "en": "In Turkey, we drink tea at breakfast.",
+        "tr": "Türkiye'de kahvaltıda çay içeriz."
+      },
+      {
+        "speaker": "Tom",
+        "en": "OK, tea with milk, please.",
+        "tr": "Tamam, sütlü çay lütfen."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Milk? No milk in Turkish tea!",
+        "tr": "Süt mü? Türk çayına süt konmaz!"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Fine, no milk. Let's eat!",
+        "tr": "Peki, sütsüz olsun. Hadi yiyelim!"
+      }
+    ]
+  }
+}

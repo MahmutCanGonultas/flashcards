@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 8,
+    "level": "A1",
+    "title": "Body & Feelings"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "head",
+      "back": "(noun) baş, kafa 🙂",
+      "example_sentence": "My head hurts a little today.",
+      "mnemonic": "Kulaklığa İngilizce'de 'headphone' denir: head (kafa) + phone — kafana taktığın şey. Futbolda kafa golüne de 'header' derler."
+    },
+    {
+      "lesson": 1,
+      "front": "hand",
+      "back": "(noun) el ✋",
+      "example_sentence": "Please wash your hands before dinner.",
+      "mnemonic": "Hentbol = 'handball': hand (el) + ball (top), elle oynanan top. 'İkinci el' de birebir 'second hand' — el = hand."
+    },
+    {
+      "lesson": 1,
+      "front": "eye",
+      "back": "(noun) göz 👁️",
+      "example_sentence": "She has big brown eyes.",
+      "mnemonic": "'Ay' diye okunur — 'eyeliner' (göz kalemi) kelimesini zaten kullanıyorsun: eye (göz) + liner (çizgi çeken)."
+    },
+    {
+      "lesson": 2,
+      "front": "foot",
+      "back": "(noun) ayak 🦶",
+      "example_sentence": "I go to school on foot.",
+      "mnemonic": "Futbol = 'football': foot (ayak) + ball (top) — ayakla oynanan top. Dikkat: çoğulu 'foots' değil, 'feet'."
+    },
+    {
+      "lesson": 2,
+      "front": "hair",
+      "back": "(noun) saç 💇",
+      "example_sentence": "My sister has long black hair.",
+      "mnemonic": "'Heır' diye okunur, Türkçe 'her' gibi: HER sabah saçını tara. Almanca 'Haar' ile aynı eski kök."
+    },
+    {
+      "lesson": 2,
+      "front": "heart",
+      "back": "(noun) kalp, yürek ❤️",
+      "example_sentence": "My heart beats fast when I run.",
+      "mnemonic": "Eski İngilizce 'heorte'den gelir; 'kardiyoloji'deki 'kardi-' ile aynı çok eski kök (k sesi h'ye dönmüş). Herkesin bildiği ❤️ emojisinin adı da 'heart'."
+    },
+    {
+      "lesson": 3,
+      "front": "happy",
+      "back": "(adjective) mutlu 😊",
+      "example_sentence": "I am very happy today.",
+      "mnemonic": "'Happy birthday' şarkısını herkes bilir — mutlu yıllar. McDonald's'ın 'Happy Meal'i de 'mutlu menü'."
+    },
+    {
+      "lesson": 3,
+      "front": "sad",
+      "back": "(adjective) üzgün 😢",
+      "example_sentence": "Why are you so sad?",
+      "mnemonic": "Eski İngilizce 'sæd' aslında 'tok, ağır' demekti; içi ağırlaşan insan üzgündür. 😢 emojisinin İngilizce adı 'sad face'."
+    },
+    {
+      "lesson": 3,
+      "front": "tired",
+      "back": "(adjective) yorgun 😴",
+      "example_sentence": "I am tired after work.",
+      "mnemonic": "'Tire' fiili 'yormak' demek, '-ed' eki 'yorulmuş' yapar — 'bore' → 'bored' (sıkılmış) ile aynı kalıp. Araba lastiği 'tire' ile ilgisi yok."
+    },
+    {
+      "lesson": 4,
+      "front": "sick",
+      "back": "(adjective) hasta 🤒",
+      "example_sentence": "Tom is sick, so he stays home.",
+      "mnemonic": "Eski İngilizce 'sēoc'tan gelir; 'homesick' (evini özlemiş) ve 'seasick' (deniz tutmuş) kelimelerindeki 'sick' de aynı — kendini hasta hissetmek."
+    },
+    {
+      "lesson": 4,
+      "front": "hot",
+      "back": "(adjective) sıcak 🔥",
+      "example_sentence": "The tea is very hot.",
+      "mnemonic": "'Hot dog' = sıcak sosisli; 'hot' burada 'sıcak'. Bir de 'hot chocolate' (sıcak çikolata) var, kafelerde görüyorsun."
+    },
+    {
+      "lesson": 4,
+      "front": "cold",
+      "back": "(adjective) soğuk 🥶",
+      "example_sentence": "It is very cold in winter.",
+      "mnemonic": "'Cool' (serin, havalı) ile aynı kökten gelir: cool biraz soğuk, cold tam soğuk. 'Ice cold' (buz gibi) deyişini hatırla."
+    },
+    {
+      "lesson": 5,
+      "front": "good",
+      "back": "(adjective) iyi 👍",
+      "example_sentence": "This soup is really good.",
+      "mnemonic": "'Good morning', 'good night', 'good luck' — her gün duyduğun 'good' hep aynı: iyi. Almanca 'gut' ile aynı kök."
+    },
+    {
+      "lesson": 5,
+      "front": "bad",
+      "back": "(adjective) kötü 👎",
+      "example_sentence": "The weather is bad today.",
+      "mnemonic": "Michael Jackson'ın 'Bad' şarkısı, 'Breaking Bad' dizisi, 'bad boy' — hepsinde 'kötü'. 'Good'un tam zıddı, ikisini birlikte ezberle."
+    },
+    {
+      "lesson": 5,
+      "front": "beautiful",
+      "back": "(adjective) güzel 🌸",
+      "example_sentence": "You have a beautiful smile.",
+      "mnemonic": "'Beauty' (güzellik) + '-ful' (dolu) = güzellik dolu. 'Beauty and the Beast' = 'Güzel ve Çirkin' masalı."
+    }
+  ],
+  "dialogue": {
+    "title": "Are You Sick?",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Tom, are you sick today?",
+        "tr": "Tom, bugün hasta mısın?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Yes. My head and eyes hurt.",
+        "tr": "Evet. Başım ve gözlerim ağrıyor."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Oh no! Give me your hand.",
+        "tr": "Olamaz! Elini ver."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Here. I feel hot and tired.",
+        "tr": "Al. Ateş basıyor ve yorgunum."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Your hand is very hot!",
+        "tr": "Elin çok sıcak!"
+      },
+      {
+        "speaker": "Tom",
+        "en": "I know. I feel really bad.",
+        "tr": "Biliyorum. Kendimi gerçekten kötü hissediyorum."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Rest now. Drink this hot tea.",
+        "tr": "Şimdi dinlen. Bu sıcak çayı iç."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Thanks, Elif. You have a good heart.",
+        "tr": "Sağ ol Elif. İyi kalplisin."
+      }
+    ]
+  }
+}

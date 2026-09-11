@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 6,
+    "level": "A1",
+    "title": "Every Day"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "wake up",
+      "back": "(phrasal verb) uyanmak ⏰",
+      "example_sentence": "I wake up at seven every morning.",
+      "mnemonic": "'Wake' ile 'watch' (izlemek, nöbet tutmak) aynı köktendir: uyanık kalan kişi nöbet tutandır; 'up' ise yataktan kalkışı anlatır. Otellerdeki 'wake-up call' (uyandırma araması) sözünü de böyle hatırla."
+    },
+    {
+      "lesson": 1,
+      "front": "sleep",
+      "back": "(verb) uyumak 😴",
+      "example_sentence": "I sleep eight hours every night.",
+      "mnemonic": "Bilgisayar ve telefondaki 'Sleep' (Uyku) modunu zaten tanırsın: cihaz uyur, ekran kararır. Almanca 'schlafen' ile kardeştir; kökü 'gevşek, zayıf olmak' anlamına dayanır, uyuyan beden de gevşer."
+    },
+    {
+      "lesson": 1,
+      "front": "work",
+      "back": "(verb) çalışmak 💼",
+      "example_sentence": "My mother works in a hospital.",
+      "mnemonic": "'Work', Yunanca 'ergon' (iş) ile aynı Hint-Avrupa kökünden gelir; Türkçedeki 'enerji' (iş yapma gücü) ve 'ergonomi' bu kökün çocuklarıdır. 'Homework' (ev ödevi) ve 'network' (ağ) sözlerinde de görürsün."
+    },
+    {
+      "lesson": 2,
+      "front": "school",
+      "back": "(noun) okul 🏫",
+      "example_sentence": "Tom goes to school by bus.",
+      "mnemonic": "'School' ile Türkçe 'okul'un benzerliği tesadüf değil: 'okul' 1930'larda Fransızca 'école'e benzetilerek 'oku-' fiilinden türetildi; 'école' de 'school' da Yunanca 'skholē' (boş zaman) sözcüğünden gelir. Eski Yunan'da okul, boş zamanda yapılan şeydi."
+    },
+    {
+      "lesson": 2,
+      "front": "go",
+      "back": "(verb) gitmek ➡️",
+      "example_sentence": "We go to the park on Sundays.",
+      "mnemonic": "'Go'yu 'Pokémon Go' oyunundan ve yarış başlangıcındaki 'Ready, set, go!' (Hazır, başla!) sözünden tanırsın: harekete geç, git. Kafelerdeki 'to go' (paket, götürmelik) kahve de aynı 'go'dur."
+    },
+    {
+      "lesson": 2,
+      "front": "come",
+      "back": "(verb) gelmek 👋",
+      "example_sentence": "Tom comes to my house every Saturday.",
+      "mnemonic": "'Welcome' (hoş geldin) sözünün içinde 'come' saklıdır: eski İngilizce 'wilcuma' = 'gelmesi istenen kişi, konuk'. 'Come on!' (Hadi!) ve 'comeback' (geri dönüş) sözlerini de zaten duymuşsundur."
+    },
+    {
+      "lesson": 3,
+      "front": "walk",
+      "back": "(verb) yürümek 🚶",
+      "example_sentence": "I walk to school every morning.",
+      "mnemonic": "'Walk'ı Sony'nin 'Walkman'inden (yürürken müzik dinleten cihaz) ve Michael Jackson'ın 'moonwalk'undan (ay yürüyüşü) tanırsın. Kökü eski İngilizce 'wealcan' (yuvarlanmak); 'l' harfi okunmaz: 'wook'."
+    },
+    {
+      "lesson": 3,
+      "front": "run",
+      "back": "(verb) koşmak 🏃",
+      "example_sentence": "Tom runs in the park every day.",
+      "mnemonic": "'Run'ı 'Temple Run' oyunundan ve havalimanındaki 'runway'den (uçağın koşarak kalktığı pist) tanırsın. İngilizcede yalnızca insan koşmaz: 'the bus runs' (otobüs sefer yapar), 'run a shop' (dükkân işletmek) de denir."
+    },
+    {
+      "lesson": 3,
+      "front": "read",
+      "back": "(verb) okumak 📖",
+      "example_sentence": "She reads a book every night.",
+      "mnemonic": "'Read'in eski İngilizce anlamı 'yorumlamak, işaretleri çözmek'ti; 'riddle' (bilmece) aynı köktendir, okumak sayfadaki işaretleri çözmektir. Dikkat: geçmiş zamanı da 'read' yazılır ama 'red' okunur."
+    },
+    {
+      "lesson": 4,
+      "front": "write",
+      "back": "(verb) yazmak ✍️",
+      "example_sentence": "I write my name on the paper.",
+      "mnemonic": "Kökü eski İngilizce 'writan' = 'kazımak, çizmek': ilk yazılar tahtaya ve taşa kazınırdı. Baştaki 'w' okunmaz ('rayt'); 'right' (doğru, sağ) ile aynı söylenir ama ayrı sözcüktür."
+    },
+    {
+      "lesson": 4,
+      "front": "listen",
+      "back": "(verb) dinlemek 👂",
+      "example_sentence": "I listen to music on the bus.",
+      "mnemonic": "'Listen'daki 't' okunmaz ('lisın'); kökü 'loud' (yüksek sesli) ile aynıdır, dinlenen şey sestir. Türkçedeki 'duymak/dinlemek' ayrımı İngilizcede de var: 'hear' duymak, 'listen to' dinlemek; 'to'yu unutma: 'listen to music'."
+    },
+    {
+      "lesson": 4,
+      "front": "watch",
+      "back": "(verb) izlemek, seyretmek 📺",
+      "example_sentence": "We watch TV after dinner.",
+      "mnemonic": "'Apple Watch'tan bilirsin: 'watch' isim olarak 'kol saati', fiil olarak 'izlemek'. Kökü 'uyanık kalmak, nöbet tutmak'tır ('wake' ile akraba); saat anlamı da 'insanı uyandıran saat'ten doğmuştur."
+    },
+    {
+      "lesson": 5,
+      "front": "play",
+      "back": "(verb) oynamak, çalmak 🎮",
+      "example_sentence": "The children play football after school.",
+      "mnemonic": "'Play'i 'PlayStation', 'Google Play' ve her müzik çalardaki ▶ 'Play' tuşundan tanırsın: oyun da müzik de 'play'dir. Türkçede gitar 'çalınır' ama İngilizcede gitar da 'oynanır': 'play the guitar' (gitar çalmak), 'play football' (futbol oynamak)."
+    },
+    {
+      "lesson": 5,
+      "front": "cook",
+      "back": "(verb) yemek yapmak, pişirmek 🍳",
+      "example_sentence": "My mother cooks dinner every evening.",
+      "mnemonic": "'Cook', Latince 'coquere' (pişirmek) kökünden gelir; 'kitchen' (mutfak) ve Türkçe 'kuzine' (Fransızca 'cuisine' = mutfak) aynı kökün çocuklarıdır. 'Bisküvi' bile bu kökten: Latince 'bis coctus' = 'iki kez pişmiş'."
+    },
+    {
+      "lesson": 5,
+      "front": "help",
+      "back": "(verb) yardım etmek 🤝",
+      "example_sentence": "I help my mother in the kitchen.",
+      "mnemonic": "'Help'i her programın 'Help' (Yardım) menüsünden ve Beatles'ın 'Help!' şarkısından tanırsın. Dikkat: Türkçede 'bana yardım et' dersin ama İngilizcede 'to' yok: 'help me', 'help my mother'."
+    }
+  ],
+  "dialogue": {
+    "title": "A Busy Day",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "What time do you wake up?",
+        "tr": "Saat kaçta uyanıyorsun?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "At seven. Then I walk to school.",
+        "tr": "Yedide. Sonra okula yürüyorum."
+      },
+      {
+        "speaker": "Tom",
+        "en": "I go by bus and listen to music.",
+        "tr": "Ben otobüsle gidip müzik dinliyorum."
+      },
+      {
+        "speaker": "Elif",
+        "en": "After school, I help my mother cook.",
+        "tr": "Okuldan sonra anneme yemekte yardım ediyorum."
+      },
+      {
+        "speaker": "Tom",
+        "en": "I run in the park with my dog.",
+        "tr": "Ben köpeğimle parkta koşuyorum."
+      },
+      {
+        "speaker": "Elif",
+        "en": "In the evening, I read or watch TV.",
+        "tr": "Akşamları kitap okuyorum ya da televizyon izliyorum."
+      },
+      {
+        "speaker": "Tom",
+        "en": "I play games. Then I sleep at ten.",
+        "tr": "Ben oyun oynuyorum. Sonra onda uyuyorum."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Come on Sunday. We cook together!",
+        "tr": "Pazar günü gel. Birlikte yemek yaparız!"
+      }
+    ]
+  }
+}

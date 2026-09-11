@@ -9,8 +9,14 @@ export type QuizOption = {
 };
 
 type BuildOptions = {
-  /** The other words in the same lesson. At most one is ever used. */
+  /** Words taught alongside this one — the same lesson, or the whole unit for a test. */
   mates?: Card[];
+  /**
+   * How many distractors may come from `mates`. A lesson keeps this at one so
+   * three words taught together aren't a coin flip on day one; a unit test
+   * raises it, because telling this unit's words apart is exactly the test.
+   */
+  mateLimit?: number;
   /**
    * Total options to offer, including the correct one. Defaults to 4; a word
    * being asked again after a miss narrows to 2, so the repeat always ends.
@@ -49,6 +55,7 @@ function pickDistractors(
   card: Card,
   deckCards: Card[],
   mates: Card[],
+  mateLimit: number,
   wanted: number,
   glossOf: (card: Card) => string,
   toOption: (card: Card) => QuizOption,
@@ -74,7 +81,7 @@ function pickDistractors(
   const rest = deckCards.filter((other) => other.id !== card.id);
   const started = rest.filter(hasStarted);
 
-  take(mates, 1);
+  take(mates, mateLimit);
   take(
     started.filter((other) => pos !== null && parseBack(other.back).pos === pos),
     2,
@@ -107,6 +114,7 @@ export function buildQuizOptions(
     card,
     deckCards,
     options.mates ?? [],
+    options.mateLimit ?? 1,
     (options.maxOptions ?? DEFAULT_MAX_OPTIONS) - 1,
     glossOf,
     toOption,
@@ -152,6 +160,7 @@ export function buildWordOptions(
     card,
     nearest.slice(0, 24),
     options.mates ?? [],
+    options.mateLimit ?? 1,
     (options.maxOptions ?? DEFAULT_MAX_OPTIONS) - 1,
     glossOf,
     toOption,

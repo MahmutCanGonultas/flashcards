@@ -4,6 +4,8 @@ import Register from "./pages/Register";
 import Decks from "./pages/Decks";
 import DeckDetail from "./pages/DeckDetail";
 import Study from "./pages/Study";
+import Dialogue from "./pages/Dialogue";
+import UnitTest from "./pages/UnitTest";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { getToken } from "./lib/api";
 
@@ -38,6 +40,22 @@ function App() {
         element={
           <ProtectedRoute>
             <Study />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/decks/:deckId/units/:unitId/dialogue"
+        element={
+          <ProtectedRoute>
+            <Dialogue />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/decks/:deckId/units/:unitId/test"
+        element={
+          <ProtectedRoute>
+            <UnitTest />
           </ProtectedRoute>
         }
       />
