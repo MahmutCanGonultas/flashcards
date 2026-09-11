@@ -19,6 +19,7 @@ import CardGroups from "../components/CardGroups";
 import LearningPath from "../components/LearningPath";
 import PathHeader from "../components/PathHeader";
 import { buildPath, pathStats } from "../lib/path";
+import { useUnits } from "../lib/units";
 import CardFormModal from "../components/CardFormModal";
 import type { CardFormValues } from "../components/CardFormModal";
 import DeckFormModal from "../components/DeckFormModal";
@@ -71,6 +72,8 @@ function DeckDetail() {
         .then((r) => r.cards),
     enabled: deckId !== "",
   });
+
+  const unitsQuery = useUnits(deckId);
 
   const deck = decksQuery.data?.find((d) => String(d.id) === deckId);
 
@@ -160,7 +163,7 @@ function DeckDetail() {
 
   // A deck whose cards carry lesson numbers is walked as a path; everything
   // else keeps the plain card list.
-  const units = buildPath(cardsQuery.data ?? []);
+  const units = buildPath(cardsQuery.data ?? [], unitsQuery.data ?? []);
   const isPath = units.length > 0;
   const stats = pathStats(units);
 

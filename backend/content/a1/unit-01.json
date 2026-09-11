@@ -1,0 +1,123 @@
+{
+  "unit": { "position": 1, "level": "A1", "title": "Hello!" },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "hello",
+      "back": "(interjection) merhaba 👋",
+      "example_sentence": "Hello, how are you?",
+      "mnemonic": "Telefonda dediğimiz 'alo', Fransızca 'allô' üzerinden İngilizce 'hello'dan gelir. Onu telefon selamı yapan Edison'dur; Bell ise 'ahoy' istiyordu."
+    },
+    {
+      "lesson": 1,
+      "front": "goodbye",
+      "back": "(interjection) hoşça kal, güle güle 👋",
+      "example_sentence": "Goodbye, see you soon!",
+      "mnemonic": "'Goodbye', 'God be with you' (Tanrı seninle olsun) sözünün zamanla kısalmış hâlidir. Tıpkı bizim 'Allah'a ısmarladık' dememiz gibi."
+    },
+    {
+      "lesson": 1,
+      "front": "please",
+      "back": "(adverb) lütfen 🙏",
+      "example_sentence": "One tea, please.",
+      "mnemonic": "'Please', 'if you please' (hoşunuza giderse) sözünün kısalmışıdır; Latince 'placere' (hoşa gitmek) kökünden gelir. 'Plasebo' (hoşa gidecek şey) da aynı köktendir."
+    },
+    {
+      "lesson": 2,
+      "front": "thank you",
+      "back": "(interjection) teşekkür ederim 🙏",
+      "example_sentence": "Thank you for the tea.",
+      "mnemonic": "'Thank' ile 'think' (düşünmek) aynı kökten gelir: eski İngilizcede 'thank', 'iyi düşünce, minnet' demekti. Teşekkür etmek, birini iyi düşünmektir."
+    },
+    {
+      "lesson": 2,
+      "front": "sorry",
+      "back": "(adjective) özür dilerim, üzgünüm 😔",
+      "example_sentence": "Sorry, I'm late.",
+      "mnemonic": "'Sorry'nin kökü 'sore' (acıyan, ağrıyan) sözcüğüdür; eski İngilizce 'sarig' = 'içi acıyan' demekti. Özür dilerken aslında 'canım acıyor' dersin."
+    },
+    {
+      "lesson": 2,
+      "front": "yes",
+      "back": "(adverb) evet ✅",
+      "example_sentence": "Yes, I am a student.",
+      "mnemonic": "Eski İngilizcede 'gea' (öyle) + 'sie' (olsun) birleşerek 'yes' oldu: 'öyle olsun'. Evet derken aslında küçük bir dilek söylüyorsun."
+    },
+    {
+      "lesson": 3,
+      "front": "no",
+      "back": "(adverb) hayır ❌",
+      "example_sentence": "No, thank you.",
+      "mnemonic": "'No' sözcüğünü 'nonstop' ve 'no-frost' gibi ifadelerden zaten tanırsın: 'yok, hayır'. Kökü eski İngilizce 'ne' (değil) + 'a' (hiçbir zaman), yani 'asla'."
+    },
+    {
+      "lesson": 3,
+      "front": "name",
+      "back": "(noun) isim, ad 📛",
+      "example_sentence": "What is your name?",
+      "mnemonic": "Türkçedeki 'nam' (nam salmak, namıdiğer) Farsçadan gelir ve İngilizce 'name' ile aynı Hint-Avrupa köküne dayanır. İkisi de 'ad' demektir."
+    },
+    {
+      "lesson": 3,
+      "front": "friend",
+      "back": "(noun) arkadaş 🤝",
+      "example_sentence": "Tom is my best friend.",
+      "mnemonic": "'Friend', eski İngilizce 'freond' (seven kişi) sözcüğünden gelir; 'free' (özgür) ile aynı köktendir. Eskiden 'sevilen' ile 'özgür' aynı sözcükle söylenirdi."
+    },
+    {
+      "lesson": 4,
+      "front": "teacher",
+      "back": "(noun) öğretmen 🧑‍🏫",
+      "example_sentence": "My teacher is very kind.",
+      "mnemonic": "'Teach' (öğretmek) + '-er' (yapan kişi) = öğretmen; tıpkı 'printer', 'hacker' gibi. 'Teach' eskiden 'göstermek, işaret etmek' demekti: öğretmen yolu gösterendir."
+    },
+    {
+      "lesson": 4,
+      "front": "student",
+      "back": "(noun) öğrenci 🎓",
+      "example_sentence": "She is a new student.",
+      "mnemonic": "'Student', Latince 'studere' (çabalamak, gayret etmek) kökünden gelir: öğrenci, çaba gösteren kişidir. Okuldaki 'etüt' ve 'stüdyo' sözcükleri de aynı köktendir."
+    },
+    {
+      "lesson": 4,
+      "front": "morning",
+      "back": "(noun) sabah 🌅",
+      "example_sentence": "I drink tea every morning.",
+      "mnemonic": "Gün doğarken gökyüzü MOR olur: MORning. Sözcük aslında 'morn' (sabah) + '-ing'; 'evening'e benzesin diye bu biçimi almıştır."
+    },
+    {
+      "lesson": 5,
+      "front": "evening",
+      "back": "(noun) akşam 🌆",
+      "example_sentence": "We watch TV in the evening.",
+      "mnemonic": "'Evening' Türkçe 'ev' ile başlar: akşam olunca herkes EVe döner. Gerçek kökü eski İngilizce 'æfen' (akşam); 'New Year's Eve'deki 'eve' de aynı sözcüktür."
+    },
+    {
+      "lesson": 5,
+      "front": "today",
+      "back": "(adverb) bugün 📅",
+      "example_sentence": "Today is my first day.",
+      "mnemonic": "'To' + 'day' (gün) = 'bu güne' → 'today'; Türkçe 'bu-gün' gibi iki parçadan kurulmuştur. Böylece 'day' (gün) sözcüğünü de öğrenmiş oldun."
+    },
+    {
+      "lesson": 5,
+      "front": "tomorrow",
+      "back": "(adverb) yarın 📆",
+      "example_sentence": "See you tomorrow, Tom!",
+      "mnemonic": "'To' + 'morrow' (sabah; 'morning' ile aynı kök) = 'sabaha' → 'tomorrow'. Türkçe 'yarın' da eski Türkçede 'sabah' demekti: iki dil de yarını sabahtan türetmiş."
+    }
+  ],
+  "dialogue": {
+    "title": "My First Friend",
+    "lines": [
+      { "speaker": "Elif", "en": "Good morning! My name is Elif.", "tr": "Günaydın! Benim adım Elif." },
+      { "speaker": "Tom", "en": "Hello, Elif. I'm Tom.", "tr": "Merhaba Elif. Ben Tom." },
+      { "speaker": "Elif", "en": "Are you the new teacher?", "tr": "Yeni öğretmen siz misiniz?" },
+      { "speaker": "Tom", "en": "No, I'm a student too.", "tr": "Hayır, ben de öğrenciyim." },
+      { "speaker": "Elif", "en": "Oh, sorry! Is today your first day too?", "tr": "Ah, pardon! Bugün senin de ilk günün mü?" },
+      { "speaker": "Tom", "en": "Yes, it is. Sit here, please.", "tr": "Evet, öyle. Buraya otur lütfen." },
+      { "speaker": "Elif", "en": "Thank you! You're my first friend here.", "tr": "Teşekkür ederim! Buradaki ilk arkadaşımsın." },
+      { "speaker": "Tom", "en": "Me too! Look, our teacher is here.", "tr": "Sen de benim! Bak, öğretmenimiz geldi." }
+    ]
+  }
+}

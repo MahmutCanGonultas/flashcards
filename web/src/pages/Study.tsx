@@ -44,6 +44,7 @@ import SoundMatch from "../components/SoundMatch";
 import RoundRail, { type RailStage } from "../components/RoundRail";
 import { SpeakerIcon } from "../components/icons";
 import { useRecordStudyDay } from "../lib/streak";
+import { useUnits } from "../lib/units";
 
 type ReviewInput = { cardId: number; quality: 1 | 4 };
 type SessionMode = "lesson" | "review";
@@ -880,6 +881,9 @@ function Study() {
       api.get<{ decks: Deck[] }>("/decks").then((response) => response.decks),
   });
 
+  // Unit gates decide which lessons are reachable.
+  const unitsQuery = useUnits(deckId);
+
   // Every hook has run by now, so this early return is safe.
   if (!deckId) {
     return <Navigate to="/decks" replace />;
@@ -901,10 +905,12 @@ function Study() {
           />
         );
       }
-      if (cardsQuery.isLoading || !cardsQuery.data) return <StudySkeleton />;
+      if (cardsQuery.isLoading || !cardsQuery.data || unitsQuery.isLoading) {
+        return <StudySkeleton />;
+      }
 
       if (lessonNumber !== null) {
-        const lesson = buildPath(cardsQuery.data)
+        const lesson = buildPath(cardsQuery.data, unitsQuery.data ?? [])
           .flatMap((unit) => unit.lessons)
           .find((candidate) => candidate.number === lessonNumber);
 

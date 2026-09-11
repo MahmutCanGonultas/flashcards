@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 5,
+    "level": "A1",
+    "title": "At Home"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "house",
+      "back": "(noun) ev 🏠",
+      "example_sentence": "We live in a big house.",
+      "mnemonic": "'House' binanın kendisidir: 'White House' = Beyaz Saray, yani bir bina. Türkçede ikisine de 'ev' deriz ama İngilizce ayırır: 'house' duvarları ve çatıyı, 'home' ise ait olduğun yeri anlatır."
+    },
+    {
+      "lesson": 1,
+      "front": "room",
+      "back": "(noun) oda 🛋️",
+      "example_sentence": "Elif is in her room.",
+      "mnemonic": "'Showroom' (show + room = gösteri odası) ve otellerdeki 'room service' (oda servisi) ifadelerinden zaten tanırsın. 'Room' aynı zamanda 'yer, alan' demektir: 'no room' = yer yok."
+    },
+    {
+      "lesson": 1,
+      "front": "kitchen",
+      "back": "(noun) mutfak 🍳",
+      "example_sentence": "We eat breakfast in the kitchen.",
+      "mnemonic": "'Kitchen', Latince 'coquina' (pişirme yeri) sözcüğünden gelir ve 'cook' (aşçı, pişirmek) ile aynı köktendir. Mutfak, cook'un çalıştığı yerdir."
+    },
+    {
+      "lesson": 2,
+      "front": "bed",
+      "back": "(noun) yatak 🛏️",
+      "example_sentence": "I go to bed at ten.",
+      "mnemonic": "'b-e-d' yazılışıyla bir yatağa benzer: 'b' baş ucu, 'd' ayak ucu, ortadaki 'e' de döşek. 'Go to bed' (yatmaya gitmek) kalıbında 'the' kullanılmaz."
+    },
+    {
+      "lesson": 2,
+      "front": "table",
+      "back": "(noun) masa 🍽️",
+      "example_sentence": "The tea is on the table.",
+      "mnemonic": "Latince 'tabula' (tahta levha) kökünden gelir; Türkçedeki 'tabela', 'tablo' ve 'tablet' de aynı ailedendir. 'Table tennis' = masa tenisi."
+    },
+    {
+      "lesson": 2,
+      "front": "chair",
+      "back": "(noun) sandalye 🪑",
+      "example_sentence": "Every student has a chair.",
+      "mnemonic": "'Chair', Latince 'cathedra' (koltuk, makam) sözcüğünden gelir; 'katedral' de piskoposun koltuğunun (cathedra) bulunduğu kilisedir. 'Chairman' (başkan), o koltukta oturan kişidir."
+    },
+    {
+      "lesson": 3,
+      "front": "door",
+      "back": "(noun) kapı 🚪",
+      "example_sentence": "Tom is at the door.",
+      "mnemonic": "Türkçede de kullanılan 'outdoor' (out + door = kapı dışı, açık hava) ve 'indoor' (kapı içi) sözcüklerinin içinde 'door' saklıdır. 'Next door' = kapı komşusu."
+    },
+    {
+      "lesson": 3,
+      "front": "window",
+      "back": "(noun) pencere 🪟",
+      "example_sentence": "My room has a big window.",
+      "mnemonic": "Eski İskandinav dilinde 'vindauga' = 'vindr' (rüzgâr) + 'auga' (göz): pencere, evin rüzgâr gözüdür. Microsoft 'Windows'un logosu da bir penceredir."
+    },
+    {
+      "lesson": 3,
+      "front": "key",
+      "back": "(noun) anahtar 🔑",
+      "example_sentence": "My key is in my bag.",
+      "mnemonic": "Klavyedeki her tuş bir 'key'dir: 'keyboard' = tuş tahtası. 'Keyword' de Türkçeye birebir 'anahtar kelime' diye çevrilmiştir; kapıyı da aramayı da açan şey 'key'."
+    },
+    {
+      "lesson": 4,
+      "front": "clean",
+      "back": "(adjective) temiz ✨",
+      "example_sentence": "The kitchen is clean now.",
+      "mnemonic": "'Clean' hem 'temiz' hem 'temizlemek' demektir: 'kuru temizleme', İngilizce 'dry cleaning'in birebir çevirisidir. Okunuşu 'klin': tertemiz bir klinik düşün (yalnızca ses benzerliği, akrabalık yok)."
+    },
+    {
+      "lesson": 4,
+      "front": "big",
+      "back": "(adjective) büyük 🐘",
+      "example_sentence": "I have a big family.",
+      "mnemonic": "'Big'in kökeni belirsizdir ama Türkçede hep karşına çıkar: 'Big Bang' = Büyük Patlama, 'Big Ben' = Londra'nın büyük saat kulesi, 'Big Mac' = büyük boy hamburger."
+    },
+    {
+      "lesson": 4,
+      "front": "small",
+      "back": "(adjective) küçük 🐜",
+      "example_sentence": "My room is small but nice.",
+      "mnemonic": "Kıyafet bedenlerindeki S / M / L = Small / Medium / Large: 'S beden' küçük bedendir. 'Small talk' da 'küçük, havadan sudan sohbet' demektir."
+    },
+    {
+      "lesson": 5,
+      "front": "open",
+      "back": "(verb/adjective) açmak, açık 🔓",
+      "example_sentence": "Please open the door.",
+      "mnemonic": "'Open', 'up' (yukarı) ile aynı köktendir: eskiden 'açmak', kapağı yukarı kaldırmaktı. Dükkân kapılarındaki 'OPEN / CLOSED' tabelasından tanırsın; 'open' hem 'açmak' hem 'açık' demektir."
+    },
+    {
+      "lesson": 5,
+      "front": "close",
+      "back": "(verb) kapatmak 🔒",
+      "example_sentence": "Please close the window.",
+      "mnemonic": "'Close', Latince 'claudere' (kapatmak) kökünden gelir; Türkçedeki 'klozet' de 'water closet' (küçük kapalı oda) sözünden, aynı aileden. Karıştırma: kapatmak = close, kilitlemek = lock."
+    },
+    {
+      "lesson": 5,
+      "front": "home",
+      "back": "(noun) ev, yuva 🏡",
+      "example_sentence": "I go home after school.",
+      "mnemonic": "'Home' bina değil, ait olduğun yerdir: 'Home sweet home' = evim güzel evim. 'I go home' derken 'to' kullanılmaz; Türkçe 'ev' iki anlamı da karşılar, İngilizce ise 'house' ile 'home'u ayırır."
+    }
+  ],
+  "dialogue": {
+    "title": "At Elif's House",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "This is my house. Where's my key?",
+        "tr": "Burası benim evim. Anahtarım nerede?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Look, the door is open!",
+        "tr": "Bak, kapı açık!"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Oh, my mom is at home. Come in!",
+        "tr": "Aa, annem evde. İçeri gel!"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Wow, your house is big and clean!",
+        "tr": "Vay, evin büyük ve temiz!"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Here is the kitchen. Sit at the table.",
+        "tr": "Burası mutfak. Masaya otur."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Thanks. Is that your room?",
+        "tr": "Sağ ol. Şu senin odan mı?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Yes. It's small, but the window is big.",
+        "tr": "Evet. Küçük ama penceresi büyük."
+      },
+      {
+        "speaker": "Tom",
+        "en": "I like it. Your home is very nice.",
+        "tr": "Beğendim. Evin çok güzel."
+      }
+    ]
+  }
+}

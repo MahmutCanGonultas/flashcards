@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 9,
+    "level": "A1",
+    "title": "Places & Directions"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "city",
+      "back": "(noun) şehir 🏙️",
+      "example_sentence": "Istanbul is a big city.",
+      "mnemonic": "'City', Latince 'civitas' (yurttaşlar topluluğu) sözcüğünden gelir; kökü 'civis', yani 'yurttaş'. Türkçedeki 'sivil' de aynı köktendir: şehir, sivillerin bir arada yaşadığı yerdir."
+    },
+    {
+      "lesson": 1,
+      "front": "street",
+      "back": "(noun) sokak, cadde 🛣️",
+      "example_sentence": "My school is on this street.",
+      "mnemonic": "'Street', Latince 'via strata' (taş döşeli yol) sözünden gelir; Almanca 'Straße' ve İtalyanca 'strada' da aynı sözcüktür. Çocukluğun 'Susam Sokağı'nın aslı da 'Sesame Street'tir."
+    },
+    {
+      "lesson": 1,
+      "front": "park",
+      "back": "(noun) park 🌳",
+      "example_sentence": "We play football in the park.",
+      "mnemonic": "Türkçe 'park' ile aynı sözcük: ikisi de Fransızca 'parc' (çevrili koru, av bahçesi) kelimesinden gelir. Arabayı 'park etmek' de aynı sözcüktür; İngilizcede de 'park the car' denir."
+    },
+    {
+      "lesson": 2,
+      "front": "hospital",
+      "back": "(noun) hastane 🏥",
+      "example_sentence": "My mother works at the hospital.",
+      "mnemonic": "'Hospital', Latince 'hospes' (konuk) kökünden gelir: eskiden yolcuların ve hastaların ağırlandığı bir konukeviydi. Türkçe 'otel' (Fransızca 'hôtel') aynı sözcüğün başka bir biçimidir; hastane de otel de aslında 'konuk evi'."
+    },
+    {
+      "lesson": 2,
+      "front": "station",
+      "back": "(noun) istasyon 🚉",
+      "example_sentence": "The station is next to the bank.",
+      "mnemonic": "Türkçe 'istasyon' ile aynı sözcük: Fransızca 'station' yoluyla Latince 'stare' (durmak, ayakta durmak) kökünden gelir, yani trenin 'durduğu yer'. Fuardaki 'stant' ve 'statü' de aynı ailedendir."
+    },
+    {
+      "lesson": 2,
+      "front": "bank",
+      "back": "(noun) banka 🏦",
+      "example_sentence": "Is there a bank near here?",
+      "mnemonic": "Türkçe 'banka' ile aynı sözcük: İtalyan sarrafların para saydığı 'banca' (tezgâh, sıra) kelimesinden gelir. Parkta oturduğun 'bank' da aynı köktendir; para bankası da oturma bankı da aslında bir 'sıra'."
+    },
+    {
+      "lesson": 3,
+      "front": "left",
+      "back": "(adjective) sol ⬅️",
+      "example_sentence": "Turn left at the hospital.",
+      "mnemonic": "'Left', eski İngilizce 'lyft' (zayıf) sözcüğünden gelir: sol el çoğu insanda güçsüz el olduğu için bu adı almıştır. Ayrıca 'leave' (ayrılmak, bırakmak) fiilinin geçmiş hâli de 'left' yazılır: 'He left' = 'Gitti'."
+    },
+    {
+      "lesson": 3,
+      "front": "right",
+      "back": "(adjective) sağ, doğru ➡️",
+      "example_sentence": "The park is on the right.",
+      "mnemonic": "'Right' eski İngilizcede 'düz, doğru' demekti; sağ el 'doğru el' sayıldığından 'sağ' anlamı sonradan eklendi. Türkçe 'doğru' da hem 'düz' hem 'yanlış değil' demektir: iki dil aynı mantıkla düşünmüş."
+    },
+    {
+      "lesson": 3,
+      "front": "near",
+      "back": "(preposition) yakın, yakınında 🤏",
+      "example_sentence": "My house is near the station.",
+      "mnemonic": "'Near', eski İngilizce 'neah' (yakın) sözcüğünün 'daha yakın' biçimiydi; zamanla kendisi 'yakın' anlamına yerleşti, Almanca 'nah' ile akrabadır. 'Nearly' (neredeyse) de buradan gelir: sonuca 'yakın' olmak."
+    },
+    {
+      "lesson": 4,
+      "front": "far",
+      "back": "(adjective) uzak 🔭",
+      "example_sentence": "The hospital is far from here.",
+      "mnemonic": "'Far', 'öte, karşı yaka' anlamındaki çok eski bir Hint-Avrupa kökünden gelir; Almanca 'fern' (uzak) kardeşidir. İstanbul'daki 'Pera' (Beyoğlu) adı da Rumca 'péra' (karşı taraf, öte) sözcüğünden, yani 'far' ile aynı ailedendir."
+    },
+    {
+      "lesson": 4,
+      "front": "here",
+      "back": "(adverb) burada 📍",
+      "example_sentence": "I live here, near the park.",
+      "mnemonic": "İngilizce h-ere (burada), th-ere (orada), wh-ere (nerede) üçlüsü aynı '-ere' kalıbıyla kurulur; baştaki h-/th-/wh- 'bu/o/ne' işaretidir. Türkçe bu-ra / o-ra / ne-re ile birebir aynı mantık: kalıbı bir kez öğren, üç sözcüğü birden kap."
+    },
+    {
+      "lesson": 4,
+      "front": "there",
+      "back": "(adverb) orada 👉",
+      "example_sentence": "The bank is over there.",
+      "mnemonic": "'There', 'that' (o, şu) ile aynı işaret kökünden gelir: 'th-' = o, '-ere' de yer bildirir → 'o-rada'. 'There is a bank' (bir banka var) kalıbı da aynı sözcük: bir şey 'orada' ise, 'var' demektir."
+    },
+    {
+      "lesson": 5,
+      "front": "where",
+      "back": "(adverb) nerede, nereye 🧭",
+      "example_sentence": "Where is the bus stop?",
+      "mnemonic": "'Where', 'what' (ne) ile aynı soru kökünden gelir: 'wh-' = ne, '-ere' de yer bildirir → 'ne-rede'. 'What, who, when, why, where' nasıl 'wh-' ailesiyse, Türkçede 'ne, neden, nasıl, nerede' de 'ne' ailesidir."
+    },
+    {
+      "lesson": 5,
+      "front": "stop",
+      "back": "(verb) durmak, durdurmak 🛑",
+      "example_sentence": "The bus stops at the station.",
+      "mnemonic": "Bu sözcük Türkçede zaten var: 'araba stop etti', 'stop lambası'; dünyanın her yerindeki kırmızı sekizgen levhada da 'STOP' yazar (bizde 'DUR'). Kökü Latince 'stuppa' (tıkaç): durdurmak, aslında yolu tıkamaktır."
+    },
+    {
+      "lesson": 5,
+      "front": "wait",
+      "back": "(verb) beklemek ⏳",
+      "example_sentence": "Wait for me at the bank.",
+      "mnemonic": "'Wait', eski Fransızca 'waitier' (gözetlemek, nöbet tutmak) sözcüğünden gelir; 'watch' ve 'wake' (uyanmak) ile akrabadır: bekleyen kişi gözünü dört açar. 'Waiter' (garson) da işte bu 'gözeten' kişidir: masayı bekler."
+    }
+  ],
+  "dialogue": {
+    "title": "Where Are You, Tom?",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "Elif, I'm lost in the city!",
+        "tr": "Elif, şehirde kayboldum!"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Where are you? What do you see?",
+        "tr": "Neredesin? Ne görüyorsun?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "On a big street, near a bank.",
+        "tr": "Büyük bir caddedeyim, bir bankanın yakınında."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Good! The park is near. Turn left.",
+        "tr": "Güzel! Park yakın. Sola dön."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Wait... Now I see a station.",
+        "tr": "Bekle... Şimdi bir istasyon görüyorum."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Stop there! Now look right.",
+        "tr": "Orada dur! Şimdi sağa bak."
+      },
+      {
+        "speaker": "Tom",
+        "en": "I see the park! It's not far.",
+        "tr": "Parkı görüyorum! Uzak değil."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Yes! I see you. Come here!",
+        "tr": "Evet! Seni görüyorum. Buraya gel!"
+      }
+    ]
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 7,
+    "level": "A1",
+    "title": "Colours & Things"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "red",
+      "back": "(adjective) kırmızı 🔴",
+      "example_sentence": "I like your red car.",
+      "mnemonic": "'Red Bull' enerji içeceğinin logosundaki iki KIRMIZI boğayı düşün: bull = boğa, red = kırmızı. Manchester United'ın lakabı da 'Red Devils' (Kırmızı Şeytanlar)."
+    },
+    {
+      "lesson": 1,
+      "front": "blue",
+      "back": "(adjective) mavi 🔵",
+      "example_sentence": "The sky is blue today.",
+      "mnemonic": "'Blucin' dediğimiz pantolon aslında 'blue jeans' = mavi kot. Bluetooth'un mavi logosu da adını 'Mavi Diş' lakaplı Viking kralı Harald'dan alır."
+    },
+    {
+      "lesson": 1,
+      "front": "green",
+      "back": "(adjective) yeşil 🟢",
+      "example_sentence": "My favourite colour is green.",
+      "mnemonic": "'Green', 'grow' (büyümek) ve 'grass' (çimen) aynı eski kökten gelir — büyüyen canlı bitkinin rengi. Greenpeace'in logosu da bu yüzden yeşil."
+    },
+    {
+      "lesson": 2,
+      "front": "yellow",
+      "back": "(adjective) sarı 🟡",
+      "example_sentence": "Bananas are yellow.",
+      "mnemonic": "'Yellow', 'gold' (altın) ve 'glow' (parlamak) aynı eski kökten gelir: 'parlayan şey'. Altın gibi parlayan renk = sarı."
+    },
+    {
+      "lesson": 2,
+      "front": "black",
+      "back": "(adjective) siyah, kara ⚫",
+      "example_sentence": "He has black hair.",
+      "mnemonic": "'Black Friday' indirimlerini Türkçe'de de 'Kara Cuma' diye duyarsın. Okuldaki 'kara tahta' da İngilizce'de 'blackboard' — black = kara, siyah."
+    },
+    {
+      "lesson": 2,
+      "front": "white",
+      "back": "(adjective) beyaz ⚪",
+      "example_sentence": "I want a white T-shirt.",
+      "mnemonic": "'White House' = Beyaz Saray. Türkçe 'beyaz eşya'nın İngilizcesi de 'white goods' — ikisinde de white = beyaz."
+    },
+    {
+      "lesson": 3,
+      "front": "book",
+      "back": "(noun) kitap 📖",
+      "example_sentence": "I read a book every night.",
+      "mnemonic": "'Facebook' = 'yüz kitabı': Zuckerberg, öğrenci fotoğraflarının olduğu okul KİTABINDAN esinlendi. Dizüstü bilgisayara dediğimiz 'notebook' da 'not defteri' demek."
+    },
+    {
+      "lesson": 3,
+      "front": "pen",
+      "back": "(noun) kalem 🖊️",
+      "example_sentence": "Can I use your pen?",
+      "mnemonic": "Latince 'penna' = tüy; eskiden kuş tüyüyle yazılırdı, kelime oradan geldi. Gitar çalarken kullandığın 'pena' da aynı kökten (İtalyanca penna)."
+    },
+    {
+      "lesson": 3,
+      "front": "bag",
+      "back": "(noun) çanta, poşet 👜",
+      "example_sentence": "My bag is very heavy.",
+      "mnemonic": "Türkçe 'bagaj' (Fransızca bagage) ile 'bag' aynı Cermen kökten gelir — bagaja koyduğun şey zaten çantadır. Bag = çanta, baggage = bagaj."
+    },
+    {
+      "lesson": 4,
+      "front": "phone",
+      "back": "(noun) telefon 📱",
+      "example_sentence": "Where is my phone?",
+      "mnemonic": "'Telefon'un kısaltması: Yunanca 'phone' = ses ('mikrofon', 'megafon' aynı kök). İngilizler 'tele'yi atıp sadece 'phone' der."
+    },
+    {
+      "lesson": 4,
+      "front": "car",
+      "back": "(noun) araba 🚗",
+      "example_sentence": "My dad has a new car.",
+      "mnemonic": "Latince 'carrus' (yük arabası) kökünden gelir — Türkçe 'kargo' (arabaya yüklenen yük) ve 'karoser' (araba gövdesi) de aynı aileden."
+    },
+    {
+      "lesson": 4,
+      "front": "bus",
+      "back": "(noun) otobüs 🚌",
+      "example_sentence": "I take the bus to school.",
+      "mnemonic": "'Otobüs'ün sonundaki 'büs' işte bu: Latince 'omnibus' = 'herkes için' (araç). İngilizler kelimeyi kısaltıp sadece 'bus' der."
+    },
+    {
+      "lesson": 5,
+      "front": "money",
+      "back": "(noun) para 💰",
+      "example_sentence": "I have no money today.",
+      "mnemonic": "Romalılar parayı Juno Moneta tapınağında basardı; 'moneta' zamanla 'money' oldu. ABBA'nın 'Money, Money, Money' şarkısı = para, para, para."
+    },
+    {
+      "lesson": 5,
+      "front": "shop",
+      "back": "(noun) dükkan, mağaza 🏪",
+      "example_sentence": "The shop opens at nine.",
+      "mnemonic": "Türkçe'de 'shopping' (alışveriş) ve 'coffee shop' zaten kullanılıyor — 'shop', alışverişin yapıldığı yer: dükkan. Fiil olarak da 'alışveriş yapmak' demek."
+    },
+    {
+      "lesson": 5,
+      "front": "buy",
+      "back": "(verb) satın almak 🛒",
+      "example_sentence": "I buy bread every morning.",
+      "mnemonic": "'Bay' diye okunur, tıpkı 'bye' gibi. Türkçe 'bayi' (gazete bayii, tüp bayii) tam da bir şey SATIN ALDIĞIN yer — kökleri farklı ama sesi aklında tutar."
+    }
+  ],
+  "dialogue": {
+    "title": "A New Bag",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Tom, I need a new bag.",
+        "tr": "Tom, yeni bir çantaya ihtiyacım var."
+      },
+      {
+        "speaker": "Tom",
+        "en": "This shop has nice bags.",
+        "tr": "Bu dükkanda güzel çantalar var."
+      },
+      {
+        "speaker": "Elif",
+        "en": "I like the red one.",
+        "tr": "Kırmızı olanı beğendim."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Yes, it is big for books and pens.",
+        "tr": "Evet, kitaplar ve kalemler için yeterince büyük."
+      },
+      {
+        "speaker": "Elif",
+        "en": "But I don't have much money.",
+        "tr": "Ama çok param yok."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Look, the blue bag is cheap.",
+        "tr": "Bak, mavi çanta ucuz."
+      },
+      {
+        "speaker": "Elif",
+        "en": "OK, let's buy the blue one.",
+        "tr": "Tamam, mavi olanı alalım."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Great! Now let's take the bus home.",
+        "tr": "Harika! Şimdi otobüsle eve dönelim."
+      }
+    ]
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 3,
+    "level": "A1",
+    "title": "Numbers & Time"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "one",
+      "back": "(number) bir 1️⃣",
+      "example_sentence": "I have one brother.",
+      "mnemonic": "'One', Latince 'unus' (bir) ile akrabadır; Türkçedeki 'üniforma' (tek biçim), 'ünite' ve 'üniversite' hep bu 'tek' kökünden gelir. Okunuşu 'van'."
+    },
+    {
+      "lesson": 1,
+      "front": "two",
+      "back": "(number) iki 2️⃣",
+      "example_sentence": "We have two cats.",
+      "mnemonic": "'Two', Latince 'duo' ile akrabadır; Türkçedeki 'duble' (iki kat) ve 'düet' (iki kişilik şarkı) aynı kökten gelir. Ortadaki w okunmaz: 'tu'."
+    },
+    {
+      "lesson": 1,
+      "front": "three",
+      "back": "(number) üç 3️⃣",
+      "example_sentence": "She has three children.",
+      "mnemonic": "'Three', Latince 'tres' ile akrabadır; Türkçedeki 'trio' (üçlü), 'triatlon' ve 'tripod' (üç ayak) aynı 'üç' kökünden gelir."
+    },
+    {
+      "lesson": 2,
+      "front": "day",
+      "back": "(noun) gün 📅",
+      "example_sentence": "I go to school every day.",
+      "mnemonic": "'Have a nice day!' (İyi günler!) kalıbını mutlaka duymuşsundur. 'Birthday' (doğum günü), 'Sunday', 'Monday'; hepsinin sonundaki 'day' aynı gün."
+    },
+    {
+      "lesson": 2,
+      "front": "week",
+      "back": "(noun) hafta 🗓️",
+      "example_sentence": "I play football every week.",
+      "mnemonic": "Türkçede de dediğimiz 'weekend', week (hafta) + end (son), yani hafta sonudur. Haftayı 'weekend'in başından çıkar."
+    },
+    {
+      "lesson": 2,
+      "front": "month",
+      "back": "(noun) ay 🌙",
+      "example_sentence": "My birthday is next month.",
+      "mnemonic": "'Month' ile 'moon' (ay) aynı kökten gelir: bir ay, ayın gökyüzünde bir tam turudur. Türkçede de 'ay' hem gökteki ay hem takvim ayı; iki dil aynı mantıkla düşünmüş."
+    },
+    {
+      "lesson": 3,
+      "front": "year",
+      "back": "(noun) yıl, sene 🎆",
+      "example_sentence": "I am ten years old.",
+      "mnemonic": "'Happy New Year!' (Mutlu yıllar!) her yılbaşında karşına çıkar: new year = yeni yıl. Yaş söylerken de 'years old' denir: 'ten years old' = on yaşında."
+    },
+    {
+      "lesson": 3,
+      "front": "hour",
+      "back": "(noun) saat ⏳",
+      "example_sentence": "I sleep eight hours every night.",
+      "mnemonic": "'Hour', Yunanca 'hōra' (zaman, saat) kökünden gelir; Türkçedeki 'horoskop' da aynı kökten: 'saat gözleyen', yani doğum saatine bakan yıldız falı. Baştaki h okunmaz: 'auır'."
+    },
+    {
+      "lesson": 3,
+      "front": "minute",
+      "back": "(noun) dakika ⏱️",
+      "example_sentence": "The bus comes in ten minutes.",
+      "mnemonic": "Latince 'minutus' = küçük: dakika, saatin minik bir parçasıdır. Türkçedeki 'mini', 'minimum' ve 'minyatür' aynı kökten gelir."
+    },
+    {
+      "lesson": 4,
+      "front": "now",
+      "back": "(adverb) şimdi",
+      "example_sentence": "I am hungry now.",
+      "mnemonic": "'Buy now', 'Download now', 'Play now'; internette her gün gördüğün bu düğmeler 'şimdi al, şimdi indir, şimdi oyna' der. Now = şimdi, hemen."
+    },
+    {
+      "lesson": 4,
+      "front": "early",
+      "back": "(adverb) erken 🌄",
+      "example_sentence": "I get up early every day.",
+      "mnemonic": "'ERken' ile 'EARly' benzer sesle başlar; akraba değiller ama bu tesadüf işini görür. 'The early bird' deyimi, bizim 'erken kalkan yol alır' sözümüzün İngilizcesidir."
+    },
+    {
+      "lesson": 4,
+      "front": "late",
+      "back": "(adjective) geç ⏰",
+      "example_sentence": "I am late for school.",
+      "mnemonic": "'Better late than never' = 'Geç olsun, güç olmasın'; iki dilin ortak sözü. 'See you later!' (sonra görüşürüz) içindeki 'later' da aynı kelime: daha geç, yani sonra."
+    },
+    {
+      "lesson": 5,
+      "front": "time",
+      "back": "(noun) zaman, vakit 🕒",
+      "example_sentence": "What time is it now?",
+      "mnemonic": "'Time is money' = 'Vakit nakittir'; iki dilin ortak atasözü. Türkçede de 'part-time iş' ve 'timer' deriz: hepsindeki 'time' zamandır."
+    },
+    {
+      "lesson": 5,
+      "front": "night",
+      "back": "(noun) gece 🌃",
+      "example_sentence": "I watch TV at night.",
+      "mnemonic": "'Good night!' = 'İyi geceler!' Bizim 'gece kulübü' dediğimize İngilizce 'nightclub' denir; 'gh' okunmaz: 'nayt'."
+    },
+    {
+      "lesson": 5,
+      "front": "always",
+      "back": "(adverb) her zaman, hep ♾️",
+      "example_sentence": "Tom is always late.",
+      "mnemonic": "Kelime gerçekten 'all' (bütün) + 'ways' (yollar) diye doğmuştur: her yolda, her durumda, yani her zaman. Okunuşu 'olveyz'."
+    }
+  ],
+  "dialogue": {
+    "title": "Am I Late?",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "Elif, what time is it now?",
+        "tr": "Elif, şimdi saat kaç?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "It is three o'clock.",
+        "tr": "Saat üç."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Oh no! I am always late!",
+        "tr": "Olamaz! Ben hep geç kalırım!"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Not today! You are early.",
+        "tr": "Bugün değil! Erken geldin."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Really? When is class?",
+        "tr": "Gerçekten mi? Ders ne zaman?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "In one hour. Let's drink tea.",
+        "tr": "Bir saat sonra. Hadi çay içelim."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Great! Let's study together every day.",
+        "tr": "Harika! Her gün birlikte ders çalışalım."
+      },
+      {
+        "speaker": "Elif",
+        "en": "OK! Two hours every night.",
+        "tr": "Tamam! Her gece iki saat."
+      }
+    ]
+  }
+}
