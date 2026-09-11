@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 46,
+    "level": "C1",
+    "title": "Culture & Belonging"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "assimilate",
+      "back": "(verb) asimile olmak, uyum sağlamak 🧩",
+      "example_sentence": "Second-generation immigrants often assimilate so thoroughly that their grandparents' language is lost within decades.",
+      "mnemonic": "Türkçedeki 'asimile olmak' aynı kelime: Latince similis (benzer) kökünden, 'çoğunluğa benzer hâle gelmek'. 'Similar' ve 'simülasyon' da aynı aileden."
+    },
+    {
+      "lesson": 1,
+      "front": "marginalize",
+      "back": "(verb) kenara itmek, ötekileştirmek 🫥",
+      "example_sentence": "Policies written by people who never take the bus inevitably marginalize those who do.",
+      "mnemonic": "Türkçedeki 'marjinal' ve sayfa kenarındaki 'marj' ile aynı kök: Latince margo = kenar. Marginalize = birini sayfanın ortasından kenar boşluğuna itmek, hesaba katmamak."
+    },
+    {
+      "lesson": 1,
+      "front": "stigma",
+      "back": "(noun) damga, toplumsal leke 🏷️",
+      "example_sentence": "Even now, there's a stigma attached to admitting you've seen a therapist.",
+      "mnemonic": "Yunanca stigma = sivri uçla vurulan işaret; eski Yunan'da köleler ve suçlular kızgın demirle böyle damgalanırdı. Türkçedeki 'damgalanmak' fikri bire bir aynı; kalıp: 'the stigma attached to X'."
+    },
+    {
+      "lesson": 2,
+      "front": "heritage",
+      "back": "(noun) miras, kültürel miras 📜",
+      "example_sentence": "Half the old town is now a World Heritage site, which mostly means more cafés.",
+      "mnemonic": "UNESCO 'Dünya Mirası' listesinin İngilizcesi 'World Heritage'. Latince heres (mirasçı) kökünden; 'heir' ve 'inherit' aynı aileden. Kişisel değil, kültürel ve tarihî miras için kullanılır."
+    },
+    {
+      "lesson": 2,
+      "front": "secular",
+      "back": "(adjective) laik, seküler 🏛️",
+      "example_sentence": "France prides itself on being fiercely secular, yet still closes for Catholic holidays.",
+      "mnemonic": "Türkçede 'seküler, sekülerleşme' aynı kelime: Latince saeculum = çağ, dünya hayatı (Fransızca siècle = yüzyıl); kilisenin 'öteki dünya'sına karşı 'bu dünya'. 'Laik' ise Yunanca laikos (halktan) kökünden, ayrı bir kelime."
+    },
+    {
+      "lesson": 2,
+      "front": "egalitarian",
+      "back": "(adjective) eşitlikçi ⚖️",
+      "example_sentence": "Scandinavian offices are famously egalitarian: the CEO queues for coffee like everyone else.",
+      "mnemonic": "Fransız Devrimi sloganı 'Liberté, Égalité, Fraternité' — égalité = eşitlik. Egalitarian doğrudan buradan: herkesi eşit sayan, hiyerarşiyi sevmeyen. 'Equal' ile aynı Latince kök (aequalis)."
+    },
+    {
+      "lesson": 3,
+      "front": "indigenous",
+      "back": "(adjective) yerli, o toprağa özgü 🌱",
+      "example_sentence": "The museum finally returned the carvings to the indigenous community they were taken from.",
+      "mnemonic": "Latince indu- (içinde) + gignere (doğurmak) = o toprakta doğmuş. 'Jenetik', 'jenerasyon', 'jeneratör' aynı 'gen' ailesinden. Hem halklar hem türler için: 'indigenous peoples', 'indigenous species'."
+    },
+    {
+      "lesson": 3,
+      "front": "cosmopolitan",
+      "back": "(adjective) kozmopolit, çok kültürlü 🌐",
+      "example_sentence": "Istanbul was at its most cosmopolitan a century ago, when six languages shared one street.",
+      "mnemonic": "Türkçedeki 'kozmopolit' ile aynı: Yunanca kosmos (dünya) + polites (vatandaş) = dünya vatandaşı. 'Kozmos', 'politika', 'metropol' hep aynı parçalardan kurulu."
+    },
+    {
+      "lesson": 3,
+      "front": "conformity",
+      "back": "(noun) uymacılık, kurala uyma 🐑",
+      "example_sentence": "School uniforms don't teach discipline so much as conformity, which is rather the point.",
+      "mnemonic": "Türkçedeki 'konformist' (uymacı) ve 'üniforma' (tek biçim) aynı kökten: Latince forma. Con-form = herkesle aynı biçimi almak. Karşıtı 'nonconformist'."
+    },
+    {
+      "lesson": 4,
+      "front": "dissent",
+      "back": "(noun) karşı görüş, muhalefet ✋",
+      "example_sentence": "In that company, any dissent in meetings was quietly remembered at bonus time.",
+      "mnemonic": "Latince sentire (hissetmek) kökü Türkçede 'sentimental' ve 'konsensüs' (con-sensus = birlikte hissetmek, uzlaşma) olarak var. Dis-sent = ayrı hissetmek, konsensüsün tam tersi. Fiil olarak da kullanılır: 'to dissent from the majority'."
+    },
+    {
+      "lesson": 4,
+      "front": "patronize",
+      "back": "(verb) tepeden bakmak, küçümsemek 🫳",
+      "example_sentence": "Don't patronize me; I understood the contract perfectly well before you explained it twice.",
+      "mnemonic": "Türkçedeki 'patron' aynı kök: Latince patronus (hami), pater (baba). Patronize = birine 'baba/patron' gibi tepeden, çocukmuş gibi davranmak. Dikkat: 'patronize a shop' (bir dükkânın müdavimi olmak) anlamı da var ama nadirdir."
+    },
+    {
+      "lesson": 4,
+      "front": "ostracize",
+      "back": "(verb) dışlamak, aforoz etmek 🏺",
+      "example_sentence": "After he testified against his colleagues, he was effectively ostracized by the entire department.",
+      "mnemonic": "Antik Atina'da halk, sürülmesini istediği kişinin adını çömlek kırığına (Yunanca ostrakon) kazıyarak oy verirdi; yeterli oyu alan on yıl şehirden kovulurdu. Türkçedeki 'aforoz' aynı işi görür ama kilise kökenlidir."
+    },
+    {
+      "lesson": 5,
+      "front": "philanthropy",
+      "back": "(noun) hayırseverlik 🤲",
+      "example_sentence": "Billionaire philanthropy tends to fund whatever the billionaire finds interesting, not what's needed.",
+      "mnemonic": "Yunanca philos (seven) + anthropos (insan) = insan seven. 'Filozof' (bilgelik seven) ve 'antropoloji' (insan bilimi) aynı parçalardan. Zıddı 'misanthrope' = insanlardan nefret eden."
+    },
+    {
+      "lesson": 5,
+      "front": "nostalgia",
+      "back": "(noun) nostalji, geçmiş özlemi 📼",
+      "example_sentence": "A whole industry is built on nostalgia for a childhood most of us never had.",
+      "mnemonic": "Türkçedeki 'nostalji' aynı kelime. Yunanca nostos (eve dönüş) + algos (acı): 1688'de İsviçreli bir tıp öğrencisi, gurbetteki askerlerin ev hasretine ad olsun diye uydurdu. Aynı algos 'analjezik' (ağrı kesici) içinde de var."
+    },
+    {
+      "lesson": 5,
+      "front": "decadence",
+      "back": "(noun) yozlaşma, sefahat 🍷",
+      "example_sentence": "Every generation is convinced the next one's music is a sure sign of decadence.",
+      "mnemonic": "Ahmet Mithat'ın Servet-i Fünun yazarlarına taktığı 'dekadan' lakabı aynı kelime: Latince de- (aşağı) + cadere (düşmek) = düşüş. Günlük dilde 'decadent' yarı şaka: 'decadent chocolate cake' = günah gibi lezzetli."
+    }
+  ],
+  "dialogue": {
+    "title": "Assimilated Beautifully",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Someone at that dinner told me I'd assimilated beautifully. Beautifully, Tom.",
+        "tr": "Yemekte biri bana 'ne güzel asimile olmuşsun' dedi. Ne güzelmiş, Tom."
+      },
+      {
+        "speaker": "Tom",
+        "en": "That's the most patronizing compliment this city has to offer. Did you thank him?",
+        "tr": "Bu şehrin sunabileceği en tepeden bakan iltifat. Teşekkür ettin mi bari?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "I told him my heritage is Turkish and my sarcasm is all your fault.",
+        "tr": "Ona kökenimin Türk, iğneleyici mizahımın ise tamamen senin suçun olduğunu söyledim."
+      },
+      {
+        "speaker": "Tom",
+        "en": "This city calls itself cosmopolitan, but you're still expected to perform gratitude.",
+        "tr": "Bu şehir kendine kozmopolit diyor ama senden hâlâ minnettarlık gösterisi bekleniyor."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Exactly. Conformity with a friendly face. Dissent, and suddenly you're the difficult foreigner.",
+        "tr": "Aynen. Güler yüzlü bir uymacılık. Karşı çıkınca da bir anda 'zor yabancı' oluyorsun."
+      },
+      {
+        "speaker": "Tom",
+        "en": "To be fair, my grandmother's village would ostracize anyone who put milk in first.",
+        "tr": "Dürüst olmak gerekirse, anneannemin köyü çaya önce sütü koyanı aforoz ederdi."
+      },
+      {
+        "speaker": "Elif",
+        "en": "So every village attaches a stigma to something; yours just serves better biscuits.",
+        "tr": "Yani her köy bir şeyi damgalıyor; seninki en azından daha iyi bisküvi ikram ediyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "The biscuits are nostalgia; they were awful. Dessert? I'm feeling egalitarian tonight: we split it.",
+        "tr": "Bisküvi kısmı nostalji, berbattılar. Tatlı? Bu akşam eşitlikçiyim: yarı yarıya bölüşürüz."
+      }
+    ]
+  }
+}

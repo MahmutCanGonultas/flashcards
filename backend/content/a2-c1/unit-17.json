@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 17,
+    "level": "A2",
+    "title": "Getting Around"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "train",
+      "back": "(noun) tren 🚆",
+      "example_sentence": "The train to Ankara leaves at nine.",
+      "mnemonic": "Türkçe 'tren' Fransızca 'train'den geldi, yani aynı kelime. 'Antrenman' ve 'antrenör' de aynı kökten: 'train' fiil olarak 'eğitmek, çalıştırmak' demek."
+    },
+    {
+      "lesson": 1,
+      "front": "ticket",
+      "back": "(noun) bilet 🎫",
+      "example_sentence": "I bought two tickets for the evening train.",
+      "mnemonic": "'Ticket' ile Türkçedeki 'etiket' aynı Fransızca kökten (étiquette): ikisi de bir şeye iliştirilen küçük kâğıt. Bileti koltuğunun etiketi gibi düşün."
+    },
+    {
+      "lesson": 1,
+      "front": "airport",
+      "back": "(noun) havalimanı ✈️",
+      "example_sentence": "Dad is driving me to the airport tonight.",
+      "mnemonic": "air (hava) + port (liman) = havalimanı; Türkçesi birebir çeviri. 'Pasaport'taki 'port' da aynı kelime: limandan (kapıdan) geçiş belgesi."
+    },
+    {
+      "lesson": 2,
+      "front": "flight",
+      "back": "(noun) uçuş 🛫",
+      "example_sentence": "Our flight to London is at seven tomorrow.",
+      "mnemonic": "'Fly' (uçmak) fiilinin ismi; 'high→height' gibi -t ile isim olmuş. Bilette 'Flight TK1234' yazar; aktarmasız uçuş 'direct flight'."
+    },
+    {
+      "lesson": 2,
+      "front": "arrive",
+      "back": "(verb) varmak, gelmek 🛬",
+      "example_sentence": "The bus arrived ten minutes late again.",
+      "mnemonic": "Havalimanındaki 'Arrivals' (Gelen Yolcu) tabelası bu fiilden. Kullanım: 'arrive at the station', 'arrive in Istanbul'; 'arrive to' diye bir şey yok."
+    },
+    {
+      "lesson": 2,
+      "front": "leave",
+      "back": "(verb) ayrılmak, bırakmak 🚪",
+      "example_sentence": "The last train leaves at half past eleven.",
+      "mnemonic": "İki anlam tek fiilde: 'The train leaves at 9' (kalkar) ve 'I left my bag' (bıraktım). Geçmiş hali 'left'; cümlede gördüğünde 'sol' değil, 'ayrıldı/bıraktı' olabilir."
+    },
+    {
+      "lesson": 3,
+      "front": "map",
+      "back": "(noun) harita 🗺️",
+      "example_sentence": "Open the map, I think we are lost.",
+      "mnemonic": "Telefonundaki 'Google Maps' zaten bu kelime. Latince 'mappa' aslında 'bez' demekti; eski haritalar bezlere çizilirdi."
+    },
+    {
+      "lesson": 3,
+      "front": "straight",
+      "back": "(adverb) dümdüz, doğruca ➡️",
+      "example_sentence": "Go straight and the station is on your left.",
+      "mnemonic": "Yol tarifinin ilk cümlesi: 'Go straight ahead' (dümdüz git). Kelime 'stretch' (germek) fiilinin eski geçmiş hali: gerilmiş ip gibi düz."
+    },
+    {
+      "lesson": 3,
+      "front": "corner",
+      "back": "(noun) köşe 📐",
+      "example_sentence": "Turn right at the corner, near the bakery.",
+      "mnemonic": "Futboldaki 'korner' birebir bu kelime: top köşeden atılır. Yol tarifinde 'turn left at the corner' (köşeden sola dön)."
+    },
+    {
+      "lesson": 4,
+      "front": "traffic",
+      "back": "(noun) trafik 🚦",
+      "example_sentence": "The traffic is terrible this morning.",
+      "mnemonic": "Türkçe 'trafik' aynı kelime (Fransızca 'trafic' üzerinden). 'Traffic jam' trafik sıkışıklığı demek; buradaki 'jam' reçel değil, sıkışma."
+    },
+    {
+      "lesson": 4,
+      "front": "drive",
+      "back": "(verb) araba kullanmak 🚗",
+      "example_sentence": "My sister drives to work every day.",
+      "mnemonic": "Araba reklamlarındaki 'test drive' (test sürüşü) ve bilgisayardaki 'driver' (sürücü) aynı kökten. Düzensiz fiil: drive – drove – driven."
+    },
+    {
+      "lesson": 4,
+      "front": "bicycle",
+      "back": "(noun) bisiklet 🚲",
+      "example_sentence": "We are going to rent bicycles by the sea.",
+      "mnemonic": "'Bisiklet' Fransızca 'bicyclette'ten; aynı kök: bi (iki) + cycle (çember, tekerlek). Konuşmada çoğunlukla kısaca 'bike' denir."
+    },
+    {
+      "lesson": 5,
+      "front": "taxi",
+      "back": "(noun) taksi 🚕",
+      "example_sentence": "Let's take a taxi, it's raining hard.",
+      "mnemonic": "'Taksi' aynı kelime; aslı 'taximeter' (taksimetre), yani ücret sayacı. İsim önce sayaca, sonra arabanın kendisine verildi."
+    },
+    {
+      "lesson": 5,
+      "front": "timetable",
+      "back": "(noun) tarife, saat çizelgesi 🕒",
+      "example_sentence": "Check the timetable, the trains change on Sundays.",
+      "mnemonic": "time (zaman) + table (tablo, çizelge) = zaman çizelgesi; Türkçe 'tablo' da aynı Latince kökten (tabula). Otogardaki 'otobüs tarifesi' işte bu."
+    },
+    {
+      "lesson": 5,
+      "front": "platform",
+      "back": "(noun) peron 🚉",
+      "example_sentence": "Our train is waiting at platform two.",
+      "mnemonic": "Türkçe 'platform' aynı kelime (Fransızca 'plate-forme': düz yüzey). İstasyonda Türkçesi 'peron': 'Platform 3' dediklerinde 3. perona git."
+    }
+  ],
+  "dialogue": {
+    "title": "Late for the Train",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Tom, hurry! The train leaves at ten.",
+        "tr": "Tom, acele et! Tren onda kalkıyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "The traffic is terrible. Let's take a taxi.",
+        "tr": "Trafik berbat. Taksiye binelim."
+      },
+      {
+        "speaker": "Elif",
+        "en": "No, look at the map. The station is close.",
+        "tr": "Hayır, haritaya bak. İstasyon yakın."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Okay, go straight and turn left at the corner.",
+        "tr": "Tamam, dümdüz git, köşeden sola dön."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Here we are! Do you have the tickets?",
+        "tr": "Geldik! Biletler sende mi?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Yes, both. Which platform is it?",
+        "tr": "Evet, ikisi de. Hangi perondan kalkıyor?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "The timetable says platform three. Run!",
+        "tr": "Tarifeye göre üçüncü peron. Koş!"
+      },
+      {
+        "speaker": "Tom",
+        "en": "We arrived just in time. Now I need water.",
+        "tr": "Tam zamanında yetiştik. Şimdi su lazım."
+      }
+    ]
+  }
+}

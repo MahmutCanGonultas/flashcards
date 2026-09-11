@@ -232,6 +232,8 @@ function DeckDetail() {
             {isPath && (
               <PathHeader
                 stats={stats}
+                placementTo={units.some((u) => u.id !== null) ? `/decks/${deckId}/placement` : undefined}
+                isFresh={stats.wordsLearned === 0 && units.every((u) => u.state !== "passed")}
                 onReview={() => {
                   primeSpeech();
                   navigate(`/decks/${deckId}/study`);

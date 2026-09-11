@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 16,
+    "level": "A2",
+    "title": "Shopping & Clothes"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "shirt",
+      "back": "(noun) gömlek 👔",
+      "example_sentence": "I need a white shirt for the concert.",
+      "mnemonic": "Türkçedeki 'tişört' aslında 'T-shirt': T harfi biçimindeki 'shirt'. Kollu, düğmeli olanı da 'shirt', yani gömlek."
+    },
+    {
+      "lesson": 1,
+      "front": "trousers",
+      "back": "(noun) pantolon 👖",
+      "example_sentence": "These trousers are too long for me.",
+      "mnemonic": "Türkçe 'pantolon' Fransızca 'pantalon'dan gelir; Amerikalılar aynı kökten 'pants' der, İngilizler ise 'trousers'. Her zaman çoğuldur: 'a pair of trousers'."
+    },
+    {
+      "lesson": 1,
+      "front": "shoes",
+      "back": "(noun) ayakkabı 👟",
+      "example_sentence": "She took off her shoes at the door.",
+      "mnemonic": "Ünlü deyim 'put yourself in my shoes' = 'kendini benim yerime koy'. Bir tek ayakkabı 'shoe', çifti 'a pair of shoes'."
+    },
+    {
+      "lesson": 2,
+      "front": "dress",
+      "back": "(noun) elbise 👗",
+      "example_sentence": "Elif wore a red dress to the wedding.",
+      "mnemonic": "Türkçede de duyduğun 'dress code' (kıyafet kuralı) aynı sözcük. Fiil olarak 'get dressed' = giyinmek; 'dress' hem elbise hem giyinmektir."
+    },
+    {
+      "lesson": 2,
+      "front": "jacket",
+      "back": "(noun) ceket 🧥",
+      "example_sentence": "Take your jacket, it's cold outside.",
+      "mnemonic": "Türkçe 'ceket' Fransızca 'jaquette'ten gelir; İngilizce 'jacket' da aynı kökten. Yazılışı farklı, sözcük aynı."
+    },
+    {
+      "lesson": 2,
+      "front": "size",
+      "back": "(noun) beden, boyut 📏",
+      "example_sentence": "Do you have this shirt in a bigger size?",
+      "mnemonic": "Yazılışı Türkçe 'size' ile aynı: 'Size uygun size var mı?' diye aklında tut. Mağazalardaki 'plus size', 'one size' etiketleri de bu sözcük."
+    },
+    {
+      "lesson": 3,
+      "front": "cheap",
+      "back": "(adjective) ucuz 🏷️",
+      "example_sentence": "I found a cheap jacket at the market.",
+      "mnemonic": "Ucuz uçuş sitelerinin 'cheap flights' sloganını hatırla. Dikkat: 'cheap' bazen 'kalitesiz' demektir; övmek için 'It's a good price' de."
+    },
+    {
+      "lesson": 3,
+      "front": "price",
+      "back": "(noun) fiyat 💲",
+      "example_sentence": "The price of these shoes is too high.",
+      "mnemonic": "Etiketteki 'price tag' ve indirimdeki 'half price' (yarı fiyat) ile hatırla. Fiyat sorarken 'What's the price?' yerine 'How much is it?' daha doğal."
+    },
+    {
+      "lesson": 3,
+      "front": "pay",
+      "back": "(verb) ödemek 💳",
+      "example_sentence": "Can I pay by card, please?",
+      "mnemonic": "PayPal, Apple Pay, Google Pay: hepsindeki 'pay' ödemek demek. Kartla ödemek 'pay by card', nakit 'pay in cash'."
+    },
+    {
+      "lesson": 4,
+      "front": "wear",
+      "back": "(verb) giymek, takmak 👕",
+      "example_sentence": "What are you going to wear tonight?",
+      "mnemonic": "Türkçede giymek, takmak, sürmek diye ayırdığımız her şey İngilizcede 'wear': wear a shirt, wear glasses, wear perfume. Etiketlerdeki 'sportswear', 'underwear' aynı kök."
+    },
+    {
+      "lesson": 4,
+      "front": "try on",
+      "back": "(phrasal verb) denemek, prova etmek 🪞",
+      "example_sentence": "She tried on three dresses and bought one.",
+      "mnemonic": "'try' denemek, 'on' üstünde: giysiyi üstünde denemek. Nesne araya girer: 'try it on' doğru, 'try on it' yanlış."
+    },
+    {
+      "lesson": 4,
+      "front": "fit",
+      "back": "(verb) bedene uymak, olmak 👌",
+      "example_sentence": "This jacket doesn't fit, it's too small.",
+      "mnemonic": "Türkçedeki 'fit olmak', 'fitness' aynı sözcük: vücut 'fit'se giysi de 'fit' olur, yani bedene tam oturur. Farkı bil: 'fit' beden uyar, 'suit' yakışır."
+    },
+    {
+      "lesson": 5,
+      "front": "receipt",
+      "back": "(noun) fiş, makbuz 🧾",
+      "example_sentence": "I lost the receipt for these shoes.",
+      "mnemonic": "Türkçe 'reçete' ile aynı Latince kökten (recepta = alınan şey); eskiden ikisi de 'alınanların listesi' demekti. 'p' harfi okunmaz: 'risiit'."
+    },
+    {
+      "lesson": 5,
+      "front": "change",
+      "back": "(noun) para üstü, bozuk para 🪙",
+      "example_sentence": "The cashier gave me the wrong change.",
+      "mnemonic": "Turistik yerlerdeki döviz bürolarının 'Change / Exchange' tabelasını düşün: para değiştirmek. Kasada 'Keep the change' = 'üstü kalsın'."
+    },
+    {
+      "lesson": 5,
+      "front": "sale",
+      "back": "(noun) indirim, satış 🛍️",
+      "example_sentence": "These shoes are on sale this week.",
+      "mnemonic": "Vitrinlerdeki kocaman 'SALE' yazısını herkes bilir: indirim. Farkı unutma: 'on sale' indirimde, 'for sale' satılık."
+    }
+  ],
+  "dialogue": {
+    "title": "A Jacket for Friday",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Tom, you need a new jacket for Friday.",
+        "tr": "Tom, cumaya yeni bir ceket lazım sana."
+      },
+      {
+        "speaker": "Tom",
+        "en": "I know. Look, this one is on sale!",
+        "tr": "Biliyorum. Bak, bu indirimde!"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Only twenty. That's cheap for a jacket.",
+        "tr": "Sadece yirmi. Bir ceket için ucuz."
+      },
+      {
+        "speaker": "Tom",
+        "en": "What size is it? I usually take medium.",
+        "tr": "Kaç beden bu? Ben genelde M giyerim."
+      },
+      {
+        "speaker": "Elif",
+        "en": "It's medium. Go and try it on.",
+        "tr": "M beden. Hadi git bir dene."
+      },
+      {
+        "speaker": "Tom",
+        "en": "It fits perfectly! Where do I pay?",
+        "tr": "Tam oldu! Ödemeyi nerede yapıyorum?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Over there. And keep the receipt, okay?",
+        "tr": "Şurada. Fişi de sakla, tamam mı?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Done. Now I have change for ice cream!",
+        "tr": "Hallettim. Dondurmaya da bozuk para kaldı!"
+      }
+    ]
+  }
+}

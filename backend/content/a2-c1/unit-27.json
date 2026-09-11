@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 27,
+    "level": "B1",
+    "title": "Technology & Media"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "download",
+      "back": "(verb) indirmek ⬇️",
+      "example_sentence": "I've downloaded the app, but it won't open on my phone.",
+      "mnemonic": "Down = aşağı, load = yük: dosyayı buluttan cihazına 'aşağı yüklersin'. Upload tam tersi; up = yukarı, dosyayı sunucuya yüklersin."
+    },
+    {
+      "lesson": 1,
+      "front": "upload",
+      "back": "(verb) yüklemek ⬆️",
+      "example_sentence": "She uploaded the photos to the cloud before deleting them.",
+      "mnemonic": "Up = yukarı, load = yük: dosyayı kendi cihazından 'yukarıya', sunucuya yüklersin. YouTube'daki 'Upload' düğmesi tam olarak bu."
+    },
+    {
+      "lesson": 1,
+      "front": "password",
+      "back": "(noun) şifre, parola 🔑",
+      "example_sentence": "If you forget your password, you can reset it by email.",
+      "mnemonic": "Pass = geçiş, word = kelime: 'geçiş kelimesi'. Türkçedeki 'parola' da İtalyanca parola = 'söz, kelime'den gelir; iki dilde de şifre aslında bir kelimedir."
+    },
+    {
+      "lesson": 2,
+      "front": "account",
+      "back": "(noun) hesap 👤",
+      "example_sentence": "I've created a new account because I lost my old one.",
+      "mnemonic": "Bankadaki hesap ile Instagram'daki hesap Türkçede nasıl aynı kelimeyse İngilizcede de ikisi 'account'. Kökü Latince computare = 'saymak', yani 'computer' ile aynı aile."
+    },
+    {
+      "lesson": 2,
+      "front": "update",
+      "back": "(verb) güncellemek 🔄",
+      "example_sentence": "I haven't updated my laptop for months, so it's slow.",
+      "mnemonic": "Up = yukarı, date = tarih: bir şeyi bugünün tarihine çekmek. 'Up to date' = güncel demektir; update de onu güncel yapan işlem."
+    },
+    {
+      "lesson": 2,
+      "front": "website",
+      "back": "(noun) web sitesi 🌐",
+      "example_sentence": "The company's website hasn't been updated since 2019.",
+      "mnemonic": "Web = örümcek ağı, World Wide Web'in (www) 'web'i. Site = yer; Türkçedeki 'site' (konut sitesi) de aynı Latince situs = 'yer' kökünden gelir: ağ üzerindeki yer."
+    },
+    {
+      "lesson": 3,
+      "front": "search",
+      "back": "(verb) aramak 🔍",
+      "example_sentence": "I searched for cheap flights but couldn't find any.",
+      "mnemonic": "'Search engine' = arama motoru; Google'ın ana düğmesi. Research (araştırma) da re + search: tekrar tekrar aramak."
+    },
+    {
+      "lesson": 3,
+      "front": "notification",
+      "back": "(noun) bildirim 🔔",
+      "example_sentence": "I turned off notifications so I could study without distractions.",
+      "mnemonic": "Latince notus = 'bilinen' + facere = 'yapmak': bir şeyi 'bilinir kılmak'. Türkçe 'bildirim' de aynı mantıkla kurulur (bil-dir-im); telefonunun tepesindeki o kutucuk."
+    },
+    {
+      "lesson": 3,
+      "front": "wireless",
+      "back": "(adjective) kablosuz 📶",
+      "example_sentence": "The hotel has wireless internet, but it's slower than at home.",
+      "mnemonic": "Wire = tel, kablo; -less = -sız/-siz eki (homeless, useless'taki gibi). Kablo-suz; kulaklık kutusundaki 'wireless charging' yazısını hatırla."
+    },
+    {
+      "lesson": 4,
+      "front": "storage",
+      "back": "(noun) depolama alanı 💾",
+      "example_sentence": "My phone's storage is full, so I can't take more photos.",
+      "mnemonic": "Store hem 'depolamak' hem 'mağaza'; İngilizcede dükkân, malın depolandığı yerdir. Telefondaki 'Storage full' uyarısı ve 'App Store' aynı kelime."
+    },
+    {
+      "lesson": 4,
+      "front": "podcast",
+      "back": "(noun) podcast, sesli yayın 🎧",
+      "example_sentence": "I listen to a history podcast while I'm cooking dinner.",
+      "mnemonic": "iPod + broadcast (yayın) karışımı: 2004'te Apple'ın iPod'u için türetilmiş bir kelime, 'iPod'a yayın'. Sonundaki -cast'i broadcast'te yine göreceksin."
+    },
+    {
+      "lesson": 4,
+      "front": "stream",
+      "back": "(verb) internetten izlemek, yayınlamak 📡",
+      "example_sentence": "We streamed the match online because we didn't have a TV.",
+      "mnemonic": "Stream = dere, akarsu; coğrafyadaki Golfstrim de Gulf Stream'dir. Video dosya gibi tek seferde inmez, su gibi 'akar'; Netflix'in 'streaming'i, Twitch'in 'streamer'ı buradan."
+    },
+    {
+      "lesson": 5,
+      "front": "headline",
+      "back": "(noun) manşet 📰",
+      "example_sentence": "The headline said 'crisis', but the article was much calmer.",
+      "mnemonic": "Head = baş, line = satır: sayfanın 'baş satırı'. Türkçe 'manşet' Fransızca manchette'ten gelir ve aslında 'gömlek kolu' demektir; İngilizcesi daha mantıklı."
+    },
+    {
+      "lesson": 5,
+      "front": "broadcast",
+      "back": "(verb) yayınlamak 📺",
+      "example_sentence": "The BBC broadcasts the news in more than forty languages.",
+      "mnemonic": "Broad = geniş, cast = saçmak, atmak: eskiden tohumu tarlaya 'geniş saçmak' demekti, radyo sinyali de havaya öyle saçılır. BBC = British Broadcasting Corporation."
+    },
+    {
+      "lesson": 5,
+      "front": "advertisement",
+      "back": "(noun) reklam 📢",
+      "example_sentence": "I've seen that advertisement so many times that I hate it.",
+      "mnemonic": "Kökü Latince advertere = 'dikkati bir yöne çevirmek'; 'versiyon' ve 'üniversite'deki vers/vert de aynı 'çevirmek' kökü. Günlük İngilizcede kısaca 'ad' (ads) denir."
+    }
+  ],
+  "dialogue": {
+    "title": "Tom's First Podcast",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Tom, can you help? I can't log into my university account.",
+        "tr": "Tom, yardım eder misin? Üniversite hesabıma giremiyorum."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Did you change your password after the last update?",
+        "tr": "Son güncellemeden sonra şifreni değiştirdin mi?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "No, but the website keeps sending me strange notifications.",
+        "tr": "Hayır ama site bana sürekli tuhaf bildirimler yolluyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Don't click them. Search for the official login page instead.",
+        "tr": "Sakın tıklama. Onun yerine resmi giriş sayfasını arat."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Okay, it's working now. Anyway, how's your podcast going?",
+        "tr": "Tamam, şimdi oldu. Neyse, senin podcast ne durumda?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "I've recorded two episodes, but I can't upload them yet.",
+        "tr": "İki bölüm kaydettim ama henüz yükleyemiyorum."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Why not? Is your storage full again?",
+        "tr": "Neden? Yine mi depolama alanın doldu?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Worse. The dorm's wireless has been down since Monday.",
+        "tr": "Daha kötüsü: yurdun kablosuz interneti pazartesiden beri çalışmıyor."
+      }
+    ]
+  }
+}

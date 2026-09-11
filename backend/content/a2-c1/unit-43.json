@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 43,
+    "level": "C1",
+    "title": "Idioms & Phrasal Verbs"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "come across",
+      "back": "(phrasal verb) rastlamak, izlenim bırakmak 🔍",
+      "example_sentence": "I came across her old letters while clearing out the attic last weekend.",
+      "mnemonic": "Türkçedeki 'karşısına çıkmak' ile aynı görüntü: bir şey yolunuzun karşısından (across) gelir (come), siz de ona rastlarsınız. İkinci anlam da buradan doğar: bir insan karşınıza nasıl çıkıyorsa öyle 'izlenim verir' — 'He comes across as arrogant.'"
+    },
+    {
+      "lesson": 1,
+      "front": "put up with",
+      "back": "(phrasal verb) katlanmak, tahammül etmek 😤",
+      "example_sentence": "I don't know how she puts up with his constant complaining about everything.",
+      "mnemonic": "Churchill'e atfedilen ünlü şaka ezberletir: 'This is the sort of English up with which I will not put.' Üç parça asla ayrılmaz, nesne hep sona gelir: 'put up with the noise'."
+    },
+    {
+      "lesson": 1,
+      "front": "bring about",
+      "back": "(phrasal verb) yol açmak, meydana getirmek 🔄",
+      "example_sentence": "It was the scandal, not the election, that brought about the minister's resignation.",
+      "mnemonic": "Türkçesi 'meydana getirmek' zaten 'getirmek' (bring) fiiliyle kurulur; İngilizce de aynı mantıkla bir sonucu ortaya getirir. Genellikle büyük ve yavaş değişimlerle kullanılır: 'bring about change / reform'."
+    },
+    {
+      "lesson": 2,
+      "front": "carry out",
+      "back": "(phrasal verb) yerine getirmek, yürütmek 📋",
+      "example_sentence": "The inspection was carried out without warning, which is exactly how it should be.",
+      "mnemonic": "Planı kâğıttan alıp dışarıya, gerçek dünyaya taşımak (carry out) — yani uygulamak. Kalıp ortaklarını ezberleyin: carry out research / an experiment / a survey / orders / a threat."
+    },
+    {
+      "lesson": 2,
+      "front": "fall through",
+      "back": "(phrasal verb) suya düşmek, iptal olmak 💧",
+      "example_sentence": "The deal fell through at the last minute when the investors got cold feet.",
+      "mnemonic": "Türkçedeki 'suya düşmek' ile aynı görüntü: plan, altındaki zeminden (through) düşer (fall) ve kaybolur. Özne hep plan, anlaşma ya da satıştır; insanlar 'fall through' olmaz."
+    },
+    {
+      "lesson": 2,
+      "front": "cut corners",
+      "back": "(idiom) kaliteden kısmak, ucuza kaçmak ✂️",
+      "example_sentence": "Whoever built this bridge clearly cut corners, and now the taxpayers are paying for it.",
+      "mnemonic": "Görüntü gerçek: acelesi olan sürücünün virajı düz kesmesi, yani 'köşeyi kesmek'. Yol kısalır ama kural çiğnenir; iş hayatında da vakit ya da para için adım atlamak demektir, hep olumsuzdur."
+    },
+    {
+      "lesson": 3,
+      "front": "bite the bullet",
+      "back": "(idiom) dişini sıkmak, göze almak 🦷",
+      "example_sentence": "Sooner or later you'll have to bite the bullet and tell him the truth.",
+      "mnemonic": "Türkçedeki 'dişini sıkmak' ile aynı beden hareketi: anestezi yokken askerlerin ameliyatta acıya dayanmak için kurşun ısırdığı anlatılır (Kipling 1891'de kullanmış). Ertelediğiniz tatsız işi nihayet yapmak demektir."
+    },
+    {
+      "lesson": 3,
+      "front": "in the long run",
+      "back": "(idiom) uzun vadede ⏳",
+      "example_sentence": "Cheaper materials save money now, but in the long run they'll cost you far more.",
+      "mnemonic": "Keynes'in ünlü sözü: 'In the long run we are all dead' — uzun vadede hepimiz ölüyüz. 'Run' burada sürecin uzunluğu; karşıtı 'in the short run / term'."
+    },
+    {
+      "lesson": 3,
+      "front": "off the record",
+      "back": "(idiom) kayda geçmeden, aramızda 🤫",
+      "example_sentence": "Off the record, the minister admitted the figures had been massaged before publication.",
+      "mnemonic": "Türkçedeki 'rekor' aynı kelimeden gelir: record = kayıt, rekor = kayda geçen en iyi derece. Gazetecilikte 'off the record' = bu söylediğim kayda geçmesin, yazma; karşıtı 'on the record'."
+    },
+    {
+      "lesson": 4,
+      "front": "on the fence",
+      "back": "(idiom) kararsız, iki arada 🤷",
+      "example_sentence": "I'm still on the fence about the offer; good money, but the commute's brutal.",
+      "mnemonic": "Görüntü net: iki bahçe arasındaki çitin (fence) üstünde oturup hangi tarafa atlayacağına karar verememek. 'Sit on the fence' de denir; karar verince 'come down on one side' olursunuz."
+    },
+    {
+      "lesson": 4,
+      "front": "take for granted",
+      "back": "(idiom) doğal saymak, kıymet bilmemek 🙄",
+      "example_sentence": "We took clean water for granted until the pipes froze for a fortnight last winter.",
+      "mnemonic": "'Granted' = verilmiş, bahşedilmiş: bir şeyi 'verilmiş sayarsınız', sorgulamadan hep orada kalacak sanırsınız. İki kullanım: 'take it for granted that...' (varsaymak) ve 'take someone for granted' (kıymetini bilmemek) — ikincisi ilişkilerin klasik şikâyeti."
+    },
+    {
+      "lesson": 4,
+      "front": "get away with",
+      "back": "(phrasal verb) yanına kâr kalmak 😏",
+      "example_sentence": "He's been fiddling his expenses for years and somehow always gets away with it.",
+      "mnemonic": "Türkçesi 'yanına kâr kalmak' ama özne ters döner: Türkçede suç 'yanına kâr kalır', İngilizcede kişi suçla birlikte 'kaçıp kurtulur'. Abartılı ama çok yaygın: 'He gets away with murder.'"
+    },
+    {
+      "lesson": 5,
+      "front": "live up to",
+      "back": "(phrasal verb) beklentiyi karşılamak 🎯",
+      "example_sentence": "The sequel never quite lived up to the hype, though the soundtrack was superb.",
+      "mnemonic": "Çıta yukarıda durur; ona kadar (up to) yükselerek yaşamak, o seviyeye erişmek demektir. Ortaklarını ezberleyin: live up to expectations / the hype / its name / one's reputation — çoğu zaman olumsuzda: 'didn't live up to'."
+    },
+    {
+      "lesson": 5,
+      "front": "look down on",
+      "back": "(phrasal verb) hor görmek, tepeden bakmak 😒",
+      "example_sentence": "She looks down on anyone who didn't go to university, which says more about her.",
+      "mnemonic": "Türkçedeki 'tepeden bakmak' ile birebir aynı görüntü: kendini yukarıda görüp başkasına aşağı doğru bakmak. Karşıtı 'look up to' (saygı duymak, örnek almak); ikisini çift olarak ezberleyin."
+    },
+    {
+      "lesson": 5,
+      "front": "run out of",
+      "back": "(phrasal verb) tükenmek, bitmek ⛽",
+      "example_sentence": "We're running out of time, so let's skip the formalities and get straight to it.",
+      "mnemonic": "Özne yer değiştirir: Türkçede 'sütümüz bitti', İngilizcede 'we ran out of milk' — biten şey değil, kişi öznedir. 'Of' düşünce biten şey özne olur: 'The milk has run out.'"
+    }
+  ],
+  "dialogue": {
+    "title": "Strictly Off the Record",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Off the record: the merger fell through because someone upstairs cut corners on the audit.",
+        "tr": "Aramızda kalsın: yukarıdan biri denetimde işi kıvırdı diye birleşme suya düştü."
+      },
+      {
+        "speaker": "Tom",
+        "en": "And they'll get away with it, presumably, while you put up with the fallout.",
+        "tr": "Bu da herhalde yanlarına kâr kalacak; sonuçlarına ise sen katlanacaksın."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Naturally. In the long run I'd rather run out of patience than out of principles.",
+        "tr": "Tabii. Uzun vadede sabrımın tükenmesi, ilkelerimin tükenmesinden iyidir."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Spoken like someone who's about to resign. Anyway, I'm still on the fence about Berlin.",
+        "tr": "İstifa etmek üzere biri gibi konuştun. Neyse, Berlin konusunda hâlâ kararsızım."
+      },
+      {
+        "speaker": "Elif",
+        "en": "You've been on that fence for months, Tom. Bite the bullet and take the job.",
+        "tr": "Aylardır o çitin üstünde oturuyorsun Tom. Dişini sık, işi kabul et."
+      },
+      {
+        "speaker": "Tom",
+        "en": "The editor came across as brilliant, but reputations rarely live up to themselves.",
+        "tr": "Editör harika bir izlenim bıraktı, ama şöhret nadiren kendi çıtasına yetişir."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Nobody does. But don't take the offer for granted; they rarely come round twice.",
+        "tr": "Kimse yetişmez. Ama teklifi garanti sanma; böyle şeyler nadiren ikinci kez kapıyı çalar."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Fine, I'll go. But if the Berliners look down on my German, I'm blaming you.",
+        "tr": "Tamam, gidiyorum. Ama Berlinliler Almancamı hor görürse suçu sana atarım."
+      }
+    ]
+  }
+}

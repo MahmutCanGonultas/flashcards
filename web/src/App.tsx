@@ -6,6 +6,7 @@ import DeckDetail from "./pages/DeckDetail";
 import Study from "./pages/Study";
 import Dialogue from "./pages/Dialogue";
 import UnitTest from "./pages/UnitTest";
+import Placement from "./pages/Placement";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { getToken } from "./lib/api";
 
@@ -56,6 +57,14 @@ function App() {
         element={
           <ProtectedRoute>
             <UnitTest />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/decks/:deckId/placement"
+        element={
+          <ProtectedRoute>
+            <Placement />
           </ProtectedRoute>
         }
       />

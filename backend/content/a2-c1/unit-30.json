@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 30,
+    "level": "B1",
+    "title": "Environment & Travel"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "climate",
+      "back": "(noun) iklim 🌍",
+      "example_sentence": "The climate here has become much hotter in recent years.",
+      "mnemonic": "Türkçedeki 'klima' ile aynı kökten gelir: Yunanca 'klima' (eğim, bölge). Klima odanın havasını ayarlar; 'climate' ise bir bölgenin yıllar içindeki ortalama havasıdır, günlük 'weather' ile karıştırma."
+    },
+    {
+      "lesson": 1,
+      "front": "disaster",
+      "back": "(noun) felaket, afet 🌪️",
+      "example_sentence": "If the river floods again, it will be a disaster.",
+      "mnemonic": "İtalyanca 'disastro' = 'dis-' (kötü) + 'astro' (yıldız): eskiden felaketler kötü bir yıldızın etkisine bağlanırdı. 'Astroloji' ve 'astronot'taki 'astro' aynı köktür; kötü yıldız, felaket."
+    },
+    {
+      "lesson": 1,
+      "front": "earthquake",
+      "back": "(noun) deprem 🏚️",
+      "example_sentence": "We felt a small earthquake last night, but nothing broke.",
+      "mnemonic": "'earth' (yer) + 'quake' (sarsılmak): Türkçedeki 'yer sarsıntısı' ile birebir aynı mantık. 'Quake' tek başına da 'titremek, sarsılmak' demektir."
+    },
+    {
+      "lesson": 2,
+      "front": "drought",
+      "back": "(noun) kuraklık 🏜️",
+      "example_sentence": "After three months without rain, the drought has ruined the crops.",
+      "mnemonic": "'dry' (kuru) ile aynı Eski İngilizce kökten gelir: kuruluk hali. 'gh' harfleri okunmaz, 'draut' diye söylenir."
+    },
+    {
+      "lesson": 2,
+      "front": "temperature",
+      "back": "(noun) sıcaklık, ateş 🌡️",
+      "example_sentence": "The temperature could drop below zero tonight, so dress warmly.",
+      "mnemonic": "Latince 'temperare' (dengelemek, ayarlamak) kökünden; Türkçede tıpta 'temperatür' diye de geçer. 'Have a temperature' = ateşi olmak: 'She has a temperature' derken hasta olduğunu söylersin."
+    },
+    {
+      "lesson": 2,
+      "front": "destination",
+      "back": "(noun) varış noktası, gidilecek yer 📍",
+      "example_sentence": "We should reach our destination before it gets dark.",
+      "mnemonic": "Latince 'destinare' (belirlemek, tayin etmek) kökünden; 'destiny' (kader) ile kardeştir. Kader gibi önceden belirlenmiş varış yeri; havalimanı ekranlarındaki 'Destination' sütununu hatırla."
+    },
+    {
+      "lesson": 3,
+      "front": "accommodation",
+      "back": "(noun) konaklama, kalacak yer 🏨",
+      "example_sentence": "Have you found any accommodation near the university yet?",
+      "mnemonic": "Latince 'commodus' (uygun, rahat) kökünden; Türkçedeki 'komodin' de aynı köktendir. Yazımda iki c, iki m: İngilizcede en sık yanlış yazılan kelimelerden biridir."
+    },
+    {
+      "lesson": 3,
+      "front": "reservation",
+      "back": "(noun) rezervasyon 📅",
+      "example_sentence": "I've made a reservation for two nights at the hostel.",
+      "mnemonic": "Türkçedeki 'rezervasyon' ve 'rezerv' doğrudan aynı kelime (Fransızca 'réservation'). Latince 'reservare' = geride tutmak, ayırmak; 'make a reservation' ile 'book' aynı işi görür."
+    },
+    {
+      "lesson": 3,
+      "front": "sightseeing",
+      "back": "(noun) turistik gezi, gezip görme 📸",
+      "example_sentence": "If it stops raining, we could go sightseeing this afternoon.",
+      "mnemonic": "'sight' (görülecek yer, manzara) + 'seeing' (görme) = görülecek yerleri görmek. Sayılamaz bir isimdir: 'go sightseeing' denir, 'do a sightseeing' denmez."
+    },
+    {
+      "lesson": 4,
+      "front": "souvenir",
+      "back": "(noun) hatıra, hediyelik eşya 🎁",
+      "example_sentence": "She bought a tiny ceramic plate as a souvenir from Lisbon.",
+      "mnemonic": "Fransızca 'se souvenir' = hatırlamak; Türkçede de 'suvenir' olarak kullanılır. Kökü Latince 'subvenire' (akla gelmek): 'hatıra'nın tam karşılığı."
+    },
+    {
+      "lesson": 4,
+      "front": "culture",
+      "back": "(noun) kültür 🎭",
+      "example_sentence": "Living abroad has taught me a lot about Japanese culture.",
+      "mnemonic": "Türkçedeki 'kültür' aynı kelime (Fransızca 'culture'). Latince 'colere' = toprağı işlemek, yetiştirmek; 'agriculture' (tarım) ile aynı kök, kültür de zihnin işlenmesi."
+    },
+    {
+      "lesson": 4,
+      "front": "local",
+      "back": "(adjective) yerel, yöresel 🏘️",
+      "example_sentence": "The local market is cheaper than the big supermarket.",
+      "mnemonic": "Türkçedeki 'lokal' (dernek lokali) ve 'lokasyon' aynı Latince 'locus' (yer) kökünden. İsim olarak da kullanılır: 'the locals' = oranın yerlileri."
+    },
+    {
+      "lesson": 5,
+      "front": "guide",
+      "back": "(noun) rehber, kılavuz 🚩",
+      "example_sentence": "Our guide has lived in these mountains all his life.",
+      "mnemonic": "'Otostopçunun Galaksi Rehberi'nin orijinal adı 'The Hitchhiker's Guide to the Galaxy': 'guide' hem kitap-rehber hem insan-rehberdir. Fiil olarak da kullanılır ('He guided us out'), okunuşu 'gayd'."
+    },
+    {
+      "lesson": 5,
+      "front": "adventure",
+      "back": "(noun) macera 🧗",
+      "example_sentence": "Backpacking through South America was the biggest adventure of my life.",
+      "mnemonic": "Latince 'advenire' (başa gelmek) kökünden: insanın başına gelecek olan şey. Türkçedeki 'avantüriye' (maceraperest) aynı köktendir; 'Adventure Time' çizgi filmini de hatırla."
+    },
+    {
+      "lesson": 5,
+      "front": "explore",
+      "back": "(verb) keşfetmek 🧭",
+      "example_sentence": "We rented bikes so we could explore the island properly.",
+      "mnemonic": "Internet Explorer'ı hatırla: web'i 'keşfe çıkan' tarayıcı; 'explorer' (kâşif) da aynı Latince 'explorare' (araştırmak) kökünden. 'Discover' bilinmeyeni bulmaktır, 'explore' ise bir yeri dolaşıp incelemek."
+    }
+  ],
+  "dialogue": {
+    "title": "Change of Destination",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "Elif, have you seen the news about the earthquake?",
+        "tr": "Elif, depremle ilgili haberleri gördün mü?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Yes, it's a disaster. Our destination was only an hour away.",
+        "tr": "Evet, tam bir felaket. Gideceğimiz yer oraya sadece bir saat uzaklıktaydı."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Should we cancel the accommodation? We already made the reservation.",
+        "tr": "Konaklamayı iptal edelim mi? Rezervasyonu çoktan yapmıştık."
+      },
+      {
+        "speaker": "Elif",
+        "en": "I'll cancel it tonight. Let's explore somewhere else, maybe the coast?",
+        "tr": "Bu gece iptal ederim. Başka bir yeri keşfedelim, mesela sahil?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "There's a drought on the coast, the temperature's over forty.",
+        "tr": "Sahilde kuraklık var, sıcaklık kırkın üzerinde."
+      },
+      {
+        "speaker": "Elif",
+        "en": "The mountains, then. Cooler climate, and I know a local guide.",
+        "tr": "O zaman dağlar. İklimi daha serin, üstelik yerel bir rehber tanıyorum."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Perfect. Less sightseeing, more adventure. I'll pack my hiking boots.",
+        "tr": "Harika. Daha az turistik gezi, daha çok macera. Yürüyüş botlarımı alıyorum."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Deal. And no souvenir shopping, you spent enough last time.",
+        "tr": "Anlaştık. Hediyelik eşya alışverişi de yok; geçen sefer yeterince harcadın."
+      }
+    ]
+  }
+}

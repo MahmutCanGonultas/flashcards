@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 44,
+    "level": "C1",
+    "title": "Abstract Nouns"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "ambiguity",
+      "back": "(noun) belirsizlik, muğlaklık 🌫️",
+      "example_sentence": "The contract's ambiguity over who pays for repairs kept both lawyers busy for months.",
+      "mnemonic": "Latince ambi- = 'her iki' (Türkçedeki 'ambivalan' ve 'ambidekstr' ile aynı ön ek); ambiguus 'iki yöne birden giden' demektir. Ambiguity, bir sözün iki anlama birden çekilebilmesidir — 'deliberate ambiguity' politikacıların favorisi."
+    },
+    {
+      "lesson": 1,
+      "front": "paradox",
+      "back": "(noun) paradoks, çelişki 🔄",
+      "example_sentence": "It's a strange paradox that the busiest people are often the ones who help most.",
+      "mnemonic": "Türkçe 'paradoks' aynı kelime: Yunanca para- (karşı, ötesinde) + doxa (kanı, görüş). 'Ortodoks' (doğru kanı) ile aynı doxa kökü — paradoks, yerleşik kanıya aykırı görünen ama düşündüren şeydir."
+    },
+    {
+      "lesson": 1,
+      "front": "nuance",
+      "back": "(noun) nüans, ince ayrım 🎨",
+      "example_sentence": "Her translation captured every nuance of the original, right down to the jokes.",
+      "mnemonic": "Türkçe 'nüans' doğrudan Fransızca nuance'tan; kökü Latince nubes (bulut) — bulutun ton ton değişen gölgesi gibi ince fark. İngilizcede en sık 'capture / miss the nuance' ve sıfat hâli 'nuanced' (dengeli, incelikli) kullanılır."
+    },
+    {
+      "lesson": 2,
+      "front": "discrepancy",
+      "back": "(noun) tutarsızlık, uyuşmazlık 🔍",
+      "example_sentence": "The auditors flagged a discrepancy between the invoices and what actually left the warehouse.",
+      "mnemonic": "Latince discrepare = 'ayrı ses çıkarmak' (dis- ayrı + crepare çatırdamak); iki kaynağın uyumsuz sesi. Türkçede doğrudan akrabası yok; kalıbı ezberle: 'a discrepancy between the figures / the two accounts'."
+    },
+    {
+      "lesson": 2,
+      "front": "implication",
+      "back": "(noun) ima, olası sonuç 💭",
+      "example_sentence": "Nobody had thought through the implications of letting staff work from anywhere.",
+      "mnemonic": "Latince implicare = 'içine katlamak' (in- + plicare katlamak); 'komplike' ve 'aplike' ile aynı kök. Söylenenin içine katlanmış, açıkça dile getirilmemiş anlam ya da sonuç: 'the implications of this decision'."
+    },
+    {
+      "lesson": 2,
+      "front": "integrity",
+      "back": "(noun) dürüstlük, bütünlük 🛡️",
+      "example_sentence": "She resigned rather than sign the report, which tells you everything about her integrity.",
+      "mnemonic": "'Entegre', 'entegrasyon' ve matematikteki 'integral' ile aynı Latince kök: integer = bütün, dokunulmamış. Integrity, kişiliğin bölünmemiş bütünlüğüdür — kimse bakmıyorken de aynı ilkelere bağlı kalmak."
+    },
+    {
+      "lesson": 3,
+      "front": "autonomy",
+      "back": "(noun) özerklik, bağımsızlık 🔓",
+      "example_sentence": "The new manager gave the team real autonomy, and the results spoke for themselves.",
+      "mnemonic": "Türkçedeki 'otonom' ve 'otonomi' aynı kelime: Yunanca autos (kendi) + nomos (yasa); 'otomatik'teki oto- ile 'astronomi'deki -nomi'nin birleşimi. Kendi yasasını kendi koyan: 'regional autonomy', 'give the team autonomy'."
+    },
+    {
+      "lesson": 3,
+      "front": "legitimacy",
+      "back": "(noun) meşruiyet ⚖️",
+      "example_sentence": "Turnout was so low that the opposition immediately questioned the legitimacy of the result.",
+      "mnemonic": "Latince lex/legis = yasa; günlük Türkçedeki 'legal/illegal' ile aynı kök. Ama legitimacy yasallıktan fazlasıdır: halkın kabulü — 'question the legitimacy of the election' en tipik kullanım."
+    },
+    {
+      "lesson": 3,
+      "front": "notion",
+      "back": "(noun) fikir, kavram 💡",
+      "example_sentence": "I have a vague notion of what she meant, but I wouldn't swear to it.",
+      "mnemonic": "Latince noscere = bilmek (İngilizce 'know', 'notice' ve 'notify' ile aynı aile). Notion, henüz netleşmemiş, kabaca oluşmuş bir fikirdir: 'a vague notion', 'the notion that...', 'I have no notion' (hiç fikrim yok)."
+    },
+    {
+      "lesson": 4,
+      "front": "premise",
+      "back": "(noun) öncül, varsayım 🧱",
+      "example_sentence": "The whole plan rests on the premise that interest rates will stay low.",
+      "mnemonic": "Latince prae- (önce) + mittere (göndermek) = 'önden gönderilen' önerme; 'misyon' ve 'mesaj' ile aynı 'gönderme' kökü. Sonuçtan önce doğru kabul edilen dayanak: 'the argument rests on the premise that...'."
+    },
+    {
+      "lesson": 4,
+      "front": "consensus",
+      "back": "(noun) uzlaşı, fikir birliği 🤝",
+      "example_sentence": "After three hours, the committee reached a consensus that nobody was entirely happy with.",
+      "mnemonic": "Türkçe siyaset dilinde de 'konsensüs' denir: Latince con- (birlikte) + sentire (hissetmek, düşünmek); 'santimantal' ve 'sansasyon' ile aynı kök. Yazımı 'census'la karıştırma: ortada 'sens' var — consensus."
+    },
+    {
+      "lesson": 4,
+      "front": "dilemma",
+      "back": "(noun) ikilem, çıkmaz 🤷",
+      "example_sentence": "Her dilemma was simple: report her friend, or keep quiet and share the blame.",
+      "mnemonic": "Yunanca di- (iki) + lemma (önerme): Türkçe 'ikilem' bunun birebir çevirisidir. Kalıp: 'face / be in a dilemma' — iki kötü seçenek arasında sıkışmak; tek başına zor bir karar dilemma sayılmaz."
+    },
+    {
+      "lesson": 5,
+      "front": "hierarchy",
+      "back": "(noun) hiyerarşi 🪜",
+      "example_sentence": "In that firm the hierarchy was so rigid that juniors never emailed a partner directly.",
+      "mnemonic": "Türkçe 'hiyerarşi' aynı kelime: Yunanca hieros (kutsal) + arkhein (yönetmek); aslen kilise rütbelerini anlatırdı. 'Monarşi' ve 'anarşi'deki -arşi ile aynı kök."
+    },
+    {
+      "lesson": 5,
+      "front": "ideology",
+      "back": "(noun) ideoloji 🚩",
+      "example_sentence": "He dressed the decision up as pragmatism, but it was ideology through and through.",
+      "mnemonic": "Türkçe 'ideoloji' birebir aynı: Yunanca idea (fikir) + logos (söz, bilim). İngilizcede çoğu zaman hafif küçümseyici tınlar: 'driven by ideology', 'ideology over evidence' — kanıta değil inanca dayanmak."
+    },
+    {
+      "lesson": 5,
+      "front": "paradigm",
+      "back": "(noun) paradigma, model 🧭",
+      "example_sentence": "The lab's discovery forced a paradigm shift; textbooks written the year before were suddenly wrong.",
+      "mnemonic": "Türkçe 'paradigma' aynen kullanılır: Yunanca para- (yanında) + deiknynai (göstermek) = yan yana konulan örnek, model. 'Paradigm shift' kalıbını Thomas Kuhn 1962'de bilim tarihinden popülerleştirdi; sondaki g okunmaz: /pa-ra-daym/."
+    }
+  ],
+  "dialogue": {
+    "title": "No Bosses, Allegedly",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "So my company has officially abolished hierarchy. We're all 'colleagues' now.",
+        "tr": "Şirketim hiyerarşiyi resmen kaldırdı. Artık hepimiz 'meslektaş'ız."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Let me guess: the premise is that nobody needs a boss anymore?",
+        "tr": "Tahmin edeyim: çıkış noktası, artık kimsenin patrona ihtiyacı olmadığı mı?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Something like that. Full autonomy for everyone, decisions by consensus, no titles.",
+        "tr": "Aşağı yukarı. Herkese tam özerklik, kararlar uzlaşıyla, unvan yok."
+      },
+      {
+        "speaker": "Tom",
+        "en": "And who decided this? I sense a paradox coming.",
+        "tr": "Peki buna kim karar verdi? Bir paradoks kokusu alıyorum."
+      },
+      {
+        "speaker": "Elif",
+        "en": "The CEO. Who, to be fair, is now called 'chief colleague'.",
+        "tr": "CEO. Hakkını yiyemem, artık kendisine 'baş meslektaş' deniyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "There's a slight discrepancy between the ideology and the payroll, I suspect.",
+        "tr": "İdeolojiyle bordro arasında ufak bir tutarsızlık var gibi, sanki."
+      },
+      {
+        "speaker": "Elif",
+        "en": "The salaries haven't changed, no. But the ambiguity has been very liberating for him.",
+        "tr": "Maaşlar değişmedi, hayır. Ama bu belirsizlik onun için çok özgürleştirici oldu."
+      },
+      {
+        "speaker": "Tom",
+        "en": "So the hierarchy survives, minus the honesty. Call it a paradigm shift.",
+        "tr": "Yani hiyerarşi yerinde duruyor, sadece dürüstlüğü gitti. Adına paradigma değişimi diyelim."
+      }
+    ]
+  }
+}

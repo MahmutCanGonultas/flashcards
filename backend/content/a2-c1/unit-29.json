@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 29,
+    "level": "B1",
+    "title": "Money & Consumer"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "income",
+      "back": "(noun) gelir 💰",
+      "example_sentence": "My income has doubled since I started the new job.",
+      "mnemonic": "'In' + 'come': içeri gelen para. Türkçe 'gelir' de 'gelmek'ten türer; iki dil aynı mantığı kullanıyor, zıttı ise 'expenses' (giderler)."
+    },
+    {
+      "lesson": 1,
+      "front": "tax",
+      "back": "(noun) vergi 🏛️",
+      "example_sentence": "If you earn more, you'll pay more tax.",
+      "mnemonic": "Havalimanındaki 'Tax Free' mağazalarını hatırla: vergisiz. Kökü Latince 'taxa' (ücret); 'taksi' bile 'taximeter' (ücret sayacı) kelimesinin kısaltmasıdır."
+    },
+    {
+      "lesson": 1,
+      "front": "loan",
+      "back": "(noun) kredi, borç para 🏦",
+      "example_sentence": "She took out a loan to buy her first car.",
+      "mnemonic": "Bankadan kredi çekmek: 'take out a loan'. 'Loan' isimdir; fiili 'lend' (ödünç vermek) ile aynı Germen kökten gelir, ikisini karıştırma."
+    },
+    {
+      "lesson": 2,
+      "front": "debt",
+      "back": "(noun) borç 💳",
+      "example_sentence": "He's finally paid off all his credit card debt.",
+      "mnemonic": "'b' harfi sessizdir: /det/ diye okunur. Latince 'debitum' (borçlu olunan) kökünden; banka kartlarındaki 'debit' yazısı da aynı kök, hesaptan düşülen para."
+    },
+    {
+      "lesson": 2,
+      "front": "savings",
+      "back": "(noun) birikim, tasarruf 🐖",
+      "example_sentence": "If I had more savings, I'd quit this job tomorrow.",
+      "mnemonic": "Bilgisayardaki 'Save' tuşu ne yapıyorsa para için de aynı: kaybolmasın diye kenara koymak. Bu anlamda hep çoğul kullanılır: 'my savings', 'savings account'."
+    },
+    {
+      "lesson": 2,
+      "front": "invest",
+      "back": "(verb) yatırım yapmak 📈",
+      "example_sentence": "He invested his savings in a friend's small café.",
+      "mnemonic": "Latince 'vestis' (giysi) kökünden, 'vestiyer' ile akraba: parayı bir işe 'giydirmek'. Kalıp: 'invest in' + yatırım yaptığın şey; ismi 'investment'."
+    },
+    {
+      "lesson": 3,
+      "front": "insurance",
+      "back": "(noun) sigorta 🛡️",
+      "example_sentence": "Luckily, my travel insurance covered the hospital bill.",
+      "mnemonic": "Türkçe 'sigorta' İtalyanca 'sicurtà'dan, o da Latince 'securus' (güvende) kökünden; İngilizce 'sure' ve 'insurance' aynı kökün torunları. Ortadaki 'sure'ü gör: güvende olmanın bedeli."
+    },
+    {
+      "lesson": 3,
+      "front": "bill",
+      "back": "(noun) fatura, hesap 🧾",
+      "example_sentence": "The electricity bill was higher than last month's.",
+      "mnemonic": "Türkçe 'bilet' (Fransızca 'billet') ile aynı Orta Çağ Latincesi 'bulla' (mühürlü belge) kökünden: ikisi de küçük resmi kâğıt. Restoranda 'the bill, please' (ABD'de 'check')."
+    },
+    {
+      "lesson": 3,
+      "front": "refund",
+      "back": "(noun) para iadesi 💸",
+      "example_sentence": "The shop gave me a full refund without any questions.",
+      "mnemonic": "'Re-' (geri) + 'fund' (fon, para) diye okumak işe yarar: parayı geri vermek; Türkçe 'fon' da 'fund' ile aynı Latince kökten. Mağazada kalıp: 'Can I get a refund?'"
+    },
+    {
+      "lesson": 4,
+      "front": "bargain",
+      "back": "(noun) kelepir 🏷️",
+      "example_sentence": "These boots were a real bargain in the January sale.",
+      "mnemonic": "İsim olarak 'a bargain' = kelepir ('It's a bargain!'), fiil olarak 'bargain with the seller' = pazarlık etmek. Mağazalardaki 'bargain bin' (indirim sepeti) yazısını hatırla."
+    },
+    {
+      "lesson": 4,
+      "front": "wealthy",
+      "back": "(adjective) zengin, varlıklı 💎",
+      "example_sentence": "He became wealthy after selling his software company.",
+      "mnemonic": "'Wealth' (servet) 'well' (iyi) ile akrabadır: hâli vakti iyi olmak. 'Commonwealth' (İngiliz Milletler Topluluğu) adındaki 'wealth' aynı kelime; 'rich'ten daha resmi bir sıfattır."
+    },
+    {
+      "lesson": 4,
+      "front": "poverty",
+      "back": "(noun) yoksulluk, fakirlik",
+      "example_sentence": "The new programme has lifted thousands out of poverty.",
+      "mnemonic": "'Poor' sıfatının ismi: 'poor → poverty', tıpkı 'proud → pride' gibi; 'poorness' denmez. Haberlerdeki 'poverty line' = yoksulluk sınırı."
+    },
+    {
+      "lesson": 5,
+      "front": "charity",
+      "back": "(noun) hayır kurumu, hayırseverlik 🤝",
+      "example_sentence": "All the money from the concert went to charity.",
+      "mnemonic": "Latince 'caritas' (sevgi, şefkat) kökünden; İngiltere'deki 'charity shop'lar (ikinci el hayır dükkânları) bu kelimeyle anılır. Hem kurumun hem eylemin adı: 'give to charity', 'a local charity'."
+    },
+    {
+      "lesson": 5,
+      "front": "donate",
+      "back": "(verb) bağışlamak 🎁",
+      "example_sentence": "He donates blood every three months at the hospital.",
+      "mnemonic": "Türkçe 'donör' (kan/organ donörü) ile aynı Latince 'donare' (vermek) kökünden: donör bağışlayan kişi, 'donate' bağışlamak. İsmi 'donation'."
+    },
+    {
+      "lesson": 5,
+      "front": "waste",
+      "back": "(verb) israf etmek, boşa harcamak 🗑️",
+      "example_sentence": "Don't waste your money on things you never use.",
+      "mnemonic": "Türkiye'deki 'Sıfır Atık' projesinin İngilizcesi 'Zero Waste': isim olarak atık/israf, fiil olarak israf etmek. En sık kalıp: 'a waste of time/money'."
+    }
+  ],
+  "dialogue": {
+    "title": "Broke Until Payday",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "My phone bill came today. Sixty pounds! I'm broke.",
+        "tr": "Bugün telefon faturası geldi. Altmış pound! Beş parasızım."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Again? You said your student loan arrived last week.",
+        "tr": "Yine mi? Öğrenci kredin geçen hafta yattı demiştin."
+      },
+      {
+        "speaker": "Tom",
+        "en": "It did, but half went straight to my credit card debt.",
+        "tr": "Yattı ama yarısı doğrudan kredi kartı borcuma gitti."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Tom, you need savings, not another bargain hoodie.",
+        "tr": "Tom, sana birikim lazım, bir kelepir sweatshirt daha değil."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Fair. But my café income barely covers the rent.",
+        "tr": "Haklısın. Ama kafeden kazandığım para ancak kiraya yetiyor."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Then stop wasting money on takeaways every night.",
+        "tr": "O zaman her akşam paket yemeğe para saçmayı bırak."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Okay. Good news: I got a refund for those headphones.",
+        "tr": "Tamam. İyi haber: o kulaklıkların parasını iade aldım."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Great. Savings first. And donate that hoodie to charity.",
+        "tr": "Harika. Önce birikim. O sweatshirti de hayır kurumuna bağışla."
+      }
+    ]
+  }
+}

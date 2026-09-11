@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 49,
+    "level": "C1",
+    "title": "Language & Rhetoric"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "connotation",
+      "back": "(noun) çağrışım, yan anlam 💭",
+      "example_sentence": "'Cheap' and 'affordable' mean the same thing, but the connotations are worlds apart.",
+      "mnemonic": "Türkçedeki 'not' (Fransızca note, Latince notare 'işaretlemek') aynı kökten; con- 'birlikte' ekiyle connotation, bir kelimenin sözlük anlamının yanına iliştirilmiş ek nottur. Dilbilimde 'konotasyon' diye de geçer."
+    },
+    {
+      "lesson": 1,
+      "front": "euphemism",
+      "back": "(noun) örtmece, hüsnütabir 🤫",
+      "example_sentence": "'Let go' is just a euphemism for fired, and everyone in the room knew it.",
+      "mnemonic": "Hüsnütabir Arapça hüsn 'güzellik' + tabir 'ifade'; euphemism de Yunanca eu 'iyi' (öfori'deki gibi) + phēmē 'söz'. İki dil aynı fikri aynı parçalarla kurmuş: kötü şeyi güzel söylemek."
+    },
+    {
+      "lesson": 1,
+      "front": "hyperbole",
+      "back": "(noun) abartı, mübalağa 📣",
+      "example_sentence": "Saying you 'literally died' of embarrassment is hyperbole, unless you're now a ghost.",
+      "mnemonic": "Türkçedeki 'hiper' (hiperaktif, hipermarket) öneki aynı: Yunanca hyper 'aşırı' + ballein 'atmak', yani sözü hedefin ötesine fırlatmak. Telaffuzu dört hecelidir, hay-PÖR-bı-li; 'hayperbol' değil."
+    },
+    {
+      "lesson": 2,
+      "front": "irony",
+      "back": "(noun) ironi 🙃",
+      "example_sentence": "There's a certain irony in a punctuality workshop that starts twenty minutes late.",
+      "mnemonic": "Türkçedeki 'ironi' aynı kelime; Yunanca eirōneia 'bilmezden gelme', Sokrates'in saf sorularla karşısındakini köşeye sıkıştırma yöntemi. Dikkat: her tesadüf ironi değildir; Alanis Morissette'in 'Ironic' şarkısındaki örneklerin çoğunun aslında ironi değil talihsizlik olduğu yıllardır alay konusudur."
+    },
+    {
+      "lesson": 2,
+      "front": "metaphor",
+      "back": "(noun) metafor, eğretileme 🌉",
+      "example_sentence": "Calling the office 'a zoo' is a metaphor my manager didn't appreciate.",
+      "mnemonic": "Türkçedeki 'metafor' aynı; Yunanca meta 'öte' + pherein 'taşımak', anlamı bir şeyden ötekine taşır. Bugün Yunanistan'da nakliye kamyonlarının üstünde 'ΜΕΤΑΦΟΡΕΣ' yazar; metafor da anlam taşımacılığıdır."
+    },
+    {
+      "lesson": 2,
+      "front": "rhetoric",
+      "back": "(noun) retorik, belagat 🎙️",
+      "example_sentence": "Strip away the rhetoric and the speech promised nothing at all.",
+      "mnemonic": "Türkçedeki 'retorik' aynı kelime (Yunanca rhētōr 'hatip'); Aristoteles'in Retorik'i de bu. Günümüz İngilizcesinde çoğu zaman küçümseyicidir: 'empty rhetoric' boş laf, 'just rhetoric' lafta kalan söz demektir."
+    },
+    {
+      "lesson": 3,
+      "front": "satire",
+      "back": "(noun) hiciv, taşlama 🎭",
+      "example_sentence": "The show is satire, though half its viewers seem to think it's the news.",
+      "mnemonic": "Türkçede 'satirik' (satirik dergi) diye geçer. Kökü Latince satura, 'karışık meyve tabağı': her şeyden biraz alıp alaya karan tür. Yunan mitolojisindeki satirle (satyr) ilgisi yoktur, benzerlik tesadüftür."
+    },
+    {
+      "lesson": 3,
+      "front": "anecdote",
+      "back": "(noun) anekdot, küçük hikâye 💬",
+      "example_sentence": "Every one of his speeches opens with the same anecdote about his grandmother's bakery.",
+      "mnemonic": "Türkçedeki 'anekdot' aynı; Yunanca an- 'değil' + ekdotos 'yayımlanmış', yani 'basılmamış şeyler'. Bizanslı tarihçi Prokopios'un İstanbul sarayının dedikodularını topladığı gizli kitabının adı Anekdota'ydı; 'anecdotal evidence' de işte böyle kulaktan dolma kanıttır."
+    },
+    {
+      "lesson": 3,
+      "front": "cliché",
+      "back": "(noun) klişe, basmakalıp 🥱",
+      "example_sentence": "His cover letter was one cliché after another: 'team player', 'passionate', 'think outside the box'.",
+      "mnemonic": "Türkçedeki 'klişe' aynı kelime; Fransız matbaacılarının aynı sayfayı tekrar tekrar basmak için döktükleri metal kalıbın adıydı. 'Basmakalıp' da birebir aynı imgedir: baskı kalıbından çıkmış, hep aynı söz."
+    },
+    {
+      "lesson": 4,
+      "front": "jargon",
+      "back": "(noun) jargon, meslek dili 🤓",
+      "example_sentence": "Once you cut the jargon, the whole strategy fits on a napkin.",
+      "mnemonic": "Türkçedeki 'jargon' aynı; Eski Fransızcada jargon 'kuş cıvıltısı, anlaşılmaz gevezelik' demekti. Meslek dili de dışarıdakine tam öyle gelir: bizim 'kuş dili' gibi, yalnızca içeridekiler anlar."
+    },
+    {
+      "lesson": 4,
+      "front": "verbose",
+      "back": "(adjective) gereksiz uzun, lafı uzatan 🗯️",
+      "example_sentence": "The report is so verbose that the one useful number is buried on page forty.",
+      "mnemonic": "Latince verbum 'kelime' + -ose 'dolu': kelime dolu. Bilgisayarda bir komuta '--verbose' bayrağı eklemek onu her ayrıntıyı dökmeye zorlar; verbose insan da aynısını yapar, ama siz istemeden."
+    },
+    {
+      "lesson": 4,
+      "front": "succinct",
+      "back": "(adjective) kısa ve öz, özlü ✂️",
+      "example_sentence": "Her reply was succinct: 'No, and don't ask again.'",
+      "mnemonic": "Latince sub- 'altına' + cingere 'kuşakla bağlamak': Romalı, uzun tuniğini kemerle toplayıp yürüyüşünü hızlandırırdı; succinct söz de kuşakla derlenmiş, sarkmayan sözdür. Telaffuz: sık-SİNKT."
+    },
+    {
+      "lesson": 5,
+      "front": "lucid",
+      "back": "(adjective) berrak, anlaşılır 💡",
+      "example_sentence": "Even at ninety, my grandfather remained lucid enough to correct my grammar.",
+      "mnemonic": "Latince lux 'ışık' (Lucifer 'ışık taşıyan'; 'lüsid rüya', bilincin açık olduğu rüya). Lucid anlatım üstüne ışık tutulmuş gibi berraktır; yaşlı biri için söylenince 'aklı yerinde, bilinci açık' demektir."
+    },
+    {
+      "lesson": 5,
+      "front": "pertinent",
+      "back": "(adjective) konuyla ilgili, yerinde 🎯",
+      "example_sentence": "That's a pertinent question, and one the minister has been dodging for weeks.",
+      "mnemonic": "Latince pertinere 'ait olmak, ilgili olmak' (pertain to = ile ilgili olmak). Tuzak: impertinent 'ilgisiz' değil, 'küstah, haddini bilmez' demektir; konuyla ilgisi olmayan lafın yakışıksız sayılmasından gelir."
+    },
+    {
+      "lesson": 5,
+      "front": "tantamount",
+      "back": "(adjective) -e denk, eşdeğer ⚖️",
+      "example_sentence": "Refusing to answer at this point is tantamount to admitting you did it.",
+      "mnemonic": "İçinde 'amount' saklı: Eski Fransızca tant amunter 'aynı tutara varmak'. Hep 'tantamount to' + isim şeklinde kurulur ve neredeyse hep kötü bir şeye denk gelir: tantamount to treason, to theft, to an admission."
+    }
+  ],
+  "dialogue": {
+    "title": "Restructuring the Truth",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "HR wants me to announce 'workforce optimisation' on Monday. Read this draft, please.",
+        "tr": "İK pazartesi günü 'iş gücü optimizasyonu' duyurmamı istiyor. Şu taslağı bir okusana."
+      },
+      {
+        "speaker": "Tom",
+        "en": "'Workforce optimisation' is a euphemism, and not even a subtle one. Everyone hears 'layoffs'.",
+        "tr": "'İş gücü optimizasyonu' bir örtmece, üstelik pek de incesinden değil. Herkes 'işten çıkarma' diye okuyor zaten."
+      },
+      {
+        "speaker": "Elif",
+        "en": "I know. But 'layoffs' has a connotation legal wants to avoid in writing.",
+        "tr": "Biliyorum. Ama 'işten çıkarma'nın hukukçuların yazıya geçmesini istemediği bir çağrışımı var."
+      },
+      {
+        "speaker": "Tom",
+        "en": "So you bury it in jargon? 'Synergies', 'going forward'... every cliché in the book.",
+        "tr": "Sen de üstünü jargonla mı örtüyorsun? 'Sinerji', 'ileriye dönük'... kitaptaki bütün klişeler burada."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Says the journalist who called a budget cut 'a bloodbath' last week. That's hyperbole.",
+        "tr": "Bunu, geçen hafta bütçe kesintisine 'kan gölü' diyen gazeteci söylüyor. Onun adı da abartı."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Fair. But 'bloodbath' is at least an honest metaphor. 'Optimisation' says nothing.",
+        "tr": "Haklısın. Ama 'kan gölü' hiç değilse dürüst bir metafor. 'Optimizasyon' hiçbir şey söylemiyor."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Fine. Make it succinct, then. One paragraph, no rhetoric, and nothing tantamount to a confession.",
+        "tr": "Peki. Kısa ve öz yaz o zaman. Tek paragraf, retorik yok, itiraf sayılacak bir şey de yok."
+      },
+      {
+        "speaker": "Tom",
+        "en": "'Forty jobs are going. Here's the support.' Done. The irony is, that's kinder.",
+        "tr": "'Kırk kişi işten çıkarılıyor. Destek şöyle.' Bitti. İşin ironisi, bu hali daha insaflı."
+      }
+    ]
+  }
+}

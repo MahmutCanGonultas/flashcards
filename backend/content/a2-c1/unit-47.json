@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 47,
+    "level": "C1",
+    "title": "Economy & Power"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "austerity",
+      "back": "(noun) kemer sıkma ✂️",
+      "example_sentence": "After the bailout, Greece endured a decade of austerity that hollowed out its public services.",
+      "mnemonic": "Latince austerus 'sert, çetin' demek; 'austere' bir insan sade ve katıdır, 'austerity' ise devletin kemeri sıktığı o katı dönem. 2010'larda Yunanistan haberlerindeki 'austerity measures' = 'kemer sıkma önlemleri' diye aklınızda kalsın."
+    },
+    {
+      "lesson": 1,
+      "front": "subsidy",
+      "back": "(noun) sübvansiyon, devlet desteği 🏛️",
+      "example_sentence": "Farmers here would go under within a year if the fuel subsidy were scrapped.",
+      "mnemonic": "Türkçe 'sübvansiyon' ile aynı anlam ve aynı 'sub-' (alttan destek) mantığı: Latince subsidium 'yedek kuvvet, destek'. Fiili 'subsidize' = sübvanse etmek; 'fuel subsidy', 'subsidized housing' kalıplarıyla öğrenin."
+    },
+    {
+      "lesson": 1,
+      "front": "monopoly",
+      "back": "(noun) tekel 🎩",
+      "example_sentence": "For decades the state telecom held a monopoly, so nobody bothered to answer complaints.",
+      "mnemonic": "Yunanca mono- 'tek' + pōlein 'satmak': tek satıcı. Türkçe 'tekel' de tıpatıp aynı mantıkla kurulmuş (tek + el); Monopoly kutu oyununu ve eski Tekel sigaralarını düşünün."
+    },
+    {
+      "lesson": 2,
+      "front": "volatile",
+      "back": "(adjective) dalgalı, oynak 📉",
+      "example_sentence": "Crypto is far too volatile for anyone who actually needs the money next year.",
+      "mnemonic": "Finans haberlerindeki 'volatilite' bu kelimeden: Latince volare 'uçmak', fiyat bir uçar bir düşer. Kimyada 'volatile' = uçucu madde, insan için 'volatile temper' = parlamaya hazır öfke; üç anlamda da 'her an patlayabilir'."
+    },
+    {
+      "lesson": 2,
+      "front": "lucrative",
+      "back": "(adjective) kazançlı, kârlı 💸",
+      "example_sentence": "She walked away from a lucrative law career to teach, and never once regretted it.",
+      "mnemonic": "Latince lucrum 'kâr'; Türkçede karşılığı yok, o yüzden kalıpla öğrenin: 'a lucrative contract / career / market'. 'Profitable'dan daha şık ve 'cebi ciddi dolduran' tınısı taşır; küçük kârlar için kullanılmaz."
+    },
+    {
+      "lesson": 2,
+      "front": "leverage",
+      "back": "(noun) kaldıraç, koz ⚖️",
+      "example_sentence": "Once the buyers found out we had no other offer, we lost all our leverage.",
+      "mnemonic": "'Lever' = manivela, kaldıraç; Türkçe finans dili de 'kaldıraçlı işlem' der (küçük parayla büyük pozisyon). Pazarlıkta 'leverage' = koz: Arşimet'in 'bana bir dayanak verin, dünyayı yerinden oynatayım' sözü gibi, küçük güçle büyük etki."
+    },
+    {
+      "lesson": 3,
+      "front": "liability",
+      "back": "(noun) yükümlülük, ayak bağı ⚠️",
+      "example_sentence": "After the third scandal, the minister had become a liability the party couldn't afford.",
+      "mnemonic": "Muhasebedeki 'assets and liabilities' = varlıklar ve yükümlülükler. Latince ligare 'bağlamak' kökünden (Türkçe 'lig' ve 'ligament' de aynı aileden); bir insana 'he's a liability' denirse artık bir yük, bir risktir."
+    },
+    {
+      "lesson": 3,
+      "front": "dividend",
+      "back": "(noun) temettü, kâr payı 💵",
+      "example_sentence": "The board slashed the dividend, and the share price tanked within the hour.",
+      "mnemonic": "Latince dividere 'bölmek': şirket kârı hissedarlara bölünür; Türkçedeki 'divizyon' da aynı kökten. Mecazi kalıbı da unutmayın: 'it paid dividends' = meyvesini verdi, karşılığını aldı."
+    },
+    {
+      "lesson": 3,
+      "front": "procurement",
+      "back": "(noun) satın alma, tedarik 📦",
+      "example_sentence": "The procurement rules were rewritten so that only the minister's cousin could qualify.",
+      "mnemonic": "Latince procurare 'sağlamak, temin etmek'; kurumsal dilde 'procurement department' = satın alma birimi. 'Public procurement' = kamu ihaleleri, yolsuzluk haberlerinin en sık geçtiği kelimelerden; 'tender' ve 'contract' ile birlikte öğrenin."
+    },
+    {
+      "lesson": 4,
+      "front": "remuneration",
+      "back": "(noun) ücret, maaş paketi 💼",
+      "example_sentence": "The remuneration is generous, but they'll expect you to answer emails at midnight.",
+      "mnemonic": "Latince munus 'görev, armağan'; Türkçe 'komün/komünist'in kökü communis de 'görevleri ortak' demek. İK dilinde 'remuneration package' = maaş + yan haklar, 'salary'nin resmî hali; yazım tuzağı: 're-mu-ne-ration', 'renumeration' değil."
+    },
+    {
+      "lesson": 4,
+      "front": "redundancy",
+      "back": "(noun) işten çıkarma, fazlalık 🚪",
+      "example_sentence": "When the merger went through, half the finance team took voluntary redundancy.",
+      "mnemonic": "İngiliz İngilizcesinde 'made redundant' = pozisyon kaldırıldığı için işten çıkarılmak; suç sizde değil, iş 'fazlalık' oldu. Kök Latince redundare 'taşmak': 'redundant' = lüzumsuz tekrar; mühendislikte 'redundancy' ise yedeklilik (uçaktaki ikinci sistem)."
+    },
+    {
+      "lesson": 4,
+      "front": "meritocracy",
+      "back": "(noun) liyakat düzeni, meritokrasi 🏅",
+      "example_sentence": "Everyone at the top swears it's a meritocracy, which is exactly what they would say.",
+      "mnemonic": "'Merit' = liyakat, '-cracy' = Yunanca kratos 'güç' (demokrasi, bürokrasi, aristokrasi). Türkçede 'meritokrasi' de kullanılır; ironi: kelimeyi 1958'de Michael Young hiciv olarak uydurdu, bugün övgü gibi kullanılıyor."
+    },
+    {
+      "lesson": 5,
+      "front": "nepotism",
+      "back": "(noun) akraba kayırma, torpil 🤝",
+      "example_sentence": "Nobody said nepotism out loud, but the new director shared the chairman's surname.",
+      "mnemonic": "Latince nepos 'yeğen': Rönesans papaları 'yeğen' dedikleri yakınlarını kardinal yapardı, 'nepotizm' oradan. Türkçe 'nepotizm' var ama günlük dilde 'torpil'; güncel argo 'nepo baby' = ünlü anne-babasıyla yükselen çocuk."
+    },
+    {
+      "lesson": 5,
+      "front": "precarious",
+      "back": "(adjective) güvencesiz, sallantıda 🧗",
+      "example_sentence": "Most gig workers live a precarious existence, one cancelled shift away from missing rent.",
+      "mnemonic": "Sosyolojideki 'prekarya' (precarious + proletariat) aynı kök: güvencesiz çalışanlar sınıfı. Latince precarius 'ricayla, başkasının lütfuyla elde edilen', yani her an geri alınabilir; 'a precarious ladder' gibi fiziksel, 'a precarious job' gibi ekonomik sallantı."
+    },
+    {
+      "lesson": 5,
+      "front": "incentive",
+      "back": "(noun) teşvik 🥕",
+      "example_sentence": "Small wonder nobody flags problems early; there's simply no incentive to.",
+      "mnemonic": "'Carrot and stick' (havuç ve sopa): incentive havuçtur; 'tax incentive' = vergi teşviki. 'Perverse incentive' için kobra etkisi anlatılır: Delhi'de kobra başına ödül konunca halk kobra yetiştirmeye başlamış."
+    }
+  ],
+  "dialogue": {
+    "title": "Austerity for Everyone Else",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "So the paper's announcing redundancies on Monday, right after the shareholders got their dividend.",
+        "tr": "Gazete pazartesi işten çıkarmaları açıklıyor; hissedarlar temettüsünü aldıktan hemen sonra tabii."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Austerity for the newsroom, champagne for the boardroom. Classic. Are you on the list?",
+        "tr": "Haber odasına kemer sıkma, yönetim kuruluna şampanya. Klasik. Sen listede var mısın?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Apparently not, which is either good news or a very precarious kind of luck.",
+        "tr": "Görünüşe göre yokum; bu ya iyi haber ya da epey sallantıda bir şans."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Meanwhile we just won the airport procurement tender. Guess whose nephew signed off on it.",
+        "tr": "Bu arada biz havalimanı ihalesini aldık. Bil bakalım kimin yeğeni onayladı."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Ah, meritocracy in action. Nepotism is just networking with better genes, Elif.",
+        "tr": "Ah, liyakat iş başında. Torpil dediğin, daha iyi genlerle yapılan networking, Elif."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Lucrative, though. They've dangled a remuneration package that would make my mother cry.",
+        "tr": "Ama kârlı. Önüme öyle bir maaş paketi koydular ki annem görse ağlar."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Careful. That kind of money is a subsidy for silence, and silence is a liability.",
+        "tr": "Dikkat. O tür para susmanın sübvansiyonudur; susmak da bir gün ayak bağı olur."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Says the man whose only leverage is a byline. More wine — call it an incentive.",
+        "tr": "Tek kozu imzası olan adam konuşuyor. Biraz daha şarap; teşvik sayalım."
+      }
+    ]
+  }
+}

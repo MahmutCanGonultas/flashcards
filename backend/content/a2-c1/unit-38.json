@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 38,
+    "level": "B2",
+    "title": "Mind & Medicine"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "anxiety",
+      "back": "(noun) kaygı, endişe 😰",
+      "example_sentence": "His anxiety about flying got worse after that turbulent flight last summer.",
+      "mnemonic": "Tıp Türkçesindeki 'anksiyete' birebir bu kelime. Latince 'angere' (boğmak, sıkmak) kökünden gelir: kaygı, insanın boğazını sıkan histir."
+    },
+    {
+      "lesson": 1,
+      "front": "depression",
+      "back": "(noun) depresyon, bunalım 🌧️",
+      "example_sentence": "After losing his job, he slipped into a deep depression for months.",
+      "mnemonic": "Türkçe 'depresyon' birebir bu kelime. Latince 'de-' (aşağı) + 'premere' (bastırmak): aşağı bastırılmış olma hâli; aynı 'pres' kökü 'kompres' ve 'ekspres'te de var."
+    },
+    {
+      "lesson": 1,
+      "front": "therapy",
+      "back": "(noun) terapi, tedavi 🛋️",
+      "example_sentence": "She's been going to therapy every Tuesday since the divorce.",
+      "mnemonic": "Türkçe 'terapi', 'fizyoterapi', 'kemoterapi' hep bu kelimeden; Yunanca 'therapeia' = bakım, hizmet. Dikkat: İngilizcede tek başına 'therapy' ve 'in therapy' çoğu zaman psikoterapi demektir."
+    },
+    {
+      "lesson": 2,
+      "front": "addiction",
+      "back": "(noun) bağımlılık 🚬",
+      "example_sentence": "His phone addiction got so bad that he deleted every social media app.",
+      "mnemonic": "Latince 'addictus', Roma hukukunda borcunu ödeyemediği için alacaklısına köle olarak verilen kişiydi: bağımlı da maddesine teslim olmuş biridir. Kökteki 'dicere' (söylemek, hükmetmek) Türkçedeki 'dikte'nin de kökü."
+    },
+    {
+      "lesson": 2,
+      "front": "insomnia",
+      "back": "(noun) uykusuzluk 🌙",
+      "example_sentence": "Her insomnia got worse once she started drinking coffee after dinner.",
+      "mnemonic": "Latince 'in-' (-sız) + 'somnus' (uyku): uykusuz. Christopher Nolan'ın Al Pacino'lu filmi 'Insomnia', güneşin hiç batmadığı Alaska'da uyuyamayan bir dedektifi anlatır."
+    },
+    {
+      "lesson": 2,
+      "front": "cope",
+      "back": "(verb) başa çıkmak, baş etmek 💪",
+      "example_sentence": "I don't know how she copes with three kids and a full-time job.",
+      "mnemonic": "Neredeyse hep 'cope with' diye kullanılır: 'cope with stress', 'cope with the loss'; tek başına 'I can't cope' ise 'artık kaldıramıyorum' demektir. Kökü Eski Fransızca 'couper' (vurmak): aslında darbeye karşılık vermek, hayatın darbeleriyle baş etmek."
+    },
+    {
+      "lesson": 3,
+      "front": "resilience",
+      "back": "(noun) dayanıklılık, toparlanma gücü 🌱",
+      "example_sentence": "The town's resilience after the flood surprised even the aid workers.",
+      "mnemonic": "Latince 're-' (geri) + 'salire' (sıçramak): geri sıçramak. Aynı kök Türkçedeki 'salto'da yaşıyor; resilience, düştükten sonra yerinden geri sıçrayabilme gücüdür."
+    },
+    {
+      "lesson": 3,
+      "front": "mindful",
+      "back": "(adjective) farkında, bilinçli 🧘",
+      "example_sentence": "Since the burnout, he's been much more mindful of his own limits.",
+      "mnemonic": "'Mind' (zihin) + '-ful' (dolu): zihni tamamen orada, dikkati tam — karşıtı 'mindless' (düşüncesiz). Kalıp 'be mindful of' diye kurulur; 'mindfulness' ise Türkçeye 'bilinçli farkındalık' olarak çevrildi."
+    },
+    {
+      "lesson": 3,
+      "front": "trauma",
+      "back": "(noun) travma 💔",
+      "example_sentence": "Years later, the trauma of the crash still keeps him from driving.",
+      "mnemonic": "Türkçe 'travma' birebir bu kelime. Yunanca 'trauma' = yara: tıpta hâlâ fiziksel yara demektir (travma servisi), psikolojide ise ruhta açılan yara."
+    },
+    {
+      "lesson": 4,
+      "front": "well-being",
+      "back": "(noun) esenlik, iyi olma hali 🌿",
+      "example_sentence": "The company now offers free yoga classes to improve staff well-being.",
+      "mnemonic": "'Well' (iyi) + 'being' (olma hâli): kelimenin kendisi tarif; sadece hasta olmamak değil, ruhen ve bedenen iyi olmak. 'Health' bedeni anlatır, 'well-being' bütünü; 'physical, mental and financial well-being' diye üçe ayrılır."
+    },
+    {
+      "lesson": 4,
+      "front": "immune",
+      "back": "(adjective) bağışık 🛡️",
+      "example_sentence": "Once you've had chickenpox, you're usually immune for the rest of your life.",
+      "mnemonic": "Latince 'immunis' = 'in-' (değil) + 'munus' (yükümlülük, görev): yükümlülükten muaf. Roma'da vergiden muaf olana denirdi; bugün hastalıktan muaf olan 'immune', tıp Türkçesindeki 'immün sistem' de aynı kelime."
+    },
+    {
+      "lesson": 4,
+      "front": "chronic",
+      "back": "(adjective) kronik, müzmin ⏳",
+      "example_sentence": "He's suffered from chronic back pain ever since the car accident.",
+      "mnemonic": "Türkçe 'kronik' birebir bu kelime; Yunanca 'khronos' (zaman) kökünden, 'kronoloji' ve 'kronometre' ile aynı aileden. Zamana yayılan, geçmeyen hastalık; karşıtı 'acute' (akut), yani ani ve şiddetli."
+    },
+    {
+      "lesson": 5,
+      "front": "diagnosis",
+      "back": "(noun) teşhis, tanı 🩺",
+      "example_sentence": "The doctor refused to give a diagnosis until the blood results came back.",
+      "mnemonic": "Yunanca 'dia-' (baştan sona, tam) + 'gnosis' (bilgi): bir şeyi tam olarak bilip ayırt etmek. Aynı 'gnosis' kökü 'agnostik' (bilinemezci) ve 'prognoz' (hastalığın gidişatını önceden bilme) kelimelerinde de var; çoğulu 'diagnoses'."
+    },
+    {
+      "lesson": 5,
+      "front": "surgery",
+      "back": "(noun) ameliyat, cerrahi 🏥",
+      "example_sentence": "She needs knee surgery, but the waiting list is nearly six months long.",
+      "mnemonic": "Yunanca 'kheir' (el) + 'ergon' (iş): el işi — cerrah işini elleriyle yapar; 'ergon' kökü 'enerji' ve 'ergonomi'de de yaşıyor. Dikkat: İngiliz İngilizcesinde 'surgery' aile hekiminin muayenehanesi anlamına da gelir."
+    },
+    {
+      "lesson": 5,
+      "front": "allergy",
+      "back": "(noun) alerji 🤧",
+      "example_sentence": "Her peanut allergy is so severe that she always carries an EpiPen.",
+      "mnemonic": "Türkçe 'alerji' birebir bu kelime. Yunanca 'allos' (başka) + 'ergon' (iş, tepki): vücudun zararsız bir şeye 'başka türlü tepki' vermesi; 'surgery'deki 'ergon' ile aynı kök."
+    }
+  ],
+  "dialogue": {
+    "title": "Surviving, Not Living",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "You look exhausted, Tom. Is the newsroom still keeping you up?",
+        "tr": "Bitkin görünüyorsun Tom. Haber merkezi hâlâ uyutmuyor mu seni?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Insomnia, mostly. Three hours a night since the election coverage.",
+        "tr": "Daha çok uykusuzluk. Seçim haberlerinden beri gecede üç saat uyuyorum."
+      },
+      {
+        "speaker": "Elif",
+        "en": "That was four months ago. That's chronic, not a bad week.",
+        "tr": "O dört ay önceydi. Bu artık kronik, kötü bir hafta değil."
+      },
+      {
+        "speaker": "Tom",
+        "en": "It's just anxiety about deadlines. I'm coping fine, honestly.",
+        "tr": "Sadece teslim tarihi kaygısı. Gayet iyi başa çıkıyorum, gerçekten."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Coping isn't the same as well-being. You're surviving, not living.",
+        "tr": "Başa çıkmakla iyi olmak aynı şey değil. Yaşamıyorsun, hayatta kalıyorsun."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Journalists are supposed to be resilient. Nobody in my office sleeps.",
+        "tr": "Gazetecilerin dayanıklı olması gerekir. Ofisimde kimse uyumuyor zaten."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Resilience means recovering, Tom, not pretending you're immune to burnout.",
+        "tr": "Dayanıklılık toparlanabilmek demek Tom, tükenmişliğe bağışıkmış gibi davranmak değil."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Fine, I'll try therapy. Just don't call it depression.",
+        "tr": "Tamam, terapiyi deneyeceğim. Ama sakın buna depresyon deme."
+      }
+    ]
+  }
+}

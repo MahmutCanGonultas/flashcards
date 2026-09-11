@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 41,
+    "level": "C1",
+    "title": "Character, Precisely"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "meticulous",
+      "back": "(adjective) titiz, kılı kırk yaran 🔍",
+      "example_sentence": "He's meticulous about his notes: every source is dated, numbered and cross-referenced.",
+      "mnemonic": "Latince metus 'korku' demek; meticulous aslında 'hata yapmaktan korkan' kişiydi, bu yüzden her ayrıntıyı üç kez kontrol eder. Kalıp: 'meticulous attention to detail'."
+    },
+    {
+      "lesson": 1,
+      "front": "pragmatic",
+      "back": "(adjective) pragmatik, çözüm odaklı 🧰",
+      "example_sentence": "Forget the ideal solution; we need something pragmatic we can ship by Friday.",
+      "mnemonic": "Türkçedeki 'pragmatik' aynı kelime; kökü Yunanca pragma, 'iş, eylem'. Pragmatik kişi ilkeye değil işe yarayana bakar: 'a pragmatic approach'."
+    },
+    {
+      "lesson": 1,
+      "front": "complacent",
+      "back": "(adjective) rehavete kapılmış 😌",
+      "example_sentence": "After three years at the top, the team had grown complacent, and it showed.",
+      "mnemonic": "Kökü Latince placere 'hoşnut etmek' — 'plasebo' (placebo, 'hoşnut edeceğim') ile aynı aile. Complacent kişi kendinden o kadar hoşnuttur ki çabalamayı bırakır; Türkçesi tam olarak 'rehavete kapılmak'."
+    },
+    {
+      "lesson": 2,
+      "front": "tenacious",
+      "back": "(adjective) azimli, pes etmeyen 🧗",
+      "example_sentence": "Tenacious as ever, she chased that refund for eleven months and finally won.",
+      "mnemonic": "Latince tenere 'tutmak'; 'tenör' de aynı kökten, ortaçağ müziğinde ana ezgiyi 'tutan' sesti. Tenacious kişi tuttuğunu bırakmaz: 'a tenacious grip'."
+    },
+    {
+      "lesson": 2,
+      "front": "candid",
+      "back": "(adjective) açık sözlü, dobra 🗣️",
+      "example_sentence": "Can I be candid? The second half of your talk lost the room completely.",
+      "mnemonic": "Latince candere 'parlamak, bembeyaz olmak'; 'kandil' (candela) aynı kökten gelir. Candidus 'lekesiz beyaz' demekti: candid kişi düşüncesini örtmeden, apaçık söyler."
+    },
+    {
+      "lesson": 2,
+      "front": "aloof",
+      "back": "(adjective) mesafeli, soğuk 🧊",
+      "example_sentence": "He stood aloof at his own leaving party, nursing a drink and checking his watch.",
+      "mnemonic": "Denizcilik terimi: 'a-loof', geminin burnunu rüzgâra çevirip kıyıdan uzak tutmak (bizim denizcilerin 'orsa' dediği manevra). Aloof kişi de mesafeyi bile isteye korur; utangaç değil, soğuk."
+    },
+    {
+      "lesson": 3,
+      "front": "gregarious",
+      "back": "(adjective) sosyal, insan canlısı 🎉",
+      "example_sentence": "For someone so gregarious, he's oddly hard to pin down for a one-to-one.",
+      "mnemonic": "Latince grex 'sürü'; Türkçe 'agrega' (bir araya toplanmış malzeme) ve 'segregasyon' (sürüden ayırma) aynı aileden. Gregarious kişi sürüsüz yapamaz, kalabalıkta canlanır."
+    },
+    {
+      "lesson": 3,
+      "front": "ostentatious",
+      "back": "(adjective) gösterişçi, şatafatlı 💎",
+      "example_sentence": "The wedding was ostentatious to the point of parody: swans, fireworks, a gold-leaf cake.",
+      "mnemonic": "Latince ostendere 'göstermek, öne sermek'; ostentatious, gösterişin zevksiz hâli — altın kaplama araba, logo kaplı çanta. Kalıp: 'an ostentatious display of wealth'."
+    },
+    {
+      "lesson": 3,
+      "front": "scrupulous",
+      "back": "(adjective) vicdanlı, titiz ⚖️",
+      "example_sentence": "He's scrupulous about declaring every gift, down to the biscuits a supplier sent.",
+      "mnemonic": "Latince scrupulus, ayakkabıya kaçan sivri çakıl taşı: her adımda batar. Scrupulous kişinin vicdanı da böyle çalışır, en küçük haksızlığı hisseder; zıddı unscrupulous, 'vicdansız'."
+    },
+    {
+      "lesson": 4,
+      "front": "obstinate",
+      "back": "(adjective) inatçı, dik kafalı 🐐",
+      "example_sentence": "My grandfather was too obstinate to see a doctor until the pain became unbearable.",
+      "mnemonic": "Latince ob- 'karşı' + stare 'durmak' ('istasyon', 'statü' ile aynı kök): obstinate kişi karşınıza dikilir, yerinden kımıldamaz. Stubborn'dan daha resmî ve daha sert bir söz."
+    },
+    {
+      "lesson": 4,
+      "front": "benevolent",
+      "back": "(adjective) iyiliksever, hayırsever 🤲",
+      "example_sentence": "She ran the company like a benevolent dictator: generous, but nobody dared disagree.",
+      "mnemonic": "Latince bene 'iyi' (bonus, bonfile, bonbon'daki bon ile aynı) + velle 'istemek': başkası için iyilik isteyen. Zıddı malevolent (mal- 'kötü', 'malpraktis'teki gibi)."
+    },
+    {
+      "lesson": 4,
+      "front": "cynical",
+      "back": "(adjective) sinik, art niyet arayan 🙄",
+      "example_sentence": "I'm not cynical, I'm just old enough to have heard that promise before.",
+      "mnemonic": "Türkçedeki 'sinik' aynı kelime; kökü Yunanca kynikos, 'köpek gibi'. Sinoplu Diyojen'in Kinik okulu toplumun değerlerini küçümser, 'herkesin bir çıkarı var' derdi — bugünkü cynical de tam bu."
+    },
+    {
+      "lesson": 5,
+      "front": "diligent",
+      "back": "(adjective) çalışkan, gayretli 📚",
+      "example_sentence": "Not the brightest in her year, perhaps, but easily the most diligent.",
+      "mnemonic": "Latince diligere 'seçip değer vermek, sevmek'; legere 'seçmek' kökü 'elit', 'seleksiyon', 'koleksiyon'da da var. Diligent kişi işini önemsediği için özenle, yılmadan çalışır; parlak olmasa da güvenilirdir."
+    },
+    {
+      "lesson": 5,
+      "front": "eloquent",
+      "back": "(adjective) belagatli, güzel konuşan 🎤",
+      "example_sentence": "Her closing speech was so eloquent that even the opposing counsel nodded along.",
+      "mnemonic": "Latince e- 'dışa' + loqui 'konuşmak' ('kolokyum' = birlikte konuşma, aynı kök). Eloquent, sözü akıcı ve etkili çıkan kişi, eski deyişle 'belagat sahibi'; sözsüz de olur: 'an eloquent silence'."
+    },
+    {
+      "lesson": 5,
+      "front": "frugal",
+      "back": "(adjective) tutumlu, idareli 🪙",
+      "example_sentence": "Frugal by habit, she still reuses jam jars despite earning a six-figure salary.",
+      "mnemonic": "Latince frux 'meyve, ürün' ('fruktoz' ile aynı aile); frugi 'işe yarar, ölçülü' demekti. Frugal cimri (stingy) değildir, parayı israfsız harcar: 'a frugal meal' sade ama yeterli bir yemek."
+    }
+  ],
+  "dialogue": {
+    "title": "Damning With Faint Praise",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "I'm writing Deniz a reference and trying to be candid without being cruel.",
+        "tr": "Deniz'e referans mektubu yazıyorum; dürüst olayım ama acımasız olmayayım diye uğraşıyorum."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Easy. 'Tenacious' is what you write when you mean he never lets anything go.",
+        "tr": "Kolay. 'Hiçbir şeyin peşini bırakmaz' demek istediğinde yazacağın kelime 'azimli'dir."
+      },
+      {
+        "speaker": "Elif",
+        "en": "He's not tenacious, he's obstinate. He once argued with the fire alarm.",
+        "tr": "Azimli değil, dik kafalı o. Bir keresinde yangın alarmıyla tartışmıştı."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Then say 'meticulous'. Nobody has ever sued over 'meticulous'.",
+        "tr": "O zaman 'titiz' yaz. 'Titiz' yüzünden kimse kimseyi dava etmedi."
+      },
+      {
+        "speaker": "Elif",
+        "en": "He was meticulous about other people's mistakes and remarkably complacent about his own.",
+        "tr": "Başkalarının hatalarında kılı kırk yarardı; kendininkiler söz konusu olunca gönlü fazlasıyla rahattı."
+      },
+      {
+        "speaker": "Tom",
+        "en": "You're being cynical. Was he at least gregarious? People forgive a lot for charm.",
+        "tr": "Sinikleşiyorsun. En azından sosyal biri miydi? İnsanlar cana yakınlık uğruna çok şeyi affeder."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Aloof, actually. Frugal with words, frugal with praise, ostentatious only with his watch.",
+        "tr": "Tam aksine, mesafeliydi. Sözü de övgüyü de idareli kullanırdı; gösterişi yalnızca saatiyle yapardı."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Write 'diligent and pragmatic', sign it, and pray they never ring you.",
+        "tr": "'Çalışkan ve pragmatik' yaz, imzala, bir de seni hiç aramasınlar diye dua et."
+      }
+    ]
+  }
+}

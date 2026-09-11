@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 45,
+    "level": "C1",
+    "title": "Formal Register"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "albeit",
+      "back": "(conjunction) gerçi, ...olsa da",
+      "example_sentence": "The plan worked, albeit more slowly than any of us had hoped.",
+      "mnemonic": "Aslı 'all be it', yani 'tamamen öyle olsa bile'; 'olsa da' anlamı buradan gelir. 'Although' gibi tam cümle değil, kısa bir öbek alır: 'albeit slowly', 'albeit a small one'."
+    },
+    {
+      "lesson": 1,
+      "front": "notwithstanding",
+      "back": "(preposition) -e rağmen, yine de",
+      "example_sentence": "The film was a hit, its three-hour running time notwithstanding.",
+      "mnemonic": "'Withstand' dayanmak, karşı koymak demek; 'notwithstanding' ise karşı koyamayan, yani engel olamayan: -e rağmen. Ayırt edici özelliği ismin ardına da gelebilmesi: 'the cost notwithstanding'."
+    },
+    {
+      "lesson": 1,
+      "front": "hitherto",
+      "back": "(adverb) şimdiye kadar, o zamana dek 🕰️",
+      "example_sentence": "The scandal exposed a side of the minister hitherto unknown to the public.",
+      "mnemonic": "'Hither' eski İngilizcede 'buraya' demek ('come hither'); 'hitherto' da 'bu ana kadar'. Neredeyse hep 'hitherto unknown / unseen / unavailable' gibi bir sıfatın önünde durur."
+    },
+    {
+      "lesson": 2,
+      "front": "thereby",
+      "back": "(adverb) böylece, bu sayede ➡️",
+      "example_sentence": "She published the data online, thereby forcing the company to respond.",
+      "mnemonic": "'There' + 'by' = 'onunla, o yoldan'; resmî metinlerdeki 'I hereby declare' (işbu belgeyle) aynı kalıptır. Ardından hemen her zaman -ing gelir: 'thereby reducing costs' = böylece maliyeti düşürerek."
+    },
+    {
+      "lesson": 2,
+      "front": "whereby",
+      "back": "(adverb) ki onun yoluyla, -diği ⚙️",
+      "example_sentence": "They set up a scheme whereby staff could buy shares at a discount.",
+      "mnemonic": "'Where' + 'by' = 'ki onun yoluyla'. Hep bir düzenin ardından gelir ve onu tarif eder: 'a system whereby...' = '...-diği bir sistem'; 'thereby' sonucu bildirir, 'whereby' işleyişi anlatır."
+    },
+    {
+      "lesson": 2,
+      "front": "ubiquitous",
+      "back": "(adjective) her yerde bulunan, yaygın 🌐",
+      "example_sentence": "Smartphones have become so ubiquitous that cafés no longer bother with clocks.",
+      "mnemonic": "Latince 'ubique' = her yerde; oyun devi Ubisoft'un adı da buradan gelir ('ubiquité' + 'software'). Artık her köşede karşınıza çıkan şey 'ubiquitous'tur."
+    },
+    {
+      "lesson": 3,
+      "front": "intrinsic",
+      "back": "(adjective) özünde olan, içsel 💎",
+      "example_sentence": "Good teachers rely on students' intrinsic motivation rather than on grades.",
+      "mnemonic": "Latince 'intra' (iç) kökünden; 'intranet' (kurum içi ağ) ve 'introvert' (içe dönük) aynı aileden. Zıddı 'extrinsic' (dışsal): 'intrinsic motivation' içten gelen, 'extrinsic' ise ödülle gelen motivasyondur."
+    },
+    {
+      "lesson": 3,
+      "front": "inherent",
+      "back": "(adjective) doğasında olan, içkin 🧬",
+      "example_sentence": "There is an inherent risk in any surgery, however routine it may seem.",
+      "mnemonic": "Latince 'in' + 'haerere' (yapışmak): içine yapışmış, ayrılmaz olan. 'Adhesive' (yapışkan) ve 'coherent' (tutarlı) aynı kökten; 'inherent risk' (doğasında olan risk) en sık kalıbıdır."
+    },
+    {
+      "lesson": 3,
+      "front": "tangible",
+      "back": "(adjective) somut, elle tutulur 🤲",
+      "example_sentence": "After months of talks, the negotiators finally had something tangible to show for it.",
+      "mnemonic": "Latince 'tangere' = dokunmak. Matematikteki 'tanjant' (eğriye dokunan doğru, teğet) aynı kökten; 'tangible' de 'dokunulabilir', yani elle tutulur, somut: 'tangible results'."
+    },
+    {
+      "lesson": 4,
+      "front": "negligible",
+      "back": "(adjective) önemsiz, ihmal edilebilir 🤏",
+      "example_sentence": "The side effects were negligible, so the trial was allowed to continue.",
+      "mnemonic": "Türkçedeki 'neglije' (Fransızca 'négligé': özensiz, ihmal edilmiş giysi) ile aynı kök, Latince 'negligere' = ihmal etmek. 'Negligible', ihmal edilebilecek kadar küçük demek."
+    },
+    {
+      "lesson": 4,
+      "front": "plausible",
+      "back": "(adjective) makul, inandırıcı 🤔",
+      "example_sentence": "His excuse was plausible enough, though none of us quite believed it.",
+      "mnemonic": "Latince 'plaudere' = alkışlamak ('applause' ile aynı kök): aslı 'alkışlanmaya değer', yani kabul görecek kadar makul. Dikkat, doğru demek değil, inandırıcı görünen demek; 'plausible deniability' kalıbı bu yüzden var."
+    },
+    {
+      "lesson": 4,
+      "front": "feasible",
+      "back": "(adjective) yapılabilir, uygulanabilir 🛠️",
+      "example_sentence": "Is it feasible to finish the bridge before the rains start in June?",
+      "mnemonic": "Türkçedeki 'fizibilite' (yapılabilirlik raporu) tam bu kelimeden: Fransızca 'faire' (yapmak) → 'faisable' = yapılabilir. 'Possible' teoride mümkün, 'feasible' pratikte yapılabilir demek."
+    },
+    {
+      "lesson": 5,
+      "front": "viable",
+      "back": "(adjective) yaşayabilir, sürdürülebilir 🌱",
+      "example_sentence": "Without a second investor, the start-up simply isn't viable beyond next spring.",
+      "mnemonic": "Fransızca 'vie' (hayat) → 'viable' = yaşayabilir; 'vitamin' ve 'vital' de aynı Latince 'vita' kökünden. Önce bebekler ve tohumlar için kullanıldı, sonra 'ayakta kalabilen' iş, plan, seçenek anlamına geçti."
+    },
+    {
+      "lesson": 5,
+      "front": "superfluous",
+      "back": "(adjective) lüzumsuz, fazladan 🫗",
+      "example_sentence": "The design is elegant precisely because nothing in it is superfluous.",
+      "mnemonic": "'Süper' (üstünden) + Latince 'fluere' (akmak; 'fluent' = akıcı): kabın üstünden taşan, yani ihtiyaçtan fazla olan. 'Redundant' tekrar ettiği için gereksizdir, 'superfluous' ise zaten fazladan olduğu için."
+    },
+    {
+      "lesson": 5,
+      "front": "redundant",
+      "back": "(adjective) fazlalık, işten çıkarılmış 🔁",
+      "example_sentence": "Half the slides were redundant, repeating figures we'd already seen in the report.",
+      "mnemonic": "Latince 'unda' (dalga; 'ondüle' saç aynı kökten) → 'redundare' = taşmak; anlam 'fazlalık'tan gelir. İngiltere'de 'made redundant' işten çıkarılmak demek: kişi değil, pozisyon fazlalık sayılır."
+    }
+  ],
+  "dialogue": {
+    "title": "Death by Hitherto",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "You put 'hitherto' in a budget memo, Elif. Are you a Victorian judge now?",
+        "tr": "Bütçe notuna 'hitherto' yazmışsın Elif. Viktorya dönemi yargıcı mı oldun sen?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "It's a formal document. 'Until now' sounded flimsy, albeit more honest.",
+        "tr": "Resmî bir belge o. 'Until now' cılız duruyordu; gerçi daha dürüsttü."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Half your adjectives are superfluous, and the other half are merely redundant.",
+        "tr": "Sıfatlarının yarısı fazladan, öbür yarısı da sırf tekrar."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Says the man whose column called potholes 'ubiquitous' twice last week.",
+        "tr": "Geçen hafta köşesinde çukurlara iki kez 'ubiquitous' diyen adam konuşuyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Potholes are ubiquitous. That's a tangible fact, not a flourish.",
+        "tr": "Çukurlar gerçekten her yerde. Bu bir süs değil, elle tutulur bir gerçek."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Fine. Is it feasible to halve the memo without losing a single number?",
+        "tr": "Peki. Tek bir rakam kaybetmeden notu yarıya indirmek mümkün mü sence?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Easily. Drop 'notwithstanding' and the saving in ink alone won't be negligible.",
+        "tr": "Rahatlıkla. Bir 'notwithstanding'i at, sırf mürekkep tasarrufu bile azımsanmaz."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Plausible. Sadly the pomposity is inherent now; I caught it from your columns.",
+        "tr": "Makul. Ne yazık ki tumturaklı üslup artık doğamda; senin köşe yazılarından kaptım."
+      }
+    ]
+  }
+}

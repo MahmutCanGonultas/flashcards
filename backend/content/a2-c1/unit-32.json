@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 32,
+    "level": "B2",
+    "title": "Deeper Feelings"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "resentment",
+      "back": "(noun) kırgınlık, içerleme 😤",
+      "example_sentence": "Years of resentment surfaced when she finally spoke about the inheritance.",
+      "mnemonic": "Fransızca 'ressentiment' = re- (tekrar) + sentir (hissetmek): bir haksızlığı içinde tekrar tekrar hissetmek. Türkçedeki 'santimantal' aynı 'sentir' kökünden gelir; resentment, sürekli yeniden canlanan kırgınlıktır."
+    },
+    {
+      "lesson": 1,
+      "front": "affection",
+      "back": "(noun) sevgi, şefkat 🤗",
+      "example_sentence": "He shows affection through small gestures rather than words.",
+      "mnemonic": "Latince 'afficere' (etkilemek, dokunmak) kökünden; İngilizce 'affect' ve psikolojideki Türkçe terim 'afektif' (duygulanımla ilgili) aynı ailedendir. Affection kalbe dokunan sıcak sevgidir; 'a public display of affection' (PDA) kalıbıyla öğren."
+    },
+    {
+      "lesson": 1,
+      "front": "jealousy",
+      "back": "(noun) kıskançlık 😒",
+      "example_sentence": "Her jealousy started when Mark began working late with a new colleague.",
+      "mnemonic": "'Jealous' ile 'zealous' (gayretli, tutkulu) aynı Yunanca 'zelos' (tutku) kökünden gelir; kıskançlık, tutkunun karanlık yüzüdür. Shakespeare'in Othello'sundaki 'green-eyed monster' (yeşil gözlü canavar) tam olarak jealousy'dir."
+    },
+    {
+      "lesson": 2,
+      "front": "empathy",
+      "back": "(noun) empati 🫂",
+      "example_sentence": "A good nurse needs empathy as much as technical skill.",
+      "mnemonic": "Türkçedeki 'empati' birebir aynı kelime: Yunanca em- (içine) + pathos (duygu, acı). 'Sempati', 'antipati' ve 'patoloji' de aynı pathos kökünü taşır."
+    },
+    {
+      "lesson": 2,
+      "front": "guilt",
+      "back": "(noun) suçluluk, vicdan azabı 😔",
+      "example_sentence": "She was eaten up by guilt after missing her father's last call.",
+      "mnemonic": "Eski İngilizce 'gylt' kökünden gelir; Latince ya da Fransızca bağı yok, dolayısıyla Türkçede akrabası da yok. Kalıplarla öğren: 'guilty pleasure' (utanarak sevdiğin şey) ve mahkemedeki 'guilty / not guilty' kararı."
+    },
+    {
+      "lesson": 2,
+      "front": "overwhelmed",
+      "back": "(adjective) bunalmış, altında ezilmiş 🌊",
+      "example_sentence": "New parents often feel overwhelmed during the first few months.",
+      "mnemonic": "'Whelm' eski İngilizcede 'üstünü kapatmak, suya gömmek' demektir; over- ile dalganın üstüne gelip seni gömmesi. Duygu, iş ya da haber dalga gibi üstüne geliyorsa overwhelmed'sındır."
+    },
+    {
+      "lesson": 3,
+      "front": "reluctant",
+      "back": "(adjective) isteksiz, gönülsüz 😕",
+      "example_sentence": "He was reluctant to admit that the mistake had been his.",
+      "mnemonic": "Latince 'reluctari' = karşı koymak, direnmek ('luctari' = güreşmek). İsteksiz kişi içten içe güreşir, ayak sürür; her zaman 'reluctant to + fiil' kalıbıyla kullan."
+    },
+    {
+      "lesson": 3,
+      "front": "indifferent",
+      "back": "(adjective) kayıtsız, umursamaz 🤷",
+      "example_sentence": "Voters seem indifferent to a scandal that once would have ended careers.",
+      "mnemonic": "Zaten bildiğin 'different' (farklı) kelimesine olumsuz 'in-' ekle: sonucu senin için fark yaratmayan şeye kayıtsızsın. Türkçedeki 'fark etmez' tavrı tam olarak indifferent; 'indifferent to' ile kullanılır."
+    },
+    {
+      "lesson": 3,
+      "front": "devastated",
+      "back": "(adjective) yıkılmış, perişan 💔",
+      "example_sentence": "The whole town was devastated by the news of the factory closing.",
+      "mnemonic": "Latince 'vastare' = harabeye çevirmek; 'vast' (uçsuz bucaksız, boş) ile aynı 'vastus' kökünden. Bir yeri fiziksel olarak, bir insanı duygusal olarak enkaza çevirir: 'devastated by the news'."
+    },
+    {
+      "lesson": 4,
+      "front": "thrilled",
+      "back": "(adjective) çok heyecanlı, sevinçten uçan 🤩",
+      "example_sentence": "We were thrilled when the adoption agency finally called us back.",
+      "mnemonic": "Michael Jackson'ın 'Thriller' albümü aynı kökten: thrill, insanı titreten heyecan demektir. Thrilled, 'happy'nin çok üstünde bir sevinçtir; birinin başarısına 'I'm thrilled for you' diyerek ortak ol."
+    },
+    {
+      "lesson": 4,
+      "front": "commitment",
+      "back": "(noun) bağlılık, taahhüt 💍",
+      "example_sentence": "Marriage was a commitment he wasn't ready to make at twenty-three.",
+      "mnemonic": "Latince 'committere' = birine emanet etmek, görevlendirmek; Türkçedeki 'komite' ve 'komisyon' aynı kökten (bir iş kendisine emanet edilen kurul). Kendini bir ilişkiye ya da işe emanet etmek = commitment."
+    },
+    {
+      "lesson": 4,
+      "front": "betray",
+      "back": "(verb) ihanet etmek 🗡️",
+      "example_sentence": "She felt betrayed when her closest friend shared the secret.",
+      "mnemonic": "Latince 'tradere' = teslim etmek, ele vermek; 'traitor' (hain) ve 'tradition' (nesilden nesile teslim edilen gelenek) aynı aileden. Betray, birinin güvenini karşı tarafa teslim etmektir; 'betray someone's trust' kalıbıyla öğren."
+    },
+    {
+      "lesson": 5,
+      "front": "reconcile",
+      "back": "(verb) barıştırmak, uzlaştırmak 🤝",
+      "example_sentence": "The brothers finally reconciled after not speaking for nearly a decade.",
+      "mnemonic": "Latince 'concilium' (toplantı, bir araya gelme) kökünden; 'İznik Konsili'ndeki 'konsil' aynı kelime. Re-concile = ayrılanları yeniden bir araya getirmek; muhasebede 'hesapları mutabık kılmak' için de kullanılır."
+    },
+    {
+      "lesson": 5,
+      "front": "rely",
+      "back": "(verb) güvenmek, bel bağlamak 🛟",
+      "example_sentence": "I've always relied on my sister when things fall apart.",
+      "mnemonic": "Latince 'religare' = sıkıca bağlamak; 'ligament' (bağ dokusu) ve 'lig' (takımları birbirine bağlayan birlik) aynı 'ligare' kökünden. Türkçedeki 'bel bağlamak' mecazıyla tam örtüşür; daima 'rely on' şeklinde kullan."
+    },
+    {
+      "lesson": 5,
+      "front": "cherish",
+      "back": "(verb) değer vermek, el üstünde tutmak 💝",
+      "example_sentence": "She cherishes the letters her grandmother wrote during the war.",
+      "mnemonic": "Fransızca 'chérir' (sevmek) ve 'ma chérie' (sevgilim) ile aynı kökten; hepsi Latince 'carus' (değerli, sevgili) kelimesine dayanır. İngiliz düğün yemininde geçer: 'to love and to cherish' — sevmek ve el üstünde tutmak."
+    }
+  ],
+  "dialogue": {
+    "title": "Call Your Brother",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "You've been quiet all evening. Is it your brother again?",
+        "tr": "Bütün akşam sessizsin. Yine kardeşin mi?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "He didn't even call when I got promoted. He's completely indifferent.",
+        "tr": "Terfi aldığımda aramadı bile. Tamamen kayıtsız."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Or he's reluctant to reach out because he's drowning in guilt.",
+        "tr": "Ya da suçluluktan boğulduğu için adım atmaya çekiniyor."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Guilt? He betrayed me, Tom. He told Mum about my loan.",
+        "tr": "Suçluluk mu? Bana ihanet etti Tom. Krediyi anneme o söyledi."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Maybe. But resentment costs you more than it ever costs him.",
+        "tr": "Olabilir. Ama bu kırgınlık ona değil, en çok sana zarar veriyor."
+      },
+      {
+        "speaker": "Elif",
+        "en": "I know. I still rely on him more than anyone.",
+        "tr": "Biliyorum. Hâlâ herkesten çok ona güveniyorum."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Then try a little empathy. Reconcile with him before it hardens.",
+        "tr": "O zaman biraz empati kur. İş iyice katılaşmadan onunla barış."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Fine, I'll call him tonight. Honestly, I still cherish that idiot.",
+        "tr": "Tamam, bu akşam ararım. Açıkçası o salak hâlâ başımın tacı."
+      }
+    ]
+  }
+}

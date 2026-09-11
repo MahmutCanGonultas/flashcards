@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 19,
+    "level": "A2",
+    "title": "Feelings & Character"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "angry",
+      "back": "(adjective) kızgın, öfkeli 😠",
+      "example_sentence": "Mum was angry because I came home late.",
+      "mnemonic": "Angry Birds oyunundaki kuşlar neden 'angry'? Domuzlar yumurtalarını çaldı, onlar da kızgın; angry = kızgın."
+    },
+    {
+      "lesson": 1,
+      "front": "scared",
+      "back": "(adjective) korkmuş 😨",
+      "example_sentence": "I was scared, so I held my dad's hand.",
+      "mnemonic": "Bostan korkuluğuna İngilizcede 'scarecrow' denir: scare (korkutmak) + crow (karga). Korkutulan taraf 'scared' (korkmuş) olur; 'scared of' + korktuğun şey diye kullan."
+    },
+    {
+      "lesson": 1,
+      "front": "surprised",
+      "back": "(adjective) şaşırmış 😲",
+      "example_sentence": "She was surprised when we shouted 'Happy birthday!'",
+      "mnemonic": "Türkçedeki 'sürpriz' aynı kelime (Fransızca surprise). Sürpriz yapılan kişi 'surprised' olur: 'I was so surprised!'"
+    },
+    {
+      "lesson": 2,
+      "front": "lonely",
+      "back": "(adjective) yalnız 😔",
+      "example_sentence": "I felt lonely in my first week here.",
+      "mnemonic": "Akon'un meşhur şarkısı: 'Lonely, I'm Mr. Lonely, I have nobody.' Dikkat: alone yalnız olmaktır, lonely yalnız hissetmektir; kalabalıkta bile lonely olabilirsin."
+    },
+    {
+      "lesson": 2,
+      "front": "proud",
+      "back": "(adjective) gururlu, gurur duyan 🏆",
+      "example_sentence": "My dad is proud of my exam results.",
+      "mnemonic": "Jane Austen'ın 'Pride and Prejudice' romanı Türkçeye 'Aşk ve Gurur' diye çevrildi: pride = gurur, proud = gururlu. Her zaman 'proud OF' diye kullan: proud of you."
+    },
+    {
+      "lesson": 2,
+      "front": "shy",
+      "back": "(adjective) utangaç, çekingen 🙈",
+      "example_sentence": "My little brother is shy with new people.",
+      "mnemonic": "'Don't be shy!' (Çekinme, utanma!) çok yaygın bir kalıp; Tiësto ile Karol G'nin 'Don't Be Shy' şarkısı da var. Shy insan gözünü kaçırır, konuşmaya çekinir."
+    },
+    {
+      "lesson": 3,
+      "front": "friendly",
+      "back": "(adjective) cana yakın, arkadaş canlısı 😊",
+      "example_sentence": "The waiter was friendly and smiled a lot.",
+      "mnemonic": "Friend + -ly: arkadaş gibi davranan. Bilgisayar dünyasındaki 'user-friendly' (kullanıcı dostu) terimindeki friendly de bu."
+    },
+    {
+      "lesson": 3,
+      "front": "polite",
+      "back": "(adjective) kibar, nazik 🎩",
+      "example_sentence": "Be polite and say thank you to your teacher.",
+      "mnemonic": "Latince 'polire' (cilalamak) kökünden; İngilizce 'polish' (cila) ile aynı aile. Kibar insan pürüzsüz, 'cilalı' davranır; zıddı rude."
+    },
+    {
+      "lesson": 3,
+      "front": "rude",
+      "back": "(adjective) kaba, saygısız 😤",
+      "example_sentence": "The man was rude and didn't say sorry.",
+      "mnemonic": "MAGIC! grubunun hit şarkısı 'Rude': 'Why you gotta be so rude?' Kızın babası evlenme iznini kabaca reddeder; rude = kaba."
+    },
+    {
+      "lesson": 4,
+      "front": "funny",
+      "back": "(adjective) komik 😂",
+      "example_sentence": "Tom told a funny joke and everyone laughed.",
+      "mnemonic": "'Fun' (eğlence) ile karıştırma: parti 'fun' olur, fıkra 'funny' olur. Funny = güldüren, komik; bazen de 'tuhaf' demek: 'a funny smell'."
+    },
+    {
+      "lesson": 4,
+      "front": "serious",
+      "back": "(adjective) ciddi 🧐",
+      "example_sentence": "Dad looked serious, so I stopped laughing.",
+      "mnemonic": "Joker'in Kara Şövalye'deki meşhur repliği: 'Why so serious?' (Neden bu kadar ciddisin?). Günlük dilde 'Are you serious?' = Ciddi misin?"
+    },
+    {
+      "lesson": 4,
+      "front": "lazy",
+      "back": "(adjective) tembel 🦥",
+      "example_sentence": "I was too lazy to wash the dishes.",
+      "mnemonic": "Bruno Mars'ın 'The Lazy Song'u: 'Today I don't feel like doing anything' — bugün hiçbir şey yapasım yok. Lazy = tembel; 'too lazy to…' kalıbıyla kullan."
+    },
+    {
+      "lesson": 5,
+      "front": "brave",
+      "back": "(adjective) cesur 🦁",
+      "example_sentence": "She was brave and went to the dentist alone.",
+      "mnemonic": "Türkçedeki 'Bravo!' İtalyanca 'bravo' (cesur, yiğit) sözünden gelir; İngilizce brave de aynı kökten. Pixar'ın 'Brave' filmi Türkiye'de 'Cesur' adıyla gösterildi."
+    },
+    {
+      "lesson": 5,
+      "front": "calm",
+      "back": "(adjective) sakin 🧘",
+      "example_sentence": "My teacher stays calm when we are noisy.",
+      "mnemonic": "Dünyaca ünlü 'Keep Calm and Carry On' posteri: sakin ol ve devam et. 'Calm down!' da sakinleş demektir; calm hem sıfat hem fiil."
+    },
+    {
+      "lesson": 5,
+      "front": "kind",
+      "back": "(adjective) iyi kalpli, nazik 💛",
+      "example_sentence": "The kind woman helped me carry my bags.",
+      "mnemonic": "E-postaların sonundaki 'Kind regards' (nazik selamlar) kalıbındaki kind. Dikkat: 'What kind of music?' derken kind = tür, çeşit demektir."
+    }
+  ],
+  "dialogue": {
+    "title": "Before the School Concert",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Tom, I'm so scared about tonight.",
+        "tr": "Tom, bu akşam için çok korkuyorum."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Stay calm. You sang great at practice.",
+        "tr": "Sakin ol. Provada harika söyledin."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Last year I was too shy to sing.",
+        "tr": "Geçen yıl şarkı söyleyemeyecek kadar utangaçtım."
+      },
+      {
+        "speaker": "Tom",
+        "en": "I know. Now you're brave. Everyone was surprised.",
+        "tr": "Biliyorum. Artık cesursun. Herkes şaşırdı."
+      },
+      {
+        "speaker": "Elif",
+        "en": "My mum is already proud. It's a bit funny.",
+        "tr": "Annem şimdiden gurur duyuyor. Biraz komik aslında."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Don't laugh! I'm serious, you're really good.",
+        "tr": "Gülme! Ciddiyim, gerçekten çok iyisin."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Thanks, Tom. You're always so kind to me.",
+        "tr": "Sağ ol Tom. Bana karşı hep çok iyisin."
+      },
+      {
+        "speaker": "Tom",
+        "en": "That's what friends are for. See you tonight!",
+        "tr": "Arkadaşlar bunun için var. Akşam görüşürüz!"
+      }
+    ]
+  }
+}

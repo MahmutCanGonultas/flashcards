@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 37,
+    "level": "B2",
+    "title": "Media & Clarity"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "censorship",
+      "back": "(noun) sansür 🚫",
+      "example_sentence": "The documentary was cut heavily because of state censorship.",
+      "mnemonic": "Türkçedeki 'sansür' Fransızca 'censure'den gelir; İngilizce 'censor' da aynı Latince 'censor' (Roma'da nüfus sayımı yapan ve ahlakı denetleyen memur) kökünden. 'Sansür' + '-ship' (durum eki, 'friendship'teki gibi) = censorship."
+    },
+    {
+      "lesson": 1,
+      "front": "propaganda",
+      "back": "(noun) propaganda 📢",
+      "example_sentence": "The posters were pure propaganda, designed to make people fear the enemy.",
+      "mnemonic": "Türkçesiyle birebir aynı. Kelime 1622'de Vatikan'ın 'Congregatio de Propaganda Fide' (İnancı Yayma Cemaati) adından çıktı; Latince 'propagare' = yaymak, çoğaltmak."
+    },
+    {
+      "lesson": 1,
+      "front": "credibility",
+      "back": "(noun) güvenilirlik, inandırıcılık 🤝",
+      "example_sentence": "The newspaper lost all credibility after it printed the fake interview.",
+      "mnemonic": "'Kredibilite' Türkçede aynen kullanılıyor; 'kredi' de aynı Latince 'credere' (inanmak, güvenmek) kökünden. Banka size kredi verirken aslında size inanıyor."
+    },
+    {
+      "lesson": 2,
+      "front": "misleading",
+      "back": "(adjective) yanıltıcı ⚠️",
+      "example_sentence": "The headline was misleading; the study never even mentioned coffee.",
+      "mnemonic": "'Lider' (leader) insanları bir yere götüren kişidir; 'mis-' ön eki ise 'yanlış' demektir ('mistake'teki gibi). Misleading = sizi yanlış yere götüren."
+    },
+    {
+      "lesson": 2,
+      "front": "interpret",
+      "back": "(verb) yorumlamak, tercüme etmek 🔍",
+      "example_sentence": "Each side interpreted the minister's silence as support for its own position.",
+      "mnemonic": "Latince 'interpres' = aracı, tercüman; baştaki 'inter-' (arası) 'internet' ve 'enternasyonal'deki ile aynı. İki taraf arasında anlam taşımak: konferans çevirmenine de 'interpreter' denir."
+    },
+    {
+      "lesson": 2,
+      "front": "exaggerate",
+      "back": "(verb) abartmak 🎈",
+      "example_sentence": "Don't exaggerate — the queue was twenty minutes, not two hours.",
+      "mnemonic": "Fransızca 'exagérer' Türkçeye de 'egzajere' (abartılmış) olarak girmişti; eski ama sözlükte var. Kök Latince 'agger' = toprak yığını; 'ex-' ile yığını daha da büyütmek, yani abartmak."
+    },
+    {
+      "lesson": 3,
+      "front": "summarize",
+      "back": "(verb) özetlemek 📝",
+      "example_sentence": "Could you summarize the report in two sentences for the meeting?",
+      "mnemonic": "'Sum' (toplam) ile aynı kök: Latince 'summa' = en üst nokta, toplam. Özetlemek, metnin 'toplamını' çıkarmaktır; İngilizler 'to sum up' (özetle) de der."
+    },
+    {
+      "lesson": 3,
+      "front": "clarify",
+      "back": "(verb) açıklığa kavuşturmak 💡",
+      "example_sentence": "Let me clarify: I said the deadline was Friday, not Thursday.",
+      "mnemonic": "Latince 'clarus' (açık, berrak) kökü: 'deklare etmek' (açıkça bildirmek), 'klarnet' (berrak sesli çalgı) ve 'clear' aynı aileden. Clarify = bulanık olanı berraklaştırmak."
+    },
+    {
+      "lesson": 3,
+      "front": "paraphrase",
+      "back": "(verb) başka sözlerle anlatmak 🔄",
+      "example_sentence": "Instead of quoting the whole speech, she paraphrased its main argument.",
+      "mnemonic": "'Paragraf' ve 'paradoks'taki Yunanca 'para-' (yanında, yanı sıra) + 'phrasis' (söyleyiş): sözün yanına aynı anlamda başka bir söz koymak. Alıntı (quote) kelimesi kelimesinedir, paraphrase kendi cümlelerinle."
+    },
+    {
+      "lesson": 4,
+      "front": "fluent",
+      "back": "(adjective) akıcı 🌊",
+      "example_sentence": "After two years in Madrid, his Spanish was almost fluent.",
+      "mnemonic": "Latince 'fluere' = akmak; Türkçe 'akıcı' ile aynı mantık. 'Influencer' da aynı kökten: 'in-' + 'fluere', etkisi insanların içine 'akan' kişi."
+    },
+    {
+      "lesson": 4,
+      "front": "articulate",
+      "back": "(adjective) kendini net ifade eden 🗣️",
+      "example_sentence": "She's the most articulate speaker on the panel; every point lands.",
+      "mnemonic": "Diksiyon derslerindeki 'artikülasyon' (boğumlama) aynı kelime; Latince 'articulus' = küçük eklem, parça. Sesleri ve fikirleri eklem eklem, net ayırarak sunan kişi articulate'tir (fiil olarak da kullanılır: 'to articulate an idea')."
+    },
+    {
+      "lesson": 4,
+      "front": "vague",
+      "back": "(adjective) belirsiz, bulanık 🌫️",
+      "example_sentence": "His answer was so vague that nobody knew whether he'd agreed.",
+      "mnemonic": "Latince 'vagus' = başıboş dolaşan; tıptaki 'vagus siniri' (vücutta gezinen sinir) ve 'vagabond' (serseri) aynı kök. Belirsiz bir cevap da oraya buraya dolaşır, hiçbir noktaya oturmaz."
+    },
+    {
+      "lesson": 5,
+      "front": "ambiguous",
+      "back": "(adjective) çift anlamlı, muğlak 🤷",
+      "example_sentence": "The contract's wording was ambiguous, so both sides claimed they were right.",
+      "mnemonic": "Latince 'ambi-' = her iki taraf ('ambulans'ın 'amb-'ı da aynı ön ek: etrafta dolaşan) + 'agere' = sürmek; iki yöne birden giden. Vague bulanıktır; ambiguous nettir ama iki farklı okuması vardır."
+    },
+    {
+      "lesson": 5,
+      "front": "concise",
+      "back": "(adjective) kısa ve öz ✂️",
+      "example_sentence": "Keep the email concise; the manager won't read past the first paragraph.",
+      "mnemonic": "Sondaki '-cise' Latince 'caedere' (kesmek): 'precise' (kesin) ve 'decide' (karar vermek: diğer seçenekleri kesip atmak) aynı aileden. Concise metin, fazlalıkları kesilmiş metindir."
+    },
+    {
+      "lesson": 5,
+      "front": "audience",
+      "back": "(noun) izleyiciler, hedef kitle 👥",
+      "example_sentence": "Know your audience: a joke that works on TikTok dies in a boardroom.",
+      "mnemonic": "Latince 'audire' = duymak: 'odyo' (audio), 'oditoryum' (dinleme salonu) ve 'odyoloji' (işitme bilimi) aynı kökten. Audience, aslında 'duyanlar'."
+    }
+  ],
+  "dialogue": {
+    "title": "Clicks Versus Credibility",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Tom, that headline on your article was seriously misleading.",
+        "tr": "Tom, haberinin başlığı resmen yanıltıcıydı."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Blame my editor. He exaggerates everything to get clicks.",
+        "tr": "Editörümü suçla. Tıklanma uğruna her şeyi abartıyor."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Your readers don't know that. It hurts your credibility.",
+        "tr": "Okurların bunu bilmiyor ki. Bu senin güvenilirliğini zedeliyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Fine, but your company's statement was so vague it said nothing.",
+        "tr": "İyi de sizin şirketin açıklaması o kadar muğlaktı ki hiçbir şey demiyordu."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Legal made it ambiguous on purpose. I hated every line.",
+        "tr": "Hukuk birimi bilerek çift anlamlı yazdı. Her satırından nefret ettim."
+      },
+      {
+        "speaker": "Tom",
+        "en": "So we're both writing for lawyers now, not for our audience.",
+        "tr": "Yani ikimiz de artık okurlarımız için değil, avukatlar için yazıyoruz."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Can I clarify one thing? At least mine wasn't propaganda.",
+        "tr": "Bir şeyi netleştireyim: en azından benimki propaganda değildi."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Concise and brutal. Can I interpret that as a compliment?",
+        "tr": "Kısa ve acımasız. Bunu iltifat olarak yorumlayabilir miyim?"
+      }
+    ]
+  }
+}

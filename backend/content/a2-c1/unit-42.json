@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 42,
+    "level": "C1",
+    "title": "Precise Verbs"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "alleviate",
+      "back": "(verb) hafifletmek, dindirmek 🩹",
+      "example_sentence": "A hot bath won't cure the flu, but it does alleviate the aches.",
+      "mnemonic": "Latince levis = hafif; 'levitasyon' (havaya yükselme) ve 'levye' (kaldıraç) aynı kökten gelir. Alleviate = yükü hafifletmek, acıyı dindirmek."
+    },
+    {
+      "lesson": 1,
+      "front": "exacerbate",
+      "back": "(verb) kötüleştirmek, azdırmak 🔥",
+      "example_sentence": "Cutting the bus routes only exacerbated the traffic problem it was meant to solve.",
+      "mnemonic": "Latince acerbus = keskin, acı; Türkçedeki 'asit' de aynı eski köke (ak- = keskin) uzanır. Yaraya asit dökmek gibi: exacerbate = durumu daha da azdırmak."
+    },
+    {
+      "lesson": 1,
+      "front": "undermine",
+      "back": "(verb) baltalamak, altını oymak 🕳️",
+      "example_sentence": "Nothing undermines a manager faster than being contradicted in front of the team.",
+      "mnemonic": "Kuşatmalarda surların altına tünel, yani 'mine' kazılıp duvar çökertilirdi; Türkçe 'mayın' da aynı Fransızca kelimeden. Undermine = otoriteyi, güveni alttan alta oymak."
+    },
+    {
+      "lesson": 2,
+      "front": "bolster",
+      "back": "(verb) güçlendirmek, desteklemek 💪",
+      "example_sentence": "The strong jobs figures bolstered the government's claim that the recovery was real.",
+      "mnemonic": "Bolster aslında yatağın başındaki uzun destek yastığıdır; fiil olarak 'altına destek koymak' demek. Bolster confidence / the economy / your case: güçlendirmek."
+    },
+    {
+      "lesson": 2,
+      "front": "mitigate",
+      "back": "(verb) hafifletmek, azaltmak 🛡️",
+      "example_sentence": "Nothing can stop the floods entirely, but better drainage would mitigate the damage.",
+      "mnemonic": "Latince mitis = yumuşak; mitigate = sert bir şeyi yumuşatmak. Hukuktaki 'hafifletici sebepler' İngilizcede 'mitigating circumstances'; risk, zarar ve etki de mitigate edilir."
+    },
+    {
+      "lesson": 2,
+      "front": "scrutinize",
+      "back": "(verb) didik didik incelemek 🔍",
+      "example_sentence": "Every receipt he submitted was scrutinized by an accountant who trusted no one.",
+      "mnemonic": "Latince scrutari = eşelemek, didik didik aramak; kökündeki scruta 'hurda, paçavra' demek. Türkçedeki 'mercek altına almak' tam karşılığı: under scrutiny = mercek altında."
+    },
+    {
+      "lesson": 3,
+      "front": "ascertain",
+      "back": "(verb) tespit etmek, saptamak 🎯",
+      "example_sentence": "Police are still trying to ascertain exactly when the last email was sent.",
+      "mnemonic": "Kökü Latince certus = kesin; 'sertifika' da bir şeyi 'kesinleştiren' belge demek. Ascertain = araştırıp kesin olarak öğrenmek, tespit etmek."
+    },
+    {
+      "lesson": 3,
+      "front": "corroborate",
+      "back": "(verb) doğrulamak, teyit etmek ✅",
+      "example_sentence": "Two neighbours corroborated her story, which is more than the defendant could manage.",
+      "mnemonic": "Latince robur = meşe, sağlamlık; İngilizce robust da oradan gelir. Bir ifadeyi ikinci bir kaynakla sağlamlaştırmak: tanık, belge ya da kanıt corroborate eder."
+    },
+    {
+      "lesson": 3,
+      "front": "refute",
+      "back": "(verb) çürütmek ❌",
+      "example_sentence": "She refuted the accusation with bank statements, not just a wounded expression.",
+      "mnemonic": "Argodaki 'refüze olmak' (reddedilmek) ile karıştırmayın; kökleri ayrı. Refute reddetmek değil, kanıtla çürütmektir: refute a claim / a theory."
+    },
+    {
+      "lesson": 4,
+      "front": "elicit",
+      "back": "(verb) ortaya çıkarmak, çekip almak 🎣",
+      "example_sentence": "Her question about his childhood elicited a longer silence than she'd expected.",
+      "mnemonic": "Latince e- (dışarı) + lacere (cezbetmek): bir tepkiyi, bilgiyi birinden 'dışarı çekmek'. Sesi çok benzeyen 'illicit' (yasa dışı) ile karıştırmayın; elicit a response from someone."
+    },
+    {
+      "lesson": 4,
+      "front": "deteriorate",
+      "back": "(verb) kötüleşmek, bozulmak 📉",
+      "example_sentence": "His eyesight deteriorated so gradually that he blamed the lighting for years.",
+      "mnemonic": "Latince deterior = 'daha kötü'; kelime zaten kıyas içerir, iyiyken kötüye gitmek. Sağlık, ilişki, hava ve bina hali deteriorate eder; genellikle nesnesiz kullanılır."
+    },
+    {
+      "lesson": 4,
+      "front": "flourish",
+      "back": "(verb) serpilmek, gelişmek 🌸",
+      "example_sentence": "The café flourished once the office block opened across the road.",
+      "mnemonic": "Latince flos/floris = çiçek; 'flora' (bitki örtüsü) aynı kök. Floransa'nın adı da Florentia, 'çiçeklenen şehir': flourish = çiçek açar gibi serpilmek."
+    },
+    {
+      "lesson": 5,
+      "front": "hinder",
+      "back": "(verb) engellemek, köstek olmak 🚧",
+      "example_sentence": "Far from helping, the new approval process has hindered every project it touched.",
+      "mnemonic": "Almanca hinter = arka; coğrafyadaki 'hinterland' (art bölge) aynı Germen kökünden. Hinder = geride tutmak, ilerlemeyi engellemek: hinder progress / growth."
+    },
+    {
+      "lesson": 5,
+      "front": "facilitate",
+      "back": "(verb) kolaylaştırmak, önünü açmak 🔑",
+      "example_sentence": "A shared calendar facilitated the handover far more than any meeting ever did.",
+      "mnemonic": "Latince facilis = kolay; 'fakülte' aynı kökten (facultas: beceri, kolaylık), atölyelerdeki 'fasilitatör' de işi kolaylaştıran kişi. Facilitate = kolaylaştırmak, önünü açmak."
+    },
+    {
+      "lesson": 5,
+      "front": "culminate",
+      "back": "(verb) doruğa ulaşmak, sonuçlanmak 🏔️",
+      "example_sentence": "Years of small arguments culminated in one spectacular row at her sister's wedding.",
+      "mnemonic": "Latince culmen = doruk, çatının tepesi. Bir sürecin doruğa çıkıp orada sonuçlanması; hep 'culminate in' diye kurulur: months of protest culminated in a strike."
+    }
+  ],
+  "dialogue": {
+    "title": "Facilitating Change",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Our new consultant's job is to 'facilitate change'. Morale deteriorated within a week.",
+        "tr": "Yeni danışmanımızın görevi 'değişimi kolaylaştırmak'mış. Moral bir haftada çöktü."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Consultants never alleviate anything. They just exacerbate it with nicer slides.",
+        "tr": "Danışmanlar hiçbir şeyi hafifletmez. Sadece daha şık slaytlarla daha beter ederler."
+      },
+      {
+        "speaker": "Elif",
+        "en": "He scrutinized every team for a month and concluded we need more meetings.",
+        "tr": "Bir ay boyunca her ekibi mercek altına aldı, sonucu: daha fazla toplantı lazımmış."
+      },
+      {
+        "speaker": "Tom",
+        "en": "And how did he ascertain that? Did a single employee corroborate it?",
+        "tr": "Bunu nasıl tespit etmiş peki? Tek bir çalışan bile doğruladı mı?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "He sent a survey. It elicited three replies, two of them from him.",
+        "tr": "Anket yolladı. Üç yanıt geldi, ikisi kendisinden."
+      },
+      {
+        "speaker": "Tom",
+        "en": "I'd refute his report, but I suspect it refutes itself.",
+        "tr": "Raporunu çürütürdüm ama sanırım zaten kendi kendini çürütüyor."
+      },
+      {
+        "speaker": "Elif",
+        "en": "The whole thing culminated in a workshop on 'mitigating resistance'. Meaning us.",
+        "tr": "Her şey 'direnci azaltma' atölyesiyle doruğa ulaştı. Direnç dedikleri de biziz."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Careful. Undermine him too openly and you'll hinder your own promotion.",
+        "tr": "Dikkat et. Onu fazla açıktan baltalarsan kendi terfine köstek olursun."
+      }
+    ]
+  }
+}
