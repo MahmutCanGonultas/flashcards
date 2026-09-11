@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError } from "../lib/api";
+import { primeSpeech } from "../lib/speech";
 import type { Deck, Card as CardModel } from "../types";
 import Header from "../components/Header";
 import Button from "../components/Button";
@@ -228,8 +229,14 @@ function DeckDetail() {
             {isPath && (
               <PathHeader
                 stats={stats}
-                onReview={() => navigate(`/decks/${deckId}/study`)}
-                onPractice={() => navigate(`/decks/${deckId}/study?mode=all`)}
+                onReview={() => {
+                  primeSpeech();
+                  navigate(`/decks/${deckId}/study`);
+                }}
+                onPractice={() => {
+                  primeSpeech();
+                  navigate(`/decks/${deckId}/study?mode=all`);
+                }}
               />
             )}
 
