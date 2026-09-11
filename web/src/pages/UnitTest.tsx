@@ -1,5 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  Navigate,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../lib/api";
 import type { Card, UnitRecord } from "../types";
@@ -97,23 +103,30 @@ function TestSession({
   unit,
   unitCards,
   pool,
+  skip,
   onRetry,
 }: {
   deckId: string;
   unit: UnitRecord;
   unitCards: Card[];
   pool: Card[];
+  /** Taking the test to skip the unit's lessons, not after them. */
+  skip: boolean;
   onRetry: () => void;
 }) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const record = useRecordUnitResult(deckId);
+  // A skip test opens on a briefing: the learner hasn't seen the words and
+  // needs to know what passing means before the first question speaks.
+  const [briefed, setBriefed] = useState(!skip);
 
   // Built once at mount; a re-render must never reshuffle a live test.
   const [questions] = useState(() => buildTest(unitCards, pool));
   const [index, setIndex] = useState(0);
   const [answer, setAnswer] = useState<number | null>(null);
   const [correct, setCorrect] = useState<number[]>([]);
+  const [streak, setStreak] = useState(0);
   const submittedRef = useRef(false);
 
   const question = questions[index];
@@ -123,22 +136,24 @@ function TestSession({
 
   // Only the hard round is silent: hearing the word would give it away.
   useEffect(() => {
-    if (question && question.format !== "reverse")
+    if (briefed && question && question.format !== "reverse")
       speakAuto(question.card.front);
-  }, [question]);
+  }, [briefed, question]);
 
   const choose = useCallback(
     (optionIndex: number) => {
       if (!question || answer !== null) return;
       setAnswer(optionIndex);
       if (question.options[optionIndex].isCorrect) {
-        playCorrect();
+        playCorrect(streak + 1);
+        setStreak(streak + 1);
         setCorrect((list) => [...list, question.card.id]);
       } else {
         playIncorrect();
+        setStreak(0);
       }
     },
-    [question, answer],
+    [question, answer, streak],
   );
 
   const { mutate: submit } = record;
@@ -173,7 +188,7 @@ function TestSession({
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      if (event.repeat || !question) return;
+      if (event.repeat || !question || !briefed) return;
       if (answer !== null) {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
@@ -189,11 +204,86 @@ function TestSession({
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [question, answer, choose, next]);
+  }, [question, answer, choose, next, briefed]);
 
   const missed = questions
     .filter((q) => !correct.includes(q.card.id))
     .map((q) => q.card);
+
+  if (!briefed) {
+    // The bottom bar sits outside the animated block: a transform on an
+    // ancestor would pin `fixed` to it instead of to the viewport.
+    return (
+      <>
+        <div className="animate-[pop-in_220ms_ease-out]">
+          <Link
+            to={`/decks/${deckId}`}
+            className="-m-2 inline-flex items-center gap-1.5 p-2 font-medium text-stone-500 transition hover:text-stone-800"
+          >
+            <span aria-hidden="true">←</span> Back to the path
+          </Link>
+          <div className="mt-6 flex items-end gap-3">
+            <Mascot mood="idle" size={88} className="shrink-0" />
+            <div className="relative min-w-0 flex-1 rounded-3xl rounded-bl-md bg-amber-50 p-4 ring-1 ring-amber-200">
+              <p className="text-[11px] font-extrabold uppercase tracking-widest text-amber-700">
+                Test out · Unit {unit.position}
+              </p>
+              <p className="mt-1 text-base font-semibold leading-relaxed text-amber-900">
+                Know these words already? Prove it and skip the lessons.
+              </p>
+            </div>
+          </div>
+          <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-stone-800">
+            {unit.title}
+            {unit.title_tr && (
+              <span className="font-bold text-stone-400">
+                {" "}
+                ({unit.title_tr})
+              </span>
+            )}
+          </h1>
+          <ul className="mt-5 space-y-2">
+            {[
+              [
+                "🎯",
+                `${unitCards.length} questions, one per word — meaning, sentence and Turkish → English.`,
+              ],
+              [
+                "✅",
+                `Score ${UNIT_PASS_MARK}% or more and the unit counts as passed. The next one opens.`,
+              ],
+              [
+                "🙂",
+                "Score less and nothing changes — the lessons are waiting, and the test is here again once you've done them.",
+              ],
+            ].map(([icon, text]) => (
+              <li
+                key={text}
+                className="flex items-start gap-3 rounded-2xl bg-white p-4 ring-1 ring-stone-200"
+              >
+                <span aria-hidden="true" className="text-xl leading-none">
+                  {icon}
+                </span>
+                <p className="text-[15px] leading-relaxed text-stone-700">
+                  {text}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="fixed inset-x-0 bottom-0 z-10 border-t border-stone-200/70 bg-[#FDF9F3]/95 backdrop-blur">
+          <div className="mx-auto flex max-w-2xl flex-col gap-2 px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 sm:flex-row">
+            <Button size="lg" fullWidth onClick={() => setBriefed(true)}>
+              Start the test
+            </Button>
+            <LinkButton to={`/decks/${deckId}`} variant="ghost">
+              Not yet
+            </LinkButton>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -346,9 +436,14 @@ function TestSession({
           />
           <p className="mt-3 text-sm font-bold uppercase tracking-widest text-stone-400">
             Unit {unit.position} · {unit.title}
+            {unit.title_tr && ` (${unit.title_tr})`}
           </p>
           <h2 className="mt-1 text-3xl font-extrabold tracking-tight text-stone-800">
-            {passed ? "Unit passed!" : "Not this time."}
+            {passed
+              ? skip
+                ? "Tested out!"
+                : "Unit passed!"
+              : "Not this time."}
           </h2>
           <p
             className={`mt-4 text-6xl font-extrabold tabular-nums ${
@@ -363,8 +458,16 @@ function TestSession({
 
           {passed ? (
             <p className="mx-auto mt-5 max-w-sm text-stone-600">
-              The next unit is open. These words will keep coming back in your
-              reviews — that's how they stay.
+              {skip
+                ? "This unit counts as done and the next one is open. Its lessons stay on the map if you ever want them."
+                : "The next unit is open. These words will keep coming back in your reviews — that's how they stay."}
+            </p>
+          ) : skip && missed.length > 0 ? (
+            <p className="mx-auto mt-5 max-w-sm text-stone-600">
+              Nothing lost —{" "}
+              {missed.length === 1 ? "one word" : `${missed.length} words`} got
+              away. Start this unit's lessons and they'll be yours in a few
+              days.
             </p>
           ) : (
             missed.length > 0 && (
@@ -428,6 +531,8 @@ function UnitTest() {
     deckId: string;
     unitId: string;
   }>();
+  const [searchParams] = useSearchParams();
+  const skip = searchParams.get("skip") === "1";
   const unitsQuery = useUnits(deckId);
   const cardsQuery = useQuery({
     queryKey: ["cards", deckId],
@@ -488,6 +593,7 @@ function UnitTest() {
             unit={unit}
             unitCards={unitCards}
             pool={pool}
+            skip={skip}
             onRetry={() => setAttempt((n) => n + 1)}
           />
         )}

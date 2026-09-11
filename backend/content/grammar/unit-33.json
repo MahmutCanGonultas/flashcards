@@ -1,0 +1,70 @@
+{
+  "unit": 33,
+  "title_en": "Third and Mixed Conditionals",
+  "title_tr": "Üçüncü ve Karma Koşul Cümleleri",
+  "hook": "Seçim gecesi her yorumcunun ağzında aynı cümle var: 'şunu yapsalardı kazanırlardı' — geçmişi değiştiremezsin ama İngilizcede sonradan akıl vermeyi mükemmel öğrenebilirsin.",
+  "rules": [
+    {
+      "rule": "Geçmişte olmamış bir şeyi hayal ediyorsan üçüncü koşul kurarsın: if + past perfect (had + V3), sonuç tarafında would have + V3. İki taraf da geçmişte kapanmış, artık değiştirilemez durumlardır.",
+      "example_en": "If the government had listened to the scientists, the crisis would have been much smaller.",
+      "example_tr": "Hükümet bilim insanlarını dinleseydi, kriz çok daha küçük olurdu."
+    },
+    {
+      "rule": "Sonuç tarafında would have yerine could have (yapabilirdi) ya da might have (belki olurdu) koyarak kesinliği ayarlarsın. Konuşmadaki 'd kısaltması if-tarafında had, sonuç tarafında would demektir: If they'd voted, they'd have won.",
+      "example_en": "If more young people had voted, the result might have been very different.",
+      "example_tr": "Daha fazla genç oy kullansaydı, sonuç çok farklı olabilirdi."
+    },
+    {
+      "rule": "Üçüncü koşul çoğu zaman pişmanlık ya da eleştiri taşır. Aynı duyguyu 'I wish I had voted' (keşke oy verseydim) ve 'I should have voted' (oy vermeliydim) daha kısa söyler; ama sonucu da anlatmak istiyorsan if-cümlesi gerekir.",
+      "example_en": "If I had read the whole bill, I would never have voted for it — I should have been more careful.",
+      "example_tr": "Yasa tasarısının tamamını okusaydım, ona asla oy vermezdim — daha dikkatli olmalıydım."
+    },
+    {
+      "rule": "Geçmişteki bir şart bugünü etkiliyorsa karma koşul kurarsın: if-tarafı past perfect kalır, sonuç tarafı would + fiil olur ve genelde now / today ile bugüne bağlanır.",
+      "example_en": "If she had won the election in 2020, she would be president today.",
+      "example_tr": "2020'de seçimi kazansaydı, bugün cumhurbaşkanı olurdu."
+    },
+    {
+      "rule": "Tersi de mümkün: bugün hâlâ geçerli bir özellik ya da durum geçmişteki bir sonucu açıklıyorsa, if-tarafı past simple, sonuç tarafı would have + V3 olur.",
+      "example_en": "If he weren't so stubborn, he would have accepted the peace deal last year.",
+      "example_tr": "Bu kadar inatçı olmasaydı, geçen yıl barış anlaşmasını kabul ederdi."
+    }
+  ],
+  "watch_out": "Türkçede 'dinleselerdi' hem bugünü hem geçmişi karşılar; İngilizcede geçmiş için if-tarafında mutlaka past perfect gerekir ve would have asla if-tarafına girmez. ✗ If they listened, they would win last year's election. ✗ If they would have listened, they would have won. ✓ If they had listened, they would have won last year's election.",
+  "memory_trick": "Geçmişte kalan her yarımda 'have' fiili vardır: if-tarafında had, sonuç tarafında would have. Hangi yarı bugüne uzanıyorsa oradaki have düşer, yerine now gelir. Cümleyi kurarken iki yarıya ayrı ayrı sor: geçmiş mi, bugün mü?",
+  "quiz": [
+    {
+      "question": "If the party ___ its promises, it would have won again.",
+      "options": [
+        "kept",
+        "had kept",
+        "would keep",
+        "has kept"
+      ],
+      "answer": 1,
+      "explain": "Geçmişte gerçekleşmemiş bir şart için if-tarafında past perfect kullanılır: had kept."
+    },
+    {
+      "question": "If I had studied law, I ___ a judge now.",
+      "options": [
+        "would have been",
+        "was",
+        "would be",
+        "had been"
+      ],
+      "answer": 2,
+      "explain": "Şart geçmişte ama sonuç bugün ('now'), bu yüzden sonuç tarafı would + fiil olur: would be."
+    },
+    {
+      "question": "Which sentence means the same as 'I should have voted'?",
+      "options": [
+        "I wish I voted.",
+        "I would vote if I could.",
+        "If I vote, I will win.",
+        "I wish I had voted."
+      ],
+      "answer": 3,
+      "explain": "Geçmişe dönük pişmanlık için 'I wish' + past perfect gerekir; 'I wish I voted' Türkçe mantığıyla kurulmuş yaygın bir hatadır."
+    }
+  ]
+}

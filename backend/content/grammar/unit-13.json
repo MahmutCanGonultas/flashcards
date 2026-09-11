@@ -1,0 +1,70 @@
+{
+  "unit": 13,
+  "title_en": "Going to vs Will",
+  "title_tr": "Going to mu, Will mi?",
+  "hook": "Türkçede 'alacağım' tek kelimedir; İngilizcede ise aynı cümle iki farklı şey söyler: ya çoktan planladın ya da şu an karar verdin — hangisi, sen seçersin.",
+  "rules": [
+    {
+      "rule": "Önceden karar verdiğin, kafanda planı hazır olan şeyler için 'am/is/are going to + fiil' kullan. Kişi değişince sadece am/is/are değişir, 'going to' hep aynı kalır.",
+      "example_en": "I'm going to buy a new phone next month.",
+      "example_tr": "Gelecek ay yeni bir telefon alacağım."
+    },
+    {
+      "rule": "Gözünle bir kanıt görüyorsan ve sonucu oradan tahmin ediyorsan yine 'going to' kullan. Kanıt gözünün önündeyse plan aramana gerek yok.",
+      "example_en": "Look at those clouds! It's going to rain.",
+      "example_tr": "Şu bulutlara bak! Yağmur yağacak."
+    },
+    {
+      "rule": "Konuşurken, tam o anda karar veriyorsan 'will' kullan; günlük dilde neredeyse hep 'I'll, you'll, she'll' diye kısaltılır. Plan yok, ani karar var.",
+      "example_en": "The phone is ringing. I'll answer it.",
+      "example_tr": "Telefon çalıyor. Ben açarım."
+    },
+    {
+      "rule": "Kanıtın yok, sadece fikrin varsa geleceği 'will' ile tahmin et; başına 'I think' eklemek çok doğal durur. 'Will' sonrası fiil hep yalındır: will be, will go, will buy.",
+      "example_en": "I think electric cars will be cheaper soon.",
+      "example_tr": "Bence elektrikli arabalar yakında daha ucuz olacak."
+    },
+    {
+      "rule": "Söz vermek ya da yardım teklif etmek için de 'I'll...' de. Olumsuzu 'will not', ama konuşmada hep kısası duyulur: 'won't'.",
+      "example_en": "Don't worry, I'll help you. It won't take long.",
+      "example_tr": "Merak etme, sana yardım ederim. Uzun sürmez."
+    }
+  ],
+  "watch_out": "Türkçede 'alacağım' derken yardımcı fiil yok, o yüzden am/is/are sık sık atlanıyor; oysa 'going to' onsuz yürümez. ✗ I going to buy a laptop. ✓ I'm going to buy a laptop.",
+  "memory_trick": "Türkçede ani kararı 'öderim' (geniş zaman) diye söylersin, planı 'ödeyeceğim' diye. Aynı ayrım: 'öderim' → I'll pay, 'ödeyeceğim' → I'm going to pay. Kafandaki Türkçe cümle senin yerine doğru olanı seçer.",
+  "quiz": [
+    {
+      "question": "We ___ visit my uncle on Sunday. We have the tickets.",
+      "options": [
+        "are going to",
+        "will to",
+        "going to",
+        "is going to"
+      ],
+      "answer": 0,
+      "explain": "Biletler alınmış, plan önceden yapılmış; hazır planlar için 'going to' gerekir ve 'we' ile 'are' gelir."
+    },
+    {
+      "question": "A: I don't have any money. B: Don't worry, I ___ pay.",
+      "options": [
+        "am going to",
+        "'ll",
+        "going to",
+        "won't"
+      ],
+      "answer": 1,
+      "explain": "Ödeme kararı o anda verildi, önceden plan yoktu; ani karar ve teklif için 'I'll' kullanılır."
+    },
+    {
+      "question": "Look at the sky! It ___ snow.",
+      "options": [
+        "will to",
+        "is snowing",
+        "is going to",
+        "snows"
+      ],
+      "answer": 2,
+      "explain": "Kanıt gökyüzünde, gözünün önünde; kanıta dayanan tahmin 'is going to' ile yapılır."
+    }
+  ]
+}

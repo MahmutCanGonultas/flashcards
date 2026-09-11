@@ -1,0 +1,70 @@
+{
+  "unit": 3,
+  "title_en": "Telling the Time: at, on, in",
+  "title_tr": "Saati Söylemek: at, on, in",
+  "hook": "'Seven o'clock' derken o'clock aslında 'of the clock' — 'saate göre' — demek; İngilizler yüzyıllarca kısalta kısalta bu hale getirmiş, sen 5 dakikada öğreneceksin.",
+  "rules": [
+    {
+      "rule": "Saat için önce sayılar: 13'ten 19'a kadar hepsi '-teen' (yani 'on') ile biter: sixteen = six + teen. 20 ise 'twenty'.",
+      "example_en": "My sister is sixteen.",
+      "example_tr": "Kız kardeşim on altı yaşında."
+    },
+    {
+      "rule": "Saati sormak için 'What time is it?' de. Cevap hep 'It's' ile başlar; tam saatlerde sayının sonuna 'o'clock' eklenir.",
+      "example_en": "What time is it? It's three o'clock.",
+      "example_tr": "Saat kaç? Saat üç."
+    },
+    {
+      "rule": "Buçuk için 'half past' + saat: 'half past seven' yedi buçuk demek. Başka dakikalarda en kolayı önce saati, sonra dakikayı söylemek: 'seven twenty' = yedi yirmi.",
+      "example_en": "It's half past seven.",
+      "example_tr": "Saat yedi buçuk."
+    },
+    {
+      "rule": "Saatin önüne 'at', günün önüne 'on' gelir: at seven, on Monday. Türkçedeki 'yedi-DE'nin -de'si İngilizcede başa geçip 'at' oluyor.",
+      "example_en": "My class is at nine on Monday.",
+      "example_tr": "Dersim pazartesi dokuzda."
+    },
+    {
+      "rule": "Sabah, öğleden sonra, akşam gibi günün bölümleri için 'in the' kullan: in the morning, in the afternoon, in the evening.",
+      "example_en": "The class is at ten in the morning.",
+      "example_tr": "Ders sabah onda."
+    }
+  ],
+  "watch_out": "Türkçede 'saat' hem 'clock' hem 'time' demek ama İngilizcede saati sorup söylerken 'clock' tek başına kullanılmaz: ✗ What is the clock? It's three clock. ✓ What time is it? It's three o'clock. Küçük bir istisna daha: gece için 'in' değil 'at' deriz — ✗ in the night ✓ at night.",
+  "memory_trick": "Huniyi hayal et: en geniş ağız 'in' (sabah, öğleden sonra, akşam), ortası 'on' (günler), en dar uç 'at' (tam saat). Zaman daraldıkça in → on → at.",
+  "quiz": [
+    {
+      "question": "What time is it? It's ___.",
+      "options": [
+        "three clock",
+        "three o'clock",
+        "clock three",
+        "o'clock three"
+      ],
+      "answer": 1,
+      "explain": "Tam saatte sayıdan sonra 'o'clock' gelir; 'clock' tek başına olmaz."
+    },
+    {
+      "question": "It's 7:30. It's ___ seven.",
+      "options": [
+        "half past",
+        "half to",
+        "past half",
+        "thirty past"
+      ],
+      "answer": 0,
+      "explain": "Buçuk için 'half past' + saat deriz: half past seven."
+    },
+    {
+      "question": "My class is ___ Monday.",
+      "options": [
+        "at",
+        "in",
+        "to",
+        "on"
+      ],
+      "answer": 3,
+      "explain": "Günlerin önüne 'on' gelir: on Monday."
+    }
+  ]
+}

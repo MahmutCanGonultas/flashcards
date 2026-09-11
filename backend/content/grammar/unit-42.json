@@ -1,0 +1,55 @@
+{
+  "unit": 42,
+  "title_en": "Cleft Sentences: What I Need Is...",
+  "title_tr": "Ayrık Cümleler: Asıl İhtiyacım Olan...",
+  "hook": "'I need sleep' der geçersin; 'What I need is sleep' dersen odadaki herkes uykuya bakar — İngilizce, cümleyi ikiye yarıp vurguyu istediğin yere koymana izin verir.",
+  "rules": [
+    {
+      "rule": "What-cleft: cümlenin vurgulamak istediğin parçasını sona alır, önüne 'What + özne + fiil + is' koyarsın. Türkçedeki 'asıl ... olan şey ...' kalıbının tam karşılığıdır.",
+      "example_en": "What undermined the plan was the timing, not the idea.",
+      "example_tr": "Planı baltalayan şey fikir değil, zamanlamaydı."
+    },
+    {
+      "rule": "It-cleft: 'It was/is + vurgulanan parça + who/that + cümlenin kalanı'. Kişiyi, yeri ya da zamanı öne çıkarır; Türkçede vurguyu tonlamayla yaparız, İngilizce yapıyla yapar.",
+      "example_en": "It was the auditor who scrutinized every receipt, not the manager.",
+      "example_tr": "Her fişi didik didik inceleyen yönetici değil, denetçiydi."
+    },
+    {
+      "rule": "Fiili vurgulamak için 'What + özne + do/did + is/was + fiilin yalın hâli' kullanılır; 'do' burada 'yapmak' değil, yer tutucudur.",
+      "example_en": "What the new policy did was exacerbate the shortage.",
+      "example_tr": "Yeni politikanın yaptığı şey, kıtlığı daha da azdırmak oldu."
+    },
+    {
+      "rule": "'All (that) ... is' ve 'The only thing ... is' de aynı ailedendir ve 'tek istediğim/yaptığım' anlamı katar; sonuna isim ya da yalın fiil gelebilir.",
+      "example_en": "All we can do now is mitigate the damage.",
+      "example_tr": "Şu an yapabileceğimiz tek şey hasarı hafifletmek."
+    },
+    {
+      "rule": "Cleft cümlelerde 'is/was' vurgulanan parçanın önünde durur ve tekil kalır; sona gelen parça çoğul olsa bile çoğu zaman 'is' korunur (What I need is two days).",
+      "example_en": "What bolstered their case was three independent witnesses.",
+      "example_tr": "Davalarını güçlendiren şey üç bağımsız tanıktı."
+    }
+  ],
+  "watch_out": "It-cleft'te kişi için 'who', diğer her şey için 'that' kullanılır; 'which' kulağa yanlış gelir. ✗ It was the timing which ruined it. ✓ It was the timing that ruined it. Bir de what-cleft'te 'what'tan sonra soru sırası yoktur: ✗ What did I need was rest. ✓ What I needed was rest.",
+  "memory_trick": "Cümleyi bir spot ışığı gibi düşün: 'It was X that...' ışığı X'e tutar, 'What I want is X' ışığı X'e en sona saklayarak tutar. Vurgulamak istediğini bul, kalıbı etrafına ör.",
+  "quiz": [
+    {
+      "question": "___ facilitated the merger was one honest conversation.",
+      "options": ["That", "What", "It", "Which"],
+      "answer": 1,
+      "explain": "Vurgulanan parça sona alınmış; başa 'What + özne + fiil' gelir."
+    },
+    {
+      "question": "It was the deadline ___ hindered us, not the budget.",
+      "options": ["which", "who", "that", "what"],
+      "answer": 2,
+      "explain": "It-cleft'te kişi olmayan şeyler için 'that' kullanılır."
+    },
+    {
+      "question": "What the report ___ was refute every claim in the article.",
+      "options": ["did", "was", "had", "made"],
+      "answer": 0,
+      "explain": "Fiili vurgulayan cleft'te 'do/did' yer tutucudur: What X did was + yalın fiil."
+    }
+  ]
+}

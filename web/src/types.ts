@@ -34,6 +34,21 @@ export type ReviewQuality = 1 | 3 | 4 | 5;
 
 export type DialogueLine = { speaker: string; en: string; tr: string };
 
+export type GrammarRule = { rule: string; example_en: string; example_tr: string };
+export type GrammarQuiz = { question: string; options: string[]; answer: number; explain: string };
+
+/** One short grammar note per unit, written in Tonton's voice. */
+export type GrammarNote = {
+  unit: number;
+  title_en: string;
+  title_tr: string;
+  hook: string;
+  rules: GrammarRule[];
+  watch_out: string;
+  memory_trick: string;
+  quiz: GrammarQuiz[];
+};
+
 export type Dialogue = { title: string; lines: DialogueLine[] };
 
 /** One themed stretch of a deck's path, with this learner's test history. */
@@ -41,9 +56,12 @@ export type UnitRecord = {
   id: number;
   position: number;
   title: string;
+  /** The title in the learner's language, shown beside the English one. */
+  title_tr: string | null;
   /** CEFR level of the unit's words: "A1", "A2", "B1"... */
   level: string | null;
   dialogue: Dialogue | null;
+  grammar: GrammarNote | null;
   /** Whether the learner has ever passed this unit's test — or placed past it. */
   passed: boolean;
   /** Skipped by the placement test rather than earned. */

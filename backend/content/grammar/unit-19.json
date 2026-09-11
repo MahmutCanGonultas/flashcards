@@ -1,0 +1,65 @@
+{
+  "unit": 19,
+  "title_en": "Very, Too, Enough: Degree Words",
+  "title_tr": "Çok, Fazla, Yeterince: Derece Sözcükleri",
+  "hook": "Bir Türk 'çok mutluyum' diye 'I'm too happy' dediğinde İngiliz 'Neden, sorun mu var?' diye bakar; çünkü 'too' hiç de masum bir kelime değil.",
+  "rules": [
+    {
+      "rule": "'very' sıfatı büyütür (çok), 'a bit' küçültür (biraz). İkisi de sıfatın hemen önüne gelir, tıpkı Türkçedeki gibi.",
+      "example_en": "My brother is very funny but a bit lazy.",
+      "example_tr": "Abim çok komik ama biraz tembel."
+    },
+    {
+      "rule": "'too' da 'çok' gibi görünür ama anlamı 'fazla'dır: gereğinden fazla, ve bu bir sorun. Sonucu söylemek için arkasına 'to + fiil' eklersin.",
+      "example_en": "I'm too tired to go out tonight.",
+      "example_tr": "Bu gece dışarı çıkamayacak kadar yorgunum."
+    },
+    {
+      "rule": "'enough' (yeterince) Türkçedeki gibi önden değil, sıfatın ARKASINDAN gelir; isimle kullanırsan ismin önüne geçer: enough money. Olumsuzu 'not ... enough'.",
+      "example_en": "He isn't old enough to drive.",
+      "example_tr": "Araba kullanacak yaşta değil."
+    },
+    {
+      "rule": "Duygu sıfatlarında -ed hisseden kişiyi, -ing hissettiren şeyi anlatır: bored sıkılmış, boring sıkıcı.",
+      "example_en": "The film was boring, so I was bored.",
+      "example_tr": "Film sıkıcıydı, o yüzden sıkıldım."
+    }
+  ],
+  "watch_out": "En klasik hata, kendini anlatırken -ing kullanmak: ✗ I am boring. (Bu 'sıkıcı biriyim' demek!) ✓ I am bored. (Sıkıldım.) Aynı tuzak: ✗ I'm interesting in music → ✓ I'm interested in music.",
+  "memory_trick": "'enough' utangaçtır, sıfatın arkasına saklanır: old enough, good enough. Duygu sıfatlarında ise -ING sebep, -ED sonuçtur: boring film → bored ben.",
+  "quiz": [
+    {
+      "question": "She is ___ young to drive a car.",
+      "options": [
+        "very",
+        "too",
+        "enough",
+        "a bit"
+      ],
+      "answer": 1,
+      "explain": "Bir engel var (araba kullanamıyor), yani gereğinden fazla genç: 'too + sıfat + to + fiil'."
+    },
+    {
+      "question": "Is the coffee ___?",
+      "options": [
+        "hot enough",
+        "enough hot",
+        "hot too",
+        "enough of hot"
+      ],
+      "answer": 0,
+      "explain": "'enough' sıfatın önüne değil arkasına gelir."
+    },
+    {
+      "question": "This book is really ___. I can't stop reading!",
+      "options": [
+        "interested",
+        "bored",
+        "interesting",
+        "boring"
+      ],
+      "answer": 2,
+      "explain": "Hissettiren şey kitap, o yüzden -ing: interesting."
+    }
+  ]
+}

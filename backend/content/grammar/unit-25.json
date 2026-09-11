@@ -1,0 +1,70 @@
+{
+  "unit": 25,
+  "title_en": "The Passive Voice",
+  "title_tr": "Edilgen Çatı",
+  "hook": "Bir haber, bir sözleşme ya da bir ürün etiketi okuduğunda karşına çıkan cümlelerin yarısı 'yapan kişi'yi hiç söylemez; işte o gizli yapı bugün senin oluyor.",
+  "rules": [
+    {
+      "rule": "Edilgen cümle iki parçadan kurulur: 'be' fiili + fiilin üçüncü hâli (past participle). Nesne başa geçer, işi yapan kişi geride kalır.",
+      "example_en": "These phones are made in Turkey.",
+      "example_tr": "Bu telefonlar Türkiye'de üretiliyor."
+    },
+    {
+      "rule": "Edilgeni, işi kim yaptığı önemsizse, bilinmiyorsa ya da zaten belliyse seçersin. Konu, yapan değil, yapılan iştir.",
+      "example_en": "The meeting was cancelled.",
+      "example_tr": "Toplantı iptal edildi."
+    },
+    {
+      "rule": "Yapanı söylemek gerçekten gerekiyorsa cümlenin sonuna 'by + kişi' eklersin; gerekmiyorsa hiç eklemezsin.",
+      "example_en": "The company was founded by two students.",
+      "example_tr": "Şirket iki öğrenci tarafından kuruldu."
+    },
+    {
+      "rule": "Zamanı sadece 'be' fiili taşır, past participle hiç değişmez: is/are (geniş zaman), was/were (geçmiş), will be (gelecek).",
+      "example_en": "Your order will be sent tomorrow.",
+      "example_tr": "Siparişiniz yarın gönderilecek."
+    },
+    {
+      "rule": "Soru ve olumsuzda da yalnızca 'be' ile oynarsın: 'be' başa gelir ya da 'not' alır, past participle yerinde kalır.",
+      "example_en": "Is English spoken in this office? No, it isn't spoken here.",
+      "example_tr": "Bu ofiste İngilizce konuşuluyor mu? Hayır, burada konuşulmuyor."
+    }
+  ],
+  "watch_out": "Türkçe '-ıl/-il' ekini fiile yapıştırdığı için Türkler 'be'yi atlayıp yalnızca past participle kullanır. ✗ 'The report sent yesterday.' ✓ 'The report was sent yesterday.' 'be' olmadan edilgen olmaz; 'sent' tek başına cümle kuramaz.",
+  "memory_trick": "Türkçede edilgen tek harfle biter: yap-ıl-dı. İngilizcede o '-ıl' ayrı bir kelime olup fiilin önüne geçer: was + built. '-ıl' görünce 'be' ara.",
+  "quiz": [
+    {
+      "question": "This bread ___ fresh every morning.",
+      "options": [
+        "makes",
+        "is made",
+        "made",
+        "is make"
+      ],
+      "answer": 1,
+      "explain": "Edilgen için 'be' + past participle gerekir: 'is made'."
+    },
+    {
+      "question": "The new bridge ___ last year.",
+      "options": [
+        "was built",
+        "is built",
+        "built",
+        "will be built"
+      ],
+      "answer": 0,
+      "explain": "'last year' geçmişi gösterir, bu yüzden 'was' + 'built' kullanılır."
+    },
+    {
+      "question": "The letter was written ___ the manager.",
+      "options": [
+        "from",
+        "with",
+        "for",
+        "by"
+      ],
+      "answer": 3,
+      "explain": "Edilgen cümlede işi yapan kişi 'by' ile verilir."
+    }
+  ]
+}

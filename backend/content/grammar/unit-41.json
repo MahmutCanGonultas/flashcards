@@ -1,0 +1,70 @@
+{
+  "unit": 41,
+  "title_en": "Inversion for Emphasis",
+  "title_tr": "Vurgu İçin Devrik Yapı",
+  "hook": "Bir cümleyi tersine çevirmek, sesinizi yükseltmeden masaya yumruk vurmaktır; 'Never have I met such a stubborn man' diyen kişi kimseye bağırmadan herkesi susturur.",
+  "rules": [
+    {
+      "rule": "Never, rarely, seldom gibi olumsuz ya da kısıtlayıcı bir zarfı vurgu için cümlenin başına aldığınızda, yardımcı fiil özneden önce gelir — tıpkı soru cümlesindeki gibi. Düz hâli 'I have never met', vurgulu hâli 'Never have I met'tir.",
+      "example_en": "Never have I met anyone so quietly determined.",
+      "example_tr": "Bu kadar sessiz ama kararlı birine hayatımda rastlamadım."
+    },
+    {
+      "rule": "Cümlede zaten bir yardımcı fiil yoksa (present simple, past simple), soru cümlelerindeki gibi do/does/did getirirsiniz; ana fiil yalın kalır.",
+      "example_en": "Rarely does he admit a mistake, and never in front of his team.",
+      "example_tr": "Hatasını nadiren kabul eder, ekibinin önünde ise asla."
+    },
+    {
+      "rule": "'Not only ... but (also)' kalıbında devrik yapı yalnızca ilk cümlecikte olur; 'but' ile başlayan ikinci kısım normal sıraya döner.",
+      "example_en": "Not only is she meticulous, but she also expects the same of everyone around her.",
+      "example_tr": "Sadece kendisi titiz değil, çevresindeki herkesten de aynı titizliği bekliyor."
+    },
+    {
+      "rule": "'No sooner ... than' ve 'Hardly ... when' iki olayın neredeyse aynı anda olduğunu anlatır; ilk cümlecik genellikle past perfect ile devrik kurulur, ikinci olay 'than' ya da 'when' ile gelir.",
+      "example_en": "No sooner had he promised to stay calm than he slammed the door.",
+      "example_tr": "Sakin kalacağına söz vermesiyle kapıyı çarpması bir oldu."
+    },
+    {
+      "rule": "'Under no circumstances', 'on no account', 'at no time' gibi edatlı kalıplar da aynı devrik yapıyı ister; bu tür cümleler resmî ve yazılı dile aittir, sohbette ölçülü kullanın yoksa tiyatro sahnesinden inmiş gibi durursunuz.",
+      "example_en": "Under no circumstances should a leader mistake stubbornness for strength.",
+      "example_tr": "Bir lider hiçbir koşulda inatçılığı güç sanmamalı."
+    }
+  ],
+  "watch_out": "Türkçede vurgu için kelimelerin yerini değiştirirsiniz ama yardımcı fiil oynatmazsınız; bu yüzden en yaygın hata zarfı başa alıp gerisini düz bırakmaktır: ✗ Never I have seen such patience. ✓ Never have I seen such patience. Bir de 'Only when/after' ile başlayan cümlelerde devrilen kısım yan cümle değil ana cümledir: ✓ Only when he apologised did she forgive him.",
+  "memory_trick": "Devrik cümle aslında bir sorunun kılığına girmiş bir iddiadır: 'Have I ever seen...?' sorusunu al, başına 'Never' koy, soru işaretini nokta yap — 'Never have I seen.' Soru gibi kurulur, hüküm gibi biter.",
+  "quiz": [
+    {
+      "question": "Rarely ___ such loyalty in a rival.",
+      "options": [
+        "one sees",
+        "does one see",
+        "one does see",
+        "sees one"
+      ],
+      "answer": 1,
+      "explain": "Cümlede yardımcı fiil olmadığı için 'does' eklenir ve özneden önce gelir; ana fiil yalın kalır."
+    },
+    {
+      "question": "Not only ___ honest, but she also says so out loud.",
+      "options": [
+        "is she",
+        "she is",
+        "does she",
+        "she does be"
+      ],
+      "answer": 0,
+      "explain": "'Not only' cümle başındayken ilk cümlecik devrik kurulur ve 'is' özneden önce gelir; 'but'tan sonraki kısım düz sıradadır."
+    },
+    {
+      "question": "No sooner ___ the room than the arguing stopped.",
+      "options": [
+        "he had entered",
+        "he entered",
+        "had he entered",
+        "had entered he"
+      ],
+      "answer": 2,
+      "explain": "'No sooner' past perfect ve devrik yapı ister: 'had' özneden önce gelir, ikinci olay 'than' ile bağlanır."
+    }
+  ]
+}

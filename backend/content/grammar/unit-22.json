@@ -1,0 +1,70 @@
+{
+  "unit": 22,
+  "title_en": "Present Perfect vs Past Simple",
+  "title_tr": "Present Perfect mi, Past Simple mı?",
+  "hook": "Türkçede 'koştum' deyip geçersin; İngilizce hemen 'ne zaman?' diye sorar — cevabın varsa past simple, yoksa present perfect.",
+  "rules": [
+    {
+      "rule": "Bitmiş, belli bir zaman varsa (yesterday, in 2019, last week) past simple kullanırız: fiilin 2. hali, o kadar.",
+      "example_en": "I ran my first marathon in 2019.",
+      "example_tr": "İlk maratonumu 2019'da koştum."
+    },
+    {
+      "rule": "Ne zaman olduğunu söylemiyorsak ya da olay şimdiye kadar sürüyorsa present perfect: have/has + fiilin 3. hali. Önemli olan sonuç, tarih değil.",
+      "example_en": "I have run three marathons.",
+      "example_tr": "Şimdiye kadar üç maraton koştum."
+    },
+    {
+      "rule": "Süre söylerken for (for two years), başlangıç noktası söylerken since (since 2024). İkisi de present perfect ile gider.",
+      "example_en": "She has been in the team for two years, since 2024.",
+      "example_tr": "İki yıldır, yani 2024'ten beri takımda."
+    },
+    {
+      "rule": "already (çoktan) ve just (daha yeni) have ile fiilin 3. hali arasına girer; olumlu cümlelerde kullanılır.",
+      "example_en": "The rain has just stopped — let's go out.",
+      "example_tr": "Yağmur daha yeni durdu, hadi çıkalım."
+    },
+    {
+      "rule": "yet (henüz) yalnızca soru ve olumsuz cümlelerde kullanılır ve hep cümlenin sonunda durur.",
+      "example_en": "Has the snow melted yet? — No, it hasn't melted yet.",
+      "example_tr": "Kar eridi mi henüz? — Hayır, henüz erimedi."
+    }
+  ],
+  "watch_out": "Türkçede '5 yıldır burada yaşıyorum' şimdiki zamandır; bu yüzden en sık hata ✗ 'I am living here for 5 years' ya da ✗ 'I live here since 2019' demek. Geçmişte başlayıp hâlâ süren şey İngilizcede present perfect ister: ✓ 'I have lived here for 5 years.'",
+  "memory_trick": "'-dır' duyunca for, '-den beri' duyunca since: beş yıl-dır → for five years, 2019'dan beri → since 2019. Cümlede 'dün, geçen yıl, 2010'da' gibi bitmiş bir tarih varsa hemen past simple.",
+  "quiz": [
+    {
+      "question": "We ___ the final last Saturday.",
+      "options": [
+        "have watched",
+        "watched",
+        "have watch",
+        "watch"
+      ],
+      "answer": 1,
+      "explain": "'Last Saturday' bitmiş bir zaman söylüyor, o yüzden past simple: watched."
+    },
+    {
+      "question": "The lake has been frozen ___ December.",
+      "options": [
+        "since",
+        "for",
+        "from",
+        "yet"
+      ],
+      "answer": 0,
+      "explain": "'December' bir süre değil, başlangıç noktası; başlangıç noktasıyla since kullanılır."
+    },
+    {
+      "question": "Sorry, I haven't finished the race ___.",
+      "options": [
+        "already",
+        "just",
+        "yet",
+        "since"
+      ],
+      "answer": 2,
+      "explain": "Olumsuz cümlede 'henüz' anlamı için cümle sonunda yet kullanılır; already olumsuzda olmaz."
+    }
+  ]
+}

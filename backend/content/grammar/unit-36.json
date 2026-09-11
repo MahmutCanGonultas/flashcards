@@ -1,0 +1,70 @@
+{
+  "unit": 36,
+  "title_en": "Modals of Deduction",
+  "title_tr": "Çıkarım Bildiren Modallar",
+  "hook": "Sherlock Holmes'un bütün sırrı üç kelimede saklı: must, can't, might — kanıta bakıp 'kesin o yaptı' ya da 'olamaz' demenin İngilizcesi bu.",
+  "rules": [
+    {
+      "rule": "Elindeki kanıt seni tek bir sonuca götürüyorsa must + fiilin yalın hâlini kullan; burada must zorunluluk değil, 'kesin öyledir' anlamında çıkarım bildirir.",
+      "example_en": "Her fingerprints are all over the safe — she must be involved.",
+      "example_tr": "Parmak izleri kasanın her yerinde — bu işin içinde olmalı."
+    },
+    {
+      "rule": "Bir şeyin imkânsız olduğuna eminsen can't kullan; çıkarımda must'ın olumsuzu mustn't değil, can't'tir.",
+      "example_en": "The suspect can't be guilty — he was in prison that night.",
+      "example_tr": "Şüpheli suçlu olamaz — o gece hapisteydi."
+    },
+    {
+      "rule": "Emin değilsen, yalnızca bir ihtimalden söz ediyorsan might, may ya da could kullan; üçü de 'olabilir' demektir ve aralarında ciddi bir fark yoktur.",
+      "example_en": "The witness might be lying, but we have no proof yet.",
+      "example_tr": "Tanık yalan söylüyor olabilir ama henüz elimizde kanıt yok."
+    },
+    {
+      "rule": "Geçmişteki bir olay hakkında çıkarım yapıyorsan modal değişmez, ardına have + V3 gelir: must have done, can't have done, might have done.",
+      "example_en": "The lock isn't broken, so the burglar must have used a key.",
+      "example_tr": "Kilit kırılmamış, yani hırsız bir anahtar kullanmış olmalı."
+    },
+    {
+      "rule": "might not ile can't aynı şey değil: might not 'belki değildir' der, can't 'kesinlikle değildir'. Dikkat, could have 'olmuş olabilir' demekken couldn't have tam tersine can't have gibi imkânsızlık bildirir.",
+      "example_en": "She might not have seen the attacker's face, but she can't have missed the car — it was parked right outside her window.",
+      "example_tr": "Saldırganın yüzünü görmemiş olabilir ama arabayı kaçırmış olamaz — tam penceresinin önünde park hâlindeydi."
+    }
+  ],
+  "watch_out": "Türkçede 'olmalı'nın olumsuzu 'olmamalı' olduğu için elimiz mustn't'a gider, ama İngilizcede mustn't yalnızca yasak bildirir; çıkarımın olumsuzu can't'tir. ✗ He mustn't be the thief, he was abroad. ✓ He can't be the thief, he was abroad.",
+  "memory_trick": "Türkçedeki üçlüyü kopyala: 'olmalı' = must, 'olamaz' = can't, 'olabilir' = might. Geçmişe geçince Türkçede '-mış' eklersin, İngilizcede 'have + V3': 'yapmış olmalı' = must have done.",
+  "quiz": [
+    {
+      "question": "The alarm is ringing and the window is broken — someone ___ inside.",
+      "options": [
+        "can't be",
+        "mustn't be",
+        "must be",
+        "might not be"
+      ],
+      "answer": 2,
+      "explain": "Kırık cam ve çalan alarm güçlü kanıt; olumlu ve kesin çıkarım için must be kullanılır."
+    },
+    {
+      "question": "He ___ the robber — he was in court all morning, in front of the judge.",
+      "options": [
+        "can't be",
+        "mustn't be",
+        "must be",
+        "may be"
+      ],
+      "answer": 0,
+      "explain": "Kesinlikle imkânsız diyorsak can't be kullanılır; mustn't yasak anlatır, çıkarım değil."
+    },
+    {
+      "question": "The safe is empty but the lock isn't broken. The thief ___ a key.",
+      "options": [
+        "must use",
+        "must had",
+        "must have use",
+        "must have used"
+      ],
+      "answer": 3,
+      "explain": "Geçmişle ilgili çıkarımda kalıp must + have + V3'tür: must have used."
+    }
+  ]
+}

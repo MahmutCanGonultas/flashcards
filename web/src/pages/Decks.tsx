@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useMutation, useQueries, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError } from "../lib/api";
 import { themeFor } from "../lib/themes";
-import type { Card, Deck } from "../types";
+import type { Card, Deck, UnitRecord } from "../types";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import DeckCard from "../components/DeckCard";
@@ -11,8 +11,10 @@ import DeckFormModal from "../components/DeckFormModal";
 import EmptyState from "../components/EmptyState";
 import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
-import Mascot from "../components/Mascot";
+import TontonSays from "../components/TontonSays";
 import { buildPath, pathStats } from "../lib/path";
+import { homeLines } from "../lib/tonton";
+import { useStreak } from "../lib/streak";
 
 /** Splits the due cards into brand-new ones and spaced-repetition repeats. */
 function dueStats(cards: Card[]): Pick<DeckStats, "due" | "newDue" | "reviewDue"> {
@@ -23,14 +25,15 @@ function dueStats(cards: Card[]): Pick<DeckStats, "due" | "newDue" | "reviewDue"
 }
 
 /** Path progress, for decks whose cards carry lesson numbers. */
-function pathProgress(cards: Card[]): DeckStats["path"] {
-  const units = buildPath(cards);
+function pathProgress(cards: Card[], unitRecords: UnitRecord[]): DeckStats["path"] {
+  const units = buildPath(cards, unitRecords);
   if (units.length === 0) return undefined;
   const stats = pathStats(units);
   return {
     lessonsDone: stats.doneLessons,
+    currentLesson: stats.currentLesson,
     totalLessons: stats.totalLessons,
-    wordsLearned: stats.wordsLearned,
+    wordsLearned: stats.wordsKnown,
     totalWords: stats.totalWords,
   };
 }
@@ -69,10 +72,25 @@ function Decks() {
     })),
   });
 
+  // The unit gates too, under DeckDetail's key, so the card's "Lesson N"
+  // is the same N the path will point at.
+  const unitQueries = useQueries({
+    queries: (data ?? []).map((deck) => ({
+      queryKey: ["units", String(deck.id)],
+      queryFn: () =>
+        api.get<{ units: UnitRecord[] }>(`/decks/${deck.id}/units`).then((r) => r.units),
+    })),
+  });
+
+  const streak = useStreak().data?.streak ?? 0;
+  const allCards = cardQueries.flatMap((query) => query.data ?? []);
+  const dueTotal = dueStats(allCards).due;
+
   const statsFor = (index: number): DeckStats | undefined => {
     const cards = cardQueries[index]?.data;
-    return cards
-      ? { total: cards.length, ...dueStats(cards), path: pathProgress(cards) }
+    const unitRecords = unitQueries[index]?.data;
+    return cards && unitRecords
+      ? { total: cards.length, ...dueStats(cards), path: pathProgress(cards, unitRecords) }
       : undefined;
   };
 
@@ -101,15 +119,17 @@ function Decks() {
       <Header />
 
       <main className="max-w-5xl mx-auto px-6 pt-10 pb-[max(2.5rem,env(safe-area-inset-bottom))]">
-        <div className="mb-8 flex flex-col items-stretch gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div className="flex items-center gap-3">
-            <Mascot mood="happy" size={64} className="shrink-0" />
-            <div>
-              <h1 className="text-3xl font-extrabold text-stone-800 tracking-tight">
-                My Decks
-              </h1>
-              <p className="text-stone-500 mt-1">Pick up where you left off.</p>
-            </div>
+        <TontonSays
+          size={84}
+          lines={homeLines({ cards: allCards, due: dueTotal, streak })}
+        />
+
+        <div className="mb-6 mt-6 flex flex-col items-stretch gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h1 className="text-3xl font-extrabold text-stone-800 tracking-tight">
+              My Decks
+            </h1>
+            <p className="text-stone-500 mt-1">Pick up where you left off.</p>
           </div>
           <Button
             className="w-full shrink-0 whitespace-nowrap sm:w-auto"

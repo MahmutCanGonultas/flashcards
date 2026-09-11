@@ -232,6 +232,7 @@ function DeckDetail() {
             {isPath && (
               <PathHeader
                 stats={stats}
+                units={units}
                 placementTo={units.some((u) => u.id !== null) ? `/decks/${deckId}/placement` : undefined}
                 isFresh={stats.wordsLearned === 0 && units.every((u) => u.state !== "passed")}
                 onReview={() => {

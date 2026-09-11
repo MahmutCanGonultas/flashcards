@@ -52,6 +52,11 @@ CREATE TABLE units(
     title VARCHAR(100) NOT NULL,
     -- CEFR level of the unit's words: A1, A2, B1...
     level VARCHAR(10),
+    -- The title in the learner's language, shown beside the English one.
+    title_tr VARCHAR(100),
+    -- { title_en, title_tr, hook, rules[], watch_out, memory_trick, quiz[] } --
+    -- one short grammar note per unit, in the mascot's voice.
+    grammar JSONB,
     -- { title, lines: [{ speaker, en, tr }] } -- a short conversation that
     -- uses the unit's vocabulary, shown after its lessons and before its test.
     dialogue JSONB,

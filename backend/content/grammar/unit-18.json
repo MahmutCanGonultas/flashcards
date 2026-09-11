@@ -1,0 +1,70 @@
+{
+  "unit": 18,
+  "title_en": "Where Frequency Adverbs Go",
+  "title_tr": "Sıklık Zarfları Nereye Gelir?",
+  "hook": "İngilizcede 'always' cümlenin başına değil, tam ortasına oturur; yanlış koltuğa koyarsan çamaşır yine yıkanır ama cümle yabancı kokar — doğru yeri gösteriyorum.",
+  "rules": [
+    {
+      "rule": "Sıklık zarfları bir merdivendir: always (%100) en üstte, sonra usually, often, sometimes aşağı iner, never (%0) en altta durur.",
+      "example_en": "I always make my bed in the morning.",
+      "example_tr": "Sabahları yatağımı her zaman toplarım."
+    },
+    {
+      "rule": "Türkçede zarf cümlenin neresine gelse olur; İngilizcede sabit bir koltuğu var: özne ile ana fiilin tam arasında.",
+      "example_en": "We often clean the kitchen on Sundays.",
+      "example_tr": "Pazarları mutfağı sık sık temizleriz."
+    },
+    {
+      "rule": "Fiil am / is / are ise koltuk değişir: zarf 'be'den SONRA gelir.",
+      "example_en": "The kitchen is always a mess after dinner.",
+      "example_tr": "Akşam yemeğinden sonra mutfak her zaman dağınık olur."
+    },
+    {
+      "rule": "'already' (çoktan) ve 'still' (hâlâ) de aynı koltuğa oturur: ana fiilden önce, 'be'den sonra.",
+      "example_en": "I've already washed the dishes, but Dad is still cooking.",
+      "example_tr": "Bulaşıkları çoktan yıkadım ama babam hâlâ yemek pişiriyor."
+    },
+    {
+      "rule": "'yet' (henüz) ise farklıdır: cümlenin en sonuna gider ve yalnızca soru ile olumsuz cümlelerde kullanılır.",
+      "example_en": "Have you taken out the rubbish yet?",
+      "example_tr": "Çöpü henüz çıkardın mı?"
+    }
+  ],
+  "watch_out": "Türkçede 'asla' olumsuz fiil ister (asla yıkamam), ama İngilizcede 'never' tek başına olumsuzdur; fiil olumlu kalır. ✗ I never don't wash the dishes. ✓ I never wash the dishes.",
+  "memory_trick": "Sandviç kuralı: özne ve fiil iki dilim ekmek, zarf aradaki peynir — I · always · wash. Tek istisna 'be': peynir ekmeğin üstüne gelir — I am · always · tired.",
+  "quiz": [
+    {
+      "question": "She ___ the dishes after dinner.",
+      "options": [
+        "washes usually",
+        "usually wash",
+        "wash usually",
+        "usually washes"
+      ],
+      "answer": 3,
+      "explain": "Zarf özne ile ana fiilin arasına girer ve 'she' için fiil -s alır: usually washes."
+    },
+    {
+      "question": "My brother ___ late for school.",
+      "options": [
+        "is never",
+        "never is",
+        "never be",
+        "is being never"
+      ],
+      "answer": 0,
+      "explain": "Fiil 'be' olunca zarf ondan sonra gelir: is never."
+    },
+    {
+      "question": "I haven't cleaned my room ___.",
+      "options": [
+        "already",
+        "still",
+        "yet",
+        "always"
+      ],
+      "answer": 2,
+      "explain": "Olumsuz cümlede 'henüz' anlamı için cümle sonuna 'yet' gelir."
+    }
+  ]
+}

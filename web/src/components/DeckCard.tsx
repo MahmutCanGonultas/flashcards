@@ -13,6 +13,8 @@ export type DeckStats = {
   /** Set only for decks organised as a learning path. */
   path?: {
     lessonsDone: number;
+    /** The lesson the path points at; null once every lesson is done. */
+    currentLesson: number | null;
     totalLessons: number;
     wordsLearned: number;
     totalWords: number;
@@ -82,7 +84,7 @@ function DeckCard({ deck, theme, stats }: DeckCardProps) {
         ) : stats?.path ? (
           <>
             <p className="text-sm font-bold text-stone-600">
-              Lesson {Math.min(stats.path.lessonsDone + 1, stats.path.totalLessons)} of{" "}
+              Lesson {stats.path.currentLesson ?? stats.path.totalLessons} of{" "}
               {stats.path.totalLessons}
             </p>
             <div className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-white/70">
@@ -94,7 +96,7 @@ function DeckCard({ deck, theme, stats }: DeckCardProps) {
               />
             </div>
             <p className="mt-1.5 text-xs font-medium text-stone-500">
-              {stats.path.wordsLearned}/{stats.path.totalWords} words
+              {stats.path.wordsLearned}/{stats.path.totalWords} words known
             </p>
           </>
         ) : (

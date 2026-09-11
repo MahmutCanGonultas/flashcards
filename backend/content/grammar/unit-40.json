@@ -1,0 +1,70 @@
+{
+  "unit": 40,
+  "title_en": "Participle Clauses",
+  "title_tr": "Ortaç Cümlecikleri",
+  "hook": "Türkçede -ken, -ince, -dikten sonra diye ayrı ayrı eklediğin her şeyi İngilizce tek bir 'walking' ya da 'having finished' ile hallediyor — cümlen birden romandan fırlamış gibi duruyor.",
+  "rules": [
+    {
+      "rule": "Aynı özneli iki cümleyi birleştirirken ikincil eylemi -ing'e çevirip bağlacı (while, because) atıyorsun. Bu -ing hem 'aynı anda' (-ken/-erek) hem 'çünkü' (-diği için) anlamı taşıyabilir; hangisi olduğunu bağlam söyler.",
+      "example_en": "Weighing the evidence carefully, she reached a different conclusion.",
+      "example_tr": "Kanıtları dikkatle tartarak farklı bir sonuca vardı."
+    },
+    {
+      "rule": "Yan cümledeki eylem ana eylemden ÖNCE bitmişse 'having + V3' kullan (-dikten sonra). 'Finishing the report, he called' iki iş aynı anda demek; 'Having finished the report, he called' önce bitirdi, sonra aradı demek.",
+      "example_en": "Having considered every option, the committee chose the simplest one.",
+      "example_tr": "Her seçeneği değerlendirdikten sonra komite en basitini seçti."
+    },
+    {
+      "rule": "Özne eylemi yapmıyor, eyleme maruz kalıyorsa (edilgen) yalnızca V3 kullan; 'being' genellikle düşer. 'Written in 1950' aslında 'because/although it was written in 1950' demektir.",
+      "example_en": "Asked a difficult question, the speaker paused to think it through.",
+      "example_tr": "Zor bir soru sorulunca konuşmacı iyice düşünmek için durakladı."
+    },
+    {
+      "rule": "Olumsuz için 'not' en başa gelir: 'Not knowing...', 'Not having slept...'. Anlam bulanık kalacaksa bağlacı koruyabilirsin: 'after / before / while / when + -ing' hem doğru hem daha nettir.",
+      "example_en": "Not having slept much, I found it hard to think clearly before deciding.",
+      "example_tr": "Pek uyumadığım için karar vermeden önce net düşünmekte zorlandım."
+    },
+    {
+      "rule": "Participle'ın görünmeyen öznesi her zaman ana cümlenin öznesidir; -ing'i yapan kişiyle ana fiili yapan kişi aynı olmalı. Aynı değilse ya özneyi açıkça yaz ya da tam bir yan cümle kur.",
+      "example_en": "Reading the argument a second time, I noticed the hidden assumption.",
+      "example_tr": "Argümanı ikinci kez okuyunca gizli varsayımı fark ettim."
+    }
+  ],
+  "watch_out": "Türkçede 'Eve yürürken yağmur başladı' gayet doğal — ama İngilizcede participle'ın öznesi ana cümleninkiyle aynı olmak zorunda. ✗ Walking home, the rain started. (Yağmur mu yürüyor?) ✓ Walking home, I got caught in the rain. / As I was walking home, the rain started.",
+  "memory_trick": "Üç kalıp, üç Türkçe ek: -ing → -erek/-ken, having + V3 → -dikten sonra, tek başına V3 → -ilince. Participle bir gölgedir: sahibi hep ana cümlenin öznesi, gölge tek başına dolaşamaz.",
+  "quiz": [
+    {
+      "question": "___ the data twice, the analyst was sure of her numbers.",
+      "options": [
+        "Checking",
+        "Having checked",
+        "Checked",
+        "To check"
+      ],
+      "answer": 1,
+      "explain": "Kontrol etme işi emin olmadan önce bitmiş; önce biten eylem için 'having + V3' kullanılır."
+    },
+    {
+      "question": "___ in plain language, the argument was easy to follow.",
+      "options": [
+        "Written",
+        "Writing",
+        "Having written",
+        "To write"
+      ],
+      "answer": 0,
+      "explain": "Argüman yazma işini yapmıyor, yazılıyor; edilgen anlam için tek başına V3 (written) yeter."
+    },
+    {
+      "question": "Which sentence is correct?",
+      "options": [
+        "Reading the report, the mistake was obvious.",
+        "Reading the report, the mistake became clear to me.",
+        "Reading the report, I spotted the mistake at once.",
+        "Reading the report, it was clear there was a mistake."
+      ],
+      "answer": 2,
+      "explain": "Raporu okuyan 'I' olduğu için participle'ın gizli öznesi ana cümlenin öznesiyle aynı olmalı."
+    }
+  ]
+}

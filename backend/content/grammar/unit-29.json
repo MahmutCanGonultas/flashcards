@@ -1,0 +1,65 @@
+{
+  "unit": 29,
+  "title_en": "Used to, Would and Be Used To",
+  "title_tr": "Used to, Would ve Be Used To",
+  "hook": "Eskiden nakit ödediğimiz her şeyi artık telefonla ödüyoruz; işte İngilizcede o 'eskiden'i dört kelimeyle anlatmanın yolu var, hem de içinde tuzak saklı.",
+  "rules": [
+    {
+      "rule": "Geçmişte olan ama artık olmayan bir alışkanlık ya da durum için 'used to + fiilin yalın hali' kullanılır. Türkçedeki 'eskiden ...-rdım' anlamını verir; artık öyle olmadığını da içinde taşır.",
+      "example_en": "I used to pay for everything in cash, but now I use my phone.",
+      "example_tr": "Eskiden her şeyi nakit öderdim, ama şimdi telefonumu kullanıyorum."
+    },
+    {
+      "rule": "Olumsuz ve soru cümlelerinde 'did' devreye girer, 'used' de 'use' olur: didn't use to, Did you use to...? Çünkü geçmiş zaman işaretini 'did' zaten taşıyor.",
+      "example_en": "We didn't use to buy so many things online. Did you use to save money?",
+      "example_tr": "Eskiden internetten bu kadar çok şey almazdık. Sen eskiden para biriktirir miydin?"
+    },
+    {
+      "rule": "'Would' da geçmişteki tekrarlanan eylemler için kullanılır ama sadece eylemler için; 'have', 'live', 'be' gibi durum fiilleriyle olmaz. Bunun için 'used to' kullanılır.",
+      "example_en": "Every Saturday my grandmother would go to the market and count her coins.",
+      "example_tr": "Her cumartesi büyükannem pazara gider ve bozukluklarını sayardı."
+    },
+    {
+      "rule": "'Be used to + isim / -ing' bambaşka bir şey: 'alışkın olmak' demek. Zaman geçmiş olmak zorunda değil, her zamanda kullanılabilir. 'Get used to' ise alışma sürecini anlatır.",
+      "example_en": "I'm used to paying by card now; at first I had to get used to it.",
+      "example_tr": "Artık kartla ödemeye alışkınım; başta buna alışmam gerekti."
+    }
+  ],
+  "watch_out": "Türkçe konuşanlar 'alışkınım' demek isterken 'be' fiilini atlıyor, cümle de 'eskiden yapardım' anlamına dönüyor. ✗ I used to shop online. (Bu 'eskiden alışveriş yapardım' demek.) ✓ I'm used to shopping online. ('Alışkınım' demek; 'be' fiili şart, arkasından fiil -ing alır.)",
+  "memory_trick": "'Used to' tek başınaysa geçmişte kaldı: eskiden. Önünde am/is/are/get varsa şimdi alışkınsın ve arkası -ing ile devam eder. Kural basit: önünde 'be' varsa 'alışkın', yoksa 'eskiden'.",
+  "quiz": [
+    {
+      "question": "My father ___ a small shop in our town, but he sold it last year.",
+      "options": [
+        "would have",
+        "used to have",
+        "is used to have",
+        "use to have"
+      ],
+      "answer": 1,
+      "explain": "'Have' bir durum fiilidir, geçmişte kalan durumlar için 'used to' kullanılır; 'would' burada olmaz."
+    },
+    {
+      "question": "___ you ___ spend all your money on the weekend?",
+      "options": [
+        "Did / use to",
+        "Did / used to",
+        "Do / used to",
+        "Were / use to"
+      ],
+      "answer": 0,
+      "explain": "Soru cümlesinde geçmiş zamanı 'did' taşır, bu yüzden 'used' değil 'use' yazılır."
+    },
+    {
+      "question": "I moved to London last month. I'm slowly ___ the high prices.",
+      "options": [
+        "used to pay",
+        "getting used to",
+        "use to",
+        "would pay"
+      ],
+      "answer": 1,
+      "explain": "Alışma sürecini anlatmak için 'get used to + isim' kullanılır; anlam 'alışıyorum', 'eskiden' değil."
+    }
+  ]
+}

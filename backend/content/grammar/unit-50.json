@@ -1,0 +1,55 @@
+{
+  "unit": 50,
+  "title_en": "Degrees of Certainty and Stance",
+  "title_tr": "Kesinlik Dereceleri ve Tutum",
+  "hook": "'It will rain' ile 'It may well rain' ile 'It could hardly rain' arasında, hava tahmininden çok konuşanın karakteri saklıdır — C1'de artık ne dediğin kadar ne kadar emin olduğunu da söylersin.",
+  "rules": [
+    {
+      "rule": "Modal + zarf ikilileri kesinliği ince ayar yapar: 'may well' (büyük ihtimalle), 'might just' (belki, az da olsa), 'could hardly' (neredeyse imkânsız), 'will almost certainly' (neredeyse kesin). Zarf, modalın sesini açar ya da kısar.",
+      "example_en": "The board may well reject the plan; it could hardly accept it in this form.",
+      "example_tr": "Kurul planı büyük ihtimalle reddeder; bu hâliyle kabul etmesi neredeyse imkânsız."
+    },
+    {
+      "rule": "'Be bound to' (mutlaka olur), 'be sure to' (kesin), 'be likely to' (muhtemel), 'be liable to' (yatkın, riskli), 'be apt to' (eğilimli): hepsi 'be + sıfat + to' kalıbıyla olasılık bildirir ve modal gibi kullanılır ama zamanla çekilir (was bound to, will be likely to).",
+      "example_en": "A dubious claim is bound to be challenged; a tenuous one is liable to collapse.",
+      "example_tr": "Şüpheli bir iddia mutlaka sorgulanır; dayanaksız olanı ise çökmeye yatkındır."
+    },
+    {
+      "rule": "Tutum zarfları (stance adverbs) konuşanın görüşünü cümlenin başına iliştirir: 'admittedly' (kabul etmek gerekir ki), 'arguably' (tartışılabilir ki), 'presumably' (herhalde), 'undeniably' (inkâr edilemez ki), 'regrettably' (ne yazık ki).",
+      "example_en": "Admittedly, the evidence is speculative; undeniably, it is also the only evidence we have.",
+      "example_tr": "Kabul etmek gerekir ki kanıt tahmine dayalı; inkâr edilemez ki elimizdeki tek kanıt da bu."
+    },
+    {
+      "rule": "'Must' ve 'can't' çıkarımda en güçlüdür; 'should' ve 'ought to' beklenti bildirir ('should be there by now' = orada olması lazım); 'would' ise tahmini yumuşatır ('That would be Tom at the door' = herhalde Tom'dur).",
+      "example_en": "The verdict should be unequivocal by noon; that would explain the lawyers' silence.",
+      "example_tr": "Karar öğlene kadar kesinleşmiş olmalı; avukatların sessizliği bununla açıklanır."
+    },
+    {
+      "rule": "Tereddüt bildiren kalıplar iddiayı korur ve yumuşatır: 'I'm inclined to think', 'it's fair to say', 'as far as I can tell', 'to the best of my knowledge'. Prudent bir konuşmacı emin olmadığı yerde bunlardan birini koyar; reckless olan koymaz.",
+      "example_en": "As far as I can tell, the discrepancy is real, though I'm inclined to think it's minor.",
+      "example_tr": "Anlayabildiğim kadarıyla tutarsızlık gerçek, ama önemsiz olduğunu düşünmeye meyilliyim."
+    }
+  ],
+  "watch_out": "Kesinlik derecelerini karıştırmak yanlış mesaj verir: ✗ He must be late (sadece 'belki geç kalır' demek istiyorsan). ✓ He may be late. Türkçe '-abilir' hem 'could' hem 'may well' olabilir; İngilizcede ise 'could' zayıf, 'may well' güçlü ihtimaldir — hangisini kastettiğine karar ver.",
+  "memory_trick": "Bir kesinlik merdiveni çiz: must / can't (%95) → will almost certainly (%90) → may well / be bound to (%80) → should / be likely to (%70) → may / might (%50) → might just / could conceivably (%30) → could hardly (%5). Söylemeden önce basamağı seç.",
+  "quiz": [
+    {
+      "question": "Which expresses the STRONGEST likelihood?",
+      "options": ["It might just work.", "It could conceivably work.", "It may well work.", "It could hardly work."],
+      "answer": 2,
+      "explain": "'May well' güçlü ihtimaldir; 'might just' ve 'conceivably' zayıf, 'could hardly' neredeyse imkânsız."
+    },
+    {
+      "question": "A tenuous argument ___ collapse under questioning.",
+      "options": ["is liable to", "is inclined", "is bound", "is apt"],
+      "answer": 0,
+      "explain": "'Be liable to' riskli eğilim bildirir ve 'to' alır; diğer seçenekler 'to'suz bırakılmış."
+    },
+    {
+      "question": "___, the data are incomplete, but the pattern is hard to dismiss.",
+      "options": ["Undeniably", "Admittedly", "Astutely", "Prudently"],
+      "answer": 1,
+      "explain": "Bir zayıflığı kabul edip 'ama' ile devam etmek 'admittedly'nin işidir."
+    }
+  ]
+}

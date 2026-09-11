@@ -1,0 +1,70 @@
+{
+  "unit": 11,
+  "title_en": "Past Simple: was, were, -ed",
+  "title_tr": "Geçmiş Zaman: was, were, -ed",
+  "hook": "Dün ne yaptığını anlatmak için İngilizcede tek bir ek yeter: -ed, Türkçedeki -di'nin ikizi — ama olumsuz cümleye girince bu ek ortadan kayboluyor, şimdi nereye gittiğini göstereceğim.",
+  "rules": [
+    {
+      "rule": "'am/is/are' geçmişte 'was/were' olur: I, he, she, it için was; you, we, they için were.",
+      "example_en": "I was at home yesterday, and you were at work.",
+      "example_tr": "Dün ben evdeydim, sen de işteydin."
+    },
+    {
+      "rule": "Düzenli fiillerde geçmiş için fiilin sonuna -ed gelir ve herkes için aynıdır: I worked, she worked, they worked — Türkçedeki gibi kişiye göre ek değişmez. Küçük yazım notu: like→liked, study→studied.",
+      "example_en": "I worked all day and then I cooked dinner.",
+      "example_tr": "Bütün gün çalıştım, sonra akşam yemeği pişirdim."
+    },
+    {
+      "rule": "Olumsuz için didn't + fiilin yalın hali: -ed eki gider, çünkü geçmişi artık 'did' taşıyor. was/were ise did istemez, kendi olumsuzunu yapar: wasn't, weren't.",
+      "example_en": "The shop wasn't open, so I didn't buy bread.",
+      "example_tr": "Dükkân açık değildi, o yüzden ekmek almadım."
+    },
+    {
+      "rule": "Soru için 'Did' cümlenin başına gelir, fiil yine yalın kalır: Did + özne + fiil? Türkçede soru eki 'mı' sona gider, İngilizcede 'Did' en başa — kısa cevap: Yes, I did / No, I didn't.",
+      "example_en": "Did you call your mother yesterday? — Yes, I did.",
+      "example_tr": "Dün anneni aradın mı? — Evet, aradım."
+    },
+    {
+      "rule": "-ed üç şekilde okunur: sert sesten sonra /t/ (worked, washed), yumuşak sesten sonra /d/ (played, cleaned), t veya d'den sonra /ɪd/ (waited, needed). Yani 'worked' tek hece, 'vörkt' gibi okunur; 'vörk-ed' değil.",
+      "example_en": "I washed the dishes, cleaned the room and waited for the bus.",
+      "example_tr": "Bulaşıkları yıkadım, odayı topladım ve otobüsü bekledim."
+    }
+  ],
+  "watch_out": "En sık hata, geçmişi iki kez söylemek: did/didn't zaten geçmişse fiile bir daha -ed ekleme. ✗ I didn't worked yesterday. / ✗ Did you watched TV? ✓ I didn't work yesterday. / ✓ Did you watch TV?",
+  "memory_trick": "Geçmiş, cümlede tek bir koltuğa oturur: ya fiile (worked) ya da did'e (didn't work). İkisine birden koyarsan Türkçedeki 'gittidim' gibi olur — fazladan bir -di, kulağı tırmalar.",
+  "quiz": [
+    {
+      "question": "They ___ at home last night.",
+      "options": [
+        "was",
+        "were",
+        "did",
+        "are"
+      ],
+      "answer": 1,
+      "explain": "'They' öznesiyle geçmişte 'were' kullanılır; 'was' yalnızca I, he, she, it içindir."
+    },
+    {
+      "question": "She ___ dinner yesterday.",
+      "options": [
+        "didn't cooked",
+        "not cooked",
+        "didn't cooks",
+        "didn't cook"
+      ],
+      "answer": 3,
+      "explain": "'didn't' geçmişi zaten taşıdığı için fiil yalın kalır: didn't cook."
+    },
+    {
+      "question": "___ you wash the car yesterday?",
+      "options": [
+        "Did",
+        "Were",
+        "Do",
+        "Was"
+      ],
+      "answer": 0,
+      "explain": "Geçmişte yapılan bir işi sormak için cümlenin başına 'Did' gelir; 'yesterday' varken 'Do' olmaz."
+    }
+  ]
+}

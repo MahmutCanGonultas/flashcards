@@ -1,0 +1,65 @@
+{
+  "unit": 6,
+  "title_en": "Present Simple: He Works",
+  "title_tr": "Geniş Zaman: O Çalışır",
+  "hook": "Küçücük bir harf, koskoca bir fark: 'I work' ama 'she works' — İngilizcede en çok unutulan şey bu -s, bugün onu evcilleştiriyoruz.",
+  "rules": [
+    {
+      "rule": "Her gün tekrar ettiğin şeyleri anlatırken fiil sözlükteki haliyle kalır; I, you, we, they için hiçbir şey eklemezsin.",
+      "example_en": "I get up at seven every day.",
+      "example_tr": "Her gün yedide kalkarım."
+    },
+    {
+      "rule": "Özne he, she ya da it olunca fiilin sonuna minik bir -s gelir. Tom, annem, kedi gibi tek bir kişi ya da şey de he/she/it sayılır.",
+      "example_en": "My mother works every day.",
+      "example_tr": "Annem her gün çalışır."
+    },
+    {
+      "rule": "Fiil -o, -sh, -ch, -ss, -x ile bitiyorsa -s değil -es alır: go→goes, watch→watches. Sessiz harften sonra y varsa y gider, -ies gelir: study→studies.",
+      "example_en": "He goes to work and watches TV at night.",
+      "example_tr": "İşe gider, geceleri de televizyon izler."
+    },
+    {
+      "rule": "Olumsuz ve soruda yardımcı 'do' devreye girer (I don't, Do you...?); he/she/it için bu 'does' olur. -s artık does'un üstündedir, o yüzden fiil sade kalır: she doesn't work, Does she work?",
+      "example_en": "Does she work on Sunday? No, she doesn't.",
+      "example_tr": "O pazar günü çalışır mı? Hayır, çalışmaz."
+    }
+  ],
+  "watch_out": "Türkçe konuşanların en sık hatası: doesn't'tan sonra fiile bir daha -s takmak. -s tek bir yerde olur, ya fiilde ya da does'da. ✗ She doesn't works here. ✓ She doesn't work here.",
+  "memory_trick": "Türkçede 'o' en sade olandır: giderim, gidersin, gider. İngilizcede tam tersi, süslenen tek kişi 'o'dur: I go, you go, he goes. Türkçede takı almayan, İngilizcede tek takı alan.",
+  "quiz": [
+    {
+      "question": "My father ___ tea every morning.",
+      "options": [
+        "drink",
+        "drinks",
+        "drinking",
+        "is drink"
+      ],
+      "answer": 1,
+      "explain": "'My father' tek bir kişi, yani he sayılır; fiil -s alır."
+    },
+    {
+      "question": "She ___ TV every night.",
+      "options": [
+        "watchs",
+        "watch",
+        "watches",
+        "watchies"
+      ],
+      "answer": 2,
+      "explain": "-ch ile biten fiile -s değil -es gelir: watches."
+    },
+    {
+      "question": "___ he go to work every day?",
+      "options": [
+        "Does",
+        "Do",
+        "Is",
+        "Are"
+      ],
+      "answer": 0,
+      "explain": "he ile soru 'Does' ile kurulur, -s artık orada olduğu için fiil sade kalır: go."
+    }
+  ]
+}
