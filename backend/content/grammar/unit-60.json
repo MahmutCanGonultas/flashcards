@@ -1,0 +1,70 @@
+{
+  "unit": 60,
+  "title_en": "Conditionals Without 'If'",
+  "title_tr": "'If' Demeden Şart Koşmak",
+  "hook": "İyi bir tartışmacı 'if' kelimesini masaya koymadan şart koşar; avukatlar ve filozoflar bu numarayı yüzyıllardır saklıyor, bugün ben ele veriyorum.",
+  "rules": [
+    {
+      "rule": "Resmî yazıda 'if' silinir, yardımcı fiil öznenin önüne geçer: geçmiş pişmanlık için 'Had + özne + V3', uzak ihtimal için 'Were + özne + to + fiil', kibar olasılık için 'Should + özne + fiil'. Anlam değişmez, ton bir kravat takar.",
+      "example_en": "Had the committee known about the conflict of interest, it would never have approved the deal.",
+      "example_tr": "Komite çıkar çatışmasından haberdar olsaydı, anlaşmayı asla onaylamazdı."
+    },
+    {
+      "rule": "'Unless' tek kelimeyle 'if ... not' demektir: olumsuzluk kelimenin içine gömülüdür, fiil olumlu kalır. Tartışmada koşulu karşı tarafın sırtına yükleyen en keskin bağlaçtır.",
+      "example_en": "You can't claim the moral high ground unless you're willing to be judged by the same standard.",
+      "example_tr": "Aynı ölçüyle yargılanmayı göze almadıkça ahlaki üstünlük iddia edemezsin."
+    },
+    {
+      "rule": "'Provided (that)', 'providing', 'as long as' ve 'on condition that' düz bir 'if'ten daha sıkı pazarlık kurar: 'ancak ve ancak şu şartla'. Taviz verirken kullanın, karşılığını da aynı cümleye yazın.",
+      "example_en": "I'll grant your premise, provided that you grant mine.",
+      "example_tr": "Sen benimkini kabul ettiğin sürece ben de senin öncülünü kabul ederim."
+    },
+    {
+      "rule": "'But for + isim' koca bir koşul cümlesini tek isme sıkıştırır: 'if it weren't / hadn't been for'. Ardından 'would' ya da 'would have' gelir; o kişi ya da olay olmasaydı sonuç bambaşka olurdu, demektir.",
+      "example_en": "But for one dissenting judge, the ruling would have been unanimous.",
+      "example_tr": "Karşı oy kullanan tek bir yargıç olmasaydı, karar oybirliğiyle alınırdı."
+    },
+    {
+      "rule": "'Otherwise' koşulu geriye doğru bağlar: önce talep ya da uyarı, sonra noktalı virgül, sonra 'otherwise' yani 'yoksa'. Kendinden önceki cümlenin yapılmadığını varsayar; 'if' demeden kibarca tehdit bile edebilirsiniz.",
+      "example_en": "Define your terms first; otherwise the whole debate turns into a shouting match.",
+      "example_tr": "Önce terimlerini tanımla; yoksa bütün tartışma bağırış çağırışa döner."
+    }
+  ],
+  "watch_out": "Türkçede 'özür dilemedikçe' derken olumsuzluk fiilin içindedir; İngilizcede o olumsuzluk zaten 'unless'in içinde saklıdır, fiile bir daha eklemeyin. ✗ Unless you don't apologize, I won't listen. ✓ Unless you apologize, I won't listen.",
+  "memory_trick": "'If'i silin, cümleyi soru gibi başlatın: 'Had she known?' Sonra soru işaretini virgüle çevirin — 'Had she known, ...' — koşul cümleniz hazır. Aynı numara 'Were' ve 'Should' için de çalışır.",
+  "quiz": [
+    {
+      "question": "___ you wish to appeal the decision, you must do so in writing within thirty days.",
+      "options": [
+        "Had",
+        "Were",
+        "Should",
+        "Would"
+      ],
+      "answer": 2,
+      "explain": "Gelecekteki gerçekçi bir olasılıkta 'if'in resmî karşılığı 'should'dur; 'had' geçmişe, 'were ... to' uzak varsayıma bakar, 'would' ise koşul başlatmaz."
+    },
+    {
+      "question": "Unless you ___ your sources, nobody will take the argument seriously.",
+      "options": [
+        "cite",
+        "don't cite",
+        "won't cite",
+        "hadn't cited"
+      ],
+      "answer": 0,
+      "explain": "'Unless' zaten 'eğer ... -mezse' demektir; fiile ikinci bir olumsuz eklemek anlamı ters çevirir."
+    },
+    {
+      "question": "___ a single dissenting judge, the verdict would have been unanimous.",
+      "options": [
+        "Unless",
+        "Otherwise",
+        "Provided that",
+        "But for"
+      ],
+      "answer": 3,
+      "explain": "Yalnızca 'but for' doğrudan bir isim alıp 'o olmasaydı' anlamı verir; 'unless' ve 'provided that' fiilli bir cümle ister, 'otherwise' ise önceki cümleye bağlanır."
+    }
+  ]
+}

@@ -1,70 +1,65 @@
 {
   "unit": 21,
-  "title_en": "Present Perfect: Have You Ever?",
-  "title_tr": "Present Perfect: Hiç Yaptın mı?",
-  "hook": "İngilizler \"Paris'e gittim\" derken NE ZAMAN gittiğini söylemez; o küçük \"have\" kelimesi tüm hayatını tek cümleye sığdırıyor.",
+  "title_en": "Very, Too, Enough: Degree Words",
+  "title_tr": "Çok, Fazla, Yeterince: Derece Sözcükleri",
+  "hook": "Bir Türk 'çok mutluyum' diye 'I'm too happy' dediğinde İngiliz 'Neden, sorun mu var?' diye bakar; çünkü 'too' hiç de masum bir kelime değil.",
   "rules": [
     {
-      "rule": "Present perfect = have/has + fiilin 3. hali (past participle). I/you/we/they ile have, he/she/it ile has kullanılır; konuşurken genelde kısaltılır: I've, she's, they've.",
-      "example_en": "I've read the news today.",
-      "example_tr": "Bugün haberleri okudum."
+      "rule": "'very' sıfatı büyütür (çok), 'a bit' küçültür (biraz). İkisi de sıfatın hemen önüne gelir, tıpkı Türkçedeki gibi.",
+      "example_en": "My brother is very funny but a bit lazy.",
+      "example_tr": "Abim çok komik ama biraz tembel."
     },
     {
-      "rule": "Bu zaman, hayatındaki bir deneyimi ZAMAN VERMEDEN anlatır. \"Ne zaman\" önemli değildir, önemli olan yaşanmış olmasıdır. Ne zaman olduğunu söylersen (yesterday, last week, in 2019) past simple'a geçersin.",
-      "example_en": "She has watched that film three times.",
-      "example_tr": "O filmi üç kez izledi (hayatında)."
+      "rule": "'too' da 'çok' gibi görünür ama anlamı 'fazla'dır: gereğinden fazla, ve bu bir sorun. Sonucu söylemek için arkasına 'to + fiil' eklersin.",
+      "example_en": "I'm too tired to go out tonight.",
+      "example_tr": "Bu gece dışarı çıkamayacak kadar yorgunum."
     },
     {
-      "rule": "Sorularda ever (hiç), olumsuzlarda never (hiç ... -medi) kullanılır. Ever soru kelimesi değildir, Have/Has ile soru kurulur ve ever özneden sonra gelir. Never zaten olumsuzdur, yanına not gelmez.",
-      "example_en": "Have you ever played tennis? No, I've never tried it.",
-      "example_tr": "Hiç tenis oynadın mı? Hayır, hiç denemedim."
+      "rule": "'enough' (yeterince) Türkçedeki gibi önden değil, sıfatın ARKASINDAN gelir; isimle kullanırsan ismin önüne geçer: enough money. Olumsuzu 'not ... enough'.",
+      "example_en": "He isn't old enough to drive.",
+      "example_tr": "Araba kullanacak yaşta değil."
     },
     {
-      "rule": "Been ve gone ikisi de go fiilinin 3. hali gibi çalışır ama anlamları farklı: been = gitti ve döndü (deneyim), gone = gitti, hâlâ orada.",
-      "example_en": "Tom has been to London. Anna has gone to London.",
-      "example_tr": "Tom Londra'ya gitti (ve döndü). Anna Londra'ya gitti (hâlâ orada)."
-    },
-    {
-      "rule": "Türkçedeki -miş ile karıştırma: -miş \"duydum ama görmedim\" demektir, present perfect ise kendi deneyimini anlatır. Türkçeye çoğu zaman düz -di ile çevrilir; fark İngilizcede zaman belirtmeme kuralındadır.",
-      "example_en": "I've heard this song before.",
-      "example_tr": "Bu şarkıyı daha önce duydum."
+      "rule": "Duygu sıfatlarında -ed hisseden kişiyi, -ing hissettiren şeyi anlatır: bored sıkılmış, boring sıkıcı.",
+      "example_en": "The film was boring, so I was bored.",
+      "example_tr": "Film sıkıcıydı, o yüzden sıkıldım."
     }
   ],
-  "watch_out": "En yaygın hata, present perfect'i geçmiş bir zaman ifadesiyle birlikte kullanmaktır; İngilizcede bu ikisi aynı cümlede olamaz. ✗ I have seen this film last week. ✓ I saw this film last week. Ne zaman olduğunu söylüyorsan past simple, söylemiyorsan present perfect.",
-  "memory_trick": "Present perfect'i tarih yazılmamış bir fotoğraf albümü gibi düşün: \"Bunu yaşadım\" der ama takvim yoktur. Cümleye tarih koyduğun an albümü kapatır, past simple'a geçersin.",
+  "watch_out": "En klasik hata, kendini anlatırken -ing kullanmak: ✗ I am boring. (Bu 'sıkıcı biriyim' demek!) ✓ I am bored. (Sıkıldım.) Aynı tuzak: ✗ I'm interesting in music → ✓ I'm interested in music.",
+  "memory_trick": "'enough' utangaçtır, sıfatın arkasına saklanır: old enough, good enough. Duygu sıfatlarında ise -ING sebep, -ED sonuçtur: boring film → bored ben.",
   "quiz": [
     {
-      "question": "My sister ___ never been to a concert.",
+      "question": "She is ___ young to drive a car.",
       "options": [
-        "have",
-        "has",
-        "is",
-        "was"
+        "very",
+        "too",
+        "enough",
+        "a bit"
       ],
       "answer": 1,
-      "explain": "Özne he/she/it grubundaysa (my sister = she) present perfect'te has kullanılır."
+      "explain": "Bir engel var (araba kullanamıyor), yani gereğinden fazla genç: 'too + sıfat + to + fiil'."
     },
     {
-      "question": "___ you ever read the news in English?",
+      "question": "Is the coffee ___?",
       "options": [
-        "Do",
-        "Did",
-        "Have",
-        "Are"
-      ],
-      "answer": 2,
-      "explain": "Deneyim sorusu ever ile kurulur ve yardımcı fiil Have/Has olur: Have you ever...?"
-    },
-    {
-      "question": "Where is Mark? He ___ to the cinema, he's not here.",
-      "options": [
-        "has gone",
-        "has been",
-        "went",
-        "goes"
+        "hot enough",
+        "enough hot",
+        "hot too",
+        "enough of hot"
       ],
       "answer": 0,
-      "explain": "Mark hâlâ sinemada ve dönmedi; bu yüzden gone kullanılır, been olsaydı dönmüş olurdu."
+      "explain": "'enough' sıfatın önüne değil arkasına gelir."
+    },
+    {
+      "question": "This book is really ___. I can't stop reading!",
+      "options": [
+        "interested",
+        "bored",
+        "interesting",
+        "boring"
+      ],
+      "answer": 2,
+      "explain": "Hissettiren şey kitap, o yüzden -ing: interesting."
     }
   ]
 }

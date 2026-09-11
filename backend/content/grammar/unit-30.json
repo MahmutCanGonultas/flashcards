@@ -1,70 +1,70 @@
 {
   "unit": 30,
-  "title_en": "Reported Speech: Said and Told",
-  "title_tr": "Dolaylı Anlatım: Said ve Told",
-  "hook": "Arkadaşın dün \"I'm tired\" dedi; bugün bunu birine aktarırken İngilizce'de zaman bir adım geriye kayar — buna 'backshift' diyoruz ve ilk başta herkesi şaşırtıyor.",
+  "title_en": "Second Conditional: If I Were You",
+  "title_tr": "İkinci Koşul: Senin Yerinde Olsam",
+  "hook": "Boğazın ağrıyor, arkadaşın 'If I were you, I'd see a doctor' diyor; geçmiş zaman kullanıyor ama geçmişten bahsetmiyor, çünkü İngilizce hayal kurarken zamanı geri sarar.",
   "rules": [
     {
-      "rule": "Birinin sözünü aktarırken fiil bir zaman geriye gider: present simple → past simple, present continuous → past continuous. 'that' isteğe bağlıdır.",
-      "example_en": "Direct: \"I love the sea.\" → She said (that) she loved the sea.",
-      "example_tr": "Doğrudan: \"Denizi seviyorum.\" → Denizi sevdiğini söyledi."
+      "rule": "İkinci tip koşul (second conditional) şu an gerçek olmayan ya da olması zor bir durumu hayal eder. Kalıp: If + past simple, … would + fiilin yalın hâli.",
+      "example_en": "If I had more time, I would walk to work every day.",
+      "example_tr": "Daha çok zamanım olsaydı her gün işe yürüyerek giderdim."
     },
     {
-      "rule": "Yardımcı fiiller de geriye kayar: will → would, can → could, am/is going to → was/were going to, have seen → had seen.",
-      "example_en": "Direct: \"We will recycle more.\" → They said they would recycle more.",
-      "example_tr": "Doğrudan: \"Daha çok geri dönüşüm yapacağız.\" → Daha çok geri dönüşüm yapacaklarını söylediler."
+      "rule": "'If' tarafındaki geçmiş zaman geçmişi anlatmaz; 'bu şu an gerçek değil' demenin yoludur. Gerçek bir ihtimal için first conditional (If I eat too much, I'll feel sick) kullanılır.",
+      "example_en": "If I didn't have a headache, I would come to the gym with you.",
+      "example_tr": "Başım ağrımasaydı seninle spor salonuna gelirdim."
     },
     {
-      "rule": "'say' tek başına kullanılır, 'tell' ise mutlaka kime söylendiğini ister: said that... ama told me / told us / told the guide that...",
-      "example_en": "The guide told us that the beach was clean.",
-      "example_tr": "Rehber bize plajın temiz olduğunu söyledi."
+      "rule": "Tavsiye kalıbı: 'If I were you, I'd…'. Bu yapıda 'be' fiili her kişi için 'were' olur (I were, she were); günlük konuşmada 'was' duysan da 'were' standart olandır.",
+      "example_en": "If I were you, I'd see a doctor about that cough.",
+      "example_tr": "Senin yerinde olsam o öksürük için doktora giderdim."
     },
     {
-      "rule": "Evet/hayır sorularını aktarırken 'asked if' (veya 'whether') kullanılır ve soru sırası bozulur: özne fiilden önce gelir, do/does/did kaybolur.",
-      "example_en": "Direct: \"Do you have a ticket?\" → He asked if I had a ticket.",
-      "example_tr": "Doğrudan: \"Biletin var mı?\" → Biletim olup olmadığını sordu."
+      "rule": "'Would' kesin bir sonuç söyler; daha yumuşak bir ihtimal için 'could' (yapabilirdim) ya da 'might' (belki yapardım) kullan.",
+      "example_en": "If you slept eight hours, you might feel less tired.",
+      "example_tr": "Sekiz saat uyusaydın belki daha az yorgun hissederdin."
     },
     {
-      "rule": "Soru kelimeli soruları aktarırken 'asked where / what / why...' kullanılır; yine düz cümle sırası: asked where the station was.",
-      "example_en": "Direct: \"Where is the train station?\" → She asked where the train station was.",
-      "example_tr": "Doğrudan: \"Tren istasyonu nerede?\" → Tren istasyonunun nerede olduğunu sordu."
+      "rule": "'If' cümlesi başa gelirse arkasına virgül koy; sona gelirse virgül yok. Konuşurken 'would' kısalır: I'd, you'd, she'd.",
+      "example_en": "She'd exercise more if she had a bike.",
+      "example_tr": "Bisikleti olsaydı daha çok egzersiz yapardı."
     }
   ],
-  "watch_out": "Türkçede 'söyledi' hem 'say' hem 'tell' anlamına gelir, bu yüzden 'said me' hatası çok yaygın. ✗ He said me that the hotel was full. ✓ He told me that the hotel was full. / ✓ He said that the hotel was full.",
-  "memory_trick": "'Tell' bir muhatap ister: TELL + kişi (told me). 'Say' yalnız gezer: SAY + that. Türkçesi: 'tell'in yanında hep biri var, 'say' tek başına.",
+  "watch_out": "En sık hata: 'would'u 'if' cümlesine sokmak. Türkçede 'olsaydım' içindeki '-dı' sesi 'would' gibi durunca onu 'if' tarafına taşıyoruz; oysa İngilizcede 'if' tarafı sadece geçmiş zaman alır, 'would' hep sonuç tarafında kalır. ✗ If I would have a car, I would drive you to the hospital. ✓ If I had a car, I would drive you to the hospital.",
+  "memory_trick": "Türkçe 'olsaydım … giderdim' der; İngilizce aynı ikiliyi kurar: '-saydım' tarafı past simple (had, were), '-erdim' tarafı would. 'If' gördüğünde geçmiş zaman yaz, 'would' gördüğünde '-erdim' duy.",
   "quiz": [
     {
-      "question": "Direct: \"I'm going to Rome.\" → Anna said that she ___ to Rome.",
+      "question": "If I ___ more time, I would walk to work.",
       "options": [
-        "is going",
-        "was going",
-        "will go",
-        "goes"
+        "have",
+        "had",
+        "will have",
+        "would have"
       ],
       "answer": 1,
-      "explain": "Present continuous aktarılırken bir zaman geriye kayar ve past continuous olur: is going → was going."
+      "explain": "İkinci tip koşulda 'if' cümlesi past simple alır, 'would' ise sonuç tarafında kalır."
     },
     {
-      "question": "Direct: \"I will plant a tree.\" → He said he ___ plant a tree.",
+      "question": "___ you, I'd take the medicine every morning.",
+      "options": [
+        "If I am",
+        "If I will be",
+        "If I were",
+        "If I would be"
+      ],
+      "answer": 2,
+      "explain": "Tavsiye kalıbı 'If I were you'dur; 'be' fiili bu yapıda her kişiyle 'were' olur."
+    },
+    {
+      "question": "She ___ feel better if she drank more water.",
       "options": [
         "would",
         "will",
-        "can",
-        "is"
+        "would have",
+        "did"
       ],
       "answer": 0,
-      "explain": "Dolaylı anlatımda 'will' bir adım geriye kayarak 'would' olur."
-    },
-    {
-      "question": "The tourist ___ me that the museum was closed.",
-      "options": [
-        "said",
-        "said to",
-        "told",
-        "asked"
-      ],
-      "answer": 2,
-      "explain": "'told' doğrudan kişi alır (told me); 'said me' yanlıştır."
+      "explain": "Hayali sonuç 'would + fiil' ile kurulur; 'will' gerçek ihtimal, 'would have' ise geçmiş için kullanılır."
     }
   ]
 }

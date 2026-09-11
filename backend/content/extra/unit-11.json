@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 11,
+    "level": "A1",
+    "title": "Animals"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "animal",
+      "back": "(noun) hayvan 🐾",
+      "example_sentence": "Cats are my favourite animals.",
+      "mnemonic": "Türkçedeki 'animasyon' ile aynı Latince kökten: 'anima' = nefes, can. Animal 'canı olan', animasyon ise 'canlandırma' demek."
+    },
+    {
+      "lesson": 1,
+      "front": "cow",
+      "back": "(noun) inek 🐄",
+      "example_sentence": "The cow gives us milk.",
+      "mnemonic": "Türkçeye de geçen 'kovboy' (cowboy) aslında 'cow' + 'boy', yani inek çobanı. Kovboyların güttüğü sürü zaten sığır sürüsüdür."
+    },
+    {
+      "lesson": 1,
+      "front": "horse",
+      "back": "(noun) at 🐴",
+      "example_sentence": "Can you ride a horse?",
+      "mnemonic": "Araba ilanlarındaki 'hp' = horsepower, yani beygir gücü. Motor gücü hâlâ atla ölçülür."
+    },
+    {
+      "lesson": 2,
+      "front": "sheep",
+      "back": "(noun) koyun 🐑",
+      "example_sentence": "I can see ten sheep.",
+      "mnemonic": "Uyuyamayınca 'koyun saymak' İngilizcede de var: 'count sheep'. Dikkat: çoğulu da 'sheep'; 'sheeps' diye bir şey yok."
+    },
+    {
+      "lesson": 2,
+      "front": "chicken",
+      "back": "(noun) tavuk 🐔",
+      "example_sentence": "My grandmother has twenty chickens.",
+      "mnemonic": "KFC'nin C'si: Kentucky Fried Chicken. Bir de meşhur tabela var: 'tavuk çevirme' → 'Chicken Translate'."
+    },
+    {
+      "lesson": 2,
+      "front": "duck",
+      "back": "(noun) ördek 🦆",
+      "example_sentence": "Look! There are ducks in the park.",
+      "mnemonic": "Donald Duck'ın soyadı: Duck = ördek. Banyodaki sarı lastik ördek de İngilizcede 'rubber duck'."
+    },
+    {
+      "lesson": 3,
+      "front": "mouse",
+      "back": "(noun) fare 🐭",
+      "example_sentence": "There is a mouse in the kitchen!",
+      "mnemonic": "Bilgisayar 'mouse'u adını bu hayvandan alır: kablosu kuyruğa benzediği için fare dendi. Mickey Mouse da aynı kelime; çoğulu 'mice'."
+    },
+    {
+      "lesson": 3,
+      "front": "rabbit",
+      "back": "(noun) tavşan 🐰",
+      "example_sentence": "My sister has a white rabbit.",
+      "mnemonic": "'Tavşan Peter' filminin orijinal adı 'Peter Rabbit'. Çocuk dilinde ve sevimli anlamda 'bunny' denir; Bugs Bunny'deki gibi."
+    },
+    {
+      "lesson": 3,
+      "front": "bear",
+      "back": "(noun) ayı 🐻",
+      "example_sentence": "Bears sleep in the winter.",
+      "mnemonic": "'Maşa ile Koca Ayı' çizgi filminin İngilizce adı: 'Masha and the Bear'. Oyuncak ayı ise 'teddy bear'."
+    },
+    {
+      "lesson": 4,
+      "front": "lion",
+      "back": "(noun) aslan 🦁",
+      "example_sentence": "The lion sleeps all day.",
+      "mnemonic": "'Aslan Kral' filminin orijinal adı 'The Lion King'; Simba bir 'lion cub' (aslan yavrusu)."
+    },
+    {
+      "lesson": 4,
+      "front": "elephant",
+      "back": "(noun) fil 🐘",
+      "example_sentence": "I like the elephants at the zoo.",
+      "mnemonic": "İngilizlerin sözü: 'An elephant never forgets' (fil asla unutmaz); filin hafızası güçlü sayılır. Ortadaki 'ph' f okunur: 'e-le-fınt', tıpkı 'fil'in f'si gibi."
+    },
+    {
+      "lesson": 4,
+      "front": "monkey",
+      "back": "(noun) maymun 🐒",
+      "example_sentence": "The monkeys jump from tree to tree.",
+      "mnemonic": "Telefondaki 'üç maymun' emojilerinin (🙈🙉🙊) resmî adları 'see-no-evil monkey', 'hear-no-evil monkey', 'speak-no-evil monkey'. Bir de İngiliz grup Arctic Monkeys var."
+    },
+    {
+      "lesson": 5,
+      "front": "farm",
+      "back": "(noun) çiftlik 🚜",
+      "example_sentence": "My uncle has a small farm.",
+      "mnemonic": "George Orwell'in 'Hayvan Çiftliği'nin orijinal adı: 'Animal Farm'. Bu ünitenin ilk kelimesiyle bu kelime yan yana."
+    },
+    {
+      "lesson": 5,
+      "front": "zoo",
+      "back": "(noun) hayvanat bahçesi 🦒",
+      "example_sentence": "Let's go to the zoo today!",
+      "mnemonic": "'Zooloji' (hayvan bilimi) ile aynı Yunanca kökten: 'zoon' = canlı, hayvan. 'Zoo', 'zoological garden'ın (hayvanat bahçesi) kısaltması."
+    },
+    {
+      "lesson": 5,
+      "front": "fly",
+      "back": "(verb) uçmak 🐦",
+      "example_sentence": "Chickens can't fly very well.",
+      "mnemonic": "Pegasus'un sitesi flypgs.com, formalardaki 'Fly Emirates': fly = uçmak. İsim olarak 'a fly' ise sinek, yani uçan şey."
+    }
+  ],
+  "dialogue": {
+    "title": "A Day on the Farm",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Welcome to my uncle's farm!",
+        "tr": "Amcamın çiftliğine hoş geldin!"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Wow, so many animals! Are there horses?",
+        "tr": "Vay, ne çok hayvan var! At da var mı?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Yes, two. And cows and sheep.",
+        "tr": "Evet, iki tane. Bir de inekler ve koyunlar."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Can I feed the chickens?",
+        "tr": "Tavuklara yem verebilir miyim?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Sure. Wait... what's that near the ducks?",
+        "tr": "Tabii. Dur... ördeklerin yanındaki ne?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "A mouse? Help! I don't like mice.",
+        "tr": "Fare mi? İmdat! Fareleri sevmem."
+      },
+      {
+        "speaker": "Elif",
+        "en": "No, silly! It's a baby rabbit.",
+        "tr": "Yok canım! O yavru bir tavşan."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Phew! I like rabbits. Hello, little one!",
+        "tr": "Oh be! Tavşanları severim. Merhaba minik!"
+      }
+    ]
+  }
+}

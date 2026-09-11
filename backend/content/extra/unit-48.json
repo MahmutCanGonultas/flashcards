@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 48,
+    "level": "B2",
+    "title": "Travel & Cultures"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "itinerary",
+      "back": "(noun) seyahat planı, güzergah 🗺️",
+      "example_sentence": "Our itinerary leaves two free days in Lisbon, which I'm glad about.",
+      "mnemonic": "Latince iter (yol) kökünden; 'transit' (trans + ire, geçip gitmek) ile akrabadır. Tur şirketlerinin 'gün gün program' dediği şey: a packed itinerary = tıka basa dolu program."
+    },
+    {
+      "lesson": 1,
+      "front": "landmark",
+      "back": "(noun) simge yapı, dönüm noktası 🗼",
+      "example_sentence": "The Galata Tower is the landmark you'll see from almost anywhere.",
+      "mnemonic": "Land (arazi) + mark (işaret): denizcilerin kıyıdan tanıdığı kule, dağ. 'Mark' Türkçedeki 'marka' ile aynı Cermen kökten (işaret); mecazi kullanımı da sık: a landmark ruling = dönüm noktası niteliğinde karar."
+    },
+    {
+      "lesson": 1,
+      "front": "immerse",
+      "back": "(verb) daldırmak, kendini kaptırmak 🌊",
+      "example_sentence": "The only way to learn Portuguese properly is to immerse yourself in it.",
+      "mnemonic": "Latince mergere = batırmak: im- (içine) + mergere. Emerge (e-, dışarı: yüzeye çıkmak) tam tersi; oyuncuların 'immersive' dediği deneyim de buradan, sizi içine çekip batıran."
+    },
+    {
+      "lesson": 2,
+      "front": "customs",
+      "back": "(noun) gelenekler, gümrük 🛃",
+      "example_sentence": "Reading up on local customs before you land saves a lot of embarrassment.",
+      "mnemonic": "Türkçedeki 'kostüm' ile aynı Latince kökten (consuetudo = alışkanlık): kostüm 'âdet olan giysi' demekti. Custom = âdet; çoğulu customs hem 'gelenekler' hem de âdet üzere alınan vergiden 'gümrük'."
+    },
+    {
+      "lesson": 2,
+      "front": "etiquette",
+      "back": "(noun) görgü kuralları 🎩",
+      "example_sentence": "In Japan tipping goes against etiquette, which took me a while to accept.",
+      "mnemonic": "Fransızca étiquette = Türkçedeki 'etiket'. Sarayda davranış kuralları küçük kartlara yazılıp dağıtıldığı için (en yaygın açıklama bu) kelime 'görgü kuralları' anlamını kazandı; Türkçede de etiketin 'teşrifat' anlamı vardır."
+    },
+    {
+      "lesson": 2,
+      "front": "hospitality",
+      "back": "(noun) misafirperverlik, otelcilik 🫖",
+      "example_sentence": "Georgian hospitality is legendary; we were fed by strangers three nights running.",
+      "mnemonic": "Otel, hostel, hospital ve host: hepsi Latince hospes (hem konuk hem ev sahibi) kökünden. Konuğu ağırlama sanatı; 'the hospitality sector' de otel ve restoran işlerini kapsar."
+    },
+    {
+      "lesson": 3,
+      "front": "remote",
+      "back": "(adjective) ücra, uzak 🏝️",
+      "example_sentence": "The village is so remote that the post only arrives twice a month.",
+      "mnemonic": "Remote control'ün remote'u: uzaktaki; Latince removere (uzağa taşımak) fiilinden, 'remove' ile kardeş. Coğrafyada 'ücra' (a remote island), iş hayatında 'uzaktan' (remote work)."
+    },
+    {
+      "lesson": 3,
+      "front": "breathtaking",
+      "back": "(adjective) nefes kesici 🏔️",
+      "example_sentence": "The view from the top was breathtaking, even after eight hours of climbing.",
+      "mnemonic": "Türkçesiyle birebir örtüşür: breath (nefes) + taking (alan) = nefes kesici; fiili de aynı, 'it took my breath away'. Alaycı da kullanılır: breathtaking arrogance = insanı afallatan kibir."
+    },
+    {
+      "lesson": 3,
+      "front": "overrated",
+      "back": "(adjective) abartılan, fazla övülen 🙄",
+      "example_sentence": "Honestly, I found Venice overrated: beautiful, but packed and ridiculously expensive.",
+      "mnemonic": "Türkçedeki 'reyting' ile aynı kök: rate = puan vermek. Overrated = puanı hak ettiğinden yüksek, zıddı underrated; gezginlerin ebedi tartışması 'Is Paris overrated?'"
+    },
+    {
+      "lesson": 4,
+      "front": "culture shock",
+      "back": "(noun) kültür şoku 😵",
+      "example_sentence": "Culture shock hit me in Tokyo, where nobody crosses on red, even at midnight.",
+      "mnemonic": "Kültür de şok da Fransızcadan Türkçeye girmiş; bileşik İngilizcede birebir aynı. Kalıpları: to experience culture shock, ve dönüşte yaşanan 'reverse culture shock' (kendi ülkene yabancılaşma)."
+    },
+    {
+      "lesson": 4,
+      "front": "expat",
+      "back": "(noun) yurt dışında yaşayan kişi 🌍",
+      "example_sentence": "Half the expats in Dubai told me they'd only planned to stay two years.",
+      "mnemonic": "Expatriate'in kısası: ex- (dışarı) + patria (vatan; Latince pater 'baba'dan, 'patron' da aynı kökten). İnce ayrım: aynı kişiye beyaz yakalıysa 'expat', işçiyse 'immigrant' denir; kelime seçimi statü ima eder."
+    },
+    {
+      "lesson": 4,
+      "front": "nomad",
+      "back": "(noun) göçebe 🐪",
+      "example_sentence": "She's been a digital nomad for three years, working from wherever there's wifi.",
+      "mnemonic": "Yunanca nemein (otlatmak, paylaştırmak) kökünden: nomas = sürüyle otlak peşinde dolaşan; nomos (düzen, yasa) ile akraba, yani ekonomi ve otonomideki -nomi. Bugün en çok 'digital nomad' kalıbında: laptopla ülke ülke gezerek çalışan."
+    },
+    {
+      "lesson": 5,
+      "front": "wander",
+      "back": "(verb) amaçsızca dolaşmak, gezinmek 🚶",
+      "example_sentence": "We ditched the map and just wandered until we found a bakery.",
+      "mnemonic": "Tolkien'in dizesi 'Not all those who wander are lost' ve Instagram'ın #wanderlust'ı (gezme tutkusu) buradan. 'Wonder' (merak etmek) ile karıştırmayın: a'lı olan ayakla, o'lu olan kafayla yapılır."
+    },
+    {
+      "lesson": 5,
+      "front": "settle",
+      "back": "(verb) yerleşmek, halletmek 🏡",
+      "example_sentence": "It took me a year to settle in Berlin, mostly because of the winters.",
+      "mnemonic": "Kökü 'seat' (oturak): bir yere oturmak, yerleşmek; Türkçedeki 'rezidans' (Latince re-sidere, oturup kalmak) uzak akrabasıdır. Kalıpları öğrenin: settle down (düzen kurmak), settle in (alışmak), settle the bill (hesabı ödemek)."
+    },
+    {
+      "lesson": 5,
+      "front": "adapt",
+      "back": "(verb) uyum sağlamak, uyarlamak 🦎",
+      "example_sentence": "Children adapt to a new country far faster than their parents do.",
+      "mnemonic": "Türkçedeki 'adapte olmak' ve 'adaptör' aynı Latince kökten: ad- (-e) + aptare (uydurmak). İki yönü var: adapt to a culture (uyum sağlamak) ve adapt a novel for TV (uyarlamak); 'adopt' (evlat edinmek) ile karıştırmayın."
+    }
+  ],
+  "dialogue": {
+    "title": "The Expat Bubble",
+    "lines": [
+      {
+        "speaker": "Tom",
+        "en": "The paper's sending me to Lisbon for a year. I said yes.",
+        "tr": "Gazete beni bir yıllığına Lizbon'a gönderiyor. Evet dedim."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Congratulations. So you'll be an expat with a river view and no Portuguese.",
+        "tr": "Tebrikler. Yani nehir manzaralı, Portekizcesi sıfır bir ekspat olacaksın."
+      },
+      {
+        "speaker": "Tom",
+        "en": "That's unfair. I'm going to immerse myself properly this time.",
+        "tr": "Haksızlık ediyorsun. Bu sefer o hayatın gerçekten içine gireceğim."
+      },
+      {
+        "speaker": "Elif",
+        "en": "You said that about Berlin, then called it overrated after one winter.",
+        "tr": "Berlin için de öyle demiştin, bir kış sonra 'abartılıyor' deyip çıktın."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Berlin was overrated. And the culture shock was mostly the bureaucracy.",
+        "tr": "Berlin abartılıyordu. Kültür şoku dediğin de çoğunlukla bürokrasiydi."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Culture shock is the point, Tom. Expats who dodge it never settle.",
+        "tr": "Kültür şoku işin özü, Tom. Ondan kaçan ekspatlar hiçbir yere yerleşemez."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Fine. No landmarks, no itinerary, just wander until it feels like home?",
+        "tr": "Peki. Turistik yer yok, program yok, kendimi evimde hissedene kadar dolaşıyorum, öyle mi?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Exactly. And when I visit, your hospitality had better be Portuguese, not English.",
+        "tr": "Aynen. Ben ziyarete geldiğimde de misafirperverliğin İngiliz usulü değil, Portekiz usulü olsun."
+      }
+    ]
+  }
+}

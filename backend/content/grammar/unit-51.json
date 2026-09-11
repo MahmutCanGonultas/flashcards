@@ -1,0 +1,70 @@
+{
+  "unit": 51,
+  "title_en": "How Phrasal Verbs Work",
+  "title_tr": "Öbek Fiiller Nasıl Çalışır",
+  "hook": "'Pick up the phone' de 'pick the phone up' de doğru, ama 'pick up it' yanlış ve 'pick it up' doğru — bu küçük kural İngilizlerin yabancıyı iki saniyede tanıdığı yer.",
+  "rules": [
+    {
+      "rule": "Öbek fiil = fiil + parçacık (up, out, on, off, through...) ve anlam çoğu zaman parçalardan çıkarılamaz: 'bring about' getirmek değil, 'yol açmak' demektir. Sözlükte tek kelime gibi öğren.",
+      "example_en": "The scandal brought about the minister's resignation within a week.",
+      "example_tr": "Skandal bir hafta içinde bakanın istifasına yol açtı."
+    },
+    {
+      "rule": "Ayrılabilir (separable) öbek fiillerde nesne isimse iki yere de gelebilir: 'carry out the plan' = 'carry the plan out'. Nesne zamirse (it, them, him) MUTLAKA araya girer: 'carry it out'.",
+      "example_en": "They carried out the inspection without warning — they carried it out at dawn.",
+      "example_tr": "Denetimi uyarmadan yaptılar — şafakta yaptılar."
+    },
+    {
+      "rule": "Ayrılamaz (inseparable) öbek fiillerde nesne hep sona gelir, zamir olsa bile: 'come across her letters', 'come across them'. Edatlı olanlar (look after, run out of) genellikle bu gruptadır.",
+      "example_en": "I came across them in the attic; you never look down on old letters.",
+      "example_tr": "Onlara tavan arasında rastladım; eski mektupları hor görmemek gerek."
+    },
+    {
+      "rule": "Üç parçalı öbek fiiller (put up with, get away with, look forward to, run out of) asla ayrılmaz; nesne hep üç kelimenin arkasına gelir.",
+      "example_en": "She put up with his excuses for years and he got away with all of them.",
+      "example_tr": "Yıllarca onun bahanelerine katlandı ve hepsi yanına kâr kaldı."
+    },
+    {
+      "rule": "Parçacıklar birer anlam ailesidir: 'up' tamamlama (use up, eat up), 'out' bitiş/yok oluş (run out, die out), 'on' devam (carry on, go on), 'off' ayrılma/iptal (call off, take off). Aileyi bilirsen yeni fiili tahmin edersin.",
+      "example_en": "The talks fell through, the deal was called off, and the money ran out.",
+      "example_tr": "Görüşmeler suya düştü, anlaşma iptal edildi ve para bitti."
+    }
+  ],
+  "watch_out": "Türkçede nesne hep fiilden önce geldiği için zamir kuralı en çok burada kaçar: ✗ pick up it, ✗ turn off them. ✓ pick it up, ✓ turn them off. Ama üç parçalılarda tam tersi: ✗ put it up with, ✓ put up with it.",
+  "memory_trick": "Zamir küçüktür, iki parçalı fiilin arasına sığar: pick IT up. Üç parçalı fiil zaten kalabalıktır, zamiri arkaya alır: put up with IT. İki parçaysa araya, üç parçaysa arkaya.",
+  "quiz": [
+    {
+      "question": "The plan is good, so let's ___ tomorrow.",
+      "options": [
+        "carry out it",
+        "carry it out",
+        "carry out him",
+        "carry it up"
+      ],
+      "answer": 1,
+      "explain": "'Carry out' ayrılabilir; nesne zamir olunca araya girmek zorundadır: carry it out."
+    },
+    {
+      "question": "I can't ___ any longer — his excuses are endless.",
+      "options": [
+        "put it up with",
+        "put up it with",
+        "put up with it",
+        "put with it up"
+      ],
+      "answer": 2,
+      "explain": "Üç parçalı öbek fiiller ayrılmaz; nesne hep sona gelir: put up with it."
+    },
+    {
+      "question": "We ___ old photos while clearing the attic.",
+      "options": [
+        "came them across",
+        "came across them",
+        "came across it them",
+        "across came them"
+      ],
+      "answer": 1,
+      "explain": "'Come across' ayrılamaz; zamir olsa bile nesne fiilin arkasında kalır."
+    }
+  ]
+}

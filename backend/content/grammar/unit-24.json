@@ -1,70 +1,70 @@
 {
   "unit": 24,
-  "title_en": "First Conditional: If and Will",
-  "title_tr": "Birinci Koşul: If ve Will",
-  "hook": "Küçücük bir 'if', koca bir 'will'i kapı dışarı eder; 'will' de küsmez, gider sonucun yanına oturur.",
+  "title_en": "Making Suggestions: Let's, Shall we?",
+  "title_tr": "Öneri Yapmak: Let's, Shall we?",
+  "hook": "Bana sorarsan, bir partide 'cake'ten çok 'Let's' duyulur — çünkü her dans, her fotoğraf, her dilim pasta onunla başlar.",
   "rules": [
     {
-      "rule": "Gelecekte olması mümkün bir şart ve sonucu için: 'if' yarısı present simple, sonuç yarısı 'will' alır. Türkçedeki '-se/-sa' ekinin İngilizcesi budur.",
-      "example_en": "If you feel better tomorrow, we'll go out.",
-      "example_tr": "Yarın daha iyi hissedersen dışarı çıkarız."
+      "rule": "'Let's' + yalın fiil, Türkçedeki '-alım/-elim' demek: Türkçede ek fiilin sonuna gelir, İngilizcede 'Let's' fiilin önüne gelir ve fiil hiç değişmez. Olumsuzu için araya 'not' koy: Let's not.",
+      "example_en": "Let's have a party for Ayşe's birthday!",
+      "example_tr": "Ayşe'nin doğum günü için parti yapalım!"
     },
     {
-      "rule": "'If' yarısı cümlenin başına da sonuna da gelebilir; başa gelirse araya virgül konur, sona gelirse virgül yoktur.",
-      "example_en": "I'll be happier if I pass the exam.",
-      "example_tr": "Sınavı geçersem daha mutlu olurum."
+      "rule": "'Shall we' + yalın fiil + soru işareti = '...-alım mı?'. 'Let's'ten biraz daha kibar, çünkü karar vermek yerine karşındakine soruyorsun.",
+      "example_en": "Shall we open the presents now?",
+      "example_tr": "Hediyeleri şimdi açalım mı?"
     },
     {
-      "rule": "'Unless' tek kelimeyle 'if ... not' demektir; bu yüzden 'unless'ten sonra bir daha olumsuz yapılmaz.",
-      "example_en": "Unless you sleep well, you'll feel tired all day.",
-      "example_tr": "İyi uyumazsan bütün gün kendini yorgun hissedersin."
+      "rule": "'Why don't we ...?' gerçek bir soru değil, öneridir: 'Neden yapmıyoruz?' diye çevirme, '...-sak nasıl olur?' diye anla. Aynı kalıp 'Why don't you ...?' olunca karşındakine tavsiye olur.",
+      "example_en": "Why don't we invite the whole class?",
+      "example_tr": "Bütün sınıfı davet etsek nasıl olur?"
     },
     {
-      "rule": "'When' olayın kesin olacağını, 'if' sadece olabileceğini söyler; Türkçedeki '-ince' ile '-se' farkı gibi. İkisinden sonra da present simple gelir.",
-      "example_en": "When I finish work, I'll call you — if I'm not too tired.",
-      "example_tr": "İşim bitince seni ararım — çok yorgun olmazsam."
+      "rule": "'How about' (ya da 'What about') farklıdır: arkasından fiil -ing alır ya da doğrudan isim gelir. 'How about Saturday?' de olur, 'How about dancing?' de.",
+      "example_en": "How about making a big chocolate cake?",
+      "example_tr": "Kocaman bir çikolatalı pasta yapmaya ne dersin?"
     },
     {
-      "rule": "Her zaman doğru olan şeyler (bilimsel gerçekler, alışkanlıklar) için iki yarıda da present simple kullanılır; buna 'zero conditional' denir, 'will' hiç yoktur.",
-      "example_en": "If you compare prices online, you usually pay less.",
-      "example_tr": "İnternette fiyatları karşılaştırırsan genelde daha az ödersin."
+      "rule": "Kabul etmek için 'Sounds good!', 'Great idea!' ya da 'I'd love to!' yeter. Reddederken düz 'No' deme; 'I'm afraid I can't' de ve kısa bir sebep ekle.",
+      "example_en": "I'd love to, but I'm afraid I can't come on Sunday.",
+      "example_tr": "Çok isterdim ama maalesef pazar günü gelemem."
     }
   ],
-  "watch_out": "En sık hata, 'if' yarısına da 'will' koymak: Türkçede 'yağarsa' derken zihin geleceği düşünür, 'will' de oraya kaçar. ✗ If it will rain, we'll stay in. ✓ If it rains, we'll stay in.",
-  "memory_trick": "Türkçe düşün: '-se/-sa' gördüğün yerde 'if + geniş zaman', sonucu söylediğin yerde 'will'. Yağarsa → if it rains; kalırız → we'll stay.",
+  "watch_out": "Dört kalıptan sadece 'How about' -ing ister; Türk öğrenciler onu da diğerleri gibi yalın fiille kurar. ✗ How about go to the wedding together? ✓ How about going to the wedding together? ('Let's go' ise doğru, çünkü 'Let's' yalın fiil ister.)",
+  "memory_trick": "'How about' neden -ing ister? Çünkü 'about' bir edat, ve edattan sonra fiil hep -ing alır (good at singing, interested in dancing gibi). Diğer üçünde edat yok, fiil yalın kalır.",
   "quiz": [
     {
-      "question": "If she ___ the news, she'll be very happy.",
+      "question": "___ have a party for Ali's birthday!",
       "options": [
-        "will hear",
-        "heard",
-        "is hearing",
-        "hears"
-      ],
-      "answer": 3,
-      "explain": "'If' yarısında 'will' olmaz, present simple gelir; 'will' zaten sonuç yarısında."
-    },
-    {
-      "question": "___ you hurry, you'll miss the bus.",
-      "options": [
-        "If",
-        "When",
-        "Unless",
-        "Because"
+        "Let's to",
+        "Let we",
+        "Let's",
+        "Let's we"
       ],
       "answer": 2,
-      "explain": "'Unless' = 'if you don't': acele etmezsen otobüsü kaçırırsın."
+      "explain": "'Let's'ten sonra fiil yalın gelir; araya 'to' ya da 'we' girmez."
     },
     {
-      "question": "I always get home at 7. ___ I get home tonight, I'll call you.",
+      "question": "How about ___ a big cake for the party?",
       "options": [
-        "When",
-        "If",
-        "Unless",
-        "Until"
+        "making",
+        "make",
+        "to make",
+        "makes"
       ],
       "answer": 0,
-      "explain": "Eve gelmek kesin olduğu için 'when'; 'if' olayı belirsiz gösterirdi."
+      "explain": "'How about' bir edatla bitiyor, o yüzden fiil -ing alır."
+    },
+    {
+      "question": "— Let's go to the wedding together! — ___ I can't. It's my grandma's birthday.",
+      "options": [
+        "Sounds good",
+        "I'm afraid",
+        "I'd love to",
+        "Great idea"
+      ],
+      "answer": 1,
+      "explain": "Nazikçe reddederken 'I'm afraid I can't' denir; diğer üçü kabul etmek içindir."
     }
   ]
 }

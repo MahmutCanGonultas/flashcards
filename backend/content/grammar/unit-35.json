@@ -1,70 +1,70 @@
 {
   "unit": 35,
-  "title_en": "Choosing the Right Future Form",
-  "title_tr": "Doğru Gelecek Yapısını Seçmek",
-  "hook": "Türkçenin tek bir '-ecek' ekiyle hallettiği işi İngilizce beş yapıya böler; hangisini seçtiğin, yatırımcıya 'planım hazır' mı yoksa 'bakarız' mı dediğini ele verir.",
+  "title_en": "Quantifiers: a little, a few",
+  "title_tr": "Miktar sözcükleri: a little, a few",
+  "hook": "Türkçede 'biraz' tuza da soğana da yetiyor ama İngilizce mutfakta tuz için ayrı, soğan için ayrı kelime var — yanlışını seçersen çorba yine pişer, garson kaşını kaldırır.",
   "rules": [
     {
-      "rule": "Konuşmadan önce verilmiş bir karar ya da niyet varsa, veya gözünün önündeki kanıta bakarak tahmin yürütüyorsan going to kullan.",
-      "example_en": "We're going to open a second office in Izmir; the board approved it last week.",
-      "example_tr": "İzmir'de ikinci bir ofis açacağız; yönetim kurulu geçen hafta onayladı."
+      "rule": "Önce ismi tart: sayabiliyor musun? 'Onion' sayılır (one onion, two onions); 'salt' sayılmaz ('two salts' diyemezsin). Sayılamayan isimlere 'a little' gelir: biraz, ama yeterince.",
+      "example_en": "Add a little salt and a little oil to the pan.",
+      "example_tr": "Tavaya biraz tuz ve biraz yağ ekle."
     },
     {
-      "rule": "Kararı tam o anda veriyorsan, söz veriyor ya da teklif ediyorsan, ya da elinde kanıt olmadan kişisel görüş bildiriyorsan (I think, probably) will kullan.",
-      "example_en": "The client hasn't replied? Fine, I'll call her myself after lunch.",
-      "example_tr": "Müşteri hâlâ cevap vermedi mi? Tamam, öğleden sonra kendim ararım."
+      "rule": "Sayılabilir isimlere 'a few' gelir ve isim mutlaka çoğul olur. Türkçede 'birkaç soğan' tekil kalır; İngilizcede -s şart.",
+      "example_en": "I need a few onions and a few eggs for the omelette.",
+      "example_tr": "Omlet için birkaç soğan ve birkaç yumurta lazım."
     },
     {
-      "rule": "Yeri ve zamanı ayarlanmış, başkalarını da bağlayan düzenlemeler (toplantı, randevu) için present continuous; tarifeye ya da programa bağlı olaylar (tren, uçuş, açılış saati) için present simple kullan.",
-      "example_en": "I'm meeting the investors on Thursday; their flight lands at 9.15.",
-      "example_tr": "Perşembe günü yatırımcılarla görüşüyorum; uçakları 9.15'te iniyor."
+      "rule": "Olumsuz cümlede ve soruda 'much' ile 'many' devreye girer: 'not much' + sayılamayan, 'not many' + sayılabilir. Anlamı 'fazla yok, pek yok'.",
+      "example_en": "There isn't much rice left, and there aren't many clean plates.",
+      "example_tr": "Fazla pirinç kalmadı, temiz tabak da pek yok."
     },
     {
-      "rule": "Gelecekteki belirli bir anda devam ediyor olacak eylem için will be + -ing kullan; cümlede 'this time next year', 'at 10 tomorrow' gibi bir an belirtirsin.",
-      "example_en": "This time next year, I'll be running my own company.",
-      "example_tr": "Gelecek yıl bu zamanlar kendi şirketimi yönetiyor olacağım."
+      "rule": "'Plenty of' ve 'lots of' (= a lot of) ayrım yapmaz, ikisiyle de kullanılır: 'bolca, bir sürü'. Olumlu cümlede 'much' yerine bunları seç.",
+      "example_en": "Relax, the restaurant has plenty of bread and lots of tables tonight.",
+      "example_tr": "Rahat ol, restoranda bu akşam bolca ekmek ve bir sürü masa var."
     },
     {
-      "rule": "Gelecekteki bir noktaya varıldığında tamamlanmış olacak iş için will have + V3 kullan; neredeyse her zaman 'by' ile gelir (by 2030, by the end of the quarter).",
-      "example_en": "By 2030, the company will have doubled its exports.",
-      "example_tr": "2030'a kadar şirket ihracatını ikiye katlamış olacak."
+      "rule": "Soru sorarken de ayrım sürer: 'How much' + sayılamayan (ve fiyat sorarken), 'How many' + sayılabilir çoğul.",
+      "example_en": "How much flour do we need, and how many eggs?",
+      "example_tr": "Ne kadar un lazım, kaç yumurta?"
     }
   ],
-  "watch_out": "Türkçede 'gelince', 'olduğunda', '-e kadar' derken zihnimiz gelecekte olduğu için when, if, by the time, as soon as'den sonra da will koymaya çalışırız; oysa bu bağlaçlardan sonra present simple gelir, will ana cümlede kalır. ✗ By the time the CEO will arrive, we will have finished the slides. ✓ By the time the CEO arrives, we will have finished the slides.",
-  "memory_trick": "Türkçen ipucu veriyor: anlık karar geniş zamanla ('Hallederim' = I'll handle it), plan gelecek zamanla ('Halledeceğim' = I'm going to). 'Bitirmiş olacağım' = will have finished, 'çalışıyor olacağım' = will be working; birebir çeviri tutuyor.",
+  "watch_out": "Türkçedeki tek 'biraz' İngilizcede ikiye bölünür, en sık hata bunları karıştırmak: ✗ 'Add a little onions.' ✗ 'Add a few salt.' → ✓ 'Add a few onions.' ✓ 'Add a little salt.' Bir de 'a'yı düşürme: 'a little salt' = biraz tuz var, iyi; 'little salt' = neredeyse hiç tuz yok, çorba yavan.",
+  "memory_trick": "Türkçen bu ayrımı zaten biliyor: 'Kaç soğan?' dersin ama 'Kaç tuz?' diyemezsin. 'Kaç' oturuyorsa → many / a few. Oturmuyorsa, 'ne kadar' gerekiyorsa → much / a little.",
   "quiz": [
     {
-      "question": "Look at these sales figures — we ___ our target this quarter.",
+      "question": "Put ___ oil in the pan before you fry the eggs.",
       "options": [
-        "will have missed",
-        "miss",
-        "are going to miss",
-        "will be missing"
+        "a few",
+        "a little",
+        "many",
+        "how many"
+      ],
+      "answer": 1,
+      "explain": "'Oil' sayılamayan bir isim, bu yüzden 'a little' kullanırız."
+    },
+    {
+      "question": "There aren't ___ tomatoes left, so let's buy some.",
+      "options": [
+        "much",
+        "a little",
+        "many",
+        "plenty"
       ],
       "answer": 2,
-      "explain": "Rakamlar elimizde, yani kanıta dayalı bir tahmin; bu going to'nun işi."
+      "explain": "Olumsuz cümle ve 'tomatoes' sayılabilir çoğul → 'not many'."
     },
     {
-      "question": "Call me after 5 — by then I ___ the report, so we can go through it together.",
+      "question": "___ sugar do you take in your tea?",
       "options": [
-        "will have finished",
-        "will be finishing",
-        "am finishing",
-        "finish"
+        "How much",
+        "How many",
+        "A few",
+        "Much"
       ],
       "answer": 0,
-      "explain": "'By then' bir son nokta çiziyor; o noktadan önce bitmiş olacak iş için will have + V3 gerekir."
-    },
-    {
-      "question": "Don't email me at 10 tomorrow — I ___ the quarterly results to the board.",
-      "options": [
-        "present",
-        "will have presented",
-        "am going to present",
-        "will be presenting"
-      ],
-      "answer": 3,
-      "explain": "Yarın saat 10 belirli bir an; o anda devam ediyor olacak eylem için will be + -ing kullanılır."
+      "explain": "'Sugar' sayılamaz, miktarını 'How much' ile sorarız."
     }
   ]
 }

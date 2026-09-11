@@ -1,70 +1,65 @@
 {
   "unit": 11,
-  "title_en": "Past Simple: was, were, -ed",
-  "title_tr": "Geçmiş Zaman: was, were, -ed",
-  "hook": "Dün ne yaptığını anlatmak için İngilizcede tek bir ek yeter: -ed, Türkçedeki -di'nin ikizi — ama olumsuz cümleye girince bu ek ortadan kayboluyor, şimdi nereye gittiğini göstereceğim.",
+  "title_en": "Irregular Plurals and How Many",
+  "title_tr": "Düzensiz Çoğullar ve 'Kaç Tane?'",
+  "hook": "İngilizcede yüz koyun da 'sheep', bir koyun da 'sheep' — ama iki fare birden 'mice' oluyor, çünkü bazı kelimeler kuralı hiç dinlemiyor!",
   "rules": [
     {
-      "rule": "'am/is/are' geçmişte 'was/were' olur: I, he, she, it için was; you, we, they için were.",
-      "example_en": "I was at home yesterday, and you were at work.",
-      "example_tr": "Dün ben evdeydim, sen de işteydin."
+      "rule": "Çoğu kelime çoğul olunca sonuna -s alır (cat → cats), ama birkaç inatçı kelime -s yerine şekil değiştirir: mouse → mice, child → children, man → men, foot → feet.",
+      "example_en": "The cat sees two mice.",
+      "example_tr": "Kedi iki fare görüyor."
     },
     {
-      "rule": "Düzenli fiillerde geçmiş için fiilin sonuna -ed gelir ve herkes için aynıdır: I worked, she worked, they worked — Türkçedeki gibi kişiye göre ek değişmez. Küçük yazım notu: like→liked, study→studied.",
-      "example_en": "I worked all day and then I cooked dinner.",
-      "example_tr": "Bütün gün çalıştım, sonra akşam yemeği pişirdim."
+      "rule": "Sheep ise hiç değişmez: bir koyun da sheep, yüz koyun da sheep. Fish de aynı takımdan.",
+      "example_en": "There are five sheep on the farm.",
+      "example_tr": "Çiftlikte beş koyun var."
     },
     {
-      "rule": "Olumsuz için didn't + fiilin yalın hali: -ed eki gider, çünkü geçmişi artık 'did' taşıyor. was/were ise did istemez, kendi olumsuzunu yapar: wasn't, weren't.",
-      "example_en": "The shop wasn't open, so I didn't buy bread.",
-      "example_tr": "Dükkân açık değildi, o yüzden ekmek almadım."
+      "rule": "'Kaç tane?' diye sormak için How many + çoğul kelime + are there? deriz. Cevap kısacık: There are + sayı (bir taneyse There is one).",
+      "example_en": "How many cows are there? – There are two.",
+      "example_tr": "Kaç inek var? – İki tane var."
     },
     {
-      "rule": "Soru için 'Did' cümlenin başına gelir, fiil yine yalın kalır: Did + özne + fiil? Türkçede soru eki 'mı' sona gider, İngilizcede 'Did' en başa — kısa cevap: Yes, I did / No, I didn't.",
-      "example_en": "Did you call your mother yesterday? — Yes, I did.",
-      "example_tr": "Dün anneni aradın mı? — Evet, aradım."
-    },
-    {
-      "rule": "-ed üç şekilde okunur: sert sesten sonra /t/ (worked, washed), yumuşak sesten sonra /d/ (played, cleaned), t veya d'den sonra /ɪd/ (waited, needed). Yani 'worked' tek hece, 'vörkt' gibi okunur; 'vörk-ed' değil.",
-      "example_en": "I washed the dishes, cleaned the room and waited for the bus.",
-      "example_tr": "Bulaşıkları yıkadım, odayı topladım ve otobüsü bekledim."
+      "rule": "Sayıyı biliyorsan doğrudan sayıyı söyle: two cows. Bilmiyorsan ya da çoksa a lot of de, yani 'bir sürü'.",
+      "example_en": "There are a lot of birds in the tree.",
+      "example_tr": "Ağaçta bir sürü kuş var."
     }
   ],
-  "watch_out": "En sık hata, geçmişi iki kez söylemek: did/didn't zaten geçmişse fiile bir daha -ed ekleme. ✗ I didn't worked yesterday. / ✗ Did you watched TV? ✓ I didn't work yesterday. / ✓ Did you watch TV?",
-  "memory_trick": "Geçmiş, cümlede tek bir koltuğa oturur: ya fiile (worked) ya da did'e (didn't work). İkisine birden koyarsan Türkçedeki 'gittidim' gibi olur — fazladan bir -di, kulağı tırmalar.",
+  "watch_out": "Türkçede sayıdan sonra kelime tekil kalır: 'üç çocuk', 'kaç inek'. İngilizcede sayıdan ve How many'den sonra kelime hep çoğul olur (sheep hariç, o zaten değişmez). ✗ How many cow are there? There are three child. ✓ How many cows are there? There are three children.",
+  "memory_trick": "Sesli harf oyunu: mAn→mEn, fOOt→fEEt, mOUse→mIce — kelimenin içi değişir, sonuna -s gelmez. Children uzar, sheep hiç kıpırdamaz: koyunlar sürüde zaten birbirinin aynısı.",
   "quiz": [
     {
-      "question": "They ___ at home last night.",
+      "question": "I see two ___.",
       "options": [
-        "was",
-        "were",
-        "did",
-        "are"
+        "mouses",
+        "mice",
+        "mices",
+        "mouse"
       ],
       "answer": 1,
-      "explain": "'They' öznesiyle geçmişte 'were' kullanılır; 'was' yalnızca I, he, she, it içindir."
+      "explain": "Mouse'un çoğulu -s almaz, şekil değiştirir: mice."
     },
     {
-      "question": "She ___ dinner yesterday.",
+      "question": "There are ten ___ on the farm.",
       "options": [
-        "didn't cooked",
-        "not cooked",
-        "didn't cooks",
-        "didn't cook"
+        "sheeps",
+        "sheepes",
+        "sheep",
+        "a sheep"
       ],
-      "answer": 3,
-      "explain": "'didn't' geçmişi zaten taşıdığı için fiil yalın kalır: didn't cook."
+      "answer": 2,
+      "explain": "Sheep hiç değişmez: bir tane de on tane de sheep."
     },
     {
-      "question": "___ you wash the car yesterday?",
+      "question": "___ cows are there? – There are four.",
       "options": [
-        "Did",
-        "Were",
-        "Do",
-        "Was"
+        "How many",
+        "How much",
+        "How old",
+        "What"
       ],
       "answer": 0,
-      "explain": "Geçmişte yapılan bir işi sormak için cümlenin başına 'Did' gelir; 'yesterday' varken 'Do' olmaz."
+      "explain": "Sayı sorarken How many kullanırız, arkasından gelen kelime de çoğul olur: cows."
     }
   ]
 }

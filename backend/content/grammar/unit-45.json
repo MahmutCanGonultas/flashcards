@@ -1,55 +1,70 @@
 {
   "unit": 45,
-  "title_en": "Register and Hedging",
-  "title_tr": "Üslup ve Yumuşatma",
-  "hook": "'This is wrong' diyen kişi cesur görünür; 'This would appear to be somewhat problematic' diyen kişi ise İngiliz — ikisi de aynı şeyi söyler, ama yalnızca ikincisi toplantıdan davet alır.",
+  "title_en": "Generalizing: 'The' or No Article",
+  "title_tr": "Genelleme: 'The' mi, Hiç mi?",
+  "hook": "Küçük bir 'the' seni hem belgesel anlatıcısı gibi konuşturabilir hem de çuvallatabilir; Türkçe konuşanları 'the nature' deyişlerinden hemen tanırım.",
   "rules": [
     {
-      "rule": "Register, aynı anlamı ortama göre giydirmektir: konuşmada 'buy, get, also, a lot of' derken yazıda 'purchase, obtain, in addition, a considerable amount of' dersin. Kelime seçimi tonun kendisidir.",
-      "example_en": "Informal: We got the data and also checked it. Formal: We obtained the data and, in addition, verified it.",
-      "example_tr": "Gündelik: Veriyi aldık, bir de kontrol ettik. Resmî: Veriyi temin ettik ve ayrıca doğruladık."
+      "rule": "Bir şeyin tamamından, genel olarak bahsederken çoğul ve sayılamayan isimler çıplak kalır; 'the' yok. Türkçede 'Kaplanlar tehlikede' derken nasıl hiçbir şey eklemiyorsan, İngilizce de burada aynı.",
+      "example_en": "Tigers are endangered, and pollution is making things worse.",
+      "example_tr": "Kaplanlar tehlike altında ve kirlilik işleri daha da kötüleştiriyor."
     },
     {
-      "rule": "Hedging, iddiayı yumuşatmaktır: 'arguably, seemingly, to some extent, in most cases' gibi zarflar ve 'appear, seem, suggest, tend to' gibi fiiller kesinliği düşürür. Akademik yazıda yumuşatmamak kibirli sayılır.",
-      "example_en": "The results suggest that the intervention is, to some extent, effective.",
-      "example_tr": "Sonuçlar, müdahalenin bir ölçüde etkili olduğunu düşündürüyor."
+      "rule": "'The + tekil isim' tek bir hayvanı değil, türün tamamını temsil eder; belgesel anlatıcısının ve bilimsel yazının sesidir. 'The tiger is endangered' ile 'Tigers are endangered' aynı şeyi söyler, ilki daha resmîdir.",
+      "example_en": "The tiger has lost over ninety percent of its historic range.",
+      "example_tr": "Kaplan, tarihî yaşam alanının yüzde doksanından fazlasını kaybetti."
     },
     {
-      "rule": "'It would seem that...', 'It could be argued that...' kalıpları görüşü kişiden ayırır; 'I think' yerine geçer ve 'ben' demeden fikir söyler. Ölçülü kullan: her cümle yumuşarsa hiçbir şey söylenmemiş olur.",
-      "example_en": "It could be argued that the policy was superfluous from the outset.",
-      "example_tr": "Politikanın en başından beri gereksiz olduğu ileri sürülebilir."
+      "rule": "Soyut ve genel kavramlar — nature, society, life, science, climate change — article almaz. 'Doğa', 'toplum', 'hayat' deyince hangisi diye sormazsın; İngilizce de sormaz.",
+      "example_en": "Society treats nature as if it were free, and climate change is the result.",
+      "example_tr": "Toplum doğaya bedavaymış gibi davranıyor; iklim değişikliği de bunun sonucu."
     },
     {
-      "rule": "Resmî yazı kısaltmadan, deyimden ve 'very/really/so' gibi vurgulardan kaçar: 'didn't' değil 'did not', 'a lot' değil 'considerably', 'really important' değil 'essential'. Konuşma dilinde ise tam tersi doğaldır.",
-      "example_en": "The evidence is not entirely conclusive; nevertheless, it is far from negligible.",
-      "example_tr": "Kanıtlar tamamen kesin değil; yine de göz ardı edilecek gibi de değil."
+      "rule": "Coğrafyada nehirler, okyanuslar, denizler, sıradağlar ve çöller 'the' alır; tek bir dağ, göl, kıta ve çoğu ülke almaz. Yani the Amazon ama Antarctica, the Alps ama Mount Ararat.",
+      "example_en": "Plastic from the Amazon drifts into the Atlantic and has even reached Antarctica.",
+      "example_tr": "Amazon'dan gelen plastik Atlantik'e sürükleniyor, hatta Antarktika'ya bile ulaştı."
     },
     {
-      "rule": "Kibar ret ve eleştiri de hedging ister: 'I'm not sure that...', 'I wonder whether...', 'Perhaps we might...' Doğrudan 'no' İngilizcede sert kaçar; Türkçedeki 'bence' yumuşatması gibi düşün ama daha yoğun.",
-      "example_en": "I wonder whether the deadline is entirely feasible — perhaps we might revisit it.",
-      "example_tr": "Teslim tarihinin tamamen yapılabilir olduğundan emin değilim — belki yeniden bakabiliriz."
+      "rule": "Dünyada tek olan şeyler ve en üstünlük dereceleri her zaman 'the' alır: the sun, the planet, the future, the hottest year. Tek olduğu için 'hangisi' sorusunun cevabı zaten bellidir.",
+      "example_en": "The Arctic is the fastest-warming region on the planet.",
+      "example_tr": "Kuzey Kutbu, gezegendeki en hızlı ısınan bölge."
     }
   ],
-  "watch_out": "Yumuşatmayı abartmak da hatadır: ✗ It could perhaps possibly be argued that this may to some extent seem... Bir cümleye bir hedge yeter. Öte yandan resmî bir metinde konuşma diline kaymak da göze batar: ✗ The results were kind of good. ✓ The results were broadly positive.",
-  "memory_trick": "Üslubu bir ses düğmesi gibi düşün: konuşma dili yüksek ses (buy, get, a lot, really), resmî dil kısık ses (purchase, obtain, considerable, notably). Hedging ise sesin arasına koyduğun yastık: seem, suggest, arguably.",
+  "watch_out": "En yaygın hata 'the nature', 'the life', 'the society' demek: ✗ We must protect the nature. ✓ We must protect nature. Tek istisnayı ezberle: doğal çevre anlamında 'environment' hep 'the' ile gelir — ✓ protect the environment.",
+  "memory_trick": "'Hangisi?' sorusunu sor. Cevap tekse — the sun, the Pacific, the future — 'the' gelir. Soru anlamsızsa genel konuşuyorsun: tigers, nature, society — Türkçedeki gibi çıplak bırak.",
   "quiz": [
     {
-      "question": "Which is the most formal way to say 'We got a lot of replies'?",
-      "options": ["We got loads of replies.", "We received a considerable number of responses.", "We got a lot of replies, really.", "Replies came in big time."],
-      "answer": 1,
-      "explain": "Resmî üslup 'got' yerine 'received', 'a lot of' yerine 'a considerable number of' der."
+      "question": "Which sentence is NOT a correct generalization about the species?",
+      "options": [
+        "The wolf is returning to Europe.",
+        "Wolves are returning to Europe.",
+        "A wolf is returning to Europe.",
+        "Wolves have returned to Europe."
+      ],
+      "answer": 2,
+      "explain": "'A wolf' herhangi tek bir kurt demek; türün tamamı için 'the wolf' ya da 'wolves' kullanılır."
     },
     {
-      "question": "Choose the hedged version of 'The method is better.'",
-      "options": ["The method is definitely better.", "The method appears to be somewhat better.", "The method is better, obviously.", "The method is the best."],
-      "answer": 1,
-      "explain": "'Appears to be' ve 'somewhat' iddiayı yumuşatır; diğerleri güçlendirir."
+      "question": "We say we love ___, yet we keep damaging ___.",
+      "options": [
+        "nature / the environment",
+        "the nature / the environment",
+        "nature / environment",
+        "the nature / environment"
+      ],
+      "answer": 0,
+      "explain": "'Nature' çıplak kalır ama doğal çevre anlamında 'environment' hep 'the environment' olur."
     },
     {
-      "question": "Which sentence hedges too much?",
-      "options": ["The data suggest a modest improvement.", "It could arguably perhaps be said that this might possibly help.", "This may help in some cases.", "There is some evidence of improvement."],
-      "answer": 1,
-      "explain": "Bir cümleye dört yumuşatıcı üst üste binince anlam boşalır; bir tane yeter."
+      "question": "Warm water from ___ Pacific is changing the weather in ___ South America.",
+      "options": [
+        "– / the",
+        "the / the",
+        "– / –",
+        "the / –"
+      ],
+      "answer": 3,
+      "explain": "Okyanuslar 'the' alır; kıtalar ve çoğu ülke almaz."
     }
   ]
 }

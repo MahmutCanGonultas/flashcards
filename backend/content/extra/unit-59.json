@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 59,
+    "level": "C1",
+    "title": "Art & Aesthetics"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "aesthetic",
+      "back": "(adjective) estetik 🎨",
+      "example_sentence": "The whole restaurant has this stripped-back Scandinavian aesthetic that I actually find quite cold.",
+      "mnemonic": "Türkçedeki 'estetik' birebir aynı kelime: Yunanca aisthesis (duyu, algı) kökünden, Fransızca üzerinden gelmiş. İngilizcede isim olarak da çok kullanılır: 'the film's aesthetic' = filmin görsel dili; 'aesthetically pleasing' kalıbını da ezberle."
+    },
+    {
+      "lesson": 1,
+      "front": "sublime",
+      "back": "(adjective) yüce, muhteşem 🏔️",
+      "example_sentence": "Her voice on that last track is sublime, and I don't use that word lightly.",
+      "mnemonic": "Kimyadaki 'süblimleşme' (katının doğrudan gaza yükselmesi) aynı Latince kökten: sub + limen, 'eşiğin üstüne çıkan'. Sanatta sublime, dağ ya da fırtına gibi insanı küçük hissettiren bir yücelik; günlük dilde 'olağanüstü'nün en güçlü hali."
+    },
+    {
+      "lesson": 1,
+      "front": "kitsch",
+      "back": "(noun) kiç, zevksiz bayağılık 🦩",
+      "example_sentence": "Her flat is all snow globes and plastic flamingos, but the kitsch is deliberate.",
+      "mnemonic": "Türkçeye de 'kiç' olarak aynen girmiş; Almanca kökenli, 1870'lerde Münih sanat pazarında turistlere satılan ucuz, duygusal tablolar için türetilmiş. Sıfatı 'kitschy'; anahtar fikir: yapmacık duygu, ucuz etki."
+    },
+    {
+      "lesson": 2,
+      "front": "evocative",
+      "back": "(adjective) çağrıştıran, anımsatan 🎞️",
+      "example_sentence": "That smell of coal smoke is so evocative of my grandmother's village in winter.",
+      "mnemonic": "Latince vocare (çağırmak) kökü; Türkçedeki 'vokal' ve 'avukat' (ad-vocatus: yardıma çağrılan) aynı aile. E-vocare = dışarı çağırmak: bir koku ya da şarkı hatıraları dışarı çağırır. Kalıp: 'evocative of' + çağrıştırdığı şey."
+    },
+    {
+      "lesson": 2,
+      "front": "poignant",
+      "back": "(adjective) dokunaklı, içe işleyen 🥀",
+      "example_sentence": "The most poignant moment came when he read her letters aloud, still in their envelopes.",
+      "mnemonic": "Latince pungere (batmak, iğnelemek) kökünden; Türkçedeki 'puan' ve 'punto' da aynı kökten (punctum = batırılan nokta). Dokunaklı bir sahne de tam öyle: iğne gibi içine batar. Telaffuzda g okunmaz: /ˈpɔɪnjənt/."
+    },
+    {
+      "lesson": 2,
+      "front": "derivative",
+      "back": "(adjective) özgün olmayan, taklit 📋",
+      "example_sentence": "Critics called the album derivative, but honestly, what isn't these days?",
+      "mnemonic": "Matematikteki 'türev' İngilizcede 'derivative'; 'derive' = türetmek. Sanatta bir eser derivative ise başkasından türetilmiş, yani özgün değil demektir. Küçümseyici bir kelime: 'pastiche' bilinçli saygı gösterir, 'derivative' yalnızca kopyalar."
+    },
+    {
+      "lesson": 3,
+      "front": "avant-garde",
+      "back": "(adjective) avangart, öncü 🎭",
+      "example_sentence": "Back in the seventies, that kind of staging would have been considered wildly avant-garde.",
+      "mnemonic": "Türkçedeki 'avangart' aynı kelime. Fransızca askerî terim: avant-garde = ordunun en önünde giden 'öncü kol'; 'garde' (muhafız) Türkçe 'gardiyan' ile akraba. Sanatta ana kitleden önde, deneysel olan her şey; 'the avant-garde' isim olarak da kullanılır."
+    },
+    {
+      "lesson": 3,
+      "front": "pastiche",
+      "back": "(noun) üslup taklidi, pastiş 🧩",
+      "example_sentence": "The film is a knowing pastiche of 1940s noir, right down to the venetian blinds.",
+      "mnemonic": "İtalyanca pasticcio = karışık hamur işi; 'pasta' ile aynı kök (Türkçe 'pasta' da oradan). Farklı üslupları hamur gibi yoğurup karıştıran eser. Kalıp: 'a pastiche of' + taklit edilen tarz."
+    },
+    {
+      "lesson": 3,
+      "front": "motif",
+      "back": "(noun) motif, tekrarlayan tema 🔁",
+      "example_sentence": "Notice how the drowning motif keeps resurfacing, quite literally, throughout the novel.",
+      "mnemonic": "Türkçedeki 'motif' aynı kelime, Fransızcadan. Latince motivus (hareket ettiren) kökünden; 'motor', 'motivasyon' aynı aile: eseri ileri iten, tekrar tekrar geri gelen öğe. Telaffuz /məʊˈtiːf/, vurgu sonda."
+    },
+    {
+      "lesson": 4,
+      "front": "juxtapose",
+      "back": "(verb) yan yana koymak ↔️",
+      "example_sentence": "She juxtaposes grainy war footage with cheerful adverts, and the effect is chilling.",
+      "mnemonic": "Latince juxta (yanında) + pose (koymak; 'poz', 'pozisyon' ile aynı aile): yan yana koymak. Ama düz bir yan yana değil, zıtlığı öne çıkarmak için. Kalıp: 'juxtapose X with Y'; ismi 'juxtaposition'."
+    },
+    {
+      "lesson": 4,
+      "front": "transcend",
+      "back": "(verb) aşmak, ötesine geçmek 🌌",
+      "example_sentence": "Great music transcends language; you don't need Portuguese to be wrecked by fado.",
+      "mnemonic": "Felsefedeki 'transandantal' aynı kök: trans (öte) + scandere (tırmanmak), yani sınırın üstünden tırmanıp geçmek. 'Transit' ve 'transfer'deki trans- da hep 'karşıya' demek. Sık kalıp: 'transcend boundaries / language / genre'."
+    },
+    {
+      "lesson": 4,
+      "front": "resonate",
+      "back": "(verb) yankı uyandırmak 🔔",
+      "example_sentence": "The play's theme of leaving home clearly resonated with the mostly immigrant audience.",
+      "mnemonic": "Fizikteki 'rezonans' aynı kök: Latince re-sonare = yeniden ses vermek; 'sonat' ve 'süpersonik' de aynı aile. Bir eser sizde resonate ederse, içinizde bir tel titreşir. Kalıp: 'resonate with' + kişi/kitle."
+    },
+    {
+      "lesson": 5,
+      "front": "connoisseur",
+      "back": "(noun) erbap, zevk sahibi uzman 🍷",
+      "example_sentence": "He fancies himself a whisky connoisseur, which mostly means he sniffs the glass theatrically.",
+      "mnemonic": "Fransızca connaître (bilmek) + -eur eki (şoför, amatör, masördeki aynı ek): 'bilen kişi'. Latince cognoscere kökü, 'kognitif' ile akraba. Telaffuz /ˌkɒnəˈsɜː/; kalıp: 'a connoisseur of fine wine'."
+    },
+    {
+      "lesson": 5,
+      "front": "virtuoso",
+      "back": "(noun) virtüöz, usta 🎻",
+      "example_sentence": "She's a genuine virtuoso, but even virtuosos have off nights, and Tuesday was one.",
+      "mnemonic": "Türkçedeki 'virtüöz' aynı kelime, İtalyancadan. Latince virtus (erdem, üstün yetenek) kökü; 'virtue' de oradan. Sıfat olarak da kullanılır: 'a virtuoso performance' = ustalık dolu bir performans."
+    },
+    {
+      "lesson": 5,
+      "front": "critique",
+      "back": "(noun) eleştiri, değerlendirme 📝",
+      "example_sentence": "Her critique of the exhibition was brutal but fair, and the curator knew it.",
+      "mnemonic": "Türkçedeki 'kritik' aynı Yunanca kökten (krinein = ayırt etmek, yargılamak). Dikkat: 'critique' (Fransızca yazım, /krɪˈtiːk/) ayrıntılı, dengeli bir değerlendirme demek; 'criticism' daha çok olumsuz eleştiri. Fiil de olur: 'to critique a draft'."
+    }
+  ],
+  "dialogue": {
+    "title": "After the Private View",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "So, be honest. Was that installation avant-garde, or just a room full of kitsch?",
+        "tr": "Hadi dürüst ol: o enstalasyon avangart mıydı, yoksa kiç dolu bir oda mı?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Both, surely. Juxtaposing plastic flamingos with a Rothko print is either genius or vandalism.",
+        "tr": "İkisi de, kesin. Plastik flamingoları Rothko baskısının yanına koymak ya dâhilik ya da vandallık."
+      },
+      {
+        "speaker": "Elif",
+        "en": "The critics loved it. One called it 'sublime'. I mostly felt hungry.",
+        "tr": "Eleştirmenler bayıldı; biri 'yüce' bile demiş. Ben en çok acıktığımı hissettim."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Critics call anything sublime if the champagne's free. I found it derivative, frankly.",
+        "tr": "Şampanya bedavaysa eleştirmenler her şeye yüce der. Bana açıkçası hepsi taklit geldi."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Derivative of what, though? It's a pastiche of everything; that might be the point.",
+        "tr": "Neyin taklidi ama? Her şeyin pastişi bu; belki de asıl mesele o."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Fine, but did any of it actually resonate with you? Even for a second?",
+        "tr": "Tamam da, herhangi bir parçası sende gerçekten yankı uyandırdı mı? Bir anlığına bile?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "The drowned-phone motif, weirdly. Poignant, if you've ever lost three years of photos.",
+        "tr": "Tuhaf ama suya düşen telefon motifi. Üç yıllık fotoğrafını kaybetmişsen dokunaklı geliyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "There it is. You're a connoisseur of grief after all. Now, dessert?",
+        "tr": "İşte geldik. Sen de keder erbabıymışsın sonuçta. Eee, tatlı?"
+      }
+    ]
+  }
+}

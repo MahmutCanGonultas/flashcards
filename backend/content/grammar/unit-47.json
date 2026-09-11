@@ -1,55 +1,70 @@
 {
   "unit": 47,
-  "title_en": "Complex Noun Phrases and Ellipsis",
-  "title_tr": "Karmaşık İsim Öbekleri ve Eksiltme",
-  "hook": "'A government-backed small-business loan scheme' — beş kelime, tek isim; İngilizce haberler bunları yığar da yığar, çözmeyi bilen okur, bilmeyen aynı satırı üç kez okur.",
+  "title_en": "Causatives: have, get, make, let",
+  "title_tr": "Ettirgen Yapılar: have, get, make, let",
+  "hook": "Türkçe 'raporu kontrol ettirdim' için tek bir ekle yetinir; İngilizce bu işi have, get, make ve let'e bölmüş — seçimin, patron mu rica eden mi olduğunu ele verir.",
   "rules": [
     {
-      "rule": "İngilizcede isim, başka isimlerle sıfat gibi nitelenebilir ve asıl isim en sonda durur: 'a loan scheme' = kredi programı, 'a small-business loan scheme' = küçük işletme kredi programı. Sağdan sola çöz: en sağdaki kelime ne olduğunu, solundakiler ne türden olduğunu söyler.",
-      "example_en": "The new procurement transparency rules apply to every subsidy contract.",
-      "example_tr": "Yeni satın alma şeffaflığı kuralları her sübvansiyon sözleşmesine uygulanıyor."
+      "rule": "Bir işi başkasına yaptırıyorsan ve yapanın kim olduğu önemli değilse: have + nesne + V3. 'I fixed the printer' dersen tornavidayı sen tuttun demektir; 'I had the printer fixed' dersen servisi çağırdın.",
+      "example_en": "I'll have the report checked by legal before it goes to the board.",
+      "example_tr": "Rapor yönetim kuruluna gitmeden önce hukuk birimine kontrol ettireceğim."
     },
     {
-      "rule": "Tire, iki kelimeyi tek sıfata bağlar: 'government-backed', 'long-term', 'well-paid'. Tire varsa o ikili bir bütün olarak sonraki ismi niteler; yoksa okur 'government' ile 'backed'i ayrı okuyabilir.",
-      "example_en": "A well-timed, tax-free incentive can be far more lucrative than a raise.",
-      "example_tr": "İyi zamanlanmış, vergisiz bir teşvik, zamdan çok daha kazançlı olabilir."
+      "rule": "get + nesne + V3 de aynı anlama gelir; daha konuşma dili ve çoğu zaman 'uğraşarak hallettim' tınısı taşır. Zorlukla biten işler için doğal seçim.",
+      "example_en": "We finally got the contract signed after three weeks of back and forth.",
+      "example_tr": "Üç haftalık gidip gelmenin ardından sözleşmeyi nihayet imzalattık."
     },
     {
-      "rule": "İsim öbeği sağdan da uzar: 'the redundancy package offered to senior staff last year' — burada 'offered to...' kısaltılmış bir ilgi cümleciğidir ('which was offered'). 'Which is/was' düşer, ortaç kalır.",
-      "example_en": "The austerity measures announced in March remain deeply unpopular.",
-      "example_tr": "Mart'ta açıklanan kemer sıkma önlemleri hâlâ son derece sevilmiyor."
+      "rule": "İşi yapan kişiyi söylemek istiyorsan ve onu ikna ettiysen: get + kişi + to + fiil. Amerikan İngilizcesinde görev vermek için have + kişi + fiil (to'suz) de çok yaygın: I'll have Sarah call you.",
+      "example_en": "The manager got the whole team to stay late without a single complaint.",
+      "example_tr": "Müdür, tek bir şikâyet bile duymadan bütün ekibi geç saate kadar kalmaya ikna etti."
     },
     {
-      "rule": "Ellipsis (eksiltme), tekrar eden kelimeleri atmaktır: 'Some firms cut costs; others (cut) jobs.' Fiil, isim ya da bütün bir yan cümle bağlamdan anlaşılıyorsa yazılmaz. Türkçe de bunu sever, o yüzden kulağa doğal gelir.",
-      "example_en": "Some economies rely on exports; ours, on subsidies.",
-      "example_tr": "Bazı ekonomiler ihracata bel bağlar; bizimki sübvansiyona."
+      "rule": "make + kişi + fiil (to yok): zorlamak, seçim şansı bırakmamak. Otoritenin dili; bir yönetici bunu ne kadar çok kullanırsa ekibi onu o kadar az sever.",
+      "example_en": "The new director made everyone rewrite their job descriptions from scratch.",
+      "example_tr": "Yeni direktör herkesi iş tanımlarını sıfırdan yeniden yazmaya mecbur etti."
     },
     {
-      "rule": "Yardımcı fiil tek başına kalabilir ve cümleyi taşır: 'I hoped the dividend would rise, but it didn't (rise).' 'So do I', 'Neither can they', 'if you must' de aynı ailedendir; ana fiil bir kez söylenir, sonra yardımcı fiil onu temsil eder.",
-      "example_en": "They promised a meritocracy, and for a while it looked as if they meant it; they didn't.",
-      "example_tr": "Liyakat düzeni sözü verdiler, bir süre ciddiler gibi göründü; değillermiş."
+      "rule": "let + kişi + fiil (yine to yok): izin vermek, alan açmak. make'in tam karşıtı; iyi liderlik çoğu zaman make ile değil let ile yapılır.",
+      "example_en": "A good leader lets people make small mistakes and learn from them.",
+      "example_tr": "İyi bir lider, insanların küçük hatalar yapıp onlardan ders almasına izin verir."
     }
   ],
-  "watch_out": "İsim yığınında niteleyen isim çoğul olmaz: ✗ a shares holder, ✗ a two-years contract → ✓ a shareholder, ✓ a two-year contract. Tireyi de unutma: 'a small business loan' iki anlama gelebilir (küçük bir işletme kredisi / küçük işletmelere kredi); 'a small-business loan' tek anlamdır.",
-  "memory_trick": "İsim öbeğini bir matruşka gibi aç: en dıştaki (sağdaki) bebek asıl isim, içindekiler onun sıfatları. 'Loan scheme' → 'business loan scheme' → 'small-business loan scheme'. Eksiltmede ise kural tek: bağlam söylüyorsa sen söyleme.",
+  "watch_out": "make ve let'ten sonra asla 'to' gelmez; Türkçesi 'yapmaya zorladı / yapmasına izin verdi' diye çevrildiği için araya 'to' sıkıştırmak çok yaygın. ✗ The boss made us to work on Sunday. ✓ The boss made us work on Sunday. Bu dörtlüde 'to' yalnızca get'in yanında durur: got us to work.",
+  "memory_trick": "Dört patron hayal et: make zorlar, let izin verir, have görevi dağıtır, get ise ikna etmek için uğraşır — o yüzden fazladan bir 'to' taşıyan tek patron get'tir.",
   "quiz": [
     {
-      "question": "What is the head noun in 'a government-backed small-business loan scheme'?",
-      "options": ["government", "business", "loan", "scheme"],
-      "answer": 3,
-      "explain": "İngilizce isim öbeğinde asıl isim en sağdadır; gerisi onu niteler."
+      "question": "The office printer is broken again, so we're ___ tomorrow.",
+      "options": [
+        "having fixed it",
+        "having it fix",
+        "having it fixed",
+        "having it to fix"
+      ],
+      "answer": 2,
+      "explain": "Tamirciyi biz çağırıyoruz ama işi o yapıyor: have + nesne + V3, yani 'it fixed'."
     },
     {
-      "question": "Which is correctly formed?",
-      "options": ["a three-years austerity plan", "a three-year austerity plan", "a three years austerity plan", "an austerity three-year plan"],
+      "question": "Our manager never ___ us leave early, not even on Fridays.",
+      "options": [
+        "gets",
+        "lets",
+        "allows",
+        "lets to"
+      ],
       "answer": 1,
-      "explain": "Niteleyen sayı-isim ikilisi tireyle bağlanır ve çoğul olmaz: three-year."
+      "explain": "let + kişi + yalın fiil; allow ve get burada 'to' isterdi, 'lets to' diye bir yapı ise hiç yok."
     },
     {
-      "question": "'Some firms pay dividends; others ___.' What has been left out?",
-      "options": ["pay dividends", "are", "dividends pay", "does"],
+      "question": "It took a week, but she finally ___ the board to approve the budget.",
+      "options": [
+        "got",
+        "made",
+        "let",
+        "had"
+      ],
       "answer": 0,
-      "explain": "Eksiltme: tekrar eden 'pay dividends' atılmıştır; anlam bağlamdan tamamlanır."
+      "explain": "Boşluktan sonra 'to' var ve ikna kokusu geliyor: get + kişi + to + fiil; make, let ve have'den sonra 'to' gelmez."
     }
   ]
 }

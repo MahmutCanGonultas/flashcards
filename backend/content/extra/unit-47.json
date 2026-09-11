@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 47,
+    "level": "B2",
+    "title": "Work & Leadership"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "delegate",
+      "back": "(verb) devretmek, yetki vermek 📤",
+      "example_sentence": "A good manager delegates tasks instead of trying to do everything herself.",
+      "mnemonic": "Türkçedeki 'delege' aynı kökten: kongreye gönderilen temsilci. Latince de- + legare (elçi olarak göndermek): işi bir başkasına 'gönderip' devretmek."
+    },
+    {
+      "lesson": 1,
+      "front": "mentor",
+      "back": "(noun) akıl hocası, rehber 🧭",
+      "example_sentence": "My mentor at the firm taught me more than any course did.",
+      "mnemonic": "Kelime Homeros'un Odysseia'sından: Mentor, Odysseus'un oğlu Telemakhos'u emanet ettiği bilge dostudur. Türkçeye de 'mentorluk' diye girdi; akıl hocası tam karşılığı."
+    },
+    {
+      "lesson": 1,
+      "front": "initiative",
+      "back": "(noun) inisiyatif, girişim 💡",
+      "example_sentence": "Nobody asked her to fix the process; she took the initiative.",
+      "mnemonic": "Türkçedeki 'inisiyatif almak' bire bir bu kelime (Fransızca initiative). Kök Latince initium = başlangıç, 'initial' ile aynı aile: işi ilk başlatan sensin."
+    },
+    {
+      "lesson": 2,
+      "front": "workload",
+      "back": "(noun) iş yükü 🏋️",
+      "example_sentence": "Since two colleagues left, my workload has almost doubled.",
+      "mnemonic": "work + load: 'load' yük demek; download/upload'daki load ile aynı (yükü indirmek, yüklemek). En sık kalıp 'heavy workload' = ağır iş yükü; 'manage your workload' da çok duyulur."
+    },
+    {
+      "lesson": 2,
+      "front": "burnout",
+      "back": "(noun) tükenmişlik 🪫",
+      "example_sentence": "After eighteen months without a proper holiday, she was heading for burnout.",
+      "mnemonic": "Mumun sonuna kadar yanıp sönmesi: burn (yanmak) + out (bitene dek). Türkçede 'tükenmişlik sendromu' denen şey; fiili iki kelime 'burn out', ismi tek kelime 'burnout'."
+    },
+    {
+      "lesson": 2,
+      "front": "appraisal",
+      "back": "(noun) performans değerlendirmesi 📋",
+      "example_sentence": "At my annual appraisal, my manager said I should speak up more.",
+      "mnemonic": "İçindeki 'praise' (övmek) ile aynı Latince kökten: pretium = değer, fiyat; appraise = değer biçmek. Şirkette 'annual appraisal' yıllık performans görüşmesidir."
+    },
+    {
+      "lesson": 3,
+      "front": "feedback",
+      "back": "(noun) geri bildirim 💬",
+      "example_sentence": "She asked the whole team for honest feedback on her presentation.",
+      "mnemonic": "Mikrofonu hoparlöre yaklaştırınca çıkan ötme de 'feedback'tir: ses geri (back) beslenir (feed); mühendislikteki 'geri besleme' ile ofisteki 'geri bildirim' aynı kelime. Sayılamaz: 'a feedback' değil, 'some feedback'."
+    },
+    {
+      "lesson": 3,
+      "front": "supervisor",
+      "back": "(noun) amir, süpervizör 🧑‍💼",
+      "example_sentence": "If you're struggling with the schedule, talk to your supervisor before Friday.",
+      "mnemonic": "Latince super (üstten) + videre (görmek): işi yukarıdan gören kişi. Türkçedeki 'vize' (visa = görülmüş) ve fotoğraf makinesinin 'vizör'ü aynı görme kökünden; çağrı merkezleri 'süpervizör'ü zaten kullanıyor."
+    },
+    {
+      "lesson": 3,
+      "front": "compromise",
+      "back": "(noun) uzlaşma, orta yol 🤝",
+      "example_sentence": "Neither side got everything it wanted, but we reached a fair compromise.",
+      "mnemonic": "com- (birlikte) + promise (söz): iki tarafın birlikte söz verip birer adım geri atması. Dikkat, fiil olarak 'tehlikeye atmak' da demek: 'the data was compromised' = veriler ele geçirildi."
+    },
+    {
+      "lesson": 4,
+      "front": "accountable",
+      "back": "(adjective) hesap verebilir, sorumlu 📒",
+      "example_sentence": "Whoever signs off the budget is accountable for how it's spent.",
+      "mnemonic": "İçindeki 'account' hesap demek (bank account = banka hesabı); Türkçedeki 'hesap vermek' deyimiyle bire bir örtüşür. Kalıp: 'hold someone accountable for' = birinden hesap sormak."
+    },
+    {
+      "lesson": 4,
+      "front": "transparent",
+      "back": "(adjective) şeffaf, açık 🪟",
+      "example_sentence": "The new CEO promised to be transparent about why the branch was closing.",
+      "mnemonic": "Türkçede 'transparan' zaten var (transparan kumaş). Latince trans- (öteye: transfer, transit) + parere (görünmek): arkası görünen; yönetimde şeffaflık, kararların arkasının görünmesi."
+    },
+    {
+      "lesson": 4,
+      "front": "proactive",
+      "back": "(adjective) proaktif, önden davranan ⏩",
+      "example_sentence": "Rather than waiting for complaints, the team took a proactive approach to safety.",
+      "mnemonic": "Zıddıyla öğren: reactive sorun çıkınca tepki verir, proactive sorun çıkmadan önden davranır. Latince pro- = önce/ileri (program, projeksiyon); 'proaktif' Türkçe iş jargonuna da girdi."
+    },
+    {
+      "lesson": 5,
+      "front": "resign",
+      "back": "(verb) istifa etmek 🚪",
+      "example_sentence": "He resigned the day after the merger was announced, without giving a reason.",
+      "mnemonic": "Latince re- (geri) + signare (imzalamak): imzasını geri çekmek. Tireli 're-sign' tam tersi, 'sözleşmeyi yenilemek'; telaffuz da farklı: resign /rı-ZAYN/, re-sign /ri-SAYN/."
+    },
+    {
+      "lesson": 5,
+      "front": "recruit",
+      "back": "(verb) işe almak, eleman almak 🧲",
+      "example_sentence": "We're recruiting two engineers, ideally people who've worked in a startup before.",
+      "mnemonic": "Fransızca recroître = yeniden büyümek (Latince crescere; müzikteki 'kreşendo' ve hilal biçimli 'kruvasan' aynı kök): orduya yeni 'büyüyen' asker katmak. İsim olarak recruit = acemi er, yeni eleman; 'recruitment agency' = işe alım ajansı."
+    },
+    {
+      "lesson": 5,
+      "front": "expertise",
+      "back": "(noun) uzmanlık 🎓",
+      "example_sentence": "They hired her mainly for her expertise in international tax law.",
+      "mnemonic": "Araba alırken yaptırılan 'ekspertiz' ve 'sigorta eksperi' bire bir aynı kelime (Fransızca expertise). İngilizcede rapor değil, uzmanın kafasındaki bilgi demek; 'expertise in' ile kullanılır, sayılamaz."
+    }
+  ],
+  "dialogue": {
+    "title": "Midnight Emails",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "My appraisal was fine, but my supervisor says I don't delegate enough.",
+        "tr": "Değerlendirmem iyi geçti ama amirim yeterince iş devretmediğimi söylüyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "She's right. Your workload is insane and you still answer emails at midnight.",
+        "tr": "Haklı. İş yükün delice, üstüne hâlâ gece yarısı e-posta cevaplıyorsun."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Because if I hand things over, they come back half done.",
+        "tr": "Çünkü işi devrettiğimde yarım yamalak geri geliyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "So give them proper feedback instead of quietly redoing everything yourself.",
+        "tr": "O zaman sessizce her şeyi baştan yapacağına düzgün geri bildirim ver."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Easy for you to say. Nobody's ever held you accountable for a team.",
+        "tr": "Senin için kolay tabii. Kimse senden bir ekibin hesabını sormadı."
+      },
+      {
+        "speaker": "Tom",
+        "en": "True. But my editor hit burnout doing exactly what you're doing.",
+        "tr": "Doğru. Ama editörüm tam da senin yaptığını yaparken tükendi."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Fine. Maybe I need a mentor who's actually done this before.",
+        "tr": "Peki. Belki bana bunu gerçekten yaşamış bir akıl hocası lazım."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Or trust the people you recruited. Their expertise was the whole point.",
+        "tr": "Ya da işe aldığın insanlara güven. Bütün mesele uzmanlıklarıydı."
+      }
+    ]
+  }
+}

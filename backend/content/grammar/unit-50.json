@@ -1,55 +1,70 @@
 {
   "unit": 50,
-  "title_en": "Degrees of Certainty and Stance",
-  "title_tr": "Kesinlik Dereceleri ve Tutum",
-  "hook": "'It will rain' ile 'It may well rain' ile 'It could hardly rain' arasında, hava tahmininden çok konuşanın karakteri saklıdır — C1'de artık ne dediğin kadar ne kadar emin olduğunu da söylersin.",
+  "title_en": "Cleft Sentences: What I Need Is...",
+  "title_tr": "Ayrık Cümleler: Asıl İhtiyacım Olan...",
+  "hook": "'I need sleep' der geçersin; 'What I need is sleep' dersen odadaki herkes uykuya bakar — İngilizce, cümleyi ikiye yarıp vurguyu istediğin yere koymana izin verir.",
   "rules": [
     {
-      "rule": "Modal + zarf ikilileri kesinliği ince ayar yapar: 'may well' (büyük ihtimalle), 'might just' (belki, az da olsa), 'could hardly' (neredeyse imkânsız), 'will almost certainly' (neredeyse kesin). Zarf, modalın sesini açar ya da kısar.",
-      "example_en": "The board may well reject the plan; it could hardly accept it in this form.",
-      "example_tr": "Kurul planı büyük ihtimalle reddeder; bu hâliyle kabul etmesi neredeyse imkânsız."
+      "rule": "What-cleft: cümlenin vurgulamak istediğin parçasını sona alır, önüne 'What + özne + fiil + is' koyarsın. Türkçedeki 'asıl ... olan şey ...' kalıbının tam karşılığıdır.",
+      "example_en": "What undermined the plan was the timing, not the idea.",
+      "example_tr": "Planı baltalayan şey fikir değil, zamanlamaydı."
     },
     {
-      "rule": "'Be bound to' (mutlaka olur), 'be sure to' (kesin), 'be likely to' (muhtemel), 'be liable to' (yatkın, riskli), 'be apt to' (eğilimli): hepsi 'be + sıfat + to' kalıbıyla olasılık bildirir ve modal gibi kullanılır ama zamanla çekilir (was bound to, will be likely to).",
-      "example_en": "A dubious claim is bound to be challenged; a tenuous one is liable to collapse.",
-      "example_tr": "Şüpheli bir iddia mutlaka sorgulanır; dayanaksız olanı ise çökmeye yatkındır."
+      "rule": "It-cleft: 'It was/is + vurgulanan parça + who/that + cümlenin kalanı'. Kişiyi, yeri ya da zamanı öne çıkarır; Türkçede vurguyu tonlamayla yaparız, İngilizce yapıyla yapar.",
+      "example_en": "It was the auditor who scrutinized every receipt, not the manager.",
+      "example_tr": "Her fişi didik didik inceleyen yönetici değil, denetçiydi."
     },
     {
-      "rule": "Tutum zarfları (stance adverbs) konuşanın görüşünü cümlenin başına iliştirir: 'admittedly' (kabul etmek gerekir ki), 'arguably' (tartışılabilir ki), 'presumably' (herhalde), 'undeniably' (inkâr edilemez ki), 'regrettably' (ne yazık ki).",
-      "example_en": "Admittedly, the evidence is speculative; undeniably, it is also the only evidence we have.",
-      "example_tr": "Kabul etmek gerekir ki kanıt tahmine dayalı; inkâr edilemez ki elimizdeki tek kanıt da bu."
+      "rule": "Fiili vurgulamak için 'What + özne + do/did + is/was + fiilin yalın hâli' kullanılır; 'do' burada 'yapmak' değil, yer tutucudur.",
+      "example_en": "What the new policy did was exacerbate the shortage.",
+      "example_tr": "Yeni politikanın yaptığı şey, kıtlığı daha da azdırmak oldu."
     },
     {
-      "rule": "'Must' ve 'can't' çıkarımda en güçlüdür; 'should' ve 'ought to' beklenti bildirir ('should be there by now' = orada olması lazım); 'would' ise tahmini yumuşatır ('That would be Tom at the door' = herhalde Tom'dur).",
-      "example_en": "The verdict should be unequivocal by noon; that would explain the lawyers' silence.",
-      "example_tr": "Karar öğlene kadar kesinleşmiş olmalı; avukatların sessizliği bununla açıklanır."
+      "rule": "'All (that) ... is' ve 'The only thing ... is' de aynı ailedendir ve 'tek istediğim/yaptığım' anlamı katar; sonuna isim ya da yalın fiil gelebilir.",
+      "example_en": "All we can do now is mitigate the damage.",
+      "example_tr": "Şu an yapabileceğimiz tek şey hasarı hafifletmek."
     },
     {
-      "rule": "Tereddüt bildiren kalıplar iddiayı korur ve yumuşatır: 'I'm inclined to think', 'it's fair to say', 'as far as I can tell', 'to the best of my knowledge'. Prudent bir konuşmacı emin olmadığı yerde bunlardan birini koyar; reckless olan koymaz.",
-      "example_en": "As far as I can tell, the discrepancy is real, though I'm inclined to think it's minor.",
-      "example_tr": "Anlayabildiğim kadarıyla tutarsızlık gerçek, ama önemsiz olduğunu düşünmeye meyilliyim."
+      "rule": "Cleft cümlelerde 'is/was' vurgulanan parçanın önünde durur ve tekil kalır; sona gelen parça çoğul olsa bile çoğu zaman 'is' korunur (What I need is two days).",
+      "example_en": "What bolstered their case was three independent witnesses.",
+      "example_tr": "Davalarını güçlendiren şey üç bağımsız tanıktı."
     }
   ],
-  "watch_out": "Kesinlik derecelerini karıştırmak yanlış mesaj verir: ✗ He must be late (sadece 'belki geç kalır' demek istiyorsan). ✓ He may be late. Türkçe '-abilir' hem 'could' hem 'may well' olabilir; İngilizcede ise 'could' zayıf, 'may well' güçlü ihtimaldir — hangisini kastettiğine karar ver.",
-  "memory_trick": "Bir kesinlik merdiveni çiz: must / can't (%95) → will almost certainly (%90) → may well / be bound to (%80) → should / be likely to (%70) → may / might (%50) → might just / could conceivably (%30) → could hardly (%5). Söylemeden önce basamağı seç.",
+  "watch_out": "It-cleft'te kişi için 'who', diğer her şey için 'that' kullanılır; 'which' kulağa yanlış gelir. ✗ It was the timing which ruined it. ✓ It was the timing that ruined it. Bir de what-cleft'te 'what'tan sonra soru sırası yoktur: ✗ What did I need was rest. ✓ What I needed was rest.",
+  "memory_trick": "Cümleyi bir spot ışığı gibi düşün: 'It was X that...' ışığı X'e tutar, 'What I want is X' ışığı X'e en sona saklayarak tutar. Vurgulamak istediğini bul, kalıbı etrafına ör.",
   "quiz": [
     {
-      "question": "Which expresses the STRONGEST likelihood?",
-      "options": ["It might just work.", "It could conceivably work.", "It may well work.", "It could hardly work."],
-      "answer": 2,
-      "explain": "'May well' güçlü ihtimaldir; 'might just' ve 'conceivably' zayıf, 'could hardly' neredeyse imkânsız."
-    },
-    {
-      "question": "A tenuous argument ___ collapse under questioning.",
-      "options": ["is liable to", "is inclined", "is bound", "is apt"],
-      "answer": 0,
-      "explain": "'Be liable to' riskli eğilim bildirir ve 'to' alır; diğer seçenekler 'to'suz bırakılmış."
-    },
-    {
-      "question": "___, the data are incomplete, but the pattern is hard to dismiss.",
-      "options": ["Undeniably", "Admittedly", "Astutely", "Prudently"],
+      "question": "___ facilitated the merger was one honest conversation.",
+      "options": [
+        "That",
+        "What",
+        "It",
+        "Which"
+      ],
       "answer": 1,
-      "explain": "Bir zayıflığı kabul edip 'ama' ile devam etmek 'admittedly'nin işidir."
+      "explain": "Vurgulanan parça sona alınmış; başa 'What + özne + fiil' gelir."
+    },
+    {
+      "question": "It was the deadline ___ hindered us, not the budget.",
+      "options": [
+        "which",
+        "who",
+        "that",
+        "what"
+      ],
+      "answer": 2,
+      "explain": "It-cleft'te kişi olmayan şeyler için 'that' kullanılır."
+    },
+    {
+      "question": "What the report ___ was refute every claim in the article.",
+      "options": [
+        "did",
+        "was",
+        "had",
+        "made"
+      ],
+      "answer": 0,
+      "explain": "Fiili vurgulayan cleft'te 'do/did' yer tutucudur: What X did was + yalın fiil."
     }
   ]
 }

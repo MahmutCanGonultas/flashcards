@@ -1,70 +1,70 @@
 {
   "unit": 32,
-  "title_en": "Narrative Tenses: Telling the Story",
-  "title_tr": "Hikâye Zamanları: Olayı Anlatmak",
-  "hook": "Bir hikâyede 'geldi, gördü, ağladı' demek yetmez; iyi anlatıcı, hangi olayın arka planda sürdüğünü ve hangisinin daha önce bittiğini tek bir fiil ekiyle gösterir.",
+  "title_en": "Gerunds and Infinitives",
+  "title_tr": "Fiilden Sonra -ing mi, to mu?",
+  "hook": "İngilizcede 'stop smoking' ile 'stop to smoke' taban tabana zıt anlama gelir; ikisi arasındaki fark sadece iki harf, ama biri sigarayı bırakmak, öteki sigara içmek için durmak.",
   "rules": [
     {
-      "rule": "Hikâyenin ana olayları, yani sırayla olup biten şeyler, past simple ile anlatılır. Bu tenselerin omurgasıdır; diğerleri onun etrafına dizilir.",
-      "example_en": "She opened the letter, read it twice and burst into tears.",
-      "example_tr": "Mektubu açtı, iki kez okudu ve gözyaşlarına boğuldu."
+      "rule": "İngilizcede bir fiilden sonra ikinci bir fiil geliyorsa, ilk fiil ikincisinin şeklini belirler. Bazı fiiller arkasına -ing ister: enjoy, finish, avoid, mind, keep, suggest, practise.",
+      "example_en": "I enjoy studying with music, but I avoid checking my phone.",
+      "example_tr": "Müzikle ders çalışmayı seviyorum ama telefonuma bakmaktan kaçınıyorum."
     },
     {
-      "rule": "Past continuous (was/were + -ing), ana olay gerçekleştiği sırada arka planda süren durumu anlatır. Türkçedeki '-yordu' gibi düşün: sahneyi kurar, olayı taşımaz.",
-      "example_en": "It was raining and I was feeling lonely when the phone rang.",
-      "example_tr": "Yağmur yağıyordu ve kendimi yalnız hissediyordum, derken telefon çaldı."
+      "rule": "Başka bir grup fiil ise arkasına 'to + fiil' ister: want, decide, hope, plan, need, learn, promise, would like.",
+      "example_en": "She decided to learn Excel, and she hopes to find a better job.",
+      "example_tr": "Excel öğrenmeye karar verdi ve daha iyi bir iş bulmayı umuyor."
     },
     {
-      "rule": "Past perfect (had + V3), hikâyedeki bir andan daha önce bitmiş olayı gösterir. Anlatıcı geçmişin içinden bir adım daha geriye bakar; Türkçedeki '-mişti' bunun tam karşılığıdır.",
-      "example_en": "By the time he apologised, she had already forgiven him.",
-      "example_tr": "O özür dilediğinde, kadın onu çoktan affetmişti."
+      "rule": "Bir edattan (preposition) sonra fiil geliyorsa, kural sabittir: her zaman -ing. 'good at', 'interested in', 'before', 'after', 'without' gibi kelimelerden sonra asla 'to' gelmez.",
+      "example_en": "He is good at solving problems without asking for help.",
+      "example_tr": "Yardım istemeden problem çözmede iyidir."
     },
     {
-      "rule": "'While' genellikle uzun, süren eylemle (past continuous), 'when' ise kısa, kesen eylemle (past simple) kullanılır. Hangi bağlacı seçtiğin, hangi eylemin arka plan olduğunu belirler.",
-      "example_en": "While we were talking about my father, I suddenly realised how much I missed him.",
-      "example_tr": "Babam hakkında konuşurken, onu ne kadar özlediğimi birden fark ettim."
+      "rule": "'stop' iki şekli de alır ama anlam değişir: 'stop doing' bir şeyi bırakmak (artık yapmamak), 'stop to do' ise başka bir şey yapmak için durmak demektir. 'remember' ve 'forget' da benzer şekilde anlam değiştirir.",
+      "example_en": "I stopped working at 6 and stopped to buy coffee on the way home.",
+      "example_tr": "Saat 6'da çalışmayı bıraktım ve eve dönerken kahve almak için durdum."
     },
     {
-      "rule": "Olaylar zaten oluş sırasıyla anlatılıyorsa past perfect gerekmez; past simple yeter. Past perfect'i yalnızca sırayı bozup geriye döndüğünde kullan.",
-      "example_en": "I got home, made tea and sat down. Then I noticed the note she had left.",
-      "example_tr": "Eve geldim, çay yaptım ve oturdum. Sonra onun bıraktığı notu fark ettim."
+      "rule": "Bazı fiiller iki şekli de anlam farkı olmadan kabul eder: like, love, hate, start, begin, continue. Bunlarda hangisini seçtiğiniz önemli değildir.",
+      "example_en": "I started to read the report, then I continued reading at home.",
+      "example_tr": "Raporu okumaya başladım, sonra evde okumaya devam ettim."
     }
   ],
-  "watch_out": "Türkçe konuşanlar 'when' cümlesinde kesen eylemi de -ing yapmaya eğilimlidir. ✗ I was crying when she was calling me. ✓ I was crying when she called me. Kesen kısa eylem past simple kalır; süren arka plan past continuous olur.",
-  "memory_trick": "Sahne–olay–geri plan üçlüsü: -yordu (was doing) sahneyi kurar, -di (did) olayı yaşatır, -mişti (had done) daha eskiye gider. Türkçedeki bu üç ek, İngilizce üç zamanla neredeyse birebir örtüşür.",
+  "watch_out": "Türkçede 'çalışmayı bitirdim' derken '-mayı' bir ek olduğu için İngilizcede otomatik olarak 'to' koymak isteriz; oysa finish, enjoy, avoid gibi fiiller 'to' kabul etmez. ✗ I finished to write the essay. ✓ I finished writing the essay. Aynı hata 'look forward to' ile de olur: 'to' burada edattır, arkası -ing olur: ✓ I look forward to meeting you.",
+  "memory_trick": "Türkçe '-mayı/-meyi' her zaman -ing demek değildir. Şöyle düşün: geleceğe bakan fiiller (want, hope, plan, decide) 'to' alır, çünkü 'to' bir yön işaretidir; halihazırda yapılan ya da biten şeyler (enjoy, finish, keep, avoid) -ing alır.",
   "quiz": [
     {
-      "question": "When I finally told him the truth, he ___ silent for a long time.",
+      "question": "I finished ___ the report at midnight.",
       "options": [
-        "was staying",
-        "stayed",
-        "had stayed",
-        "stays"
+        "to write",
+        "writing",
+        "write",
+        "wrote"
       ],
       "answer": 1,
-      "explain": "'Told' ile başlayan olay zincirinde sıradaki ana olay past simple ile anlatılır."
+      "explain": "'finish' fiilinden sonra her zaman -ing gelir, 'to' gelmez."
     },
     {
-      "question": "She ___ about her childhood when she suddenly started to cry.",
+      "question": "We're interested ___ a new course next month.",
       "options": [
-        "talked",
-        "had talked",
-        "was talking",
-        "has talked"
+        "to take",
+        "taking",
+        "in taking",
+        "in to take"
       ],
       "answer": 2,
-      "explain": "Arka planda süren eylem past continuous, onu kesen kısa eylem past simple olur."
+      "explain": "'interested in' edatla biter ve edattan sonra fiil -ing alır."
     },
     {
-      "question": "He felt guilty because he ___ her birthday again.",
+      "question": "He stopped ___ coffee because he couldn't sleep at night.",
       "options": [
-        "forgot",
-        "was forgetting",
-        "forgets",
-        "had forgotten"
+        "drinking",
+        "to drink",
+        "drink",
+        "for drinking"
       ],
-      "answer": 3,
-      "explain": "Unutma, suçluluk hissinden daha önce olmuş bir olay olduğu için past perfect gerekir."
+      "answer": 0,
+      "explain": "'stop drinking' içmeyi bırakmak demektir; 'stop to drink' ise içmek için durmak anlamına gelirdi ve cümleye uymaz."
     }
   ]
 }

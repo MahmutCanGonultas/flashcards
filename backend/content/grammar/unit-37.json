@@ -1,70 +1,70 @@
 {
   "unit": 37,
-  "title_en": "Advanced Reported Speech",
-  "title_tr": "İleri Düzey Dolaylı Anlatım",
-  "hook": "Bir muhabir bakanın 'Yarın istifa edeceğim' sözünü aktarırken 'yarın' diyemez — gazetecilerin her gün yaptığı bu küçük kaydırmaları öğrenince haberleri bambaşka okuyacaksın.",
+  "title_en": "Linking Words: Contrast, Cause, Result",
+  "title_tr": "Bağlaçlar: Zıtlık, Sebep, Sonuç",
+  "hook": "Tartışmada haklı olmak yetmez; 'however' ile 'although' arasındaki farkı bilmeyen, en güçlü fikrini bile yarım cümleyle çöpe atar.",
   "rules": [
     {
-      "rule": "Soruyu aktarırken 'asked' dersin; evet/hayır sorusuna 'whether/if', wh- sorusuna soru kelimesini eklersin, ardından düz cümle sırası gelir ve 'do/does/did' ile soru işareti kaybolur. Türkçedeki '-ıp -madığını sordu' tam olarak 'asked whether'dır.",
-      "example_en": "The reporter asked the minister whether she was going to resign.",
-      "example_tr": "Muhabir bakana istifa edip etmeyeceğini sordu."
+      "rule": "Zıtlık için 'although' bir cümlenin içinde çalışır: arkasına özne ve fiil gelir, iki cümleyi tek cümlede birleştirir. 'However' ise iki AYRI cümleyi bağlar; yeni cümlenin başına gelir ve arkasına virgül alır.",
+      "example_en": "Although the argument was strong, nobody changed their mind. The argument was strong. However, nobody changed their mind.",
+      "example_tr": "Argüman güçlü olmasına rağmen kimse fikrini değiştirmedi. Argüman güçlüydü. Ancak kimse fikrini değiştirmedi."
     },
     {
-      "rule": "Emir ve ricalar 'tell / ask / order / warn + kişi + to' kalıbıyla aktarılır, olumsuzda 'not' hemen 'to'nun önüne gelir. Türkçedeki '-masını söyledi' bu kalıbın kendisidir.",
-      "example_en": "The editor told the reporter not to reveal the source's name.",
-      "example_tr": "Editör muhabire kaynağın adını açıklamamasını söyledi."
+      "rule": "'Despite' ve 'in spite of' aynı anlamdadır ama arkalarına cümle değil, isim ya da -ing gelir. Cümle kurmak istiyorsan 'despite the fact that' dersin.",
+      "example_en": "Despite losing the debate, she defended her opinion with confidence.",
+      "example_tr": "Münazarayı kaybetmesine rağmen fikrini özgüvenle savundu."
     },
     {
-      "rule": "'suggest, recommend, admit, deny' gibi aktarma fiilleri 'say' demeden anlamı taşır ve arkasına -ing alır; daha önce olmuş bir şeyi vurgulamak için 'having + V3' de kullanılır. Kritik fark: 'advise/tell' kişi + to alır ama 'suggest' kişi + to asla almaz.",
-      "example_en": "The spokesperson denied having leaked the documents to the press.",
-      "example_tr": "Sözcü belgeleri basına sızdırdığını inkâr etti."
+      "rule": "'Whereas' iki farklı durumu yan yana koyup karşılaştırır, 'although' gibi beklenmedik bir sonuç anlatmaz. Genellikle ortasında virgül olan tek bir cümlede kullanılır.",
+      "example_en": "My brother believes in strict rules, whereas I think people learn from mistakes.",
+      "example_tr": "Kardeşim katı kurallara inanır, bense insanların hatalardan öğrendiğini düşünürüm."
     },
     {
-      "rule": "Bir grup fiil kişiden sonra edat ister, edattan sonra da yine -ing gelir: accuse someone OF doing, blame someone FOR doing, apologise FOR doing, thank someone FOR doing.",
-      "example_en": "The presenter accused the guest of twisting her words.",
-      "example_tr": "Sunucu konuğu sözlerini çarpıtmakla suçladı."
+      "rule": "Sonuç bildirmek için 'therefore' kullanılır: önce sebep, sonra 'therefore' ve arkasına virgül. Bu resmi bir kelimedir; 'so' ile aynı anlam, ama yazıda daha güçlü durur.",
+      "example_en": "The evidence was weak. Therefore, the committee rejected the proposal.",
+      "example_tr": "Kanıtlar zayıftı. Bu yüzden komite teklifi reddetti."
     },
     {
-      "rule": "Fiil bir zaman geriye giderken zaman ve yer kelimeleri de kayar: now→then, today→that day, yesterday→the day before, tomorrow→the next/following day, here→there, this→that, ago→before.",
-      "example_en": "The witness said he had seen the footage the day before.",
-      "example_tr": "Tanık görüntüleri bir gün önce gördüğünü söyledi."
+      "rule": "'However' cümlenin ortasına da girebilir; o zaman iki tarafına virgül konur. 'Although' asla böyle gezmez, hep kendi yan cümlesinin başında durur.",
+      "example_en": "The plan, however, has one serious problem: money.",
+      "example_tr": "Planın ise ciddi bir sorunu var: para."
     }
   ],
-  "watch_out": "Aktarılan soruda soru sırasını korumak en sık hata: ✗ He asked me where was the studio. ✓ He asked me where the studio was. 'did' de tamamen kaybolur: ✗ She asked did I watch the interview. ✓ She asked if I had watched the interview.",
-  "memory_trick": "Tırnak işaretlerini kaldırdığında her şey bir adım uzaklaşır: fiil bir zaman geriye, 'here' 'there'e, 'tomorrow' 'the next day'e. Soru ise soru olmaktan çıkar: 'did' de, soru işareti de gider.",
+  "watch_out": "Türkçede 'rağmen' hem 'yağmura rağmen' hem 'yağmasına rağmen' diyebildiği için 'despite' arkasına cümle konuyor. ✗ Despite it was late, we kept arguing. ✓ Although it was late, we kept arguing. / ✓ Despite the late hour, we kept arguing.",
+  "memory_trick": "'Although' Türkçedeki '-e rağmen'in fiilli hâli, 'despite' ise isimli hâli: 'gelmesine rağmen' = although, 'gelişine rağmen' = despite. Ekin fiile mi isme mi yapıştığına bak, bağlacı seç.",
   "quiz": [
     {
-      "question": "The interviewer asked the actor ___ he had read the reviews.",
+      "question": "___ the price was high, the report was worth every penny.",
       "options": [
-        "that",
-        "whether",
-        "did",
-        "what"
+        "Despite",
+        "Although",
+        "However",
+        "Therefore"
       ],
       "answer": 1,
-      "explain": "Evet/hayır sorusu aktarılırken 'whether' ya da 'if' gelir; 'did' ve soru sırası kaybolur."
+      "explain": "Arkasında özne ve fiil olan tam bir cümle var, bu yüzden 'although' gerekir."
     },
     {
-      "question": "The editor suggested ___ the headline before the story went online.",
+      "question": "She has read all the studies. ___, she still disagrees with the conclusion.",
       "options": [
-        "to change",
-        "us to change",
-        "changing",
-        "we changing"
+        "Whereas",
+        "Although",
+        "However",
+        "Despite"
       ],
       "answer": 2,
-      "explain": "'suggest' arkasına -ing ya da that cümlesi alır; 'suggest + kişi + to' kalıbı İngilizcede yoktur."
+      "explain": "İki ayrı cümleyi zıtlıkla bağlayan ve virgülle devam eden kelime 'however'dır."
     },
     {
-      "question": "He said, 'I'll send the photos tomorrow.' → He said he would send the photos ___.",
+      "question": "The survey included only ten people; ___, its results cannot be trusted.",
       "options": [
-        "the next day",
-        "tomorrow",
-        "the day before",
-        "then"
+        "therefore",
+        "despite",
+        "although",
+        "whereas"
       ],
       "answer": 0,
-      "explain": "'tomorrow' aktarımda bir adım uzaklaşır ve 'the next day' ya da 'the following day' olur."
+      "explain": "Önce sebep verilmiş, sonra sonuç geliyor; sonuç bildiren bağlaç 'therefore'dur."
     }
   ]
 }

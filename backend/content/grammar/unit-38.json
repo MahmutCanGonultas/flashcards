@@ -1,70 +1,70 @@
 {
   "unit": 38,
-  "title_en": "Wish, If Only, Would Rather, It's Time",
-  "title_tr": "Keşke, Tercih ve Vakit Geldi Kalıpları",
-  "hook": "İngilizcede pişmanlık için fiili bir adım geriye atarsın: şimdiki hâl için geçmiş, geçmiş için de daha geçmiş — 'keşke'nin gizli kuralı işte bu.",
+  "title_en": "Narrative Tenses: Telling the Story",
+  "title_tr": "Hikâye Zamanları: Olayı Anlatmak",
+  "hook": "Bir hikâyede 'geldi, gördü, ağladı' demek yetmez; iyi anlatıcı, hangi olayın arka planda sürdüğünü ve hangisinin daha önce bittiğini tek bir fiil ekiyle gösterir.",
   "rules": [
     {
-      "rule": "Şu anki durumdan memnun değilsen 'wish' veya 'if only'den sonra geçmiş zaman (past simple) kullan; anlam bugüne aittir, geçmişe değil. 'Were' bütün öznelerle kullanılabilir.",
-      "example_en": "I wish I were less anxious before every doctor's appointment.",
-      "example_tr": "Keşke her doktor randevusundan önce bu kadar kaygılı olmasam."
+      "rule": "Hikâyenin ana olayları, yani sırayla olup biten şeyler, past simple ile anlatılır. Bu tenselerin omurgasıdır; diğerleri onun etrafına dizilir.",
+      "example_en": "She opened the letter, read it twice and burst into tears.",
+      "example_tr": "Mektubu açtı, iki kez okudu ve gözyaşlarına boğuldu."
     },
     {
-      "rule": "Geçmişteki bir olaya pişmanlık duyuyorsan 'wish' veya 'if only'den sonra past perfect (had + V3) gelir. 'If only' aynı yapıyı kullanır, sadece duygu daha yoğundur.",
-      "example_en": "If only I had taken the medicine as the doctor prescribed.",
-      "example_tr": "Keşke ilacı doktorun yazdığı gibi alsaydım."
+      "rule": "Past continuous (was/were + -ing), ana olay gerçekleştiği sırada arka planda süren durumu anlatır. Türkçedeki '-yordu' gibi düşün: sahneyi kurar, olayı taşımaz.",
+      "example_en": "It was raining and I was feeling lonely when the phone rang.",
+      "example_tr": "Yağmur yağıyordu ve kendimi yalnız hissediyordum, derken telefon çaldı."
     },
     {
-      "rule": "Başkasının rahatsız edici davranışının değişmesini istiyorsan 'wish + özne + would' kullan; bu bir şikâyettir. Kendi durumun için 'I wish I would' denmez.",
-      "example_en": "I wish you would stop checking your symptoms online at three in the morning.",
-      "example_tr": "Keşke belirtilerini sabahın üçünde internette aramayı bıraksan."
+      "rule": "Past perfect (had + V3), hikâyedeki bir andan daha önce bitmiş olayı gösterir. Anlatıcı geçmişin içinden bir adım daha geriye bakar; Türkçedeki '-mişti' bunun tam karşılığıdır.",
+      "example_en": "By the time he apologised, she had already forgiven him.",
+      "example_tr": "O özür dilediğinde, kadın onu çoktan affetmişti."
     },
     {
-      "rule": "Başkasının bir şeyi yapmasını ya da yapmamasını tercih ediyorsan 'would rather + özne + past simple' kullan. Kendi tercihin için ise 'would rather + yalın fiil' yeterlidir.",
-      "example_en": "I'd rather you didn't tell my mother about the diagnosis yet; I'd rather explain it myself.",
-      "example_tr": "Teşhisi anneme henüz söylememeni tercih ederim; kendim anlatmayı yeğlerim."
+      "rule": "'While' genellikle uzun, süren eylemle (past continuous), 'when' ise kısa, kesen eylemle (past simple) kullanılır. Hangi bağlacı seçtiğin, hangi eylemin arka plan olduğunu belirler.",
+      "example_en": "While we were talking about my father, I suddenly realised how much I missed him.",
+      "example_tr": "Babam hakkında konuşurken, onu ne kadar özlediğimi birden fark ettim."
     },
     {
-      "rule": "'It's time' bir şeyin çoktan yapılması gerektiğini söyler ve ardından past simple gelir; 'it's high time' bu aciliyeti daha da vurgular.",
-      "example_en": "It's time we talked honestly about your sleep problems.",
-      "example_tr": "Artık uyku sorunların hakkında dürüstçe konuşmamızın vakti geldi."
+      "rule": "Olaylar zaten oluş sırasıyla anlatılıyorsa past perfect gerekmez; past simple yeter. Past perfect'i yalnızca sırayı bozup geriye döndüğünde kullan.",
+      "example_en": "I got home, made tea and sat down. Then I noticed the note she had left.",
+      "example_tr": "Eve geldim, çay yaptım ve oturdum. Sonra onun bıraktığı notu fark ettim."
     }
   ],
-  "watch_out": "Türkçede 'keşke' zamana göre değişmez, bu yüzden en yaygın hata 'wish'ten sonra şimdiki zaman kullanmaktır. ✗ I wish I have more energy. ✓ I wish I had more energy. Aynı şekilde 'I'd rather you don't' değil, ✓ I'd rather you didn't.",
-  "memory_trick": "Bunu 'bir adım geri' kuralı olarak düşün: 'wish', 'would rather' ve 'it's time' zamanı bir basamak geriye iter. Bugün için had, dün için had + V3.",
+  "watch_out": "Türkçe konuşanlar 'when' cümlesinde kesen eylemi de -ing yapmaya eğilimlidir. ✗ I was crying when she was calling me. ✓ I was crying when she called me. Kesen kısa eylem past simple kalır; süren arka plan past continuous olur.",
+  "memory_trick": "Sahne–olay–geri plan üçlüsü: -yordu (was doing) sahneyi kurar, -di (did) olayı yaşatır, -mişti (had done) daha eskiye gider. Türkçedeki bu üç ek, İngilizce üç zamanla neredeyse birebir örtüşür.",
   "quiz": [
     {
-      "question": "I wish I ___ so tired all the time.",
+      "question": "When I finally told him the truth, he ___ silent for a long time.",
       "options": [
-        "am not",
-        "wasn't",
-        "hadn't been",
-        "wouldn't be"
+        "was staying",
+        "stayed",
+        "had stayed",
+        "stays"
       ],
       "answer": 1,
-      "explain": "Şu anki durumla ilgili pişmanlık olduğu için 'wish'ten sonra past simple gelir."
+      "explain": "'Told' ile başlayan olay zincirinde sıradaki ana olay past simple ile anlatılır."
     },
     {
-      "question": "If only I ___ the doctor sooner. Now the infection is worse.",
+      "question": "She ___ about her childhood when she suddenly started to cry.",
       "options": [
-        "saw",
-        "had seen",
-        "see",
-        "would see"
+        "talked",
+        "had talked",
+        "was talking",
+        "has talked"
       ],
-      "answer": 1,
-      "explain": "Geçmişte olup bitmiş bir olaya pişmanlık olduğu için past perfect kullanılır."
+      "answer": 2,
+      "explain": "Arka planda süren eylem past continuous, onu kesen kısa eylem past simple olur."
     },
     {
-      "question": "I'd rather you ___ your phone during the therapy session.",
+      "question": "He felt guilty because he ___ her birthday again.",
       "options": [
-        "don't use",
-        "didn't use",
-        "won't use",
-        "not to use"
+        "forgot",
+        "was forgetting",
+        "forgets",
+        "had forgotten"
       ],
-      "answer": 1,
-      "explain": "Başkasının davranışıyla ilgili tercih için 'would rather + özne + past simple' kalıbı kullanılır."
+      "answer": 3,
+      "explain": "Unutma, suçluluk hissinden daha önce olmuş bir olay olduğu için past perfect gerekir."
     }
   ]
 }

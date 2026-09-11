@@ -1,55 +1,70 @@
 {
   "unit": 42,
-  "title_en": "Cleft Sentences: What I Need Is...",
-  "title_tr": "Ayrık Cümleler: Asıl İhtiyacım Olan...",
-  "hook": "'I need sleep' der geçersin; 'What I need is sleep' dersen odadaki herkes uykuya bakar — İngilizce, cümleyi ikiye yarıp vurguyu istediğin yere koymana izin verir.",
+  "title_en": "Modals of Deduction",
+  "title_tr": "Çıkarım Bildiren Modallar",
+  "hook": "Sherlock Holmes'un bütün sırrı üç kelimede saklı: must, can't, might — kanıta bakıp 'kesin o yaptı' ya da 'olamaz' demenin İngilizcesi bu.",
   "rules": [
     {
-      "rule": "What-cleft: cümlenin vurgulamak istediğin parçasını sona alır, önüne 'What + özne + fiil + is' koyarsın. Türkçedeki 'asıl ... olan şey ...' kalıbının tam karşılığıdır.",
-      "example_en": "What undermined the plan was the timing, not the idea.",
-      "example_tr": "Planı baltalayan şey fikir değil, zamanlamaydı."
+      "rule": "Elindeki kanıt seni tek bir sonuca götürüyorsa must + fiilin yalın hâlini kullan; burada must zorunluluk değil, 'kesin öyledir' anlamında çıkarım bildirir.",
+      "example_en": "Her fingerprints are all over the safe — she must be involved.",
+      "example_tr": "Parmak izleri kasanın her yerinde — bu işin içinde olmalı."
     },
     {
-      "rule": "It-cleft: 'It was/is + vurgulanan parça + who/that + cümlenin kalanı'. Kişiyi, yeri ya da zamanı öne çıkarır; Türkçede vurguyu tonlamayla yaparız, İngilizce yapıyla yapar.",
-      "example_en": "It was the auditor who scrutinized every receipt, not the manager.",
-      "example_tr": "Her fişi didik didik inceleyen yönetici değil, denetçiydi."
+      "rule": "Bir şeyin imkânsız olduğuna eminsen can't kullan; çıkarımda must'ın olumsuzu mustn't değil, can't'tir.",
+      "example_en": "The suspect can't be guilty — he was in prison that night.",
+      "example_tr": "Şüpheli suçlu olamaz — o gece hapisteydi."
     },
     {
-      "rule": "Fiili vurgulamak için 'What + özne + do/did + is/was + fiilin yalın hâli' kullanılır; 'do' burada 'yapmak' değil, yer tutucudur.",
-      "example_en": "What the new policy did was exacerbate the shortage.",
-      "example_tr": "Yeni politikanın yaptığı şey, kıtlığı daha da azdırmak oldu."
+      "rule": "Emin değilsen, yalnızca bir ihtimalden söz ediyorsan might, may ya da could kullan; üçü de 'olabilir' demektir ve aralarında ciddi bir fark yoktur.",
+      "example_en": "The witness might be lying, but we have no proof yet.",
+      "example_tr": "Tanık yalan söylüyor olabilir ama henüz elimizde kanıt yok."
     },
     {
-      "rule": "'All (that) ... is' ve 'The only thing ... is' de aynı ailedendir ve 'tek istediğim/yaptığım' anlamı katar; sonuna isim ya da yalın fiil gelebilir.",
-      "example_en": "All we can do now is mitigate the damage.",
-      "example_tr": "Şu an yapabileceğimiz tek şey hasarı hafifletmek."
+      "rule": "Geçmişteki bir olay hakkında çıkarım yapıyorsan modal değişmez, ardına have + V3 gelir: must have done, can't have done, might have done.",
+      "example_en": "The lock isn't broken, so the burglar must have used a key.",
+      "example_tr": "Kilit kırılmamış, yani hırsız bir anahtar kullanmış olmalı."
     },
     {
-      "rule": "Cleft cümlelerde 'is/was' vurgulanan parçanın önünde durur ve tekil kalır; sona gelen parça çoğul olsa bile çoğu zaman 'is' korunur (What I need is two days).",
-      "example_en": "What bolstered their case was three independent witnesses.",
-      "example_tr": "Davalarını güçlendiren şey üç bağımsız tanıktı."
+      "rule": "might not ile can't aynı şey değil: might not 'belki değildir' der, can't 'kesinlikle değildir'. Dikkat, could have 'olmuş olabilir' demekken couldn't have tam tersine can't have gibi imkânsızlık bildirir.",
+      "example_en": "She might not have seen the attacker's face, but she can't have missed the car — it was parked right outside her window.",
+      "example_tr": "Saldırganın yüzünü görmemiş olabilir ama arabayı kaçırmış olamaz — tam penceresinin önünde park hâlindeydi."
     }
   ],
-  "watch_out": "It-cleft'te kişi için 'who', diğer her şey için 'that' kullanılır; 'which' kulağa yanlış gelir. ✗ It was the timing which ruined it. ✓ It was the timing that ruined it. Bir de what-cleft'te 'what'tan sonra soru sırası yoktur: ✗ What did I need was rest. ✓ What I needed was rest.",
-  "memory_trick": "Cümleyi bir spot ışığı gibi düşün: 'It was X that...' ışığı X'e tutar, 'What I want is X' ışığı X'e en sona saklayarak tutar. Vurgulamak istediğini bul, kalıbı etrafına ör.",
+  "watch_out": "Türkçede 'olmalı'nın olumsuzu 'olmamalı' olduğu için elimiz mustn't'a gider, ama İngilizcede mustn't yalnızca yasak bildirir; çıkarımın olumsuzu can't'tir. ✗ He mustn't be the thief, he was abroad. ✓ He can't be the thief, he was abroad.",
+  "memory_trick": "Türkçedeki üçlüyü kopyala: 'olmalı' = must, 'olamaz' = can't, 'olabilir' = might. Geçmişe geçince Türkçede '-mış' eklersin, İngilizcede 'have + V3': 'yapmış olmalı' = must have done.",
   "quiz": [
     {
-      "question": "___ facilitated the merger was one honest conversation.",
-      "options": ["That", "What", "It", "Which"],
-      "answer": 1,
-      "explain": "Vurgulanan parça sona alınmış; başa 'What + özne + fiil' gelir."
-    },
-    {
-      "question": "It was the deadline ___ hindered us, not the budget.",
-      "options": ["which", "who", "that", "what"],
+      "question": "The alarm is ringing and the window is broken — someone ___ inside.",
+      "options": [
+        "can't be",
+        "mustn't be",
+        "must be",
+        "might not be"
+      ],
       "answer": 2,
-      "explain": "It-cleft'te kişi olmayan şeyler için 'that' kullanılır."
+      "explain": "Kırık cam ve çalan alarm güçlü kanıt; olumlu ve kesin çıkarım için must be kullanılır."
     },
     {
-      "question": "What the report ___ was refute every claim in the article.",
-      "options": ["did", "was", "had", "made"],
+      "question": "He ___ the robber — he was in court all morning, in front of the judge.",
+      "options": [
+        "can't be",
+        "mustn't be",
+        "must be",
+        "may be"
+      ],
       "answer": 0,
-      "explain": "Fiili vurgulayan cleft'te 'do/did' yer tutucudur: What X did was + yalın fiil."
+      "explain": "Kesinlikle imkânsız diyorsak can't be kullanılır; mustn't yasak anlatır, çıkarım değil."
+    },
+    {
+      "question": "The safe is empty but the lock isn't broken. The thief ___ a key.",
+      "options": [
+        "must use",
+        "must had",
+        "must have use",
+        "must have used"
+      ],
+      "answer": 3,
+      "explain": "Geçmişle ilgili çıkarımda kalıp must + have + V3'tür: must have used."
     }
   ]
 }

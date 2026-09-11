@@ -1,70 +1,70 @@
 {
   "unit": 41,
-  "title_en": "Inversion for Emphasis",
-  "title_tr": "Vurgu İçin Devrik Yapı",
-  "hook": "Bir cümleyi tersine çevirmek, sesinizi yükseltmeden masaya yumruk vurmaktır; 'Never have I met such a stubborn man' diyen kişi kimseye bağırmadan herkesi susturur.",
+  "title_en": "Choosing the Right Future Form",
+  "title_tr": "Doğru Gelecek Yapısını Seçmek",
+  "hook": "Türkçenin tek bir '-ecek' ekiyle hallettiği işi İngilizce beş yapıya böler; hangisini seçtiğin, yatırımcıya 'planım hazır' mı yoksa 'bakarız' mı dediğini ele verir.",
   "rules": [
     {
-      "rule": "Never, rarely, seldom gibi olumsuz ya da kısıtlayıcı bir zarfı vurgu için cümlenin başına aldığınızda, yardımcı fiil özneden önce gelir — tıpkı soru cümlesindeki gibi. Düz hâli 'I have never met', vurgulu hâli 'Never have I met'tir.",
-      "example_en": "Never have I met anyone so quietly determined.",
-      "example_tr": "Bu kadar sessiz ama kararlı birine hayatımda rastlamadım."
+      "rule": "Konuşmadan önce verilmiş bir karar ya da niyet varsa, veya gözünün önündeki kanıta bakarak tahmin yürütüyorsan going to kullan.",
+      "example_en": "We're going to open a second office in Izmir; the board approved it last week.",
+      "example_tr": "İzmir'de ikinci bir ofis açacağız; yönetim kurulu geçen hafta onayladı."
     },
     {
-      "rule": "Cümlede zaten bir yardımcı fiil yoksa (present simple, past simple), soru cümlelerindeki gibi do/does/did getirirsiniz; ana fiil yalın kalır.",
-      "example_en": "Rarely does he admit a mistake, and never in front of his team.",
-      "example_tr": "Hatasını nadiren kabul eder, ekibinin önünde ise asla."
+      "rule": "Kararı tam o anda veriyorsan, söz veriyor ya da teklif ediyorsan, ya da elinde kanıt olmadan kişisel görüş bildiriyorsan (I think, probably) will kullan.",
+      "example_en": "The client hasn't replied? Fine, I'll call her myself after lunch.",
+      "example_tr": "Müşteri hâlâ cevap vermedi mi? Tamam, öğleden sonra kendim ararım."
     },
     {
-      "rule": "'Not only ... but (also)' kalıbında devrik yapı yalnızca ilk cümlecikte olur; 'but' ile başlayan ikinci kısım normal sıraya döner.",
-      "example_en": "Not only is she meticulous, but she also expects the same of everyone around her.",
-      "example_tr": "Sadece kendisi titiz değil, çevresindeki herkesten de aynı titizliği bekliyor."
+      "rule": "Yeri ve zamanı ayarlanmış, başkalarını da bağlayan düzenlemeler (toplantı, randevu) için present continuous; tarifeye ya da programa bağlı olaylar (tren, uçuş, açılış saati) için present simple kullan.",
+      "example_en": "I'm meeting the investors on Thursday; their flight lands at 9.15.",
+      "example_tr": "Perşembe günü yatırımcılarla görüşüyorum; uçakları 9.15'te iniyor."
     },
     {
-      "rule": "'No sooner ... than' ve 'Hardly ... when' iki olayın neredeyse aynı anda olduğunu anlatır; ilk cümlecik genellikle past perfect ile devrik kurulur, ikinci olay 'than' ya da 'when' ile gelir.",
-      "example_en": "No sooner had he promised to stay calm than he slammed the door.",
-      "example_tr": "Sakin kalacağına söz vermesiyle kapıyı çarpması bir oldu."
+      "rule": "Gelecekteki belirli bir anda devam ediyor olacak eylem için will be + -ing kullan; cümlede 'this time next year', 'at 10 tomorrow' gibi bir an belirtirsin.",
+      "example_en": "This time next year, I'll be running my own company.",
+      "example_tr": "Gelecek yıl bu zamanlar kendi şirketimi yönetiyor olacağım."
     },
     {
-      "rule": "'Under no circumstances', 'on no account', 'at no time' gibi edatlı kalıplar da aynı devrik yapıyı ister; bu tür cümleler resmî ve yazılı dile aittir, sohbette ölçülü kullanın yoksa tiyatro sahnesinden inmiş gibi durursunuz.",
-      "example_en": "Under no circumstances should a leader mistake stubbornness for strength.",
-      "example_tr": "Bir lider hiçbir koşulda inatçılığı güç sanmamalı."
+      "rule": "Gelecekteki bir noktaya varıldığında tamamlanmış olacak iş için will have + V3 kullan; neredeyse her zaman 'by' ile gelir (by 2030, by the end of the quarter).",
+      "example_en": "By 2030, the company will have doubled its exports.",
+      "example_tr": "2030'a kadar şirket ihracatını ikiye katlamış olacak."
     }
   ],
-  "watch_out": "Türkçede vurgu için kelimelerin yerini değiştirirsiniz ama yardımcı fiil oynatmazsınız; bu yüzden en yaygın hata zarfı başa alıp gerisini düz bırakmaktır: ✗ Never I have seen such patience. ✓ Never have I seen such patience. Bir de 'Only when/after' ile başlayan cümlelerde devrilen kısım yan cümle değil ana cümledir: ✓ Only when he apologised did she forgive him.",
-  "memory_trick": "Devrik cümle aslında bir sorunun kılığına girmiş bir iddiadır: 'Have I ever seen...?' sorusunu al, başına 'Never' koy, soru işaretini nokta yap — 'Never have I seen.' Soru gibi kurulur, hüküm gibi biter.",
+  "watch_out": "Türkçede 'gelince', 'olduğunda', '-e kadar' derken zihnimiz gelecekte olduğu için when, if, by the time, as soon as'den sonra da will koymaya çalışırız; oysa bu bağlaçlardan sonra present simple gelir, will ana cümlede kalır. ✗ By the time the CEO will arrive, we will have finished the slides. ✓ By the time the CEO arrives, we will have finished the slides.",
+  "memory_trick": "Türkçen ipucu veriyor: anlık karar geniş zamanla ('Hallederim' = I'll handle it), plan gelecek zamanla ('Halledeceğim' = I'm going to). 'Bitirmiş olacağım' = will have finished, 'çalışıyor olacağım' = will be working; birebir çeviri tutuyor.",
   "quiz": [
     {
-      "question": "Rarely ___ such loyalty in a rival.",
+      "question": "Look at these sales figures — we ___ our target this quarter.",
       "options": [
-        "one sees",
-        "does one see",
-        "one does see",
-        "sees one"
-      ],
-      "answer": 1,
-      "explain": "Cümlede yardımcı fiil olmadığı için 'does' eklenir ve özneden önce gelir; ana fiil yalın kalır."
-    },
-    {
-      "question": "Not only ___ honest, but she also says so out loud.",
-      "options": [
-        "is she",
-        "she is",
-        "does she",
-        "she does be"
-      ],
-      "answer": 0,
-      "explain": "'Not only' cümle başındayken ilk cümlecik devrik kurulur ve 'is' özneden önce gelir; 'but'tan sonraki kısım düz sıradadır."
-    },
-    {
-      "question": "No sooner ___ the room than the arguing stopped.",
-      "options": [
-        "he had entered",
-        "he entered",
-        "had he entered",
-        "had entered he"
+        "will have missed",
+        "miss",
+        "are going to miss",
+        "will be missing"
       ],
       "answer": 2,
-      "explain": "'No sooner' past perfect ve devrik yapı ister: 'had' özneden önce gelir, ikinci olay 'than' ile bağlanır."
+      "explain": "Rakamlar elimizde, yani kanıta dayalı bir tahmin; bu going to'nun işi."
+    },
+    {
+      "question": "Call me after 5 — by then I ___ the report, so we can go through it together.",
+      "options": [
+        "will have finished",
+        "will be finishing",
+        "am finishing",
+        "finish"
+      ],
+      "answer": 0,
+      "explain": "'By then' bir son nokta çiziyor; o noktadan önce bitmiş olacak iş için will have + V3 gerekir."
+    },
+    {
+      "question": "Don't email me at 10 tomorrow — I ___ the quarterly results to the board.",
+      "options": [
+        "present",
+        "will have presented",
+        "am going to present",
+        "will be presenting"
+      ],
+      "answer": 3,
+      "explain": "Yarın saat 10 belirli bir an; o anda devam ediyor olacak eylem için will be + -ing kullanılır."
     }
   ]
 }

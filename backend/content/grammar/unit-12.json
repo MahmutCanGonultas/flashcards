@@ -1,65 +1,65 @@
 {
   "unit": 12,
-  "title_en": "Past Simple: Irregular Verbs",
-  "title_tr": "Geçmiş Zaman: Düzensiz Fiiller",
-  "hook": "İngilizcenin en sık kullanılan on fiilinin onu da düzensiz, yani -ed burada işe yaramıyor; ama iyi haber şu: yirmi kelime ezberle, dünkü gününü baştan sona anlatırsın.",
+  "title_en": "Yes/No Questions with Do/Does",
+  "title_tr": "Do/Does ile Evet-Hayır Soruları",
+  "hook": "Türkçede soru eki 'mi' cümlenin en sonunda bekler; İngilizcede 'do' seni en başta karşılar — aynı iş, tam ters uç!",
   "rules": [
     {
-      "rule": "Bazı fiiller geçmişte -ed almaz, kılık değiştirir: go→went, have→had, see→saw, take→took, come→came, get→got. Bunların kuralı yok; altısını da ezbere bileceksin.",
-      "example_en": "I went to work by bus yesterday.",
-      "example_tr": "Dün işe otobüsle gittim."
+      "rule": "Soru sormak için cümlenin en başına 'Do' koyarsın, gerisi düz cümledeki gibi kalır: Do + kişi + fiil. 'I, you, we, they' için 'Do' kullanılır.",
+      "example_en": "Do you work here?",
+      "example_tr": "Burada mı çalışıyorsun?"
     },
     {
-      "rule": "Geçmiş hali herkes için aynıdır: I went, she went, they went. Türkçedeki gibi kişiye göre ek değişmez (gittim, gitti, gittiler ayrımı yok), -s de yok.",
-      "example_en": "I got a job and she got a job too.",
-      "example_tr": "Ben iş buldum, o da iş buldu."
+      "rule": "'He, she, it' için 'Does' kullanırsın. Düz cümlede fiilin sonundaki -s, soruda 'does'un içine taşınır; fiil yalın kalır: She works. → Does she work?",
+      "example_en": "Does he drive a taxi?",
+      "example_tr": "O taksi mi kullanıyor?"
     },
     {
-      "rule": "Olumsuz ve soruda geçmişi 'did' üstlenir, fiil yalın hale döner: didn't go, Did you see...? Yani cümlede sadece bir tane geçmiş işareti olur.",
-      "example_en": "Did you see a doctor? — No, I didn't have time.",
-      "example_tr": "Doktora gittin mi? — Hayır, vaktim olmadı."
+      "rule": "Kısa cevapta fiili tekrar etmezsin, 'do/does' yeter: Yes, I do. / Yes, she does. Hayır derken 'don't / doesn't' dersin: No, I don't. / No, she doesn't.",
+      "example_en": "Does she sing? — No, she doesn't.",
+      "example_tr": "O şarkı söylüyor mu? — Hayır, söylemiyor."
     },
     {
-      "rule": "Bu altıya en çok kullanacağın on dördü ekle, listen tamam: do→did, make→made, say→said, know→knew, think→thought, give→gave, find→found, tell→told, eat→ate, drink→drank, buy→bought, write→wrote, leave→left, feel→felt.",
-      "example_en": "We left the hotel at nine and found a nice café.",
-      "example_tr": "Dokuzda otelden çıktık ve güzel bir kafe bulduk."
+      "rule": "'What do you do?' kelime kelime 'Ne yapıyorsun?' gibi görünür ama aslında 'Ne iş yapıyorsun?' demektir. Cevap olarak mesleğini söylersin.",
+      "example_en": "What do you do? — I'm a nurse.",
+      "example_tr": "Ne iş yapıyorsun? — Hemşireyim."
     }
   ],
-  "watch_out": "Türkçede olumsuzda bile geçmiş eki durur ('gitmedim'), o yüzden İngilizcede de fiili ikinci kez geçmişe çekmek istersin: ✗ I didn't went to work. ✓ I didn't go to work. Geçmişi zaten 'did' taşıyor; fiil yalın kalır, 'Did you saw?' değil 'Did you see?'.",
-  "memory_trick": "'See-saw' İngilizcede tahterevalli demek: bir tarafı see (bugün), öbür tarafı saw (dün). Diğerlerini de böyle ikili ritimle söyle: go-went, take-took, come-came, get-got, have-had.",
+  "watch_out": "'Does' -s'yi zaten aldı; fiile bir daha -s ekleme. ✗ Does she works? ✓ Does she work? Aynı şey 'doesn't' için de geçerli: ✗ He doesn't works. ✓ He doesn't work.",
+  "memory_trick": "Tek -s kuralı: her cümlede -s yalnızca bir kez görünür. Düz cümlede fiilin ucunda (She works), soruda 'does'un ucunda (Does she work?). Bak, 'does' zaten -s ile bitiyor!",
   "quiz": [
     {
-      "question": "Last summer we ___ to Italy by plane.",
+      "question": "___ they cook at home?",
       "options": [
-        "goed",
-        "go",
-        "went",
-        "wented"
+        "Does",
+        "Are",
+        "Do",
+        "Is"
       ],
       "answer": 2,
-      "explain": "'Go' düzensizdir, geçmişi 'went' olur; -ed almaz."
+      "explain": "'They' ile soru 'Do' ile başlar; 'Does' yalnızca he, she, it için."
     },
     {
-      "question": "Did you ___ the doctor yesterday?",
+      "question": "Does she ___ in a shop?",
       "options": [
-        "saw",
-        "see",
-        "seen",
-        "sees"
-      ],
-      "answer": 1,
-      "explain": "Soruda geçmişi 'did' taşır, fiil yalın kalır: see."
-    },
-    {
-      "question": "She ___ a new job last month.",
-      "options": [
-        "got",
-        "gets",
-        "getted",
-        "get"
+        "work",
+        "works",
+        "working",
+        "is work"
       ],
       "answer": 0,
-      "explain": "Özne 'she' olsa da geçmişte -s yok; 'get' herkes için 'got' olur."
+      "explain": "-s zaten 'does'un içinde, fiil yalın kalır."
+    },
+    {
+      "question": "Does he sing? — No, he ___.",
+      "options": [
+        "don't",
+        "doesn't",
+        "isn't",
+        "not"
+      ],
+      "answer": 1,
+      "explain": "'Does' ile sorulan soruya 'doesn't' ile cevap verilir."
     }
   ]
 }

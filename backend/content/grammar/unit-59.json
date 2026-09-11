@@ -1,0 +1,65 @@
+{
+  "unit": 59,
+  "title_en": "Gradable and Ungradable Adjectives",
+  "title_tr": "Derecelenebilen ve Mutlak Sıfatlar",
+  "hook": "Bir tabloya 'very sublime' dersen galeri görevlisi kibarca gülümser; 'absolutely sublime' dersen seni sanat eleştirmeni sanır — fark tek bir kelimede.",
+  "rules": [
+    {
+      "rule": "Derecelenebilen sıfatlar bir cetvel üzerinde yaşar: az, orta, çok. 'very', 'extremely', 'rather', 'a bit' gibi kelimelerle onları cetvelde yukarı aşağı kaydırırsın.",
+      "example_en": "Her early portraits are rather stiff, but the late self-portraits are extremely moving.",
+      "example_tr": "Erken dönem portreleri epey donuk, ama geç dönem otoportreleri son derece dokunaklı."
+    },
+    {
+      "rule": "Mutlak sıfatlar zaten cetvelin ucundadır: sublime, exquisite, breathtaking, hideous, flawless. Onlara 'very' değil 'absolutely', 'utterly', 'completely' eşlik eder; kararsız kaldığında 'really' iki türle de çalışır.",
+      "example_en": "The ceiling frescoes are absolutely sublime; the gift shop, sadly, is utterly hideous.",
+      "example_tr": "Tavan freskleri tam anlamıyla yüce; hediyelik eşya dükkânı ise ne yazık ki düpedüz iğrenç."
+    },
+    {
+      "rule": "'Quite' iki yüzlüdür: derecelenebilen sıfatla 'oldukça, fena değil' demek, mutlak sıfatla 'tamamen' demek. Özellikle İngiliz İngilizcesinde 'quite good' bir övgüden çok bir omuz silkmedir.",
+      "example_en": "The sculptures are quite interesting, but the way she handles light is quite extraordinary.",
+      "example_tr": "Heykeller oldukça ilginç, ama ışığı kullanışı tam anlamıyla olağanüstü."
+    },
+    {
+      "rule": "Aynı işi yapan kelimelerin kaydı farklıdır: 'pretty' rahat konuşma dili, 'somewhat' resmî ve ölçülü, 'downright' ise dobra bir sertlik katar ve genelde olumsuz sıfatlarla gelir.",
+      "example_en": "The critics found the show somewhat derivative, my brother found it pretty boring, and our aunt found it downright ugly.",
+      "example_tr": "Eleştirmenler sergiyi biraz taklit buldu, kardeşim epey sıkıcı buldu, teyzemiz ise düpedüz çirkin buldu."
+    }
+  ],
+  "watch_out": "Türkçede 'çok' her sıfata yapışır: çok mükemmel, çok muhteşem, çok eşsiz. İngilizcede 'very' mutlak sıfatlara yapışmaz. ✗ The exhibition was very amazing. ✓ The exhibition was absolutely amazing.",
+  "memory_trick": "Derecelenebilen sıfat bir ses düğmesidir: 'very' ile açarsın. Mutlak sıfat zaten sonuna kadar açıktır; 'very' ile daha da çevirsen ses yükselmez, 'absolutely' sadece 'evet, sonuna kadar' der.",
+  "quiz": [
+    {
+      "question": "The restoration of the fresco is ___ flawless — not a single brushstroke looks new.",
+      "options": [
+        "absolutely",
+        "very",
+        "rather",
+        "extremely"
+      ],
+      "answer": 0,
+      "explain": "'Flawless' zaten cetvelin ucunda, derecesi yok; mutlak sıfatları 'absolutely' pekiştirir, 'very' değil."
+    },
+    {
+      "question": "'Her brushwork is quite extraordinary.' Here, 'quite' means ___.",
+      "options": [
+        "fairly",
+        "a little",
+        "completely",
+        "not very"
+      ],
+      "answer": 2,
+      "explain": "'Extraordinary' mutlak bir sıfat; mutlak sıfatla 'quite' 'tamamen' demektir, 'oldukça' değil."
+    },
+    {
+      "question": "Which word suits a formal review? 'The palette is ___ limited.'",
+      "options": [
+        "pretty",
+        "somewhat",
+        "downright",
+        "totally"
+      ],
+      "answer": 1,
+      "explain": "'Somewhat' resmî ve ölçülü bir yumuşatıcı; 'pretty' konuşma dili, 'downright' ise sert ve dobra."
+    }
+  ]
+}

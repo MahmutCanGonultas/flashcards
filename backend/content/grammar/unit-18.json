@@ -1,70 +1,65 @@
 {
   "unit": 18,
-  "title_en": "Where Frequency Adverbs Go",
-  "title_tr": "Sıklık Zarfları Nereye Gelir?",
-  "hook": "İngilizcede 'always' cümlenin başına değil, tam ortasına oturur; yanlış koltuğa koyarsan çamaşır yine yıkanır ama cümle yabancı kokar — doğru yeri gösteriyorum.",
+  "title_en": "Some, Any, Much and Many",
+  "title_tr": "Some, Any, Much ve Many",
+  "hook": "İngilizler ekmeği, suyu, hatta parayı sayamaz — o yüzden 'iki ekmek' diyemezler ama 'iki gömlek' derler; bu küçük fark, mağazada doğru soruyu sormanın anahtarı.",
   "rules": [
     {
-      "rule": "Sıklık zarfları bir merdivendir: always (%100) en üstte, sonra usually, often, sometimes aşağı iner, never (%0) en altta durur.",
-      "example_en": "I always make my bed in the morning.",
-      "example_tr": "Sabahları yatağımı her zaman toplarım."
+      "rule": "İngilizcede isimler ikiye ayrılır: sayılanlar (shirt, bag, shoe) tek tek sayılır ve çoğul olur; sayılamayanlar (money, water, bread) çoğul olmaz, başına 'a' da almaz.",
+      "example_en": "I bought two shirts and a bag, and I spent all my money.",
+      "example_tr": "İki gömlek ve bir çanta aldım, bütün paramı harcadım."
     },
     {
-      "rule": "Türkçede zarf cümlenin neresine gelse olur; İngilizcede sabit bir koltuğu var: özne ile ana fiilin tam arasında.",
-      "example_en": "We often clean the kitchen on Sundays.",
-      "example_tr": "Pazarları mutfağı sık sık temizleriz."
+      "rule": "'Some' olumlu cümlede, 'any' soru ve olumsuz cümlede kullanılır; ikisi de hem sayılan hem sayılmayan isimle olur. Tek istisna: ikram ya da rica sorusunda 'some' kalır — Would you like some help?",
+      "example_en": "I have some money, but I don't have any shoes.",
+      "example_tr": "Biraz param var ama hiç ayakkabım yok."
     },
     {
-      "rule": "Fiil am / is / are ise koltuk değişir: zarf 'be'den SONRA gelir.",
-      "example_en": "The kitchen is always a mess after dinner.",
-      "example_tr": "Akşam yemeğinden sonra mutfak her zaman dağınık olur."
+      "rule": "'Many' sayılanlarla, 'much' sayılamayanlarla gider: How many shirts? How much money? İkisi de en çok soru ve olumsuz cümlede kullanılır.",
+      "example_en": "How many shirts do you want? — Not many, I don't have much money.",
+      "example_tr": "Kaç gömlek istiyorsun? — Çok değil, fazla param yok."
     },
     {
-      "rule": "'already' (çoktan) ve 'still' (hâlâ) de aynı koltuğa oturur: ana fiilden önce, 'be'den sonra.",
-      "example_en": "I've already washed the dishes, but Dad is still cooking.",
-      "example_tr": "Bulaşıkları çoktan yıkadım ama babam hâlâ yemek pişiriyor."
-    },
-    {
-      "rule": "'yet' (henüz) ise farklıdır: cümlenin en sonuna gider ve yalnızca soru ile olumsuz cümlelerde kullanılır.",
-      "example_en": "Have you taken out the rubbish yet?",
-      "example_tr": "Çöpü henüz çıkardın mı?"
+      "rule": "Olumlu cümlede 'much/many' yerine 'a lot of' çok daha doğal ve her iki isimle de olur. Az bir miktar için sayılamayan isimle 'a bit of' kullan.",
+      "example_en": "There are a lot of shops here, but I only have a bit of time.",
+      "example_tr": "Burada bir sürü mağaza var ama sadece birazcık vaktim var."
     }
   ],
-  "watch_out": "Türkçede 'asla' olumsuz fiil ister (asla yıkamam), ama İngilizcede 'never' tek başına olumsuzdur; fiil olumlu kalır. ✗ I never don't wash the dishes. ✓ I never wash the dishes.",
-  "memory_trick": "Sandviç kuralı: özne ve fiil iki dilim ekmek, zarf aradaki peynir — I · always · wash. Tek istisna 'be': peynir ekmeğin üstüne gelir — I am · always · tired.",
+  "watch_out": "Türkçede 'Kaç para?' deriz, o yüzden dil hemen 'How many money?' demeye kayar; ama 'money' sayılamaz. ✗ How many money do you have? ✓ How much money do you have? Fiyat sorarken en kısası: ✓ How much is this shirt?",
+  "memory_trick": "Türkçe 'tane' testi: 'Kaç tane gömlek?' diyebiliyorsan sayılır → many, a few. 'Kaç tane para?' olmuyor, 'Ne kadar para?' oluyorsa sayılmaz → much, a bit of. Tane varsa many, tane yoksa much.",
   "quiz": [
     {
-      "question": "She ___ the dishes after dinner.",
+      "question": "Sorry, we don't have ___ black T-shirts.",
       "options": [
-        "washes usually",
-        "usually wash",
-        "wash usually",
-        "usually washes"
+        "some",
+        "any",
+        "much",
+        "a"
       ],
-      "answer": 3,
-      "explain": "Zarf özne ile ana fiilin arasına girer ve 'she' için fiil -s alır: usually washes."
+      "answer": 1,
+      "explain": "Olumsuz cümlede 'some' değil 'any' kullanırız."
     },
     {
-      "question": "My brother ___ late for school.",
+      "question": "How ___ shoes do you have?",
       "options": [
-        "is never",
-        "never is",
-        "never be",
-        "is being never"
-      ],
-      "answer": 0,
-      "explain": "Fiil 'be' olunca zarf ondan sonra gelir: is never."
-    },
-    {
-      "question": "I haven't cleaned my room ___.",
-      "options": [
-        "already",
-        "still",
-        "yet",
-        "always"
+        "much",
+        "a bit of",
+        "many",
+        "any"
       ],
       "answer": 2,
-      "explain": "Olumsuz cümlede 'henüz' anlamı için cümle sonuna 'yet' gelir."
+      "explain": "'Shoes' sayılabilir bir isim, o yüzden 'how many' deriz."
+    },
+    {
+      "question": "I have only ___ time, so let's be quick.",
+      "options": [
+        "a bit of",
+        "many",
+        "a few",
+        "much"
+      ],
+      "answer": 0,
+      "explain": "'Time' sayılamaz ve az bir miktar için 'a bit of' deriz."
     }
   ]
 }

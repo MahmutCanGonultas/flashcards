@@ -1,0 +1,159 @@
+{
+  "unit": {
+    "position": 23,
+    "level": "A2",
+    "title": "Hobbies & Entertainment"
+  },
+  "cards": [
+    {
+      "lesson": 1,
+      "front": "cinema",
+      "back": "(noun) sinema 🎬",
+      "example_sentence": "We went to the cinema last Saturday night.",
+      "mnemonic": "Türkçe 'sinema' ile aynı kelime; ikisi de Fransızca 'cinéma'dan, o da Yunanca 'kinema' (hareket) kökünden gelir — 'kinetik' ile akraba. İngiliz İngilizcesinde 'go to the cinema' salona gitmektir; filmin kendisine 'film' ya da 'movie' denir."
+    },
+    {
+      "lesson": 1,
+      "front": "concert",
+      "back": "(noun) konser 🎶",
+      "example_sentence": "The concert starts at eight, so let's leave now.",
+      "mnemonic": "Türkçe 'konser', Fransızca 'concert'in aynısı; kök İtalyanca 'concerto', yani müzikteki 'konçerto' ile aynı aile. Yazarken sondaki sessiz 't'yi unutma: concert."
+    },
+    {
+      "lesson": 1,
+      "front": "museum",
+      "back": "(noun) müze 🏛️",
+      "example_sentence": "We saw old Roman coins at the museum.",
+      "mnemonic": "Türkçe 'müze' Fransızca 'musée'den, İngilizce 'museum' doğrudan Latinceden; ikisi de Yunanca 'Mouseion', yani ilham perileri Musa'ların tapınağı demek. 'Müzik' de aynı perilerden türer — müze ile müzik kardeş kelimelerdir."
+    },
+    {
+      "lesson": 2,
+      "front": "guitar",
+      "back": "(noun) gitar 🎸",
+      "example_sentence": "My cousin plays the guitar at every party.",
+      "mnemonic": "Türkçe 'gitar' ile aynı: ikisi de İspanyolca 'guitarra' üzerinden Yunanca 'kithara' (antik telli çalgı) kökünden gelir. İngilizcede enstrüman çalarken 'the' şart: 'play the guitar'."
+    },
+    {
+      "lesson": 2,
+      "front": "painting",
+      "back": "(noun) tablo, resim 🖼️",
+      "example_sentence": "She sold her first painting last month.",
+      "mnemonic": "'Paint' boya demek; 'painting' boyayla yapılmış resim, yani tablo. Kalemle çizilene 'drawing', fotoğrafa 'photo' denir; 'picture' ise hepsini kapsayan genel kelimedir."
+    },
+    {
+      "lesson": 2,
+      "front": "photograph",
+      "back": "(noun) fotoğraf 📷",
+      "example_sentence": "Grandma keeps an old photograph in her bag.",
+      "mnemonic": "Türkçe 'fotoğraf' ile aynı: Yunanca 'photos' (ışık) + 'graphein' (yazmak), yani 'ışıkla yazmak'. Aynı 'graf' kökü 'telgraf', 'paragraf', 'grafik'te de var; İngilizler günlük dilde kısaca 'photo' der."
+    },
+    {
+      "lesson": 3,
+      "front": "camera",
+      "back": "(noun) fotoğraf makinesi, kamera 📸",
+      "example_sentence": "I forgot my camera, so I used my phone.",
+      "mnemonic": "Latince 'camera' aslında 'oda' demek: ilk fotoğraf aygıtı 'camera obscura', yani 'karanlık oda'ydı. Gemideki 'kamara' da aynı kelimeden gelir; İngilizcede 'camera' hem fotoğraf makinesi hem video kamerasıdır."
+    },
+    {
+      "lesson": 3,
+      "front": "song",
+      "back": "(noun) şarkı 🎵",
+      "example_sentence": "This song always makes me want to dance.",
+      "mnemonic": "'Sing' (şarkı söylemek) fiilinin isim hali: sing–sang–sung–song, hepsi aynı ailede. 'Eurovision Song Contest' adındaki 'song' budur; İngilizcede şarkı 'sing a song' diye söylenir."
+    },
+    {
+      "lesson": 3,
+      "front": "magazine",
+      "back": "(noun) dergi 📰",
+      "example_sentence": "She reads a fashion magazine every Sunday morning.",
+      "mnemonic": "Arapça 'mahzen' (depo) kökünden: 'mağaza', 'mahzen' ve 'magazin' aynı aile; dergiye de 'bilgi deposu' diye bu ad verildi. Dikkat: Türkçe 'magazin' sadece ünlü haberleri demek, İngilizce 'magazine' her türlü dergidir."
+    },
+    {
+      "lesson": 4,
+      "front": "practise",
+      "back": "(verb) pratik yapmak, çalışmak 🔁",
+      "example_sentence": "I practise the guitar for an hour every day.",
+      "mnemonic": "Türkçe 'pratik' aynı kökten: Yunanca 'praktikos', 'yapmaya dair'. İngiliz İngilizcesinde fiil 's' ile 'practise', isim 'c' ile 'practice' yazılır; Amerikalılar ikisine de 'practice' der."
+    },
+    {
+      "lesson": 4,
+      "front": "collect",
+      "back": "(verb) biriktirmek, toplamak 🧺",
+      "example_sentence": "My uncle collects old coins from different countries.",
+      "mnemonic": "Türkçe 'koleksiyon' ve 'kolektif' aynı kökten: Latince 'colligere', yani 'bir araya toplamak'. Koleksiyon yapan kişiye 'collector' denir: pul, para, konser bileti — ne biriktiriyorsan onu 'collect' edersin."
+    },
+    {
+      "lesson": 4,
+      "front": "invite",
+      "back": "(verb) davet etmek 💌",
+      "example_sentence": "Let's invite Tom to the concert on Friday.",
+      "mnemonic": "Kalıp Türkçeyle birebir: 'invite someone to a party' = birini partiye davet etmek. İsim hali 'invitation'; davetiyelerin üstündeki 'You're invited!' yazısını hatırla."
+    },
+    {
+      "lesson": 5,
+      "front": "interesting",
+      "back": "(adjective) ilginç 🤔",
+      "example_sentence": "The museum was more interesting than I expected.",
+      "mnemonic": "Türkçe 'enteresan', Fransızca 'intéressant'ın aynısı; İngilizce 'interesting' de aynı Latince kökten. Dikkat: kişi için 'interested' (I'm interested), şey için 'interesting' (the film is interesting)."
+    },
+    {
+      "lesson": 5,
+      "front": "popular",
+      "back": "(adjective) popüler, sevilen ⭐",
+      "example_sentence": "That singer is popular with teenagers right now.",
+      "mnemonic": "Türkçe 'popüler' aynı kelime; Latince 'populus' (halk) kökünden, yani 'halkın sevdiği'. 'Pop music' de 'popular music'in kısaltmasıdır; kalıp 'popular with' (popular with teenagers)."
+    },
+    {
+      "lesson": 5,
+      "front": "famous",
+      "back": "(adjective) ünlü, meşhur 🌟",
+      "example_sentence": "This café is famous for its lemon cake.",
+      "mnemonic": "'Fame' (ün) kelimesinin sıfatı: Hollywood'daki yıldızlı kaldırım 'Walk of Fame' ve The Script'in 'Hall of Fame' şarkısı aynı kelimeyi taşır. Kalıp 'famous for': 'İstanbul is famous for its cats'."
+    }
+  ],
+  "dialogue": {
+    "title": "A Box of Tickets",
+    "lines": [
+      {
+        "speaker": "Elif",
+        "en": "Did you take all these photographs?",
+        "tr": "Bu fotoğrafların hepsini sen mi çektin?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Yes, with my dad's old camera.",
+        "tr": "Evet, babamın eski fotoğraf makinesiyle."
+      },
+      {
+        "speaker": "Elif",
+        "en": "They're interesting. Is this a concert?",
+        "tr": "Çok ilginçler. Bu bir konser mi?"
+      },
+      {
+        "speaker": "Tom",
+        "en": "Yes. I collect the tickets too, look.",
+        "tr": "Evet. Biletleri de biriktiriyorum, bak."
+      },
+      {
+        "speaker": "Elif",
+        "en": "Wow, that's a famous guitar player!",
+        "tr": "Vay, bu ünlü bir gitarist!"
+      },
+      {
+        "speaker": "Tom",
+        "en": "He plays again on Friday. Want to come?",
+        "tr": "Cuma yine çalıyor. Gelmek ister misin?"
+      },
+      {
+        "speaker": "Elif",
+        "en": "Yes! Invite Ayşe too, she loves his songs.",
+        "tr": "Evet! Ayşe'yi de davet et, şarkılarına bayılıyor."
+      },
+      {
+        "speaker": "Tom",
+        "en": "Perfect. You take the photographs this time!",
+        "tr": "Süper. Bu sefer fotoğrafları sen çekiyorsun!"
+      }
+    ]
+  }
+}
