@@ -69,7 +69,7 @@ function Logo({ size = 36, withText = false }: LogoProps) {
 
       {withText && (
         <span className="font-extrabold tracking-tight text-lg text-stone-800">
-          Flashcards
+          Kelimece
         </span>
       )}
     </div>

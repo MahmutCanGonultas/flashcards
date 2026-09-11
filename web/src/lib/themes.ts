@@ -24,6 +24,8 @@ export type DeckTheme = {
   bar: string;
   /** Decorative artwork colour, used with fill-current. */
   soft: string;
+  /** SVG stroke for the trail between path nodes. */
+  stroke: string;
 };
 
 export const themes: DeckTheme[] = [
@@ -39,6 +41,7 @@ export const themes: DeckTheme[] = [
     badge: "bg-violet-600",
     bar: "bg-violet-400",
     soft: "text-violet-300",
+    stroke: "stroke-violet-400",
   },
   {
     deckSurface: "bg-gradient-to-br from-sky-50 via-sky-100 to-sky-200",
@@ -52,6 +55,7 @@ export const themes: DeckTheme[] = [
     badge: "bg-sky-600",
     bar: "bg-sky-400",
     soft: "text-sky-300",
+    stroke: "stroke-sky-400",
   },
   {
     deckSurface: "bg-gradient-to-br from-rose-50 via-rose-100 to-rose-200",
@@ -65,6 +69,7 @@ export const themes: DeckTheme[] = [
     badge: "bg-rose-600",
     bar: "bg-rose-400",
     soft: "text-rose-300",
+    stroke: "stroke-rose-400",
   },
   {
     deckSurface: "bg-gradient-to-br from-emerald-50 via-emerald-100 to-emerald-200",
@@ -78,6 +83,7 @@ export const themes: DeckTheme[] = [
     badge: "bg-emerald-600",
     bar: "bg-emerald-400",
     soft: "text-emerald-300",
+    stroke: "stroke-emerald-400",
   },
   {
     deckSurface: "bg-gradient-to-br from-amber-50 via-amber-100 to-amber-200",
@@ -91,6 +97,7 @@ export const themes: DeckTheme[] = [
     badge: "bg-amber-600",
     bar: "bg-amber-400",
     soft: "text-amber-300",
+    stroke: "stroke-amber-400",
   },
   {
     deckSurface: "bg-gradient-to-br from-fuchsia-50 via-fuchsia-100 to-fuchsia-200",
@@ -104,6 +111,7 @@ export const themes: DeckTheme[] = [
     badge: "bg-fuchsia-600",
     bar: "bg-fuchsia-400",
     soft: "text-fuchsia-300",
+    stroke: "stroke-fuchsia-400",
   },
   {
     deckSurface: "bg-gradient-to-br from-teal-50 via-teal-100 to-teal-200",
@@ -117,6 +125,7 @@ export const themes: DeckTheme[] = [
     badge: "bg-teal-600",
     bar: "bg-teal-400",
     soft: "text-teal-300",
+    stroke: "stroke-teal-400",
   },
   {
     deckSurface: "bg-gradient-to-br from-indigo-50 via-indigo-100 to-indigo-200",
@@ -130,6 +139,7 @@ export const themes: DeckTheme[] = [
     badge: "bg-indigo-600",
     bar: "bg-indigo-400",
     soft: "text-indigo-300",
+    stroke: "stroke-indigo-400",
   },
   {
     deckSurface: "bg-gradient-to-br from-orange-50 via-orange-100 to-orange-200",
@@ -143,6 +153,7 @@ export const themes: DeckTheme[] = [
     badge: "bg-orange-600",
     bar: "bg-orange-400",
     soft: "text-orange-300",
+    stroke: "stroke-orange-400",
   },
   {
     deckSurface: "bg-gradient-to-br from-cyan-50 via-cyan-100 to-cyan-200",
@@ -156,6 +167,7 @@ export const themes: DeckTheme[] = [
     badge: "bg-cyan-600",
     bar: "bg-cyan-400",
     soft: "text-cyan-300",
+    stroke: "stroke-cyan-400",
   },
 ];
 
