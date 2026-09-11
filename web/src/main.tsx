@@ -5,6 +5,17 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./index.css";
 import App from "./App.tsx";
 import { ApiError } from "./lib/api";
+import { musicPreferred, startMusic } from "./lib/music";
+
+// Someone who left the music on gets it back on their first tap of the next
+// visit. Browsers won't allow it any sooner than a gesture, and that's fine.
+if (musicPreferred()) {
+  const resume = () => {
+    startMusic();
+    window.removeEventListener("pointerdown", resume);
+  };
+  window.addEventListener("pointerdown", resume, { once: true });
+}
 
 const queryClient = new QueryClient({
   defaultOptions: {
