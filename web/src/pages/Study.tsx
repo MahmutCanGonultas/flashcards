@@ -254,8 +254,13 @@ function StudySession({
 
   // Say the word whenever a step showing it opens. Keyed on the step, not the
   // card: one word is now met, heard and asked about within a single session.
+  const stepKeyRef = useRef<string | null>(null);
+  // The sentence is read once per step, however many times the word's
+  // utterance reports ending (a cancelled one reports too).
+  const sentenceSpokenForRef = useRef<string | null>(null);
   useEffect(() => {
     stepEnteredAtRef.current = Date.now();
+    stepKeyRef.current = step?.key ?? null;
     if (!step || step.kind === "listen") return;
     const card = byId.get(step.cardId);
     // Hearing the word is the whole point of "meet" and "listen"; for the
@@ -263,7 +268,22 @@ function StudySession({
     const silent =
       step.kind === "quiz" &&
       ["context", "reverse", "type"].includes(step.format);
-    if (card && !silent) speakAuto(card.front);
+    if (!card || silent) return;
+    // Meeting a word: say it, then let Tonton say the sentence it lives in —
+    // hearing the word inside real speech is half of what makes it stick.
+    // The step key is checked again so a learner who has tapped on isn't
+    // read the previous word's sentence.
+    const key = step.key;
+    const sentence = step.kind === "meet" ? card.example_sentence : null;
+    speakAuto(card.front, {
+      onEnd: () => {
+        if (!sentence || stepKeyRef.current !== key || sentenceSpokenForRef.current === key) return;
+        sentenceSpokenForRef.current = key;
+        window.setTimeout(() => {
+          if (stepKeyRef.current === key) speakAuto(sentence, { rate: 0.88 });
+        }, 450);
+      },
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step?.key]);
 
@@ -571,6 +591,14 @@ function StudySession({
           <QuestionStep
             card={stepCard}
             step={step}
+            lessonWords={
+              step.kind === "meet"
+                ? plan
+                    .filter((s) => s.kind === "meet")
+                    .map((s) => byId.get(s.cardId))
+                    .filter((c): c is Card => Boolean(c))
+                : []
+            }
             options={options}
             answer={answer}
             answeredRight={answeredRight}
@@ -621,6 +649,7 @@ function ListenStep({
 function QuestionStep({
   card,
   step,
+  lessonWords,
   options,
   answer,
   answeredRight,
@@ -631,6 +660,8 @@ function QuestionStep({
 }: {
   card: Card;
   step: Step;
+  /** The lesson's new words in teaching order, for the strip under a meet step. */
+  lessonWords: Card[];
   options: QuizOption[] | null;
   answer: number | null;
   answeredRight: boolean | null;
@@ -683,6 +714,41 @@ function QuestionStep({
               </span>
             )}
           </>
+        ) : isMeet ? (
+          // Meeting the word: the picture, the word and what it means, on one
+          // card, so the sentence below has the rest of the screen. A photo
+          // gets the full width — a picture is the thing that sticks.
+          <div
+            className={`flex gap-4 ${
+              card.image_url ? "flex-col text-left" : emoji ? "items-center text-left" : "justify-center text-center"
+            }`}
+          >
+            {card.image_url ? (
+              <img
+                src={card.image_url}
+                alt=""
+                className="-mx-2 -mt-2 h-44 w-[calc(100%+1rem)] max-w-none rounded-2xl object-cover ring-2 ring-white shadow-md"
+              />
+            ) : emoji ? (
+              <span aria-hidden="true" className="w-24 shrink-0 text-center text-6xl leading-none">
+                {emoji}
+              </span>
+            ) : null}
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                <p className="text-3xl font-extrabold leading-tight tracking-tight text-stone-800 break-words">
+                  {card.front}
+                </p>
+                <SpeakButton text={card.front} size="md" />
+              </div>
+              {pos && (
+                <span className="mt-1 inline-block rounded-full bg-white/80 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-violet-600 ring-1 ring-violet-200">
+                  {pos}
+                </span>
+              )}
+              <p className="mt-1.5 text-xl font-extrabold leading-snug text-violet-700 break-words">{meaning}</p>
+            </div>
+          </div>
         ) : (
           <>
             <p className="text-3xl font-extrabold leading-snug tracking-tight text-stone-800 break-words sm:text-5xl">
@@ -702,9 +768,36 @@ function QuestionStep({
 
       {isMeet ? (
         <>
-          <div className="mt-3">
+          <div className="mt-4">
             <MeetBody card={card} />
           </div>
+          {lessonWords.length > 1 && (
+            <ol className="mt-5 flex items-center justify-center gap-2" aria-label="This lesson's words">
+              {lessonWords.map((word) => {
+                const here = word.id === card.id;
+                const met = lessonWords.indexOf(word) < lessonWords.findIndex((w) => w.id === card.id);
+                return (
+                  <li
+                    key={word.id}
+                    aria-current={here ? "step" : undefined}
+                    className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-bold transition ${
+                      here
+                        ? "bg-violet-600 text-white shadow-[0_3px_0_0_var(--color-violet-800)]"
+                        : met
+                          ? "bg-violet-100 text-violet-700"
+                          : "bg-stone-100 text-stone-400"
+                    }`}
+                  >
+                    <span aria-hidden="true">{parseBack(word.back).emoji ?? (met ? "✓" : "·")}</span>
+                    {word.front}
+                  </li>
+                );
+              })}
+            </ol>
+          )}
+          <p className="mt-3 text-center text-sm font-semibold text-stone-400">
+            Listen once more, then say it out loud. 🗣️
+          </p>
           <BottomBar>
             <Button size="lg" fullWidth onClick={onContinue}>
               Got it
@@ -790,6 +883,10 @@ function QuestionStep({
                   <p className="mt-0.5 text-sm font-semibold text-emerald-800 break-words">
                     {card.front} — {meaning}
                   </p>
+                )}
+                {/* The sentence round was about the sentence: show what it said. */}
+                {answeredRight && format === "context" && card.example_tr && (
+                  <p className="mt-1 text-sm text-emerald-700/80 break-words">{card.example_tr}</p>
                 )}
               </div>
             </div>

@@ -6,6 +6,12 @@
 export type LevelTheme = {
   name: string;
   nameTr: string;
+  /** Where Elif and Tom are in their story at this level — the dialogues' arc. */
+  story: string;
+  /** The level's district on the map: a soft tint behind its units. */
+  district: string;
+  /** Faded line colour for stretches not reached yet. */
+  strokeFaint: string;
   /** Solid fill for done stations and the unit plate stripe. */
   fill: string;
   /** Ring colour for the current station. */
@@ -29,6 +35,9 @@ export const LEVELS: Record<string, LevelTheme> = {
   A1: {
     name: "Beginner",
     nameTr: "Başlangıç",
+    story: "Elif and Tom meet at school",
+    district: "bg-violet-50/60",
+    strokeFaint: "stroke-violet-200",
     fill: "bg-violet-500",
     ring: "ring-violet-500",
     stroke: "stroke-violet-500",
@@ -42,6 +51,9 @@ export const LEVELS: Record<string, LevelTheme> = {
   A2: {
     name: "Elementary",
     nameTr: "Temel",
+    story: "Teenagers in the same city",
+    district: "bg-sky-50/60",
+    strokeFaint: "stroke-sky-200",
     fill: "bg-sky-500",
     ring: "ring-sky-500",
     stroke: "stroke-sky-500",
@@ -55,6 +67,9 @@ export const LEVELS: Record<string, LevelTheme> = {
   B1: {
     name: "Intermediate",
     nameTr: "Orta",
+    story: "University years, sometimes apart",
+    district: "bg-emerald-50/60",
+    strokeFaint: "stroke-emerald-200",
     fill: "bg-emerald-500",
     ring: "ring-emerald-500",
     stroke: "stroke-emerald-500",
@@ -68,6 +83,9 @@ export const LEVELS: Record<string, LevelTheme> = {
   B2: {
     name: "Upper intermediate",
     nameTr: "Orta üstü",
+    story: "First real jobs, real arguments",
+    district: "bg-amber-50/60",
+    strokeFaint: "stroke-amber-200",
     fill: "bg-amber-500",
     ring: "ring-amber-500",
     stroke: "stroke-amber-500",
@@ -81,6 +99,9 @@ export const LEVELS: Record<string, LevelTheme> = {
   C1: {
     name: "Advanced",
     nameTr: "İleri",
+    story: "Old friends, sharp tongues",
+    district: "bg-rose-50/60",
+    strokeFaint: "stroke-rose-200",
     fill: "bg-rose-500",
     ring: "ring-rose-500",
     stroke: "stroke-rose-500",

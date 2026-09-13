@@ -145,3 +145,61 @@ export function blankOut(sentence: string, headword: string): BlankedSentence | 
     answer: sentence.slice(at.start, at.end),
   };
 }
+
+/**
+ * Where the taught word landed in the Turkish sentence. Turkish inflects by
+ * suffix, so the start of the meaning is what to look for: "teşekkür ederim"
+ * is found in "Çay için teşekkürler" by its first word's stem.
+ */
+export function locateTurkish(sentence: string, meaning: string): { start: number; end: number } | null {
+  const senses = meaning.split(",").map((s) => s.trim()).filter(Boolean);
+  const lower = sentence.toLocaleLowerCase("tr");
+  for (const sense of senses) {
+    let head = sense.split(/\s+/)[0]?.toLocaleLowerCase("tr") ?? "";
+    // A verb is listed as an infinitive ("sevmek") but conjugated in the
+    // sentence ("seviyorum"): drop the -mek/-mak.
+    if (head.length > 4 && /m[ae]k$/.test(head)) head = head.slice(0, -3);
+    if (head.length < 2) continue;
+    // Enough of the stem to be the same word, few enough letters to survive
+    // vowel harmony and consonant softening ("kitap" → "kitabı").
+    const base = head.length <= 3 ? head : head.slice(0, Math.min(head.length - 1, 5));
+    // The stem as it appears once a suffix is attached: the final consonant
+    // softens ("git" → "gider", "kitap" → "kitabı") and a last-syllable
+    // vowel can drop ("fikir" → "fikrim", "şehir" → "şehre").
+    const softened = base.replace(/t$/, "d").replace(/k$/, "ğ").replace(/p$/, "b").replace(/ç$/, "c");
+    const dropped = head.length >= 4 ? head.replace(/([^aeıioöuü])[aeıioöuü]([^aeıioöuü])$/, "$1$2") : null;
+    const stems = [...new Set([base, softened, dropped].filter((x): x is string => Boolean(x)))];
+    let at = -1;
+    let end = -1;
+    for (const stem of stems) {
+      for (let from = 0; from < lower.length && at === -1; ) {
+        const found = lower.indexOf(stem, from);
+        if (found === -1) break;
+        from = found + 1;
+        // Must start a word.
+        if (found > 0 && /\p{L}/u.test(lower[found - 1])) continue;
+        let stop = found;
+        while (stop < sentence.length && /[\p{L}']/u.test(sentence[stop])) stop++;
+        // A two-letter stem ("ev", "su") only counts inside a short word, or
+        // "et" would light up "ederim" anywhere.
+        if (stem.length === 2 && stop - found > 8) continue;
+        at = found;
+        end = stop;
+      }
+      if (at !== -1) break;
+    }
+    if (at === -1) continue;
+    // A multi-word sense ("özür dilerim") keeps going while the sentence's
+    // next words match its next words.
+    for (const next of sense.split(/\s+/).slice(1)) {
+      const rest = lower.slice(end);
+      const gap = rest.match(/^\s+/)?.[0].length ?? -1;
+      const stemNext = next.toLocaleLowerCase("tr").slice(0, Math.max(3, Math.min(next.length - 1, 5)));
+      if (gap < 1 || !rest.slice(gap).startsWith(stemNext)) break;
+      end += gap;
+      while (end < sentence.length && /[\p{L}']/u.test(sentence[end])) end++;
+    }
+    return { start: at, end };
+  }
+  return null;
+}
