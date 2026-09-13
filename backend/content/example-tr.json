@@ -1,0 +1,3602 @@
+[
+ {
+  "id": 530,
+  "tr": "Merhaba, nasılsın?"
+ },
+ {
+  "id": 531,
+  "tr": "Hoşça kal, yakında görüşürüz!"
+ },
+ {
+  "id": 532,
+  "tr": "Bir çay, lütfen."
+ },
+ {
+  "id": 533,
+  "tr": "Çay için teşekkür ederim."
+ },
+ {
+  "id": 534,
+  "tr": "Özür dilerim, geç kaldım."
+ },
+ {
+  "id": 535,
+  "tr": "Evet, ben öğrenciyim."
+ },
+ {
+  "id": 536,
+  "tr": "Hayır, teşekkür ederim."
+ },
+ {
+  "id": 537,
+  "tr": "Adın ne?"
+ },
+ {
+  "id": 538,
+  "tr": "Tom benim en iyi arkadaşım."
+ },
+ {
+  "id": 539,
+  "tr": "Öğretmenim çok nazik."
+ },
+ {
+  "id": 540,
+  "tr": "O yeni bir öğrenci."
+ },
+ {
+  "id": 541,
+  "tr": "Her sabah çay içerim."
+ },
+ {
+  "id": 542,
+  "tr": "Akşamları televizyon izleriz."
+ },
+ {
+  "id": 543,
+  "tr": "Bugün benim ilk günüm."
+ },
+ {
+  "id": 544,
+  "tr": "Yarın görüşürüz, Tom!"
+ },
+ {
+  "id": 545,
+  "tr": "Annem öğretmen."
+ },
+ {
+  "id": 546,
+  "tr": "Babam her sabah çay içer."
+ },
+ {
+  "id": 547,
+  "tr": "Büyük bir ailem var."
+ },
+ {
+  "id": 548,
+  "tr": "Bu, kız kardeşim Zeynep."
+ },
+ {
+  "id": 549,
+  "tr": "Erkek kardeşim futbol oynar."
+ },
+ {
+  "id": 550,
+  "tr": "Evde yeni bir bebeğimiz var."
+ },
+ {
+  "id": 551,
+  "tr": "Şu adam benim babam."
+ },
+ {
+  "id": 552,
+  "tr": "Fotoğraftaki kadın benim annem."
+ },
+ {
+  "id": 553,
+  "tr": "Ben tek çocuğum."
+ },
+ {
+  "id": 554,
+  "tr": "Bebek erkek mi, kız mı?"
+ },
+ {
+  "id": 555,
+  "tr": "Şu kız benim en iyi arkadaşım."
+ },
+ {
+  "id": 556,
+  "tr": "Kız kardeşin kaç yaşında?"
+ },
+ {
+  "id": 557,
+  "tr": "Annem çok genç."
+ },
+ {
+  "id": 558,
+  "tr": "Ailemi seviyorum."
+ },
+ {
+  "id": 559,
+  "tr": "Ailemle İstanbul'da yaşıyorum."
+ },
+ {
+  "id": 560,
+  "tr": "Bir erkek kardeşim var."
+ },
+ {
+  "id": 561,
+  "tr": "İki kedimiz var."
+ },
+ {
+  "id": 562,
+  "tr": "Üç çocuğu var."
+ },
+ {
+  "id": 563,
+  "tr": "Her gün okula giderim."
+ },
+ {
+  "id": 564,
+  "tr": "Her hafta futbol oynarım."
+ },
+ {
+  "id": 565,
+  "tr": "Doğum günüm gelecek ay."
+ },
+ {
+  "id": 566,
+  "tr": "On yaşındayım."
+ },
+ {
+  "id": 567,
+  "tr": "Her gece sekiz saat uyurum."
+ },
+ {
+  "id": 568,
+  "tr": "Otobüs on dakikaya gelir."
+ },
+ {
+  "id": 569,
+  "tr": "Şimdi açım."
+ },
+ {
+  "id": 570,
+  "tr": "Her gün erken kalkarım."
+ },
+ {
+  "id": 571,
+  "tr": "Okula geç kaldım."
+ },
+ {
+  "id": 572,
+  "tr": "Şimdi saat kaç?"
+ },
+ {
+  "id": 573,
+  "tr": "Geceleri televizyon izlerim."
+ },
+ {
+  "id": 574,
+  "tr": "Tom her zaman geç kalır."
+ },
+ {
+  "id": 575,
+  "tr": "Biraz su alabilir miyim?"
+ },
+ {
+  "id": 576,
+  "tr": "Ekmek ve peynir istiyorum, lütfen."
+ },
+ {
+  "id": 577,
+  "tr": "Kedim sütü sever."
+ },
+ {
+  "id": 578,
+  "tr": "Bana iki yumurta pişiriyor."
+ },
+ {
+  "id": 579,
+  "tr": "Çantamda bir elma var."
+ },
+ {
+  "id": 580,
+  "tr": "Tavukla pilav yeriz."
+ },
+ {
+  "id": 581,
+  "tr": "Erkek kardeşim et yemez."
+ },
+ {
+  "id": 582,
+  "tr": "Balık ve pilav severim."
+ },
+ {
+  "id": 583,
+  "tr": "Türkler çok çay içer."
+ },
+ {
+  "id": 584,
+  "tr": "Kahveyi sütlü içerim."
+ },
+ {
+  "id": 585,
+  "tr": "Kahvaltıda ne yersin?"
+ },
+ {
+  "id": 586,
+  "tr": "Çay mı içersin, kahve mi?"
+ },
+ {
+  "id": 587,
+  "tr": "Okuldan sonra aç oluyorum."
+ },
+ {
+  "id": 588,
+  "tr": "Saat sekizde kahvaltı yaparız."
+ },
+ {
+  "id": 589,
+  "tr": "Ailem akşam yemeğini birlikte yer."
+ },
+ {
+  "id": 590,
+  "tr": "Büyük bir evde oturuyoruz."
+ },
+ {
+  "id": 591,
+  "tr": "Elif odasında."
+ },
+ {
+  "id": 592,
+  "tr": "Kahvaltıyı mutfakta yaparız."
+ },
+ {
+  "id": 593,
+  "tr": "Saat onda yatağa girerim."
+ },
+ {
+  "id": 594,
+  "tr": "Çay masada."
+ },
+ {
+  "id": 595,
+  "tr": "Her öğrencinin bir sandalyesi var."
+ },
+ {
+  "id": 596,
+  "tr": "Tom kapıda."
+ },
+ {
+  "id": 597,
+  "tr": "Odamın büyük bir penceresi var."
+ },
+ {
+  "id": 598,
+  "tr": "Anahtarım çantamda."
+ },
+ {
+  "id": 599,
+  "tr": "Mutfak artık temiz."
+ },
+ {
+  "id": 600,
+  "tr": "Büyük bir ailem var."
+ },
+ {
+  "id": 601,
+  "tr": "Odam küçük ama güzel."
+ },
+ {
+  "id": 602,
+  "tr": "Lütfen kapıyı aç."
+ },
+ {
+  "id": 603,
+  "tr": "Lütfen pencereyi kapat."
+ },
+ {
+  "id": 604,
+  "tr": "Okuldan sonra eve giderim."
+ },
+ {
+  "id": 605,
+  "tr": "Her sabah yedide uyanırım."
+ },
+ {
+  "id": 606,
+  "tr": "Her gece sekiz saat uyurum."
+ },
+ {
+  "id": 607,
+  "tr": "Annem bir hastanede çalışıyor."
+ },
+ {
+  "id": 608,
+  "tr": "Tom okula otobüsle gidiyor."
+ },
+ {
+  "id": 609,
+  "tr": "Pazar günleri parka gideriz."
+ },
+ {
+  "id": 610,
+  "tr": "Tom her cumartesi evime gelir."
+ },
+ {
+  "id": 611,
+  "tr": "Her sabah okula yürüyerek giderim."
+ },
+ {
+  "id": 612,
+  "tr": "Tom her gün parkta koşar."
+ },
+ {
+  "id": 613,
+  "tr": "Her gece kitap okur."
+ },
+ {
+  "id": 614,
+  "tr": "Adımı kâğıda yazıyorum."
+ },
+ {
+  "id": 615,
+  "tr": "Otobüste müzik dinlerim."
+ },
+ {
+  "id": 616,
+  "tr": "Akşam yemeğinden sonra televizyon izleriz."
+ },
+ {
+  "id": 617,
+  "tr": "Çocuklar okuldan sonra futbol oynar."
+ },
+ {
+  "id": 618,
+  "tr": "Annem her akşam yemek yapar."
+ },
+ {
+  "id": 619,
+  "tr": "Mutfakta anneme yardım ederim."
+ },
+ {
+  "id": 620,
+  "tr": "Kırmızı arabanı beğendim."
+ },
+ {
+  "id": 621,
+  "tr": "Bugün gökyüzü mavi."
+ },
+ {
+  "id": 622,
+  "tr": "En sevdiğim renk yeşil."
+ },
+ {
+  "id": 623,
+  "tr": "Muzlar sarıdır."
+ },
+ {
+  "id": 624,
+  "tr": "Saçları siyah."
+ },
+ {
+  "id": 625,
+  "tr": "Beyaz bir tişört istiyorum."
+ },
+ {
+  "id": 626,
+  "tr": "Her gece kitap okurum."
+ },
+ {
+  "id": 627,
+  "tr": "Kalemini kullanabilir miyim?"
+ },
+ {
+  "id": 628,
+  "tr": "Çantam çok ağır."
+ },
+ {
+  "id": 629,
+  "tr": "Telefonum nerede?"
+ },
+ {
+  "id": 630,
+  "tr": "Babamın yeni bir arabası var."
+ },
+ {
+  "id": 631,
+  "tr": "Okula otobüsle gidiyorum."
+ },
+ {
+  "id": 632,
+  "tr": "Bugün hiç param yok."
+ },
+ {
+  "id": 633,
+  "tr": "Dükkan dokuzda açılıyor."
+ },
+ {
+  "id": 634,
+  "tr": "Her sabah ekmek alırım."
+ },
+ {
+  "id": 635,
+  "tr": "Bugün başım biraz ağrıyor."
+ },
+ {
+  "id": 636,
+  "tr": "Lütfen yemekten önce ellerini yıka."
+ },
+ {
+  "id": 637,
+  "tr": "Kocaman kahverengi gözleri var."
+ },
+ {
+  "id": 638,
+  "tr": "Okula yürüyerek gidiyorum."
+ },
+ {
+  "id": 639,
+  "tr": "Kız kardeşimin uzun siyah saçları var."
+ },
+ {
+  "id": 640,
+  "tr": "Koşarken kalbim hızlı atıyor."
+ },
+ {
+  "id": 641,
+  "tr": "Bugün çok mutluyum."
+ },
+ {
+  "id": 642,
+  "tr": "Neden bu kadar üzgünsün?"
+ },
+ {
+  "id": 643,
+  "tr": "İşten sonra yorgunum."
+ },
+ {
+  "id": 644,
+  "tr": "Tom hasta, o yüzden evde kalıyor."
+ },
+ {
+  "id": 645,
+  "tr": "Çay çok sıcak."
+ },
+ {
+  "id": 646,
+  "tr": "Kışın hava çok soğuk olur."
+ },
+ {
+  "id": 647,
+  "tr": "Bu çorba gerçekten iyi olmuş."
+ },
+ {
+  "id": 648,
+  "tr": "Bugün hava kötü."
+ },
+ {
+  "id": 649,
+  "tr": "Çok güzel bir gülüşün var."
+ },
+ {
+  "id": 650,
+  "tr": "İstanbul büyük bir şehir."
+ },
+ {
+  "id": 651,
+  "tr": "Okulum bu sokakta."
+ },
+ {
+  "id": 652,
+  "tr": "Parkta futbol oynarız."
+ },
+ {
+  "id": 653,
+  "tr": "Annem hastanede çalışıyor."
+ },
+ {
+  "id": 654,
+  "tr": "İstasyon bankanın yanında."
+ },
+ {
+  "id": 655,
+  "tr": "Buralarda bir banka var mı?"
+ },
+ {
+  "id": 656,
+  "tr": "Hastaneden sola dön."
+ },
+ {
+  "id": 657,
+  "tr": "Park sağda."
+ },
+ {
+  "id": 658,
+  "tr": "Evim istasyona yakın."
+ },
+ {
+  "id": 659,
+  "tr": "Hastane buraya uzak."
+ },
+ {
+  "id": 660,
+  "tr": "Burada, parkın yakınında oturuyorum."
+ },
+ {
+  "id": 661,
+  "tr": "Banka orada."
+ },
+ {
+  "id": 662,
+  "tr": "Otobüs durağı nerede?"
+ },
+ {
+  "id": 663,
+  "tr": "Otobüs istasyonda duruyor."
+ },
+ {
+  "id": 664,
+  "tr": "Beni bankada bekle."
+ },
+ {
+  "id": 665,
+  "tr": "Güneş çok sıcak."
+ },
+ {
+  "id": 666,
+  "tr": "Yağmur sesini severim."
+ },
+ {
+  "id": 667,
+  "tr": "Çocuklar karda oynamaya bayılır."
+ },
+ {
+  "id": 668,
+  "tr": "Bugün rüzgar sert esiyor."
+ },
+ {
+  "id": 669,
+  "tr": "Şu kocaman buluta bak."
+ },
+ {
+  "id": 670,
+  "tr": "Bugün hava nasıl?"
+ },
+ {
+  "id": 671,
+  "tr": "Bahçede büyük bir ağaç var."
+ },
+ {
+  "id": 672,
+  "tr": "Bu çiçek güzel kokuyor."
+ },
+ {
+  "id": 673,
+  "tr": "Köpeğim parkta koşuyor."
+ },
+ {
+  "id": 674,
+  "tr": "Kedi kanepede uyuyor."
+ },
+ {
+  "id": 675,
+  "tr": "Ağaçta küçük bir kuş ötüyor."
+ },
+ {
+  "id": 676,
+  "tr": "Yazın denizde yüzeriz."
+ },
+ {
+  "id": 677,
+  "tr": "Dağ çok yüksek."
+ },
+ {
+  "id": 678,
+  "tr": "Bugün gökyüzü mavi."
+ },
+ {
+  "id": 679,
+  "tr": "Dünyayı görmek istiyorum."
+ },
+ {
+  "id": 1130,
+  "tr": "Kediler en sevdiğim hayvanlar."
+ },
+ {
+  "id": 1131,
+  "tr": "İnek bize süt verir."
+ },
+ {
+  "id": 1132,
+  "tr": "Ata binebilir misin?"
+ },
+ {
+  "id": 1133,
+  "tr": "On koyun görüyorum."
+ },
+ {
+  "id": 1134,
+  "tr": "Babaannemin yirmi tavuğu var."
+ },
+ {
+  "id": 1135,
+  "tr": "Bak! Parkta ördekler var."
+ },
+ {
+  "id": 1136,
+  "tr": "Mutfakta bir fare var!"
+ },
+ {
+  "id": 1137,
+  "tr": "Kız kardeşimin beyaz bir tavşanı var."
+ },
+ {
+  "id": 1138,
+  "tr": "Ayılar kışın uyur."
+ },
+ {
+  "id": 1139,
+  "tr": "Aslan bütün gün uyur."
+ },
+ {
+  "id": 1140,
+  "tr": "Hayvanat bahçesindeki filleri seviyorum."
+ },
+ {
+  "id": 1141,
+  "tr": "Maymunlar ağaçtan ağaca atlıyor."
+ },
+ {
+  "id": 1142,
+  "tr": "Amcamın küçük bir çiftliği var."
+ },
+ {
+  "id": 1143,
+  "tr": "Bugün hayvanat bahçesine gidelim!"
+ },
+ {
+  "id": 1144,
+  "tr": "Tavuklar pek iyi uçamaz."
+ },
+ {
+  "id": 1145,
+  "tr": "Doktor koluma bakıyor."
+ },
+ {
+  "id": 1146,
+  "tr": "Hemşire adımı soruyor."
+ },
+ {
+  "id": 1147,
+  "tr": "Otobüs şoförü günaydın diyor."
+ },
+ {
+  "id": 1148,
+  "tr": "Garson iki çay getiriyor."
+ },
+ {
+  "id": 1149,
+  "tr": "Çiftçinin kırk koyunu var."
+ },
+ {
+  "id": 1150,
+  "tr": "Pilot bugün Londra'ya uçuyor."
+ },
+ {
+  "id": 1151,
+  "tr": "Duşta şarkı söylerim."
+ },
+ {
+  "id": 1152,
+  "tr": "Dans edemiyorum ama deniyorum."
+ },
+ {
+  "id": 1153,
+  "tr": "Köpeğim çok iyi yüzebiliyor."
+ },
+ {
+  "id": 1154,
+  "tr": "Türkçe ve biraz İngilizce konuşuyorum."
+ },
+ {
+  "id": 1155,
+  "tr": "Her gün üç yeni kelime öğreniyorum."
+ },
+ {
+  "id": 1156,
+  "tr": "Sana bir soru sorabilir miyim?"
+ },
+ {
+  "id": 1157,
+  "tr": "Tom, lütfen telefona cevap ver."
+ },
+ {
+  "id": 1158,
+  "tr": "Şu büyük file bak!"
+ },
+ {
+  "id": 1159,
+  "tr": "Kırmızı kalemi bana ver lütfen."
+ },
+ {
+  "id": 60,
+  "tr": "Sınav zordu; ancak yine de geçtim."
+ },
+ {
+  "id": 61,
+  "tr": "Yağmur yağmasına rağmen yürüyüşe çıktık."
+ },
+ {
+  "id": 65,
+  "tr": "Kızgın olduğunu sanmıştım ama aslında sadece yorgunmuş."
+ },
+ {
+  "id": 64,
+  "tr": "Ne yazık ki tren bizi almadan kalktı."
+ },
+ {
+  "id": 71,
+  "tr": "Yardıma ihtiyacın olursa beni hemen ara."
+ },
+ {
+  "id": 75,
+  "tr": "Mülakattan önce kendine güveni tamdı."
+ },
+ {
+  "id": 76,
+  "tr": "İşteki ilk günü için gergindi."
+ },
+ {
+  "id": 84,
+  "tr": "Yeni bir dil öğrenirken sabırlı olmalısın."
+ },
+ {
+  "id": 87,
+  "tr": "Lütfen bu sorun konusunda bana karşı dürüst ol."
+ },
+ {
+  "id": 79,
+  "tr": "Çocuklar eski evi merak ediyordu."
+ },
+ {
+  "id": 90,
+  "tr": "Denemeye devam edersen hedeflerine ulaşmayı başarabilirsin."
+ },
+ {
+  "id": 91,
+  "tr": "Her gün okumak İngilizceni geliştirir."
+ },
+ {
+  "id": 96,
+  "tr": "Sağlıklı olmak istiyorsan şekerden kaçınmaya çalış."
+ },
+ {
+  "id": 102,
+  "tr": "Arayıp geç kaldığı için özür diledi."
+ },
+ {
+  "id": 104,
+  "tr": "Saatin bu kadar geç olduğunu fark etmemiştim."
+ },
+ {
+  "id": 105,
+  "tr": "İşvereni ona üç hafta tatil verdi."
+ },
+ {
+  "id": 106,
+  "tr": "Bu yıl her çalışan küçük bir prim aldı."
+ },
+ {
+  "id": 107,
+  "tr": "Bir iş arkadaşımla öğle yemeği yedim."
+ },
+ {
+  "id": 109,
+  "tr": "Terfiden sonra maaşı arttı."
+ },
+ {
+  "id": 119,
+  "tr": "Kariyerine öğretmen olarak başladı."
+ },
+ {
+  "id": 120,
+  "tr": "Ciddi bir hastalık yüzünden okula gidemedi."
+ },
+ {
+  "id": 122,
+  "tr": "Tedavinin etkisini göstermesi birkaç hafta sürdü."
+ },
+ {
+  "id": 125,
+  "tr": "Uzun yolculuktan sonra tamamen bitkin düşmüşlerdi."
+ },
+ {
+  "id": 128,
+  "tr": "Aşırı iş yükü çok fazla strese yol açabilir."
+ },
+ {
+  "id": 131,
+  "tr": "Baş ağrım var, o yüzden dinlenmem gerek."
+ },
+ {
+  "id": 135,
+  "tr": "Sahile yolculuk beş saat sürdü."
+ },
+ {
+  "id": 138,
+  "tr": "Lütfen bagajınızı koltuğun altına koyun."
+ },
+ {
+  "id": 142,
+  "tr": "Havalimanında pasaportunu unutma."
+ },
+ {
+  "id": 143,
+  "tr": "Her yaz binlerce turist şehri ziyaret ediyor."
+ },
+ {
+  "id": 144,
+  "tr": "Bir yıl yurt dışında okumaya karar verdi."
+ },
+ {
+  "id": 150,
+  "tr": "Hava kirliliği büyük şehirlerde ciddi bir sorun."
+ },
+ {
+  "id": 152,
+  "tr": "Hepimiz çevreyi korumaya çalışmalıyız."
+ },
+ {
+  "id": 155,
+  "tr": "Güneş kremi cildini güneşten korumaya yardımcı olur."
+ },
+ {
+  "id": 153,
+  "tr": "Bal, çayı tatlandırmanın doğal bir yolu."
+ },
+ {
+  "id": 157,
+  "tr": "Evde kâğıt, cam ve plastiği geri dönüştürüyoruz."
+ },
+ {
+  "id": 165,
+  "tr": "Bu küçük cihaz telefonunu hızlıca şarj edebilir."
+ },
+ {
+  "id": 171,
+  "tr": "Dizüstü bilgisayarımın ekranı çatlak."
+ },
+ {
+  "id": 172,
+  "tr": "Telefonumun pili günün ortasında bitti."
+ },
+ {
+  "id": 175,
+  "tr": "Dizüstü bilgisayarını yazıcıya bağlayabilir misin?"
+ },
+ {
+  "id": 177,
+  "tr": "Kelime öğrenmek için yeni bir uygulama indirdim."
+ },
+ {
+  "id": 180,
+  "tr": "Bu yıl yeni bir arabaya gücümüz yetmiyor."
+ },
+ {
+  "id": 181,
+  "tr": "O restoran bizim için fazla pahalı."
+ },
+ {
+  "id": 182,
+  "tr": "Bu ayakkabıları %20 indirimle aldım."
+ },
+ {
+  "id": 185,
+  "tr": "Yaz tatilimiz için bir bütçe hazırladık."
+ },
+ {
+  "id": 189,
+  "tr": "Bütün paranı bir günde harcamamaya çalış."
+ },
+ {
+  "id": 195,
+  "tr": "Okulda en sevdiği ders matematik."
+ },
+ {
+  "id": 199,
+  "tr": "Yarınki sınava çok çalışmam lazım."
+ },
+ {
+  "id": 201,
+  "tr": "Üniversitede mühendislik okuyor."
+ },
+ {
+  "id": 203,
+  "tr": "Gelecek yıl üniversiteden mezun olacak."
+ },
+ {
+  "id": 204,
+  "tr": "Tarih bilgisi gerçekten etkileyici."
+ },
+ {
+  "id": 210,
+  "tr": "Gelecek planlarımız hakkında uzun bir sohbet ettik."
+ },
+ {
+  "id": 213,
+  "tr": "Fikrimce bu daha iyi bir seçim."
+ },
+ {
+  "id": 214,
+  "tr": "Sana tamamen katılıyorum."
+ },
+ {
+  "id": 215,
+  "tr": "Küçük konularda sık sık aynı fikirde olmuyorlar."
+ },
+ {
+  "id": 217,
+  "tr": "Bu kelimeyi bana bir daha açıklayabilir misin?"
+ },
+ {
+  "id": 225,
+  "tr": "Güvene dayalı sağlam bir ilişkileri var."
+ },
+ {
+  "id": 226,
+  "tr": "Yeni birine güvenmek zaman alır."
+ },
+ {
+  "id": 227,
+  "tr": "Ailem kararlarımı her zaman destekler."
+ },
+ {
+  "id": 232,
+  "tr": "Öğrenciler öğretmenlerine saygı duymalı."
+ },
+ {
+  "id": 234,
+  "tr": "Bu pizzayı seninle paylaşabilir miyim?"
+ },
+ {
+  "id": 240,
+  "tr": "Bu hafta sonu büyük bir fırtına geliyor."
+ },
+ {
+  "id": 243,
+  "tr": "Şiddetli yağmur köyde sele yol açtı."
+ },
+ {
+  "id": 246,
+  "tr": "Hava tahminine göre yarın kar yağacak."
+ },
+ {
+  "id": 247,
+  "tr": "Bugün hava çok nemli, o yüzden her yerim yapış yapış."
+ },
+ {
+  "id": 254,
+  "tr": "Bu yıl ılıman bir kış geçirdik."
+ },
+ {
+  "id": 255,
+  "tr": "Un, ekmeğin ana malzemesidir."
+ },
+ {
+  "id": 256,
+  "tr": "Bu tarif için sadece beş malzeme gerekiyor."
+ },
+ {
+  "id": 257,
+  "tr": "Taze çileğin lezzetine bayılıyorum."
+ },
+ {
+  "id": 258,
+  "tr": "Bu çorba benim için fazla baharatlı."
+ },
+ {
+  "id": 265,
+  "tr": "Tatlının tadına bakabilir miyim?"
+ },
+ {
+  "id": 270,
+  "tr": "Sakin bir mahalleye yeni taşındık."
+ },
+ {
+  "id": 273,
+  "tr": "Kirayı her ayın birinde ödüyoruz."
+ },
+ {
+  "id": 274,
+  "tr": "Oturma odası için yeni mobilya aldılar."
+ },
+ {
+  "id": 276,
+  "tr": "Otobüs oturamayacak kadar kalabalıktı."
+ },
+ {
+  "id": 284,
+  "tr": "Göl kenarında küçük bir mülk satın aldılar."
+ },
+ {
+  "id": 680,
+  "tr": "Konser için beyaz bir gömlek lazım."
+ },
+ {
+  "id": 681,
+  "tr": "Bu pantolon bana çok uzun."
+ },
+ {
+  "id": 682,
+  "tr": "Ayakkabılarını kapıda çıkardı."
+ },
+ {
+  "id": 683,
+  "tr": "Elif düğüne kırmızı bir elbise giydi."
+ },
+ {
+  "id": 684,
+  "tr": "Ceketini al, dışarısı soğuk."
+ },
+ {
+  "id": 685,
+  "tr": "Bu gömleğin daha büyük bedeni var mı?"
+ },
+ {
+  "id": 686,
+  "tr": "Pazarda ucuz bir ceket buldum."
+ },
+ {
+  "id": 687,
+  "tr": "Bu ayakkabıların fiyatı çok yüksek."
+ },
+ {
+  "id": 688,
+  "tr": "Kartla ödeyebilir miyim?"
+ },
+ {
+  "id": 689,
+  "tr": "Bu akşam ne giyeceksin?"
+ },
+ {
+  "id": 690,
+  "tr": "Üç elbise denedi ve birini aldı."
+ },
+ {
+  "id": 691,
+  "tr": "Bu ceket bana olmuyor, çok küçük."
+ },
+ {
+  "id": 692,
+  "tr": "Bu ayakkabıların fişini kaybettim."
+ },
+ {
+  "id": 693,
+  "tr": "Kasiyer para üstünü yanlış verdi."
+ },
+ {
+  "id": 694,
+  "tr": "Bu ayakkabılar bu hafta indirimde."
+ },
+ {
+  "id": 695,
+  "tr": "Ankara treni dokuzda kalkıyor."
+ },
+ {
+  "id": 696,
+  "tr": "Akşam treni için iki bilet aldım."
+ },
+ {
+  "id": 697,
+  "tr": "Babam bu gece beni havalimanına bırakacak."
+ },
+ {
+  "id": 698,
+  "tr": "Londra uçuşumuz yarın saat yedide."
+ },
+ {
+  "id": 699,
+  "tr": "Otobüs yine on dakika geç geldi."
+ },
+ {
+  "id": 700,
+  "tr": "Son tren on bir buçukta istasyondan ayrılıyor."
+ },
+ {
+  "id": 701,
+  "tr": "Haritayı aç, galiba kaybolduk."
+ },
+ {
+  "id": 702,
+  "tr": "Dümdüz git, istasyon solunda kalıyor."
+ },
+ {
+  "id": 703,
+  "tr": "Fırının yanındaki köşeden sağa dön."
+ },
+ {
+  "id": 704,
+  "tr": "Bu sabah trafik berbat."
+ },
+ {
+  "id": 705,
+  "tr": "Ablam her gün işe arabayla gidiyor."
+ },
+ {
+  "id": 706,
+  "tr": "Deniz kenarında bisiklet kiralayacağız."
+ },
+ {
+  "id": 707,
+  "tr": "Taksiye binelim, yağmur çok şiddetli yağıyor."
+ },
+ {
+  "id": 708,
+  "tr": "Tarifeye bak, pazar günleri tren saatleri değişiyor."
+ },
+ {
+  "id": 709,
+  "tr": "Trenimiz iki numaralı peronda bekliyor."
+ },
+ {
+  "id": 710,
+  "tr": "Her sabah okuldan önce duş alıyorum."
+ },
+ {
+  "id": 711,
+  "tr": "Yatmadan önce dişlerini fırçala."
+ },
+ {
+  "id": 712,
+  "tr": "Annem cumartesi günleri çamaşır yıkar."
+ },
+ {
+  "id": 713,
+  "tr": "Bu akşam bulaşıkları kim yıkayacak?"
+ },
+ {
+  "id": 714,
+  "tr": "Odası her zaman derli toplu ve temizdir."
+ },
+ {
+  "id": 715,
+  "tr": "Çöpü çıkarabilir misin lütfen?"
+ },
+ {
+  "id": 716,
+  "tr": "Alarmım her sabah yedide çalıyor."
+ },
+ {
+  "id": 717,
+  "tr": "Acele et, otobüs kalkıyor!"
+ },
+ {
+  "id": 718,
+  "tr": "Genellikle okula Tom'la yürüyerek giderim."
+ },
+ {
+  "id": 719,
+  "tr": "Bazen okuldan sonra futbol oynarız."
+ },
+ {
+  "id": 720,
+  "tr": "Tom okul günlerinde asla kahvaltı yapmaz."
+ },
+ {
+  "id": 721,
+  "tr": "Odanı ne kadar sık temizliyorsun?"
+ },
+ {
+  "id": 722,
+  "tr": "Odamı bu sabah zaten temizledim."
+ },
+ {
+  "id": 723,
+  "tr": "Saat on oldu, o hâlâ uyuyor."
+ },
+ {
+  "id": 724,
+  "tr": "Çamaşırlar henüz kurumadı."
+ },
+ {
+  "id": 725,
+  "tr": "Eve geç geldiğim için annem kızgındı."
+ },
+ {
+  "id": 726,
+  "tr": "Korkmuştum, o yüzden babamın elini tuttum."
+ },
+ {
+  "id": 727,
+  "tr": "“Doğum günün kutlu olsun!” diye bağırdığımızda şaşırdı."
+ },
+ {
+  "id": 728,
+  "tr": "Buradaki ilk haftamda kendimi yalnız hissettim."
+ },
+ {
+  "id": 729,
+  "tr": "Babam sınav sonuçlarımla gurur duyuyor."
+ },
+ {
+  "id": 730,
+  "tr": "Küçük kardeşim yeni insanların yanında utangaç oluyor."
+ },
+ {
+  "id": 731,
+  "tr": "Garson cana yakındı ve çok gülümsüyordu."
+ },
+ {
+  "id": 732,
+  "tr": "Kibar ol ve öğretmenine teşekkür et."
+ },
+ {
+  "id": 733,
+  "tr": "Adam kabaydı ve özür dilemedi."
+ },
+ {
+  "id": 734,
+  "tr": "Tom komik bir fıkra anlattı ve herkes güldü."
+ },
+ {
+  "id": 735,
+  "tr": "Babam ciddi görünüyordu, o yüzden gülmeyi bıraktım."
+ },
+ {
+  "id": 736,
+  "tr": "Bulaşıkları yıkayamayacak kadar tembeldim."
+ },
+ {
+  "id": 737,
+  "tr": "Cesurdu ve dişçiye tek başına gitti."
+ },
+ {
+  "id": 738,
+  "tr": "Biz gürültü yaptığımızda öğretmenim sakin kalıyor."
+ },
+ {
+  "id": 739,
+  "tr": "İyi kalpli kadın çantalarımı taşımama yardım etti."
+ },
+ {
+  "id": 740,
+  "tr": "Bu ilkbahar çiçek dikeceğiz."
+ },
+ {
+  "id": 741,
+  "tr": "Her yaz denizde yüzeriz."
+ },
+ {
+  "id": 742,
+  "tr": "Sonbaharda yapraklar sararıp kızarır."
+ },
+ {
+  "id": 743,
+  "tr": "Burada kışın çok kar yağar."
+ },
+ {
+  "id": 744,
+  "tr": "Sonbahar yılın en sevdiğim mevsimi."
+ },
+ {
+  "id": 745,
+  "tr": "Öğle yemeğinden sonra nehir boyunca yürüdük."
+ },
+ {
+  "id": 746,
+  "tr": "Gölün suyu çok soğuk."
+ },
+ {
+  "id": 747,
+  "tr": "Geçen pazar ormanda kaybolduk."
+ },
+ {
+  "id": 748,
+  "tr": "Küçük adaya tekneyle gittik."
+ },
+ {
+  "id": 749,
+  "tr": "Çocuklar şu an plajda oynuyor."
+ },
+ {
+  "id": 750,
+  "tr": "Bugün hava ılık, o yüzden tişört giy."
+ },
+ {
+  "id": 751,
+  "tr": "Akşamlar serin oluyor, yanına bir ceket al."
+ },
+ {
+  "id": 752,
+  "tr": "Bu yıl çok kurak bir yaz geçirdik."
+ },
+ {
+  "id": 753,
+  "tr": "Yağmur yüzünden ayakkabılarım ıslak."
+ },
+ {
+  "id": 754,
+  "tr": "Hava güneşli, hadi plaja gidelim."
+ },
+ {
+  "id": 1160,
+  "tr": "Geçen cumartesi akşamı sinemaya gittik."
+ },
+ {
+  "id": 1161,
+  "tr": "Konser sekizde başlıyor, hadi şimdi çıkalım."
+ },
+ {
+  "id": 1162,
+  "tr": "Müzede eski Roma sikkeleri gördük."
+ },
+ {
+  "id": 1163,
+  "tr": "Kuzenim her partide gitar çalar."
+ },
+ {
+  "id": 1164,
+  "tr": "Geçen ay ilk tablosunu sattı."
+ },
+ {
+  "id": 1165,
+  "tr": "Büyükannem çantasında eski bir fotoğraf taşıyor."
+ },
+ {
+  "id": 1166,
+  "tr": "Fotoğraf makinemi unuttum, o yüzden telefonumu kullandım."
+ },
+ {
+  "id": 1167,
+  "tr": "Bu şarkıyı her duyduğumda dans edesim geliyor."
+ },
+ {
+  "id": 1168,
+  "tr": "Her pazar sabahı bir moda dergisi okur."
+ },
+ {
+  "id": 1169,
+  "tr": "Her gün bir saat gitar pratiği yapıyorum."
+ },
+ {
+  "id": 1170,
+  "tr": "Amcam farklı ülkelerin eski paralarını biriktiriyor."
+ },
+ {
+  "id": 1171,
+  "tr": "Tom'u cuma günkü konsere davet edelim."
+ },
+ {
+  "id": 1172,
+  "tr": "Müze beklediğimden daha ilginçti."
+ },
+ {
+  "id": 1173,
+  "tr": "O şarkıcı şu sıralar gençler arasında çok popüler."
+ },
+ {
+  "id": 1174,
+  "tr": "Bu kafe limonlu kekiyle ünlü."
+ },
+ {
+  "id": 1175,
+  "tr": "Bugün kız kardeşimin doğum günü, o yüzden pasta yapıyoruz."
+ },
+ {
+  "id": 1176,
+  "tr": "Kuzenimin düğününde bütün gece dans ettik."
+ },
+ {
+  "id": 1177,
+  "tr": "Cuma günü Ayşe'nin partisine geliyor musun?"
+ },
+ {
+  "id": 1178,
+  "tr": "Annem için bir hediye arıyorum."
+ },
+ {
+  "id": 1179,
+  "tr": "Otuz misafirimiz var, o yüzden daha fazla sandalye lazım."
+ },
+ {
+  "id": 1180,
+  "tr": "Annem parti için çikolatalı pasta yapıyor."
+ },
+ {
+  "id": 1181,
+  "tr": "Kuzenim düğün için İzmir'den geliyor."
+ },
+ {
+  "id": 1182,
+  "tr": "Teyzem bu akşam meşhur baklavasını getiriyor."
+ },
+ {
+  "id": 1183,
+  "tr": "Amcam her partide aynı fıkraları anlatır."
+ },
+ {
+  "id": 1184,
+  "tr": "Doğum gününü nasıl kutlayacaksın?"
+ },
+ {
+  "id": 1185,
+  "tr": "Misafirler gelmeden önce salataları hazırlayalım."
+ },
+ {
+  "id": 1186,
+  "tr": "Odayı balonlar ve ışıklarla süsledik."
+ },
+ {
+  "id": 1187,
+  "tr": "Abim geçen yaz Bodrum'da evlendi."
+ },
+ {
+  "id": 1188,
+  "tr": "Pazar günleri hep birlikte kahvaltı yaparız."
+ },
+ {
+  "id": 1189,
+  "tr": "Bu yaz tatile bir yere gidecek misin?"
+ },
+ {
+  "id": 285,
+  "tr": "Resim yapmak onun en sevdiği hobi."
+ },
+ {
+  "id": 288,
+  "tr": "Çocuklar uzun toplantı sırasında sıkıldı."
+ },
+ {
+  "id": 289,
+  "tr": "Filmin sonu çok heyecan vericiydi."
+ },
+ {
+  "id": 292,
+  "tr": "O yetenekli bir müzisyen."
+ },
+ {
+  "id": 294,
+  "tr": "Dans yarışmasında birinci oldu."
+ },
+ {
+  "id": 300,
+  "tr": "Şehirdeki suç sayısı azaldı."
+ },
+ {
+  "id": 301,
+  "tr": "Dün biri bisikletini çalmaya çalıştı."
+ },
+ {
+  "id": 304,
+  "tr": "Mağdur hastaneye kaldırıldı."
+ },
+ {
+  "id": 307,
+  "tr": "Polis adamı bankanın yakınında tutukladı."
+ },
+ {
+  "id": 308,
+  "tr": "Bunu ispatlamak için yeterli kanıt yoktu."
+ },
+ {
+  "id": 316,
+  "tr": "Bir gazeteci belediye başkanına zor sorular sordu."
+ },
+ {
+  "id": 318,
+  "tr": "Uzayla ilgili ilginç bir makale okudum."
+ },
+ {
+  "id": 323,
+  "tr": "Restoran ünlüler arasında çok popüler."
+ },
+ {
+  "id": 326,
+  "tr": "Geçen hafta kanallarına abone oldum."
+ },
+ {
+  "id": 329,
+  "tr": "Bu yıl kısa saç kesimleri çok trend."
+ },
+ {
+  "id": 330,
+  "tr": "Her sporcu her gün saatlerce antrenman yapar."
+ },
+ {
+  "id": 333,
+  "tr": "Son dakikada galibiyeti getiren golü attı."
+ },
+ {
+  "id": 334,
+  "tr": "Takımımızın rakibi çok daha uzun boyluydu."
+ },
+ {
+  "id": 337,
+  "tr": "Bütün şehir zaferi kutladı."
+ },
+ {
+  "id": 339,
+  "tr": "Antrenörümüz bize yeni bir strateji öğretti."
+ },
+ {
+  "id": 345,
+  "tr": "Bu, nadir bir kelebek türü."
+ },
+ {
+  "id": 349,
+  "tr": "Ormanları kesmek hayvanların yaşam alanını yok ediyor."
+ },
+ {
+  "id": 351,
+  "tr": "Dinozorların nesli milyonlarca yıl önce tükendi."
+ },
+ {
+  "id": 355,
+  "tr": "Birçok kuş kışı geçirmek için güneye göç eder."
+ },
+ {
+  "id": 357,
+  "tr": "Arı, uçan küçük bir böcektir."
+ },
+ {
+  "id": 360,
+  "tr": "Fiyatlar bu yıl çok arttı."
+ },
+ {
+  "id": 361,
+  "tr": "Öğrenci sayısı bu yıl azaldı."
+ },
+ {
+  "id": 365,
+  "tr": "Şirket yeni bir uygulama geliştiriyor."
+ },
+ {
+  "id": 367,
+  "tr": "Kırık pencereyi değiştirmemiz gerekiyor."
+ },
+ {
+  "id": 372,
+  "tr": "Kedi yatağın altında kayboldu."
+ },
+ {
+  "id": 376,
+  "tr": "Talimatlar kısa ve basitti."
+ },
+ {
+  "id": 379,
+  "tr": "Su, yaşam için gereklidir."
+ },
+ {
+  "id": 386,
+  "tr": "Sınavdan önce gergin hissetmek yaygın bir durumdur."
+ },
+ {
+  "id": 385,
+  "tr": "Burada yazın kar görmek nadir bir şeydir."
+ },
+ {
+  "id": 387,
+  "tr": "Tipik bir gün yedide kahvaltıyla başlar."
+ },
+ {
+  "id": 391,
+  "tr": "Anahtarlarını sık sık evde unutuyor."
+ },
+ {
+  "id": 392,
+  "tr": "Nadiren et yer."
+ },
+ {
+  "id": 396,
+  "tr": "Önceki işimde bir bankada çalışıyordum."
+ },
+ {
+  "id": 401,
+  "tr": "Toplantıyı cumaya ertelemek zorunda kaldık."
+ },
+ {
+  "id": 403,
+  "tr": "Egzersiz, günlük rutinimin bir parçası."
+ },
+ {
+  "id": 405,
+  "tr": "Bu iş onun için harika bir fırsat."
+ },
+ {
+  "id": 406,
+  "tr": "Yeni bir dil öğrenmek gerçekten büyük bir zorluk."
+ },
+ {
+  "id": 407,
+  "tr": "Sonunda soruna bir çözüm bulduk."
+ },
+ {
+  "id": 411,
+  "tr": "Çok hızlı araba kullanmak ciddi bir risk."
+ },
+ {
+  "id": 415,
+  "tr": "Derslerinde iyi bir ilerleme kaydetti."
+ },
+ {
+  "id": 420,
+  "tr": "Bu iki çanta birbirine çok benzer görünüyor."
+ },
+ {
+  "id": 421,
+  "tr": "Fikirlerimiz oldukça farklı."
+ },
+ {
+  "id": 422,
+  "tr": "Almadan önce fiyatları karşılaştıralım."
+ },
+ {
+  "id": 429,
+  "tr": "Kahve yerine çay alayım."
+ },
+ {
+  "id": 430,
+  "tr": "Yağmura rağmen maç devam etti."
+ },
+ {
+  "id": 436,
+  "tr": "Sınav sonuçları açıklanmadan önce kendini kaygılı hissediyordu."
+ },
+ {
+  "id": 439,
+  "tr": "Sınav sonucu yüzünden hayal kırıklığına uğradı."
+ },
+ {
+  "id": 441,
+  "tr": "Tüm yardımların için minnettarım."
+ },
+ {
+  "id": 448,
+  "tr": "Maratonu bitirmeye kararlı."
+ },
+ {
+  "id": 449,
+  "tr": "Talimatlar konusunda kafam biraz karışık."
+ },
+ {
+  "id": 450,
+  "tr": "Vazgeçme, neredeyse bitirdin!"
+ },
+ {
+  "id": 452,
+  "tr": "Tatili dört gözle bekliyoruz."
+ },
+ {
+  "id": 455,
+  "tr": "Trenin kaçta kalktığını öğrenmem gerekiyor."
+ },
+ {
+  "id": 459,
+  "tr": "İş teklifini reddetmeye karar verdi."
+ },
+ {
+  "id": 462,
+  "tr": "Bu problemi çözmeme yardım eder misin?"
+ },
+ {
+  "id": 465,
+  "tr": "Teknoloji modern toplumu çok değiştirdi."
+ },
+ {
+  "id": 466,
+  "tr": "Pazar günleri birlikte yemek yemek bir gelenek."
+ },
+ {
+  "id": 472,
+  "tr": "Fırtınanın ardından tüm topluluk yardıma koştu."
+ },
+ {
+  "id": 474,
+  "tr": "Hükümet bugün yeni kurallar açıkladı."
+ },
+ {
+  "id": 476,
+  "tr": "Her hafta sonu hayvan barınağında gönüllü olarak çalışıyor."
+ },
+ {
+  "id": 480,
+  "tr": "Küçük bir yazılım şirketinde çalışıyor."
+ },
+ {
+  "id": 481,
+  "tr": "Müşteri para iadesi istedi."
+ },
+ {
+  "id": 482,
+  "tr": "Bu yeni ürün çok iyi satıyor."
+ },
+ {
+  "id": 483,
+  "tr": "Şirket bu yıl büyük kâr etti."
+ },
+ {
+  "id": 490,
+  "tr": "Sadece bu markadan kıyafet alıyor."
+ },
+ {
+  "id": 495,
+  "tr": "Çalışma saatlerim oldukça esnek."
+ },
+ {
+  "id": 499,
+  "tr": "Bu yeni makine çok daha verimli."
+ },
+ {
+  "id": 501,
+  "tr": "Mağazanın konumu bizim için çok uygun."
+ },
+ {
+  "id": 507,
+  "tr": "Soruna yaratıcı bir çözüm buldu."
+ },
+ {
+  "id": 508,
+  "tr": "Antrenörün konuşmasından sonra takım kendini çok motive hissetti."
+ },
+ {
+  "id": 755,
+  "tr": "Diz sakatlığı yüzünden finalde oynayamadı."
+ },
+ {
+  "id": 756,
+  "tr": "Yüksek ateş genellikle gribin ilk belirtisidir."
+ },
+ {
+  "id": 757,
+  "tr": "İlacı düzenli alırsan yakında kendini daha iyi hissedersin."
+ },
+ {
+  "id": 758,
+  "tr": "Bu antibiyotikleri reçetesiz alamazsın."
+ },
+ {
+  "id": 759,
+  "tr": "Perşembe sabahı için diş hekiminden randevu aldım."
+ },
+ {
+  "id": 760,
+  "tr": "Ameliyattan sonra iyileşmesi üç hafta sürdü."
+ },
+ {
+  "id": 761,
+  "tr": "Her gün işe yürüyerek gitsen kendini çok daha sağlıklı hissedersin."
+ },
+ {
+  "id": 762,
+  "tr": "Dengeli bir beslenme bol bol meyve ve sebze içermeli."
+ },
+ {
+  "id": 763,
+  "tr": "Doktorlar günde otuz dakika egzersizin yeterli olduğunu söylüyor."
+ },
+ {
+  "id": 764,
+  "tr": "Koşmaya başladığından beri çok kilo verdi."
+ },
+ {
+  "id": 765,
+  "tr": "Doktor beni dinlerken derin nefes almamı istedi."
+ },
+ {
+  "id": 766,
+  "tr": "Ağrı artarsa bir doktora görünmelisin."
+ },
+ {
+  "id": 767,
+  "tr": "Dün geceden beri ateşi var, o yüzden evde kaldı."
+ },
+ {
+  "id": 768,
+  "tr": "Askerin yarası yavaş iyileşti ama iz bıraktı."
+ },
+ {
+  "id": 769,
+  "tr": "Sargı bezini kuru tutun ve iki günde bir değiştirin."
+ },
+ {
+  "id": 770,
+  "tr": "Uygulamayı indirdim ama telefonumda açılmıyor."
+ },
+ {
+  "id": 771,
+  "tr": "Fotoğrafları silmeden önce buluta yükledi."
+ },
+ {
+  "id": 772,
+  "tr": "Şifreni unutursan e-posta ile sıfırlayabilirsin."
+ },
+ {
+  "id": 773,
+  "tr": "Eskisini kaybettiğim için yeni bir hesap açtım."
+ },
+ {
+  "id": 774,
+  "tr": "Aylardır laptopumu güncellemedim, o yüzden yavaş çalışıyor."
+ },
+ {
+  "id": 775,
+  "tr": "Şirketin web sitesi 2019'dan beri güncellenmemiş."
+ },
+ {
+  "id": 776,
+  "tr": "Ucuz uçuş aradım ama hiç bulamadım."
+ },
+ {
+  "id": 777,
+  "tr": "Dikkatim dağılmadan ders çalışabilmek için bildirimleri kapattım."
+ },
+ {
+  "id": 778,
+  "tr": "Otelde kablosuz internet var ama evdekinden daha yavaş."
+ },
+ {
+  "id": 779,
+  "tr": "Telefonumun depolama alanı dolu, o yüzden daha fazla fotoğraf çekemiyorum."
+ },
+ {
+  "id": 780,
+  "tr": "Akşam yemeğini yaparken bir tarih podcast'i dinliyorum."
+ },
+ {
+  "id": 781,
+  "tr": "Televizyonumuz olmadığı için maçı internetten izledik."
+ },
+ {
+  "id": 782,
+  "tr": "Manşette \"kriz\" yazıyordu ama haberin kendisi çok daha sakindi."
+ },
+ {
+  "id": 783,
+  "tr": "BBC haberleri kırktan fazla dilde yayınlıyor."
+ },
+ {
+  "id": 784,
+  "tr": "O reklamı o kadar çok gördüm ki artık nefret ediyorum."
+ },
+ {
+  "id": 785,
+  "tr": "Bu son teslim tarihini kaçırırsam hocam ödevi kabul etmeyecek."
+ },
+ {
+  "id": 786,
+  "tr": "Programım o kadar dolu ki cumadan önce görüşemem."
+ },
+ {
+  "id": 787,
+  "tr": "Bu hafta üç toplantı yaptık ve hiçbir şeye karar veremedik."
+ },
+ {
+  "id": 788,
+  "tr": "Çok gergin olmasına rağmen harika bir sunum yaptı."
+ },
+ {
+  "id": 789,
+  "tr": "Müdür dönmeden önce raporu bitirmem gerekiyor."
+ },
+ {
+  "id": 790,
+  "tr": "Mülakata çağrılırsan muhtemelen zayıf yönlerini soracaklar."
+ },
+ {
+  "id": 791,
+  "tr": "Üç işe başvurdum ama henüz kimse cevap vermedi."
+ },
+ {
+  "id": 792,
+  "tr": "Yaz daha yoğun geçtiği için kafe iki yeni garson işe aldı."
+ },
+ {
+  "id": 793,
+  "tr": "Terfi alırsa bütün ekibi yönetecek."
+ },
+ {
+  "id": 794,
+  "tr": "Bana bu işi diplomam değil, bilgisayar becerilerim kazandırdı."
+ },
+ {
+  "id": 795,
+  "tr": "Araştırması, öğrencilerin sınav döneminde daha az uyuduğunu gösteriyor."
+ },
+ {
+  "id": 796,
+  "tr": "Kompozisyonun yarısını yazdım ama sonuç kısmı hâlâ eksik."
+ },
+ {
+  "id": 797,
+  "tr": "Dünkü toplantının kısa bir özetini gönderebilir misin?"
+ },
+ {
+  "id": 798,
+  "tr": "Diplomasını yeni aldı, şimdi iş arıyor."
+ },
+ {
+  "id": 799,
+  "tr": "Burs olmasaydı yurt dışında okumaya gücüm yetmezdi."
+ },
+ {
+  "id": 800,
+  "tr": "Yeni işe başladığımdan beri gelirim ikiye katlandı."
+ },
+ {
+  "id": 801,
+  "tr": "Daha çok kazanırsan daha çok vergi ödersin."
+ },
+ {
+  "id": 802,
+  "tr": "İlk arabasını almak için kredi çekti."
+ },
+ {
+  "id": 803,
+  "tr": "Sonunda bütün kredi kartı borcunu ödedi."
+ },
+ {
+  "id": 804,
+  "tr": "Daha fazla birikimim olsaydı bu işi yarın bırakırdım."
+ },
+ {
+  "id": 805,
+  "tr": "Birikimiyle bir arkadaşının küçük kafesine yatırım yaptı."
+ },
+ {
+  "id": 806,
+  "tr": "Neyse ki hastane faturasını seyahat sigortam karşıladı."
+ },
+ {
+  "id": 807,
+  "tr": "Elektrik faturası geçen ayınkinden daha yüksek geldi."
+ },
+ {
+  "id": 808,
+  "tr": "Mağaza hiçbir şey sormadan tam para iadesi yaptı."
+ },
+ {
+  "id": 809,
+  "tr": "Bu botlar ocak indiriminde tam bir kelepirdi."
+ },
+ {
+  "id": 810,
+  "tr": "Yazılım şirketini sattıktan sonra zengin oldu."
+ },
+ {
+  "id": 811,
+  "tr": "Yeni program binlerce kişiyi yoksulluktan kurtardı."
+ },
+ {
+  "id": 812,
+  "tr": "Konserden toplanan paranın tamamı hayır kurumuna bağışlandı."
+ },
+ {
+  "id": 813,
+  "tr": "Her üç ayda bir hastanede kan bağışlıyor."
+ },
+ {
+  "id": 814,
+  "tr": "Paranı hiç kullanmadığın şeylere boşa harcama."
+ },
+ {
+  "id": 815,
+  "tr": "Buranın iklimi son yıllarda çok daha sıcak hâle geldi."
+ },
+ {
+  "id": 816,
+  "tr": "Nehir bir daha taşarsa felaket olur."
+ },
+ {
+  "id": 817,
+  "tr": "Dün gece küçük bir deprem hissettik ama hiçbir şey kırılmadı."
+ },
+ {
+  "id": 818,
+  "tr": "Üç ay yağmur yağmayınca kuraklık ekinleri mahvetti."
+ },
+ {
+  "id": 819,
+  "tr": "Bu gece sıcaklık sıfırın altına düşebilir, kalın giyin."
+ },
+ {
+  "id": 820,
+  "tr": "Hava kararmadan varış noktamıza ulaşmalıyız."
+ },
+ {
+  "id": 821,
+  "tr": "Üniversitenin yakınında kalacak bir yer bulabildin mi?"
+ },
+ {
+  "id": 822,
+  "tr": "Hostelde iki gecelik rezervasyon yaptırdım."
+ },
+ {
+  "id": 823,
+  "tr": "Yağmur dinerse öğleden sonra turistik yerleri gezmeye çıkabiliriz."
+ },
+ {
+  "id": 824,
+  "tr": "Lizbon'dan hatıra olarak minik bir seramik tabak aldı."
+ },
+ {
+  "id": 825,
+  "tr": "Yurt dışında yaşamak bana Japon kültürü hakkında çok şey öğretti."
+ },
+ {
+  "id": 826,
+  "tr": "Yerel pazar büyük süpermarketten daha ucuz."
+ },
+ {
+  "id": 827,
+  "tr": "Rehberimiz hayatı boyunca bu dağlarda yaşamış."
+ },
+ {
+  "id": 828,
+  "tr": "Güney Amerika'yı sırt çantasıyla gezmek hayatımın en büyük macerasıydı."
+ },
+ {
+  "id": 829,
+  "tr": "Adayı doğru düzgün keşfedebilmek için bisiklet kiraladık."
+ },
+ {
+  "id": 1190,
+  "tr": "Buraya son geldiğimizden beri menü değişmiş."
+ },
+ {
+  "id": 1191,
+  "tr": "Tatlıya yerim kalmadı ama seninkini paylaşabiliriz."
+ },
+ {
+  "id": 1192,
+  "tr": "Şef, kuzu etini beğenip beğenmediğimizi sormak için mutfaktan çıktı."
+ },
+ {
+  "id": 1193,
+  "tr": "Yumurtaların katı olmasını istiyorsan yedi dakika haşla."
+ },
+ {
+  "id": 1194,
+  "tr": "Kokusu yüzünden evde hiç balık kızartmadım."
+ },
+ {
+  "id": 1195,
+  "tr": "Ben sosu yaparken biraz sarımsak doğrar mısın?"
+ },
+ {
+  "id": 1196,
+  "tr": "Bu, yıllardır içtiğim en lezzetli çorbaydı."
+ },
+ {
+  "id": 1197,
+  "tr": "Bitter çikolata daha acı ama sağlık için daha iyi."
+ },
+ {
+  "id": 1198,
+  "tr": "Süt ekşimiş, o yüzden kullanma."
+ },
+ {
+  "id": 1199,
+  "tr": "Kız kardeşim on dört yaşından beri vejetaryen."
+ },
+ {
+  "id": 1200,
+  "tr": "Buranın porsiyonları o kadar büyük ki bir tane alıp paylaşabiliriz."
+ },
+ {
+  "id": 1201,
+  "tr": "Açsan dün akşamdan artan yemek var."
+ },
+ {
+  "id": 1202,
+  "tr": "Genelde dört gibi bir atıştırmalık yerim, yoksa odaklanamıyorum."
+ },
+ {
+  "id": 1203,
+  "tr": "Kimsenin canı yemek yapmak istemiyorsa paket servis söyleyebiliriz."
+ },
+ {
+  "id": 1204,
+  "tr": "Bahşiş bıraktın mı, yoksa ben mi ekleyeyim?"
+ },
+ {
+  "id": 1205,
+  "tr": "Kardeşimle her zaman iyi geçinmişizdir."
+ },
+ {
+  "id": 1206,
+  "tr": "Yalan söylemeye devam edersen senden ayrılır."
+ },
+ {
+  "id": 1207,
+  "tr": "Bütün gece tartıştılar ama kahvaltıya kadar barışmışlardı."
+ },
+ {
+  "id": 1208,
+  "tr": "Yeni erkek arkadaşı hakkındaki dedikodulara inanma."
+ },
+ {
+  "id": 1209,
+  "tr": "Patronum herkesin önünde bana iltifat etti."
+ },
+ {
+  "id": 1210,
+  "tr": "Onu affettim ama söylediklerini unutmadım."
+ },
+ {
+  "id": 1211,
+  "tr": "Herkesin akşam yemeğini ödemen çok cömert bir davranıştı."
+ },
+ {
+  "id": 1212,
+  "tr": "Hatalı olduğunu kabul edemeyecek kadar inatçı."
+ },
+ {
+  "id": 1213,
+  "tr": "Kilosundan bahsetme, bu konuda çok hassas."
+ },
+ {
+  "id": 1214,
+  "tr": "Bunu kimseye söylemeyeceğine dair bana söz ver."
+ },
+ {
+  "id": 1215,
+  "tr": "Mutfaktaki dağınıklıktan sürekli şikâyet ediyor."
+ },
+ {
+  "id": 1216,
+  "tr": "Doğum gününde anneannemi aramamı bana hatırlat."
+ },
+ {
+  "id": 1217,
+  "tr": "İlkokuldan beri bana hep sadık bir arkadaş oldu."
+ },
+ {
+  "id": 1218,
+  "tr": "Babaannem, tanıdığım en şefkatli insandı."
+ },
+ {
+  "id": 1219,
+  "tr": "Ev arkadaşımla kirayı ve ev işlerini paylaşıyoruz."
+ },
+ {
+  "id": 830,
+  "tr": "Toplantının iptal edildiğini varsaydım, o yüzden hiçbir şey hazırlamadım."
+ },
+ {
+  "id": 831,
+  "tr": "Şirket, yeni telefonunun pilinin tam üç gün dayandığını iddia ediyor."
+ },
+ {
+  "id": 832,
+  "tr": "Sonunda ailesini yurt dışında okumanın iyi bir fikir olduğuna ikna etti."
+ },
+ {
+  "id": 833,
+  "tr": "Şüphelerim olmasına rağmen Tom beni işe başvurmaya ikna etti."
+ },
+ {
+  "id": 834,
+  "tr": "Uzaktan çalışmanın ekipleri daha az değil, aslında daha verimli hale getirdiğini savundu."
+ },
+ {
+  "id": 835,
+  "tr": "Araştırma, genç katılımcılar lehine bariz bir önyargı taşıdığı için eleştirildi."
+ },
+ {
+  "id": 836,
+  "tr": "Bütçenin yarısını tek bir reklama harcamayı nasıl haklı çıkarabilirsin?"
+ },
+ {
+  "id": 837,
+  "tr": "Tanığın anlattıkları, daha önce polise söyledikleriyle çelişiyordu."
+ },
+ {
+  "id": 838,
+  "tr": "Doktor, ilacın mutlaka yemekle birlikte alınması gerektiğini vurguladı."
+ },
+ {
+  "id": 839,
+  "tr": "Toplantıdan önce raporu okumadığımı mı ima ediyorsun?"
+ },
+ {
+  "id": 840,
+  "tr": "Kanıtlar zayıftı; yine de jüri onu suçlu buldu."
+ },
+ {
+  "id": 841,
+  "tr": "Elif evden çalışmayı tercih ediyor, oysa Tom'un ofisin gürültüsüne ihtiyacı var."
+ },
+ {
+  "id": 842,
+  "tr": "Daire çok küçük; dahası, kira daha yeni tekrar zamlandı."
+ },
+ {
+  "id": 843,
+  "tr": "Tren gecikti; dolayısıyla mülakatının ilk saatini kaçırdı."
+ },
+ {
+  "id": 844,
+  "tr": "Plan pahalı; üstelik ekipte kimse buna gerçekten inanmıyor."
+ },
+ {
+  "id": 845,
+  "tr": "Sonunda mirastan söz ettiğinde yıllardır biriken kırgınlık su yüzüne çıktı."
+ },
+ {
+  "id": 846,
+  "tr": "Sevgisini sözlerle değil, küçük jestlerle gösteriyor."
+ },
+ {
+  "id": 847,
+  "tr": "Kıskançlığı, Mark yeni bir iş arkadaşıyla geç saatlere kadar çalışmaya başladığında ortaya çıktı."
+ },
+ {
+  "id": 848,
+  "tr": "İyi bir hemşirenin teknik beceri kadar empatiye de ihtiyacı vardır."
+ },
+ {
+  "id": 849,
+  "tr": "Babasının son aramasını kaçırdıktan sonra suçluluk duygusu içini kemirdi."
+ },
+ {
+  "id": 850,
+  "tr": "Yeni anne babalar ilk birkaç ayda kendilerini çoğu zaman bunalmış hisseder."
+ },
+ {
+  "id": 851,
+  "tr": "Hatanın kendisine ait olduğunu kabul etmeye isteksizdi."
+ },
+ {
+  "id": 852,
+  "tr": "Seçmenler, bir zamanlar kariyerleri bitirebilecek bir skandala kayıtsız görünüyor."
+ },
+ {
+  "id": 853,
+  "tr": "Fabrikanın kapanacağı haberiyle bütün kasaba yıkılmıştı."
+ },
+ {
+  "id": 854,
+  "tr": "Evlat edinme kurumu sonunda bizi geri aradığında sevinçten uçuyorduk."
+ },
+ {
+  "id": 855,
+  "tr": "Evlilik, yirmi üç yaşındayken altına girmeye hazır olmadığı bir taahhüttü."
+ },
+ {
+  "id": 856,
+  "tr": "En yakın arkadaşı sırrı paylaşınca ihanete uğramış hissetti."
+ },
+ {
+  "id": 857,
+  "tr": "Kardeşler yaklaşık on yıl konuşmadıktan sonra sonunda barıştı."
+ },
+ {
+  "id": 858,
+  "tr": "Her şey ters gittiğinde hep ablama güvenmişimdir."
+ },
+ {
+  "id": 859,
+  "tr": "Büyükannesinin savaş sırasında yazdığı mektuplara çok değer veriyor."
+ },
+ {
+  "id": 860,
+  "tr": "Yeni konut politikası, yerel yönetimlere danışılmadan açıklandı."
+ },
+ {
+  "id": 861,
+  "tr": "Yerel seçimde katılım son yirmi yılın en düşük seviyesindeydi."
+ },
+ {
+  "id": 862,
+  "tr": "İki aday da vaatlerini nasıl finanse edeceğini açıklamamıştı."
+ },
+ {
+  "id": 863,
+  "tr": "Kampanyası, çoğu seçmenin önemsediği konut maliyetlerine odaklandı."
+ },
+ {
+  "id": 864,
+  "tr": "Demokrasinin özgür basın olmadan ayakta kalamayacağını savundu."
+ },
+ {
+  "id": 865,
+  "tr": "On sekiz yaşını geçmiş her vatandaşın genel seçimlerde oy kullanma hakkı vardır."
+ },
+ {
+  "id": 866,
+  "tr": "Geçen hafta sonu binlerce kişi yeni emeklilik yasasına karşı düzenlenen protestoya katıldı."
+ },
+ {
+  "id": 867,
+  "tr": "Emeklilik reformu, haftalarca süren grevlere rağmen kabul edildi."
+ },
+ {
+  "id": 868,
+  "tr": "Krizden bu yana şehirlerle köyler arasındaki eşitsizlik derinleşti."
+ },
+ {
+  "id": 869,
+  "tr": "İşini kaybetti ve bir yıl boyunca sosyal yardımla geçinmek zorunda kaldı."
+ },
+ {
+  "id": 870,
+  "tr": "Veri gizliliğiyle ilgili yeni yasa önümüzdeki ocak ayında yürürlüğe giriyor."
+ },
+ {
+  "id": 871,
+  "tr": "Festivali iptal etme yetkisi yalnızca belediye başkanında."
+ },
+ {
+  "id": 872,
+  "tr": "Gazeteciler bakanlığındaki yolsuzluğu ortaya çıkarınca bakan istifa etti."
+ },
+ {
+  "id": 873,
+  "tr": "Parti mecliste azınlıkta kaldı ve bir koalisyon ortağına ihtiyaç duydu."
+ },
+ {
+  "id": 874,
+  "tr": "Seçmenlerin çoğunluğu iki tarafa da güvenmediğini söyledi."
+ },
+ {
+  "id": 875,
+  "tr": "Hipotezi, uyku eksikliğinin insanların daha fazla risk almasına yol açtığı yönündeydi."
+ },
+ {
+  "id": 876,
+  "tr": "Ekip arızalı sensörü bulana kadar deney iki kez başarısız oldu."
+ },
+ {
+  "id": 877,
+  "tr": "İkinci gruptan alınan kan örneklerini hâlâ analiz etmemiz gerekiyor."
+ },
+ {
+  "id": 878,
+  "tr": "Veriler, genç hastaların yeni ilaca daha iyi yanıt verdiğini gösteriyor."
+ },
+ {
+  "id": 879,
+  "tr": "Darwin'in teorisi, doğa bilimcilerin yüzyıllardır kafasını kurcalayan bir şeyi açıkladı."
+ },
+ {
+  "id": 880,
+  "tr": "Üç yıllık denemelerin ardından araştırmacılar aşının güvenli olduğu sonucuna vardı."
+ },
+ {
+  "id": 881,
+  "tr": "İki grup arasındaki fark küçüktü ama istatistiksel olarak anlamlıydı."
+ },
+ {
+  "id": 882,
+  "tr": "İki deneme arasında değiştirdikleri tek değişken sıcaklıktı."
+ },
+ {
+  "id": 883,
+  "tr": "Virüs o kadar hızlı evrimleşti ki geçen yılki aşı neredeyse işe yaramıyor."
+ },
+ {
+  "id": 884,
+  "tr": "Bilim insanları küresel yıldırım olgusunu hâlâ tam olarak açıklayamıyor."
+ },
+ {
+  "id": 885,
+  "tr": "Yeni termometre onda bir derece doğrulukla ölçüm yapıyor."
+ },
+ {
+  "id": 886,
+  "tr": "Mühendisler, onarımın belediyenin ayırdığı bütçenin iki katına mal olacağını tahmin etti."
+ },
+ {
+  "id": 887,
+  "tr": "Araştırmanın örneklemi, yaşlı yetişkinler hakkında bir şey söyleyemeyecek kadar küçüktü."
+ },
+ {
+  "id": 888,
+  "tr": "Işıklar her değiştiğinde farelerin yemeyi bıraktığını gözlemledi."
+ },
+ {
+  "id": 889,
+  "tr": "Model, fırtınanın rotasını üç gün önceden neredeyse kusursuz biçimde öngördü."
+ },
+ {
+  "id": 890,
+  "tr": "Şirketin gelirinin çoğu artık reklamdan değil, aboneliklerden geliyor."
+ },
+ {
+  "id": 891,
+  "tr": "Sendika bu hafta yönetimle daha iyi bir emeklilik anlaşması için müzakere ediyor."
+ },
+ {
+  "id": 892,
+  "tr": "En büyük rakibimiz daha yeni fiyatlarını yüzde yirmi indirdi."
+ },
+ {
+  "id": 893,
+  "tr": "Yönetim kurulu, yeni bir yatırımı onaylamadan önce net bir strateji istedi."
+ },
+ {
+  "id": 894,
+  "tr": "25 yaşında, ilk fırınını açtığında girişimci oldu."
+ },
+ {
+  "id": 895,
+  "tr": "Son ekonomik durgunlukta binlerce küçük dükkân kapanmak zorunda kaldı."
+ },
+ {
+  "id": 896,
+  "tr": "Enflasyon yüzde dokuzken maaşımla her ay daha az şey alabiliyorum."
+ },
+ {
+  "id": 897,
+  "tr": "Hükümet vergi indirimi getirdiğinden beri elektrikli araçlara olan talep ikiye katlandı."
+ },
+ {
+  "id": 898,
+  "tr": "Çip arzı düşünce otomobil fabrikaları üretimi durdurmak zorunda kaldı."
+ },
+ {
+  "id": 899,
+  "tr": "Hissedarlar yıllık toplantıda CEO'nun primine karşı oy kullandı."
+ },
+ {
+  "id": 900,
+  "tr": "İki havayolu arasındaki şirket birleşmesi, Avrupa'nın en büyük havayolunu ortaya çıkardı."
+ },
+ {
+  "id": 901,
+  "tr": "Şirket geçen bahar teslimat uygulamasını üç şehirde piyasaya sürdü."
+ },
+ {
+  "id": 902,
+  "tr": "Birçok banka müşteri hizmetlerini dış kaynak kullanarak yurt dışındaki çağrı merkezlerine devretti."
+ },
+ {
+  "id": 903,
+  "tr": "Yatırımcılar artık bir şirketin büyümesinin uzun vadede sürdürülebilir olup olmadığını soruyor."
+ },
+ {
+  "id": 904,
+  "tr": "Bu ödül, eski fikirlerin akıllıca pazarlanmasını değil, yeniliği ödüllendiriyor."
+ },
+ {
+  "id": 905,
+  "tr": "Polis, soygundan iki gün sonra baş şüpheliyi tutukladı."
+ },
+ {
+  "id": 906,
+  "tr": "Tek tanık, kaçan bir adam gördüğünü söyledi."
+ },
+ {
+  "id": 907,
+  "tr": "Yargılama, jüri bir karara varana kadar üç hafta sürdü."
+ },
+ {
+  "id": 908,
+  "tr": "İki gün sonra jüri nihayet suçsuz kararını açıkladı."
+ },
+ {
+  "id": 909,
+  "tr": "Hâkim ona silahlı soygundan beş yıl hapis cezası verdi."
+ },
+ {
+  "id": 910,
+  "tr": "Dolandırıcılıktan suçlu olduğunu kabul etti ve aynı gün öğleden sonra cezası açıklandı."
+ },
+ {
+  "id": 911,
+  "tr": "Karardan sonra bile masum olduğunda ısrar etmeye devam etti."
+ },
+ {
+  "id": 912,
+  "tr": "Avukatım, kendisi yanımda olmadan hiçbir soruya cevap vermememi tavsiye etti."
+ },
+ {
+  "id": 913,
+  "tr": "Dava önümüzdeki pazartesi sabahı mahkemede görülecek."
+ },
+ {
+  "id": 914,
+  "tr": "Jürinin onu suçlu bulması sadece iki saat sürdü."
+ },
+ {
+  "id": 915,
+  "tr": "İki milyon sterlin ortadan kaybolunca muhasebeci dolandırıcılıkla suçlandı."
+ },
+ {
+  "id": 916,
+  "tr": "Bu ülkede sigortasız araç kullanmak ciddi bir suç."
+ },
+ {
+  "id": 917,
+  "tr": "Vergi kaçakçılığının en yüksek cezası on yıla çıkarıldı."
+ },
+ {
+  "id": 918,
+  "tr": "Savunma, ceza açıklandıktan bir gün sonra temyize başvurdu."
+ },
+ {
+  "id": 919,
+  "tr": "Girişteki tabela, mağaza hırsızlarına dava açılacağı uyarısında bulunuyordu."
+ },
+ {
+  "id": 920,
+  "tr": "Belgeselin büyük bölümü devlet sansürü yüzünden kesildi."
+ },
+ {
+  "id": 921,
+  "tr": "Afişler, insanların düşmandan korkmasını sağlamak için tasarlanmış saf propagandaydı."
+ },
+ {
+  "id": 922,
+  "tr": "Gazete, sahte röportajı yayımladıktan sonra tüm güvenilirliğini kaybetti."
+ },
+ {
+  "id": 923,
+  "tr": "Manşet yanıltıcıydı; araştırmada kahveden hiç bahsedilmemişti bile."
+ },
+ {
+  "id": 924,
+  "tr": "Her iki taraf da bakanın sessizliğini kendi tutumuna destek olarak yorumladı."
+ },
+ {
+  "id": 925,
+  "tr": "Abartma, kuyruk iki saat değil, yirmi dakikaydı."
+ },
+ {
+  "id": 926,
+  "tr": "Toplantı için raporu iki cümleyle özetleyebilir misin?"
+ },
+ {
+  "id": 927,
+  "tr": "Açıklığa kavuşturayım: Son tarih cuma dedim, perşembe değil."
+ },
+ {
+  "id": 928,
+  "tr": "Konuşmanın tamamını alıntılamak yerine ana savını başka sözlerle anlattı."
+ },
+ {
+  "id": 929,
+  "tr": "Madrid'de iki yıl geçirdikten sonra İspanyolcası neredeyse akıcı hale gelmişti."
+ },
+ {
+  "id": 930,
+  "tr": "Panelde kendini en net ifade eden konuşmacı o; her cümlesi yerine oturuyor."
+ },
+ {
+  "id": 931,
+  "tr": "Cevabı o kadar belirsizdi ki kimse kabul edip etmediğini anlayamadı."
+ },
+ {
+  "id": 932,
+  "tr": "Sözleşmenin ifadesi muğlaktı, bu yüzden iki taraf da haklı olduğunu iddia etti."
+ },
+ {
+  "id": 933,
+  "tr": "E-postayı kısa ve öz tut; müdür ilk paragraftan ötesini okumaz."
+ },
+ {
+  "id": 934,
+  "tr": "Hedef kitleni tanı: TikTok'ta tutan bir espri, yönetim kurulu odasında sönüp gider."
+ },
+ {
+  "id": 935,
+  "tr": "Uçuş kaygısı, geçen yazki o sarsıntılı uçuştan sonra daha da arttı."
+ },
+ {
+  "id": 936,
+  "tr": "İşini kaybettikten sonra aylarca süren derin bir depresyona girdi."
+ },
+ {
+  "id": 937,
+  "tr": "Boşandığından beri her salı terapiye gidiyor."
+ },
+ {
+  "id": 938,
+  "tr": "Telefon bağımlılığı o kadar kötüleşti ki tüm sosyal medya uygulamalarını sildi."
+ },
+ {
+  "id": 939,
+  "tr": "Akşam yemeğinden sonra kahve içmeye başlayınca uykusuzluğu daha da kötüleşti."
+ },
+ {
+  "id": 940,
+  "tr": "Üç çocuk ve tam zamanlı bir işle nasıl başa çıkıyor, bilmiyorum."
+ },
+ {
+  "id": 941,
+  "tr": "Kasabanın selden sonra gösterdiği dayanıklılık yardım görevlilerini bile şaşırttı."
+ },
+ {
+  "id": 942,
+  "tr": "Tükenmişlik yaşadığından beri kendi sınırlarının çok daha farkında."
+ },
+ {
+  "id": 943,
+  "tr": "Yıllar sonra bile kazanın travması onu hâlâ araba kullanmaktan alıkoyuyor."
+ },
+ {
+  "id": 944,
+  "tr": "Şirket artık çalışanların esenliğini artırmak için ücretsiz yoga dersleri sunuyor."
+ },
+ {
+  "id": 945,
+  "tr": "Suçiçeği geçirdiysen genellikle ömrün boyunca bağışık olursun."
+ },
+ {
+  "id": 946,
+  "tr": "Araba kazasından beri kronik bel ağrısı çekiyor."
+ },
+ {
+  "id": 947,
+  "tr": "Doktor, kan sonuçları gelene kadar teşhis koymayı reddetti."
+ },
+ {
+  "id": 948,
+  "tr": "Diz ameliyatı olması gerekiyor ama bekleme listesi neredeyse altı ay."
+ },
+ {
+  "id": 949,
+  "tr": "Fıstık alerjisi o kadar şiddetli ki yanında her zaman EpiPen taşıyor."
+ },
+ {
+  "id": 950,
+  "tr": "Köy artık tüm elektriğini yenilenebilir kaynaklardan alıyor."
+ },
+ {
+  "id": 951,
+  "tr": "Yeni yasa fabrikaları karbon salımlarını yarıya indirmeye zorluyor."
+ },
+ {
+  "id": 952,
+  "tr": "Bilim insanları, resifin biyoçeşitliliğinin 2010'dan beri sert biçimde düştüğü uyarısında bulunuyor."
+ },
+ {
+  "id": 953,
+  "tr": "Uluslararası baskıya rağmen Amazon'daki ormansızlaşma hız kazandı."
+ },
+ {
+  "id": 954,
+  "tr": "Bankacılığı bırakıp Kenya'da bir yaban hayatı koruma derneğinde çalışmaya başladı."
+ },
+ {
+  "id": 955,
+  "tr": "Roma'ya uçmak bu yılki karbon ayak izimi ikiye katladı."
+ },
+ {
+  "id": 956,
+  "tr": "Tek bir yırtıcının ortadan kaldırılması bütün bir ekosistemin dengesini bozabilir."
+ },
+ {
+  "id": 957,
+  "tr": "Bu sahilde yumurtlayan iribaş kaplumbağalar resmen nesli tükenmekte olan türler arasında."
+ },
+ {
+  "id": 958,
+  "tr": "Testler, fabrikanın üç kilometre aşağısında nehirde kirlenme tespit etti."
+ },
+ {
+  "id": 959,
+  "tr": "Gönüllüler, 1970'lerde kurutulan sulak alanı eski haline getirdi."
+ },
+ {
+  "id": 960,
+  "tr": "Şehir dizel araçları yasaklayınca kentsel hava kalitesi gözle görülür biçimde iyileşti."
+ },
+ {
+  "id": 961,
+  "tr": "Ülkenin birçok kırsal bölgesinde geniş bant internet hâlâ güvenilir değil."
+ },
+ {
+  "id": 962,
+  "tr": "Seller, şehrin altyapısının ne kadar ihmal edildiğini gözler önüne serdi."
+ },
+ {
+  "id": 963,
+  "tr": "Bazı ekonomistler aşırı nüfusun bir efsane olduğunu, asıl sorunun tüketim olduğunu savunuyor."
+ },
+ {
+  "id": 964,
+  "tr": "Su kıtlığı buradaki çiftçileri şimdiden topraklarını terk etmeye zorluyor."
+ },
+ {
+  "id": 965,
+  "tr": "Dört günlük çalışma haftası kavramı kulağa harika geliyor ama parasını kim ödeyecek?"
+ },
+ {
+  "id": 966,
+  "tr": "Bir hemşirenin bakış açısından yeni vardiya sistemi tam bir felaket."
+ },
+ {
+  "id": 967,
+  "tr": "Bağlamından koparılınca yorumu kulağa olduğundan çok daha kaba geliyor."
+ },
+ {
+  "id": 968,
+  "tr": "Hibe için temel kriterler özgünlük ve net bir toplumsal etki."
+ },
+ {
+  "id": 969,
+  "tr": "AB, yapay zekânın düzenlenmesi için yasal bir çerçeve önerdi."
+ },
+ {
+  "id": 970,
+  "tr": "Zor müşterilere yaklaşımı basit: önce dinle, sonra tartış."
+ },
+ {
+  "id": 971,
+  "tr": "Maliyet işin sadece bir yönü; çalışanların moralini de düşünmemiz gerekiyor."
+ },
+ {
+  "id": 972,
+  "tr": "Sosyal medya siyasi kampanyalara bambaşka bir boyut kattı."
+ },
+ {
+  "id": 973,
+  "tr": "Sigorta şirketi selden sonra hasarı değerlendirmesi için birini gönderdi."
+ },
+ {
+  "id": 974,
+  "tr": "İki yaşındaki çocuklar hayalle gerçeği henüz ayırt edemez."
+ },
+ {
+  "id": 975,
+  "tr": "Sadece hedeflediğin pozisyonla alakalı iş deneyimlerine yer ver."
+ },
+ {
+  "id": 976,
+  "tr": "İki saat süren sorulardan sonra artık tutarlı cevap veremez hâle gelmişti."
+ },
+ {
+  "id": 977,
+  "tr": "İlk deneme başarısız oldu ama sonraki testler aşının işe yaradığını kanıtladı."
+ },
+ {
+  "id": 978,
+  "tr": "Bu kadar borçla şirketin çöküşü kaçınılmazdı."
+ },
+ {
+  "id": 979,
+  "tr": "30 günlük sınır tamamen keyfi görünüyor; neden seçildiğini kimse açıklayamadı."
+ },
+ {
+  "id": 1220,
+  "tr": "İyi bir yönetici her şeyi kendi yapmaya çalışmak yerine görevleri devreder."
+ },
+ {
+  "id": 1221,
+  "tr": "Şirketteki akıl hocam bana hiçbir kursun öğretmediği kadar çok şey öğretti."
+ },
+ {
+  "id": 1222,
+  "tr": "Kimse ondan süreci düzeltmesini istememişti; kendisi inisiyatif aldı."
+ },
+ {
+  "id": 1223,
+  "tr": "İki iş arkadaşım ayrıldığından beri iş yüküm neredeyse ikiye katlandı."
+ },
+ {
+  "id": 1224,
+  "tr": "Doğru düzgün tatil yapmadan geçen on sekiz ayın ardından tükenmişliğe doğru sürükleniyordu."
+ },
+ {
+  "id": 1225,
+  "tr": "Yıllık performans değerlendirmemde yöneticim fikirlerimi daha çok dile getirmem gerektiğini söyledi."
+ },
+ {
+  "id": 1226,
+  "tr": "Sunumu hakkında tüm ekipten dürüst geri bildirim istedi."
+ },
+ {
+  "id": 1227,
+  "tr": "Çalışma programında zorlanıyorsan cumadan önce amirinle konuş."
+ },
+ {
+  "id": 1228,
+  "tr": "İki taraf da istediği her şeyi alamadı ama adil bir uzlaşmaya vardık."
+ },
+ {
+  "id": 1229,
+  "tr": "Bütçeyi kim onaylıyorsa nasıl harcandığından da o sorumludur."
+ },
+ {
+  "id": 1230,
+  "tr": "Yeni CEO, şubenin neden kapandığı konusunda şeffaf olacağına söz verdi."
+ },
+ {
+  "id": 1231,
+  "tr": "Ekip, şikâyetleri beklemek yerine güvenlik konusunda proaktif bir yaklaşım benimsedi."
+ },
+ {
+  "id": 1232,
+  "tr": "Birleşme duyurulduktan bir gün sonra hiçbir gerekçe göstermeden istifa etti."
+ },
+ {
+  "id": 1233,
+  "tr": "İki mühendis işe alıyoruz, tercihen daha önce bir startup'ta çalışmış kişiler."
+ },
+ {
+  "id": 1234,
+  "tr": "Onu esas olarak uluslararası vergi hukukundaki uzmanlığı için işe aldılar."
+ },
+ {
+  "id": 1235,
+  "tr": "Seyahat planımız Lizbon'da iki boş gün bırakıyor, buna sevindim."
+ },
+ {
+  "id": 1236,
+  "tr": "Galata Kulesi, şehrin neredeyse her yerinden görebileceğin simge yapı."
+ },
+ {
+  "id": 1237,
+  "tr": "Portekizceyi doğru düzgün öğrenmenin tek yolu kendini ona tamamen kaptırmak."
+ },
+ {
+  "id": 1238,
+  "tr": "Uçaktan inmeden önce yerel gelenekler hakkında biraz okumak, insanı bir sürü utanç verici durumdan kurtarır."
+ },
+ {
+  "id": 1239,
+  "tr": "Japonya'da bahşiş vermek görgü kurallarına aykırı; bunu kabullenmem biraz zaman aldı."
+ },
+ {
+  "id": 1240,
+  "tr": "Gürcü misafirperverliği efsanedir; üç gece üst üste hiç tanımadığımız insanların sofrasında yedik."
+ },
+ {
+  "id": 1241,
+  "tr": "Köy o kadar ücra ki posta ayda sadece iki kez geliyor."
+ },
+ {
+  "id": 1242,
+  "tr": "Sekiz saatlik tırmanışın ardından bile zirveden manzara nefes kesiciydi."
+ },
+ {
+  "id": 1243,
+  "tr": "Açıkçası Venedik'i abartılmış buldum: güzel ama tıklım tıklım ve saçma derecede pahalı."
+ },
+ {
+  "id": 1244,
+  "tr": "Kültür şokunu Tokyo'da yaşadım; orada gece yarısı bile kimse kırmızıda karşıya geçmiyor."
+ },
+ {
+  "id": 1245,
+  "tr": "Dubai'de yaşayan yabancıların yarısı, aslında sadece iki yıl kalmayı planladıklarını söyledi."
+ },
+ {
+  "id": 1246,
+  "tr": "Üç yıldır dijital göçebe olarak yaşıyor; nerede wifi varsa oradan çalışıyor."
+ },
+ {
+  "id": 1247,
+  "tr": "Haritayı bir kenara attık ve bir fırın bulana kadar öylece dolaştık."
+ },
+ {
+  "id": 1248,
+  "tr": "Berlin'e tam anlamıyla yerleşmem bir yıl sürdü, en çok da kışlar yüzünden."
+ },
+ {
+  "id": 1249,
+  "tr": "Çocuklar yeni bir ülkeye anne babalarından çok daha hızlı uyum sağlar."
+ },
+ {
+  "id": 980,
+  "tr": "Notları konusunda son derece titizdir: her kaynağın tarihi, numarası ve çapraz referansı vardır."
+ },
+ {
+  "id": 981,
+  "tr": "İdeal çözümü unut; cumaya kadar teslim edebileceğimiz pragmatik bir şey lazım."
+ },
+ {
+  "id": 982,
+  "tr": "Üç yıl zirvede kaldıktan sonra takım rehavete kapılmıştı ve bu belli oluyordu."
+ },
+ {
+  "id": 983,
+  "tr": "Her zamanki azmiyle o para iadesinin peşini on bir ay boyunca bırakmadı ve sonunda kazandı."
+ },
+ {
+  "id": 984,
+  "tr": "Açık konuşabilir miyim? Konuşmanın ikinci yarısında salonu tamamen kaybettin."
+ },
+ {
+  "id": 985,
+  "tr": "Kendi veda partisinde bir köşede mesafeli durmuş, içkisini yudumlayıp saatine bakıyordu."
+ },
+ {
+  "id": 986,
+  "tr": "Bu kadar sosyal biri olmasına rağmen onu baş başa bir görüşme için yakalamak şaşırtıcı derecede zor."
+ },
+ {
+  "id": 987,
+  "tr": "Düğün parodiye kaçacak kadar şatafatlıydı: kuğular, havai fişekler, altın varaklı pasta."
+ },
+ {
+  "id": 988,
+  "tr": "Her hediyeyi beyan etme konusunda son derece titizdir, tedarikçinin gönderdiği bisküvilere varana kadar."
+ },
+ {
+  "id": 989,
+  "tr": "Dedem o kadar inatçıydı ki ağrı dayanılmaz hâle gelene kadar doktora gitmedi."
+ },
+ {
+  "id": 990,
+  "tr": "Şirketi iyiliksever bir diktatör gibi yönetiyordu: cömertti ama kimse ona karşı çıkmaya cesaret edemezdi."
+ },
+ {
+  "id": 991,
+  "tr": "Her şeyde art niyet arayan biri değilim; sadece bu vaadi daha önce de duyacak kadar yaşadım."
+ },
+ {
+  "id": 992,
+  "tr": "Belki dönemin en parlak öğrencisi değildi ama açık ara en çalışkanıydı."
+ },
+ {
+  "id": 993,
+  "tr": "Kapanış konuşması o kadar belagatliydi ki karşı tarafın avukatı bile başını sallayarak onayladı."
+ },
+ {
+  "id": 994,
+  "tr": "Tutumluluğu alışkanlık hâline getirmiş; altı haneli maaş almasına rağmen reçel kavanozlarını hâlâ yeniden kullanıyor."
+ },
+ {
+  "id": 995,
+  "tr": "Sıcak bir banyo gribi iyileştirmez ama ağrıları hafifletir."
+ },
+ {
+  "id": 996,
+  "tr": "Otobüs hatlarının azaltılması, çözmesi beklenen trafik sorununu yalnızca daha da kötüleştirdi."
+ },
+ {
+  "id": 997,
+  "tr": "Hiçbir şey bir yöneticiyi ekibin önünde kendisine karşı çıkılması kadar hızlı baltalamaz."
+ },
+ {
+  "id": 998,
+  "tr": "Güçlü istihdam rakamları, hükümetin toparlanmanın gerçek olduğu iddiasını güçlendirdi."
+ },
+ {
+  "id": 999,
+  "tr": "Selleri tamamen durdurmak mümkün değil ama daha iyi bir drenaj sistemi hasarı azaltır."
+ },
+ {
+  "id": 1000,
+  "tr": "Sunduğu her fiş, kimseye güvenmeyen bir muhasebeci tarafından didik didik incelendi."
+ },
+ {
+  "id": 1001,
+  "tr": "Polis, son e-postanın tam olarak ne zaman gönderildiğini hâlâ tespit etmeye çalışıyor."
+ },
+ {
+  "id": 1002,
+  "tr": "İki komşu onun anlattıklarını doğruladı; sanıksa bu kadarını bile başaramadı."
+ },
+ {
+  "id": 1003,
+  "tr": "Suçlamayı sadece kırgın bir ifadeyle değil, banka ekstreleriyle çürüttü."
+ },
+ {
+  "id": 1004,
+  "tr": "Çocukluğuyla ilgili sorusu, beklediğinden çok daha uzun bir sessizliğe yol açtı."
+ },
+ {
+  "id": 1005,
+  "tr": "Gözleri öyle yavaş yavaş bozuldu ki yıllarca suçu ışıklandırmaya attı."
+ },
+ {
+  "id": 1006,
+  "tr": "Yolun karşısındaki ofis binası açılınca kafe adeta serpildi."
+ },
+ {
+  "id": 1007,
+  "tr": "Yeni onay süreci yardımcı olmak bir yana, dokunduğu her projeye köstek oldu."
+ },
+ {
+  "id": 1008,
+  "tr": "Ortak bir takvim, devir teslim sürecini hiçbir toplantının yapamadığı kadar kolaylaştırdı."
+ },
+ {
+  "id": 1009,
+  "tr": "Yıllarca biriken küçük tartışmalar, kız kardeşinin düğününde kopan kıyamet gibi bir kavgayla doruk noktasına ulaştı."
+ },
+ {
+  "id": 1010,
+  "tr": "Geçen hafta sonu tavan arasını boşaltırken onun eski mektuplarına rastladım."
+ },
+ {
+  "id": 1011,
+  "tr": "Adamın her şeyden durmadan yakınmasına nasıl katlanıyor, hiç bilmiyorum."
+ },
+ {
+  "id": 1012,
+  "tr": "Bakanın istifasına yol açan şey seçim değil, skandaldı."
+ },
+ {
+  "id": 1013,
+  "tr": "Denetim önceden haber verilmeden yürütüldü; olması gereken de zaten tam olarak bu."
+ },
+ {
+  "id": 1014,
+  "tr": "Yatırımcılar son anda korkup geri adım atınca anlaşma suya düştü."
+ },
+ {
+  "id": 1015,
+  "tr": "Bu köprüyü kim yaptıysa belli ki ucuza kaçmış; bedelini de şimdi vergi mükellefleri ödüyor."
+ },
+ {
+  "id": 1016,
+  "tr": "Er ya da geç dişini sıkıp ona gerçeği söylemek zorunda kalacaksın."
+ },
+ {
+  "id": 1017,
+  "tr": "Ucuz malzeme şimdi para kazandırır ama uzun vadede sana çok daha pahalıya patlar."
+ },
+ {
+  "id": 1018,
+  "tr": "Bakan, kayda geçmemesi şartıyla, rakamların yayımlanmadan önce makyajlandığını kabul etti."
+ },
+ {
+  "id": 1019,
+  "tr": "Teklif konusunda hâlâ kararsızım; para iyi ama yol çekilecek gibi değil."
+ },
+ {
+  "id": 1020,
+  "tr": "Geçen kış borular iki hafta donana kadar temiz suyun kıymetini hiç bilmemiştik."
+ },
+ {
+  "id": 1021,
+  "tr": "Yıllardır harcama belgeleriyle oynuyor ve nedense hep yanına kâr kalıyor."
+ },
+ {
+  "id": 1022,
+  "tr": "Devam filmi yaratılan beklentiyi pek karşılayamadı; gerçi film müzikleri muhteşemdi."
+ },
+ {
+  "id": 1023,
+  "tr": "Üniversite okumamış herkese tepeden bakıyor, ki bu da asıl onun hakkında çok şey söylüyor."
+ },
+ {
+  "id": 1024,
+  "tr": "Zamanımız tükeniyor, o yüzden formaliteleri atlayıp doğrudan konuya girelim."
+ },
+ {
+  "id": 1025,
+  "tr": "Sözleşmede onarım masraflarını kimin karşılayacağına dair muğlaklık, iki tarafın avukatlarını aylarca meşgul etti."
+ },
+ {
+  "id": 1026,
+  "tr": "En meşgul insanların çoğu zaman en çok yardım edenler olması tuhaf bir paradoks."
+ },
+ {
+  "id": 1027,
+  "tr": "Çevirisi orijinal metnin her nüansını, esprilere varana kadar yakalamıştı."
+ },
+ {
+  "id": 1028,
+  "tr": "Denetçiler, faturalarla depodan fiilen çıkan mallar arasında bir tutarsızlık tespit etti."
+ },
+ {
+  "id": 1029,
+  "tr": "Çalışanların istedikleri yerden çalışmasına izin vermenin olası sonuçlarını kimse enine boyuna düşünmemişti."
+ },
+ {
+  "id": 1030,
+  "tr": "Raporu imzalamak yerine istifa etti; bu da dürüstlüğü hakkında her şeyi anlatıyor."
+ },
+ {
+  "id": 1031,
+  "tr": "Yeni müdür ekibe gerçek anlamda özerklik tanıdı, sonuçlar da ortada."
+ },
+ {
+  "id": 1032,
+  "tr": "Katılım o kadar düşüktü ki muhalefet sonucun meşruiyetini hemen sorguladı."
+ },
+ {
+  "id": 1033,
+  "tr": "Ne demek istediğine dair belli belirsiz bir fikrim var ama yemin edemem."
+ },
+ {
+  "id": 1034,
+  "tr": "Bütün plan, faizlerin düşük kalacağı varsayımına dayanıyor."
+ },
+ {
+  "id": 1035,
+  "tr": "Üç saatin sonunda komite, kimsenin tam olarak memnun olmadığı bir uzlaşıya vardı."
+ },
+ {
+  "id": 1036,
+  "tr": "İkilemi basitti: ya arkadaşını ihbar edecek ya da susup suçu paylaşacaktı."
+ },
+ {
+  "id": 1037,
+  "tr": "O şirkette hiyerarşi öyle katıydı ki kıdemsiz çalışanlar hiçbir ortağa doğrudan e-posta atmazdı."
+ },
+ {
+  "id": 1038,
+  "tr": "Kararı pragmatizm kılıfına soktu ama işin aslı baştan aşağı ideolojiydi."
+ },
+ {
+  "id": 1039,
+  "tr": "Laboratuvarın keşfi bir paradigma değişimini zorunlu kıldı; bir yıl önce yazılmış ders kitapları bir anda yanlış çıktı."
+ },
+ {
+  "id": 1040,
+  "tr": "Plan, hepimizin umduğundan daha yavaş olsa da, işe yaradı."
+ },
+ {
+  "id": 1041,
+  "tr": "Üç saatlik süresine rağmen film çok tuttu."
+ },
+ {
+  "id": 1042,
+  "tr": "Skandal, bakanın o zamana dek kamuoyunca bilinmeyen bir yüzünü ortaya çıkardı."
+ },
+ {
+  "id": 1043,
+  "tr": "Verileri internette yayımladı, böylece şirketi yanıt vermeye zorladı."
+ },
+ {
+  "id": 1044,
+  "tr": "Çalışanların indirimli hisse alabildiği bir sistem kurdular."
+ },
+ {
+  "id": 1045,
+  "tr": "Akıllı telefonlar o kadar yaygınlaştı ki kafeler artık saat asmaya bile gerek görmüyor."
+ },
+ {
+  "id": 1046,
+  "tr": "İyi öğretmenler notlara değil, öğrencilerin içsel motivasyonuna güvenir."
+ },
+ {
+  "id": 1047,
+  "tr": "Ne kadar rutin görünürse görünsün, her ameliyatın doğasında bir risk vardır."
+ },
+ {
+  "id": 1048,
+  "tr": "Aylarca süren görüşmelerin ardından müzakerecilerin nihayet ortaya koyacak somut bir şeyleri vardı."
+ },
+ {
+  "id": 1049,
+  "tr": "Yan etkiler ihmal edilebilir düzeyde olduğundan klinik çalışmanın devamına izin verildi."
+ },
+ {
+  "id": 1050,
+  "tr": "Bahanesi yeterince inandırıcıydı, gerçi hiçbirimiz tam olarak inanmadık."
+ },
+ {
+  "id": 1051,
+  "tr": "Köprüyü haziranda yağmurlar başlamadan bitirmek sizce yapılabilir bir şey mi?"
+ },
+ {
+  "id": 1052,
+  "tr": "İkinci bir yatırımcı bulunmazsa girişim gelecek bahardan sonra sürdürülebilir olmayacak."
+ },
+ {
+  "id": 1053,
+  "tr": "Tasarım tam da içinde lüzumsuz hiçbir şey olmadığı için zarif."
+ },
+ {
+  "id": 1054,
+  "tr": "Slaytların yarısı fazlalıktı; raporda zaten gördüğümüz rakamları tekrarlıyordu."
+ },
+ {
+  "id": 1055,
+  "tr": "İkinci kuşak göçmenler çoğu zaman öylesine asimile olur ki dedelerinin dili birkaç on yıl içinde yok olup gider."
+ },
+ {
+  "id": 1056,
+  "tr": "Hiç otobüse binmeyen insanların yazdığı politikalar, binenleri kaçınılmaz olarak kenara iter."
+ },
+ {
+  "id": 1057,
+  "tr": "Terapiste gittiğini kabul etmek bugün bile bir damga taşıyor."
+ },
+ {
+  "id": 1058,
+  "tr": "Eski şehrin yarısı artık Dünya Mirası alanı; bu da çoğunlukla daha fazla kafe demek."
+ },
+ {
+  "id": 1059,
+  "tr": "Fransa sıkı sıkıya laik olmakla övünür ama Katolik bayramlarında hâlâ her yer kapanır."
+ },
+ {
+  "id": 1060,
+  "tr": "İskandinav ofisleri eşitlikçi olmalarıyla ünlüdür: CEO bile herkes gibi kahve kuyruğuna girer."
+ },
+ {
+  "id": 1061,
+  "tr": "Müze, oymaları nihayet alındıkları yerli topluluğa iade etti."
+ },
+ {
+  "id": 1062,
+  "tr": "İstanbul en kozmopolit dönemini bir asır önce, altı dilin aynı sokağı paylaştığı zamanlarda yaşadı."
+ },
+ {
+  "id": 1063,
+  "tr": "Okul üniformaları disiplinden çok uymacılığı öğretir; zaten asıl amaç da bu."
+ },
+ {
+  "id": 1064,
+  "tr": "O şirkette toplantılarda dile getirilen her karşı görüş, prim zamanı sessizce hatırlanırdı."
+ },
+ {
+  "id": 1065,
+  "tr": "Bana tepeden bakma; sen iki kez açıklamadan önce de sözleşmeyi gayet iyi anlamıştım."
+ },
+ {
+  "id": 1066,
+  "tr": "Meslektaşları aleyhine tanıklık ettikten sonra bütün departman tarafından fiilen dışlandı."
+ },
+ {
+  "id": 1067,
+  "tr": "Milyarder hayırseverliği, ihtiyaç duyulanı değil, milyarderin ilginç bulduğu şeyi finanse etme eğilimindedir."
+ },
+ {
+  "id": 1068,
+  "tr": "Koca bir sektör, çoğumuzun hiç yaşamadığı bir çocukluğa duyulan nostalji üzerine kurulu."
+ },
+ {
+  "id": 1069,
+  "tr": "Her kuşak, bir sonrakinin müziğinin kesin bir yozlaşma belirtisi olduğuna inanır."
+ },
+ {
+  "id": 1070,
+  "tr": "Kurtarma paketinin ardından Yunanistan, kamu hizmetlerinin içini boşaltan on yıllık bir kemer sıkma dönemine katlandı."
+ },
+ {
+  "id": 1071,
+  "tr": "Yakıt sübvansiyonu kaldırılsa buradaki çiftçiler bir yıl içinde batar."
+ },
+ {
+  "id": 1072,
+  "tr": "Devlet telekomu onlarca yıl tekel konumundaydı; bu yüzden kimse şikâyetlere yanıt verme zahmetine girmezdi."
+ },
+ {
+  "id": 1073,
+  "tr": "Kripto, o paraya gelecek yıl gerçekten ihtiyacı olacak biri için fazlasıyla oynak."
+ },
+ {
+  "id": 1074,
+  "tr": "Öğretmenlik yapmak için kazançlı bir avukatlık kariyerini bıraktı ve bir kez bile pişman olmadı."
+ },
+ {
+  "id": 1075,
+  "tr": "Alıcılar başka teklifimiz olmadığını öğrenince elimizdeki bütün kozları kaybettik."
+ },
+ {
+  "id": 1076,
+  "tr": "Üçüncü skandalın ardından bakan, partinin göze alamayacağı bir ayak bağına dönüşmüştü."
+ },
+ {
+  "id": 1077,
+  "tr": "Yönetim kurulu temettüyü sert biçimde kesti; hisse fiyatı bir saat içinde çakıldı."
+ },
+ {
+  "id": 1078,
+  "tr": "Satın alma kuralları, şartları yalnızca bakanın kuzeni karşılayabilsin diye yeniden yazıldı."
+ },
+ {
+  "id": 1079,
+  "tr": "Maaş paketi cömert ama gece yarısı e-postalara cevap vermeni bekleyecekler."
+ },
+ {
+  "id": 1080,
+  "tr": "Birleşme gerçekleşince finans ekibinin yarısı gönüllü işten çıkarma paketini kabul etti."
+ },
+ {
+  "id": 1081,
+  "tr": "Tepedekilerin hepsi bunun bir liyakat düzeni olduğuna yemin ediyor; zaten onlardan başka ne beklenir ki."
+ },
+ {
+  "id": 1082,
+  "tr": "Kimse açıkça akraba kayırma demedi ama yeni müdürün soyadı yönetim kurulu başkanınınkiyle aynıydı."
+ },
+ {
+  "id": 1083,
+  "tr": "Gig ekonomisi çalışanlarının çoğu güvencesiz bir hayat sürüyor; kirayı ödeyememeleri için tek bir vardiyanın iptal olması yeter."
+ },
+ {
+  "id": 1084,
+  "tr": "Kimsenin sorunları erkenden dile getirmemesine şaşmamalı; bunun için hiçbir teşvik yok."
+ },
+ {
+  "id": 1085,
+  "tr": "Uykusuzluktan ilk darbeyi biliş yer; cumaya geldiğimde basit bir e-posta yazışmasını bile takip edemez olmuştum."
+ },
+ {
+  "id": 1086,
+  "tr": "Teori güzel de ampirik kanıt nerede? Bana slaytları değil, deney verilerini göster."
+ },
+ {
+  "id": 1087,
+  "tr": "Dondurma satışlarıyla boğulma vakaları arasında güçlü bir korelasyon var, ki bu dondurma hakkında hiçbir şey kanıtlamaz."
+ },
+ {
+  "id": 1088,
+  "tr": "Zor olan kısım nedenselliği kanıtlamak; birlikte yükselen iki çizgiyi herkes görebilir."
+ },
+ {
+  "id": 1089,
+  "tr": "Sensör gece 3'te bir anomali kaydetti ve o zamandan beri kimse bunu açıklayabilmiş değil."
+ },
+ {
+  "id": 1090,
+  "tr": "Son bölümü gerçek bir sentez; birbirine zımbalanmış üç literatür taraması değil."
+ },
+ {
+  "id": 1091,
+  "tr": "Ne kadar cazip gelse de, tek bir iyi çeyrekten yola çıkıp on yıllık büyümeyi kestiremezsin."
+ },
+ {
+  "id": 1092,
+  "tr": "Hepimiz ofisin daha gürültülü olduğunu hissediyoruz, peki bunu gerçekten sayısallaştırabilen var mı?"
+ },
+ {
+  "id": 1093,
+  "tr": "Ünlü psikoloji bulgularının yarısı, başka laboratuvarlar denediğinde tekrarlanamadı."
+ },
+ {
+  "id": 1094,
+  "tr": "Hakem değerlendirmesi acımasızlığa varacak kadar titizdi ve makale bu sayede daha iyi oldu."
+ },
+ {
+  "id": 1095,
+  "tr": "Sezgim onu oracıkta işe al diyordu; Excel tablosunun aynı fikre gelmesi bir hafta sürdü."
+ },
+ {
+  "id": 1096,
+  "tr": "Nükleer enerjiye dair kamuoyu algısı, güvenlik rakamlarından çok daha önce değişti."
+ },
+ {
+  "id": 1097,
+  "tr": "Yorgun zihinler iltifata çok daha açıktır, bunu her iyi satıcı bilir."
+ },
+ {
+  "id": 1098,
+  "tr": "Bir haftada üç istifa, bu hükümetin standartlarına göre bile görülmemiş bir şey."
+ },
+ {
+  "id": 1099,
+  "tr": "Sızdırılan not grevin nedeni değildi, sadece katalizörüydü."
+ },
+ {
+  "id": 1100,
+  "tr": "'Ucuz' ile 'uygun fiyatlı' aynı anlama gelir ama çağrışımları arasında dağlar kadar fark var."
+ },
+ {
+  "id": 1101,
+  "tr": "'Yol verildi' lafı, kovulmanın örtmecesinden başka bir şey değil ve odadaki herkes bunu biliyordu."
+ },
+ {
+  "id": 1102,
+  "tr": "Utançtan 'resmen öldüm' demek abartıdır, tabii şu an bir hayalet değilsen."
+ },
+ {
+  "id": 1103,
+  "tr": "Yirmi dakika geç başlayan bir dakiklik atölyesinde belli bir ironi var."
+ },
+ {
+  "id": 1104,
+  "tr": "Ofise 'hayvanat bahçesi' demek, müdürümün hiç hoşlanmadığı bir metafordu."
+ },
+ {
+  "id": 1105,
+  "tr": "Retoriği bir kenara bırakınca, konuşmanın aslında hiçbir şey vadetmediği ortaya çıkıyor."
+ },
+ {
+  "id": 1106,
+  "tr": "Program bir hiciv, gerçi izleyicilerinin yarısı onu haber sanıyor gibi."
+ },
+ {
+  "id": 1107,
+  "tr": "Her konuşması, büyükannesinin fırınıyla ilgili aynı anekdotla başlıyor."
+ },
+ {
+  "id": 1108,
+  "tr": "Ön yazısı klişe üstüne klişeydi: 'takım oyuncusu', 'tutkulu', 'kalıpların dışında düşünmek'."
+ },
+ {
+  "id": 1109,
+  "tr": "Jargonu ayıklayınca bütün strateji bir peçeteye sığıyor."
+ },
+ {
+  "id": 1110,
+  "tr": "Rapor o kadar gereksiz uzun ki işe yarar tek rakam kırkıncı sayfada gömülü kalmış."
+ },
+ {
+  "id": 1111,
+  "tr": "Cevabı kısa ve özdü: 'Hayır, bir daha da sorma.'"
+ },
+ {
+  "id": 1112,
+  "tr": "Dedemin zihni doksanında bile dil bilgisi hatalarımı düzeltecek kadar berraktı."
+ },
+ {
+  "id": 1113,
+  "tr": "Bu yerinde bir soru, üstelik bakanın haftalardır kaçamak cevaplarla geçiştirdiği bir soru."
+ },
+ {
+  "id": 1114,
+  "tr": "Bu noktada cevap vermeyi reddetmek, yaptığını itiraf etmekle eşdeğer."
+ },
+ {
+  "id": 1115,
+  "tr": "Hangi şikâyetlerin gerçek, hangilerinin boş gürültü olduğunu ayırt etmek yıllar alır."
+ },
+ {
+  "id": 1116,
+  "tr": "Jüri üç gün boyunca enine boyuna düşünüp tartıştıktan sonra kimsenin beklemediği bir karar verdi."
+ },
+ {
+  "id": 1117,
+  "tr": "Terfi konusunda son derece ikircikliyim: daha çok para, evet, ama hafta sonlarıma elveda."
+ },
+ {
+  "id": 1118,
+  "tr": "Tanıdığım en titiz editör o; tek bir virgül bile gözünden kaçmaz."
+ },
+ {
+  "id": 1119,
+  "tr": "Tarafsız bir hakem, açıkçası, ikisini de oyundan atardı."
+ },
+ {
+  "id": 1120,
+  "tr": "Bu aşamada birleşme lafları tamamen spekülatif, o yüzden beni kaynak gösterme."
+ },
+ {
+  "id": 1121,
+  "tr": "O satış rakamları bana şüpheli görünüyor; kimse tek bir çeyrekte gelirini üçe katlayamaz."
+ },
+ {
+  "id": 1122,
+  "tr": "Yönetim kurulunun cevabı kesindi: bu yıl prim yok, tartışma da yok."
+ },
+ {
+  "id": 1123,
+  "tr": "İki dava arasındaki bağ en iyi ihtimalle zayıf ve savcılık da bunun farkında."
+ },
+ {
+  "id": 1124,
+  "tr": "Kimse kırk sayfayı okumayacağına göre en önemli noktaları ben çıkarayım."
+ },
+ {
+  "id": 1125,
+  "tr": "İstifa etmeden önce altı aylık kirayı kenara koymak ihtiyatlı bir davranış olur."
+ },
+ {
+  "id": 1126,
+  "tr": "O virajda sollamak cesaret değil, pervasızlıktı ve bunu sen de biliyorsun."
+ },
+ {
+  "id": 1127,
+  "tr": "Teklif konusunda ketum ol; ofisin yarısı o iş için adam öldürür."
+ },
+ {
+  "id": 1128,
+  "tr": "Metro hattı açıklanmadan önce daireyi almak çok uyanıkça bir hamleydi."
+ },
+ {
+  "id": 1129,
+  "tr": "Ezici bir farkla kazandıktan sonra, rakibinin kampanyasını övecek kadar yüce gönüllü davrandı."
+ },
+ {
+  "id": 1250,
+  "tr": "Restoranın tamamında, açıkçası bana epey soğuk gelen, sade bir İskandinav estetiği hâkim."
+ },
+ {
+  "id": 1251,
+  "tr": "O son parçadaki sesi muhteşem; bu kelimeyi de öyle kolay kolay kullanmam."
+ },
+ {
+  "id": 1252,
+  "tr": "Dairesi baştan aşağı kar küresi ve plastik flamingo dolu ama bu kiç bilinçli bir tercih."
+ },
+ {
+  "id": 1253,
+  "tr": "O kömür dumanı kokusu bana kışın büyükannemin köyünü öyle bir çağrıştırıyor ki."
+ },
+ {
+  "id": 1254,
+  "tr": "En dokunaklı an, kadının hâlâ zarflarından çıkarılmamış mektuplarını adamın yüksek sesle okumasıydı."
+ },
+ {
+  "id": 1255,
+  "tr": "Eleştirmenler albümü özgün olmamakla suçladı ama dürüst olalım, bugünlerde hangisi özgün ki?"
+ },
+ {
+  "id": 1256,
+  "tr": "Yetmişlerde böyle bir sahneleme fazlasıyla avangart sayılırdı."
+ },
+ {
+  "id": 1257,
+  "tr": "Film, jaluzilerine varana kadar 1940'ların kara filmlerinin bilinçli bir pastişi."
+ },
+ {
+  "id": 1258,
+  "tr": "Boğulma motifinin roman boyunca, hem de kelimenin tam anlamıyla, nasıl tekrar tekrar yüzeye çıktığına dikkat edin."
+ },
+ {
+  "id": 1259,
+  "tr": "Grenli savaş görüntülerini neşeli reklamlarla yan yana koyuyor ve etkisi tüyler ürpertici."
+ },
+ {
+  "id": 1260,
+  "tr": "Büyük müzik dili aşar; fado karşısında paramparça olmak için Portekizce bilmeniz gerekmez."
+ },
+ {
+  "id": 1261,
+  "tr": "Oyunun evden ayrılma teması, çoğu göçmen olan seyircide belli ki yankı uyandırdı."
+ },
+ {
+  "id": 1262,
+  "tr": "Kendini viski erbabı sanıyor, ki bu çoğunlukla bardağı teatral bir şekilde koklaması anlamına geliyor."
+ },
+ {
+  "id": 1263,
+  "tr": "Gerçek bir virtüöz o, ama virtüözlerin de kötü geceleri olur ve salı öyle bir geceydi."
+ },
+ {
+  "id": 1264,
+  "tr": "Sergiye yönelik eleştirisi acımasız ama adildi ve küratör de bunun farkındaydı."
+ },
+ {
+  "id": 1265,
+  "tr": "Dolandırıcılığı bilip de sessiz kalan herkes bu suça ortaktı."
+ },
+ {
+  "id": 1266,
+  "tr": "Rapor havayolu şirketini kusurlu buldu, gerçi tek bir yöneticinin bile adı geçmedi."
+ },
+ {
+  "id": 1267,
+  "tr": "DNA kanıtı, on dokuz yıl parmaklıklar ardında kaldıktan sonra onu nihayet akladı."
+ },
+ {
+  "id": 1268,
+  "tr": "İki haftada bir özel jetle uçarken tutumluluk vaaz etmek düpedüz ikiyüzlülük."
+ },
+ {
+  "id": 1269,
+  "tr": "Ortada apaçık bir çifte standart var: birebir aynı davranış için adam 'girişken', kadınsa 'geçimsiz' oluyor."
+ },
+ {
+  "id": 1270,
+  "tr": "Milisler yıllarca tam bir cezasızlık içinde faaliyet gösterdi ve kasabadaki herkes bunu biliyordu."
+ },
+ {
+  "id": 1271,
+  "tr": "Bir kitabı yasaklamak kaygan bir zemin; tam olarak nerede duracaksın?"
+ },
+ {
+  "id": 1272,
+  "tr": "Kimse 'bütün kuralları kaldırın' demedi; sen kendi kurduğun korkuluk safsatasını deviriyorsun."
+ },
+ {
+  "id": 1273,
+  "tr": "Kayıp dizüstü bilgisayar bir yanıltmaca çıktı; sızıntı içeriden gelmişti."
+ },
+ {
+  "id": 1274,
+  "tr": "Uyarıları yıllarca kulak ardı edildi ama soruşturma sonunda onu haklı çıkardı."
+ },
+ {
+  "id": 1275,
+  "tr": "Yaptığı şeyi hoş görmüyorum ama neden çileden çıktığını anlayabiliyorum."
+ },
+ {
+  "id": 1276,
+  "tr": "Partinin kendi milletvekilleri liderin sözlerini kınamak için sıraya girdi."
+ },
+ {
+  "id": 1277,
+  "tr": "Saf özgecilik miydi, yoksa adının binada yazmasını mı istiyordu?"
+ },
+ {
+  "id": 1278,
+  "tr": "Zorlamayla alınan bir itiraf, kulağa ne kadar ayrıntılı gelirse gelsin, beş para etmez."
+ },
+ {
+  "id": 1279,
+  "tr": "Parayı istersen al; ben bunu rahat bir vicdanla yapamazdım."
+ }
+]

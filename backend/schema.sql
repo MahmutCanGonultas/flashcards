@@ -32,6 +32,9 @@ CREATE TABLE cards(
     -- where a real image actually helps (concrete nouns) -- most words in a
     -- vocabulary deck are function/abstract words a photo can't represent.
     example_sentence TEXT,
+    -- Its natural Turkish translation, shown under the sentence while the
+    -- word is being taught.
+    example_tr TEXT,
     image_url TEXT,
     -- Optional: a memory aid (usually the word's etymology/root) explaining
     -- why it means what it means, rather than just asking you to memorize it.

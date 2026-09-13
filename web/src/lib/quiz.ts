@@ -41,7 +41,13 @@ function shuffle<T>(items: T[]): T[] {
  *   1. one word from the same lesson — near enough to be a real choice
  *   2. up to two already-learned words of the same part of speech
  *   3. any already-learned word
- *   4. anything left in the deck
+ *   4. unseen words from nearby lessons — the same or the next unit
+ *   5. unseen words from the same stretch of the course
+ *   6. anything left in the deck
+ *
+ * Tiers 4 and 5 keep a beginner's options at a beginner's level: a learner
+ * on lesson 2 choosing between "yes", "sorry" and "reconcile" isn't being
+ * tested, and is being shown a C1 word months early.
  *
  * Only ONE lesson-mate, deliberately. A lesson is three words taught together
  * and they are often close in meaning; offering all three as options turns the
@@ -87,6 +93,12 @@ function pickDistractors(
     2,
   );
   take(started, wanted);
+  if (card.lesson !== null) {
+    const distance = (other: Card) =>
+      other.lesson === null ? Infinity : Math.abs(other.lesson - card.lesson!);
+    take(rest.filter((other) => distance(other) <= 10), wanted);
+    take(rest.filter((other) => distance(other) <= 60), wanted);
+  }
   take(rest, wanted);
 
   return chosen;
