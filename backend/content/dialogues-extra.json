@@ -1,0 +1,482 @@
+[
+ {
+  "position": 13,
+  "dialogue": {
+   "title": "You Looked Confident",
+   "lines": [
+    {
+     "speaker": "Elif",
+     "en": "Tom, I apologize. I avoided you all week.",
+     "tr": "Tom, özür dilerim. Bütün hafta senden kaçtım."
+    },
+    {
+     "speaker": "Tom",
+     "en": "I noticed. What happened? Now I'm curious.",
+     "tr": "Belli oluyordu. Ne oldu? Merak ettim şimdi."
+    },
+    {
+     "speaker": "Elif",
+     "en": "My speech in class. I was so nervous.",
+     "tr": "Sınıftaki konuşmam. Çok gergindim."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Be honest, what went wrong? It looked fine.",
+     "tr": "Dürüst ol, ne ters gitti? Bence gayet iyiydi."
+    },
+    {
+     "speaker": "Elif",
+     "en": "Unfortunately, I forgot the ending. However, I survived.",
+     "tr": "Ne yazık ki sonunu unuttum. Ama yine de atlattım."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Actually, you looked confident from my seat.",
+     "tr": "Aslında oturduğum yerden çok kendinden emin görünüyordun."
+    },
+    {
+     "speaker": "Elif",
+     "en": "Really? I never realized. I stared at the floor.",
+     "tr": "Gerçekten mi? Hiç fark etmedim. Hep yere baktım."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Practice with me, then. I'm a patient teacher.",
+     "tr": "O zaman benimle pratik yap. Ben sabırlı bir öğretmenim."
+    }
+   ]
+  }
+ },
+ {
+  "position": 14,
+  "dialogue": {
+   "title": "Tourists and Headaches",
+   "lines": [
+    {
+     "speaker": "Tom",
+     "en": "You look exhausted. Was the café busy?",
+     "tr": "Bitkin görünüyorsun. Kafe kalabalık mıydı?"
+    },
+    {
+     "speaker": "Elif",
+     "en": "Very. Tourists everywhere, and my colleague was ill.",
+     "tr": "Hem de nasıl. Her yer turist doluydu, iş arkadaşım da hastaydı."
+    },
+    {
+     "speaker": "Tom",
+     "en": "So you worked alone? Did your employer help?",
+     "tr": "Yani tek başına mı çalıştın? Patronun yardım etti mi?"
+    },
+    {
+     "speaker": "Elif",
+     "en": "No, he just watched. Now I have a headache.",
+     "tr": "Yok, sadece izledi. Şimdi de başım ağrıyor."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Is the salary worth all this stress?",
+     "tr": "Maaş bu kadar strese değer mi?"
+    },
+    {
+     "speaker": "Elif",
+     "en": "Not really, but I want to go abroad.",
+     "tr": "Pek değil ama yurt dışına gitmek istiyorum."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Your first big journey! Do you have a passport?",
+     "tr": "İlk büyük yolculuğun! Pasaportun var mı?"
+    },
+    {
+     "speaker": "Elif",
+     "en": "Not yet. That's my next headache.",
+     "tr": "Daha yok. O da bir sonraki baş ağrım."
+    }
+   ]
+  }
+ },
+ {
+  "position": 15,
+  "dialogue": {
+   "title": "Fix It, Don't Buy It",
+   "lines": [
+    {
+     "speaker": "Tom",
+     "en": "Elif, look at this phone. The screen is huge!",
+     "tr": "Elif, şu telefona bak. Ekranı kocaman!"
+    },
+    {
+     "speaker": "Elif",
+     "en": "It's so expensive, Tom. Can you afford it?",
+     "tr": "Çok pahalı ama Tom. Paran yetiyor mu?"
+    },
+    {
+     "speaker": "Tom",
+     "en": "No. I spent my birthday money on concert tickets.",
+     "tr": "Hayır. Doğum günü paramı konser biletine harcadım."
+    },
+    {
+     "speaker": "Elif",
+     "en": "Then keep your old one. What's wrong with it?",
+     "tr": "O zaman eskisini kullan. Nesi var ki?"
+    },
+    {
+     "speaker": "Tom",
+     "en": "The battery dies every two hours.",
+     "tr": "Pili iki saatte bir bitiyor."
+    },
+    {
+     "speaker": "Elif",
+     "en": "Change it. That shop has a student discount.",
+     "tr": "Pili değiştir. Şu dükkânda öğrenci indirimi var."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Great, that fits my budget. And the old battery?",
+     "tr": "Süper, bütçeme uyar. Peki eski pil?"
+    },
+    {
+     "speaker": "Elif",
+     "en": "They recycle it. Save money, protect the planet.",
+     "tr": "Onu geri dönüştürüyorlar. Hem paran kalır hem gezegeni korursun."
+    }
+   ]
+  }
+ },
+ {
+  "position": 16,
+  "dialogue": {
+   "title": "Elif's Turn to Teach",
+   "lines": [
+    {
+     "speaker": "Elif",
+     "en": "How was the Turkish literature exam, Tom?",
+     "tr": "Türk edebiyatı sınavı nasıl geçti Tom?"
+    },
+    {
+     "speaker": "Tom",
+     "en": "Terrible. I don't understand that subject at all.",
+     "tr": "Berbat. O dersi hiç anlamıyorum."
+    },
+    {
+     "speaker": "Elif",
+     "en": "You have the knowledge. You just need practice.",
+     "tr": "Bilgin var aslında, sadece pratik lazım."
+    },
+    {
+     "speaker": "Tom",
+     "en": "I disagree. Those old poems are too hard.",
+     "tr": "Katılmıyorum. O eski şiirler çok zor."
+    },
+    {
+     "speaker": "Elif",
+     "en": "Our conversations are always in English. Let's change that.",
+     "tr": "Sohbetlerimiz hep İngilizce. Bunu değiştirelim."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Okay, I agree. But you explain the poems, right?",
+     "tr": "Tamam, kabul. Ama şiirleri sen açıklayacaksın, değil mi?"
+    },
+    {
+     "speaker": "Elif",
+     "en": "Of course. Friends support each other.",
+     "tr": "Tabii ki. Arkadaşlar birbirine destek olur."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Thanks. I trust you more than my textbook!",
+     "tr": "Sağ ol. Sana ders kitabımdan daha çok güveniyorum!"
+    }
+   ]
+  }
+ },
+ {
+  "position": 17,
+  "dialogue": {
+   "title": "After the Storm",
+   "lines": [
+    {
+     "speaker": "Elif",
+     "en": "Tom, is your apartment okay after the storm?",
+     "tr": "Tom, eviniz fırtınayı atlattı mı?"
+    },
+    {
+     "speaker": "Tom",
+     "en": "Not really. The flood came into the kitchen.",
+     "tr": "Pek sayılmaz. Sel mutfağa kadar girdi."
+    },
+    {
+     "speaker": "Elif",
+     "en": "Oh no! What about the furniture?",
+     "tr": "Olamaz! Peki mobilyalara ne oldu?"
+    },
+    {
+     "speaker": "Tom",
+     "en": "All wet. And the forecast says more rain tonight.",
+     "tr": "Hepsi ıslandı. Hava tahmini bu gece yine yağmur diyor."
+    },
+    {
+     "speaker": "Elif",
+     "en": "Come to my place. Mom tried a new recipe.",
+     "tr": "Bize gel. Annem yeni bir tarif denedi."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Is it spicy? You know I love spicy food.",
+     "tr": "Acılı mı? Acılı yemeğe bayıldığımı biliyorsun."
+    },
+    {
+     "speaker": "Elif",
+     "en": "Very. Just taste it. The flavor is amazing.",
+     "tr": "Hem de nasıl. Bir tadına bak, lezzeti harika."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Thanks! At least your neighborhood is dry.",
+     "tr": "Sağ ol! En azından sizin mahalleyi su basmadı."
+    }
+   ]
+  }
+ },
+ {
+  "position": 25,
+  "dialogue": {
+   "title": "Elif's First Article",
+   "lines": [
+    {
+     "speaker": "Elif",
+     "en": "Tom, guess what? I'm a journalist at the student newspaper now.",
+     "tr": "Tom, bil bakalım ne oldu? Artık öğrenci gazetesinde gazeteciyim."
+    },
+    {
+     "speaker": "Tom",
+     "en": "A new hobby! I've been bored all week, tell me everything.",
+     "tr": "Yeni bir hobi! Bütün hafta sıkıldım, anlat her şeyi."
+    },
+    {
+     "speaker": "Elif",
+     "en": "My first article is about a crime in our dorm.",
+     "tr": "İlk haberim yurdumuzdaki bir suç hakkında."
+    },
+    {
+     "speaker": "Tom",
+     "en": "A crime? Did someone steal something expensive?",
+     "tr": "Suç mu? Biri pahalı bir şey mi çaldı?"
+    },
+    {
+     "speaker": "Elif",
+     "en": "Five bikes! All the victims were first-year students.",
+     "tr": "Beş bisiklet! Mağdurların hepsi birinci sınıf öğrencisiydi."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Did the police find any evidence and arrest anyone?",
+     "tr": "Polis kanıt bulup birini tutukladı mı?"
+    },
+    {
+     "speaker": "Elif",
+     "en": "Yes, camera footage. They arrested the thief. It was so exciting!",
+     "tr": "Evet, kamera kayıtları. Hırsızı tutukladılar. Çok heyecan vericiydi!"
+    },
+    {
+     "speaker": "Tom",
+     "en": "You're clearly talented. Send me the link, I'll subscribe today.",
+     "tr": "Belli ki yeteneklisin. Linki gönder, bugün abone olurum."
+    }
+   ]
+  }
+ },
+ {
+  "position": 26,
+  "dialogue": {
+   "title": "The Plastic Pitch",
+   "lines": [
+    {
+     "speaker": "Elif",
+     "en": "Tom, your football team ruined my biology project.",
+     "tr": "Tom, futbol takımın biyoloji projemi mahvetti."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Us? The coach just replaced the real grass with plastic.",
+     "tr": "Biz mi? Antrenör sadece gerçek çimi suni çimle değiştirdi."
+    },
+    {
+     "speaker": "Elif",
+     "en": "Exactly. I was counting insects on that pitch every week.",
+     "tr": "Aynen. O sahada her hafta böcek sayıyordum."
+    },
+    {
+     "speaker": "Tom",
+     "en": "So the numbers decreased after the new grass?",
+     "tr": "Yani yeni çimden sonra sayıları azaldı mı?"
+    },
+    {
+     "speaker": "Elif",
+     "en": "Decreased? They disappeared. Two species are completely gone.",
+     "tr": "Azalmak mı? Kayboldular. İki tür tamamen yok oldu."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Extinct? Because of one football pitch?",
+     "tr": "Nesli mi tükendi? Tek bir futbol sahası yüzünden mi?"
+    },
+    {
+     "speaker": "Elif",
+     "en": "Not extinct, Tom. They just lost their habitat and moved.",
+     "tr": "Nesli tükenmedi Tom. Sadece yaşam alanlarını kaybedip başka yere taşındılar."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Fine. Come on Saturday and count how many I score.",
+     "tr": "Tamam. Cumartesi maça gel de kaç gol attığımı say."
+    }
+   ]
+  }
+ },
+ {
+  "position": 27,
+  "dialogue": {
+   "title": "A Rare Opportunity",
+   "lines": [
+    {
+     "speaker": "Elif",
+     "en": "You look tired, Tom. Is your routine still a mess?",
+     "tr": "Yorgun görünüyorsun Tom. Rutinin hâlâ darmadağın mı?"
+    },
+    {
+     "speaker": "Tom",
+     "en": "A bit. But I got an internship offer. A real opportunity.",
+     "tr": "Biraz. Ama bir staj teklifi aldım. Gerçek bir fırsat."
+    },
+    {
+     "speaker": "Elif",
+     "en": "That's rare in second year! Why aren't you smiling?",
+     "tr": "İkinci sınıfta bu nadir bir şey! Neden gülmüyorsun?"
+    },
+    {
+     "speaker": "Tom",
+     "en": "The challenge is timing. It starts in the middle of exams.",
+     "tr": "Zor kısmı zamanlama. Tam sınavların ortasında başlıyor."
+    },
+    {
+     "speaker": "Elif",
+     "en": "And with your previous grades, that's a real risk.",
+     "tr": "Önceki notlarını düşünürsek bu gerçekten riskli."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Exactly. Do you think I could postpone the start?",
+     "tr": "Aynen. Sence başlangıç tarihini erteleyebilir miyim?"
+    },
+    {
+     "speaker": "Elif",
+     "en": "Just ask them. It's a common request, honestly.",
+     "tr": "Sor işte. Açıkçası bu gayet yaygın bir istek."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Okay, simple solution. I'll email them tonight.",
+     "tr": "Tamam, basit bir çözüm. Bu akşam onlara mail atarım."
+    }
+   ]
+  }
+ },
+ {
+  "position": 28,
+  "dialogue": {
+   "title": "Lisbon Instead",
+   "lines": [
+    {
+     "speaker": "Elif",
+     "en": "I finally found out about Erasmus. Berlin turned me down.",
+     "tr": "Erasmus sonucunu nihayet öğrendim. Berlin beni reddetti."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Oh no. I've been anxious all day. What now?",
+     "tr": "Olamaz. Bütün gün endişeyle bekledim. Şimdi ne olacak?"
+    },
+    {
+     "speaker": "Elif",
+     "en": "They offered Lisbon instead. Honestly, I'm just confused.",
+     "tr": "Onun yerine Lizbon'u teklif ettiler. Açıkçası kafam karmakarışık."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Lisbon? That's brilliant! Why do you sound so disappointed?",
+     "tr": "Lizbon mu? Harika ya! Neden bu kadar hayal kırıklığına uğramış gibisin?"
+    },
+    {
+     "speaker": "Elif",
+     "en": "I planned Berlin for a whole year, Tom.",
+     "tr": "Tam bir yıl boyunca Berlin'i planladım, Tom."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Despite the rejection, you're still going abroad. Compare them honestly.",
+     "tr": "Reddedilmene rağmen yine de yurt dışına gidiyorsun. İkisini dürüstçe karşılaştır."
+    },
+    {
+     "speaker": "Elif",
+     "en": "Fine. Similar courses, cheaper rent, and actual sunshine.",
+     "tr": "Peki. Dersler benzer, kira daha ucuz, üstelik güneş de var."
+    },
+    {
+     "speaker": "Tom",
+     "en": "See? You figured it out. I'm already looking forward to visiting.",
+     "tr": "Gördün mü? Kendin çözdün. Lizbon'a gelmeyi şimdiden dört gözle bekliyorum."
+    }
+   ]
+  }
+ },
+ {
+  "position": 29,
+  "dialogue": {
+   "title": "Good Deeds Don't Pay Rent",
+   "lines": [
+    {
+     "speaker": "Elif",
+     "en": "Guess what? A small company in Ankara hired me!",
+     "tr": "Bil bakalım ne oldu? Ankara'da küçük bir şirket beni işe aldı!"
+    },
+    {
+     "speaker": "Tom",
+     "en": "Seriously? That's brilliant! Doing what exactly?",
+     "tr": "Ciddi misin? Harika! Tam olarak ne yapacaksın?"
+    },
+    {
+     "speaker": "Elif",
+     "en": "Writing posts for their brand and answering customer emails.",
+     "tr": "Markaları için paylaşım yazıp müşteri e-postalarına cevap vereceğim."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Sounds creative. Are the hours flexible around your lectures?",
+     "tr": "Yaratıcı bir iş gibi. Saatler derslerine göre esnek mi?"
+    },
+    {
+     "speaker": "Elif",
+     "en": "Totally. The office is near campus, so it's convenient.",
+     "tr": "Kesinlikle. Ofis kampüse yakın, yani gayet uygun."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Lucky you. I'm still volunteering at the community food bank.",
+     "tr": "Ne şanslısın. Ben hâlâ mahalledeki gıda bankasında gönüllü çalışıyorum."
+    },
+    {
+     "speaker": "Elif",
+     "en": "That's worth more than any company's profit, Tom.",
+     "tr": "Bu, herhangi bir şirketin kârından daha değerli, Tom."
+    },
+    {
+     "speaker": "Tom",
+     "en": "Maybe, but my landlord doesn't accept good deeds.",
+     "tr": "Olabilir, ama ev sahibim kira yerine iyilik kabul etmiyor."
+    }
+   ]
+  }
+ }
+]

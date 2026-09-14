@@ -102,7 +102,7 @@ function Modal({ isOpen, onClose, title, emoji, children }: ModalProps) {
           <button
             type="button"
             onClick={onClose}
-            aria-label="Close"
+            aria-label="Kapat"
             className="shrink-0 w-9 h-9 rounded-xl text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition flex items-center justify-center text-xl leading-none"
           >
             ×

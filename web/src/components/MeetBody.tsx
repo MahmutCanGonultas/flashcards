@@ -57,9 +57,14 @@ function MeetBody({ card, variant = "screen" }: MeetBodyProps) {
   if (variant === "panel") {
     return (
       <div className="rounded-2xl bg-white/70 p-3 ring-1 ring-rose-200">
-        <p className="text-lg font-extrabold leading-snug text-rose-800 break-words">
-          {card.front} <span className="font-bold text-rose-500">— {meaning}</span>
-        </p>
+        <div className="flex items-center gap-3">
+          {card.image_url && (
+            <img src={card.image_url} alt="" className="h-14 w-14 shrink-0 rounded-xl object-cover ring-1 ring-rose-200" />
+          )}
+          <p className="text-lg font-extrabold leading-snug text-rose-800 break-words">
+            {card.front} <span className="font-bold text-rose-500">— {meaning}</span>
+          </p>
+        </div>
         {card.example_sentence && (
           <div className="mt-2 flex items-start justify-between gap-2">
             <div className="min-w-0">
@@ -99,6 +104,23 @@ function MeetBody({ card, variant = "screen" }: MeetBodyProps) {
           <p className="mt-1.5 text-[15px] leading-relaxed text-stone-500 break-words">
             <TurkishSentence sentence={card.example_tr} meaning={meaning} emphasis="text-violet-700" />
           </p>
+        )}
+        {/* The second angle on the same word: a different scene, so the
+            word isn't welded to one sentence. */}
+        {card.example2 && (
+          <div className="mt-3 border-t border-dashed border-stone-200 pt-3">
+            <div className="flex items-start justify-between gap-3">
+              <p className="min-w-0 text-[17px] font-semibold leading-relaxed text-stone-700 break-words">
+                <Sentence sentence={card.example2} headword={card.front} emphasis="bg-violet-100 text-violet-800" />
+              </p>
+              <SpeakButton text={card.example2} size="sm" />
+            </div>
+            {card.example2_tr && (
+              <p className="mt-1 text-[14px] leading-relaxed text-stone-500 break-words">
+                <TurkishSentence sentence={card.example2_tr} meaning={meaning} emphasis="text-violet-700" />
+              </p>
+            )}
+          </div>
         )}
       </div>
     </div>

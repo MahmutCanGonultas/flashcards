@@ -1,6 +1,6 @@
 import type { Card as CardModel } from "../types";
 import type { DeckTheme } from "../lib/themes";
-import { parseBack } from "../lib/cardBack";
+import { parseBack, posLabel } from "../lib/cardBack";
 import { PencilIcon, TrashIcon } from "./icons";
 import SpeakButton from "./SpeakButton";
 
@@ -20,14 +20,14 @@ type ScheduleTier = "new" | "learning" | "known";
  * further along, instead of a rainbow that means nothing.
  */
 function scheduleInfo(card: CardModel): { label: string; tier: ScheduleTier } {
-  if (card.repetitions === 0) return { label: "New", tier: "new" };
+  if (card.repetitions === 0) return { label: "Yeni", tier: "new" };
 
   const dayMs = 24 * 60 * 60 * 1000;
   const remaining = new Date(card.due_date).getTime() - Date.now();
-  if (remaining <= 0) return { label: "Due now", tier: "new" };
+  if (remaining <= 0) return { label: "Tekrar vakti", tier: "new" };
 
   const days = Math.ceil(remaining / dayMs);
-  const label = days === 1 ? "Reviews tomorrow" : `Reviews in ${days}d`;
+  const label = days === 1 ? "Yarın tekrar" : `${days} gün sonra tekrar`;
   return { label, tier: days < 10 ? "learning" : "known" };
 }
 
@@ -38,7 +38,7 @@ const TIER_CLASSES: Record<ScheduleTier, string> = {
 };
 
 const SCHEDULE_TITLE =
-  "Calculated for this word specifically — the better you know it, the longer until it comes back.";
+  "Bu kelimeye özel hesaplandı — ne kadar iyi bilirsen o kadar geç karşına çıkar.";
 
 const iconButton =
   "flex h-11 w-11 items-center justify-center rounded-xl text-stone-500 transition hover:bg-stone-900/5 hover:text-stone-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-300";
@@ -68,7 +68,7 @@ function CardItem({ card, theme, onEdit, onDelete }: CardItemProps) {
             </h3>
             {pos && (
               <span className="rounded-full bg-stone-900/5 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-stone-500">
-                {pos}
+                {posLabel(pos)}
               </span>
             )}
             <SpeakButton text={card.front} size="sm" />
@@ -79,7 +79,7 @@ function CardItem({ card, theme, onEdit, onDelete }: CardItemProps) {
           <button
             type="button"
             onClick={onEdit}
-            aria-label={`Edit card: ${card.front}`}
+            aria-label={`Kartı düzenle: ${card.front}`}
             className={iconButton}
           >
             <PencilIcon className="h-[18px] w-[18px]" />
@@ -87,7 +87,7 @@ function CardItem({ card, theme, onEdit, onDelete }: CardItemProps) {
           <button
             type="button"
             onClick={onDelete}
-            aria-label={`Delete card: ${card.front}`}
+            aria-label={`Kartı sil: ${card.front}`}
             className={`${iconButton} hover:text-rose-600`}
           >
             <TrashIcon className="h-[18px] w-[18px]" />
@@ -126,7 +126,7 @@ function CardItem({ card, theme, onEdit, onDelete }: CardItemProps) {
       {card.mnemonic && (
         <details className="mt-3">
           <summary className="flex cursor-pointer list-none items-center gap-1.5 text-xs font-bold text-amber-600 [&::-webkit-details-marker]:hidden hover:text-amber-700">
-            <span aria-hidden="true">💡</span> Memory tip
+            <span aria-hidden="true">💡</span> Hafıza ipucu
           </summary>
           <p className="mt-1.5 rounded-xl bg-amber-50 p-3 text-sm leading-relaxed text-amber-900 break-words">
             {card.mnemonic}

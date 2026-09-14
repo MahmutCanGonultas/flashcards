@@ -23,9 +23,9 @@ export type DeckStats = {
 
 /** Makes the split between brand-new words and spaced-repetition reviews visible. */
 function dueLabel({ newDue, reviewDue }: DeckStats): string {
-  if (newDue > 0 && reviewDue > 0) return `${newDue} new · ${reviewDue} review`;
-  if (newDue > 0) return `${newDue} new`;
-  return `${reviewDue} review`;
+  if (newDue > 0 && reviewDue > 0) return `${newDue} yeni · ${reviewDue} tekrar`;
+  if (newDue > 0) return `${newDue} yeni`;
+  return `${reviewDue} tekrar`;
 }
 
 type DeckCardProps = {
@@ -40,8 +40,8 @@ function DeckCard({ deck, theme, stats }: DeckCardProps) {
     stats === undefined
       ? null
       : stats.total === 0
-        ? "No cards yet"
-        : `${stats.total} ${stats.total === 1 ? "card" : "cards"}`;
+        ? "Henüz kart yok"
+        : `${stats.total} kart`;
 
   return (
     <Link
@@ -69,7 +69,7 @@ function DeckCard({ deck, theme, stats }: DeckCardProps) {
           </span>
         ) : stats.total > 0 ? (
           <span className="shrink-0 rounded-full bg-white/70 px-2.5 py-1 text-xs font-bold text-stone-500 ring-1 ring-stone-900/5">
-            Caught up
+            Hepsi tamam
           </span>
         ) : null}
       </div>
@@ -84,8 +84,7 @@ function DeckCard({ deck, theme, stats }: DeckCardProps) {
         ) : stats?.path ? (
           <>
             <p className="text-sm font-bold text-stone-600">
-              Lesson {stats.path.currentLesson ?? stats.path.totalLessons} of{" "}
-              {stats.path.totalLessons}
+              Ders {stats.path.currentLesson ?? stats.path.totalLessons}/{stats.path.totalLessons}
             </p>
             <div className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-white/70">
               <div
@@ -96,7 +95,7 @@ function DeckCard({ deck, theme, stats }: DeckCardProps) {
               />
             </div>
             <p className="mt-1.5 text-xs font-medium text-stone-500">
-              {stats.path.wordsLearned}/{stats.path.totalWords} words known
+              {stats.path.wordsLearned}/{stats.path.totalWords} kelime öğrenildi
             </p>
           </>
         ) : (
@@ -107,7 +106,7 @@ function DeckCard({ deck, theme, stats }: DeckCardProps) {
       <div
         className={`relative mt-5 flex items-center gap-1.5 text-sm font-extrabold ${theme.text}`}
       >
-        Study
+        Çalış
         <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
       </div>
     </Link>

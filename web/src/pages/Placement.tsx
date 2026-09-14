@@ -14,16 +14,17 @@ import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
 import QuizOptions from "../components/QuizOptions";
 import Mascot from "../components/Mascot";
+import TontonLine from "../components/TontonLine";
 
 const LEVELS = ["A1", "A2", "B1", "B2", "C1"] as const;
 type Level = (typeof LEVELS)[number];
 
 const LEVEL_NAMES: Record<Level, string> = {
-  A1: "Beginner",
-  A2: "Elementary",
-  B1: "Intermediate",
-  B2: "Upper intermediate",
-  C1: "Advanced",
+  A1: "Başlangıç",
+  A2: "Temel",
+  B1: "Orta",
+  B2: "Orta üstü",
+  C1: "İleri",
 };
 
 const QUESTIONS_PER_LEVEL = 6;
@@ -172,19 +173,19 @@ function PlacementSession({
       <div className="rounded-3xl bg-gradient-to-b from-white to-violet-50 p-8 text-center ring-2 ring-violet-100 shadow-[0_5px_0_0_var(--color-violet-100)] animate-[pop-in_220ms_ease-out] sm:p-12">
         <Mascot mood="idle" size={120} className="mx-auto" />
         <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-stone-800">
-          Where should you start?
+          Nereden başlamalısın?
         </h1>
         <p className="mx-auto mt-3 max-w-sm text-stone-600">
-          The path runs from A1 to C1. Complete beginners start at the first
-          unit. If you already know some English, a five-minute test finds your
-          level and opens the path up to it.
+          Patika A1'den C1'e uzanıyor. Sıfırdan başlayanlar ilk üniteden
+          başlar. Biraz İngilizce biliyorsan beş dakikalık bir test seviyeni
+          bulur ve patikayı oraya kadar açar.
         </p>
         <div className="mt-8 flex flex-col gap-3">
           <Button size="lg" fullWidth onClick={() => setStarted(true)}>
-            🎯 Find my level
+            🎯 Seviyemi bul
           </Button>
           <LinkButton to={`/decks/${deckId}`} variant="ghost">
-            Start from the beginning
+            Baştan başla
           </LinkButton>
         </div>
       </div>
@@ -195,32 +196,32 @@ function PlacementSession({
     return (
       <div className="rounded-3xl bg-gradient-to-b from-white to-amber-50 p-8 text-center ring-2 ring-amber-200 shadow-[0_5px_0_0_var(--color-amber-200)] animate-[pop-in_220ms_ease-out] sm:p-12">
         <Mascot mood="happy" size={120} className="mx-auto" />
-        <p className="mt-4 text-sm font-bold uppercase tracking-widest text-stone-400">Your level</p>
+        <p className="mt-4 text-sm font-bold uppercase tracking-widest text-stone-400">Seviyen</p>
         <p className="mt-1 text-6xl font-extrabold tracking-tight text-amber-500">{placed}</p>
         <p className="text-lg font-bold text-stone-700">{LEVEL_NAMES[placed]}</p>
         <p className="mx-auto mt-4 max-w-sm text-stone-600">
           {startUnit && skipped > 0 ? (
             <>
-              You'll start at <strong>Unit {startUnit.position}: {startUnit.title}</strong>.
-              The {skipped} units before it will be marked as passed — their words still
-              turn up in your reviews if you ever add them.
+              <strong>Ünite {startUnit.position}: {startUnit.title}</strong> ile başlayacaksın.
+              Öncesindeki {skipped} ünite geçilmiş sayılacak — kelimelerini sonradan
+              eklersen tekrarlarında yine karşına çıkarlar.
             </>
           ) : (
-            <>You'll start at the very beginning — the best place for a solid foundation.</>
+            <>En baştan başlayacaksın — sağlam bir temel için en iyi yer.</>
           )}
         </p>
         {record.isError && (
           <p role="alert" className="mx-auto mt-4 max-w-sm rounded-2xl bg-rose-50 p-3 text-sm text-rose-700 ring-1 ring-rose-200">
-            Couldn't save your level — check your connection and try again.
+            Seviyen kaydedilemedi — bağlantını kontrol edip tekrar dene.
           </p>
         )}
         <div className="mt-8 flex flex-col gap-3">
           <Button size="lg" fullWidth onClick={confirm} disabled={record.isPending}>
-            {placed === "A1" ? "Start at the beginning" : `Start at ${placed}`}
+            {placed === "A1" ? "Baştan başla" : `${placed}'den başla`}
           </Button>
           {placed !== "A1" && (
             <LinkButton to={`/decks/${deckId}`} variant="ghost">
-              Start from A1 anyway
+              Yine de A1'den başla
             </LinkButton>
           )}
         </div>
@@ -231,8 +232,8 @@ function PlacementSession({
   if (!question) {
     return (
       <ErrorState
-        title="Not enough words for the test"
-        message="This deck doesn't have enough content at every level yet."
+        title="Test için yeterli kelime yok"
+        message="Bu destede henüz her seviye için yeterli içerik yok."
       />
     );
   }
@@ -244,7 +245,7 @@ function PlacementSession({
       <div className="flex items-center gap-3">
         <Link
           to={`/decks/${deckId}`}
-          aria-label="Leave the test"
+          aria-label="Testten çık"
           className="-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 text-2xl leading-none text-stone-400 transition hover:bg-stone-900/5 hover:text-stone-700"
         >
           ×
@@ -265,7 +266,7 @@ function PlacementSession({
       </div>
 
       <p className="mt-5 text-center text-sm font-bold uppercase tracking-widest text-amber-600">
-        Level {level} · {LEVEL_NAMES[level]}
+        Seviye {level} · {LEVEL_NAMES[level]}
       </p>
 
       <div key={`${level}-${index}`} className="animate-[step-in_180ms_ease-out]">
@@ -278,14 +279,14 @@ function PlacementSession({
           <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-stone-800 break-words sm:text-4xl">
             {meaning.text}
           </p>
-          <p className="mt-2 text-xs font-bold uppercase tracking-widest text-stone-400">
-            in English
-          </p>
         </div>
+        <TontonLine className="mt-4" mood={answer === null ? "think" : question.options[answer].isCorrect ? "happy" : "sad"}>
+          İngilizcesi hangisi?
+        </TontonLine>
         <QuizOptions options={question.options} selectedIndex={answer} onSelect={choose} />
         {answer === null && (
           <p className="mt-5 text-center text-xs font-medium text-stone-400">
-            Tap an answer · keys 1-4 · don't know? Just guess and move on.
+            Bir cevaba dokun · 1-4 tuşları · bilmiyor musun? Tahmin et, geç.
           </p>
         )}
       </div>
@@ -317,8 +318,8 @@ function Placement() {
         )}
         {(unitsQuery.isError || cardsQuery.isError) && (
           <ErrorState
-            title="Couldn't load the test"
-            message="Check your connection and try again."
+            title="Test yüklenemedi"
+            message="Bağlantını kontrol edip tekrar dene."
             onRetry={() => {
               void unitsQuery.refetch();
               void cardsQuery.refetch();

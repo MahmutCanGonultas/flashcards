@@ -14,13 +14,18 @@ interface SrsOutput {
   dueDate: Date; // yeni tekrar tarihi
 }
 
+/** Bilinemeyen bir kelimenin yeniden sorulmasına kadar geçecek süre. */
+export const LAPSE_MINUTES = 10;
+
 export const calculateSrs = (input: SrsInput): SrsOutput => {
   let { repetitions, interval, easeFactor, quality } = input;
 
   if (quality < 3) {
     // BİLEMEDİ
     repetitions = 0; // combo sıfırlandı
-    interval = 1; // yarın göster
+    interval = 1; // bir sonraki doğrudan sonra yarın; ama önce (aşağıda) on
+    // dakika içinde tekrar önüne gelsin — bilinmeyen kelime ertesi güne
+    // bırakılmaz, bir sonraki dersin başında yeniden sorulur
   } else {
     // BİLDİ
     repetitions = repetitions + 1; // combo arttı
@@ -43,9 +48,10 @@ export const calculateSrs = (input: SrsInput): SrsOutput => {
     easeFactor = 1.3;
   }
 
-  // yeni tarih = bugün + interval gün
+  // yeni tarih = bugün + interval gün; bilinemeyen kelime on dakika sonra
   const dueDate = new Date();
-  dueDate.setDate(dueDate.getDate() + interval);
+  if (quality < 3) dueDate.setMinutes(dueDate.getMinutes() + LAPSE_MINUTES);
+  else dueDate.setDate(dueDate.getDate() + interval);
 
   return { repetitions, interval, easeFactor, dueDate };
 };

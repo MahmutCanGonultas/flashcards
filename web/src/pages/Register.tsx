@@ -24,11 +24,11 @@ function describeError(error: unknown): string {
     // A duplicate email makes the backend throw; Express answers 500 with an
     // HTML body, so there's no useful server text to surface here.
     if (error.status === 500) {
-      return "We could not create that account. That email may already be registered.";
+      return "Bu hesabı oluşturamadık. Bu e-posta zaten kayıtlı olabilir.";
     }
     return error.message;
   }
-  return "Something went wrong. Please try again.";
+  return "Bir şeyler ters gitti. Tekrar dener misin?";
 }
 
 function Register() {
@@ -65,10 +65,10 @@ function Register() {
 
     const nextErrors: FieldErrors = {};
     if (!EMAIL_PATTERN.test(email)) {
-      nextErrors.email = "Enter a valid email address.";
+      nextErrors.email = "Geçerli bir e-posta adresi gir.";
     }
     if (password.length < 6) {
-      nextErrors.password = "Password must be at least 6 characters.";
+      nextErrors.password = "Şifre en az 6 karakter olmalı.";
     }
 
     setFieldErrors(nextErrors);
@@ -83,32 +83,32 @@ function Register() {
     <AuthLayout
       headline={
         <>
-          Build a habit,
+          Alışkanlık edin,
           <br />
-          one card at a time.
+          kart kart.
         </>
       }
-      subline="Start with a single deck today. Five minutes a day is all it takes to make it stick."
-      title="Create your account"
+      subline="Bugün tek bir desteyle başla. Aklında kalması için günde beş dakika yeter."
+      title="Hesabını oluştur"
       emoji="✨"
-      subtitle="It takes about ten seconds. No credit card, obviously."
+      subtitle="On saniye sürer. Kredi kartı yok, tabii ki."
       footer={
         <>
-          Already have an account?{" "}
+          Zaten hesabın var mı?{" "}
           <Link
             to="/login"
             className="font-bold text-violet-600 hover:text-violet-700 hover:underline"
           >
-            Sign in
+            Giriş yap
           </Link>
         </>
       }
     >
       <form onSubmit={handleSubmit} noValidate className="space-y-5">
         <TextField
-          label="Email"
+          label="E-posta"
           type="email"
-          placeholder="you@example.com"
+          placeholder="sen@ornek.com"
           autoComplete="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
@@ -117,9 +117,9 @@ function Register() {
         />
 
         <TextField
-          label="Password"
+          label="Şifre"
           type="password"
-          placeholder="At least 6 characters"
+          placeholder="En az 6 karakter"
           autoComplete="new-password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
@@ -141,9 +141,9 @@ function Register() {
           fullWidth
           size="lg"
           isLoading={signUp.isPending}
-          loadingText="Creating account..."
+          loadingText="Hesap oluşturuluyor..."
         >
-          Create account
+          Hesap oluştur
         </Button>
       </form>
     </AuthLayout>

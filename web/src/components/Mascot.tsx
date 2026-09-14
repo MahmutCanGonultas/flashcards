@@ -1,4 +1,4 @@
-export type MascotMood = "idle" | "happy" | "sad";
+export type MascotMood = "idle" | "happy" | "sad" | "think";
 
 type MascotProps = {
   mood?: MascotMood;
@@ -47,6 +47,16 @@ function Mascot({ mood = "idle", size = 96, className = "" }: MascotProps) {
           opacity="0.75"
         />
       </>
+    ) : mood === "think" ? (
+      // Waiting for your answer: a small, slightly pursed mouth. The eyes
+      // glance up in index.css (.tt-think .tt-gaze).
+      <path
+        d="M94.5 119.5C97 117.5 103 117.5 105.5 119.5"
+        stroke="#3A1F5C"
+        strokeWidth="4.5"
+        strokeLinecap="round"
+        fill="none"
+      />
     ) : mood === "happy" ? (
       // Open mouth with a tongue, scaled up — the "you got it" face.
       <g transform="translate(100 121) scale(1.35) translate(-100 -121)">
@@ -291,19 +301,23 @@ function Mascot({ mood = "idle", size = 96, className = "" }: MascotProps) {
         <ellipse cx="80" cy="80" rx="15.5" ry="17" fill="url(#tt-eyeL)"/>
         <g clipPath="url(#tt-cEyeL)">
           <ellipse cx="80" cy="58" rx="18" ry="14" fill="#B7A6DE" opacity="0.55" filter="url(#tt-b2)"/>
-          <ellipse cx="81.5" cy="83" rx="10.5" ry="11" fill="url(#tt-irisL)"/>
-          <ellipse cx="81.5" cy="84" rx="6" ry="6.4" fill="#120A2C"/>
-          <ellipse cx="77.5" cy="77.5" rx="4.3" ry="5.1" transform="rotate(-25 77.5 77.5)" fill="#FFFFFF" opacity="0.95"/>
-          <circle cx="86" cy="89" r="2.1" fill="#FFFFFF" opacity="0.45"/>
+          <g className="tt-gaze">
+            <ellipse cx="81.5" cy="83" rx="10.5" ry="11" fill="url(#tt-irisL)"/>
+            <ellipse cx="81.5" cy="84" rx="6" ry="6.4" fill="#120A2C"/>
+            <ellipse cx="77.5" cy="77.5" rx="4.3" ry="5.1" transform="rotate(-25 77.5 77.5)" fill="#FFFFFF" opacity="0.95"/>
+            <circle cx="86" cy="89" r="2.1" fill="#FFFFFF" opacity="0.45"/>
+          </g>
           <ellipse cx="80" cy="80" rx="15.5" ry="17" fill="none" stroke="#3A2A6B" strokeWidth="2.4" opacity="0.22"/>
         </g>
         <ellipse cx="120" cy="80" rx="15.5" ry="17" fill="url(#tt-eyeR)"/>
         <g clipPath="url(#tt-cEyeR)">
           <ellipse cx="120" cy="58" rx="18" ry="14" fill="#B7A6DE" opacity="0.6" filter="url(#tt-b2)"/>
-          <ellipse cx="118.5" cy="83" rx="10.5" ry="11" fill="url(#tt-irisR)"/>
-          <ellipse cx="118.5" cy="84" rx="6" ry="6.4" fill="#120A2C"/>
-          <ellipse cx="114.5" cy="77.5" rx="4.3" ry="5.1" transform="rotate(-25 114.5 77.5)" fill="#FFFFFF" opacity="0.95"/>
-          <circle cx="123" cy="89" r="2.1" fill="#FFFFFF" opacity="0.45"/>
+          <g className="tt-gaze">
+            <ellipse cx="118.5" cy="83" rx="10.5" ry="11" fill="url(#tt-irisR)"/>
+            <ellipse cx="118.5" cy="84" rx="6" ry="6.4" fill="#120A2C"/>
+            <ellipse cx="114.5" cy="77.5" rx="4.3" ry="5.1" transform="rotate(-25 114.5 77.5)" fill="#FFFFFF" opacity="0.95"/>
+            <circle cx="123" cy="89" r="2.1" fill="#FFFFFF" opacity="0.45"/>
+          </g>
           <ellipse cx="120" cy="80" rx="15.5" ry="17" fill="none" stroke="#3A2A6B" strokeWidth="2.4" opacity="0.26"/>
         </g>
         <ellipse cx="100" cy="112" rx="22" ry="15" fill="url(#tt-muzzle)"/>

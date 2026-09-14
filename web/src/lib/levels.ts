@@ -5,7 +5,6 @@
  */
 export type LevelTheme = {
   name: string;
-  nameTr: string;
   /** Where Elif and Tom are in their story at this level — the dialogues' arc. */
   story: string;
   /** The level's district on the map: a soft tint behind its units. */
@@ -33,9 +32,8 @@ export type LevelTheme = {
 
 export const LEVELS: Record<string, LevelTheme> = {
   A1: {
-    name: "Beginner",
-    nameTr: "Başlangıç",
-    story: "Elif and Tom meet at school",
+    name: "Başlangıç",
+    story: "Elif ve Tom okulda tanışıyor",
     district: "bg-violet-50/60",
     strokeFaint: "stroke-violet-200",
     fill: "bg-violet-500",
@@ -49,9 +47,8 @@ export const LEVELS: Record<string, LevelTheme> = {
     hex: "#8B5CF6",
   },
   A2: {
-    name: "Elementary",
-    nameTr: "Temel",
-    story: "Teenagers in the same city",
+    name: "Temel",
+    story: "Aynı şehirde iki genç",
     district: "bg-sky-50/60",
     strokeFaint: "stroke-sky-200",
     fill: "bg-sky-500",
@@ -65,9 +62,8 @@ export const LEVELS: Record<string, LevelTheme> = {
     hex: "#0EA5E9",
   },
   B1: {
-    name: "Intermediate",
-    nameTr: "Orta",
-    story: "University years, sometimes apart",
+    name: "Orta",
+    story: "Üniversite yılları, bazen ayrı düşüyorlar",
     district: "bg-emerald-50/60",
     strokeFaint: "stroke-emerald-200",
     fill: "bg-emerald-500",
@@ -81,9 +77,8 @@ export const LEVELS: Record<string, LevelTheme> = {
     hex: "#10B981",
   },
   B2: {
-    name: "Upper intermediate",
-    nameTr: "Orta üstü",
-    story: "First real jobs, real arguments",
+    name: "Orta üstü",
+    story: "İlk gerçek işler, gerçek tartışmalar",
     district: "bg-amber-50/60",
     strokeFaint: "stroke-amber-200",
     fill: "bg-amber-500",
@@ -97,9 +92,8 @@ export const LEVELS: Record<string, LevelTheme> = {
     hex: "#F59E0B",
   },
   C1: {
-    name: "Advanced",
-    nameTr: "İleri",
-    story: "Old friends, sharp tongues",
+    name: "İleri",
+    story: "Eski dostlar, sivri diller",
     district: "bg-rose-50/60",
     strokeFaint: "stroke-rose-200",
     fill: "bg-rose-500",

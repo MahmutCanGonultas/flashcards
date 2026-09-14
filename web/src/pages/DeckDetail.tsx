@@ -28,7 +28,7 @@ import ConfirmDialog from "../components/ConfirmDialog";
 function errorMessage(error: unknown): string {
   return error instanceof ApiError
     ? error.message
-    : "Something went wrong. Please try again.";
+    : "Bir şeyler ters gitti. Tekrar dener misin?";
 }
 
 /** Shaped like a real CardItem, so the loading grid doesn't jump around once data lands. */
@@ -155,11 +155,7 @@ function DeckDetail() {
 
   const cardCount = cardsQuery.data?.length ?? 0;
   const cardCountLabel =
-    cardCount === 0
-      ? "No cards yet"
-      : cardCount === 1
-        ? "1 card"
-        : `${cardCount} cards`;
+    cardCount === 0 ? "Henüz kart yok" : `${cardCount} kart`;
 
   // A deck whose cards carry lesson numbers is walked as a path; everything
   // else keeps the plain card list.
@@ -176,7 +172,7 @@ function DeckDetail() {
           to="/decks"
           className="-m-2 inline-flex items-center gap-1.5 p-2 font-medium text-stone-500 hover:text-stone-800 transition"
         >
-          <span aria-hidden="true">←</span> All decks
+          <span aria-hidden="true">←</span> Tüm desteler
         </Link>
 
         {decksQuery.isLoading && (
@@ -189,7 +185,7 @@ function DeckDetail() {
         {decksQuery.isError && (
           <div className="mt-8">
             <ErrorState
-              title="We couldn't load this deck"
+              title="Deste yüklenemedi"
               message={errorMessage(decksQuery.error)}
               onRetry={() => {
                 void decksQuery.refetch();
@@ -202,11 +198,11 @@ function DeckDetail() {
           <div className="mt-8">
             <EmptyState
               emoji="🔍"
-              title="Deck not found"
-              description="This deck doesn't exist anymore, or the link is out of date."
+              title="Deste bulunamadı"
+              description="Bu deste artık yok ya da bağlantı eskimiş."
               action={
                 <LinkButton to="/decks" variant="primary">
-                  Back to my decks
+                  Destelerime dön
                 </LinkButton>
               }
             />
@@ -249,22 +245,22 @@ function DeckDetail() {
             {!isPath && (
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <LinkButton to={`/decks/${deckId}/study`} variant="primary">
-                  Study 🚀
+                  Çalış 🚀
                 </LinkButton>
                 {cardCount > 0 && (
                   <LinkButton to={`/decks/${deckId}/study?mode=all`} variant="secondary">
-                    Review everything 📖
+                    Hepsini tekrar et 📖
                   </LinkButton>
                 )}
                 <Button variant="secondary" size="sm" onClick={() => setIsAddOpen(true)}>
-                  + Add card
+                  + Kart ekle
                 </Button>
                 <div className="w-full sm:w-auto sm:ml-auto flex flex-wrap gap-3">
                   <Button variant="ghost" size="sm" onClick={() => setIsRenameOpen(true)}>
-                    Rename
+                    Adını değiştir
                   </Button>
                   <Button variant="ghost" size="sm" onClick={() => setIsDeleteDeckOpen(true)}>
-                    Delete deck
+                    Desteyi sil
                   </Button>
                 </div>
               </div>
@@ -281,7 +277,7 @@ function DeckDetail() {
 
               {cardsQuery.isError && (
                 <ErrorState
-                  title="We couldn't load your cards"
+                  title="Kartlar yüklenemedi"
                   message={errorMessage(cardsQuery.error)}
                   onRetry={() => {
                     void cardsQuery.refetch();
@@ -292,11 +288,11 @@ function DeckDetail() {
               {cardsQuery.isSuccess && cardsQuery.data.length === 0 && (
                 <EmptyState
                   emoji="🃏"
-                  title="No cards yet"
-                  description="Add your first card and start building this deck."
+                  title="Henüz kart yok"
+                  description="İlk kartını ekle, desteni oluşturmaya başla."
                   action={
                     <Button onClick={() => setIsAddOpen(true)}>
-                      + Add your first card
+                      + İlk kartını ekle
                     </Button>
                   }
                 />
@@ -321,16 +317,16 @@ function DeckDetail() {
             {isPath && (
               <div className="mt-10 flex flex-wrap items-center justify-center gap-2 border-t border-stone-200/70 pt-6">
                 <Button variant="ghost" size="sm" onClick={() => setShowAllCards((v) => !v)}>
-                  {showAllCards ? "Hide word list" : "📋 All words"}
+                  {showAllCards ? "Kelime listesini gizle" : "📋 Tüm kelimeler"}
                 </Button>
                 <Button variant="ghost" size="sm" onClick={() => setIsAddOpen(true)}>
-                  + Add card
+                  + Kart ekle
                 </Button>
                 <Button variant="ghost" size="sm" onClick={() => setIsRenameOpen(true)}>
-                  Rename
+                  Adını değiştir
                 </Button>
                 <Button variant="ghost" size="sm" onClick={() => setIsDeleteDeckOpen(true)}>
-                  Delete deck
+                  Desteyi sil
                 </Button>
               </div>
             )}
@@ -371,13 +367,13 @@ function DeckDetail() {
         onConfirm={() => {
           if (deletingCard) deleteCard.mutate(deletingCard.id);
         }}
-        title="Delete card?"
+        title="Kart silinsin mi?"
         message={
           deletingCard
-            ? `"${deletingCard.front}" will be permanently deleted.`
+            ? `"${deletingCard.front}" kalıcı olarak silinecek.`
             : ""
         }
-        confirmLabel="Delete card"
+        confirmLabel="Kartı sil"
         isLoading={deleteCard.isPending}
         error={deleteCard.error ? errorMessage(deleteCard.error) : null}
       />
@@ -398,9 +394,9 @@ function DeckDetail() {
             isOpen={isDeleteDeckOpen}
             onClose={closeDeleteDeck}
             onConfirm={() => deleteDeck.mutate()}
-            title="Delete this deck?"
-            message={`"${deck.name}" and all of its cards will be permanently deleted. This can't be undone.`}
-            confirmLabel="Delete deck"
+            title="Bu deste silinsin mi?"
+            message={`"${deck.name}" ve içindeki tüm kartlar kalıcı olarak silinecek. Bu işlem geri alınamaz.`}
+            confirmLabel="Desteyi sil"
             isLoading={deleteDeck.isPending}
             error={deleteDeck.error ? errorMessage(deleteDeck.error) : null}
           />

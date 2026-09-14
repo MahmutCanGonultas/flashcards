@@ -35,6 +35,9 @@ CREATE TABLE cards(
     -- Its natural Turkish translation, shown under the sentence while the
     -- word is being taught.
     example_tr TEXT,
+    -- A second sentence from a different angle, with its Turkish.
+    example2 TEXT,
+    example2_tr TEXT,
     image_url TEXT,
     -- Optional: a memory aid (usually the word's etymology/root) explaining
     -- why it means what it means, rather than just asking you to memorize it.

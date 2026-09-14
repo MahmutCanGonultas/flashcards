@@ -26,7 +26,7 @@ function Header() {
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/decks" aria-label="Go to your decks">
+        <Link to="/decks" aria-label="Destelerine git">
           <Logo size={32} withText />
         </Link>
         <div className="flex items-center gap-1">
@@ -34,14 +34,14 @@ function Header() {
           {streak > 0 && (
             <span
               className="flex items-center gap-1 rounded-full bg-amber-100 px-3 py-1.5 text-sm font-extrabold text-amber-600 ring-1 ring-amber-200"
-              title={`${streak}-day streak`}
+              title={`${streak} günlük seri`}
             >
               <FlameIcon className="h-4 w-4" />
               {streak}
             </span>
           )}
           <Button variant="ghost" size="sm" onClick={handleSignOut}>
-            Sign out
+            Çıkış
           </Button>
         </div>
       </div>

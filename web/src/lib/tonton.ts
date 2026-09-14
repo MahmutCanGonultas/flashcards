@@ -13,21 +13,21 @@ const dayIndex = () => Math.floor(Date.now() / 86_400_000);
 
 function greeting(): string {
   const hour = new Date().getHours();
-  if (hour < 5) return "Up late? One quick lesson, then sleep. 🌙";
-  if (hour < 12) return "Good morning! ☀️ Fresh head, new words.";
-  if (hour < 18) return "Good afternoon! 👋 Got fifteen minutes?";
-  return "Good evening! 🌙 A few words before bed?";
+  if (hour < 5) return "Geç saate mi kaldın? Kısa bir ders, sonra uyku. 🌙";
+  if (hour < 12) return "Günaydın! ☀️ Taze kafa, yeni kelimeler.";
+  if (hour < 18) return "İyi günler! 👋 On beş dakikan var mı?";
+  return "İyi akşamlar! 🌙 Yatmadan önce birkaç kelime?";
 }
 
 const TIPS = [
-  "Three words a day is a thousand a year. 🐢",
-  "Say every word out loud — your ears learn too. 👂",
-  "Wrong answers teach the most. Guess anyway. 💪",
-  "A word you've missed twice is a word you'll never forget. 🧠",
-  "Come back tomorrow: that's when a word decides to stay. 📅",
-  "Read the example sentence twice. That's where the word lives. 📖",
-  "Tap any word to hear it. Then say it back. 🔊",
-  "Stuck on a word? Its memory aid is one tap away. 💡",
+  "Günde üç kelime, yılda bin kelime eder. 🐢",
+  "Her kelimeyi yüksek sesle söyle — kulakların da öğrenir. 👂",
+  "En çok yanlış cevaplar öğretir. Yine de tahmin et. 💪",
+  "İki kez kaçırdığın kelimeyi bir daha asla unutmazsın. 🧠",
+  "Yarın yine gel: kelime kalmaya o zaman karar verir. 📅",
+  "Örnek cümleyi iki kez oku. Kelime orada yaşar. 📖",
+  "Duymak için kelimeye dokun. Sonra sen de söyle. 🔊",
+  "Bir kelimede mi takıldın? Hafıza ipucu bir dokunuş uzakta. 💡",
 ];
 
 const tip = () => TIPS[dayIndex() % TIPS.length];
@@ -38,10 +38,8 @@ function recall(cards: Card[]): string | null {
   if (known.length === 0) return null;
   const card = known[dayIndex() % known.length];
   const back = parseBack(card.back);
-  return `Remember "${card.front}"? ${back.text}${back.emoji ? ` ${back.emoji}` : ""}`;
+  return `"${card.front}" ne demekti? ${back.text}${back.emoji ? ` ${back.emoji}` : ""}`;
 }
-
-const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 
 /** The deck list: a hello, what's due, the streak, a word from memory, a tip. */
 export function homeLines({
@@ -54,10 +52,10 @@ export function homeLines({
   streak: number;
 }): string[] {
   const lines = [greeting()];
-  if (due > 0) lines.push(`${plural(due, "word is", "words are")} waiting for you. Reviews first? 🔁`);
-  else if (cards.length > 0) lines.push("Nothing to review right now — a new lesson? ✨");
-  if (streak > 1) lines.push(`${streak} days in a row! 🔥 Keep it going.`);
-  else if (streak === 1) lines.push("Day one of a streak. Tomorrow makes it two. 🔥");
+  if (due > 0) lines.push(`${due} kelime seni bekliyor. Önce tekrar? 🔁`);
+  else if (cards.length > 0) lines.push("Şu an tekrar edecek bir şey yok — yeni bir ders? ✨");
+  if (streak > 1) lines.push(`${streak} günlük seri! 🔥 Böyle devam.`);
+  else if (streak === 1) lines.push("Serinin ilk günü. Yarın iki olur. 🔥");
   const remembered = recall(cards);
   if (remembered) lines.push(remembered);
   lines.push(tip());
@@ -70,16 +68,16 @@ export function pathLines(stats: PathStats, units: Unit[], isFresh: boolean): st
   const cards = lessons.flatMap((lesson) => lesson.cards);
   const lines: string[] = [];
 
-  if (isFresh) lines.push("New here? Take the level test — or just start at Lesson 1. 🎯");
-  if (stats.dueNow > 0) lines.push(`${plural(stats.dueNow, "word is", "words are")} due. Reviews first? 🔁`);
-  if (stats.testReady) lines.push(`Unit ${stats.testReady.index} is done — its test is open! 🎯`);
+  if (isFresh) lines.push("Yeni misin? Seviye testine gir — ya da direkt Ders 1'den başla. 🎯");
+  if (stats.dueNow > 0) lines.push(`${stats.dueNow} kelime tekrar bekliyor. Önce tekrar? 🔁`);
+  if (stats.testReady) lines.push(`Ünite ${stats.testReady.index} bitti — testi açıldı! 🎯`);
   const current = lessons.find((lesson) => lesson.state === "current");
   if (current) {
     lines.push(
-      `${current.learned > 0 ? "Carry on at" : "Next stop:"} ${current.cards.map((card) => card.front).join(" · ")} 🚉`,
+      `${current.learned > 0 ? "Kaldığın yer:" : "Sıradaki durak:"} ${current.cards.map((card) => card.front).join(" · ")} 🚉`,
     );
   }
-  if (stats.wordsKnown > 0) lines.push(`${plural(stats.wordsKnown, "word is", "words are")} truly yours now. 🏅`);
+  if (stats.wordsKnown > 0) lines.push(`${stats.wordsKnown} kelime artık gerçekten senin. 🏅`);
   const remembered = recall(cards);
   if (remembered) lines.push(remembered);
   lines.push(tip());

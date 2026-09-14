@@ -7,7 +7,7 @@ const API_BASE_URL = (
 const TOKEN_KEY = "token";
 
 /**
- * The server speaks Turkish, the interface speaks English, so `message` is
+ * The server's error text isn't written for the interface, so `message` is
  * always UI-ready copy derived from the status. `serverMessage` keeps the raw
  * text around for debugging.
  */
@@ -43,19 +43,19 @@ export function clearToken(): void {
 function friendlyMessage(status: number): string {
   switch (status) {
     case 0:
-      return "We can't reach the server. Check your connection and try again.";
+      return "Sunucuya ulaşamıyoruz. Bağlantını kontrol edip tekrar dene.";
     case 400:
-      return "Please check the details you entered.";
+      return "Girdiğin bilgileri bir kontrol et.";
     case 401:
-      return "Your email or password is incorrect.";
+      return "E-posta ya da şifre hatalı.";
     case 403:
-      return "You don't have access to this.";
+      return "Buna erişimin yok.";
     case 404:
-      return "We couldn't find what you were looking for.";
+      return "Aradığını bulamadık.";
     default:
       return status >= 500
-        ? "Something went wrong on our end. Please try again."
-        : "Something went wrong. Please try again.";
+        ? "Bizim tarafta bir şeyler ters gitti. Tekrar dener misin?"
+        : "Bir şeyler ters gitti. Tekrar dener misin?";
   }
 }
 

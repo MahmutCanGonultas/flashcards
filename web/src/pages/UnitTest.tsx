@@ -9,7 +9,7 @@ import {
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../lib/api";
 import type { Card, UnitRecord } from "../types";
-import { parseBack } from "../lib/cardBack";
+import { parseBack, posLabel } from "../lib/cardBack";
 import {
   buildQuizOptions,
   buildWordOptions,
@@ -32,6 +32,7 @@ import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
 import QuizOptions from "../components/QuizOptions";
 import Mascot from "../components/Mascot";
+import TontonLine from "../components/TontonLine";
 import SpeakButton from "../components/SpeakButton";
 import Confetti from "../components/Confetti";
 
@@ -220,16 +221,16 @@ function TestSession({
             to={`/decks/${deckId}`}
             className="-m-2 inline-flex items-center gap-1.5 p-2 font-medium text-stone-500 transition hover:text-stone-800"
           >
-            <span aria-hidden="true">←</span> Back to the path
+            <span aria-hidden="true">←</span> Patikaya dön
           </Link>
           <div className="mt-6 flex items-end gap-3">
             <Mascot mood="idle" size={88} className="shrink-0" />
             <div className="relative min-w-0 flex-1 rounded-3xl rounded-bl-md bg-amber-50 p-4 ring-1 ring-amber-200">
               <p className="text-[11px] font-extrabold uppercase tracking-widest text-amber-700">
-                Test out · Unit {unit.position}
+                Atlama testi · Ünite {unit.position}
               </p>
               <p className="mt-1 text-base font-semibold leading-relaxed text-amber-900">
-                Know these words already? Prove it and skip the lessons.
+                Bu kelimeleri zaten biliyor musun? Göster bakalım, dersleri atla.
               </p>
             </div>
           </div>
@@ -246,15 +247,15 @@ function TestSession({
             {[
               [
                 "🎯",
-                `${unitCards.length} questions, one per word — meaning, sentence and Turkish → English.`,
+                `${unitCards.length} soru, her kelimeye bir tane — anlam, cümle ve Türkçe → İngilizce.`,
               ],
               [
                 "✅",
-                `Score ${UNIT_PASS_MARK}% or more and the unit counts as passed. The next one opens.`,
+                `%${UNIT_PASS_MARK} ve üzeri alırsan ünite geçilmiş sayılır. Sıradaki açılır.`,
               ],
               [
                 "🙂",
-                "Score less and nothing changes — the lessons are waiting, and the test is here again once you've done them.",
+                "Daha az alırsan hiçbir şey değişmez — dersler seni bekliyor, onları bitirince test yine burada.",
               ],
             ].map(([icon, text]) => (
               <li
@@ -274,10 +275,10 @@ function TestSession({
         <div className="fixed inset-x-0 bottom-0 z-10 border-t border-stone-200/70 bg-[#FDF9F3]/95 backdrop-blur">
           <div className="mx-auto flex max-w-2xl flex-col gap-2 px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 sm:flex-row">
             <Button size="lg" fullWidth onClick={() => setBriefed(true)}>
-              Start the test
+              Teste başla
             </Button>
             <LinkButton to={`/decks/${deckId}`} variant="ghost">
-              Not yet
+              Şimdi değil
             </LinkButton>
           </div>
         </div>
@@ -292,7 +293,7 @@ function TestSession({
           <div className="flex items-center gap-3">
             <Link
               to={`/decks/${deckId}`}
-              aria-label="Leave the test"
+              aria-label="Testten çık"
               className="-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 text-2xl leading-none text-stone-400 transition hover:bg-stone-900/5 hover:text-stone-700"
             >
               ×
@@ -311,12 +312,7 @@ function TestSession({
           </div>
 
           <p className="mt-5 text-center text-sm font-bold uppercase tracking-widest text-amber-600">
-            Unit {unit.position} test ·{" "}
-            {question.format === "meaning"
-              ? "What does it mean?"
-              : question.format === "context"
-                ? "Which word is missing?"
-                : "Which word is this?"}
+            Ünite {unit.position} testi
           </p>
 
           <div key={index} className="animate-[step-in_180ms_ease-out]">
@@ -343,7 +339,7 @@ function TestSession({
                     {parseBack(question.card.back).text}
                   </p>
                   <p className="mt-2 text-xs font-bold uppercase tracking-widest text-stone-400">
-                    in English
+                    İngilizcesi
                   </p>
                 </>
               ) : (
@@ -354,7 +350,7 @@ function TestSession({
                   <div className="mt-4 flex items-center justify-center gap-2">
                     {parseBack(question.card.back).pos && (
                       <span className="rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-amber-700 ring-1 ring-amber-200">
-                        {parseBack(question.card.back).pos}
+                        {posLabel(parseBack(question.card.back).pos)}
                       </span>
                     )}
                     <SpeakButton text={question.card.front} size="md" />
@@ -363,6 +359,13 @@ function TestSession({
               )}
             </div>
 
+            <TontonLine className="mt-4" mood={answer === null ? "think" : question.options[answer].isCorrect ? "happy" : "sad"}>
+              {question.format === "meaning"
+                ? "Bu ne demek?"
+                : question.format === "context"
+                  ? "Hangi kelime eksik?"
+                  : "Bu hangi kelime?"}
+            </TontonLine>
             <QuizOptions
               options={question.options}
               selectedIndex={answer}
@@ -394,8 +397,8 @@ function TestSession({
                       }`}
                     >
                       {question.options[answer].isCorrect
-                        ? "Correct."
-                        : "Not this one."}
+                        ? "Doğru!"
+                        : "Bu değil."}
                     </p>
                     <p className="text-sm font-semibold text-stone-700 break-words">
                       {question.card.front} —{" "}
@@ -412,7 +415,7 @@ function TestSession({
                   }
                   onClick={next}
                 >
-                  {index + 1 === questions.length ? "See my result" : "Next"}
+                  {index + 1 === questions.length ? "Sonucu gör" : "Sonraki"}
                 </Button>
               </div>
             </div>
@@ -435,45 +438,44 @@ function TestSession({
             className="mx-auto"
           />
           <p className="mt-3 text-sm font-bold uppercase tracking-widest text-stone-400">
-            Unit {unit.position} · {unit.title}
+            Ünite {unit.position} · {unit.title}
             {unit.title_tr && ` (${unit.title_tr})`}
           </p>
           <h2 className="mt-1 text-3xl font-extrabold tracking-tight text-stone-800">
             {passed
               ? skip
-                ? "Tested out!"
-                : "Unit passed!"
-              : "Not this time."}
+                ? "Atladın!"
+                : "Ünite geçildi!"
+              : "Bu sefer olmadı."}
           </h2>
           <p
             className={`mt-4 text-6xl font-extrabold tabular-nums ${
               passed ? "text-amber-500" : "text-stone-400"
             }`}
           >
-            {score}%
+            %{score}
           </p>
           <p className="mt-1 text-sm text-stone-500">
-            {correct.length} of {questions.length} · pass mark {UNIT_PASS_MARK}%
+            {correct.length}/{questions.length} doğru · geçme notu %{UNIT_PASS_MARK}
           </p>
 
           {passed ? (
             <p className="mx-auto mt-5 max-w-sm text-stone-600">
               {skip
-                ? "This unit counts as done and the next one is open. Its lessons stay on the map if you ever want them."
-                : "The next unit is open. These words will keep coming back in your reviews — that's how they stay."}
+                ? "Bu ünite tamamlanmış sayılıyor, sıradaki açık. Dersleri istersen diye patikada duruyor."
+                : "Sıradaki ünite açık. Bu kelimeler tekrarlarında karşına çıkmaya devam edecek — akılda öyle kalıyorlar."}
             </p>
           ) : skip && missed.length > 0 ? (
             <p className="mx-auto mt-5 max-w-sm text-stone-600">
-              Nothing lost —{" "}
-              {missed.length === 1 ? "one word" : `${missed.length} words`} got
-              away. Start this unit's lessons and they'll be yours in a few
-              days.
+              Kaybettiğin bir şey yok —{" "}
+              {missed.length === 1 ? "bir kelime" : `${missed.length} kelime`}{" "}
+              kaçtı. Bu ünitenin derslerine başla, birkaç güne senin olurlar.
             </p>
           ) : (
             missed.length > 0 && (
               <div className="mx-auto mt-5 max-w-sm text-left">
                 <p className="text-xs font-bold uppercase tracking-widest text-stone-400">
-                  Look at these again
+                  Bunlara bir daha bak
                 </p>
                 <ul className="mt-2 space-y-1.5">
                   {missed.map((card) => (
@@ -499,23 +501,22 @@ function TestSession({
               role="alert"
               className="mx-auto mt-5 max-w-sm rounded-2xl bg-amber-50 p-3 text-sm font-medium text-amber-800 ring-1 ring-amber-200"
             >
-              Your score couldn't be saved — check your connection and take the
-              test again.
+              Puanın kaydedilemedi — bağlantını kontrol edip teste tekrar gir.
             </p>
           )}
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             {passed ? (
               <Button size="lg" onClick={() => navigate(`/decks/${deckId}`)}>
-                Continue
+                Devam
               </Button>
             ) : (
               <>
                 <Button size="lg" onClick={onRetry}>
-                  Try again
+                  Tekrar dene
                 </Button>
                 <LinkButton to={`/decks/${deckId}`} variant="ghost">
-                  Back to the path
+                  Patikaya dön
                 </LinkButton>
               </>
             )}
@@ -568,8 +569,8 @@ function UnitTest() {
 
         {(unitsQuery.isError || cardsQuery.isError) && (
           <ErrorState
-            title="Couldn't load the test"
-            message="Check your connection and try again."
+            title="Test yüklenemedi"
+            message="Bağlantını kontrol edip tekrar dene."
             onRetry={() => {
               void unitsQuery.refetch();
               void cardsQuery.refetch();
@@ -581,8 +582,8 @@ function UnitTest() {
           cardsQuery.isSuccess &&
           (!unit || unitCards.length === 0) && (
             <ErrorState
-              title="No such unit"
-              message="That unit isn't in this deck."
+              title="Böyle bir ünite yok"
+              message="Bu ünite bu destede yok."
             />
           )}
 

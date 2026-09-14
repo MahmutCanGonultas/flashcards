@@ -212,8 +212,8 @@ function LessonRow({
       onClick={locked ? onBlocked : onOpen}
       aria-label={
         locked
-          ? `Lesson ${lesson.number}, locked`
-          : `Lesson ${lesson.number}: ${words.join(", ")}${done ? ", completed" : ""}`
+          ? `Ders ${lesson.number}, kilitli`
+          : `Ders ${lesson.number}: ${words.join(", ")}${done ? ", tamamlandı" : ""}`
       }
       className={`group grid w-full grid-cols-[76px_1fr] items-center rounded-2xl text-left transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-violet-300 ${
         current ? "bg-white/70" : "active:bg-white/60"
@@ -281,15 +281,15 @@ function LessonRow({
         className={`min-w-0 pr-3 transition-transform group-active:translate-x-0.5 ${locked ? "opacity-60" : ""}`}
       >
         <p className="flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-widest text-stone-400">
-          Lesson {lesson.number}
+          Ders {lesson.number}
           {lesson.due > 0 && !locked && !current && (
             <span className="rounded-full bg-amber-100 px-1.5 py-0.5 text-[10px] normal-case tracking-normal text-amber-700">
-              {lesson.due} to review
+              {lesson.due} tekrar
             </span>
           )}
           {state === "open" && (
             <span className="rounded-full bg-stone-100 px-1.5 py-0.5 text-[10px] normal-case tracking-normal text-stone-500">
-              optional
+              isteğe bağlı
             </span>
           )}
         </p>
@@ -310,7 +310,7 @@ function LessonRow({
           <span
             className={`mt-1 inline-flex items-center gap-1 rounded-full bg-gradient-to-r ${theme.badge} px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-white shadow-sm animate-[bob_1.6s_ease-in-out_infinite]`}
           >
-            {lesson.learned > 0 ? "Carry on" : "Start here"} →
+            {lesson.learned > 0 ? "Devam et" : "Buradan başla"} →
           </span>
         )}
       </div>
@@ -347,7 +347,7 @@ function StopRow({
     <button
       type="button"
       onClick={locked ? onBlocked : onOpen}
-      aria-label={`${label}: ${title}${locked ? ", locked" : passed ? ", passed" : skippable ? ", test out of this unit" : ""}`}
+      aria-label={`${label}: ${title}${locked ? ", kilitli" : passed ? ", geçildi" : skippable ? ", bu üniteyi atla" : ""}`}
       className={`group grid w-full grid-cols-[76px_1fr] items-center rounded-2xl text-left transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-violet-300 ${
         state === "open" ? "bg-white/70" : "active:bg-white/60"
       } ${shaking ? "animate-[shake_400ms_ease-in-out]" : ""}`}
@@ -390,7 +390,7 @@ function StopRow({
         )}
         {skippable && (
           <span className="mt-1 inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-extrabold text-amber-700 ring-1 ring-amber-200">
-            Test out of this unit →
+            Bu üniteyi atla →
           </span>
         )}
       </div>
@@ -422,10 +422,7 @@ function Transfer({ level, reached }: { level: string; reached: boolean }) {
         </span>
         <span className="text-left leading-tight">
           <span className="block text-xs font-extrabold uppercase tracking-widest">
-            {theme.name}{" "}
-            <span className={reached ? "text-white/80" : "text-stone-400"}>
-              · {theme.nameTr}
-            </span>
+            {theme.name}
           </span>
           <span
             className={`block text-[11px] font-semibold ${reached ? "text-white/85" : "text-stone-400"}`}
@@ -466,11 +463,24 @@ function LearningPath({ deckId, units }: LearningPathProps) {
       currentRef.current?.scrollIntoView({ block: "center" });
   }, [currentIndex]);
 
-  const shake = (key: string) => {
+  // Tapping a locked stop: the stop shakes and Tonton pops up to say why.
+  const [toast, setToast] = useState<string | null>(null);
+  const toastTimer = useRef<number | null>(null);
+  const shake = (key: string, kind: "lesson" | "grammar" | "dialogue" | "test") => {
     playLocked();
     setShaking(key);
     window.setTimeout(() => setShaking(null), 420);
+    setToast(
+      kind === "lesson"
+        ? "Her seferinde bir durak — önce üstteki dersi bitir! 🔒"
+        : kind === "test"
+          ? "Bu ünitenin dersleri bitince test açılır. 🎯"
+          : "Bu ünitenin derslerini bitir, burası açılır. ✨",
+    );
+    if (toastTimer.current) window.clearTimeout(toastTimer.current);
+    toastTimer.current = window.setTimeout(() => setToast(null), 2200);
   };
+  useEffect(() => () => window.clearTimeout(toastTimer.current ?? undefined), []);
 
   const open = (to: string) => {
     // Inside the tap, before the route changes: iOS only unlocks speech
@@ -486,6 +496,14 @@ function LearningPath({ deckId, units }: LearningPathProps) {
 
   return (
     <div className="pb-4">
+      {toast && (
+        <div className="pointer-events-none fixed inset-x-0 top-20 z-30 flex justify-center px-4">
+          <div className="flex items-end gap-2 rounded-3xl bg-white/95 p-2 pr-4 shadow-[0_10px_30px_-10px_rgba(28,25,23,0.4)] ring-1 ring-stone-200 backdrop-blur animate-[pop-in_220ms_cubic-bezier(0.34,1.56,0.64,1)]">
+            <Mascot mood="sad" size={44} className="shrink-0" />
+            <p className="pb-1 text-sm font-bold text-stone-700">{toast}</p>
+          </div>
+        </div>
+      )}
       {rows.map(({ unit, stops }, unitIndex) => {
         const theme = levelTheme(unit.level);
         const previous = units[unitIndex - 1];
@@ -521,7 +539,7 @@ function LearningPath({ deckId, units }: LearningPathProps) {
                 </span>
                 <div className="min-w-0 flex-1">
                   <p className="flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-widest text-stone-400">
-                    Unit {unit.index}
+                    Ünite {unit.index}
                     {unit.level && (
                       <span
                         className={`rounded-md px-1.5 py-0.5 text-[10px] ${
@@ -561,7 +579,7 @@ function LearningPath({ deckId, units }: LearningPathProps) {
                 {locked ? (
                   <LockIcon className="h-5 w-5 shrink-0 text-stone-300" />
                 ) : unit.state === "passed" ? (
-                  <span aria-label="Unit passed" className="shrink-0 text-xl">
+                  <span aria-label="Ünite geçildi" className="shrink-0 text-xl">
                     🏆
                   </span>
                 ) : (
@@ -602,7 +620,7 @@ function LearningPath({ deckId, units }: LearningPathProps) {
                             `/decks/${deckId}/study?lesson=${stop.lesson.number}`,
                           )
                         }
-                        onBlocked={() => shake(key)}
+                        onBlocked={() => shake(key, "lesson")}
                         shaking={shaking === key}
                       />
                     );
@@ -610,14 +628,14 @@ function LearningPath({ deckId, units }: LearningPathProps) {
                     row = (
                       <StopRow
                         icon="📝"
-                        label="Grammar note"
+                        label="Gramer notu"
                         title={stop.title}
                         state={stop.state}
                         theme={theme}
                         onOpen={() =>
                           open(`/decks/${deckId}/units/${unit.id}/grammar`)
                         }
-                        onBlocked={() => shake(key)}
+                        onBlocked={() => shake(key, "grammar")}
                         shaking={shaking === key}
                       />
                     );
@@ -625,14 +643,14 @@ function LearningPath({ deckId, units }: LearningPathProps) {
                     row = (
                       <StopRow
                         icon="💬"
-                        label="Dialogue"
+                        label="Diyalog"
                         title={stop.title}
                         state={stop.state}
                         theme={theme}
                         onOpen={() =>
                           open(`/decks/${deckId}/units/${unit.id}/dialogue`)
                         }
-                        onBlocked={() => shake(key)}
+                        onBlocked={() => shake(key, "dialogue")}
                         shaking={shaking === key}
                       />
                     );
@@ -640,19 +658,19 @@ function LearningPath({ deckId, units }: LearningPathProps) {
                     row = (
                       <StopRow
                         icon="🎯"
-                        label="Unit test"
+                        label="Ünite testi"
                         title={
                           stop.state === "passed"
-                            ? "Passed"
+                            ? "Geçildi"
                             : stop.state === "skippable"
-                              ? "Know these words? Skip ahead"
-                              : "15 questions · 80% to pass"
+                              ? "Bu kelimeleri biliyor musun? Atla"
+                              : "15 soru · geçme notu %80"
                         }
                         state={stop.state}
                         theme={theme}
                         extra={
                           stop.state === "passed" && stop.bestScore !== null
-                            ? `Best ${stop.bestScore}%`
+                            ? `En iyi %${stop.bestScore}`
                             : undefined
                         }
                         onOpen={() =>
@@ -660,7 +678,7 @@ function LearningPath({ deckId, units }: LearningPathProps) {
                             `/decks/${deckId}/units/${unit.id}/test${stop.state === "skippable" ? "?skip=1" : ""}`,
                           )
                         }
-                        onBlocked={() => shake(key)}
+                        onBlocked={() => shake(key, "test")}
                         shaking={shaking === key}
                       />
                     );
@@ -703,8 +721,8 @@ function LearningPath({ deckId, units }: LearningPathProps) {
           </div>
           <p className="text-[11px] font-extrabold uppercase tracking-widest text-stone-400">
             {everythingDone
-              ? "End of the line · course complete"
-              : `End of the line · ${totalLessons} lessons`}
+              ? "Hattın sonu · kurs tamamlandı"
+              : `Hattın sonu · ${totalLessons} ders`}
           </p>
         </div>
       )}

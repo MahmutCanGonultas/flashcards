@@ -40,7 +40,7 @@ function SpeakButton({ text, size = "sm", className = "" }: SpeakButtonProps) {
     <button
       type="button"
       onClick={handleClick}
-      aria-label={`Play pronunciation: ${text}`}
+      aria-label={`Dinle: ${text}`}
       className={`inline-flex shrink-0 items-center justify-center rounded-full transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 ${sizeClasses[size]} ${
         isSpeaking
           ? "bg-violet-600 text-white"

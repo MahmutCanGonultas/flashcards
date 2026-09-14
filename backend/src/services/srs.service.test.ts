@@ -2,7 +2,8 @@ import { describe, it, expect } from "vitest";
 import { calculateSrs } from "./srs.service.js";
 
 describe("calculateSrs", () => {
-  it("bilemediğinde (not < 3) sıfırlar ve yarına atar", () => {
+  it("bilemediğinde (not < 3) sıfırlar ve on dakika sonraya atar", () => {
+    const before = Date.now();
     const result = calculateSrs({
       repetitions: 5,
       interval: 30,
@@ -11,6 +12,16 @@ describe("calculateSrs", () => {
     });
     expect(result.repetitions).toBe(0);
     expect(result.interval).toBe(1);
+    const minutesAhead = (result.dueDate.getTime() - before) / 60_000;
+    expect(minutesAhead).toBeGreaterThan(9);
+    expect(minutesAhead).toBeLessThan(11);
+  });
+
+  it("bildiğinde yarına atar, on dakikaya değil", () => {
+    const before = Date.now();
+    const result = calculateSrs({ repetitions: 0, interval: 0, easeFactor: 2.5, quality: 4 });
+    const hoursAhead = (result.dueDate.getTime() - before) / 3_600_000;
+    expect(hoursAhead).toBeGreaterThan(23);
   });
 
   it("ilk doğru bilişte interval 1 olur", () => {

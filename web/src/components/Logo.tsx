@@ -1,3 +1,4 @@
+import { useId } from "react";
 type LogoProps = {
   size?: number;
   withText?: boolean;
@@ -9,6 +10,10 @@ type LogoProps = {
  * of a cream tile. The same drawing is the app icon in public/icons.
  */
 function Logo({ size = 36, withText = false }: LogoProps) {
+  // Two logos on one page (a hidden mobile one, a visible desktop one)
+  // must not share gradient/clip ids, or the visible one reads the hidden
+  // one's definitions and loses its tile.
+  const uid = useId().replace(/:/g, "");
   return (
     <div className="flex items-center gap-2.5">
       <svg
@@ -19,40 +24,40 @@ function Logo({ size = 36, withText = false }: LogoProps) {
         aria-hidden="true"
       >
         <defs>
-          <linearGradient id="km-head" x1="0" y1="0" x2="1" y2="1">
+          <linearGradient id={`km-head-${uid}`} x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stopColor="#A78BFA" />
             <stop offset="0.55" stopColor="#7C5CE6" />
             <stop offset="1" stopColor="#5B3FCB" />
           </linearGradient>
-          <linearGradient id="km-ear" x1="0" y1="0" x2="1" y2="1">
+          <linearGradient id={`km-ear-${uid}`} x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stopColor="#9C86F6" />
             <stop offset="1" stopColor="#5A3FCA" />
           </linearGradient>
-          <linearGradient id="km-canal" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id={`km-canal-${uid}`} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stopColor="#FBBF24" />
             <stop offset="1" stopColor="#F59E0B" />
           </linearGradient>
-          <linearGradient id="km-bg" x1="0" y1="0" x2="1" y2="1">
+          <linearGradient id={`km-bg-${uid}`} x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stopColor="#FFFBF2" />
             <stop offset="1" stopColor="#F7EBD6" />
           </linearGradient>
-          <clipPath id="km-tile">
+          <clipPath id={`km-tile-${uid}`}>
             <rect width="100" height="100" rx="22" />
           </clipPath>
         </defs>
-        <rect width="100" height="100" rx="22" fill="url(#km-bg)" />
-        <g clipPath="url(#km-tile)" transform="translate(0 13)">
+        <rect width="100" height="100" rx="22" fill={`url(#km-bg-${uid})`} />
+        <g clipPath={`url(#km-tile-${uid})`} transform="translate(0 13)">
           <g transform="rotate(-22 30 34)">
-            <ellipse cx="30" cy="34" rx="15" ry="22" fill="url(#km-ear)" />
-            <ellipse cx="31" cy="37" rx="8.5" ry="13.5" fill="url(#km-canal)" />
+            <ellipse cx="30" cy="34" rx="15" ry="22" fill={`url(#km-ear-${uid})`} />
+            <ellipse cx="31" cy="37" rx="8.5" ry="13.5" fill={`url(#km-canal-${uid})`} />
             <ellipse cx="31" cy="37" rx="4.5" ry="8" fill="#FDE68A" opacity="0.55" />
           </g>
           <g transform="rotate(22 70 34)">
-            <ellipse cx="70" cy="34" rx="15" ry="22" fill="url(#km-ear)" />
-            <ellipse cx="69" cy="37" rx="8.5" ry="13.5" fill="url(#km-canal)" />
+            <ellipse cx="70" cy="34" rx="15" ry="22" fill={`url(#km-ear-${uid})`} />
+            <ellipse cx="69" cy="37" rx="8.5" ry="13.5" fill={`url(#km-canal-${uid})`} />
             <ellipse cx="69" cy="37" rx="4.5" ry="8" fill="#FDE68A" opacity="0.55" />
           </g>
-          <circle cx="50" cy="60" r="33" fill="url(#km-head)" />
+          <circle cx="50" cy="60" r="33" fill={`url(#km-head-${uid})`} />
           <ellipse cx="38" cy="44" rx="14" ry="9" fill="#fff" opacity="0.16" transform="rotate(-25 38 44)" />
           <ellipse cx="50" cy="70" rx="15" ry="10" fill="#F6E9D8" />
           <ellipse cx="38.5" cy="57" rx="8" ry="9.5" fill="#fff" />

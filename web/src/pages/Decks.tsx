@@ -111,7 +111,7 @@ function Decks() {
   const createError = createDeck.error
     ? createDeck.error instanceof ApiError
       ? createDeck.error.message
-      : "Something went wrong. Please try again."
+      : "Bir şeyler ters gitti. Tekrar dener misin?"
     : null;
 
   return (
@@ -127,15 +127,15 @@ function Decks() {
         <div className="mb-6 mt-6 flex flex-col items-stretch gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h1 className="text-3xl font-extrabold text-stone-800 tracking-tight">
-              My Decks
+              Destelerim
             </h1>
-            <p className="text-stone-500 mt-1">Pick up where you left off.</p>
+            <p className="text-stone-500 mt-1">Kaldığın yerden devam et.</p>
           </div>
           <Button
             className="w-full shrink-0 whitespace-nowrap sm:w-auto"
             onClick={() => setIsModalOpen(true)}
           >
-            <span className="text-xl leading-none">+</span> New deck
+            <span className="text-xl leading-none">+</span> Yeni deste
           </Button>
         </div>
 
@@ -149,7 +149,7 @@ function Decks() {
 
         {isError && (
           <ErrorState
-            message="We couldn't load your decks."
+            message="Destelerin yüklenemedi."
             onRetry={() => refetch()}
           />
         )}
@@ -157,11 +157,11 @@ function Decks() {
         {data && data.length === 0 && (
           <EmptyState
             emoji="🗂️"
-            title="No decks yet"
-            description="Create your first deck and start learning!"
+            title="Henüz deste yok"
+            description="İlk desteni oluştur, öğrenmeye başla!"
             action={
               <Button onClick={() => setIsModalOpen(true)}>
-                Create your first deck
+                İlk desteni oluştur
               </Button>
             }
           />

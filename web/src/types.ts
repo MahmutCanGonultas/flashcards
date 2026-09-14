@@ -16,6 +16,9 @@ export type Card = {
   example_sentence: string | null;
   /** The sentence's natural Turkish, shown beneath it while the word is taught. */
   example_tr?: string | null;
+  /** A second sentence from another angle, with its Turkish. */
+  example2?: string | null;
+  example2_tr?: string | null;
   /** Optional photo -- only set for cards where a real image helps (concrete nouns). */
   image_url: string | null;
   /** Optional memory aid, usually the word's root/etymology. */
