@@ -1,9 +1,28 @@
+import { useEffect, useState } from "react";
 export type MascotMood = "idle" | "happy" | "sad" | "think";
 
 type MascotProps = {
   mood?: MascotMood;
   size?: number;
   className?: string;
+  /**
+   * Alive: blinks, and every few seconds does something small — a wave, a
+   * hop, a stretch, a glance to the side. On by default; off for the tiny
+   * ones in dense lists.
+   */
+  lively?: boolean;
+};
+
+type Gesture = "wave" | "hop" | "grow" | "look-l" | "look-r" | "tilt" | "wiggle";
+const GESTURES: Gesture[] = ["wave", "hop", "grow", "look-l", "look-r", "tilt", "wiggle", "grow", "look-l"];
+const GESTURE_MS: Record<Gesture, number> = {
+  wave: 1500,
+  hop: 700,
+  grow: 900,
+  "look-l": 1400,
+  "look-r": 1400,
+  tilt: 1100,
+  wiggle: 700,
 };
 
 /**
@@ -19,7 +38,50 @@ type MascotProps = {
  * droops. Nothing here waits on any of it, and prefers-reduced-motion stills
  * all of it.
  */
-function Mascot({ mood = "idle", size = 96, className = "" }: MascotProps) {
+function Mascot({ mood = "idle", size = 96, className = "", lively = true }: MascotProps) {
+  const [gesture, setGesture] = useState<Gesture | null>(null);
+  const [blink, setBlink] = useState(false);
+
+  // Idle life. Both are timers, so nothing here sets state during render;
+  // the first delay is randomised so several Tontons on one screen don't
+  // move in step. He says hello first.
+  useEffect(() => {
+    if (!lively) return;
+    let gestureTimer = 0;
+    let blinkTimer = 0;
+    let cancelled = false;
+    const doGesture = (next: Gesture) => {
+      setGesture(next);
+      window.setTimeout(() => setGesture(null), GESTURE_MS[next]);
+    };
+    const scheduleGesture = (delay: number) => {
+      gestureTimer = window.setTimeout(() => {
+        if (cancelled) return;
+        doGesture(GESTURES[Math.floor(Math.random() * GESTURES.length)]);
+        scheduleGesture(3500 + Math.random() * 4500);
+      }, delay);
+    };
+    const scheduleBlink = () => {
+      blinkTimer = window.setTimeout(() => {
+        if (cancelled) return;
+        setBlink(true);
+        window.setTimeout(() => setBlink(false), 140);
+        scheduleBlink();
+      }, 2200 + Math.random() * 3200);
+    };
+    const hello = window.setTimeout(() => {
+      if (!cancelled) doGesture("wave");
+    }, 500 + Math.random() * 400);
+    scheduleGesture(3000 + Math.random() * 3000);
+    scheduleBlink();
+    return () => {
+      cancelled = true;
+      window.clearTimeout(hello);
+      window.clearTimeout(gestureTimer);
+      window.clearTimeout(blinkTimer);
+    };
+  }, [lively]);
+
   const mouth =
     mood === "sad" ? (
       <>
@@ -82,7 +144,7 @@ function Mascot({ mood = "idle", size = 96, className = "" }: MascotProps) {
     <svg
       width={size}
       height={size}
-      className={`tt-mascot tt-${mood} ${className}`}
+      className={`tt-mascot tt-${mood} ${gesture ? `tt-g-${gesture}` : ""} ${blink ? "tt-blink" : ""} ${className}`}
       aria-label="Tonton"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200"
@@ -298,6 +360,7 @@ function Mascot({ mood = "idle", size = 96, className = "" }: MascotProps) {
       <g>
         <ellipse cx="63" cy="106" rx="11.5" ry="7" fill="#FB7185" opacity="0.35" filter="url(#tt-b4)"/>
         <ellipse cx="137" cy="106" rx="11.5" ry="7" fill="#FB7185" opacity="0.30" filter="url(#tt-b4)"/>
+        <g className="tt-eye tt-eye-l">
         <ellipse cx="80" cy="80" rx="15.5" ry="17" fill="url(#tt-eyeL)"/>
         <g clipPath="url(#tt-cEyeL)">
           <ellipse cx="80" cy="58" rx="18" ry="14" fill="#B7A6DE" opacity="0.55" filter="url(#tt-b2)"/>
@@ -309,6 +372,8 @@ function Mascot({ mood = "idle", size = 96, className = "" }: MascotProps) {
           </g>
           <ellipse cx="80" cy="80" rx="15.5" ry="17" fill="none" stroke="#3A2A6B" strokeWidth="2.4" opacity="0.22"/>
         </g>
+        </g>
+        <g className="tt-eye tt-eye-r">
         <ellipse cx="120" cy="80" rx="15.5" ry="17" fill="url(#tt-eyeR)"/>
         <g clipPath="url(#tt-cEyeR)">
           <ellipse cx="120" cy="58" rx="18" ry="14" fill="#B7A6DE" opacity="0.6" filter="url(#tt-b2)"/>
@@ -319,6 +384,7 @@ function Mascot({ mood = "idle", size = 96, className = "" }: MascotProps) {
             <circle cx="123" cy="89" r="2.1" fill="#FFFFFF" opacity="0.45"/>
           </g>
           <ellipse cx="120" cy="80" rx="15.5" ry="17" fill="none" stroke="#3A2A6B" strokeWidth="2.4" opacity="0.26"/>
+        </g>
         </g>
         <ellipse cx="100" cy="112" rx="22" ry="15" fill="url(#tt-muzzle)"/>
         <ellipse cx="100" cy="112" rx="22" ry="15" fill="none" stroke="#B58FA8" strokeWidth="1.6" opacity="0.22"/>

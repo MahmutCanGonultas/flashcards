@@ -48,7 +48,7 @@ import { SpeakerIcon } from "../components/icons";
 import { useRecordStudyDay } from "../lib/streak";
 import { useUnits } from "../lib/units";
 
-type ReviewInput = { cardId: number; quality: 1 | 4 };
+type ReviewInput = { cardId: number; cardDeckId: number; quality: 1 | 4 };
 type SessionMode = "lesson" | "review";
 
 const KEY_TO_OPTION: Record<string, number> = {
@@ -110,6 +110,8 @@ type StudySessionProps = {
   deckCardCount?: number;
   /** The deck's full card list, used to draw multiple-choice distractors from. */
   deckCards?: Card[];
+  /** The learner's own words, folded into a lesson's recap ahead of course words. */
+  personalCards?: Card[];
   deckCardsError: unknown;
   onRetryDeckCards: () => void;
 };
@@ -136,6 +138,7 @@ function StudySession({
   lessonNumber = 0,
   deckCardCount,
   deckCards,
+  personalCards = [],
   deckCardsError,
   onRetryDeckCards,
 }: StudySessionProps) {
@@ -144,12 +147,13 @@ function StudySession({
 
   const [queue] = useState(() => cards);
   const [deckCardPool] = useState(() => deckCards ?? []);
+  const [personalPool] = useState(() => personalCards);
 
   // Append-only. Never reorder and never remove: every other operation can
   // shift an index that has already been consumed.
   const [plan, setPlan] = useState<Step[]>(() =>
     mode === "lesson"
-      ? buildLessonPlan(cards, level, lessonNumber, pickRecap(deckCards ?? [], cards))
+      ? buildLessonPlan(cards, level, lessonNumber, pickRecap([...personalCards, ...(deckCards ?? [])], cards))
       : buildReviewPlan(cards),
   );
   // Only the typed round uses this; the multiple-choice rounds use `answer`.
@@ -174,9 +178,9 @@ function StudySession({
 
   const byId = useMemo(() => {
     const map = new Map<number, Card>();
-    for (const card of [...deckCardPool, ...queue]) map.set(card.id, card);
+    for (const card of [...deckCardPool, ...personalPool, ...queue]) map.set(card.id, card);
     return map;
-  }, [deckCardPool, queue]);
+  }, [deckCardPool, personalPool, queue]);
 
   const step: Step | undefined = plan[stepIndex];
   const finished = plan.length > 0 && stepIndex >= plan.length;
@@ -214,8 +218,8 @@ function StudySession({
         : null;
 
   const reviewMutation = useMutation({
-    mutationFn: ({ cardId, quality }: ReviewInput) =>
-      api.post<{ card: Card }>(`/decks/${deckId}/cards/${cardId}/review`, {
+    mutationFn: ({ cardId, cardDeckId, quality }: ReviewInput) =>
+      api.post<{ card: Card }>(`/decks/${cardDeckId}/cards/${cardId}/review`, {
         quality,
       }),
     retry: 2,
@@ -317,7 +321,7 @@ function StudySession({
       // word from interval 1 to interval 6 inside a single day.
       if (step.graded && !gradedRef.current.has(stepCard.id)) {
         gradedRef.current.add(stepCard.id);
-        mutateReview({ cardId: stepCard.id, quality: isCorrect ? 4 : 1 });
+        mutateReview({ cardId: stepCard.id, cardDeckId: stepCard.deck_id, quality: isCorrect ? 4 : 1 });
         markStudied();
       }
 
@@ -689,7 +693,12 @@ function QuestionStep({
     <>
       {/* The hero keeps the same shape on every step, so the word never jumps
           between being taught and being asked about. */}
-      <div className="mt-4 min-h-[9.25rem] rounded-3xl bg-gradient-to-br from-white via-violet-50 to-violet-100 p-6 text-center ring-2 ring-violet-200 shadow-[0_5px_0_0_var(--color-violet-200)] sm:p-8">
+      <div className="relative mt-4 min-h-[9.25rem] overflow-hidden rounded-3xl bg-gradient-to-br from-white via-violet-50 to-violet-100 p-6 text-center ring-2 ring-violet-200 shadow-[0_5px_0_0_var(--color-violet-200)] sm:p-8">
+        {/* A light sweep as the card arrives. */}
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/70 to-transparent animate-[shine_900ms_ease-out_1_both]"
+        />
         {blanked ? (
           <p className="text-xl font-bold leading-relaxed text-stone-800 break-words sm:text-2xl">
             {blanked.text.split(BLANK).map((piece, index, all) => (
@@ -1241,6 +1250,16 @@ function Study() {
   // Unit gates decide which lessons are reachable.
   const unitsQuery = useUnits(deckId);
 
+  // The learner's own words, so a lesson's recap can bring them back. Only
+  // a lesson needs them, and only when this isn't the personal deck itself.
+  const personalDeck = decksQuery.data?.find((deck) => deck.kind === "personal");
+  const personalCardsQuery = useQuery({
+    queryKey: ["cards", String(personalDeck?.id ?? "")],
+    queryFn: () =>
+      api.get<{ cards: Card[] }>(`/decks/${personalDeck!.id}/cards`).then((r) => r.cards),
+    enabled: Boolean(personalDeck) && lessonNumber !== null && String(personalDeck?.id) !== deckId,
+  });
+
   // Every hook has run by now, so this early return is safe.
   if (!deckId) {
     return <Navigate to="/decks" replace />;
@@ -1262,7 +1281,13 @@ function Study() {
           />
         );
       }
-      if (cardsQuery.isLoading || !cardsQuery.data || unitsQuery.isLoading) {
+      if (
+        cardsQuery.isLoading ||
+        !cardsQuery.data ||
+        unitsQuery.isLoading ||
+        decksQuery.isLoading ||
+        (personalCardsQuery.isEnabled && personalCardsQuery.isLoading)
+      ) {
         return <StudySkeleton />;
       }
 
@@ -1317,6 +1342,7 @@ function Study() {
             lessonNumber={lessonNumber}
             deckCardCount={cardsQuery.data.length}
             deckCards={cardsQuery.data}
+            personalCards={personalCardsQuery.data ?? []}
             deckCardsError={cardsQuery.error}
             onRetryDeckCards={() => void cardsQuery.refetch()}
           />

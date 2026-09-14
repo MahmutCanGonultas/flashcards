@@ -117,7 +117,7 @@ function Grammar() {
   const note = unit?.grammar ?? null;
 
   return (
-    <div className="min-h-screen bg-[#FDF9F3]">
+    <div className="min-h-screen">
       <Header />
       <main className="mx-auto max-w-2xl px-6 pb-40 pt-8">
         <Link

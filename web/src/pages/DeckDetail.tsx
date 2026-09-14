@@ -21,6 +21,7 @@ import PathHeader from "../components/PathHeader";
 import { buildPath, pathStats } from "../lib/path";
 import { useUnits } from "../lib/units";
 import CardFormModal from "../components/CardFormModal";
+import PersonalCardSheet from "../components/PersonalCardSheet";
 import type { CardFormValues } from "../components/CardFormModal";
 import DeckFormModal from "../components/DeckFormModal";
 import ConfirmDialog from "../components/ConfirmDialog";
@@ -164,7 +165,7 @@ function DeckDetail() {
   const stats = pathStats(units);
 
   return (
-    <div className="min-h-screen bg-[#FDF9F3]">
+    <div className="min-h-screen">
       <Header />
 
       <main className="max-w-5xl mx-auto px-6 pt-10 pb-[max(2.5rem,env(safe-area-inset-bottom))]">
@@ -334,14 +335,18 @@ function DeckDetail() {
         )}
       </main>
 
-      <CardFormModal
-        isOpen={isAddOpen}
-        onClose={closeAddCard}
-        onSubmit={(values) => createCard.mutate(values)}
-        isPending={createCard.isPending}
-        error={createCard.error ? errorMessage(createCard.error) : null}
-        mode="create"
-      />
+      {deck?.kind === "personal" ? (
+        <PersonalCardSheet isOpen={isAddOpen} onClose={closeAddCard} deckId={deck.id} />
+      ) : (
+        <CardFormModal
+          isOpen={isAddOpen}
+          onClose={closeAddCard}
+          onSubmit={(values) => createCard.mutate(values)}
+          isPending={createCard.isPending}
+          error={createCard.error ? errorMessage(createCard.error) : null}
+          mode="create"
+        />
+      )}
 
       <CardFormModal
         isOpen={editingCard !== null}

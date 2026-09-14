@@ -30,6 +30,16 @@ const STATE_CLASSES: Record<VisualState, string> = {
 };
 
 const KEY_HINTS = ["1", "2", "3", "4"];
+/* Each option gets its own colour on the left, so four white bars read as four choices, not a form. */
+const ACCENTS = ["border-l-violet-400", "border-l-sky-400", "border-l-emerald-400", "border-l-amber-400"];
+/* Where the five sparks of a right answer fly. */
+const SPARKS = [
+  { dx: "-34px", dy: "-26px" },
+  { dx: "-10px", dy: "-40px" },
+  { dx: "18px", dy: "-36px" },
+  { dx: "38px", dy: "-18px" },
+  { dx: "26px", dy: "10px" },
+];
 
 /** The four-option "pick the meaning" test that grades the review for you. */
 function QuizOptions({ options, selectedIndex, onSelect }: QuizOptionsProps) {
@@ -45,8 +55,21 @@ function QuizOptions({ options, selectedIndex, onSelect }: QuizOptionsProps) {
             onClick={() => {
               if (selectedIndex === null) onSelect(index);
             }}
-            className={`flex w-full items-center gap-3 rounded-2xl px-4 py-4 text-left text-lg font-extrabold ${STATE_CLASSES[state]}`}
+            className={`relative flex w-full items-center gap-3 rounded-2xl border-l-[6px] px-4 py-4 text-left text-lg font-extrabold ${
+              state === "idle" ? ACCENTS[index % ACCENTS.length] : "border-l-transparent"
+            } ${STATE_CLASSES[state]}`}
           >
+            {state === "correct" && (
+              <span aria-hidden="true" className="pointer-events-none absolute right-6 top-1/2">
+                {SPARKS.map((spark, i) => (
+                  <span
+                    key={i}
+                    className="absolute h-2.5 w-2.5 rounded-full bg-amber-300 animate-[spark_650ms_ease-out_forwards]"
+                    style={{ "--dx": spark.dx, "--dy": spark.dy, animationDelay: `${i * 30}ms` } as React.CSSProperties}
+                  />
+                ))}
+              </span>
+            )}
             <span
               aria-hidden="true"
               className={`hidden h-7 w-7 shrink-0 items-center justify-center rounded-lg text-xs font-extrabold sm:flex ${

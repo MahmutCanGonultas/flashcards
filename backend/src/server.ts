@@ -4,6 +4,7 @@ import authRouter from "./routes/auth.routes.js";
 import deckRouter from "./routes/deck.routes.js";
 import cardRouter from "./routes/card.routes.js";
 import streakRouter from "./routes/streak.routes.js";
+import imageRouter from "./routes/image.routes.js";
 import unitRouter from "./routes/unit.routes.js";
 
 // Without these the server still boots and answers the platform's health check,
@@ -30,6 +31,8 @@ const allowedOrigins = (process.env.CORS_ORIGIN ?? "http://localhost:5173")
   .map((origin) => origin.trim().replace(/\/+$/, ""))
   .filter(Boolean);
 
+// Behind Render's proxy: req.protocol must read https for the image URLs.
+app.set("trust proxy", 1);
 app.use(express.json());
 app.use(cors({ origin: allowedOrigins }));
 
@@ -38,6 +41,7 @@ app.use("/api/v1/decks", deckRouter);
 app.use("/api/v1/decks", cardRouter);
 app.use("/api/v1/decks", unitRouter);
 app.use("/api/v1/streak", streakRouter);
+app.use("/api/v1/images", imageRouter);
 
 app.get("/", (req, res) => {
   res.send("Flashcards API is running 🚀");

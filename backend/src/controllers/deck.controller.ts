@@ -78,3 +78,17 @@ export const deleteDeck = async (req: Request, res: Response) => {
 
   return res.status(200).json({ message: "Deste silindi" });
 };
+
+/** The learner's own words: one deck per user, made the first time it's asked for. */
+export const getPersonalDeck = async (req: Request, res: Response) => {
+  const existing = await pool.query(
+    "SELECT * FROM decks WHERE user_id = $1 AND kind = 'personal' ORDER BY id LIMIT 1",
+    [req.userId],
+  );
+  if (existing.rows.length > 0) return res.status(200).json({ deck: existing.rows[0] });
+  const created = await pool.query(
+    "INSERT INTO decks (user_id, name, kind) VALUES ($1, $2, 'personal') RETURNING *",
+    [req.userId, "Benim Kelimelerim"],
+  );
+  return res.status(201).json({ deck: created.rows[0] });
+};

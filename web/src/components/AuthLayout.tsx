@@ -28,7 +28,7 @@ function AuthLayout({
   footer,
 }: AuthLayoutProps) {
   return (
-    <div className="min-h-screen flex bg-[#FDF9F3]">
+    <div className="min-h-screen flex">
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500">
         <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-white/15 blur-3xl" />
         <div className="absolute -bottom-32 -left-16 h-96 w-96 rounded-full bg-indigo-300/25 blur-3xl" />

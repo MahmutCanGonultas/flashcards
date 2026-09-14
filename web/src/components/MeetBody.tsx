@@ -84,7 +84,11 @@ function MeetBody({ card, variant = "screen" }: MeetBodyProps) {
     );
   }
 
-  if (!card.example_sentence) return null;
+  // A word of the learner's own carries the note they wrote about it: that
+  // is their memory of it, so it's shown; the course's old root notes are not.
+  const ownNote = card.lesson === null && card.mnemonic ? card.mnemonic : null;
+
+  if (!card.example_sentence && !ownNote) return null;
 
   return (
     <div className="flex items-end gap-2.5">
@@ -94,12 +98,20 @@ function MeetBody({ card, variant = "screen" }: MeetBodyProps) {
           aria-hidden="true"
           className="absolute -left-1.5 bottom-4 h-3 w-3 rotate-45 rounded-sm bg-white ring-1 ring-stone-200 [clip-path:polygon(0_0,0_100%,100%_100%)]"
         />
-        <div className="flex items-start justify-between gap-3">
-          <p className="min-w-0 text-[19px] font-semibold leading-relaxed text-stone-800 break-words">
-            <Sentence sentence={card.example_sentence} headword={card.front} emphasis="bg-violet-100 text-violet-800" />
+        {ownNote && (
+          <p className="mb-2 rounded-2xl bg-amber-50 px-3 py-2 text-[15px] leading-relaxed text-amber-900 ring-1 ring-amber-200">
+            <span className="mr-1 text-[11px] font-extrabold uppercase tracking-widest text-amber-700">Senin notun</span>
+            {ownNote}
           </p>
-          <SpeakButton text={card.example_sentence} size="md" />
-        </div>
+        )}
+        {card.example_sentence && (
+          <div className="flex items-start justify-between gap-3">
+            <p className="min-w-0 text-[19px] font-semibold leading-relaxed text-stone-800 break-words">
+              <Sentence sentence={card.example_sentence} headword={card.front} emphasis="bg-violet-100 text-violet-800" />
+            </p>
+            <SpeakButton text={card.example_sentence} size="md" />
+          </div>
+        )}
         {card.example_tr && (
           <p className="mt-1.5 text-[15px] leading-relaxed text-stone-500 break-words">
             <TurkishSentence sentence={card.example_tr} meaning={meaning} emphasis="text-violet-700" />

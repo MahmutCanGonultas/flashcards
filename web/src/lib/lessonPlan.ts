@@ -97,10 +97,18 @@ export const RECAP_LIMIT = 3;
  */
 export function pickRecap(deckCards: Card[], lessonCards: Card[], limit = RECAP_LIMIT): Card[] {
   const inLesson = new Set(lessonCards.map((card) => card.id));
-  const due = deckCards.filter((card) => !inLesson.has(card.id) && hasStarted(card) && isDue(card));
-  const lapsed = due.filter((card) => card.repetitions === 0);
-  const rest = due.filter((card) => card.repetitions > 0).sort((a, b) => a.repetitions - b.repetitions);
-  return [...lapsed, ...rest].slice(0, limit);
+  const courseDeck = lessonCards[0]?.deck_id;
+  // A word of the learner's own counts as started the moment it's added:
+  // they wrote it, so it's never "unseen".
+  const due = deckCards.filter(
+    (card) => !inLesson.has(card.id) && isDue(card) && (hasStarted(card) || card.deck_id !== courseDeck),
+  );
+  const own = due.filter((card) => card.deck_id !== courseDeck);
+  const lapsed = due.filter((card) => card.deck_id === courseDeck && card.repetitions === 0);
+  const rest = due
+    .filter((card) => card.deck_id === courseDeck && card.repetitions > 0)
+    .sort((a, b) => a.repetitions - b.repetitions);
+  return [...own, ...lapsed, ...rest].slice(0, limit);
 }
 
 /** A sentence exercise is only possible when the word is findable in its sentence. */

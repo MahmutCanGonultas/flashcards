@@ -18,6 +18,20 @@
     background-color: #fdf9f3;
   }
 
+  /* The room the app lives in: cream, with three soft colour glows that
+     drift so slowly they read as weather rather than motion. Fixed to the
+     viewport so pages scroll over them. */
+  body {
+    background-color: #fdf9f3;
+    background-image:
+      radial-gradient(38rem 38rem at 12% 8%, rgba(167, 139, 250, 0.16), transparent 62%),
+      radial-gradient(34rem 34rem at 88% 22%, rgba(251, 191, 36, 0.14), transparent 62%),
+      radial-gradient(40rem 40rem at 50% 100%, rgba(52, 211, 153, 0.12), transparent 62%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    animation: room-drift 28s ease-in-out infinite alternate;
+  }
+
   body {
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
@@ -317,6 +331,81 @@
   animation: tt-perk-r 260ms ease-out forwards;
 }
 
+/* ------------------------------------------------------------ idle life */
+
+/* Blink: the eye squashes to a line and back. */
+.tt-mascot .tt-eye {
+  transform-box: fill-box;
+  transform-origin: 50% 55%;
+  transition: transform 70ms ease-in;
+}
+.tt-blink .tt-eye {
+  transform: scaleY(0.08);
+}
+
+/* Gestures, one at a time, a few seconds apart (Mascot.tsx picks them). */
+.tt-g-wave .tt-arm-r {
+  animation: tt-wave 700ms ease-in-out 2;
+}
+.tt-g-hop {
+  animation: tt-hop 620ms cubic-bezier(0.34, 1.56, 0.64, 1) 1;
+}
+.tt-g-grow {
+  animation: tt-grow 900ms ease-in-out 1;
+}
+.tt-g-look-l .tt-gaze {
+  transform: translate(-4px, 0);
+}
+.tt-g-look-r .tt-gaze {
+  transform: translate(4px, 0);
+}
+.tt-g-look-l .tt-head,
+.tt-g-look-r .tt-head {
+  transition: transform 300ms ease-out;
+}
+.tt-g-look-l .tt-head {
+  transform: rotate(-4deg);
+}
+.tt-g-look-r .tt-head {
+  transform: rotate(4deg);
+}
+.tt-g-tilt {
+  animation: tt-tilt 1100ms ease-in-out 1;
+}
+.tt-g-wiggle .tt-ear-l {
+  animation: tt-perk-l 220ms ease-in-out 3 alternate;
+}
+.tt-g-wiggle .tt-ear-r {
+  animation: tt-perk-r 220ms ease-in-out 3 alternate;
+}
+
+/* A stretch up on tiptoe and back down. */
+@keyframes tt-grow {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.12, 1.16);
+  }
+  70% {
+    transform: scale(0.97, 0.95);
+  }
+}
+/* A lean to one side, like listening for something. */
+@keyframes tt-tilt {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  30% {
+    transform: rotate(-7deg);
+  }
+  70% {
+    transform: rotate(5deg);
+  }
+}
+
 /* Thinking: the eyes drift up and to the side, and the right ear tilts,
    the way anyone looks while waiting for an answer to arrive. */
 .tt-mascot .tt-gaze {
@@ -421,5 +510,43 @@
   }
   50% {
     transform: translateY(-3px) rotate(3deg);
+  }
+}
+
+/* The glows behind everything wander a little. */
+@keyframes room-drift {
+  from {
+    background-position:
+      0 0,
+      0 0,
+      0 0;
+  }
+  to {
+    background-position:
+      6rem 4rem,
+      -5rem 6rem,
+      3rem -5rem;
+  }
+}
+
+/* A right answer: five sparks fly out of the option and fade. */
+@keyframes spark {
+  0% {
+    transform: translate(0, 0) scale(0.4);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* A light sweep across a card as it arrives. */
+@keyframes shine {
+  from {
+    transform: translateX(-130%) skewX(-18deg);
+  }
+  to {
+    transform: translateX(230%) skewX(-18deg);
   }
 }

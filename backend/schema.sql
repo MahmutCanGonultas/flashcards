@@ -13,6 +13,22 @@ CREATE TABLE decks(
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     name VARCHAR(255) NOT NULL,
+    -- 'personal' is the learner's own words: one per user, created on
+    -- demand, its cards folded into the course's lesson recaps.
+    kind VARCHAR(20) NOT NULL DEFAULT 'normal',
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Photos the learner attaches to their own cards. Small (resized on the
+-- phone before upload) and few, so they live in the database rather than
+-- in a bucket; served by an unguessable token so an <img> can fetch them
+-- without a header.
+CREATE TABLE images (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    token VARCHAR(48) UNIQUE NOT NULL,
+    mime VARCHAR(40) NOT NULL,
+    data BYTEA NOT NULL,
     created_at TIMESTAMP DEFAULT NOW()
 );
 

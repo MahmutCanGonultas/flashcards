@@ -1,6 +1,6 @@
 import type { Card } from "../types";
 import type { PathStats, Unit } from "./path";
-import { wordTier } from "./path";
+import { isDue, wordTier } from "./path";
 import { parseBack } from "./cardBack";
 
 /**
@@ -46,12 +46,27 @@ export function homeLines({
   cards,
   due,
   streak,
+  personal = [],
 }: {
   cards: Card[];
   due: number;
   streak: number;
+  /** The learner's own words, if they have added any. */
+  personal?: Card[];
 }): string[] {
   const lines = [greeting()];
+  // Their own words come first: those are the ones they asked to be reminded of.
+  const personalDue = personal.filter(isDue);
+  if (personalDue.length > 0) {
+    lines.push(`Kendi kelimelerinden ${personalDue.length} tanesi bugün seni bekliyor. ✍️`);
+  }
+  if (personal.length > 0) {
+    const card = personal[dayIndex() % personal.length];
+    const back = parseBack(card.back);
+    lines.push(`Senin kelimen: "${card.front}" — ${back.text}. Hatırladın mı? ✍️`);
+  } else {
+    lines.push("Sokakta, dizide duyduğun bir kelime mi var? Ekle, fotoğrafını koy; ben sorarım. ✍️");
+  }
   if (due > 0) lines.push(`${due} kelime seni bekliyor. Önce tekrar? 🔁`);
   else if (cards.length > 0) lines.push("Şu an tekrar edecek bir şey yok — yeni bir ders? ✨");
   if (streak > 1) lines.push(`${streak} günlük seri! 🔥 Böyle devam.`);
