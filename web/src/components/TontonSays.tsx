@@ -58,7 +58,7 @@ function TontonSays({ lines, size = 72, className = "" }: TontonSaysProps) {
       <button
         type="button"
         onClick={poke}
-        aria-label="Poke Tonton"
+        aria-label="Tonton'a dokun"
         data-silent
         className="shrink-0 rounded-full transition-transform active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-violet-300"
       >

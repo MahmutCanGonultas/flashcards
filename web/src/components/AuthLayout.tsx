@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Logo from "./Logo";
+import Mascot from "./Mascot";
 import { CardStackArt } from "./icons";
 
 type AuthLayoutProps = {
@@ -51,7 +52,7 @@ function AuthLayout({
               <div className="h-8 w-8 rounded-full bg-emerald-300 ring-2 ring-violet-500" />
               <div className="h-8 w-8 rounded-full bg-rose-300 ring-2 ring-violet-500" />
             </div>
-            <span>Join thousands of learners</span>
+            <span>Binlerce öğrenciye katıl</span>
           </div>
         </div>
       </div>
@@ -63,11 +64,19 @@ function AuthLayout({
           </div>
 
           <div className="rounded-3xl bg-white p-7 sm:p-9 ring-2 ring-stone-100 shadow-[0_6px_0_0_var(--color-stone-100)]">
-            <h1 className="flex items-center gap-2 text-2xl font-extrabold tracking-tight text-stone-800">
-              {title}
-              <span aria-hidden="true">{emoji}</span>
-            </h1>
-            <p className="mt-1.5 mb-7 text-sm text-stone-500">{subtitle}</p>
+            <div className="mb-6 flex items-end gap-3">
+              <Mascot mood="happy" size={72} className="shrink-0" />
+              <div className="relative min-w-0 flex-1 rounded-3xl rounded-bl-md bg-amber-50 px-4 py-3 ring-1 ring-amber-200">
+                <span
+                  aria-hidden="true"
+                  className="absolute -left-1.5 bottom-3 h-3 w-3 rotate-45 rounded-sm bg-amber-50 ring-1 ring-amber-200 [clip-path:polygon(0_0,0_100%,100%_100%)]"
+                />
+                <h1 className="text-xl font-extrabold tracking-tight text-amber-900">
+                  {title} <span aria-hidden="true">{emoji}</span>
+                </h1>
+                <p className="mt-0.5 text-sm text-amber-800/80">{subtitle}</p>
+              </div>
+            </div>
 
             {children}
           </div>

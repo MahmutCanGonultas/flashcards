@@ -64,7 +64,7 @@ function bucketize(cards: CardModel[]): Bucket[] {
   });
 
   if (untagged.length > 0) {
-    buckets.push({ key: "__untagged__", label: "Other cards", cards: untagged });
+    buckets.push({ key: "__untagged__", label: "Diğer kartlar", cards: untagged });
   }
 
   return buckets;
@@ -151,8 +151,8 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
     <div>
       {dayBuckets.length > 1 && (
         <p className="mb-3 text-xs font-medium text-stone-400">
-          These groups are your lesson order, not a review timer — a word you know well is
-          reviewed less often than one you're still learning, no matter which group it's in.
+          Bu gruplar ders sıran, tekrar zamanlayıcısı değil — iyi bildiğin bir kelime, hangi
+          grupta olursa olsun, hâlâ öğrendiğin bir kelimeden daha seyrek karşına çıkar.
         </p>
       )}
 
@@ -160,7 +160,7 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
         <div
           className="mb-5 flex gap-1"
           role="img"
-          aria-label={`Program progress: ${dayBuckets.filter((b) => bucketStatus(b) === "done").length} of ${dayBuckets.length} days done`}
+          aria-label={`Program ilerlemesi: ${dayBuckets.filter((b) => bucketStatus(b) === "done").length}/${dayBuckets.length} gün tamamlandı`}
         >
           {dayBuckets.map((bucket) => (
             <span
@@ -203,17 +203,17 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
                     {bucket.key === "__untagged__" ? bucket.label : `📘 ${bucket.label}`}
                   </span>
                   <span className="shrink-0 text-sm font-medium text-stone-400">
-                    {bucket.cards.length} {bucket.cards.length === 1 ? "card" : "cards"}
+                    {bucket.cards.length} kart
                   </span>
                 </span>
                 <span className="flex shrink-0 items-center gap-2.5">
                   {due > 0 && (
                     <span className="rounded-full bg-violet-600 px-2.5 py-1 text-xs font-extrabold text-white">
                       {newDue > 0 && reviewDue > 0
-                        ? `${newDue} new · ${reviewDue} review`
+                        ? `${newDue} yeni · ${reviewDue} tekrar`
                         : newDue > 0
-                          ? `${newDue} new`
-                          : `${reviewDue} review`}
+                          ? `${newDue} yeni`
+                          : `${reviewDue} tekrar`}
                     </span>
                   )}
                   <ChevronDownIcon

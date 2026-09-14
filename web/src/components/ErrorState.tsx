@@ -6,7 +6,7 @@ type ErrorStateProps = {
   onRetry?: () => void;
 };
 
-function ErrorState({ title = "Something went wrong", message, onRetry }: ErrorStateProps) {
+function ErrorState({ title = "Bir şeyler ters gitti", message, onRetry }: ErrorStateProps) {
   return (
     <div className="rounded-3xl bg-rose-100 ring-2 ring-rose-200 p-6 sm:p-8 text-center">
       <div className="text-4xl mb-2" aria-hidden="true">
@@ -17,7 +17,7 @@ function ErrorState({ title = "Something went wrong", message, onRetry }: ErrorS
       {onRetry && (
         <div className="mt-5 flex justify-center">
           <Button variant="danger" size="sm" onClick={onRetry}>
-            Try again
+            Tekrar dene
           </Button>
         </div>
       )}

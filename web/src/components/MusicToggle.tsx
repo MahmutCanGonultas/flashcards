@@ -10,8 +10,8 @@ function MusicToggle() {
       type="button"
       onClick={toggleMusic}
       aria-pressed={on}
-      aria-label={on ? "Turn background music off" : "Turn background music on"}
-      title={on ? "Music on" : "Music off"}
+      aria-label={on ? "Arka plan müziğini kapat" : "Arka plan müziğini aç"}
+      title={on ? "Müzik açık" : "Müzik kapalı"}
       className={`flex h-9 w-9 items-center justify-center rounded-full text-base transition ${
         on
           ? "bg-violet-100 text-violet-700 ring-1 ring-violet-200"

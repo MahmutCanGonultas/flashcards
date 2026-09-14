@@ -15,12 +15,18 @@ function stateFor(option: QuizOption, index: number, selectedIndex: number | nul
   return option.isCorrect ? "reveal" : "muted";
 }
 
+/*
+ * Colour is never transitioned and the settled options are made inert with
+ * pointer-events rather than `disabled`: iOS Safari has been seen leaving a
+ * tapped, then disabled, button painted in its pressed/answered colours
+ * until something else on the page moves. Only the press itself animates.
+ */
 const STATE_CLASSES: Record<VisualState, string> = {
-  idle: "bg-white text-stone-800 ring-2 ring-stone-200 shadow-[0_4px_0_0_var(--color-stone-200)] hover:-translate-y-0.5 hover:bg-stone-50 active:translate-y-[3px] active:shadow-none",
-  correct: "bg-emerald-500 text-white ring-2 ring-emerald-600 shadow-[0_4px_0_0_var(--color-emerald-700)] scale-[1.02]",
-  wrong: "bg-rose-500 text-white ring-2 ring-rose-600 shadow-[0_4px_0_0_var(--color-rose-700)] scale-[1.02]",
-  reveal: "bg-emerald-100 text-emerald-800 ring-2 ring-emerald-400",
-  muted: "bg-white text-stone-300 ring-2 ring-stone-100",
+  idle: "bg-white text-stone-800 ring-2 ring-stone-200 shadow-[0_4px_0_0_var(--color-stone-200)] transition-transform duration-100 hover:-translate-y-0.5 hover:bg-stone-50 active:translate-y-[3px] active:shadow-none",
+  correct: "pointer-events-none bg-emerald-500 text-white ring-2 ring-emerald-600 shadow-[0_4px_0_0_var(--color-emerald-700)] scale-[1.02]",
+  wrong: "pointer-events-none bg-rose-500 text-white ring-2 ring-rose-600 shadow-[0_4px_0_0_var(--color-rose-700)] scale-[1.02]",
+  reveal: "pointer-events-none bg-emerald-100 text-emerald-800 ring-2 ring-emerald-400",
+  muted: "pointer-events-none bg-white text-stone-300 ring-2 ring-stone-100",
 };
 
 const KEY_HINTS = ["1", "2", "3", "4"];
@@ -35,9 +41,11 @@ function QuizOptions({ options, selectedIndex, onSelect }: QuizOptionsProps) {
           <button
             key={index}
             type="button"
-            disabled={selectedIndex !== null}
-            onClick={() => onSelect(index)}
-            className={`flex w-full items-center gap-3 rounded-2xl px-4 py-4 text-left text-lg font-extrabold transition-all duration-150 disabled:cursor-default ${STATE_CLASSES[state]}`}
+            aria-disabled={selectedIndex !== null}
+            onClick={() => {
+              if (selectedIndex === null) onSelect(index);
+            }}
+            className={`flex w-full items-center gap-3 rounded-2xl px-4 py-4 text-left text-lg font-extrabold ${STATE_CLASSES[state]}`}
           >
             <span
               aria-hidden="true"

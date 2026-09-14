@@ -8,7 +8,7 @@ import {
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError } from "../lib/api";
 import type { Card, Deck } from "../types";
-import { parseBack } from "../lib/cardBack";
+import { parseBack, posLabel } from "../lib/cardBack";
 import {
   buildQuizOptions,
   buildWordOptions,
@@ -19,6 +19,7 @@ import { hasStarted, buildPath } from "../lib/path";
 import {
   buildLessonPlan,
   buildReviewPlan,
+  pickRecap,
   repeatStep,
   type Step,
   type QuizFormat,
@@ -40,6 +41,7 @@ import SpeakButton from "../components/SpeakButton";
 import QuizOptions from "../components/QuizOptions";
 import Mascot from "../components/Mascot";
 import MeetBody from "../components/MeetBody";
+import TontonLine from "../components/TontonLine";
 import SoundMatch from "../components/SoundMatch";
 import RoundRail, { type RailStage } from "../components/RoundRail";
 import { SpeakerIcon } from "../components/icons";
@@ -80,7 +82,7 @@ function spellingMatches(typed: string, expected: string): boolean {
 function describeError(error: unknown): string {
   return error instanceof ApiError
     ? error.message
-    : "Something went wrong. Please try again.";
+    : "Bir şeyler ters gitti. Tekrar dener misin?";
 }
 
 function StudySkeleton() {
@@ -147,7 +149,7 @@ function StudySession({
   // shift an index that has already been consumed.
   const [plan, setPlan] = useState<Step[]>(() =>
     mode === "lesson"
-      ? buildLessonPlan(cards, level, lessonNumber)
+      ? buildLessonPlan(cards, level, lessonNumber, pickRecap(deckCards ?? [], cards))
       : buildReviewPlan(cards),
   );
   // Only the typed round uses this; the multiple-choice rounds use `answer`.
@@ -363,17 +365,19 @@ function StudySession({
   const stages = useMemo<RailStage[]>(() => {
     if (mode !== "lesson") return [];
     const rail: RailStage[] = [];
+    if (plan.some((s) => s.kind === "quiz" && s.recap))
+      rail.push({ id: "recap", label: "Tekrar" });
     if (plan.some((s) => s.kind === "meet"))
-      rail.push({ id: "meet", label: "Meet" });
+      rail.push({ id: "meet", label: "Tanış" });
     if (plan.some((s) => s.kind === "listen"))
-      rail.push({ id: "listen", label: "Listen" });
-    rail.push({ id: "prove", label: "Prove" });
+      rail.push({ id: "listen", label: "Dinle" });
+    rail.push({ id: "prove", label: "Göster" });
     return rail;
   }, [mode, plan]);
 
   const activeStage = useMemo(() => {
     if (!step) return stages.length - 1;
-    const id = step.kind === "quiz" ? "prove" : step.kind;
+    const id = step.kind === "quiz" ? (step.recap ? "recap" : "prove") : step.kind;
     const found = stages.findIndex((stage) => stage.id === id);
     return found === -1 ? stages.length - 1 : found;
   }, [step, stages]);
@@ -432,7 +436,7 @@ function StudySession({
       if (deckCardsError) {
         return (
           <ErrorState
-            title="Couldn't load this deck"
+            title="Bu deste yüklenemedi"
             message={describeError(deckCardsError)}
             onRetry={onRetryDeckCards}
           />
@@ -444,20 +448,20 @@ function StudySession({
       return (
         <EmptyState
           emoji="🃏"
-          title="No cards yet"
-          description="Add a few cards to this deck and they'll show up here to study."
-          action={<LinkButton to={`/decks/${deckId}`}>Back to deck</LinkButton>}
+          title="Henüz kart yok"
+          description="Bu desteye birkaç kart ekle, çalışmak için burada seni beklesinler."
+          action={<LinkButton to={`/decks/${deckId}`}>Desteye dön</LinkButton>}
         />
       );
     }
     return (
       <EmptyState
         emoji="☕"
-        title="Nothing to review"
-        description="You're all caught up. Come back later!"
+        title="Tekrar edecek bir şey yok"
+        description="Hepsini hallettin. Sonra yine gel!"
         action={
           <LinkButton to={`/decks/${deckId}`} variant="secondary">
-            Back to deck
+            Desteye dön
           </LinkButton>
         }
       />
@@ -469,8 +473,8 @@ function StudySession({
   if (deckCardPool.length === 0) {
     return (
       <ErrorState
-        title="Couldn't load your words"
-        message="Your deck is fine — the app just couldn't reach it. Check your connection."
+        title="Kelimelerin yüklenemedi"
+        message="Desten yerinde duruyor — uygulama ona ulaşamadı. Bağlantını kontrol et."
         onRetry={onRetryDeckCards}
       />
     );
@@ -509,16 +513,17 @@ function StudySession({
     if (step.kind === "meet") {
       const meets = plan.filter((s) => s.kind === "meet");
       const position = meets.findIndex((s) => s.key === step.key) + 1;
-      return `New word ${position} of ${meets.length}`;
+      return `Yeni kelime ${position}/${meets.length}`;
     }
-    if (step.kind === "listen") return "Sound check";
-    if (step.attempt > 0) return "One more time";
+    if (step.kind === "listen") return "Ses kontrolü";
+    if (step.recap) return "Hızlı tekrar";
+    if (step.attempt > 0) return "Bir kez daha";
     const byFormat: Record<QuizFormat, string> = {
-      meaning: mode === "lesson" ? "Your turn" : title,
-      context: "Use it in a sentence",
-      listen: "Listen closely",
-      reverse: "Say it in English",
-      type: "Write it",
+      meaning: mode === "lesson" ? "Sıra sende" : title,
+      context: "Cümlede kullan",
+      listen: "İyi dinle",
+      reverse: "İngilizcesi ne?",
+      type: "Yaz bakalım",
     };
     return byFormat[step.format];
   })();
@@ -530,7 +535,7 @@ function StudySession({
         <button
           type="button"
           onClick={() => navigate(`/decks/${deckId}`)}
-          aria-label={mode === "lesson" ? "Leave lesson" : "Leave review"}
+          aria-label={mode === "lesson" ? "Dersten çık" : "Tekrardan çık"}
           className="-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 text-2xl leading-none text-stone-400 transition hover:bg-stone-900/5 hover:text-stone-700"
         >
           ×
@@ -552,7 +557,7 @@ function StudySession({
             type="button"
             onClick={toggleMute}
             aria-label={
-              muted ? "Turn pronunciation on" : "Turn pronunciation off"
+              muted ? "Sesi aç" : "Sesi kapat"
             }
             className={`-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 transition ${
               muted ? "text-stone-300" : "text-violet-500"
@@ -639,7 +644,7 @@ function ListenStep({
       />
       <BottomBar>
         <Button size="lg" fullWidth disabled={!done} onClick={onContinue}>
-          {done ? "Start the quiz" : "Match all three"}
+          {done ? "Sorulara geç" : "Üçünü de eşleştir"}
         </Button>
       </BottomBar>
     </>
@@ -700,17 +705,23 @@ function QuestionStep({
           <ListenHero word={card.front} revealed={answer !== null} />
         ) : format === "reverse" || format === "type" ? (
           <>
-            {emoji && (
+            {card.image_url ? (
+              <img
+                src={card.image_url}
+                alt=""
+                className="mx-auto h-24 w-24 rounded-2xl object-cover ring-2 ring-white shadow-md"
+              />
+            ) : emoji ? (
               <p className="text-4xl leading-none" aria-hidden="true">
                 {emoji}
               </p>
-            )}
+            ) : null}
             <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-stone-800 break-words sm:text-4xl">
               {meaning}
             </p>
             {pos && (
               <span className="mt-3 inline-block rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-violet-600 ring-1 ring-violet-200">
-                {pos}
+                {posLabel(pos)}
               </span>
             )}
           </>
@@ -730,7 +741,12 @@ function QuestionStep({
                 className="-mx-2 -mt-2 h-44 w-[calc(100%+1rem)] max-w-none rounded-2xl object-cover ring-2 ring-white shadow-md"
               />
             ) : emoji ? (
-              <span aria-hidden="true" className="w-24 shrink-0 text-center text-6xl leading-none">
+              // The emoji as a sticker: a tile of its own, so every word has
+              // the same kind of picture in the same place.
+              <span
+                aria-hidden="true"
+                className="flex h-24 w-24 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-br from-white to-violet-100 text-6xl leading-none shadow-[inset_0_-4px_0_0_rgba(139,92,246,0.15)] ring-1 ring-violet-200"
+              >
                 {emoji}
               </span>
             ) : null}
@@ -743,7 +759,7 @@ function QuestionStep({
               </div>
               {pos && (
                 <span className="mt-1 inline-block rounded-full bg-white/80 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-violet-600 ring-1 ring-violet-200">
-                  {pos}
+                  {posLabel(pos)}
                 </span>
               )}
               <p className="mt-1.5 text-xl font-extrabold leading-snug text-violet-700 break-words">{meaning}</p>
@@ -757,7 +773,7 @@ function QuestionStep({
             <div className="mt-4 flex items-center justify-center gap-2">
               {pos && (
                 <span className="rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-violet-600 ring-1 ring-violet-200">
-                  {pos}
+                  {posLabel(pos)}
                 </span>
               )}
               <SpeakButton text={card.front} size="md" />
@@ -772,7 +788,7 @@ function QuestionStep({
             <MeetBody card={card} />
           </div>
           {lessonWords.length > 1 && (
-            <ol className="mt-5 flex items-center justify-center gap-2" aria-label="This lesson's words">
+            <ol className="mt-5 flex items-center justify-center gap-2" aria-label="Bu dersin kelimeleri">
               {lessonWords.map((word) => {
                 const here = word.id === card.id;
                 const met = lessonWords.indexOf(word) < lessonWords.findIndex((w) => w.id === card.id);
@@ -796,11 +812,11 @@ function QuestionStep({
             </ol>
           )}
           <p className="mt-3 text-center text-sm font-semibold text-stone-400">
-            Listen once more, then say it out loud. 🗣️
+            Bir kez daha dinle, sonra yüksek sesle söyle. 🗣️
           </p>
           <BottomBar>
             <Button size="lg" fullWidth onClick={onContinue}>
-              Got it
+              Anladım
             </Button>
           </BottomBar>
         </>
@@ -814,15 +830,15 @@ function QuestionStep({
         />
       ) : options ? (
         <>
-          <p className="mt-4 text-center text-sm font-semibold text-stone-500">
+          <TontonLine className="mt-4" mood={answer === null ? "think" : answeredRight ? "happy" : "sad"}>
             {format === "context"
-              ? "Which word is missing?"
+              ? "Hangi kelime eksik?"
               : format === "listen"
-                ? "Which word did you hear?"
+                ? "Hangi kelimeyi duydun?"
                 : format === "reverse"
-                  ? "Which word is this?"
-                  : "What does it mean?"}
-          </p>
+                  ? "Bu hangi kelime?"
+                  : "Bu ne demek?"}
+          </TontonLine>
           <QuizOptions
             options={options}
             selectedIndex={answer}
@@ -830,14 +846,14 @@ function QuestionStep({
           />
           {answer === null && (
             <p className="mt-5 text-center text-xs font-medium text-stone-400">
-              Tap an answer · keys 1-4
+              Bir cevaba dokun · 1-4 tuşları
             </p>
           )}
         </>
       ) : (
         <ErrorState
-          title="Couldn't build this question"
-          message="There aren't enough words in this deck to make a multiple-choice question yet."
+          title="Bu soru hazırlanamadı"
+          message="Çoktan seçmeli bir soru kurmak için bu destede henüz yeterli kelime yok."
         />
       )}
 
@@ -866,16 +882,16 @@ function QuestionStep({
                 >
                   {answeredRight
                     ? step.kind === "quiz" && step.attempt > 0
-                      ? "There it is."
+                      ? "İşte bu!"
                       : run >= 5
-                        ? "Unstoppable!"
+                        ? "Durdurulamazsın!"
                         : run >= 3
-                          ? "On a roll!"
-                          : "Nice!"
-                    : "Not quite."}
+                          ? "Seri gidiyor!"
+                          : "Süper!"
+                    : "Olmadı."}
                   {answeredRight && run >= 3 && (
                     <span className="ml-2 inline-block rounded-full bg-amber-100 px-2 py-0.5 align-middle text-xs font-extrabold text-amber-700 ring-1 ring-amber-200 animate-[pop-in_220ms_cubic-bezier(0.34,1.56,0.64,1)]">
-                      🔥 {run} in a row
+                      🔥 üst üste {run}
                     </span>
                   )}
                 </p>
@@ -904,7 +920,7 @@ function QuestionStep({
               variant={answeredRight ? "primary" : "danger"}
               onClick={onContinue}
             >
-              Continue
+              Devam
             </Button>
           </div>
         </div>
@@ -940,7 +956,7 @@ function ListenHero({ word, revealed }: { word: string; revealed: boolean }) {
       <button
         type="button"
         onClick={() => play()}
-        aria-label="Play the word"
+        aria-label="Kelimeyi dinle"
         className={`flex h-20 w-20 items-center justify-center rounded-full transition ${
           playing
             ? "bg-violet-600 text-white scale-105"
@@ -954,7 +970,7 @@ function ListenHero({ word, revealed }: { word: string; revealed: boolean }) {
         onClick={() => play(0.65)}
         className="text-xs font-bold text-violet-500 hover:text-violet-700"
       >
-        🐢 Slower
+        🐢 Daha yavaş
       </button>
     </div>
   );
@@ -994,9 +1010,7 @@ function TypeAnswer({
         if (text.trim()) onSubmit(text);
       }}
     >
-      <p className="text-center text-sm font-semibold text-stone-500">
-        Write it in English
-      </p>
+      <TontonLine mood={answered ? "idle" : "think"}>İngilizcesini yaz</TontonLine>
       {hint && (
         <p className="mt-1 text-center font-mono text-sm tracking-widest text-violet-500">
           {hint}
@@ -1013,8 +1027,8 @@ function TypeAnswer({
         autoComplete="off"
         spellCheck={false}
         enterKeyHint="done"
-        aria-label="Your answer"
-        placeholder="type here"
+        aria-label="Cevabın"
+        placeholder="buraya yaz"
         className="mt-3 w-full rounded-2xl border-2 border-stone-200 bg-white px-4 py-4 text-center text-2xl font-extrabold text-stone-800 outline-none transition placeholder:font-semibold placeholder:text-stone-300 focus:border-violet-400 focus:ring-4 focus:ring-violet-100 disabled:bg-stone-50"
       />
       {!answered && (
@@ -1025,7 +1039,7 @@ function TypeAnswer({
           className="mt-3"
           disabled={!text.trim()}
         >
-          Check
+          Kontrol et
         </Button>
       )}
     </form>
@@ -1075,12 +1089,18 @@ function LessonSummary({
 
   const heading =
     mode === "review"
-      ? "Review done."
+      ? "Tekrar tamam! 🔁"
       : newWords === 0
-        ? "Nice practice."
+        ? "Güzel pratikti! 💪"
         : newWords === 1
-          ? "1 new word."
-          : `${newWords} new words.`;
+          ? "1 yeni kelime cebinde! 🎉"
+          : `${newWords} yeni kelime cebinde! 🎉`;
+  const verdict =
+    accuracy === 100
+      ? "Hepsini ilk denemede bildin. Tonton gururlu! 🥳"
+      : accuracy >= 60
+        ? "Kaçanlar sana yarın tekrar gelecek — korkma, böyle öğreniliyor. 💪"
+        : "Zor bir dersti, ama artık tanışıksınız. Yarın çok daha kolay gelecek. 🌱";
 
   return (
     <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-white to-emerald-50 p-8 text-center ring-2 ring-emerald-100 shadow-[0_5px_0_0_var(--color-emerald-100)] animate-[pop-in_220ms_ease-out] sm:p-12">
@@ -1126,16 +1146,16 @@ function LessonSummary({
               {queue.length}
             </p>
             <p className="text-xs font-bold uppercase tracking-wide text-stone-400">
-              Words
+              Kelime
             </p>
           </div>
           {mode === "review" && (
             <div className="min-w-[6.5rem] rounded-2xl bg-white px-4 py-3 ring-2 ring-violet-100">
               <p className="text-2xl font-extrabold text-violet-600">
-                {accuracy}%
+                %{accuracy}
               </p>
               <p className="text-xs font-bold uppercase tracking-wide text-stone-400">
-                Correct
+                Doğru
               </p>
             </div>
           )}
@@ -1143,7 +1163,7 @@ function LessonSummary({
             <div className="min-w-[6.5rem] rounded-2xl bg-white px-4 py-3 ring-2 ring-amber-100">
               <p className="text-2xl font-extrabold text-amber-500">{streak}</p>
               <p className="text-xs font-bold uppercase tracking-wide text-stone-400">
-                Day streak
+                Günlük seri
               </p>
             </div>
           )}
@@ -1154,18 +1174,18 @@ function LessonSummary({
             role="alert"
             className="mx-auto mt-5 max-w-sm rounded-2xl bg-amber-50 p-3 text-sm font-medium text-amber-800 ring-1 ring-amber-200"
           >
-            {failedReviews} answer{failedReviews === 1 ? "" : "s"} couldn't be
-            saved — check your connection and study those words again.
+            {failedReviews} cevap kaydedilemedi — bağlantını kontrol edip o
+            kelimeleri tekrar çalış.
           </p>
         )}
 
-        <p className="mt-5 text-sm text-stone-500">
-          You'll see these again tomorrow. That's when it counts.
-        </p>
+        <TontonLine className="mt-5 text-left" mood="happy" size={48} tone="amber">
+          {verdict}
+        </TontonLine>
 
         <div className="mt-6 flex justify-center">
           <Button size="lg" onClick={onDone}>
-            Done
+            Bitti
           </Button>
         </div>
       </div>
@@ -1236,7 +1256,7 @@ function Study() {
       if (cardsQuery.isError) {
         return (
           <ErrorState
-            title="Couldn't start studying"
+            title="Çalışma başlatılamadı"
             message={describeError(cardsQuery.error)}
             onRetry={() => void cardsQuery.refetch()}
           />
@@ -1259,11 +1279,11 @@ function Study() {
           return (
             <EmptyState
               emoji="🤔"
-              title="No such lesson"
-              description="That lesson isn't in this deck."
+              title="Böyle bir ders yok"
+              description="O ders bu destede yok."
               action={
                 <LinkButton to={`/decks/${deckId}`}>
-                  Back to the path
+                  Patikaya dön
                 </LinkButton>
               }
             />
@@ -1275,11 +1295,11 @@ function Study() {
           return (
             <EmptyState
               emoji="🔒"
-              title="Not yet"
-              description="Finish the lessons before this one first — three words a day is the whole plan."
+              title="Şimdi değil"
+              description="Önce bundan önceki dersleri bitir — günde üç kelime, planın tamamı bu."
               action={
                 <LinkButton to={`/decks/${deckId}`}>
-                  Back to the path
+                  Patikaya dön
                 </LinkButton>
               }
             />
@@ -1292,7 +1312,7 @@ function Study() {
             deckId={deckId}
             cards={[...lesson.cards].sort((a, b) => a.id - b.id)}
             mode="lesson"
-            title={`Lesson ${lessonNumber}`}
+            title={`Ders ${lessonNumber}`}
             level={unit?.level ?? null}
             lessonNumber={lessonNumber}
             deckCardCount={cardsQuery.data.length}
@@ -1311,7 +1331,7 @@ function Study() {
           deckId={deckId}
           cards={cardsQuery.data.filter(hasStarted)}
           mode="review"
-          title="Practice"
+          title="Pratik"
           deckCardCount={cardsQuery.data.length}
           deckCards={cardsQuery.data}
           deckCardsError={cardsQuery.error}
@@ -1323,7 +1343,7 @@ function Study() {
     if (dueQuery.isError) {
       return (
         <ErrorState
-          title="Couldn't start studying"
+          title="Çalışma başlatılamadı"
           message={describeError(dueQuery.error)}
           onRetry={() => dueQuery.refetch()}
         />
@@ -1345,7 +1365,7 @@ function Study() {
         deckId={deckId}
         cards={dueQuery.data}
         mode="review"
-        title={deckName ?? "Review"}
+        title={deckName ?? "Tekrar"}
         deckCardCount={cardsQuery.data?.length}
         deckCards={cardsQuery.data}
         deckCardsError={cardsQuery.error}

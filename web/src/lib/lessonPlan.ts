@@ -1,5 +1,5 @@
 import type { Card } from "../types";
-import { hasStarted } from "./path";
+import { hasStarted, isDue } from "./path";
 import { blankOut } from "./sentence";
 
 /**
@@ -9,6 +9,7 @@ import { blankOut } from "./sentence";
  * multiple-choice question about a word you had never seen, which left
  * guessing as the only option — this is the fix.
  *
+ *   recap × ≤3     words from before that are due — missed ones first
  *   meet × N       the new words, one at a time, nothing to answer
  *   listen         hear each one and pair it with its meaning (ungraded contact)
  *   meaning × N    what does it mean? — the graded question
@@ -41,6 +42,8 @@ export type Step =
       attempt: number;
       /** The other words in this lesson, used to draw a near-miss distractor. */
       mateIds: number[];
+      /** A word from an earlier lesson, asked again before the new ones. */
+      recap?: boolean;
     };
 
 /** The sound check needs at least two words to pair against each other. */
@@ -68,18 +71,36 @@ function meetStep(card: Card): Step {
 export function quizStep(
   card: Card,
   format: QuizFormat,
-  options: { graded: boolean; attempt?: number; mateIds?: number[] },
+  options: { graded: boolean; attempt?: number; mateIds?: number[]; recap?: boolean },
 ): Step {
   const attempt = options.attempt ?? 0;
   return {
     kind: "quiz",
-    key: `${card.id}:${format}:${attempt}`,
+    key: `${card.id}:${format}:${attempt}${options.recap ? ":recap" : ""}`,
     cardId: card.id,
     format,
     graded: options.graded,
     attempt,
     mateIds: options.mateIds ?? [],
+    recap: options.recap,
   };
+}
+
+/** How many words from before a lesson opens with. */
+export const RECAP_LIMIT = 3;
+
+/**
+ * The words a lesson should open with: due words from earlier lessons,
+ * the ones missed last time first. A word you got wrong yesterday is back
+ * in front of you before today's new ones — that is how it stops being
+ * the word you always miss.
+ */
+export function pickRecap(deckCards: Card[], lessonCards: Card[], limit = RECAP_LIMIT): Card[] {
+  const inLesson = new Set(lessonCards.map((card) => card.id));
+  const due = deckCards.filter((card) => !inLesson.has(card.id) && hasStarted(card) && isDue(card));
+  const lapsed = due.filter((card) => card.repetitions === 0);
+  const rest = due.filter((card) => card.repetitions > 0).sort((a, b) => a.repetitions - b.repetitions);
+  return [...lapsed, ...rest].slice(0, limit);
 }
 
 /** A sentence exercise is only possible when the word is findable in its sentence. */
@@ -103,12 +124,18 @@ export function buildLessonPlan(
   cards: Card[],
   level: string | null = null,
   lessonNumber = 0,
+  recap: Card[] = [],
 ): Step[] {
   const ids = cards.map((card) => card.id);
   const matesOf = (card: Card) => ids.filter((id) => id !== card.id);
 
+  // The recap is graded: it is these words' real review, brought forward.
+  const steps: Step[] = recap.map((card) =>
+    quizStep(card, card.repetitions >= 2 ? "reverse" : "meaning", { graded: true, recap: true }),
+  );
+
   const fresh = cards.filter((card) => !hasStarted(card));
-  const steps: Step[] = fresh.map(meetStep);
+  steps.push(...fresh.map(meetStep));
 
   if (fresh.length >= MIN_CARDS_FOR_LISTEN) {
     steps.push({ kind: "listen", key: "listen", cardIds: fresh.map((card) => card.id) });

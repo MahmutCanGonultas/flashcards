@@ -18,7 +18,7 @@ function ConfirmDialog({
   onConfirm,
   title,
   message,
-  confirmLabel = "Delete",
+  confirmLabel = "Sil",
   isLoading = false,
   error,
 }: ConfirmDialogProps) {
@@ -37,13 +37,13 @@ function ConfirmDialog({
 
       <div className="mt-7 flex flex-col-reverse sm:flex-row sm:justify-end gap-3">
         <Button variant="secondary" onClick={onClose} disabled={isLoading}>
-          Cancel
+          Vazgeç
         </Button>
         <Button
           variant="danger"
           onClick={onConfirm}
           isLoading={isLoading}
-          loadingText="Deleting..."
+          loadingText="Siliniyor..."
         >
           {confirmLabel}
         </Button>

@@ -35,3 +35,31 @@ export function parseBack(back: string): ParsedBack {
 
   return { pos, text: rest.trim(), emoji };
 }
+
+/** The part of speech as the learner should read it: "verb" → "fiil". */
+const POS_TR: Record<string, string> = {
+  noun: "isim",
+  verb: "fiil",
+  adjective: "sıfat",
+  adverb: "zarf",
+  pronoun: "zamir",
+  preposition: "edat",
+  conjunction: "bağlaç",
+  interjection: "ünlem",
+  determiner: "belirteç",
+  article: "tanımlık",
+  "phrasal verb": "öbek fiil",
+  idiom: "deyim",
+  expression: "ifade",
+  phrase: "ifade",
+  number: "sayı",
+  modal: "kip fiili",
+  "modal verb": "kip fiili",
+  "auxiliary verb": "yardımcı fiil",
+};
+
+export function posLabel(pos: string | null): string | null {
+  if (!pos) return null;
+  const key = pos.trim().toLowerCase();
+  return POS_TR[key] ?? POS_TR[key.replace(/s$/, "")] ?? pos;
+}

@@ -36,7 +36,7 @@ function DeckForm({
 
     const trimmed = name.trim();
     if (!trimmed) {
-      setValidationError("Give your deck a name.");
+      setValidationError("Destene bir ad ver.");
       return;
     }
 
@@ -49,8 +49,8 @@ function DeckForm({
   return (
     <form onSubmit={handleSubmit} noValidate>
       <TextField
-        label="Deck name"
-        placeholder="Spanish verbs"
+        label="Deste adı"
+        placeholder="İspanyolca fiiller"
         value={name}
         onChange={(event) => setName(event.target.value)}
         error={validationError ?? undefined}
@@ -70,14 +70,14 @@ function DeckForm({
 
       <div className="mt-7 flex flex-col-reverse sm:flex-row sm:justify-end gap-3">
         <Button variant="secondary" onClick={onClose} disabled={isPending}>
-          Cancel
+          Vazgeç
         </Button>
         <Button
           type="submit"
           isLoading={isPending}
-          loadingText={isCreate ? "Creating..." : "Saving..."}
+          loadingText={isCreate ? "Oluşturuluyor..." : "Kaydediliyor..."}
         >
-          {isCreate ? "Create" : "Save"}
+          {isCreate ? "Oluştur" : "Kaydet"}
         </Button>
       </div>
     </form>
@@ -91,7 +91,7 @@ function DeckFormModal({ isOpen, ...formProps }: DeckFormModalProps) {
     <Modal
       isOpen={isOpen}
       onClose={formProps.onClose}
-      title={isCreate ? "New deck" : "Rename deck"}
+      title={isCreate ? "Yeni deste" : "Desteyi yeniden adlandır"}
       emoji={isCreate ? "✨" : "✏️"}
     >
       <DeckForm {...formProps} />

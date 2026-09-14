@@ -48,8 +48,8 @@ function MiniQuiz({ items }: { items: GrammarQuiz[] }) {
         </p>
         <p className="mt-1 text-sm text-stone-500">
           {score === items.length
-            ? "All three. The rule is yours."
-            : "Have another look at the rules above, then carry on."}
+            ? "Üçü de doğru! Kural artık senin."
+            : "Yukarıdaki kurallara bir daha bak, sonra devam et."}
         </p>
       </div>
     );
@@ -58,7 +58,7 @@ function MiniQuiz({ items }: { items: GrammarQuiz[] }) {
   return (
     <div className="rounded-3xl bg-white p-5 ring-2 ring-violet-100">
       <p className="text-[11px] font-extrabold uppercase tracking-widest text-violet-500">
-        Quick check · {index + 1} of {items.length}
+        Hızlı kontrol · {index + 1}/{items.length}
       </p>
       <p className="mt-2 text-lg font-extrabold leading-snug text-stone-800">{item.question}</p>
       <div className="mt-3 space-y-2">
@@ -75,9 +75,9 @@ function MiniQuiz({ items }: { items: GrammarQuiz[] }) {
             <button
               key={i}
               type="button"
-              disabled={picked !== null}
+              aria-disabled={picked !== null}
               onClick={() => choose(i)}
-              className={`w-full rounded-2xl px-4 py-3 text-left font-bold transition ${
+              className={`w-full rounded-2xl px-4 py-3 text-left font-bold ${picked !== null ? "pointer-events-none" : "transition-transform active:scale-[0.99]"} ${
                 state === "idle"
                   ? "bg-stone-50 text-stone-800 ring-1 ring-stone-200 hover:bg-violet-50 hover:ring-violet-200"
                   : state === "right"
@@ -98,7 +98,7 @@ function MiniQuiz({ items }: { items: GrammarQuiz[] }) {
             {item.explain}
           </p>
           <Button size="sm" className="mt-3" onClick={next}>
-            {index + 1 >= items.length ? "Finish" : "Next"}
+            {index + 1 >= items.length ? "Bitir" : "Sonraki"}
           </Button>
         </div>
       )}
@@ -124,7 +124,7 @@ function Grammar() {
           to={`/decks/${deckId}`}
           className="-m-2 inline-flex items-center gap-1.5 p-2 font-medium text-stone-500 transition hover:text-stone-800"
         >
-          <span aria-hidden="true">←</span> Back to the path
+          <span aria-hidden="true">←</span> Patikaya dön
         </Link>
 
         {unitsQuery.isLoading && (
@@ -136,15 +136,15 @@ function Grammar() {
         {unitsQuery.isError && (
           <div className="mt-6">
             <ErrorState
-              title="Couldn't load the grammar note"
-              message="Check your connection and try again."
+              title="Gramer notu yüklenemedi"
+              message="Bağlantını kontrol edip tekrar dene."
               onRetry={() => void unitsQuery.refetch()}
             />
           </div>
         )}
         {unitsQuery.isSuccess && (!unit || !note) && (
           <div className="mt-6">
-            <ErrorState title="No grammar note here" message="This unit doesn't have one yet." />
+            <ErrorState title="Burada gramer notu yok" message="Bu ünitenin henüz gramer notu yok." />
           </div>
         )}
 
@@ -155,7 +155,7 @@ function Grammar() {
               <Mascot mood="happy" size={88} className="shrink-0" />
               <div className="relative min-w-0 flex-1 rounded-3xl rounded-bl-md bg-amber-50 p-4 ring-1 ring-amber-200">
                 <p className="text-[11px] font-extrabold uppercase tracking-widest text-amber-700">
-                  Unit {unit.position} · {unit.title}{unit.title_tr && ` (${unit.title_tr})`} · {unit.level}
+                  Ünite {unit.position} · {unit.title}{unit.title_tr && ` (${unit.title_tr})`} · {unit.level}
                 </p>
                 <p className="mt-1 text-base font-semibold leading-relaxed text-amber-900">
                   {note.hook}
@@ -192,7 +192,7 @@ function Grammar() {
 
             <div className="mt-4 rounded-3xl bg-rose-50 p-4 ring-1 ring-rose-200">
               <p className="text-[11px] font-extrabold uppercase tracking-widest text-rose-600">
-                ⚠️ Watch out
+                ⚠️ Dikkat
               </p>
               <p className="mt-1 text-[15px] leading-relaxed text-rose-900">{note.watch_out}</p>
             </div>
@@ -201,7 +201,7 @@ function Grammar() {
               <Mascot mood="idle" size={44} className="shrink-0" />
               <div className="min-w-0 flex-1 rounded-3xl bg-amber-50 p-4 ring-1 ring-amber-200">
                 <p className="text-[11px] font-extrabold uppercase tracking-widest text-amber-700">
-                  💡 Memory trick
+                  💡 Hafıza hilesi
                 </p>
                 <p className="mt-1 text-[15px] leading-relaxed text-amber-900">{note.memory_trick}</p>
               </div>
@@ -219,7 +219,7 @@ function Grammar() {
                     fullWidth
                     onClick={() => navigate(`/decks/${deckId}/units/${unit.id}/dialogue`)}
                   >
-                    💬 On to the dialogue
+                    💬 Diyaloğa geç
                   </Button>
                 ) : (
                   <Button
@@ -227,11 +227,11 @@ function Grammar() {
                     fullWidth
                     onClick={() => navigate(`/decks/${deckId}/units/${unit.id}/test`)}
                   >
-                    🎯 Take the unit test
+                    🎯 Ünite testine gir
                   </Button>
                 )}
                 <LinkButton to={`/decks/${deckId}`} variant="ghost">
-                  Later
+                  Sonra
                 </LinkButton>
               </div>
             </div>

@@ -4,6 +4,7 @@ import { parseBack } from "../lib/cardBack";
 import { speak, speechSupported, isSpeechMuted } from "../lib/speech";
 import { playMatch, playIncorrect } from "../lib/sound";
 import { SpeakerIcon } from "./icons";
+import TontonLine from "./TontonLine";
 
 type SoundMatchProps = {
   cards: Card[];
@@ -102,7 +103,7 @@ function SoundMatch({ cards, onComplete }: SoundMatchProps) {
 
   const tileClass = (id: number, picked: boolean) => {
     if (matched.has(id)) {
-      return "border-emerald-200 bg-emerald-50 text-emerald-700 opacity-40";
+      return "pointer-events-none border-stone-100 bg-stone-50 text-stone-300 opacity-60";
     }
     if (wrongPair?.includes(id)) {
       return "border-rose-300 bg-rose-50 text-rose-700 animate-[shake_320ms]";
@@ -114,13 +115,10 @@ function SoundMatch({ cards, onComplete }: SoundMatchProps) {
   };
 
   return (
-    <div className="mt-5">
-      <p className="text-center text-xl font-extrabold tracking-tight text-stone-800">
-        {audible ? "Tap what you hear." : "Tap the pairs."}
-      </p>
-      <p className="mt-1 text-center text-sm text-stone-500">
-        {audible ? "Match each sound to its meaning." : "Match each word to its meaning."}
-      </p>
+    <div className="mt-4">
+      <TontonLine mood={wrongPair ? "sad" : matched.size === cards.length ? "happy" : "idle"} size={52}>
+        {audible ? "Bir sese dokun, sonra anlamına. Kulaklar açık! 👂" : "Bir kelimeye dokun, sonra anlamına."}
+      </TontonLine>
 
       <div className="mt-5 grid grid-cols-2 gap-3">
         <div className="space-y-3">
@@ -129,8 +127,8 @@ function SoundMatch({ cards, onComplete }: SoundMatchProps) {
               key={card.id}
               type="button"
               onClick={() => tapSound(card)}
-              disabled={matched.has(card.id)}
-              className={`flex w-full items-center gap-2 rounded-2xl border-2 p-3 text-left font-extrabold transition ${tileClass(
+              aria-disabled={matched.has(card.id)}
+              className={`flex w-full items-center gap-2 rounded-2xl border-2 p-3 text-left font-extrabold transition-transform ${tileClass(
                 card.id,
                 pickedSound === card.id,
               )}`}
@@ -153,8 +151,8 @@ function SoundMatch({ cards, onComplete }: SoundMatchProps) {
               key={card.id}
               type="button"
               onClick={() => tapMeaning(card)}
-              disabled={matched.has(card.id)}
-              className={`w-full rounded-2xl border-2 p-3 text-left text-sm font-bold transition ${tileClass(
+              aria-disabled={matched.has(card.id)}
+              className={`w-full rounded-2xl border-2 p-3 text-left text-sm font-bold transition-transform ${tileClass(
                 card.id,
                 pickedMeaning === card.id,
               )}`}

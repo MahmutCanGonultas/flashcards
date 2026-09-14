@@ -40,8 +40,8 @@ function Login() {
     if (loginMutation.isPending) return;
 
     const nextErrors: FieldErrors = {};
-    if (!EMAIL_PATTERN.test(email)) nextErrors.email = "Enter a valid email address.";
-    if (!password) nextErrors.password = "Enter your password.";
+    if (!EMAIL_PATTERN.test(email)) nextErrors.email = "Geçerli bir e-posta adresi gir.";
+    if (!password) nextErrors.password = "Şifreni gir.";
 
     setFieldErrors(nextErrors);
     if (nextErrors.email || nextErrors.password) return;
@@ -49,43 +49,43 @@ function Login() {
     loginMutation.mutate({ email, password });
   };
 
-  // ApiError carries UI-ready English copy; anything else gets a safe fallback.
+  // ApiError carries UI-ready copy; anything else gets a safe fallback.
   const errorMessage = loginMutation.isError
     ? loginMutation.error instanceof ApiError
       ? loginMutation.error.message
-      : "Something went wrong. Please try again."
+      : "Bir şeyler ters gitti. Tekrar dener misin?"
     : null;
 
   return (
     <AuthLayout
       headline={
         <>
-          Learn faster,
+          Daha hızlı öğren,
           <br />
-          remember longer.
+          daha uzun hatırla.
         </>
       }
-      subline="Spaced repetition that shows each card exactly when you're about to forget it."
-      title="Welcome back"
+      subline="Aralıklı tekrar: her kartı tam unutmak üzereyken karşına çıkarır."
+      title="Tekrar hoş geldin"
       emoji="👋"
-      subtitle="Enter your details to pick up where you left off."
+      subtitle="Bilgilerini gir, kaldığın yerden devam et."
       footer={
         <>
-          Don't have an account?{" "}
+          Hesabın yok mu?{" "}
           <Link
             to="/register"
             className="font-bold text-violet-600 hover:text-violet-700 hover:underline"
           >
-            Create one
+            Hesap oluştur
           </Link>
         </>
       }
     >
       <form onSubmit={handleSubmit} noValidate className="space-y-5">
         <TextField
-          label="Email"
+          label="E-posta"
           type="email"
-          placeholder="you@example.com"
+          placeholder="sen@ornek.com"
           autoComplete="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
@@ -94,7 +94,7 @@ function Login() {
         />
 
         <TextField
-          label="Password"
+          label="Şifre"
           type="password"
           placeholder="••••••••"
           autoComplete="current-password"
@@ -118,9 +118,9 @@ function Login() {
           fullWidth
           size="lg"
           isLoading={loginMutation.isPending}
-          loadingText="Signing in..."
+          loadingText="Giriş yapılıyor..."
         >
-          Sign in
+          Giriş yap
         </Button>
       </form>
     </AuthLayout>

@@ -317,6 +317,18 @@
   animation: tt-perk-r 260ms ease-out forwards;
 }
 
+/* Thinking: the eyes drift up and to the side, and the right ear tilts,
+   the way anyone looks while waiting for an answer to arrive. */
+.tt-mascot .tt-gaze {
+  transition: transform 300ms ease-out;
+}
+.tt-think .tt-gaze {
+  transform: translate(3px, -4px);
+}
+.tt-think .tt-ear-r {
+  animation: tt-perk-r 320ms ease-out forwards;
+}
+
 .tt-sad .tt-head {
   animation: tt-droop-head 420ms ease-out forwards;
 }

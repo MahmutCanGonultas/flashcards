@@ -47,8 +47,8 @@ function CardForm({
     const trimmedBack = back.trim();
     const nextErrors: Partial<CardFormValues> = {};
 
-    if (!trimmedFront) nextErrors.front = "The front can't be empty.";
-    if (!trimmedBack) nextErrors.back = "The back can't be empty.";
+    if (!trimmedFront) nextErrors.front = "Ön yüz boş olamaz.";
+    if (!trimmedBack) nextErrors.back = "Arka yüz boş olamaz.";
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
@@ -61,7 +61,7 @@ function CardForm({
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
       <TextField
-        label="Front"
+        label="Ön yüz"
         placeholder="ephemeral"
         value={front}
         onChange={(event) => setFront(event.target.value)}
@@ -71,8 +71,8 @@ function CardForm({
       />
 
       <TextAreaField
-        label="Back"
-        placeholder="Lasting for a very short time."
+        label="Arka yüz"
+        placeholder="(adjective) gelip geçici, kısa ömürlü ⏳"
         rows={3}
         value={back}
         onChange={(event) => setBack(event.target.value)}
@@ -91,14 +91,14 @@ function CardForm({
 
       <div className="pt-2 flex flex-col-reverse sm:flex-row sm:justify-end gap-3">
         <Button variant="secondary" onClick={onClose} disabled={isPending}>
-          Cancel
+          Vazgeç
         </Button>
         <Button
           type="submit"
           isLoading={isPending}
-          loadingText={isCreate ? "Adding..." : "Saving..."}
+          loadingText={isCreate ? "Ekleniyor..." : "Kaydediliyor..."}
         >
-          {isCreate ? "Add card" : "Save"}
+          {isCreate ? "Kart ekle" : "Kaydet"}
         </Button>
       </div>
     </form>
@@ -112,7 +112,7 @@ function CardFormModal({ isOpen, ...formProps }: CardFormModalProps) {
     <Modal
       isOpen={isOpen}
       onClose={formProps.onClose}
-      title={isCreate ? "Add card" : "Edit card"}
+      title={isCreate ? "Kart ekle" : "Kartı düzenle"}
       emoji={isCreate ? "🃏" : "✏️"}
     >
       <CardForm {...formProps} />

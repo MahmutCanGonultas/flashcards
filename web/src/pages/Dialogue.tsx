@@ -8,7 +8,7 @@ import Button from "../components/Button";
 import LinkButton from "../components/LinkButton";
 import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
-import Mascot from "../components/Mascot";
+import TontonLine from "../components/TontonLine";
 import { SpeakerIcon } from "../components/icons";
 
 /** Two voices, two colours, so the eye tracks who is talking without reading names. */
@@ -90,7 +90,7 @@ function Dialogue() {
           to={`/decks/${deckId}`}
           className="-m-2 inline-flex items-center gap-1.5 p-2 font-medium text-stone-500 transition hover:text-stone-800"
         >
-          <span aria-hidden="true">←</span> Back to the path
+          <span aria-hidden="true">←</span> Patikaya dön
         </Link>
 
         {unitsQuery.isLoading && (
@@ -104,8 +104,8 @@ function Dialogue() {
         {unitsQuery.isError && (
           <div className="mt-6">
             <ErrorState
-              title="Couldn't load the dialogue"
-              message="Check your connection and try again."
+              title="Diyalog yüklenemedi"
+              message="Bağlantını kontrol edip tekrar dene."
               onRetry={() => void unitsQuery.refetch()}
             />
           </div>
@@ -114,35 +114,35 @@ function Dialogue() {
         {unitsQuery.isSuccess && (!unit || !unit.dialogue) && (
           <div className="mt-6">
             <ErrorState
-              title="No dialogue here"
-              message="This unit doesn't have a conversation yet."
+              title="Burada diyalog yok"
+              message="Bu ünitenin henüz diyaloğu yok."
             />
           </div>
         )}
 
         {unit?.dialogue && (
           <>
-            <div className="mt-6 flex items-center gap-4">
-              <Mascot mood="idle" size={64} className="shrink-0" />
-              <div className="min-w-0">
-                <p className="text-[11px] font-extrabold uppercase tracking-widest text-stone-400">
-                  Unit {unit.position} · {unit.title}{unit.title_tr && ` (${unit.title_tr})`} · {unit.level}
-                </p>
-                <h1 className="text-2xl font-extrabold tracking-tight text-stone-800">
-                  {unit.dialogue.title}
-                </h1>
-              </div>
+            <div className="mt-6">
+              <p className="text-[11px] font-extrabold uppercase tracking-widest text-stone-400">
+                Ünite {unit.position} · {unit.title}{unit.title_tr && ` (${unit.title_tr})`} · {unit.level}
+              </p>
+              <h1 className="mt-0.5 text-2xl font-extrabold tracking-tight text-stone-800">
+                {unit.dialogue.title}
+              </h1>
             </div>
+            <TontonLine className="mt-4" mood="happy" size={56} tone="amber">
+              Elif ile Tom konuşuyor — bu ünitenin kelimeleri bu sohbetin içinde. Önce dinle, sonra istediğin satıra dokunup bir daha dinle. 🎧
+            </TontonLine>
 
             <div className="mt-5 flex flex-wrap items-center gap-2">
               {speechSupported &&
                 (playingLine === null ? (
                   <Button size="sm" onClick={playAll}>
-                    <SpeakerIcon className="h-4 w-4" /> Play all
+                    <SpeakerIcon className="h-4 w-4" /> Hepsini dinle
                   </Button>
                 ) : (
                   <Button size="sm" variant="secondary" onClick={stopAll}>
-                    ■ Stop
+                    ■ Durdur
                   </Button>
                 ))}
               <button
@@ -153,7 +153,7 @@ function Dialogue() {
                 }}
                 className="rounded-full bg-white px-3 py-1.5 text-xs font-extrabold text-stone-600 ring-1 ring-stone-200 transition hover:bg-stone-50"
               >
-                {showTurkish ? "Hide Turkish" : "Show Turkish"}
+                {showTurkish ? "Türkçeyi gizle" : "Türkçeyi göster"}
               </button>
             </div>
 
@@ -166,7 +166,7 @@ function Dialogue() {
                     <button
                       type="button"
                       onClick={() => playLine(index)}
-                      aria-label={`Hear: ${line.en}`}
+                      aria-label={`Dinle: ${line.en}`}
                       className={`max-w-[88%] rounded-3xl p-4 text-left ring-2 transition ${style.bubble} ${
                         isPlaying ? "ring-violet-400 shadow-[0_0_0_4px_var(--color-violet-100)]" : ""
                       }`}
@@ -204,10 +204,10 @@ function Dialogue() {
                   fullWidth
                   onClick={() => navigate(`/decks/${deckId}/units/${unit.id}/test`)}
                 >
-                  🎯 Take the unit test
+                  🎯 Ünite testine gir
                 </Button>
                 <LinkButton to={`/decks/${deckId}`} variant="ghost">
-                  Later
+                  Sonra
                 </LinkButton>
               </div>
             </div>

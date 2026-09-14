@@ -1,0 +1,4502 @@
+[
+ {
+  "id": 530,
+  "en": "I say hello to my teacher.",
+  "tr": "Öğretmenime merhaba diyorum."
+ },
+ {
+  "id": 531,
+  "en": "Tom says goodbye to his mother.",
+  "tr": "Tom annesine hoşça kal diyor."
+ },
+ {
+  "id": 532,
+  "en": "Please sit down, Tom.",
+  "tr": "Lütfen otur, Tom."
+ },
+ {
+  "id": 533,
+  "en": "Thank you, Mom, I love it!",
+  "tr": "Teşekkür ederim anne, bayıldım!"
+ },
+ {
+  "id": 534,
+  "en": "I'm sorry, I can't come today.",
+  "tr": "Üzgünüm, bugün gelemem."
+ },
+ {
+  "id": 535,
+  "en": "Yes, this is my bag.",
+  "tr": "Evet, bu benim çantam."
+ },
+ {
+  "id": 536,
+  "en": "No, Tom is not here.",
+  "tr": "Hayır, Tom burada değil."
+ },
+ {
+  "id": 537,
+  "en": "My cat's name is Pamuk.",
+  "tr": "Kedimin adı Pamuk."
+ },
+ {
+  "id": 538,
+  "en": "I have two friends at school.",
+  "tr": "Okulda iki arkadaşım var."
+ },
+ {
+  "id": 539,
+  "en": "Our teacher has a red car.",
+  "tr": "Öğretmenimizin kırmızı bir arabası var."
+ },
+ {
+  "id": 540,
+  "en": "There are ten students in class.",
+  "tr": "Sınıfta on öğrenci var."
+ },
+ {
+  "id": 541,
+  "en": "It is morning. Wake up, Tom!",
+  "tr": "Sabah oldu. Uyan, Tom!"
+ },
+ {
+  "id": 542,
+  "en": "Good evening, Elif. Come in!",
+  "tr": "İyi akşamlar Elif. İçeri gel!"
+ },
+ {
+  "id": 543,
+  "en": "I am not at school today.",
+  "tr": "Bugün okulda değilim."
+ },
+ {
+  "id": 544,
+  "en": "Tomorrow is Sunday. No school!",
+  "tr": "Yarın pazar. Okul yok!"
+ },
+ {
+  "id": 545,
+  "en": "Where is your mother, Elif?",
+  "tr": "Annen nerede, Elif?"
+ },
+ {
+  "id": 546,
+  "en": "Elif's father is a doctor.",
+  "tr": "Elif'in babası doktor."
+ },
+ {
+  "id": 547,
+  "en": "This is a photo of my family.",
+  "tr": "Bu, ailemin fotoğrafı."
+ },
+ {
+  "id": 548,
+  "en": "I have two sisters.",
+  "tr": "İki kız kardeşim var."
+ },
+ {
+  "id": 549,
+  "en": "Is Tom your brother?",
+  "tr": "Tom senin kardeşin mi?"
+ },
+ {
+  "id": 550,
+  "en": "The baby sleeps all day.",
+  "tr": "Bebek bütün gün uyuyor."
+ },
+ {
+  "id": 551,
+  "en": "The man in the car is Tom.",
+  "tr": "Arabadaki adam Tom."
+ },
+ {
+  "id": 552,
+  "en": "That woman is our teacher.",
+  "tr": "O kadın bizim öğretmenimiz."
+ },
+ {
+  "id": 553,
+  "en": "The children play in the park.",
+  "tr": "Çocuklar parkta oynuyor."
+ },
+ {
+  "id": 554,
+  "en": "The boy has a red ball.",
+  "tr": "Oğlanın kırmızı bir topu var."
+ },
+ {
+  "id": 555,
+  "en": "There is a girl at the door.",
+  "tr": "Kapıda bir kız var."
+ },
+ {
+  "id": 556,
+  "en": "My father's phone is old.",
+  "tr": "Babamın telefonu eski."
+ },
+ {
+  "id": 557,
+  "en": "A young woman helps my mother.",
+  "tr": "Genç bir kadın anneme yardım ediyor."
+ },
+ {
+  "id": 558,
+  "en": "Elif loves her new school.",
+  "tr": "Elif yeni okulunu çok seviyor."
+ },
+ {
+  "id": 559,
+  "en": "Where do you live, Tom?",
+  "tr": "Nerede oturuyorsun, Tom?"
+ },
+ {
+  "id": 560,
+  "en": "Only one student is here today.",
+  "tr": "Bugün burada sadece bir öğrenci var."
+ },
+ {
+  "id": 561,
+  "en": "The bus comes at two.",
+  "tr": "Otobüs ikide geliyor."
+ },
+ {
+  "id": 562,
+  "en": "I have three pens in my bag.",
+  "tr": "Çantamda üç kalem var."
+ },
+ {
+  "id": 563,
+  "en": "Sunday is my favourite day.",
+  "tr": "Pazar en sevdiğim gün."
+ },
+ {
+  "id": 564,
+  "en": "See you next week, Elif!",
+  "tr": "Haftaya görüşürüz, Elif!"
+ },
+ {
+  "id": 565,
+  "en": "This month is very cold.",
+  "tr": "Bu ay çok soğuk."
+ },
+ {
+  "id": 566,
+  "en": "Happy New Year, Tom!",
+  "tr": "Yeni yılın kutlu olsun, Tom!"
+ },
+ {
+  "id": 567,
+  "en": "Lunch is in one hour.",
+  "tr": "Öğle yemeği bir saat sonra."
+ },
+ {
+  "id": 568,
+  "en": "Wait a minute, please!",
+  "tr": "Bir dakika bekle lütfen!"
+ },
+ {
+  "id": 569,
+  "en": "Where is Tom now?",
+  "tr": "Tom şimdi nerede?"
+ },
+ {
+  "id": 570,
+  "en": "The bus is early today.",
+  "tr": "Otobüs bugün erken."
+ },
+ {
+  "id": 571,
+  "en": "It is late. Time for bed!",
+  "tr": "Geç oldu. Yatma vakti!"
+ },
+ {
+  "id": 572,
+  "en": "I have no time today.",
+  "tr": "Bugün hiç vaktim yok."
+ },
+ {
+  "id": 573,
+  "en": "Good night, Mom!",
+  "tr": "İyi geceler anne!"
+ },
+ {
+  "id": 574,
+  "en": "We always walk to school.",
+  "tr": "Okula her zaman yürürüz."
+ },
+ {
+  "id": 575,
+  "en": "My dog drinks a lot of water.",
+  "tr": "Köpeğim çok su içiyor."
+ },
+ {
+  "id": 576,
+  "en": "There is no bread at home.",
+  "tr": "Evde ekmek yok."
+ },
+ {
+  "id": 577,
+  "en": "I drink milk before bed.",
+  "tr": "Yatmadan önce süt içerim."
+ },
+ {
+  "id": 578,
+  "en": "Do you like eggs, Tom?",
+  "tr": "Yumurta sever misin, Tom?"
+ },
+ {
+  "id": 579,
+  "en": "We eat apples after dinner.",
+  "tr": "Akşam yemeğinden sonra elma yeriz."
+ },
+ {
+  "id": 580,
+  "en": "Is there rice for dinner?",
+  "tr": "Akşam yemeğinde pilav var mı?"
+ },
+ {
+  "id": 581,
+  "en": "This meat is very good.",
+  "tr": "Bu et çok güzel."
+ },
+ {
+  "id": 582,
+  "en": "My father eats fish on Fridays.",
+  "tr": "Babam cuma günleri balık yer."
+ },
+ {
+  "id": 583,
+  "en": "The tea is hot. Be careful!",
+  "tr": "Çay sıcak, dikkat et!"
+ },
+ {
+  "id": 584,
+  "en": "I don't like coffee.",
+  "tr": "Kahve sevmem."
+ },
+ {
+  "id": 585,
+  "en": "Tom eats a lot!",
+  "tr": "Tom çok yiyor!"
+ },
+ {
+  "id": 586,
+  "en": "Drink your milk, Elif.",
+  "tr": "Sütünü iç, Elif."
+ },
+ {
+  "id": 587,
+  "en": "Are you hungry, Elif?",
+  "tr": "Aç mısın, Elif?"
+ },
+ {
+  "id": 588,
+  "en": "What is for breakfast today?",
+  "tr": "Bugün kahvaltıda ne var?"
+ },
+ {
+  "id": 589,
+  "en": "Dinner is ready! Come!",
+  "tr": "Akşam yemeği hazır! Gelin!"
+ },
+ {
+  "id": 590,
+  "en": "Tom's house is near the school.",
+  "tr": "Tom'un evi okula yakın."
+ },
+ {
+  "id": 591,
+  "en": "Our house has four rooms.",
+  "tr": "Evimizde dört oda var."
+ },
+ {
+  "id": 592,
+  "en": "I like our new kitchen.",
+  "tr": "Yeni mutfağımızı seviyorum."
+ },
+ {
+  "id": 593,
+  "en": "My cat sleeps on my bed.",
+  "tr": "Kedim yatağımda uyuyor."
+ },
+ {
+  "id": 594,
+  "en": "Sit at the table, please.",
+  "tr": "Masaya otur lütfen."
+ },
+ {
+  "id": 595,
+  "en": "There is a bag on the chair.",
+  "tr": "Sandalyede bir çanta var."
+ },
+ {
+  "id": 596,
+  "en": "Our house has a blue door.",
+  "tr": "Evimizin mavi bir kapısı var."
+ },
+ {
+  "id": 597,
+  "en": "A bird is at the window.",
+  "tr": "Pencerede bir kuş var."
+ },
+ {
+  "id": 598,
+  "en": "Where are the car keys?",
+  "tr": "Araba anahtarları nerede?"
+ },
+ {
+  "id": 599,
+  "en": "I clean my room every Saturday.",
+  "tr": "Odamı her cumartesi temizlerim."
+ },
+ {
+  "id": 600,
+  "en": "My dog is very big.",
+  "tr": "Köpeğim çok büyük."
+ },
+ {
+  "id": 601,
+  "en": "The baby has small hands.",
+  "tr": "Bebeğin elleri küçük."
+ },
+ {
+  "id": 602,
+  "en": "The shop is open today.",
+  "tr": "Dükkan bugün açık."
+ },
+ {
+  "id": 603,
+  "en": "The bank closes at five.",
+  "tr": "Banka beşte kapanıyor."
+ },
+ {
+  "id": 604,
+  "en": "Welcome home, Dad!",
+  "tr": "Eve hoş geldin baba!"
+ },
+ {
+  "id": 605,
+  "en": "Wake up, Tom! Breakfast is ready.",
+  "tr": "Uyan Tom! Kahvaltı hazır."
+ },
+ {
+  "id": 606,
+  "en": "I can't sleep. It's too hot.",
+  "tr": "Uyuyamıyorum. Hava çok sıcak."
+ },
+ {
+  "id": 607,
+  "en": "Do you work on Sundays?",
+  "tr": "Pazar günleri çalışıyor musun?"
+ },
+ {
+  "id": 608,
+  "en": "Our school has a big garden.",
+  "tr": "Okulumuzun büyük bir bahçesi var."
+ },
+ {
+  "id": 609,
+  "en": "Where do you go after school?",
+  "tr": "Okuldan sonra nereye gidiyorsun?"
+ },
+ {
+  "id": 610,
+  "en": "Can you come to my party?",
+  "tr": "Partime gelebilir misin?"
+ },
+ {
+  "id": 611,
+  "en": "My dog and I walk every evening.",
+  "tr": "Köpeğimle her akşam yürüyoruz."
+ },
+ {
+  "id": 612,
+  "en": "Don't run, the floor is wet.",
+  "tr": "Koşma, yer ıslak."
+ },
+ {
+  "id": 613,
+  "en": "Can you read this word?",
+  "tr": "Bu kelimeyi okuyabilir misin?"
+ },
+ {
+  "id": 614,
+  "en": "Please write your phone number here.",
+  "tr": "Lütfen telefon numaranı buraya yaz."
+ },
+ {
+  "id": 615,
+  "en": "Listen to your teacher, Tom.",
+  "tr": "Öğretmenini dinle Tom."
+ },
+ {
+  "id": 616,
+  "en": "I watch the birds from my window.",
+  "tr": "Pencereden kuşları izliyorum."
+ },
+ {
+  "id": 617,
+  "en": "My father plays the guitar.",
+  "tr": "Babam gitar çalıyor."
+ },
+ {
+  "id": 618,
+  "en": "I can cook eggs and rice.",
+  "tr": "Yumurta ve pilav pişirebilirim."
+ },
+ {
+  "id": 619,
+  "en": "Can you help me, please?",
+  "tr": "Bana yardım edebilir misin lütfen?"
+ },
+ {
+  "id": 620,
+  "en": "My new phone is red.",
+  "tr": "Yeni telefonum kırmızı."
+ },
+ {
+  "id": 621,
+  "en": "Tom has blue eyes.",
+  "tr": "Tom'un gözleri mavi."
+ },
+ {
+  "id": 622,
+  "en": "Do you like green tea?",
+  "tr": "Yeşil çay sever misin?"
+ },
+ {
+  "id": 623,
+  "en": "Taxis are yellow in Istanbul.",
+  "tr": "İstanbul'da taksiler sarıdır."
+ },
+ {
+  "id": 624,
+  "en": "My school bag is black.",
+  "tr": "Okul çantam siyah."
+ },
+ {
+  "id": 625,
+  "en": "A white cat sits at the door.",
+  "tr": "Kapıda beyaz bir kedi oturuyor."
+ },
+ {
+  "id": 626,
+  "en": "There are many books in my room.",
+  "tr": "Odamda çok kitap var."
+ },
+ {
+  "id": 627,
+  "en": "I have two pens in my bag.",
+  "tr": "Çantamda iki kalem var."
+ },
+ {
+  "id": 628,
+  "en": "Put the apples in this bag.",
+  "tr": "Elmaları bu poşete koy."
+ },
+ {
+  "id": 629,
+  "en": "My grandmother has an old phone.",
+  "tr": "Büyükannemin eski bir telefonu var."
+ },
+ {
+  "id": 630,
+  "en": "We go to the sea by car.",
+  "tr": "Denize arabayla gidiyoruz."
+ },
+ {
+  "id": 631,
+  "en": "There is a bus at nine.",
+  "tr": "Dokuzda bir otobüs var."
+ },
+ {
+  "id": 632,
+  "en": "I need money for the bus.",
+  "tr": "Otobüs için paraya ihtiyacım var."
+ },
+ {
+  "id": 633,
+  "en": "My uncle has a small shop.",
+  "tr": "Amcamın küçük bir dükkanı var."
+ },
+ {
+  "id": 634,
+  "en": "Can you buy some milk, please?",
+  "tr": "Biraz süt alabilir misin lütfen?"
+ },
+ {
+  "id": 635,
+  "en": "Put the hat on your head.",
+  "tr": "Şapkayı başına tak."
+ },
+ {
+  "id": 636,
+  "en": "I have an apple in my hand.",
+  "tr": "Elimde bir elma var."
+ },
+ {
+  "id": 637,
+  "en": "Close your eyes and sleep.",
+  "tr": "Gözlerini kapat ve uyu."
+ },
+ {
+  "id": 638,
+  "en": "My left foot hurts today.",
+  "tr": "Bugün sol ayağım ağrıyor."
+ },
+ {
+  "id": 639,
+  "en": "I wash my hair every day.",
+  "tr": "Her gün saçımı yıkarım."
+ },
+ {
+  "id": 640,
+  "en": "I love you with all my heart.",
+  "tr": "Seni tüm kalbimle seviyorum."
+ },
+ {
+  "id": 641,
+  "en": "Look, the baby is happy!",
+  "tr": "Bak, bebek mutlu!"
+ },
+ {
+  "id": 642,
+  "en": "Don't be sad. I am here.",
+  "tr": "Üzülme, ben buradayım."
+ },
+ {
+  "id": 643,
+  "en": "Are you tired? Sit down.",
+  "tr": "Yorgun musun? Otur."
+ },
+ {
+  "id": 644,
+  "en": "The sick child sleeps all day.",
+  "tr": "Hasta çocuk bütün gün uyuyor."
+ },
+ {
+  "id": 645,
+  "en": "It is very hot in August.",
+  "tr": "Ağustosta hava çok sıcak."
+ },
+ {
+  "id": 646,
+  "en": "I like cold water in summer.",
+  "tr": "Yazın soğuk su severim."
+ },
+ {
+  "id": 647,
+  "en": "Tom is a good friend.",
+  "tr": "Tom iyi bir arkadaş."
+ },
+ {
+  "id": 648,
+  "en": "That is a bad idea, Tom.",
+  "tr": "Bu kötü bir fikir Tom."
+ },
+ {
+  "id": 649,
+  "en": "What a beautiful flower!",
+  "tr": "Ne güzel bir çiçek!"
+ },
+ {
+  "id": 650,
+  "en": "I live in a small city.",
+  "tr": "Küçük bir şehirde yaşıyorum."
+ },
+ {
+  "id": 651,
+  "en": "The children play in the street.",
+  "tr": "Çocuklar sokakta oynuyor."
+ },
+ {
+  "id": 652,
+  "en": "Let's go to the park!",
+  "tr": "Hadi parka gidelim!"
+ },
+ {
+  "id": 653,
+  "en": "My grandfather is in the hospital.",
+  "tr": "Dedem hastanede."
+ },
+ {
+  "id": 654,
+  "en": "Let's meet at the station at six.",
+  "tr": "Altıda istasyonda buluşalım."
+ },
+ {
+  "id": 655,
+  "en": "My father works at a bank.",
+  "tr": "Babam bir bankada çalışıyor."
+ },
+ {
+  "id": 656,
+  "en": "The shop is on the left.",
+  "tr": "Dükkan solda."
+ },
+ {
+  "id": 657,
+  "en": "Turn right at the bank.",
+  "tr": "Bankadan sağa dön."
+ },
+ {
+  "id": 658,
+  "en": "My grandmother lives near us.",
+  "tr": "Büyükannem yakınımızda oturuyor."
+ },
+ {
+  "id": 659,
+  "en": "Is your school far from home?",
+  "tr": "Okulun evden uzak mı?"
+ },
+ {
+  "id": 660,
+  "en": "Put the bag here, please.",
+  "tr": "Çantayı buraya koy lütfen."
+ },
+ {
+  "id": 661,
+  "en": "Tom is there, near the door.",
+  "tr": "Tom orada, kapının yanında."
+ },
+ {
+  "id": 662,
+  "en": "Where does Tom live?",
+  "tr": "Tom nerede oturuyor?"
+ },
+ {
+  "id": 663,
+  "en": "Please stop the car here.",
+  "tr": "Lütfen arabayı burada durdur."
+ },
+ {
+  "id": 664,
+  "en": "I wait for the bus every morning.",
+  "tr": "Her sabah otobüsü beklerim."
+ },
+ {
+  "id": 665,
+  "en": "My cat sleeps in the sun.",
+  "tr": "Kedim güneşte uyur."
+ },
+ {
+  "id": 666,
+  "en": "I like walking in the rain.",
+  "tr": "Yağmurda yürümeyi severim."
+ },
+ {
+  "id": 667,
+  "en": "There is snow in the garden!",
+  "tr": "Bahçede kar var!"
+ },
+ {
+  "id": 668,
+  "en": "The wind opens the door.",
+  "tr": "Rüzgar kapıyı açıyor."
+ },
+ {
+  "id": 669,
+  "en": "There are no clouds today.",
+  "tr": "Bugün hiç bulut yok."
+ },
+ {
+  "id": 670,
+  "en": "The weather is good for a walk.",
+  "tr": "Hava yürüyüş için güzel."
+ },
+ {
+  "id": 671,
+  "en": "There are apples on the tree.",
+  "tr": "Ağaçta elmalar var."
+ },
+ {
+  "id": 672,
+  "en": "I buy flowers for my mother.",
+  "tr": "Anneme çiçek alıyorum."
+ },
+ {
+  "id": 673,
+  "en": "Is that your dog?",
+  "tr": "O senin köpeğin mi?"
+ },
+ {
+  "id": 674,
+  "en": "Zeynep has three cats.",
+  "tr": "Zeynep'in üç kedisi var."
+ },
+ {
+  "id": 675,
+  "en": "I give bread to the birds.",
+  "tr": "Kuşlara ekmek veriyorum."
+ },
+ {
+  "id": 676,
+  "en": "I can see the sea from here.",
+  "tr": "Denizi buradan görebiliyorum."
+ },
+ {
+  "id": 677,
+  "en": "We go to the mountains in winter.",
+  "tr": "Kışın dağlara gidiyoruz."
+ },
+ {
+  "id": 678,
+  "en": "There are many stars in the sky.",
+  "tr": "Gökyüzünde çok yıldız var."
+ },
+ {
+  "id": 679,
+  "en": "There are many people in the world.",
+  "tr": "Dünyada çok insan var."
+ },
+ {
+  "id": 1130,
+  "en": "What animal is that?",
+  "tr": "O hangi hayvan?"
+ },
+ {
+  "id": 1131,
+  "en": "There are five cows in the field.",
+  "tr": "Tarlada beş inek var."
+ },
+ {
+  "id": 1132,
+  "en": "The horse eats apples from my hand.",
+  "tr": "At elimden elma yiyor."
+ },
+ {
+  "id": 1133,
+  "en": "The sheep sleep under the tree.",
+  "tr": "Koyunlar ağacın altında uyuyor."
+ },
+ {
+  "id": 1134,
+  "en": "The chickens run in the garden.",
+  "tr": "Tavuklar bahçede koşuyor."
+ },
+ {
+  "id": 1135,
+  "en": "The duck swims in the lake.",
+  "tr": "Ördek gölde yüzüyor."
+ },
+ {
+  "id": 1136,
+  "en": "My cat sees a small mouse.",
+  "tr": "Kedim küçük bir fare görüyor."
+ },
+ {
+  "id": 1137,
+  "en": "Rabbits like carrots.",
+  "tr": "Tavşanlar havuç sever."
+ },
+ {
+  "id": 1138,
+  "en": "The bear likes honey and fish.",
+  "tr": "Ayı bal ve balık sever."
+ },
+ {
+  "id": 1139,
+  "en": "Can you hear the lion?",
+  "tr": "Aslanı duyabiliyor musun?"
+ },
+ {
+  "id": 1140,
+  "en": "An elephant drinks a lot of water.",
+  "tr": "Bir fil çok su içer."
+ },
+ {
+  "id": 1141,
+  "en": "The monkey wants my apple!",
+  "tr": "Maymun elmamı istiyor!"
+ },
+ {
+  "id": 1142,
+  "en": "We go to a farm every summer.",
+  "tr": "Her yaz bir çiftliğe gidiyoruz."
+ },
+ {
+  "id": 1143,
+  "en": "The zoo opens at nine.",
+  "tr": "Hayvanat bahçesi dokuzda açılıyor."
+ },
+ {
+  "id": 1144,
+  "en": "I want to fly like a bird.",
+  "tr": "Kuş gibi uçmak istiyorum."
+ },
+ {
+  "id": 1145,
+  "en": "I want to be a doctor.",
+  "tr": "Doktor olmak istiyorum."
+ },
+ {
+  "id": 1146,
+  "en": "My aunt is a nurse.",
+  "tr": "Teyzem hemşire."
+ },
+ {
+  "id": 1147,
+  "en": "My father is a taxi driver.",
+  "tr": "Babam taksi şoförü."
+ },
+ {
+  "id": 1148,
+  "en": "Can you call the waiter, please?",
+  "tr": "Garsonu çağırabilir misin, lütfen?"
+ },
+ {
+  "id": 1149,
+  "en": "The farmer gets up very early.",
+  "tr": "Çiftçi çok erken kalkıyor."
+ },
+ {
+  "id": 1150,
+  "en": "Is your uncle a pilot?",
+  "tr": "Amcan pilot mu?"
+ },
+ {
+  "id": 1151,
+  "en": "Can you sing this song?",
+  "tr": "Bu şarkıyı söyleyebilir misin?"
+ },
+ {
+  "id": 1152,
+  "en": "We dance at every wedding.",
+  "tr": "Her düğünde dans ederiz."
+ },
+ {
+  "id": 1153,
+  "en": "Let's swim after lunch!",
+  "tr": "Öğle yemeğinden sonra yüzelim!"
+ },
+ {
+  "id": 1154,
+  "en": "Please speak slowly.",
+  "tr": "Lütfen yavaş konuş."
+ },
+ {
+  "id": 1155,
+  "en": "I want to learn the guitar.",
+  "tr": "Gitar çalmayı öğrenmek istiyorum."
+ },
+ {
+  "id": 1156,
+  "en": "Ask the teacher, she knows.",
+  "tr": "Öğretmene sor, o biliyor."
+ },
+ {
+  "id": 1157,
+  "en": "I can answer this question.",
+  "tr": "Bu soruyu cevaplayabilirim."
+ },
+ {
+  "id": 1158,
+  "en": "Don't look, it's a surprise!",
+  "tr": "Bakma, bu bir sürpriz!"
+ },
+ {
+  "id": 1159,
+  "en": "I give my cat some milk.",
+  "tr": "Kedime biraz süt veriyorum."
+ },
+ {
+  "id": 60,
+  "en": "I'm tired. However, I can't sleep.",
+  "tr": "Yorgunum. Ancak uyuyamıyorum."
+ },
+ {
+  "id": 61,
+  "en": "Although he's small, he's strong.",
+  "tr": "Küçük olmasına rağmen güçlü."
+ },
+ {
+  "id": 65,
+  "en": "Actually, I don't like coffee.",
+  "tr": "Aslında kahve sevmiyorum."
+ },
+ {
+  "id": 64,
+  "en": "Unfortunately, the shop is closed today.",
+  "tr": "Ne yazık ki dükkan bugün kapalı."
+ },
+ {
+  "id": 71,
+  "en": "She answers my messages immediately.",
+  "tr": "Mesajlarıma hemen cevap veriyor."
+ },
+ {
+  "id": 75,
+  "en": "My brother is a confident swimmer.",
+  "tr": "Abim kendine güvenen bir yüzücü."
+ },
+ {
+  "id": 76,
+  "en": "I get nervous before exams.",
+  "tr": "Sınavlardan önce gergin oluyorum."
+ },
+ {
+  "id": 84,
+  "en": "Be patient, the bus is coming.",
+  "tr": "Sabırlı ol, otobüs geliyor."
+ },
+ {
+  "id": 87,
+  "en": "Tom is an honest boy.",
+  "tr": "Tom dürüst bir çocuk."
+ },
+ {
+  "id": 79,
+  "en": "Cats are very curious animals.",
+  "tr": "Kediler çok meraklı hayvanlar."
+ },
+ {
+  "id": 90,
+  "en": "Our team achieved great things this year.",
+  "tr": "Takımımız bu yıl büyük işler başardı."
+ },
+ {
+  "id": 91,
+  "en": "His health improved after the treatment.",
+  "tr": "Tedaviden sonra sağlığı iyileşti."
+ },
+ {
+  "id": 96,
+  "en": "We avoid the beach at noon.",
+  "tr": "Öğlen saatlerinde plaja gitmekten kaçınıyoruz."
+ },
+ {
+  "id": 102,
+  "en": "I apologize, this is my mistake.",
+  "tr": "Özür dilerim, bu benim hatam."
+ },
+ {
+  "id": 104,
+  "en": "She realizes the door is open.",
+  "tr": "Kapının açık olduğunu fark ediyor."
+ },
+ {
+  "id": 105,
+  "en": "My employer is a kind woman.",
+  "tr": "İşverenim nazik bir kadın."
+ },
+ {
+  "id": 106,
+  "en": "The shop has ten employees.",
+  "tr": "Dükkanın on çalışanı var."
+ },
+ {
+  "id": 107,
+  "en": "My colleagues are very friendly.",
+  "tr": "İş arkadaşlarım çok cana yakın."
+ },
+ {
+  "id": 109,
+  "en": "I get my salary every month.",
+  "tr": "Maaşımı her ay alıyorum."
+ },
+ {
+  "id": 119,
+  "en": "He wants a career in music.",
+  "tr": "Müzikte kariyer yapmak istiyor."
+ },
+ {
+  "id": 120,
+  "en": "Her illness is not serious, don't worry.",
+  "tr": "Hastalığı ciddi değil, merak etme."
+ },
+ {
+  "id": 122,
+  "en": "The doctor starts the treatment today.",
+  "tr": "Doktor tedaviye bugün başlıyor."
+ },
+ {
+  "id": 125,
+  "en": "The exhausted dog sleeps by the door.",
+  "tr": "Bitkin köpek kapının yanında uyuyor."
+ },
+ {
+  "id": 128,
+  "en": "Yoga is good for stress.",
+  "tr": "Yoga strese iyi gelir."
+ },
+ {
+  "id": 131,
+  "en": "Loud music gives me a headache.",
+  "tr": "Gürültülü müzik bana baş ağrısı yapıyor."
+ },
+ {
+  "id": 135,
+  "en": "Have a good journey, Elif!",
+  "tr": "İyi yolculuklar, Elif!"
+ },
+ {
+  "id": 138,
+  "en": "Where is our luggage?",
+  "tr": "Bagajımız nerede?"
+ },
+ {
+  "id": 142,
+  "en": "Can I see your passport, please?",
+  "tr": "Pasaportunuzu görebilir miyim, lütfen?"
+ },
+ {
+  "id": 143,
+  "en": "A tourist asked me the way yesterday.",
+  "tr": "Dün bir turist bana yolu sordu."
+ },
+ {
+  "id": 144,
+  "en": "My cousin lives abroad.",
+  "tr": "Kuzenim yurt dışında yaşıyor."
+ },
+ {
+  "id": 150,
+  "en": "There is no pollution in the village.",
+  "tr": "Köyde kirlilik yok."
+ },
+ {
+  "id": 152,
+  "en": "Plastic bags are bad for the environment.",
+  "tr": "Plastik poşetler çevre için kötü."
+ },
+ {
+  "id": 155,
+  "en": "The dog protects the sheep.",
+  "tr": "Köpek koyunları koruyor."
+ },
+ {
+  "id": 153,
+  "en": "This juice is natural, no sugar.",
+  "tr": "Bu meyve suyu doğal, şekersiz."
+ },
+ {
+  "id": 157,
+  "en": "Please recycle this bottle.",
+  "tr": "Lütfen bu şişeyi geri dönüşüme at."
+ },
+ {
+  "id": 165,
+  "en": "Turn off all devices before bed.",
+  "tr": "Yatmadan önce tüm cihazları kapat."
+ },
+ {
+  "id": 171,
+  "en": "Don't sit too close to the screen.",
+  "tr": "Ekrana çok yakın oturma."
+ },
+ {
+  "id": 172,
+  "en": "The clock needs a new battery.",
+  "tr": "Saatin yeni bir pile ihtiyacı var."
+ },
+ {
+  "id": 175,
+  "en": "The bridge connects the two cities.",
+  "tr": "Köprü iki şehri bağlıyor."
+ },
+ {
+  "id": 177,
+  "en": "Which application do you use for maps?",
+  "tr": "Haritalar için hangi uygulamayı kullanıyorsun?"
+ },
+ {
+  "id": 180,
+  "en": "Now I can afford a holiday.",
+  "tr": "Artık tatile param yetiyor."
+ },
+ {
+  "id": 181,
+  "en": "She has an expensive phone.",
+  "tr": "Pahalı bir telefonu var."
+ },
+ {
+  "id": 182,
+  "en": "Is there a discount for students?",
+  "tr": "Öğrenciler için indirim var mı?"
+ },
+ {
+  "id": 185,
+  "en": "Our budget is small this month.",
+  "tr": "Bu ay bütçemiz dar."
+ },
+ {
+  "id": 189,
+  "en": "He spends too much on games.",
+  "tr": "Oyunlara çok fazla para harcıyor."
+ },
+ {
+  "id": 195,
+  "en": "Let's change the subject, this is boring.",
+  "tr": "Konuyu değiştirelim, bu sıkıcı."
+ },
+ {
+  "id": 199,
+  "en": "She passed her English exam last week.",
+  "tr": "Geçen hafta İngilizce sınavını geçti."
+ },
+ {
+  "id": 201,
+  "en": "The university library is open until midnight.",
+  "tr": "Üniversite kütüphanesi gece yarısına kadar açık."
+ },
+ {
+  "id": 203,
+  "en": "My brother graduated in 2019 and found a job.",
+  "tr": "Abim 2019'da mezun oldu ve bir iş buldu."
+ },
+ {
+  "id": 204,
+  "en": "This job needs basic knowledge of computers.",
+  "tr": "Bu iş temel bilgisayar bilgisi gerektiriyor."
+ },
+ {
+  "id": 210,
+  "en": "It's hard to start a conversation with strangers.",
+  "tr": "Yabancılarla sohbet başlatmak zor."
+ },
+ {
+  "id": 213,
+  "en": "Everyone has a different opinion about the new teacher.",
+  "tr": "Herkesin yeni öğretmen hakkında farklı bir fikri var."
+ },
+ {
+  "id": 214,
+  "en": "Do you agree with your sister's plan?",
+  "tr": "Kız kardeşinin planına katılıyor musun?"
+ },
+ {
+  "id": 215,
+  "en": "I disagree, this movie is not boring at all.",
+  "tr": "Aynı fikirde değilim, bu film hiç sıkıcı değil."
+ },
+ {
+  "id": 217,
+  "en": "The doctor explained everything slowly and clearly.",
+  "tr": "Doktor her şeyi yavaş ve net bir şekilde açıkladı."
+ },
+ {
+  "id": 225,
+  "en": "I have a good relationship with my boss.",
+  "tr": "Patronumla iyi bir ilişkim var."
+ },
+ {
+  "id": 226,
+  "en": "I lost my trust in him after that.",
+  "tr": "O olaydan sonra ona olan güvenimi kaybettim."
+ },
+ {
+  "id": 227,
+  "en": "Thank you for your support during the exam week.",
+  "tr": "Sınav haftasında verdiğin destek için teşekkür ederim."
+ },
+ {
+  "id": 232,
+  "en": "He earned everyone's respect with his hard work.",
+  "tr": "Sıkı çalışmasıyla herkesin saygısını kazandı."
+ },
+ {
+  "id": 234,
+  "en": "We shared a small room for two years.",
+  "tr": "İki yıl boyunca küçük bir odayı paylaştık."
+ },
+ {
+  "id": 240,
+  "en": "The storm knocked down two trees in our garden.",
+  "tr": "Fırtına bahçemizdeki iki ağacı devirdi."
+ },
+ {
+  "id": 243,
+  "en": "After the flood, the roads were closed for days.",
+  "tr": "Selden sonra yollar günlerce kapalıydı."
+ },
+ {
+  "id": 246,
+  "en": "I always check the weather forecast before a picnic.",
+  "tr": "Piknikten önce her zaman hava tahminine bakarım."
+ },
+ {
+  "id": 247,
+  "en": "Summers in Antalya are hot and humid.",
+  "tr": "Antalya'da yazlar sıcak ve nemli geçer."
+ },
+ {
+  "id": 254,
+  "en": "March was mild, so the snow melted quickly.",
+  "tr": "Mart ayı ılıman geçti, bu yüzden kar çabuk eridi."
+ },
+ {
+  "id": 255,
+  "en": "I'm going to buy the ingredients for the cake.",
+  "tr": "Kek için malzemeleri alacağım."
+ },
+ {
+  "id": 256,
+  "en": "My grandmother gave me her soup recipe.",
+  "tr": "Büyükannem bana çorba tarifini verdi."
+ },
+ {
+  "id": 257,
+  "en": "The lemon adds a fresh flavor to the fish.",
+  "tr": "Limon balığa taze bir lezzet katıyor."
+ },
+ {
+  "id": 258,
+  "en": "My dad loves spicy food, especially Adana kebab.",
+  "tr": "Babam baharatlı yemekleri çok sever, özellikle Adana kebabı."
+ },
+ {
+  "id": 265,
+  "en": "She tasted the soup and added some salt.",
+  "tr": "Çorbayı tattı ve biraz tuz ekledi."
+ },
+ {
+  "id": 270,
+  "en": "There is a small bakery in our neighborhood.",
+  "tr": "Mahallemizde küçük bir fırın var."
+ },
+ {
+  "id": 273,
+  "en": "We rented a car for the weekend.",
+  "tr": "Hafta sonu için bir araba kiraladık."
+ },
+ {
+  "id": 274,
+  "en": "The flat is cheap, but it has no furniture.",
+  "tr": "Daire ucuz ama hiç mobilyası yok."
+ },
+ {
+  "id": 276,
+  "en": "The beach gets crowded in August.",
+  "tr": "Ağustosta plaj kalabalık oluyor."
+ },
+ {
+  "id": 284,
+  "en": "This is private property, so you can't park here.",
+  "tr": "Burası özel mülk, bu yüzden buraya park edemezsin."
+ },
+ {
+  "id": 680,
+  "en": "Dad is ironing his shirt for the meeting.",
+  "tr": "Babam toplantı için gömleğini ütülüyor."
+ },
+ {
+  "id": 681,
+  "en": "I bought grey trousers for my new job.",
+  "tr": "Yeni işim için gri bir pantolon aldım."
+ },
+ {
+  "id": 682,
+  "en": "My running shoes are old, I need new ones.",
+  "tr": "Koşu ayakkabılarım eski, yenisi lazım."
+ },
+ {
+  "id": 683,
+  "en": "This dress is beautiful, but it's too expensive.",
+  "tr": "Bu elbise çok güzel ama çok pahalı."
+ },
+ {
+  "id": 684,
+  "en": "Your jacket looks warm, where did you buy it?",
+  "tr": "Ceketin sıcak görünüyor, nereden aldın?"
+ },
+ {
+  "id": 685,
+  "en": "This size is perfect, I'll take it.",
+  "tr": "Bu beden tam oldu, alıyorum."
+ },
+ {
+  "id": 686,
+  "en": "The hotel was cheap but very clean.",
+  "tr": "Otel ucuzdu ama çok temizdi."
+ },
+ {
+  "id": 687,
+  "en": "Bread prices went up again last month.",
+  "tr": "Ekmek fiyatları geçen ay yine yükseldi."
+ },
+ {
+  "id": 688,
+  "en": "I paid the bill and we left.",
+  "tr": "Hesabı ödedim ve çıktık."
+ },
+ {
+  "id": 689,
+  "en": "My grandfather always wears a hat outside.",
+  "tr": "Dedem dışarıda her zaman şapka takar."
+ },
+ {
+  "id": 690,
+  "en": "Can I try on these shoes in size 40?",
+  "tr": "Bu ayakkabıların 40 numarasını deneyebilir miyim?"
+ },
+ {
+  "id": 691,
+  "en": "Do these shoes fit, or are they too big?",
+  "tr": "Bu ayakkabılar oldu mu, yoksa çok mu büyük?"
+ },
+ {
+  "id": 692,
+  "en": "Keep the receipt, you can return it later.",
+  "tr": "Fişi sakla, sonra iade edebilirsin."
+ },
+ {
+  "id": 693,
+  "en": "I have no change for the bus.",
+  "tr": "Otobüs için bozuk param yok."
+ },
+ {
+  "id": 694,
+  "en": "The winter sale starts next Monday.",
+  "tr": "Kış indirimi gelecek pazartesi başlıyor."
+ },
+ {
+  "id": 695,
+  "en": "I read a book on the train to work.",
+  "tr": "İşe giderken trende kitap okurum."
+ },
+ {
+  "id": 696,
+  "en": "Show your ticket to the driver, please.",
+  "tr": "Lütfen biletini şoföre göster."
+ },
+ {
+  "id": 697,
+  "en": "We waited at the airport for three hours.",
+  "tr": "Havalimanında üç saat bekledik."
+ },
+ {
+  "id": 698,
+  "en": "The flight was long, but the food was good.",
+  "tr": "Uçuş uzundu ama yemekler güzeldi."
+ },
+ {
+  "id": 699,
+  "en": "What time are you going to arrive at the hotel?",
+  "tr": "Otele saat kaçta varacaksın?"
+ },
+ {
+  "id": 700,
+  "en": "I left my umbrella in the taxi.",
+  "tr": "Şemsiyemi takside bıraktım."
+ },
+ {
+  "id": 701,
+  "en": "There is a map of the city at the station.",
+  "tr": "İstasyonda şehrin haritası var."
+ },
+ {
+  "id": 702,
+  "en": "After work, I went straight home.",
+  "tr": "İşten sonra doğruca eve gittim."
+ },
+ {
+  "id": 703,
+  "en": "There is a small café on the corner.",
+  "tr": "Köşede küçük bir kafe var."
+ },
+ {
+  "id": 704,
+  "en": "We were late because of the traffic.",
+  "tr": "Trafik yüzünden geç kaldık."
+ },
+ {
+  "id": 705,
+  "en": "I can't drive, so I take the bus.",
+  "tr": "Araba kullanamıyorum, bu yüzden otobüse biniyorum."
+ },
+ {
+  "id": 706,
+  "en": "My bicycle has a flat tire again.",
+  "tr": "Bisikletimin lastiği yine patladı."
+ },
+ {
+  "id": 707,
+  "en": "The taxi driver knew a shorter way.",
+  "tr": "Taksi şoförü daha kısa bir yol biliyordu."
+ },
+ {
+  "id": 708,
+  "en": "The new timetable starts in October.",
+  "tr": "Yeni tarife ekimde başlıyor."
+ },
+ {
+  "id": 709,
+  "en": "Which platform does the Izmir train leave from?",
+  "tr": "İzmir treni hangi perondan kalkıyor?"
+ },
+ {
+  "id": 710,
+  "en": "There is no hot water in the shower.",
+  "tr": "Duşta sıcak su yok."
+ },
+ {
+  "id": 711,
+  "en": "She is brushing her hair in front of the mirror.",
+  "tr": "Aynanın önünde saçını fırçalıyor."
+ },
+ {
+  "id": 712,
+  "en": "I'm hanging the laundry on the balcony.",
+  "tr": "Çamaşırları balkona asıyorum."
+ },
+ {
+  "id": 713,
+  "en": "Put the dishes in the cupboard, please.",
+  "tr": "Tabakları dolaba koy lütfen."
+ },
+ {
+  "id": 714,
+  "en": "Keep your desk tidy, it helps you study.",
+  "tr": "Masanı derli toplu tut, çalışmana yardımcı olur."
+ },
+ {
+  "id": 715,
+  "en": "The garbage truck comes every Tuesday morning.",
+  "tr": "Çöp kamyonu her salı sabahı gelir."
+ },
+ {
+  "id": 716,
+  "en": "I forgot to set the alarm and woke up late.",
+  "tr": "Alarmı kurmayı unuttum ve geç uyandım."
+ },
+ {
+  "id": 717,
+  "en": "Don't hurry, we have plenty of time.",
+  "tr": "Acele etme, bol vaktimiz var."
+ },
+ {
+  "id": 718,
+  "en": "We usually have fish on Fridays.",
+  "tr": "Cuma günleri genellikle balık yeriz."
+ },
+ {
+  "id": 719,
+  "en": "My dad sometimes cooks dinner on Sundays.",
+  "tr": "Babam bazen pazar günleri akşam yemeği yapar."
+ },
+ {
+  "id": 720,
+  "en": "I never drink coffee after six.",
+  "tr": "Altıdan sonra asla kahve içmem."
+ },
+ {
+  "id": 721,
+  "en": "We often go to the cinema on Saturdays.",
+  "tr": "Cumartesileri sık sık sinemaya gideriz."
+ },
+ {
+  "id": 722,
+  "en": "It's only nine and I'm already tired.",
+  "tr": "Saat daha dokuz ve ben şimdiden yorgunum."
+ },
+ {
+  "id": 723,
+  "en": "Are you still waiting for the bus?",
+  "tr": "Hâlâ otobüsü mü bekliyorsun?"
+ },
+ {
+  "id": 724,
+  "en": "Dinner isn't ready yet, wait ten minutes.",
+  "tr": "Akşam yemeği henüz hazır değil, on dakika bekle."
+ },
+ {
+  "id": 725,
+  "en": "Why is Tom so angry this morning?",
+  "tr": "Tom bu sabah neden bu kadar kızgın?"
+ },
+ {
+  "id": 726,
+  "en": "My dog is scared of loud noises.",
+  "tr": "Köpeğim yüksek seslerden korkuyor."
+ },
+ {
+  "id": 727,
+  "en": "I was surprised to see snow in April.",
+  "tr": "Nisanda kar görünce şaşırdım."
+ },
+ {
+  "id": 728,
+  "en": "Grandpa gets lonely, so we visit him every Sunday.",
+  "tr": "Dedem kendini yalnız hissediyor, o yüzden her pazar onu ziyaret ediyoruz."
+ },
+ {
+  "id": 729,
+  "en": "The proud farmer showed us his tomatoes.",
+  "tr": "Çiftçi bize domateslerini gururla gösterdi."
+ },
+ {
+  "id": 730,
+  "en": "Don't be shy, come and sing with us!",
+  "tr": "Utangaç olma, gel bizimle şarkı söyle!"
+ },
+ {
+  "id": 731,
+  "en": "Our new neighbours are really friendly.",
+  "tr": "Yeni komşularımız gerçekten cana yakın."
+ },
+ {
+  "id": 732,
+  "en": "Tom is always polite to his grandmother.",
+  "tr": "Tom büyükannesine karşı her zaman kibardır."
+ },
+ {
+  "id": 733,
+  "en": "Don't be rude to the waiter, please.",
+  "tr": "Lütfen garsona kaba davranma."
+ },
+ {
+  "id": 734,
+  "en": "My cat does funny things when she's hungry.",
+  "tr": "Kedim acıkınca komik şeyler yapıyor."
+ },
+ {
+  "id": 735,
+  "en": "The doctor said it wasn't serious.",
+  "tr": "Doktor ciddi bir şey olmadığını söyledi."
+ },
+ {
+  "id": 736,
+  "en": "Our old dog is lazy and sleeps all day.",
+  "tr": "Yaşlı köpeğimiz tembel, bütün gün uyuyor."
+ },
+ {
+  "id": 737,
+  "en": "The brave firefighter carried the child out.",
+  "tr": "Cesur itfaiyeci çocuğu kucağında dışarı çıkardı."
+ },
+ {
+  "id": 738,
+  "en": "The sea was calm, so we took the boat.",
+  "tr": "Deniz sakindi, o yüzden tekneye bindik."
+ },
+ {
+  "id": 739,
+  "en": "My grandmother is kind to every animal.",
+  "tr": "Büyükannem her hayvana karşı iyi kalplidir."
+ },
+ {
+  "id": 740,
+  "en": "The birds come back in early spring.",
+  "tr": "Kuşlar ilkbaharın başında geri gelir."
+ },
+ {
+  "id": 741,
+  "en": "Last summer was really hot in Ankara.",
+  "tr": "Geçen yaz Ankara'da gerçekten sıcaktı."
+ },
+ {
+  "id": 742,
+  "en": "I love the smell of autumn rain.",
+  "tr": "Sonbahar yağmurunun kokusunu seviyorum."
+ },
+ {
+  "id": 743,
+  "en": "Winter is coming, so we need more wood.",
+  "tr": "Kış geliyor, o yüzden daha çok oduna ihtiyacımız var."
+ },
+ {
+  "id": 744,
+  "en": "The rainy season starts in November here.",
+  "tr": "Burada yağmur mevsimi kasımda başlar."
+ },
+ {
+  "id": 745,
+  "en": "Dad caught two fish in the river.",
+  "tr": "Babam nehirde iki balık tuttu."
+ },
+ {
+  "id": 746,
+  "en": "There's a small café by the lake.",
+  "tr": "Gölün kenarında küçük bir kafe var."
+ },
+ {
+  "id": 747,
+  "en": "Bears live in the forests near our village.",
+  "tr": "Köyümüzün yakınındaki ormanlarda ayılar yaşıyor."
+ },
+ {
+  "id": 748,
+  "en": "Only fifty people live on this island.",
+  "tr": "Bu adada sadece elli kişi yaşıyor."
+ },
+ {
+  "id": 749,
+  "en": "The beach was empty early in the morning.",
+  "tr": "Sabah erken saatlerde plaj bomboştu."
+ },
+ {
+  "id": 750,
+  "en": "The bread is still warm from the oven.",
+  "tr": "Ekmek hâlâ sıcak, fırından yeni çıktı."
+ },
+ {
+  "id": 751,
+  "en": "Your new bike is so cool!",
+  "tr": "Yeni bisikletin çok havalı!"
+ },
+ {
+  "id": 752,
+  "en": "The towels are dry, you can use them.",
+  "tr": "Havlular kuru, kullanabilirsin."
+ },
+ {
+  "id": 753,
+  "en": "Careful, the floor is still wet.",
+  "tr": "Dikkat et, yer hâlâ ıslak."
+ },
+ {
+  "id": 754,
+  "en": "It was sunny this morning, but now it's raining.",
+  "tr": "Sabah hava güneşliydi ama şimdi yağmur yağıyor."
+ },
+ {
+  "id": 1160,
+  "en": "There's a new cinema next to the mall.",
+  "tr": "Alışveriş merkezinin yanında yeni bir sinema var."
+ },
+ {
+  "id": 1161,
+  "en": "My sister is singing at a school concert tonight.",
+  "tr": "Kız kardeşim bu akşam okul konserinde şarkı söylüyor."
+ },
+ {
+  "id": 1162,
+  "en": "The museum is closed on Mondays.",
+  "tr": "Müze pazartesileri kapalı."
+ },
+ {
+  "id": 1163,
+  "en": "I got a guitar for my birthday.",
+  "tr": "Doğum günümde bana bir gitar aldılar."
+ },
+ {
+  "id": 1164,
+  "en": "There's a big painting of the sea upstairs.",
+  "tr": "Üst katta büyük bir deniz tablosu var."
+ },
+ {
+  "id": 1165,
+  "en": "Can you take a photograph of us, please?",
+  "tr": "Bir fotoğrafımızı çeker misiniz lütfen?"
+ },
+ {
+  "id": 1166,
+  "en": "Dad's old camera still works perfectly.",
+  "tr": "Babamın eski fotoğraf makinesi hâlâ çok iyi çalışıyor."
+ },
+ {
+  "id": 1167,
+  "en": "Which song are you going to sing tonight?",
+  "tr": "Bu gece hangi şarkıyı söyleyeceksin?"
+ },
+ {
+  "id": 1168,
+  "en": "There are some old magazines on the table.",
+  "tr": "Masanın üstünde birkaç eski dergi var."
+ },
+ {
+  "id": 1169,
+  "en": "We practised our English with the tourists.",
+  "tr": "Turistlerle İngilizce pratik yaptık."
+ },
+ {
+  "id": 1170,
+  "en": "The children collected shells on the beach.",
+  "tr": "Çocuklar plajda deniz kabuğu topladı."
+ },
+ {
+  "id": 1171,
+  "en": "She invited the whole class to her party.",
+  "tr": "Bütün sınıfı partisine davet etti."
+ },
+ {
+  "id": 1172,
+  "en": "I met an interesting man on the train.",
+  "tr": "Trende ilginç bir adamla tanıştım."
+ },
+ {
+  "id": 1173,
+  "en": "This is the most popular café in town.",
+  "tr": "Burası şehrin en popüler kafesi."
+ },
+ {
+  "id": 1174,
+  "en": "A famous footballer lives on our street.",
+  "tr": "Sokağımızda ünlü bir futbolcu oturuyor."
+ },
+ {
+  "id": 1175,
+  "en": "I forgot Dad's birthday last year.",
+  "tr": "Geçen yıl babamın doğum gününü unuttum."
+ },
+ {
+  "id": 1176,
+  "en": "They are planning a small wedding by the sea.",
+  "tr": "Deniz kenarında küçük bir düğün planlıyorlar."
+ },
+ {
+  "id": 1177,
+  "en": "The party ended at two in the morning.",
+  "tr": "Parti sabah ikide bitti."
+ },
+ {
+  "id": 1178,
+  "en": "Thank you for the lovely gift!",
+  "tr": "Bu güzel hediye için teşekkür ederim!"
+ },
+ {
+  "id": 1179,
+  "en": "The first guest arrived an hour early.",
+  "tr": "İlk misafir bir saat erken geldi."
+ },
+ {
+  "id": 1180,
+  "en": "Can I have another piece of cake?",
+  "tr": "Bir dilim daha pasta alabilir miyim?"
+ },
+ {
+  "id": 1181,
+  "en": "I have eleven cousins on my mother's side.",
+  "tr": "Anne tarafından on bir kuzenim var."
+ },
+ {
+  "id": 1182,
+  "en": "We stayed at my aunt's house in Bursa.",
+  "tr": "Bursa'da teyzemin evinde kaldık."
+ },
+ {
+  "id": 1183,
+  "en": "My uncle taught me how to swim.",
+  "tr": "Bana yüzmeyi amcam öğretti."
+ },
+ {
+  "id": 1184,
+  "en": "The whole town celebrated the team's win.",
+  "tr": "Bütün kasaba takımın galibiyetini kutladı."
+ },
+ {
+  "id": 1185,
+  "en": "I'm preparing for my English exam next week.",
+  "tr": "Gelecek haftaki İngilizce sınavıma hazırlanıyorum."
+ },
+ {
+  "id": 1186,
+  "en": "Zeynep is decorating the cake with strawberries.",
+  "tr": "Zeynep pastayı çileklerle süslüyor."
+ },
+ {
+  "id": 1187,
+  "en": "Are you married or single?",
+  "tr": "Evli misiniz, bekâr mı?"
+ },
+ {
+  "id": 1188,
+  "en": "Let's walk to the station together.",
+  "tr": "İstasyona birlikte yürüyelim."
+ },
+ {
+  "id": 1189,
+  "en": "Monday is a holiday, so the banks are closed.",
+  "tr": "Pazartesi tatil, o yüzden bankalar kapalı."
+ },
+ {
+  "id": 285,
+  "en": "My grandfather's hobby is growing tomatoes.",
+  "tr": "Dedemin hobisi domates yetiştirmek."
+ },
+ {
+  "id": 288,
+  "en": "I'm bored, let's go out somewhere.",
+  "tr": "Sıkıldım, hadi bir yere çıkalım."
+ },
+ {
+  "id": 289,
+  "en": "Starting a new job is exciting and scary.",
+  "tr": "Yeni bir işe başlamak heyecan verici ve korkutucu."
+ },
+ {
+  "id": 292,
+  "en": "My niece is very talented at drawing.",
+  "tr": "Yeğenim resim çizmede çok yetenekli."
+ },
+ {
+  "id": 294,
+  "en": "Our school is holding a photo competition next month.",
+  "tr": "Okulumuz gelecek ay bir fotoğraf yarışması düzenliyor."
+ },
+ {
+  "id": 300,
+  "en": "There is very little crime in this small town.",
+  "tr": "Bu küçük kasabada çok az suç işleniyor."
+ },
+ {
+  "id": 301,
+  "en": "The cat stole a fish from the kitchen table.",
+  "tr": "Kedi mutfak masasından bir balık çaldı."
+ },
+ {
+  "id": 304,
+  "en": "The flood victims need food and blankets.",
+  "tr": "Sel mağdurlarının yiyeceğe ve battaniyeye ihtiyacı var."
+ },
+ {
+  "id": 307,
+  "en": "The police are going to arrest the driver.",
+  "tr": "Polis sürücüyü tutuklayacak."
+ },
+ {
+  "id": 308,
+  "en": "The police found new evidence in the car.",
+  "tr": "Polis arabada yeni kanıt buldu."
+ },
+ {
+  "id": 316,
+  "en": "Two journalists are waiting outside the stadium.",
+  "tr": "İki gazeteci stadyumun dışında bekliyor."
+ },
+ {
+  "id": 318,
+  "en": "She wrote an article for the school magazine.",
+  "tr": "Okul dergisi için bir makale yazdı."
+ },
+ {
+  "id": 323,
+  "en": "We saw a celebrity at the airport yesterday.",
+  "tr": "Dün havalimanında ünlü birini gördük."
+ },
+ {
+  "id": 326,
+  "en": "Subscribe to our newsletter for weekly recipes.",
+  "tr": "Haftalık tarifler için bültenimize abone olun."
+ },
+ {
+  "id": 329,
+  "en": "Working from home is a growing trend.",
+  "tr": "Evden çalışmak yükselen bir trend."
+ },
+ {
+  "id": 330,
+  "en": "My cousin has become a professional athlete at nineteen.",
+  "tr": "Kuzenim on dokuz yaşında profesyonel bir sporcu oldu."
+ },
+ {
+  "id": 333,
+  "en": "What was the final score of last night's match?",
+  "tr": "Dün geceki maçın skoru neydi?"
+ },
+ {
+  "id": 334,
+  "en": "If you respect your opponent, you'll learn from every match.",
+  "tr": "Rakibine saygı duyarsan her maçtan bir şey öğrenirsin."
+ },
+ {
+  "id": 337,
+  "en": "After three years of training, he finally tasted victory.",
+  "tr": "Üç yıllık antrenmanın ardından sonunda zaferi tattı."
+ },
+ {
+  "id": 339,
+  "en": "My sister has just started working as a tennis coach.",
+  "tr": "Ablam tenis antrenörü olarak çalışmaya yeni başladı."
+ },
+ {
+  "id": 345,
+  "en": "Scientists have discovered a new species of frog in Brazil.",
+  "tr": "Bilim insanları Brezilya'da yeni bir kurbağa türü keşfetti."
+ },
+ {
+  "id": 349,
+  "en": "The zoo has built a new habitat for the penguins.",
+  "tr": "Hayvanat bahçesi penguenler için yeni bir yaşam alanı inşa etti."
+ },
+ {
+  "id": 351,
+  "en": "If we don't act, tigers could become extinct soon.",
+  "tr": "Harekete geçmezsek kaplanların nesli yakında tükenebilir."
+ },
+ {
+  "id": 355,
+  "en": "Have you ever seen the storks migrate over Istanbul?",
+  "tr": "Leyleklerin İstanbul üzerinden göç ettiğini hiç gördün mü?"
+ },
+ {
+  "id": 357,
+  "en": "There's an insect on your shoulder, don't move!",
+  "tr": "Omzunda bir böcek var, kıpırdama!"
+ },
+ {
+  "id": 360,
+  "en": "The doctor told me to increase my daily water intake.",
+  "tr": "Doktor bana günlük su tüketimimi artırmamı söyledi."
+ },
+ {
+  "id": 361,
+  "en": "Regular exercise can decrease stress and help you sleep better.",
+  "tr": "Düzenli egzersiz stresi azaltabilir ve daha iyi uyumana yardımcı olabilir."
+ },
+ {
+  "id": 365,
+  "en": "Her English has developed a lot since she moved to London.",
+  "tr": "Londra'ya taşındığından beri İngilizcesi çok gelişti."
+ },
+ {
+  "id": 367,
+  "en": "Nothing can replace a good night's sleep.",
+  "tr": "Hiçbir şey iyi bir gece uykusunun yerini tutamaz."
+ },
+ {
+  "id": 372,
+  "en": "If the sun comes out, this fog will disappear quickly.",
+  "tr": "Güneş çıkarsa bu sis hızla kaybolur."
+ },
+ {
+  "id": 376,
+  "en": "I prefer simple food, like bread, cheese and olives.",
+  "tr": "Ekmek, peynir ve zeytin gibi basit yemekleri tercih ederim."
+ },
+ {
+  "id": 379,
+  "en": "Good shoes are essential if you walk a lot.",
+  "tr": "Çok yürüyorsan iyi bir ayakkabı şart."
+ },
+ {
+  "id": 386,
+  "en": "Ahmet is a very common name in Turkey.",
+  "tr": "Ahmet, Türkiye'de çok yaygın bir isimdir."
+ },
+ {
+  "id": 385,
+  "en": "My grandfather collects rare coins from all over the world.",
+  "tr": "Dedem dünyanın dört bir yanından nadir madeni paralar topluyor."
+ },
+ {
+  "id": 387,
+  "en": "Kebab and ayran is a typical lunch in Adana.",
+  "tr": "Kebap ve ayran, Adana'da tipik bir öğle yemeğidir."
+ },
+ {
+  "id": 391,
+  "en": "Buses run frequently on this road, so don't worry.",
+  "tr": "Bu yoldan otobüsler sık sık geçer, merak etme."
+ },
+ {
+  "id": 392,
+  "en": "I rarely go to bed before midnight these days.",
+  "tr": "Bu aralar gece yarısından önce nadiren yatıyorum."
+ },
+ {
+  "id": 396,
+  "en": "The previous owner of this house planted these roses.",
+  "tr": "Bu evin önceki sahibi bu gülleri dikmiş."
+ },
+ {
+  "id": 401,
+  "en": "You shouldn't postpone going to the dentist any longer.",
+  "tr": "Dişçiye gitmeyi daha fazla ertelememelisin."
+ },
+ {
+  "id": 403,
+  "en": "Since the baby arrived, our morning routine has changed completely.",
+  "tr": "Bebek geldiğinden beri sabah rutinimiz tamamen değişti."
+ },
+ {
+  "id": 405,
+  "en": "If you get the opportunity, visit Cappadocia in spring.",
+  "tr": "Fırsatın olursa ilkbaharda Kapadokya'yı ziyaret et."
+ },
+ {
+  "id": 406,
+  "en": "I've accepted a new challenge: thirty days without sugar.",
+  "tr": "Yeni bir meydan okumayı kabul ettim: otuz gün şekersiz."
+ },
+ {
+  "id": 407,
+  "en": "Turning it off and on again is often the best solution.",
+  "tr": "Kapatıp yeniden açmak çoğu zaman en iyi çözümdür."
+ },
+ {
+  "id": 411,
+  "en": "There's a small risk of rain, so bring an umbrella.",
+  "tr": "Az da olsa yağmur riski var, yanına şemsiye al."
+ },
+ {
+  "id": 415,
+  "en": "The builders are making slow progress on our new kitchen.",
+  "tr": "Ustalar yeni mutfağımızda yavaş ilerleme kaydediyor."
+ },
+ {
+  "id": 420,
+  "en": "We have similar tastes in music, so we get along well.",
+  "tr": "Müzik zevklerimiz benzer, o yüzden iyi anlaşıyoruz."
+ },
+ {
+  "id": 421,
+  "en": "I've tried three different recipes, but yours is the best.",
+  "tr": "Üç farklı tarif denedim ama seninki en iyisi."
+ },
+ {
+  "id": 422,
+  "en": "Don't compare yourself to others; everyone learns at their own speed.",
+  "tr": "Kendini başkalarıyla karşılaştırma; herkes kendi hızında öğrenir."
+ },
+ {
+  "id": 429,
+  "en": "It was raining, so we stayed home and watched films instead.",
+  "tr": "Yağmur yağıyordu, biz de dışarı çıkmak yerine evde kalıp film izledik."
+ },
+ {
+  "id": 430,
+  "en": "She passed the exam despite missing many classes.",
+  "tr": "Birçok dersi kaçırmasına rağmen sınavı geçti."
+ },
+ {
+  "id": 436,
+  "en": "I'm anxious about my first driving lesson tomorrow.",
+  "tr": "Yarınki ilk direksiyon dersim için endişeliyim."
+ },
+ {
+  "id": 439,
+  "en": "I'd be really disappointed if you didn't come to my birthday.",
+  "tr": "Doğum günüme gelmezsen gerçekten hayal kırıklığına uğrarım."
+ },
+ {
+  "id": 441,
+  "en": "We're so grateful to the neighbours who fed our cat.",
+  "tr": "Kedimizi besleyen komşulara çok minnettarız."
+ },
+ {
+  "id": 448,
+  "en": "My grandmother is determined to learn how to use WhatsApp.",
+  "tr": "Babaannem WhatsApp kullanmayı öğrenmeye kararlı."
+ },
+ {
+  "id": 449,
+  "en": "The tourists looked confused, so I showed them the way.",
+  "tr": "Turistlerin kafası karışmış görünüyordu, ben de onlara yolu gösterdim."
+ },
+ {
+  "id": 450,
+  "en": "I gave up coffee last month, and I sleep much better.",
+  "tr": "Geçen ay kahveden vazgeçtim ve çok daha iyi uyuyorum."
+ },
+ {
+  "id": 452,
+  "en": "I look forward to hearing from you soon.",
+  "tr": "Sizden yakında haber almayı dört gözle bekliyorum."
+ },
+ {
+  "id": 455,
+  "en": "How did you find out that I love chocolate?",
+  "tr": "Çikolataya bayıldığımı nasıl öğrendin?"
+ },
+ {
+  "id": 459,
+  "en": "He turned down a free ticket because he had to work.",
+  "tr": "Çalışmak zorunda olduğu için bedava bileti reddetti."
+ },
+ {
+  "id": 462,
+  "en": "I still can't figure out how to use this washing machine.",
+  "tr": "Bu çamaşır makinesini nasıl kullanacağımı hâlâ çözemedim."
+ },
+ {
+  "id": 465,
+  "en": "Old people are treated with great respect in our society.",
+  "tr": "Bizim toplumumuzda yaşlılara büyük saygı gösterilir."
+ },
+ {
+  "id": 466,
+  "en": "Playing tombala on New Year's Eve is our family tradition.",
+  "tr": "Yılbaşı gecesi tombala oynamak bizim aile geleneğimiz."
+ },
+ {
+  "id": 472,
+  "en": "There's a small Turkish community in this part of Berlin.",
+  "tr": "Berlin'in bu bölgesinde küçük bir Türk topluluğu var."
+ },
+ {
+  "id": 474,
+  "en": "If the government built more parks, the city would be greener.",
+  "tr": "Hükümet daha fazla park yapsa şehir daha yeşil olurdu."
+ },
+ {
+  "id": 476,
+  "en": "The festival needs fifty volunteers to help with the tickets.",
+  "tr": "Festivalin bilet işlerinde yardım edecek elli gönüllüye ihtiyacı var."
+ },
+ {
+  "id": 480,
+  "en": "The company has given every worker an extra day off.",
+  "tr": "Şirket her çalışana fazladan bir gün izin verdi."
+ },
+ {
+  "id": 481,
+  "en": "Our bakery has had the same customers for twenty years.",
+  "tr": "Fırınımızın yirmi yıldır aynı müşterileri var."
+ },
+ {
+  "id": 482,
+  "en": "This shampoo is the only product I use on my hair.",
+  "tr": "Bu şampuan, saçımda kullandığım tek ürün."
+ },
+ {
+  "id": 483,
+  "en": "She sold her old bike for a small profit.",
+  "tr": "Eski bisikletini küçük bir kârla sattı."
+ },
+ {
+  "id": 490,
+  "en": "Which brand of coffee do you usually drink at home?",
+  "tr": "Evde genellikle hangi marka kahve içersin?"
+ },
+ {
+  "id": 495,
+  "en": "Yoga has made my back much more flexible.",
+  "tr": "Yoga sırtımı çok daha esnek hale getirdi."
+ },
+ {
+  "id": 499,
+  "en": "Our new assistant is so efficient that she finishes everything by noon.",
+  "tr": "Yeni asistanımız o kadar verimli ki her şeyi öğlene kadar bitiriyor."
+ },
+ {
+  "id": 501,
+  "en": "Would Tuesday afternoon be convenient for a quick meeting?",
+  "tr": "Salı öğleden sonra kısa bir görüşme için uygun olur mu?"
+ },
+ {
+  "id": 507,
+  "en": "My son is very creative; he builds castles out of boxes.",
+  "tr": "Oğlum çok yaratıcı; kutulardan kaleler yapıyor."
+ },
+ {
+  "id": 508,
+  "en": "I feel more motivated to study when my desk is tidy.",
+  "tr": "Masam derli toplu olunca ders çalışmaya daha motive oluyorum."
+ },
+ {
+  "id": 755,
+  "en": "Most injuries at home happen in the kitchen.",
+  "tr": "Evdeki yaralanmaların çoğu mutfakta olur."
+ },
+ {
+  "id": 756,
+  "en": "If the symptoms don't go away, come back next week.",
+  "tr": "Belirtiler geçmezse gelecek hafta tekrar gelin."
+ },
+ {
+  "id": 757,
+  "en": "My cousin has studied medicine in Ankara for five years.",
+  "tr": "Kuzenim beş yıldır Ankara'da tıp okuyor."
+ },
+ {
+  "id": 758,
+  "en": "The doctor wrote me a prescription for some eye drops.",
+  "tr": "Doktor bana göz damlası için reçete yazdı."
+ },
+ {
+  "id": 759,
+  "en": "Sorry, I'm going to be late for my hair appointment.",
+  "tr": "Kusura bakma, kuaför randevuma geç kalacağım."
+ },
+ {
+  "id": 760,
+  "en": "Grandpa has fully recovered, and he's back in his garden.",
+  "tr": "Dedem tamamen iyileşti ve yine bahçesinde."
+ },
+ {
+  "id": 761,
+  "en": "The baby is healthy and already smiling at everyone.",
+  "tr": "Bebek sağlıklı ve şimdiden herkese gülümsüyor."
+ },
+ {
+  "id": 762,
+  "en": "My brother has been on a diet since the wedding.",
+  "tr": "Abim düğünden beri diyet yapıyor."
+ },
+ {
+  "id": 763,
+  "en": "Have you finished the grammar exercises on page twelve?",
+  "tr": "On ikinci sayfadaki dil bilgisi alıştırmalarını bitirdin mi?"
+ },
+ {
+  "id": 764,
+  "en": "Could you check the weight of my suitcase, please?",
+  "tr": "Valizimin ağırlığına bakabilir misiniz lütfen?"
+ },
+ {
+  "id": 765,
+  "en": "After the climb, we stopped to breathe and enjoy the view.",
+  "tr": "Tırmanıştan sonra bir nefes alıp manzaranın tadını çıkarmak için durduk."
+ },
+ {
+  "id": 766,
+  "en": "I've had a pain in my back since I moved the sofa.",
+  "tr": "Kanepeyi taşıdığımdan beri sırtımda bir ağrı var."
+ },
+ {
+  "id": 767,
+  "en": "Do you have a fever? Your forehead feels hot.",
+  "tr": "Ateşin mi var? Alnın sıcak."
+ },
+ {
+  "id": 768,
+  "en": "Wash the wound with clean water before you cover it.",
+  "tr": "Yarayı kapatmadan önce temiz suyla yıka."
+ },
+ {
+  "id": 769,
+  "en": "There's a bandage on his finger because he cut it while cooking.",
+  "tr": "Yemek yaparken kestiği için parmağında bandaj var."
+ },
+ {
+  "id": 770,
+  "en": "You can download the tickets and show them at the door.",
+  "tr": "Biletleri indirip kapıda gösterebilirsin."
+ },
+ {
+  "id": 771,
+  "en": "If the video is too long, it won't upload properly.",
+  "tr": "Video çok uzunsa düzgün yüklenmez."
+ },
+ {
+  "id": 772,
+  "en": "My brother has used the same password since 2015.",
+  "tr": "Abim 2015'ten beri aynı şifreyi kullanıyor."
+ },
+ {
+  "id": 773,
+  "en": "Could you log out of my account when you've finished?",
+  "tr": "İşin bitince hesabımdan çıkış yapabilir misin?"
+ },
+ {
+  "id": 774,
+  "en": "The app updates itself every night while I'm sleeping.",
+  "tr": "Uygulama her gece ben uyurken kendini güncelliyor."
+ },
+ {
+  "id": 775,
+  "en": "If you order from their website, delivery is free.",
+  "tr": "Web sitelerinden sipariş verirsen kargo ücretsiz."
+ },
+ {
+  "id": 776,
+  "en": "I've searched every pocket, and the keys still aren't there.",
+  "tr": "Bütün cepleri aradım, anahtarlar hâlâ ortada yok."
+ },
+ {
+  "id": 777,
+  "en": "I got a notification that my package has arrived.",
+  "tr": "Paketimin geldiğine dair bir bildirim aldım."
+ },
+ {
+  "id": 778,
+  "en": "If your wireless headphones die, you can borrow mine.",
+  "tr": "Kablosuz kulaklığının şarjı biterse benimkini ödünç alabilirsin."
+ },
+ {
+  "id": 779,
+  "en": "We've moved all the school files to cloud storage.",
+  "tr": "Bütün okul dosyalarını bulut depolama alanına taşıdık."
+ },
+ {
+  "id": 780,
+  "en": "My cousin has started a podcast about Turkish football.",
+  "tr": "Kuzenim Türk futbolu hakkında bir podcast başlattı."
+ },
+ {
+  "id": 781,
+  "en": "My sister streams her video games to a few hundred people.",
+  "tr": "Kız kardeşim oyunlarını birkaç yüz kişiye canlı yayınlıyor."
+ },
+ {
+  "id": 782,
+  "en": "I only read the headlines on my phone before work.",
+  "tr": "İşe gitmeden önce telefondan sadece manşetleri okuyorum."
+ },
+ {
+  "id": 783,
+  "en": "The final will be broadcast live from Istanbul on Saturday.",
+  "tr": "Final, cumartesi günü İstanbul'dan canlı yayınlanacak."
+ },
+ {
+  "id": 784,
+  "en": "If you pay for the app, you won't see any advertisements.",
+  "tr": "Uygulamaya para ödersen hiç reklam görmezsin."
+ },
+ {
+  "id": 785,
+  "en": "The manager has pushed the deadline back to next Monday.",
+  "tr": "Müdür son teslim tarihini gelecek pazartesiye erteledi."
+ },
+ {
+  "id": 786,
+  "en": "Could you send me the schedule for the conference?",
+  "tr": "Konferansın programını bana gönderebilir misin?"
+ },
+ {
+  "id": 787,
+  "en": "If the meeting runs late, I'll miss my train.",
+  "tr": "Toplantı uzarsa trenimi kaçıracağım."
+ },
+ {
+  "id": 788,
+  "en": "I still haven't finished the slides for tomorrow's presentation.",
+  "tr": "Yarınki sunumun slaytlarını hâlâ bitirmedim."
+ },
+ {
+  "id": 789,
+  "en": "The report shows that sales have dropped since March.",
+  "tr": "Rapor, satışların marttan beri düştüğünü gösteriyor."
+ },
+ {
+  "id": 790,
+  "en": "I watched an interview with the actor on YouTube last night.",
+  "tr": "Dün gece YouTube'da oyuncuyla yapılan bir röportaj izledim."
+ },
+ {
+  "id": 791,
+  "en": "If you apply before Friday, you won't pay the late fee.",
+  "tr": "Cumadan önce başvurursan gecikme ücreti ödemezsin."
+ },
+ {
+  "id": 792,
+  "en": "We could hire a car and drive along the coast.",
+  "tr": "Bir araba kiralayıp sahil boyunca sürebiliriz."
+ },
+ {
+  "id": 793,
+  "en": "The shop has a promotion: buy two, get one free.",
+  "tr": "Mağazada bir promosyon var: iki alana bir bedava."
+ },
+ {
+  "id": 794,
+  "en": "Cooking is a skill you can learn at any age.",
+  "tr": "Yemek yapmak her yaşta öğrenebileceğin bir beceri."
+ },
+ {
+  "id": 795,
+  "en": "I've done some research, and the hotel's reviews are terrible.",
+  "tr": "Biraz araştırma yaptım, otelin yorumları berbat."
+ },
+ {
+  "id": 796,
+  "en": "The teacher gave my essay full marks, which has never happened.",
+  "tr": "Öğretmen kompozisyonuma tam puan verdi, bu daha önce hiç olmamıştı."
+ },
+ {
+  "id": 797,
+  "en": "If you're short of time, just read the summary.",
+  "tr": "Vaktin azsa sadece özeti oku."
+ },
+ {
+  "id": 798,
+  "en": "It's thirty-five degrees today, so stay out of the sun.",
+  "tr": "Bugün hava otuz beş derece, güneşten uzak dur."
+ },
+ {
+  "id": 799,
+  "en": "If your grades stay high, the scholarship continues next year.",
+  "tr": "Notların yüksek kalırsa burs gelecek yıl da devam eder."
+ },
+ {
+  "id": 800,
+  "en": "Families on a low income can apply for free school meals.",
+  "tr": "Düşük gelirli aileler ücretsiz okul yemeği için başvurabilir."
+ },
+ {
+  "id": 801,
+  "en": "Does that price include tax, or is it added later?",
+  "tr": "Bu fiyata vergi dahil mi, yoksa sonradan mı ekleniyor?"
+ },
+ {
+  "id": 802,
+  "en": "The bank hasn't approved our loan yet, so we're still waiting.",
+  "tr": "Banka kredimizi henüz onaylamadı, o yüzden hâlâ bekliyoruz."
+ },
+ {
+  "id": 803,
+  "en": "I'd rather save slowly than get into debt.",
+  "tr": "Borca girmektense yavaş yavaş biriktirmeyi tercih ederim."
+ },
+ {
+  "id": 804,
+  "en": "We've used half our savings on the kitchen repairs.",
+  "tr": "Birikimimizin yarısını mutfak tamiratına harcadık."
+ },
+ {
+  "id": 805,
+  "en": "Invest in good shoes if you walk to work every day.",
+  "tr": "Her gün işe yürüyorsan iyi ayakkabılara yatırım yap."
+ },
+ {
+  "id": 806,
+  "en": "Has the car insurance gone up again this year?",
+  "tr": "Araba sigortası bu yıl yine zamlandı mı?"
+ },
+ {
+  "id": 807,
+  "en": "Could we have the bill, please? We're in a hurry.",
+  "tr": "Hesabı alabilir miyiz lütfen? Biraz acelemiz var."
+ },
+ {
+  "id": 808,
+  "en": "If the concert is cancelled, you'll get a refund automatically.",
+  "tr": "Konser iptal olursa otomatik olarak para iadesi alırsın."
+ },
+ {
+  "id": 809,
+  "en": "Second-hand books are often a bargain if you look carefully.",
+  "tr": "Dikkatli bakarsan ikinci el kitaplar genellikle kelepirdir."
+ },
+ {
+  "id": 810,
+  "en": "Only wealthy families could afford a car in those days.",
+  "tr": "O zamanlar araba almaya sadece varlıklı ailelerin gücü yetiyordu."
+ },
+ {
+  "id": 811,
+  "en": "My grandfather grew up in poverty but never complained.",
+  "tr": "Dedem yoksulluk içinde büyüdü ama hiç şikâyet etmedi."
+ },
+ {
+  "id": 812,
+  "en": "She works for a charity that helps homeless people.",
+  "tr": "Evsizlere yardım eden bir hayır kurumunda çalışıyor."
+ },
+ {
+  "id": 813,
+  "en": "If you don't wear those clothes anymore, donate them.",
+  "tr": "O kıyafetleri artık giymiyorsan bağışla."
+ },
+ {
+  "id": 814,
+  "en": "I've wasted the whole afternoon waiting for the plumber.",
+  "tr": "Bütün öğleden sonrayı tesisatçıyı bekleyerek boşa harcadım."
+ },
+ {
+  "id": 815,
+  "en": "Olive trees grow well in a dry, warm climate.",
+  "tr": "Zeytin ağaçları kuru ve sıcak iklimde iyi yetişir."
+ },
+ {
+  "id": 816,
+  "en": "The dinner party was a disaster; I burnt everything.",
+  "tr": "Akşam yemeği davetim tam bir felaketti; her şeyi yaktım."
+ },
+ {
+  "id": 817,
+  "en": "If there's an earthquake, get under a strong table.",
+  "tr": "Deprem olursa sağlam bir masanın altına gir."
+ },
+ {
+  "id": 818,
+  "en": "During the drought, watering the garden was banned.",
+  "tr": "Kuraklık sırasında bahçe sulamak yasaktı."
+ },
+ {
+  "id": 819,
+  "en": "The baby has a temperature, so we're calling the doctor.",
+  "tr": "Bebeğin ateşi var, o yüzden doktoru arıyoruz."
+ },
+ {
+  "id": 820,
+  "en": "Cappadocia has become a popular destination for weddings.",
+  "tr": "Kapadokya, düğünler için popüler bir destinasyon hâline geldi."
+ },
+ {
+  "id": 821,
+  "en": "The price includes flights and accommodation, but not meals.",
+  "tr": "Fiyata uçuşlar ve konaklama dahil ama yemekler dahil değil."
+ },
+ {
+  "id": 822,
+  "en": "Without a reservation, you might wait an hour for a table.",
+  "tr": "Rezervasyon yaptırmazsan masa için bir saat bekleyebilirsin."
+ },
+ {
+  "id": 823,
+  "en": "I've done so much sightseeing that my feet hurt.",
+  "tr": "O kadar çok gezip gördüm ki ayaklarım ağrıyor."
+ },
+ {
+  "id": 824,
+  "en": "The souvenir shops near the castle are really overpriced.",
+  "tr": "Kalenin yanındaki hediyelik eşya dükkânları gerçekten çok pahalı."
+ },
+ {
+  "id": 825,
+  "en": "In Turkish culture, guests are always offered tea first.",
+  "tr": "Türk kültüründe misafirlere her zaman önce çay ikram edilir."
+ },
+ {
+  "id": 826,
+  "en": "You should try the local cheese; it's made in the village.",
+  "tr": "Yöresel peyniri denemelisin; köyde yapılıyor."
+ },
+ {
+  "id": 827,
+  "en": "I've bought a small guide to the city's best cafés.",
+  "tr": "Şehrin en iyi kafelerini anlatan küçük bir rehber aldım."
+ },
+ {
+  "id": 828,
+  "en": "Even a bus ride is an adventure for a three-year-old.",
+  "tr": "Üç yaşındaki bir çocuk için otobüs yolculuğu bile bir macera."
+ },
+ {
+  "id": 829,
+  "en": "The kids have explored every corner of the new house.",
+  "tr": "Çocuklar yeni evin her köşesini keşfetti."
+ },
+ {
+  "id": 1190,
+  "en": "If you can't read the menu, I'll translate it for you.",
+  "tr": "Menüyü okuyamazsan senin için çeviririm."
+ },
+ {
+  "id": 1191,
+  "en": "My grandmother's rice pudding is the best dessert in the world.",
+  "tr": "Anneannemin sütlacı dünyanın en iyi tatlısı."
+ },
+ {
+  "id": 1192,
+  "en": "She's been working as a chef in Paris for two years.",
+  "tr": "İki yıldır Paris'te şef olarak çalışıyor."
+ },
+ {
+  "id": 1193,
+  "en": "When the water boils, add the pasta and some salt.",
+  "tr": "Su kaynayınca makarnayı ve biraz tuz ekle."
+ },
+ {
+  "id": 1194,
+  "en": "Fry the potatoes in hot oil so they get crispy.",
+  "tr": "Patatesleri kızgın yağda kızart ki çıtır olsun."
+ },
+ {
+  "id": 1195,
+  "en": "I always cry when I chop onions.",
+  "tr": "Soğan doğrarken hep ağlarım."
+ },
+ {
+  "id": 1196,
+  "en": "Something smells delicious; what are you cooking?",
+  "tr": "Bir şey nefis kokuyor; ne pişiriyorsun?"
+ },
+ {
+  "id": 1197,
+  "en": "The medicine is so bitter that I take it with honey.",
+  "tr": "İlaç o kadar acı ki balla içiyorum."
+ },
+ {
+  "id": 1198,
+  "en": "These green apples are too sour for the kids.",
+  "tr": "Bu yeşil elmalar çocuklar için fazla ekşi."
+ },
+ {
+  "id": 1199,
+  "en": "Is there a vegetarian option, or is everything meat?",
+  "tr": "Vejetaryen bir seçenek var mı, yoksa her şey etli mi?"
+ },
+ {
+  "id": 1200,
+  "en": "Since she started eating smaller portions, she's felt much better.",
+  "tr": "Daha küçük porsiyonlar yemeye başladığından beri kendini çok daha iyi hissediyor."
+ },
+ {
+  "id": 1201,
+  "en": "I've put the leftovers in the fridge for tomorrow's lunch.",
+  "tr": "Artan yemeği yarınki öğle yemeği için buzdolabına koydum."
+ },
+ {
+  "id": 1202,
+  "en": "If you're taking the kids hiking, pack plenty of snacks.",
+  "tr": "Çocukları yürüyüşe götürüyorsan bolca atıştırmalık al."
+ },
+ {
+  "id": 1203,
+  "en": "The takeaway arrived cold, so we called the restaurant to complain.",
+  "tr": "Paket yemek soğuk geldi, biz de şikâyet için restoranı aradık."
+ },
+ {
+  "id": 1204,
+  "en": "Here's a tip: add the salt at the very end.",
+  "tr": "Sana bir ipucu: tuzu en sonda ekle."
+ },
+ {
+  "id": 1205,
+  "en": "Does your cat get along with the new puppy?",
+  "tr": "Kedin yeni yavru köpekle iyi geçiniyor mu?"
+ },
+ {
+  "id": 1206,
+  "en": "They broke up last month, but they're still good friends.",
+  "tr": "Geçen ay ayrıldılar ama hâlâ iyi arkadaşlar."
+ },
+ {
+  "id": 1207,
+  "en": "Have you two made up yet, or are you still angry?",
+  "tr": "Siz ikiniz barıştınız mı, yoksa hâlâ kızgın mısınız?"
+ },
+ {
+  "id": 1208,
+  "en": "My aunt loves a bit of gossip over coffee.",
+  "tr": "Teyzem kahve başında biraz dedikoduya bayılır."
+ },
+ {
+  "id": 1209,
+  "en": "If you get a compliment, just say thank you.",
+  "tr": "Bir iltifat alırsan sadece teşekkür et."
+ },
+ {
+  "id": 1210,
+  "en": "Would you forgive a friend who lied to you?",
+  "tr": "Sana yalan söyleyen bir arkadaşını affeder miydin?"
+ },
+ {
+  "id": 1211,
+  "en": "My grandfather was generous with his time, not just his money.",
+  "tr": "Dedem sadece parasıyla değil, zamanıyla da cömertti."
+ },
+ {
+  "id": 1212,
+  "en": "Our old dog is so stubborn; he won't walk in the rain.",
+  "tr": "Yaşlı köpeğimiz o kadar inatçı ki yağmurda yürümüyor."
+ },
+ {
+  "id": 1213,
+  "en": "My skin is very sensitive, so I can't use that soap.",
+  "tr": "Cildim çok hassas, o yüzden o sabunu kullanamıyorum."
+ },
+ {
+  "id": 1214,
+  "en": "He promised to help me move, but he never showed up.",
+  "tr": "Taşınmama yardım edeceğine söz verdi ama hiç gelmedi."
+ },
+ {
+  "id": 1215,
+  "en": "If the soup is cold, you should complain to the waiter.",
+  "tr": "Çorba soğuksa garsona şikâyet etmelisin."
+ },
+ {
+  "id": 1216,
+  "en": "That song always reminds me of our summer in Bodrum.",
+  "tr": "O şarkı bana hep Bodrum'daki yazımızı hatırlatır."
+ },
+ {
+  "id": 1217,
+  "en": "Dogs are loyal; mine waits by the door every evening.",
+  "tr": "Köpekler sadıktır; benimki her akşam kapının önünde bekler."
+ },
+ {
+  "id": 1218,
+  "en": "The nurses at that hospital are really caring and patient.",
+  "tr": "O hastanedeki hemşireler gerçekten şefkatli ve sabırlı."
+ },
+ {
+  "id": 1219,
+  "en": "I'm looking for a new flatmate because Ayşe is moving out.",
+  "tr": "Ayşe taşınacağı için yeni bir ev arkadaşı arıyorum."
+ },
+ {
+  "id": 830,
+  "en": "Don't assume she's angry just because she hasn't replied.",
+  "tr": "Sırf cevap vermedi diye kızgın olduğunu varsayma."
+ },
+ {
+  "id": 831,
+  "en": "You can claim your money back if the product is faulty.",
+  "tr": "Ürün kusurluysa paranı geri talep edebilirsin."
+ },
+ {
+  "id": 832,
+  "en": "I'm not convinced this plan will work, but let's try.",
+  "tr": "Bu planın işe yarayacağına ikna olmadım ama deneyelim."
+ },
+ {
+  "id": 833,
+  "en": "Nobody could persuade Grandpa to see a doctor.",
+  "tr": "Kimse dedemi doktora gitmeye ikna edemedi."
+ },
+ {
+  "id": 834,
+  "en": "My parents never argue in front of us kids.",
+  "tr": "Annemle babam biz çocukların önünde asla tartışmaz."
+ },
+ {
+  "id": 835,
+  "en": "Every journalist has some bias, whether they admit it or not.",
+  "tr": "Her gazetecinin, kabul etse de etmese de, bir önyargısı vardır."
+ },
+ {
+  "id": 836,
+  "en": "Nothing justifies shouting at a child like that.",
+  "tr": "Hiçbir şey bir çocuğa böyle bağırmayı haklı çıkarmaz."
+ },
+ {
+  "id": 837,
+  "en": "If you contradict your boss in a meeting, do it politely.",
+  "tr": "Toplantıda patronunun aksini söyleyeceksen bunu kibarca yap."
+ },
+ {
+  "id": 838,
+  "en": "I can't emphasize enough how important sleep is before an exam.",
+  "tr": "Sınavdan önce uykunun önemini ne kadar vurgulasam az."
+ },
+ {
+  "id": 839,
+  "en": "Her silence implied that she didn't agree with the decision.",
+  "tr": "Sessizliği, karara katılmadığını ima ediyordu."
+ },
+ {
+  "id": 840,
+  "en": "It was raining hard; nevertheless, we finished the hike.",
+  "tr": "Şiddetli yağmur yağıyordu; yine de yürüyüşü tamamladık."
+ },
+ {
+  "id": 841,
+  "en": "I love spicy food, whereas my husband can't handle it.",
+  "tr": "Ben acılı yemeklere bayılırım, oysa eşim hiç dayanamaz."
+ },
+ {
+  "id": 842,
+  "en": "The hotel was clean; furthermore, the staff were incredibly friendly.",
+  "tr": "Otel temizdi; ayrıca personel inanılmaz güler yüzlüydü."
+ },
+ {
+  "id": 843,
+  "en": "He forgot to water the plants; consequently, they all died.",
+  "tr": "Bitkileri sulamayı unuttu; sonuç olarak hepsi kurudu."
+ },
+ {
+  "id": 844,
+  "en": "She speaks four languages; moreover, she's learning a fifth.",
+  "tr": "Dört dil konuşuyor; üstelik beşincisini öğreniyor."
+ },
+ {
+  "id": 845,
+  "en": "I don't feel any resentment towards him anymore.",
+  "tr": "Ona karşı artık hiç kırgınlık hissetmiyorum."
+ },
+ {
+  "id": 846,
+  "en": "The old cat has a special affection for my daughter.",
+  "tr": "Yaşlı kedinin kızıma karşı özel bir sevgisi var."
+ },
+ {
+  "id": 847,
+  "en": "Jealousy between siblings is normal, but it shouldn't last forever.",
+  "tr": "Kardeşler arasındaki kıskançlık normaldir ama sonsuza dek sürmemeli."
+ },
+ {
+  "id": 848,
+  "en": "Reading novels has helped me develop more empathy for strangers.",
+  "tr": "Roman okumak, yabancılara karşı daha çok empati geliştirmeme yardımcı oldu."
+ },
+ {
+  "id": 849,
+  "en": "I felt a little guilt about eating the last slice.",
+  "tr": "Son dilimi yediğim için biraz suçluluk hissettim."
+ },
+ {
+  "id": 850,
+  "en": "She was overwhelmed by the number of emails after her holiday.",
+  "tr": "Tatil dönüşü gelen e-postaların altında ezildi."
+ },
+ {
+  "id": 851,
+  "en": "The kids were reluctant to leave the beach at sunset.",
+  "tr": "Çocuklar gün batımında plajdan ayrılmaya isteksizdi."
+ },
+ {
+  "id": 852,
+  "en": "My cat is completely indifferent to the new toy I bought.",
+  "tr": "Kedim aldığım yeni oyuncağa tamamen kayıtsız."
+ },
+ {
+  "id": 853,
+  "en": "He was devastated when his team lost the final.",
+  "tr": "Takımı finali kaybedince yıkıldı."
+ },
+ {
+  "id": 854,
+  "en": "My daughter is thrilled about her first day of school.",
+  "tr": "Kızım okuldaki ilk günü için çok heyecanlı."
+ },
+ {
+  "id": 855,
+  "en": "Learning a language takes real commitment, not just a good app.",
+  "tr": "Dil öğrenmek sadece iyi bir uygulama değil, gerçek bağlılık ister."
+ },
+ {
+  "id": 856,
+  "en": "I would never betray a friend's trust, whatever the reason.",
+  "tr": "Sebep ne olursa olsun bir arkadaşımın güvenine asla ihanet etmem."
+ },
+ {
+  "id": 857,
+  "en": "My mother tried to reconcile my two aunts after their argument.",
+  "tr": "Annem, kavgalarından sonra iki teyzemi barıştırmaya çalıştı."
+ },
+ {
+  "id": 858,
+  "en": "You can't rely on the buses here; they're always late.",
+  "tr": "Buradaki otobüslere güvenemezsin; hep geç kalıyorlar."
+ },
+ {
+  "id": 859,
+  "en": "I'll always cherish the summers we spent at the lake.",
+  "tr": "Gölde geçirdiğimiz yazlara her zaman değer vereceğim."
+ },
+ {
+  "id": 860,
+  "en": "Our company has a strict policy about working from home.",
+  "tr": "Şirketimizin evden çalışmayla ilgili katı bir politikası var."
+ },
+ {
+  "id": 861,
+  "en": "My grandmother has voted in every election since 1970.",
+  "tr": "Babaannem 1970'ten beri her seçimde oy kullandı."
+ },
+ {
+  "id": 862,
+  "en": "We interviewed six candidates, but none of them spoke German.",
+  "tr": "Altı adayla görüştük ama hiçbiri Almanca bilmiyordu."
+ },
+ {
+  "id": 863,
+  "en": "The school started a campaign to get kids cycling.",
+  "tr": "Okul, çocukların bisiklete binmesi için bir kampanya başlattı."
+ },
+ {
+  "id": 864,
+  "en": "Our flat runs on democracy: we vote on everything, even pizza toppings.",
+  "tr": "Evimiz demokrasiyle yönetiliyor: pizza malzemesi dahil her şeyi oyluyoruz."
+ },
+ {
+  "id": 865,
+  "en": "She became a Canadian citizen after living there for six years.",
+  "tr": "Altı yıl orada yaşadıktan sonra Kanada vatandaşı oldu."
+ },
+ {
+  "id": 866,
+  "en": "The students held a peaceful protest outside the library.",
+  "tr": "Öğrenciler kütüphanenin önünde barışçıl bir protesto düzenledi."
+ },
+ {
+  "id": 867,
+  "en": "Teachers have been asking for education reform for years.",
+  "tr": "Öğretmenler yıllardır eğitim reformu istiyor."
+ },
+ {
+  "id": 868,
+  "en": "Free school meals could reduce inequality among children.",
+  "tr": "Ücretsiz okul yemekleri çocuklar arasındaki eşitsizliği azaltabilir."
+ },
+ {
+  "id": 869,
+  "en": "The company says it cares about the welfare of its workers.",
+  "tr": "Şirket, çalışanlarının refahını önemsediğini söylüyor."
+ },
+ {
+  "id": 870,
+  "en": "Without stronger legislation, the river will keep getting dirtier.",
+  "tr": "Daha güçlü bir mevzuat olmadan nehir kirlenmeye devam edecek."
+ },
+ {
+  "id": 871,
+  "en": "Teachers have lost some authority in the classroom over the years.",
+  "tr": "Öğretmenler yıllar içinde sınıftaki otoritelerinin bir kısmını kaybetti."
+ },
+ {
+  "id": 872,
+  "en": "Many people believe corruption is the country's biggest problem.",
+  "tr": "Birçok insan yolsuzluğun ülkenin en büyük sorunu olduğuna inanıyor."
+ },
+ {
+  "id": 873,
+  "en": "Only a small minority of students actually read the whole book.",
+  "tr": "Öğrencilerin sadece küçük bir azınlığı kitabın tamamını gerçekten okudu."
+ },
+ {
+  "id": 874,
+  "en": "The majority of my friends have already moved abroad.",
+  "tr": "Arkadaşlarımın çoğunluğu çoktan yurt dışına taşındı."
+ },
+ {
+  "id": 875,
+  "en": "If the results don't match, we'll have to change our hypothesis.",
+  "tr": "Sonuçlar uyuşmazsa hipotezimizi değiştirmek zorunda kalacağız."
+ },
+ {
+  "id": 876,
+  "en": "My son did a simple experiment with vinegar and baking soda.",
+  "tr": "Oğlum sirke ve karbonatla basit bir deney yaptı."
+ },
+ {
+  "id": 877,
+  "en": "The coach analyzed the video to see why we lost.",
+  "tr": "Antrenör neden kaybettiğimizi görmek için videoyu analiz etti."
+ },
+ {
+  "id": 878,
+  "en": "The app collects data about how many steps you take.",
+  "tr": "Uygulama, kaç adım attığınla ilgili veri topluyor."
+ },
+ {
+  "id": 879,
+  "en": "My theory is that the cat hides the socks.",
+  "tr": "Benim teorime göre çorapları kedi saklıyor."
+ },
+ {
+  "id": 880,
+  "en": "From his wet shoes, I concluded he had walked home.",
+  "tr": "Islak ayakkabılarından eve yürüyerek geldiği sonucuna vardım."
+ },
+ {
+  "id": 881,
+  "en": "Moving to Izmir was a significant change for the whole family.",
+  "tr": "İzmir'e taşınmak tüm aile için önemli bir değişiklikti."
+ },
+ {
+  "id": 882,
+  "en": "Give each variable a clear name so others can read your code.",
+  "tr": "Başkaları kodunu okuyabilsin diye her değişkene açık bir isim ver."
+ },
+ {
+  "id": 883,
+  "en": "Our little café has evolved into a busy restaurant.",
+  "tr": "Küçük kafemiz zamanla gelişip hareketli bir restorana dönüştü."
+ },
+ {
+  "id": 884,
+  "en": "Online shopping has become a global phenomenon in twenty years.",
+  "tr": "Online alışveriş yirmi yılda küresel bir fenomen hâline geldi."
+ },
+ {
+  "id": 885,
+  "en": "Her description of the thief was so accurate that police found him.",
+  "tr": "Hırsızı o kadar isabetli tarif etti ki polis onu buldu."
+ },
+ {
+  "id": 886,
+  "en": "I estimate the drive will take about four hours.",
+  "tr": "Yolun arabayla yaklaşık dört saat süreceğini tahmin ediyorum."
+ },
+ {
+  "id": 887,
+  "en": "The shop gave me a free sample of the new perfume.",
+  "tr": "Mağaza bana yeni parfümden ücretsiz bir numune verdi."
+ },
+ {
+  "id": 888,
+  "en": "We sat quietly and observed the birds at the feeder.",
+  "tr": "Sessizce oturup yemlikteki kuşları gözlemledik."
+ },
+ {
+  "id": 889,
+  "en": "Nobody can predict how a two-year-old will behave at a wedding.",
+  "tr": "İki yaşındaki bir çocuğun düğünde nasıl davranacağını kimse öngöremez."
+ },
+ {
+  "id": 890,
+  "en": "The café's revenue fell sharply once the office next door closed.",
+  "tr": "Yandaki ofis kapanınca kafenin geliri sert biçimde düştü."
+ },
+ {
+  "id": 891,
+  "en": "I managed to negotiate a lower rent before signing the lease.",
+  "tr": "Sözleşmeyi imzalamadan önce pazarlık ederek kirayı düşürmeyi başardım."
+ },
+ {
+  "id": 892,
+  "en": "She left to join a competitor, taking two clients with her.",
+  "tr": "Bir rakip şirkete geçmek için ayrıldı, iki müşteriyi de yanında götürdü."
+ },
+ {
+  "id": 893,
+  "en": "Our whole marketing strategy changed after the app went viral in Brazil.",
+  "tr": "Uygulama Brezilya'da viral olunca tüm pazarlama stratejimiz değişti."
+ },
+ {
+  "id": 894,
+  "en": "Every entrepreneur I've met has failed at least once before succeeding.",
+  "tr": "Tanıştığım her girişimci başarıya ulaşmadan önce en az bir kez başarısız olmuş."
+ },
+ {
+  "id": 895,
+  "en": "Economists are warning that another recession could hit before next summer.",
+  "tr": "Ekonomistler gelecek yazdan önce yeni bir resesyon yaşanabileceği uyarısında bulunuyor."
+ },
+ {
+  "id": 896,
+  "en": "The central bank raised interest rates again to bring inflation under control.",
+  "tr": "Merkez bankası enflasyonu kontrol altına almak için faizleri yeniden artırdı."
+ },
+ {
+  "id": 897,
+  "en": "The bakery couldn't keep up with demand once the review appeared online.",
+  "tr": "Yorum internette yayımlanınca fırın talebe yetişemez oldu."
+ },
+ {
+  "id": 898,
+  "en": "The hospital has only a week's supply of the vaccine left.",
+  "tr": "Hastanede yalnızca bir haftalık aşı stoku kaldı."
+ },
+ {
+  "id": 899,
+  "en": "As a small shareholder, I get a dividend cheque twice a year.",
+  "tr": "Küçük bir hissedar olarak yılda iki kez temettü çeki alıyorum."
+ },
+ {
+  "id": 900,
+  "en": "Rumours of a merger sent both companies' shares up on Monday.",
+  "tr": "Birleşme söylentileri pazartesi günü her iki şirketin hisselerini de yükseltti."
+ },
+ {
+  "id": 901,
+  "en": "The charity launched a campaign to feed schoolchildren during the holidays.",
+  "tr": "Yardım kuruluşu tatillerde okul çocuklarını doyurmak için bir kampanya başlattı."
+ },
+ {
+  "id": 902,
+  "en": "We outsource the cleaning, so nobody on staff has to do it.",
+  "tr": "Temizlik için dış kaynak kullanıyoruz, böylece personelden kimse bununla uğraşmıyor."
+ },
+ {
+  "id": 903,
+  "en": "Working seventy hours a week simply isn't sustainable, whatever your salary.",
+  "tr": "Haftada yetmiş saat çalışmak, maaşın ne olursa olsun sürdürülebilir değil."
+ },
+ {
+  "id": 904,
+  "en": "The phone's biggest innovation is a battery that charges in ten minutes.",
+  "tr": "Telefonun en büyük yeniliği on dakikada şarj olan bir batarya."
+ },
+ {
+  "id": 905,
+  "en": "Detectives questioned three suspects, but all of them had solid alibis.",
+  "tr": "Dedektifler üç şüpheliyi sorguladı ama hepsinin sağlam mazereti vardı."
+ },
+ {
+  "id": 906,
+  "en": "We need two witnesses to sign the will before it's valid.",
+  "tr": "Vasiyetin geçerli olması için iki tanığın imzalaması gerekiyor."
+ },
+ {
+  "id": 907,
+  "en": "The gym offers a free two-week trial before you commit to membership.",
+  "tr": "Spor salonu, üyelik taahhüdü vermeden önce iki haftalık ücretsiz deneme sunuyor."
+ },
+ {
+  "id": 908,
+  "en": "The whole courtroom fell silent as the judge read out the verdict.",
+  "tr": "Hâkim hükmü okurken tüm mahkeme salonu sessizliğe gömüldü."
+ },
+ {
+  "id": 909,
+  "en": "Her essay opened with a sentence so long I had to read it twice.",
+  "tr": "Kompozisyonu o kadar uzun bir cümleyle başlıyordu ki iki kez okumak zorunda kaldım."
+ },
+ {
+  "id": 910,
+  "en": "I still feel guilty about missing my sister's wedding.",
+  "tr": "Kız kardeşimin düğününü kaçırdığım için hâlâ kendimi suçlu hissediyorum."
+ },
+ {
+  "id": 911,
+  "en": "An innocent man spent twelve years in prison before DNA cleared him.",
+  "tr": "Masum bir adam, DNA onu aklayana kadar on iki yıl hapiste kaldı."
+ },
+ {
+  "id": 912,
+  "en": "She's training to be a lawyer, so she argues about everything.",
+  "tr": "Avukat olmak için eğitim alıyor, o yüzden her konuda tartışıyor."
+ },
+ {
+  "id": 913,
+  "en": "The tennis court behind the school is free after six.",
+  "tr": "Okulun arkasındaki tenis kortu altıdan sonra boş oluyor."
+ },
+ {
+  "id": 914,
+  "en": "Nobody on the jury had ever been inside a courtroom before.",
+  "tr": "Jürideki hiç kimse daha önce bir mahkeme salonuna adım atmamıştı."
+ },
+ {
+  "id": 915,
+  "en": "Banks warn customers to watch for online fraud around the holidays.",
+  "tr": "Bankalar müşterilerini tatil dönemlerinde internet dolandırıcılığına karşı uyarıyor."
+ },
+ {
+  "id": 916,
+  "en": "No offense, but that jacket looks like it belongs to your dad.",
+  "tr": "Gücenme ama o ceket sanki babanınmış gibi duruyor."
+ },
+ {
+  "id": 917,
+  "en": "The referee gave a penalty in the last minute, and we lost.",
+  "tr": "Hakem son dakikada penaltı verdi ve kaybettik."
+ },
+ {
+  "id": 918,
+  "en": "I've never understood the appeal of camping in the rain.",
+  "tr": "Yağmurda kamp yapmanın cazibesini hiçbir zaman anlayamadım."
+ },
+ {
+  "id": 919,
+  "en": "The state decided not to prosecute the driver after seeing the footage.",
+  "tr": "Savcılık görüntüleri izledikten sonra sürücü hakkında dava açmamaya karar verdi."
+ },
+ {
+  "id": 920,
+  "en": "The band's lyrics were changed for radio, which they called censorship.",
+  "tr": "Grubun şarkı sözleri radyo için değiştirildi; onlar buna sansür dedi."
+ },
+ {
+  "id": 921,
+  "en": "She dismissed the whole speech as propaganda and switched off the television.",
+  "tr": "Konuşmanın tamamına propaganda deyip televizyonu kapattı."
+ },
+ {
+  "id": 922,
+  "en": "Showing up late to every meeting has cost him credibility with the team.",
+  "tr": "Her toplantıya geç kalması, ekibin gözündeki güvenilirliğine mal oldu."
+ },
+ {
+  "id": 923,
+  "en": "Don't be fooled by the misleading label — it's mostly sugar.",
+  "tr": "Yanıltıcı etikete kanma; içindekilerin çoğu şeker."
+ },
+ {
+  "id": 924,
+  "en": "My cousin interprets for Syrian families at the hospital twice a week.",
+  "tr": "Kuzenim haftada iki kez hastanede Suriyeli aileler için tercümanlık yapıyor."
+ },
+ {
+  "id": 925,
+  "en": "My grandfather loves to exaggerate the size of the fish he caught.",
+  "tr": "Dedem tuttuğu balığın büyüklüğünü abartmaya bayılır."
+ },
+ {
+  "id": 926,
+  "en": "The app summarizes each article so you can decide whether to read it.",
+  "tr": "Uygulama her makaleyi özetliyor, böylece okuyup okumamaya karar verebiliyorsun."
+ },
+ {
+  "id": 927,
+  "en": "I emailed the landlord to clarify who pays for the boiler repair.",
+  "tr": "Kombi tamirini kimin ödeyeceğini açıklığa kavuşturmak için ev sahibine e-posta attım."
+ },
+ {
+  "id": 928,
+  "en": "If you can't remember the exact quote, just paraphrase it.",
+  "tr": "Alıntıyı birebir hatırlamıyorsan başka sözlerle anlatıver."
+ },
+ {
+  "id": 929,
+  "en": "My deaf neighbour taught me, and now I'm fluent in sign language.",
+  "tr": "İşitme engelli komşum öğretti; artık işaret dilini akıcı biçimde kullanıyorum."
+ },
+ {
+  "id": 930,
+  "en": "He's bright but not very articulate, so interviews terrify him.",
+  "tr": "Zeki ama kendini pek net ifade edemiyor, o yüzden mülakatlar onu dehşete düşürüyor."
+ },
+ {
+  "id": 931,
+  "en": "I have only a vague memory of the house we lived in.",
+  "tr": "Yaşadığımız o evle ilgili yalnızca bulanık bir anım var."
+ },
+ {
+  "id": 932,
+  "en": "The film's ending is deliberately ambiguous; nobody knows if she survived.",
+  "tr": "Filmin sonu bilerek muğlak bırakılmış; kadının hayatta kalıp kalmadığını kimse bilmiyor."
+ },
+ {
+  "id": 933,
+  "en": "Her instructions were so concise that even the new intern understood.",
+  "tr": "Talimatları o kadar kısa ve özdü ki yeni stajyer bile anladı."
+ },
+ {
+  "id": 934,
+  "en": "The audience laughed so hard that the actors had to pause.",
+  "tr": "İzleyiciler o kadar çok güldü ki oyuncular ara vermek zorunda kaldı."
+ },
+ {
+  "id": 935,
+  "en": "There was real anxiety in the office as the layoffs were announced.",
+  "tr": "İşten çıkarmalar açıklanırken ofiste gerçek bir kaygı vardı."
+ },
+ {
+  "id": 936,
+  "en": "Depression runs in her family, so she watches for the early signs.",
+  "tr": "Ailesinde depresyon öyküsü var, bu yüzden erken belirtilere dikkat ediyor."
+ },
+ {
+  "id": 937,
+  "en": "After the stroke, he needed months of speech therapy to talk again.",
+  "tr": "Felçten sonra yeniden konuşabilmek için aylarca konuşma terapisi görmesi gerekti."
+ },
+ {
+  "id": 938,
+  "en": "The clinic treats gambling addiction, which is harder to spot than drugs.",
+  "tr": "Klinik, uyuşturucuya göre fark edilmesi daha zor olan kumar bağımlılığını tedavi ediyor."
+ },
+ {
+  "id": 939,
+  "en": "Weeks of insomnia left him too exhausted to concentrate at work.",
+  "tr": "Haftalarca süren uykusuzluk onu işte odaklanamayacak kadar bitkin düşürdü."
+ },
+ {
+  "id": 940,
+  "en": "The old bridge simply can't cope with this much traffic anymore.",
+  "tr": "Eski köprü artık bu kadar trafikle baş edemiyor."
+ },
+ {
+  "id": 941,
+  "en": "Kids build resilience by failing at small things and trying again.",
+  "tr": "Çocuklar küçük şeylerde başarısız olup yeniden deneyerek dayanıklılık kazanır."
+ },
+ {
+  "id": 942,
+  "en": "The new manager is mindful that half the team has young children.",
+  "tr": "Yeni müdür, ekibin yarısının küçük çocukları olduğunun farkında."
+ },
+ {
+  "id": 943,
+  "en": "Nurses are trained to spot signs of trauma in children who won't talk.",
+  "tr": "Hemşireler, konuşmayan çocuklarda travma belirtilerini fark etmek üzere eğitiliyor."
+ },
+ {
+  "id": 944,
+  "en": "A short walk every morning does wonders for my well-being.",
+  "tr": "Her sabah kısa bir yürüyüş esenliğim için harikalar yaratıyor."
+ },
+ {
+  "id": 945,
+  "en": "Even the best players aren't immune to nerves before a final.",
+  "tr": "En iyi oyuncular bile final öncesi heyecana bağışık değil."
+ },
+ {
+  "id": 946,
+  "en": "The hospital has a chronic shortage of nurses on the night shift.",
+  "tr": "Hastanede gece vardiyasında kronik bir hemşire sıkıntısı var."
+ },
+ {
+  "id": 947,
+  "en": "Getting the right diagnosis took three doctors and nearly a year.",
+  "tr": "Doğru teşhisin konması üç doktor ve neredeyse bir yıl aldı."
+ },
+ {
+  "id": 948,
+  "en": "He came out of surgery at midnight and was joking by breakfast.",
+  "tr": "Gece yarısı ameliyattan çıktı, kahvaltıda çoktan şaka yapmaya başlamıştı."
+ },
+ {
+  "id": 949,
+  "en": "The restaurant asks about allergies before it takes your order.",
+  "tr": "Restoran, siparişinizi almadan önce alerjilerinizi soruyor."
+ },
+ {
+  "id": 950,
+  "en": "The government is offering grants to farmers who switch to renewable energy.",
+  "tr": "Hükümet yenilenebilir enerjiye geçen çiftçilere hibe veriyor."
+ },
+ {
+  "id": 951,
+  "en": "Older diesel buses fail the emissions test and can't enter the centre.",
+  "tr": "Eski dizel otobüsler emisyon testinden geçemiyor ve şehir merkezine giremiyor."
+ },
+ {
+  "id": 952,
+  "en": "Leaving part of the garden wild is a cheap way to boost biodiversity.",
+  "tr": "Bahçenin bir bölümünü kendi haline bırakmak, biyoçeşitliliği artırmanın ucuz bir yolu."
+ },
+ {
+  "id": 953,
+  "en": "The landslide was blamed on years of deforestation on the slopes above.",
+  "tr": "Heyelanın nedeni olarak yukarıdaki yamaçlarda yıllardır süren ormansızlaşma gösterildi."
+ },
+ {
+  "id": 954,
+  "en": "The old cinema was saved thanks to a local conservation group.",
+  "tr": "Eski sinema, yerel bir koruma derneği sayesinde kurtarıldı."
+ },
+ {
+  "id": 955,
+  "en": "The bike frame is made of carbon, which is why it's so light.",
+  "tr": "Bisikletin kadrosu karbondan yapılmış, bu yüzden bu kadar hafif."
+ },
+ {
+  "id": 956,
+  "en": "A single rotting log is a whole ecosystem for beetles and fungi.",
+  "tr": "Çürüyen tek bir kütük, böcekler ve mantarlar için başlı başına bir ekosistem."
+ },
+ {
+  "id": 957,
+  "en": "The zoo breeds endangered snow leopards and releases some into the wild.",
+  "tr": "Hayvanat bahçesi nesli tükenmekte olan kar leoparlarını üretiyor ve bazılarını doğaya salıyor."
+ },
+ {
+  "id": 958,
+  "en": "The whole batch was recalled over fears of salmonella contamination.",
+  "tr": "Salmonella bulaşması endişesiyle partinin tamamı geri çağrıldı."
+ },
+ {
+  "id": 959,
+  "en": "My uncle restores vintage motorbikes in his garage at the weekend.",
+  "tr": "Amcam hafta sonları garajında antika motosikletleri eski haline getiriyor."
+ },
+ {
+  "id": 960,
+  "en": "She grew up on a farm and found urban life exhausting at first.",
+  "tr": "Bir çiftlikte büyüdü ve kent yaşamını başta yorucu buldu."
+ },
+ {
+  "id": 961,
+  "en": "Rural schools are closing because there aren't enough children to fill them.",
+  "tr": "Kırsal kesimdeki okullar, dolduracak yeterince çocuk olmadığı için kapanıyor."
+ },
+ {
+  "id": 962,
+  "en": "The new stadium is useless without the transport infrastructure to reach it.",
+  "tr": "Yeni stadyum, oraya ulaşmayı sağlayacak ulaşım altyapısı olmadan işe yaramaz."
+ },
+ {
+  "id": 963,
+  "en": "Our biology teacher used rabbits in Australia to explain overpopulation.",
+  "tr": "Biyoloji öğretmenimiz aşırı nüfusu anlatmak için Avustralya'daki tavşanları örnek verdi."
+ },
+ {
+  "id": 964,
+  "en": "The scarcity of affordable flats has pushed young people out of the city.",
+  "tr": "Uygun fiyatlı dairelerin azlığı gençleri şehrin dışına itti."
+ },
+ {
+  "id": 965,
+  "en": "My grandmother never quite grasped the concept of streaming; she still records everything.",
+  "tr": "Büyükannem internetten izleme kavramını hiç tam kavrayamadı; hâlâ her şeyi kaydediyor."
+ },
+ {
+  "id": 966,
+  "en": "Travelling alone at nineteen completely changed my perspective on what I actually needed.",
+  "tr": "On dokuz yaşında tek başıma seyahat etmek, gerçekten neye ihtiyacım olduğuna dair bakış açımı tamamen değiştirdi."
+ },
+ {
+  "id": 967,
+  "en": "The film makes far more sense once you know the historical context.",
+  "tr": "Tarihsel bağlamı bilince film çok daha anlamlı hale geliyor."
+ },
+ {
+  "id": 968,
+  "en": "None of the flats we saw met even half of our criteria.",
+  "tr": "Gördüğümüz dairelerin hiçbiri ölçütlerimizin yarısını bile karşılamıyordu."
+ },
+ {
+  "id": 969,
+  "en": "Without a clear framework, the discussion just went round in circles for hours.",
+  "tr": "Net bir çerçeve olmadan tartışma saatlerce aynı yerde dönüp durdu."
+ },
+ {
+  "id": 970,
+  "en": "The doctor tried a gentler approach and the boy finally stopped crying.",
+  "tr": "Doktor daha yumuşak bir yaklaşım denedi ve çocuk sonunda ağlamayı bıraktı."
+ },
+ {
+  "id": 971,
+  "en": "The aspect of the job I enjoy most is training the new starters.",
+  "tr": "İşin en sevdiğim yönü, yeni başlayanları eğitmek."
+ },
+ {
+  "id": 972,
+  "en": "Check the dimensions of the sofa before ordering; the doorway is narrow.",
+  "tr": "Sipariş vermeden önce koltuğun boyutlarını kontrol et; kapı aralığı dar."
+ },
+ {
+  "id": 973,
+  "en": "Students are assessed on coursework rather than a single final exam.",
+  "tr": "Öğrenciler tek bir final sınavıyla değil, dönem ödevleriyle değerlendiriliyor."
+ },
+ {
+  "id": 974,
+  "en": "It's the hand-stitched label that distinguishes the original from the copies.",
+  "tr": "Orijinali kopyalardan ayırt eden şey, elle dikilmiş etiketi."
+ },
+ {
+  "id": 975,
+  "en": "Half the slides weren't relevant, so she skipped straight to the numbers.",
+  "tr": "Slaytların yarısı konuyla ilgili değildi, o yüzden doğrudan rakamlara geçti."
+ },
+ {
+  "id": 976,
+  "en": "The essay has good ideas, but they never form a coherent argument.",
+  "tr": "Makalede iyi fikirler var, ama bunlar hiçbir zaman tutarlı bir argüman oluşturmuyor."
+ },
+ {
+  "id": 977,
+  "en": "She moved to Lyon in 2015 and spent the subsequent decade teaching there.",
+  "tr": "2015'te Lyon'a taşındı ve sonraki on yılı orada öğretmenlik yaparak geçirdi."
+ },
+ {
+  "id": 978,
+  "en": "As with most teenage bands, the inevitable happened: they split over a girl.",
+  "tr": "Çoğu genç grupta olduğu gibi kaçınılmaz olan oldu: bir kız yüzünden dağıldılar."
+ },
+ {
+  "id": 979,
+  "en": "Parents complained about the school's arbitrary rule banning coloured socks.",
+  "tr": "Veliler, okulun renkli çorapları yasaklayan keyfi kuralından şikayet etti."
+ },
+ {
+  "id": 1220,
+  "en": "I've delegated the catering to my brother, which may prove a mistake.",
+  "tr": "Yemek işini abime devrettim; bu bir hata olabilir."
+ },
+ {
+  "id": 1221,
+  "en": "Every new nurse is paired with a mentor for their first six months.",
+  "tr": "Her yeni hemşire ilk altı ay boyunca deneyimli bir akıl hocasıyla eşleştiriliyor."
+ },
+ {
+  "id": 1222,
+  "en": "The council's new recycling initiative has cut landfill waste by a third.",
+  "tr": "Belediyenin yeni geri dönüşüm girişimi, çöp sahasına giden atığı üçte bir oranında azalttı."
+ },
+ {
+  "id": 1223,
+  "en": "Teachers say the paperwork, not the teaching, makes the workload unbearable.",
+  "tr": "Öğretmenler, iş yükünü çekilmez hale getirenin ders değil evrak işi olduğunu söylüyor."
+ },
+ {
+  "id": 1224,
+  "en": "Burnout among junior doctors is so common that the hospital runs support groups.",
+  "tr": "Asistan doktorlar arasında tükenmişlik o kadar yaygın ki hastane destek grupları düzenliyor."
+ },
+ {
+  "id": 1225,
+  "en": "Nobody enjoys writing appraisals, but skipping them is unfair to the good staff.",
+  "tr": "Kimse performans değerlendirmesi yazmaktan hoşlanmaz, ama atlamak iyi çalışanlara haksızlık olur."
+ },
+ {
+  "id": 1226,
+  "en": "The feedback from the trial customers was blunt: the app was too slow.",
+  "tr": "Deneme müşterilerinden gelen geri bildirim netti: uygulama çok yavaştı."
+ },
+ {
+  "id": 1227,
+  "en": "The night-shift supervisor noticed the leak before anyone else had arrived.",
+  "tr": "Gece vardiyası amiri sızıntıyı daha kimse gelmeden fark etti."
+ },
+ {
+  "id": 1228,
+  "en": "The green paint was a compromise; I wanted blue and he wanted white.",
+  "tr": "Yeşil boya bir orta yoldu; ben mavi istiyordum, o beyaz."
+ },
+ {
+  "id": 1229,
+  "en": "The report demands that ministers be held accountable for the failed contracts.",
+  "tr": "Rapor, bakanların başarısız sözleşmeler için hesap vermesini talep ediyor."
+ },
+ {
+  "id": 1230,
+  "en": "The charity publishes every donation online, which makes its finances fully transparent.",
+  "tr": "Hayır kurumu her bağışı internette yayımlıyor, bu da mali durumunu tamamen şeffaf kılıyor."
+ },
+ {
+  "id": 1231,
+  "en": "Be proactive: email the landlord about the boiler before winter, not during it.",
+  "tr": "Proaktif ol: kombi konusunda ev sahibine kışın ortasında değil, kıştan önce e-posta at."
+ },
+ {
+  "id": 1232,
+  "en": "If the vote goes against her, she has promised to resign immediately.",
+  "tr": "Oylama aleyhine sonuçlanırsa derhal istifa edeceğine söz verdi."
+ },
+ {
+  "id": 1233,
+  "en": "She was recruited straight from university by a bank in Frankfurt.",
+  "tr": "Üniversiteden çıkar çıkmaz Frankfurt'taki bir banka tarafından işe alındı."
+ },
+ {
+  "id": 1234,
+  "en": "Fixing the roof is beyond my expertise; I'll happily hold the ladder.",
+  "tr": "Çatı tamiri uzmanlık alanımın dışında; merdiveni seve seve tutarım."
+ },
+ {
+  "id": 1235,
+  "en": "Dad's itinerary was so tight that even lunch had a fixed time.",
+  "tr": "Babamın seyahat planı o kadar sıkıydı ki öğle yemeğinin bile sabit saati vardı."
+ },
+ {
+  "id": 1236,
+  "en": "The 1965 ruling was a landmark case for women's rights in the country.",
+  "tr": "1965 tarihli karar, ülkede kadın hakları açısından bir dönüm noktasıydı."
+ },
+ {
+  "id": 1237,
+  "en": "Immerse the jar in hot water for a minute and the lid loosens.",
+  "tr": "Kavanozu bir dakika sıcak suya daldırın, kapak gevşer."
+ },
+ {
+  "id": 1238,
+  "en": "We were held at customs for an hour over my mother's homemade cheese.",
+  "tr": "Annemin ev yapımı peyniri yüzünden gümrükte bir saat bekletildik."
+ },
+ {
+  "id": 1239,
+  "en": "Office etiquette here is strict: nobody eats fish at their desk, ever.",
+  "tr": "Buradaki ofis görgü kuralları katı: kimse masasında balık yemez, asla."
+ },
+ {
+  "id": 1240,
+  "en": "She studied hospitality in Lausanne and now manages a hotel in Bodrum.",
+  "tr": "Lozan'da otelcilik okudu ve şimdi Bodrum'da bir otel işletiyor."
+ },
+ {
+  "id": 1241,
+  "en": "We rented a remote cabin with no wifi, which was exactly the point.",
+  "tr": "İnternetsiz, ücra bir kulübe kiraladık; amaç da tam olarak buydu."
+ },
+ {
+  "id": 1242,
+  "en": "The dancers moved at breathtaking speed, yet nobody seemed out of breath.",
+  "tr": "Dansçılar nefes kesici bir hızla hareket ediyordu, ama kimse nefes nefese görünmüyordu."
+ },
+ {
+  "id": 1243,
+  "en": "Sunrise hikes are overrated; you're cold, half asleep, and the photos look grey.",
+  "tr": "Gün doğumu yürüyüşleri fazla abartılıyor; üşüyorsun, yarı uykulusun ve fotoğraflar gri çıkıyor."
+ },
+ {
+  "id": 1244,
+  "en": "The real culture shock came when I moved home after six years abroad.",
+  "tr": "Asıl kültür şokunu, altı yıl yurt dışında kaldıktan sonra eve dönünce yaşadım."
+ },
+ {
+  "id": 1245,
+  "en": "After ten years as an expat, she found Turkish bureaucracy oddly comforting.",
+  "tr": "On yıl yurt dışında yaşadıktan sonra Türk bürokrasisini tuhaf biçimde rahatlatıcı buldu."
+ },
+ {
+  "id": 1246,
+  "en": "Her grandparents were nomads who moved their herds up the mountain each spring.",
+  "tr": "Büyükanne ve büyükbabası, her bahar sürülerini dağa çıkaran göçebelerdi."
+ },
+ {
+  "id": 1247,
+  "en": "My mind kept wandering during the lecture, mostly towards lunch.",
+  "tr": "Ders boyunca aklım sürekli başka yerlerde geziniyordu, çoğunlukla öğle yemeğinde."
+ },
+ {
+  "id": 1248,
+  "en": "We settled the argument the old-fashioned way: my mother decided.",
+  "tr": "Tartışmayı eski usul hallettik: annem karar verdi."
+ },
+ {
+  "id": 1249,
+  "en": "The novel was adapted for television, with the ending changed completely.",
+  "tr": "Roman, sonu tamamen değiştirilerek televizyona uyarlandı."
+ },
+ {
+  "id": 980,
+  "en": "The restoration was meticulous; even the original nail holes were kept.",
+  "tr": "Restorasyon son derece titizdi; orijinal çivi delikleri bile korundu."
+ },
+ {
+  "id": 981,
+  "en": "My mother is pragmatic about family dinners: whoever has the biggest oven hosts.",
+  "tr": "Annem aile yemekleri konusunda pragmatik: fırını en büyük olan ev sahipliği yapar."
+ },
+ {
+  "id": 982,
+  "en": "Good reviews are dangerous; they make a restaurant complacent within a season.",
+  "tr": "İyi yorumlar tehlikelidir; bir restoranı bir sezonda rehavete sürükler."
+ },
+ {
+  "id": 983,
+  "en": "A tenacious young reporter finally got the mayor to answer the question.",
+  "tr": "Pes etmeyen genç bir muhabir, sonunda belediye başkanına soruyu yanıtlattı."
+ },
+ {
+  "id": 984,
+  "en": "The memoir is a candid account of her divorce, unflattering to everyone.",
+  "tr": "Anı kitabı boşanmasını açık sözlülükle anlatıyor ve kimseyi kayırmıyor."
+ },
+ {
+  "id": 985,
+  "en": "Cats have a reputation for being aloof, yet mine follows me everywhere.",
+  "tr": "Kediler mesafeli olmakla ünlüdür, ama benimki beni her yerde takip ediyor."
+ },
+ {
+  "id": 986,
+  "en": "My gregarious sister collects friends the way other people collect stamps.",
+  "tr": "İnsan canlısı ablam, başkalarının pul biriktirdiği gibi arkadaş biriktiriyor."
+ },
+ {
+  "id": 987,
+  "en": "Nothing about the house is ostentatious; you'd never guess what they earn.",
+  "tr": "Evde şatafatlı hiçbir şey yok; ne kazandıklarını asla tahmin edemezsin."
+ },
+ {
+  "id": 988,
+  "en": "A less scrupulous dealer would have sold the car without mentioning the flood.",
+  "tr": "Daha az vicdanlı bir satıcı, arabayı selden hiç bahsetmeden satardı."
+ },
+ {
+  "id": 989,
+  "en": "The stain proved obstinate, surviving three washes and a bottle of vinegar.",
+  "tr": "Leke inatçı çıktı; üç yıkamaya ve bir şişe sirkeye dayandı."
+ },
+ {
+  "id": 990,
+  "en": "The scholarship was funded by a benevolent stranger who never gave her name.",
+  "tr": "Burs, adını hiç vermeyen hayırsever bir yabancı tarafından karşılandı."
+ },
+ {
+  "id": 991,
+  "en": "Years in customer service have made him cynical about every 'free' offer.",
+  "tr": "Müşteri hizmetlerinde geçen yıllar onu her 'bedava' teklifte art niyet arar hale getirdi."
+ },
+ {
+  "id": 992,
+  "en": "Thanks to a diligent clerk, the missing file turned up within a day.",
+  "tr": "Gayretli bir memur sayesinde kayıp dosya bir gün içinde bulundu."
+ },
+ {
+  "id": 993,
+  "en": "He's not eloquent, but when he does speak, the room goes quiet.",
+  "tr": "Güzel konuşan biri değil, ama konuştuğunda oda sessizleşir."
+ },
+ {
+  "id": 994,
+  "en": "We ate a frugal supper of bread and olives and were perfectly happy.",
+  "tr": "Ekmek ve zeytinden ibaret idareli bir akşam yemeği yedik ve gayet mutluyduk."
+ },
+ {
+  "id": 995,
+  "en": "The new bypass has done little to alleviate congestion in the town centre.",
+  "tr": "Yeni çevre yolu, şehir merkezindeki sıkışıklığı hafifletmeye pek yaramadı."
+ },
+ {
+  "id": 996,
+  "en": "Stress doesn't cause the rash, but it certainly exacerbates it.",
+  "tr": "Döküntüye stres neden olmuyor, ama kesinlikle azdırıyor."
+ },
+ {
+  "id": 997,
+  "en": "Years of flooding had undermined the riverbank, and the path finally collapsed.",
+  "tr": "Yıllarca süren taşkınlar nehir kıyısının altını oymuştu ve patika sonunda çöktü."
+ },
+ {
+  "id": 998,
+  "en": "A good night's sleep bolstered my confidence more than any pep talk.",
+  "tr": "İyi bir gece uykusu özgüvenimi her moral konuşmasından daha çok güçlendirdi."
+ },
+ {
+  "id": 999,
+  "en": "Her lawyer argued that her age and clean record should mitigate the sentence.",
+  "tr": "Avukatı, yaşının ve temiz sicilinin cezayı hafifletmesi gerektiğini savundu."
+ },
+ {
+  "id": 1000,
+  "en": "She scrutinized the menu for ten minutes, then ordered her usual.",
+  "tr": "Menüyü on dakika didik didik inceledi, sonra her zamankini söyledi."
+ },
+ {
+  "id": 1001,
+  "en": "The vet couldn't ascertain what the dog had swallowed, only that it was green.",
+  "tr": "Veteriner köpeğin ne yuttuğunu saptayamadı; sadece yeşil bir şey olduğunu anladı."
+ },
+ {
+  "id": 1002,
+  "en": "Later satellite images corroborated the pilot's report of a new island.",
+  "tr": "Sonraki uydu görüntüleri, pilotun yeni bir ada gördüğüne dair raporunu doğruladı."
+ },
+ {
+  "id": 1003,
+  "en": "The experiment refuted a theory that had stood unchallenged for eighty years.",
+  "tr": "Deney, seksen yıldır sorgulanmadan ayakta duran bir teoriyi çürüttü."
+ },
+ {
+  "id": 1004,
+  "en": "Even the puppy video failed to elicit a smile from the security guard.",
+  "tr": "Yavru köpek videosu bile güvenlik görevlisinden bir gülümseme koparamadı."
+ },
+ {
+  "id": 1005,
+  "en": "Relations between the two neighbours deteriorated rapidly after the fence went up.",
+  "tr": "İki komşu arasındaki ilişkiler, çit dikildikten sonra hızla bozuldu."
+ },
+ {
+  "id": 1006,
+  "en": "Tomatoes flourish on that balcony because it gets sun until seven.",
+  "tr": "O balkonda domatesler serpiliyor, çünkü akşam yediye kadar güneş alıyor."
+ },
+ {
+  "id": 1007,
+  "en": "Thick fog hindered the rescue, and the helicopters couldn't take off until noon.",
+  "tr": "Yoğun sis kurtarma çalışmalarını engelledi ve helikopterler öğlene kadar kalkamadı."
+ },
+ {
+  "id": 1008,
+  "en": "A neutral mediator was brought in to facilitate talks between the families.",
+  "tr": "Aileler arasındaki görüşmeleri kolaylaştırmak için tarafsız bir arabulucu getirildi."
+ },
+ {
+  "id": 1009,
+  "en": "The festival culminates in a lantern parade along the river on Sunday night.",
+  "tr": "Festival, pazar gecesi nehir boyunca yapılan fener geçidiyle doruğa ulaşıyor."
+ },
+ {
+  "id": 1010,
+  "en": "He comes across as arrogant on TV, but in person he's painfully shy.",
+  "tr": "Televizyonda kibirli bir izlenim bırakıyor ama yüz yüze tanışınca fazlasıyla utangaç biri."
+ },
+ {
+  "id": 1011,
+  "en": "Why do you put up with a boss who takes credit for your work?",
+  "tr": "Senin emeğini sahiplenen bir patrona neden katlanıyorsun ki?"
+ },
+ {
+  "id": 1012,
+  "en": "Real change is rarely brought about by a single speech, however stirring.",
+  "tr": "Tek bir konuşma, ne kadar etkileyici olursa olsun, nadiren gerçek bir değişim meydana getirir."
+ },
+ {
+  "id": 1013,
+  "en": "The nurses carried out the doctor's instructions to the letter, yet the patient still worsened.",
+  "tr": "Hemşireler doktorun talimatlarını harfiyen yerine getirdi, ama hasta yine de kötüleşti."
+ },
+ {
+  "id": 1014,
+  "en": "If the funding falls through, we'll have to let half the team go.",
+  "tr": "Finansman suya düşerse ekibin yarısına yol vermek zorunda kalacağız."
+ },
+ {
+  "id": 1015,
+  "en": "You can't cut corners with a soufflé; either you do it properly or it collapses.",
+  "tr": "Sufle yaparken kaliteden kısamazsın; ya hakkını verirsin ya da çöker."
+ },
+ {
+  "id": 1016,
+  "en": "We finally bit the bullet and replaced the boiler instead of patching it up again.",
+  "tr": "Sonunda dişimizi sıktık ve kombiyi bir kez daha yamamak yerine komple değiştirdik."
+ },
+ {
+  "id": 1017,
+  "en": "In the long run, the friendships you make here will matter more than your grades.",
+  "tr": "Uzun vadede burada kurduğun arkadaşlıklar notlarından çok daha önemli olacak."
+ },
+ {
+  "id": 1018,
+  "en": "Can we keep this off the record? I'd rather my name stayed out of it.",
+  "tr": "Bunu kayıt dışı tutabilir miyiz? Adımın hiç geçmemesini tercih ederim."
+ },
+ {
+  "id": 1019,
+  "en": "Voters still on the fence tend to make up their minds in the final week.",
+  "tr": "Hâlâ kararsız olan seçmenler genellikle kararını son haftada veriyor."
+ },
+ {
+  "id": 1020,
+  "en": "She never took her husband for granted, not even after forty years of marriage.",
+  "tr": "Kırk yıllık evlilikten sonra bile kocasının varlığını hiç doğal saymadı."
+ },
+ {
+  "id": 1021,
+  "en": "You might get away with a typo in an email, but not on a tattoo.",
+  "tr": "E-postadaki bir yazım hatası yanına kâr kalabilir ama dövmedeki asla."
+ },
+ {
+  "id": 1022,
+  "en": "Growing up, he felt he could never live up to his father's reputation.",
+  "tr": "Büyürken, babasının namının yarattığı beklentiyi asla karşılayamayacağını hissediyordu."
+ },
+ {
+  "id": 1023,
+  "en": "Nobody likes being looked down on, least of all by a waiter.",
+  "tr": "Kimse hor görülmekten hoşlanmaz, hele bir garson tarafından hiç."
+ },
+ {
+  "id": 1024,
+  "en": "Halfway up the mountain we ran out of water, which was entirely my fault.",
+  "tr": "Dağın yarısında suyumuz bitti, ki bu tamamen benim suçumdu."
+ },
+ {
+  "id": 1025,
+  "en": "There was no ambiguity in his tone: he wanted us out by Friday.",
+  "tr": "Ses tonunda en ufak bir belirsizlik yoktu: cuma gününe kadar çıkmamızı istiyordu."
+ },
+ {
+  "id": 1026,
+  "en": "The paradox of choice is that thirty kinds of jam make buying jam harder.",
+  "tr": "Seçim paradoksu şu: otuz çeşit reçel, reçel almayı daha da zorlaştırıyor."
+ },
+ {
+  "id": 1027,
+  "en": "Text messages strip out all nuance, which is how most of our arguments start.",
+  "tr": "Yazılı mesajlar bütün nüansı siliyor; kavgalarımızın çoğu da zaten böyle başlıyor."
+ },
+ {
+  "id": 1028,
+  "en": "There's a small discrepancy between what the app says I walked and what my legs say.",
+  "tr": "Uygulamanın yürüdüğümü söylediği mesafeyle bacaklarımın söylediği arasında ufak bir tutarsızlık var."
+ },
+ {
+  "id": 1029,
+  "en": "I didn't like the implication that I'd only got the job because of my surname.",
+  "tr": "İşi sırf soyadım yüzünden aldığım imasından hiç hoşlanmadım."
+ },
+ {
+  "id": 1030,
+  "en": "The referee's integrity was never in doubt, even after that bizarre penalty decision.",
+  "tr": "O tuhaf penaltı kararından sonra bile hakemin dürüstlüğünden kimse şüphe etmedi."
+ },
+ {
+  "id": 1031,
+  "en": "Teenagers crave autonomy, then ring you from the supermarket asking which milk to buy.",
+  "tr": "Ergenler özerklik ister, sonra da marketten arayıp hangi sütü alacaklarını sorar."
+ },
+ {
+  "id": 1032,
+  "en": "The regime spent millions on parades, desperate to buy a legitimacy it never earned.",
+  "tr": "Rejim, asla hak etmediği bir meşruiyeti satın alma umuduyla geçit törenlerine milyonlar harcadı."
+ },
+ {
+  "id": 1033,
+  "en": "Where did you get the notion that I enjoy camping? I hate tents.",
+  "tr": "Kamp yapmayı sevdiğim fikrine nereden kapıldın? Çadırdan nefret ederim."
+ },
+ {
+  "id": 1034,
+  "en": "I reject the premise of your question; nobody said the project had failed.",
+  "tr": "Sorunuzun dayandığı varsayımı kabul etmiyorum; kimse projenin battığını söylemedi."
+ },
+ {
+  "id": 1035,
+  "en": "There's a growing consensus among doctors that sitting all day is as harmful as smoking.",
+  "tr": "Doktorlar arasında, bütün gün oturmanın sigara kadar zararlı olduğuna dair giderek güçlenen bir fikir birliği var."
+ },
+ {
+  "id": 1036,
+  "en": "I'm in a bit of a dilemma: two job offers, both starting Monday.",
+  "tr": "Biraz ikilemdeyim: iki iş teklifi var, ikisi de pazartesi başlıyor."
+ },
+ {
+  "id": 1037,
+  "en": "Even among the chickens there's a strict hierarchy; the brown one is clearly boss.",
+  "tr": "Tavuklar arasında bile katı bir hiyerarşi var; kahverengi olan belli ki patron."
+ },
+ {
+  "id": 1038,
+  "en": "My grandfather never voted on ideology; he voted for whoever fixed the roads.",
+  "tr": "Dedem hiçbir zaman ideolojiye göre oy vermedi; yolları kim yapıyorsa ona verirdi."
+ },
+ {
+  "id": 1039,
+  "en": "Streaming didn't just change the music industry; it replaced the whole paradigm of owning albums.",
+  "tr": "Dijital yayın müzik sektörünü değiştirmekle kalmadı; albüm sahibi olma paradigmasını tamamen ortadan kaldırdı."
+ },
+ {
+  "id": 1040,
+  "en": "She accepted the apology, albeit with a look that said this wasn't over.",
+  "tr": "Özrü kabul etti, gerçi yüzündeki ifade bu işin bitmediğini söylüyordu."
+ },
+ {
+  "id": 1041,
+  "en": "Notwithstanding the weather warnings, dozens of hikers set off for the summit that morning.",
+  "tr": "Hava uyarılarına rağmen o sabah onlarca dağcı zirveye doğru yola çıktı."
+ },
+ {
+  "id": 1042,
+  "en": "The archive contains hundreds of letters that had hitherto been kept from scholars.",
+  "tr": "Arşivde, o zamana dek araştırmacılardan saklanmış yüzlerce mektup bulunuyor."
+ },
+ {
+  "id": 1043,
+  "en": "The bridge cut the journey to twenty minutes and thereby transformed the whole valley.",
+  "tr": "Köprü yolculuğu yirmi dakikaya indirdi ve böylece bütün vadiyi dönüştürdü."
+ },
+ {
+  "id": 1044,
+  "en": "We have an arrangement whereby I cook and he pretends to enjoy it.",
+  "tr": "Benim yemek yaptığım, onun da beğenmiş gibi yaptığı bir anlaşmamız var."
+ },
+ {
+  "id": 1045,
+  "en": "That song was ubiquitous the summer we met; you couldn't escape it in any shop.",
+  "tr": "O şarkı tanıştığımız yaz her yerdeydi; hiçbir dükkânda ondan kaçamazdın."
+ },
+ {
+  "id": 1046,
+  "en": "The ring has little intrinsic value, but it was my grandmother's, so I'd never sell it.",
+  "tr": "Yüzüğün özünde pek bir değeri yok ama anneannemindi, o yüzden asla satmam."
+ },
+ {
+  "id": 1047,
+  "en": "Cats have an inherent distrust of anything new, including the expensive bed you bought them.",
+  "tr": "Kedilerin doğasında yeni olan her şeye karşı bir güvensizlik var, onlara aldığın pahalı yatak dahil."
+ },
+ {
+  "id": 1048,
+  "en": "The tension in the room was almost tangible as the envelope was opened.",
+  "tr": "Zarf açılırken odadaki gerginlik neredeyse elle tutulur hâldeydi."
+ },
+ {
+  "id": 1049,
+  "en": "The difference in price is negligible, so just buy the one you actually like.",
+  "tr": "Fiyat farkı ihmal edilebilir düzeyde, o yüzden gerçekten beğendiğini al."
+ },
+ {
+  "id": 1050,
+  "en": "It's entirely plausible that the cat opened the fridge; she's done stranger things.",
+  "tr": "Buzdolabını kedinin açmış olması gayet makul; daha tuhaf şeyler yaptı."
+ },
+ {
+  "id": 1051,
+  "en": "Working part-time sounded lovely, but it just wasn't feasible on one salary.",
+  "tr": "Yarı zamanlı çalışmak kulağa hoş geliyordu ama tek maaşla yapılabilir değildi."
+ },
+ {
+  "id": 1052,
+  "en": "Solar is now a viable option even in cloudy Britain, which nobody predicted.",
+  "tr": "Güneş enerjisi artık bulutlu İngiltere'de bile sürdürülebilir bir seçenek, ki bunu kimse öngörmemişti."
+ },
+ {
+  "id": 1053,
+  "en": "Once the map app appeared, my sense of direction became entirely superfluous.",
+  "tr": "Harita uygulaması çıkınca yön duygum tamamen lüzumsuz hâle geldi."
+ },
+ {
+  "id": 1054,
+  "en": "Dad was made redundant at fifty-eight and spent a year pretending he'd wanted to retire.",
+  "tr": "Babam elli sekiz yaşında işten çıkarıldı ve bir yıl boyunca emekli olmak istemiş gibi davrandı."
+ },
+ {
+  "id": 1055,
+  "en": "The new puppy assimilated into the household within a week; the cat is still furious.",
+  "tr": "Yeni köpek yavrusu bir hafta içinde eve uyum sağladı; kedi hâlâ küplere biniyor."
+ },
+ {
+  "id": 1056,
+  "en": "Older workers often feel marginalized once the office starts running on apps and emojis.",
+  "tr": "Ofis uygulamalar ve emojilerle dönmeye başlayınca yaşlı çalışanlar çoğu zaman kenara itilmiş hissediyor."
+ },
+ {
+  "id": 1057,
+  "en": "In my grandmother's village, divorce carried a stigma that followed a woman for life.",
+  "tr": "Anneannemin köyünde boşanmak, kadını ömür boyu takip eden bir damga demekti."
+ },
+ {
+  "id": 1058,
+  "en": "He's proud of his Circassian heritage and cooks his grandmother's dishes every Sunday.",
+  "tr": "Çerkes mirasıyla gurur duyuyor ve her pazar babaannesinin yemeklerini yapıyor."
+ },
+ {
+  "id": 1059,
+  "en": "The school is secular, so religion is taught as history rather than as belief.",
+  "tr": "Okul laik; bu yüzden din, inanç olarak değil tarih olarak öğretiliyor."
+ },
+ {
+  "id": 1060,
+  "en": "Our kitchen has one egalitarian rule: whoever cooks doesn't wash up.",
+  "tr": "Mutfağımızda eşitlikçi tek bir kural var: yemeği yapan bulaşığı yıkamaz."
+ },
+ {
+  "id": 1061,
+  "en": "The olive is indigenous to this coast; everything else in the garden was brought by ship.",
+  "tr": "Zeytin bu kıyıya özgü; bahçedeki diğer her şey gemiyle getirilmiş."
+ },
+ {
+  "id": 1062,
+  "en": "Her taste in food is thoroughly cosmopolitan: kimchi on Monday, köfte on Tuesday.",
+  "tr": "Yemek zevki tam anlamıyla kozmopolit: pazartesi kimchi, salı köfte."
+ },
+ {
+  "id": 1063,
+  "en": "Teenagers rebel against their parents and then demand total conformity from their friends.",
+  "tr": "Ergenler anne babalarına başkaldırır, sonra da arkadaşlarından tam bir uymacılık bekler."
+ },
+ {
+  "id": 1064,
+  "en": "The judge's dissent was only four pages long, but it's the part everyone quotes.",
+  "tr": "Hâkimin karşı görüşü sadece dört sayfaydı ama herkesin alıntıladığı kısım o."
+ },
+ {
+  "id": 1065,
+  "en": "The estate agent patronized us the moment she heard our accents, explaining what a mortgage was.",
+  "tr": "Emlakçı aksanımızı duyar duymaz bize tepeden baktı ve konut kredisinin ne olduğunu açıklamaya girişti."
+ },
+ {
+  "id": 1066,
+  "en": "Nobody ostracized her openly; they just stopped inviting her to lunch.",
+  "tr": "Kimse onu açıkça dışlamadı; sadece öğle yemeğine çağırmayı bıraktılar."
+ },
+ {
+  "id": 1067,
+  "en": "My aunt's idea of philanthropy is feeding every stray cat within three streets of her flat.",
+  "tr": "Teyzemin hayırseverlik anlayışı, evinin üç sokak çevresindeki bütün sokak kedilerini beslemek."
+ },
+ {
+  "id": 1068,
+  "en": "A wave of nostalgia hit me the moment I smelled my old school's corridors.",
+  "tr": "Eski okulumun koridorlarının kokusunu alır almaz bir nostalji dalgası vurdu beni."
+ },
+ {
+  "id": 1069,
+  "en": "Breakfast in bed on a Tuesday felt like pure decadence, and I regret nothing.",
+  "tr": "Salı günü yatakta kahvaltı etmek resmen sefahat gibi geldi; hiç de pişman değilim."
+ },
+ {
+  "id": 1070,
+  "en": "Years of austerity left the library open two afternoons a week, staffed by volunteers.",
+  "tr": "Yıllarca süren kemer sıkma yüzünden kütüphane artık haftada iki öğleden sonra, o da gönüllülerle açık."
+ },
+ {
+  "id": 1071,
+  "en": "Thanks to a small government subsidy, the village bus now runs on Sundays too.",
+  "tr": "Küçük bir devlet desteği sayesinde köy otobüsü artık pazar günleri de çalışıyor."
+ },
+ {
+  "id": 1072,
+  "en": "My brother thinks he has a monopoly on good taste because he owns vinyl.",
+  "tr": "Abim, sırf plak koleksiyonu var diye iyi zevkin tekelini elinde tuttuğunu sanıyor."
+ },
+ {
+  "id": 1073,
+  "en": "Tomato prices are so volatile this year that the café reprints its menu every Monday.",
+  "tr": "Domates fiyatları bu yıl o kadar dalgalı ki kafe her pazartesi menüsünü yeniden basıyor."
+ },
+ {
+  "id": 1074,
+  "en": "Selling lemonade outside the stadium turned out to be surprisingly lucrative for a twelve-year-old.",
+  "tr": "Stadyumun önünde limonata satmak on iki yaşındaki biri için şaşırtıcı derecede kazançlı çıktı."
+ },
+ {
+  "id": 1075,
+  "en": "The union's only real leverage is the threat of a strike during the holiday season.",
+  "tr": "Sendikanın elindeki tek gerçek koz, tatil sezonunda grev tehdidi."
+ },
+ {
+  "id": 1076,
+  "en": "The gym accepts no liability if you drop a weight on your own foot.",
+  "tr": "Ağırlığı kendi ayağına düşürürsen spor salonu hiçbir yükümlülük kabul etmiyor."
+ },
+ {
+  "id": 1077,
+  "en": "My grandfather lives quite comfortably on the dividends from shares he bought in the seventies.",
+  "tr": "Dedem, yetmişlerde aldığı hisselerin temettüleriyle gayet rahat geçiniyor."
+ },
+ {
+  "id": 1078,
+  "en": "She runs procurement for the hospital, which mostly means arguing about the price of gloves.",
+  "tr": "Hastanenin satın alma bölümünü yönetiyor, ki bu çoğunlukla eldiven fiyatı üzerine tartışmak demek."
+ },
+ {
+  "id": 1079,
+  "en": "The advert promised 'competitive remuneration', which turned out to mean minimum wage plus a fruit bowl.",
+  "tr": "İlanda 'rekabetçi ücret' vaat ediliyordu; meğer asgari ücret artı bir meyve tabağıymış."
+ },
+ {
+  "id": 1080,
+  "en": "Her redundancy payment was just enough to open the little bakery she'd always talked about.",
+  "tr": "İşten çıkarma tazminatı, hep sözünü ettiği küçük fırını açmaya tam yetti."
+ },
+ {
+  "id": 1081,
+  "en": "My chess club is a brutal meritocracy; the nine-year-old who beats you takes your seat.",
+  "tr": "Satranç kulübüm acımasız bir meritokrasi; seni yenen dokuz yaşındaki çocuk yerini alır."
+ },
+ {
+  "id": 1082,
+  "en": "Hiring your nephew to fix the website isn't nepotism if he's genuinely the cheapest option.",
+  "tr": "Siteyi yaptırmak için yeğenini tutmak, gerçekten en ucuz seçenekse akraba kayırma sayılmaz."
+ },
+ {
+  "id": 1083,
+  "en": "The vase was in a precarious position on the shelf, right above the cat's chair.",
+  "tr": "Vazo rafta sallantılı bir yerde duruyordu, tam kedinin koltuğunun üstünde."
+ },
+ {
+  "id": 1084,
+  "en": "The café offers a small incentive for bringing your own cup: ten percent off.",
+  "tr": "Kafe, kendi bardağını getirene küçük bir teşvik sunuyor: yüzde on indirim."
+ },
+ {
+  "id": 1085,
+  "en": "The app claims to boost cognition in older adults, though the study only tracked forty people.",
+  "tr": "Uygulama yaşlı yetişkinlerde bilişi güçlendirdiğini iddia ediyor, gerçi çalışma yalnızca kırk kişiyi izlemiş."
+ },
+ {
+  "id": 1086,
+  "en": "My aunt's baking is entirely empirical: no scales, no recipe, just decades of watching what worked.",
+  "tr": "Halamın hamur işleri tamamen ampirik: tartı yok, tarif yok, yalnızca onlarca yıllık deneme yanılma."
+ },
+ {
+  "id": 1087,
+  "en": "Across ten years of data, the correlation between rainfall and our sales is close to zero.",
+  "tr": "On yıllık veriye bakınca yağış ile satışlarımız arasındaki korelasyon sıfıra yakın."
+ },
+ {
+  "id": 1088,
+  "en": "The lawyer's whole case rests on causation: did the drug actually trigger the heart attack?",
+  "tr": "Avukatın bütün davası nedenselliğe dayanıyor: ilaç kalp krizini gerçekten tetikledi mi?"
+ },
+ {
+  "id": 1089,
+  "en": "A warm February week is an anomaly, not a trend, whatever the tabloids say.",
+  "tr": "Sıcak bir şubat haftası bir anomalidir, eğilim değil; tabloidler ne derse desin."
+ },
+ {
+  "id": 1090,
+  "en": "Their sound is a strange synthesis of Anatolian folk and Detroit techno, and somehow it works.",
+  "tr": "Müzikleri Anadolu halk müziğiyle Detroit teknosunun tuhaf bir sentezi ve nedense tutuyor."
+ },
+ {
+  "id": 1091,
+  "en": "Extrapolating from my nephew, all teenagers communicate exclusively in grunts and emojis.",
+  "tr": "Yeğenimden yola çıkıp genele çıkarsama yaparsak, bütün ergenler yalnızca homurtu ve emojiyle iletişim kuruyor."
+ },
+ {
+  "id": 1092,
+  "en": "The insurer wants everything quantified, down to how much the stolen photo album was worth.",
+  "tr": "Sigortacı her şeyin sayısallaştırılmasını istiyor; çalınan fotoğraf albümünün kaç para ettiğine varana kadar."
+ },
+ {
+  "id": 1093,
+  "en": "They tried to replicate the Amsterdam bike lanes in Houston, minus the bit where people cycle.",
+  "tr": "Amsterdam'ın bisiklet yollarını Houston'da kopyalamaya çalıştılar; insanların bisiklete bindiği kısım hariç."
+ },
+ {
+  "id": 1094,
+  "en": "Her training schedule is rigorous: five a.m. swims, no sugar, and bed by nine.",
+  "tr": "Antrenman programı son derece sıkı: sabah beşte yüzme, şeker yok ve dokuzda yatak."
+ },
+ {
+  "id": 1095,
+  "en": "Nurses develop an intuition for which patients will worsen, long before any monitor beeps.",
+  "tr": "Hemşirelerde hangi hastanın kötüleşeceğine dair bir sezgi gelişir, hem de daha hiçbir monitör ötmeden."
+ },
+ {
+  "id": 1096,
+  "en": "Depth perception goes first in the dark, which is why I keep misjudging the stairs.",
+  "tr": "Karanlıkta ilk giden derinlik algısı; merdivenleri sürekli yanlış hesaplamamın sebebi de bu."
+ },
+ {
+  "id": 1097,
+  "en": "Young olive trees are especially susceptible to frost, so we wrap them every November.",
+  "tr": "Genç zeytin ağaçları dona karşı özellikle hassas, o yüzden her kasım onları sarıyoruz."
+ },
+ {
+  "id": 1098,
+  "en": "The bakery had queues round the block, an unprecedented sight for a Tuesday morning.",
+  "tr": "Fırının önünde sokağı dolanan kuyruklar vardı; bir salı sabahı için görülmemiş bir manzara."
+ },
+ {
+  "id": 1099,
+  "en": "Losing that job was the catalyst; within a year she had her own studio.",
+  "tr": "O işi kaybetmek katalizör oldu; bir yıl içinde kendi stüdyosunu açmıştı."
+ },
+ {
+  "id": 1100,
+  "en": "In my grandmother's village, 'clever' carried a faintly negative connotation, as in 'too clever'.",
+  "tr": "Anneannemin köyünde 'akıllı' sözünün hafif olumsuz bir çağrışımı vardı; 'fazla akıllı' gibi."
+ },
+ {
+  "id": 1101,
+  "en": "Estate agents speak entirely in euphemisms; 'cosy' means you can't open the oven door.",
+  "tr": "Emlakçıların dili baştan sona örtmece; 'şirin' demek fırının kapağını bile açamazsın demek."
+ },
+ {
+  "id": 1102,
+  "en": "Football commentary runs on hyperbole; every second match is apparently the greatest ever played.",
+  "tr": "Futbol spikerliği abartıyla yürüyor; her iki maçtan biri sözde gelmiş geçmiş en büyük maç."
+ },
+ {
+  "id": 1103,
+  "en": "She said 'lovely weather' with such heavy irony that the tourists looked confused.",
+  "tr": "'Ne güzel hava' sözünü öyle ağır bir ironiyle söyledi ki turistler şaşkın şaşkın baktı."
+ },
+ {
+  "id": 1104,
+  "en": "Her whole speech rested on one metaphor: the company as a ship, the CEO its captain.",
+  "tr": "Bütün konuşması tek bir metafora dayanıyordu: şirket bir gemi, CEO da kaptanı."
+ },
+ {
+  "id": 1105,
+  "en": "For all the tough rhetoric on immigration, the actual numbers barely moved.",
+  "tr": "Göç konusundaki onca sert retoriğe rağmen gerçek rakamlar yerinden kıpırdamadı."
+ },
+ {
+  "id": 1106,
+  "en": "The magazine's satire got so close to reality that politicians started quoting it as policy.",
+  "tr": "Derginin hicvi gerçeğe o kadar yaklaştı ki politikacılar onu politika diye alıntılamaya başladı."
+ },
+ {
+  "id": 1107,
+  "en": "One anecdote about a bad flight doesn't make the airline dangerous, however vividly you tell it.",
+  "tr": "Kötü bir uçuşla ilgili tek bir anekdot, ne kadar canlı anlatırsan anlat, havayolunu tehlikeli yapmaz."
+ },
+ {
+  "id": 1108,
+  "en": "It's a cliché that Turks are hospitable, but my neighbour genuinely won't let me leave hungry.",
+  "tr": "Türklerin misafirperverliği bir klişe, ama komşum beni gerçekten aç göndermiyor."
+ },
+ {
+  "id": 1109,
+  "en": "I spent the first month at the hospital just learning the jargon, never mind the medicine.",
+  "tr": "Hastanedeki ilk ayım sırf jargonu öğrenmekle geçti, tıp bir yana."
+ },
+ {
+  "id": 1110,
+  "en": "My uncle gets verbose after two glasses of rakı; one story takes the whole meal.",
+  "tr": "Amcam iki kadeh rakıdan sonra lafı iyice uzatıyor; tek bir hikâye bütün yemek boyunca sürüyor."
+ },
+ {
+  "id": 1111,
+  "en": "Keep the pitch succinct; investors decide in the first ninety seconds whether they're listening.",
+  "tr": "Sunumu kısa ve öz tut; yatırımcılar dinleyip dinlemeyeceklerine ilk doksan saniyede karar verir."
+ },
+ {
+  "id": 1112,
+  "en": "It's the most lucid explanation of inflation I've read, and it's aimed at twelve-year-olds.",
+  "tr": "Enflasyonla ilgili okuduğum en berrak açıklama ve on iki yaşındakiler için yazılmış."
+ },
+ {
+  "id": 1113,
+  "en": "The judge cut him off: stick to what's pertinent, we're not here for your life story.",
+  "tr": "Hâkim sözünü kesti: konuyla ilgili olana bağlı kal, hayat hikâyeni dinlemeye gelmedik."
+ },
+ {
+  "id": 1114,
+  "en": "Skipping your mother's Sunday lunch is tantamount to treason in our family.",
+  "tr": "Bizim ailede annenin pazar yemeğini asmak vatana ihanetle eşdeğer."
+ },
+ {
+  "id": 1115,
+  "en": "In the fog I could just discern the outline of the ferry, no more.",
+  "tr": "Siste feribotun silüetini ancak seçebiliyordum, o kadar."
+ },
+ {
+  "id": 1116,
+  "en": "We deliberated over the paint colour for a month and ended up with white anyway.",
+  "tr": "Boya rengini bir ay enine boyuna düşündük, sonunda yine beyazda karar kıldık."
+ },
+ {
+  "id": 1117,
+  "en": "Her feelings about her hometown remained ambivalent, even after thirty years away.",
+  "tr": "Memleketine dair duyguları, otuz yıl uzakta yaşadıktan sonra bile ikircikliydi."
+ },
+ {
+  "id": 1118,
+  "en": "Be conscientious with the paperwork; the tax office remembers every missing receipt.",
+  "tr": "Evraklarda titiz ol; vergi dairesi eksik her fişi hatırlar."
+ },
+ {
+  "id": 1119,
+  "en": "Ask my sister for an impartial verdict on the haircut; Mum will just say it's lovely.",
+  "tr": "Saç kesimi hakkında tarafsız bir yorum için ablama sor; annem sadece çok güzel der."
+ },
+ {
+  "id": 1120,
+  "en": "He put his savings into some speculative crypto scheme and hasn't mentioned money since.",
+  "tr": "Birikimini spekülatif bir kripto işine yatırdı ve o günden beri paradan hiç söz etmedi."
+ },
+ {
+  "id": 1121,
+  "en": "I'm dubious about a restaurant that laminates its menu and calls itself fine dining.",
+  "tr": "Menüsünü plastik kaplayıp kendine lüks restoran diyen bir yere şüpheyle bakıyorum."
+ },
+ {
+  "id": 1122,
+  "en": "Give me an unequivocal yes or no; 'we'll see' has cost us two weeks already.",
+  "tr": "Bana kesin bir evet ya da hayır ver; 'bakarız' bize şimdiden iki haftaya mal oldu."
+ },
+ {
+  "id": 1123,
+  "en": "Our connection to the bride was tenuous; my mother once shared a dentist with hers.",
+  "tr": "Gelinle bağımız epey zayıftı; annem bir zamanlar onun annesiyle aynı dişçiye gidiyormuş."
+ },
+ {
+  "id": 1124,
+  "en": "The most salient feature of the flat is the noise; the view comes a distant second.",
+  "tr": "Dairenin en göze çarpan özelliği gürültü; manzara çok gerilerde ikinci sırada."
+ },
+ {
+  "id": 1125,
+  "en": "My father was prudent with money to the point of drying tea bags for reuse.",
+  "tr": "Babam para konusunda öyle ihtiyatlıydı ki çay poşetlerini yeniden kullanmak için kuruturdu."
+ },
+ {
+  "id": 1126,
+  "en": "She's reckless with other people's secrets, so tell her nothing you'd mind hearing back.",
+  "tr": "Başkalarının sırları konusunda pervasız; geri duymak istemeyeceğin hiçbir şeyi ona anlatma."
+ },
+ {
+  "id": 1127,
+  "en": "The hotel staff were wonderfully discreet; nobody mentioned the famous guest in the corner suite.",
+  "tr": "Otel çalışanları müthiş ketumdu; köşe süitteki ünlü misafirden kimse söz etmedi."
+ },
+ {
+  "id": 1128,
+  "en": "Sıla is an astute reader of people; she'd sensed the tension before the starters arrived.",
+  "tr": "Sıla insanları okumakta son derece keskin zekâlı; daha başlangıçlar gelmeden gerginliği sezmişti."
+ },
+ {
+  "id": 1129,
+  "en": "The chess champion was magnanimous in defeat, applauding the teenager who had just beaten him.",
+  "tr": "Satranç şampiyonu yenilgide yüce gönüllüydü; kendisini az önce yenen genci alkışladı."
+ },
+ {
+  "id": 1250,
+  "en": "Her objection to the extension is purely aesthetic; structurally it's the soundest part of the house.",
+  "tr": "Ek binaya itirazı tamamen estetik; yapısal olarak evin en sağlam kısmı orası."
+ },
+ {
+  "id": 1251,
+  "en": "The summit at dawn was sublime; we had exactly four minutes before the cloud swallowed it.",
+  "tr": "Şafakta zirve muhteşemdi; bulut onu yutmadan önce tam dört dakikamız vardı."
+ },
+ {
+  "id": 1252,
+  "en": "The harbour souvenir shops sell nothing but kitsch: plastic Galata towers that light up.",
+  "tr": "Limandaki hediyelik eşya dükkânları kiçten başka bir şey satmıyor: ışıklı plastik Galata kuleleri."
+ },
+ {
+  "id": 1253,
+  "en": "She writes evocative little descriptions of Istanbul: wet cobbles, tea glasses, a ferry horn.",
+  "tr": "İstanbul üzerine çağrışım dolu küçük betimlemeler yazıyor: ıslak kaldırım taşları, çay bardakları, bir vapur düdüğü."
+ },
+ {
+  "id": 1254,
+  "en": "There's something poignant about a child's shoe left on a bus seat.",
+  "tr": "Otobüs koltuğunda unutulmuş bir çocuk ayakkabısında dokunaklı bir şey var."
+ },
+ {
+  "id": 1255,
+  "en": "The café's whole look is derivative of that Brooklyn place, Edison bulbs and all.",
+  "tr": "Kafenin bütün görünümü o Brooklyn'deki mekânın taklidi, Edison ampulleri dahil."
+ },
+ {
+  "id": 1256,
+  "en": "My brother dismisses anything avant-garde as 'noise with a grant', and honestly he's sometimes right.",
+  "tr": "Abim avangart olan her şeyi 'devlet destekli gürültü' diye geçiştiriyor ve doğrusu bazen haklı."
+ },
+ {
+  "id": 1257,
+  "en": "Half the new 'Ottoman' villas on the coast are pure pastiche, and charmless pastiche at that.",
+  "tr": "Sahildeki yeni 'Osmanlı' villalarının yarısı düpedüz pastiş, üstelik cazibesiz bir pastiş."
+ },
+ {
+  "id": 1258,
+  "en": "The tulip motif on my grandmother's carpet turns up again on the tiles in the mosque.",
+  "tr": "Anneannemin halısındaki lale motifi camideki çinilerde yeniden karşıma çıkıyor."
+ },
+ {
+  "id": 1259,
+  "en": "The gallery juxtaposed a Rembrandt with a student's phone sketch, and the sketch held its own.",
+  "tr": "Galeri bir Rembrandt'ı bir öğrencinin telefonda çizdiği eskizle yan yana koydu ve eskiz hiç ezilmedi."
+ },
+ {
+  "id": 1260,
+  "en": "The rivalry transcends football; it's really about which side of the river you're from.",
+  "tr": "Bu rekabet futbolu aşıyor; asıl mesele nehrin hangi yakasından olduğun."
+ },
+ {
+  "id": 1261,
+  "en": "The cello's low notes resonated through the floorboards, and the neighbours' dog started howling.",
+  "tr": "Çellonun pes notaları döşeme tahtalarında yankılandı ve komşunun köpeği ulumaya başladı."
+ },
+ {
+  "id": 1262,
+  "en": "Our neighbour is a connoisseur of gossip; she knows a fresh rumour from a stale one.",
+  "tr": "Komşumuz dedikodu erbabıdır; taze bir söylentiyi bayatından hemen ayırır."
+ },
+ {
+  "id": 1263,
+  "en": "It was a virtuoso display of parallel parking; the whole street stopped to watch.",
+  "tr": "Paralel parkta tam bir virtüöz gösterisiydi; bütün sokak durmuş izliyordu."
+ },
+ {
+  "id": 1264,
+  "en": "The students critique each other's designs every Friday, and it gets fierce by week three.",
+  "tr": "Öğrenciler her cuma birbirlerinin tasarımlarını eleştirir; üçüncü haftaya gelindiğinde işler iyice sertleşir."
+ },
+ {
+  "id": 1265,
+  "en": "Everyone who laughed at the cruel joke was, in a small way, complicit.",
+  "tr": "O acımasız şakaya gülen herkes, küçük de olsa, suça ortaktı."
+ },
+ {
+  "id": 1266,
+  "en": "Legally the driver was culpable, but the council had left that pothole unrepaired for a year.",
+  "tr": "Hukuken sürücü kusurluydu ama belediye o çukuru bir yıldır onarmamıştı."
+ },
+ {
+  "id": 1267,
+  "en": "The CCTV exonerated the cleaner completely; the missing ring was in the manager's own drawer.",
+  "tr": "Güvenlik kamerası temizlikçiyi tamamen akladı; kayıp yüzük müdürün kendi çekmecesindeymiş."
+ },
+ {
+  "id": 1268,
+  "en": "Teenagers have a radar for hypocrisy; mine caught me scrolling during 'no phones at dinner'.",
+  "tr": "Ergenlerin ikiyüzlülük radarı vardır; benimki beni 'sofrada telefon yok' saatinde ekran kaydırırken yakaladı."
+ },
+ {
+  "id": 1269,
+  "en": "My parents had a blatant double standard: my brother's curfew was midnight, mine was nine.",
+  "tr": "Annemle babamın apaçık bir çifte standardı vardı: abimin eve dönüş saati gece yarısı, benimki dokuzdu."
+ },
+ {
+  "id": 1270,
+  "en": "The office cat steals sandwiches with complete impunity; nobody dares report her to HR.",
+  "tr": "Ofis kedisi sandviçleri tam bir cezasızlıkla çalıyor; kimse onu İK'ya şikâyet etmeye cesaret edemiyor."
+ },
+ {
+  "id": 1271,
+  "en": "One biscuit with my tea became a slippery slope, and now the packet's gone.",
+  "tr": "Çayın yanına bir bisküvi kaygan bir zemin oldu; paket çoktan bitti."
+ },
+ {
+  "id": 1272,
+  "en": "Don't turn my email into a straw man; I asked for a delay, not a cancellation.",
+  "tr": "E-postamı korkuluk safsatasına çevirme; erteleme istedim, iptal değil."
+ },
+ {
+  "id": 1273,
+  "en": "The novelist scatters red herrings so generously that I suspected the family cat.",
+  "tr": "Yazar yanıltmacaları o kadar cömertçe serpiştiriyor ki evin kedisinden bile şüphelendim."
+ },
+ {
+  "id": 1274,
+  "en": "Bringing an umbrella to the beach felt silly at nine; by noon I was thoroughly vindicated.",
+  "tr": "Plaja şemsiye getirmek sabah dokuzda saçma göründü; öğlene kalmadan haklı çıkmıştım."
+ },
+ {
+  "id": 1275,
+  "en": "By laughing along, the teacher effectively condoned the bullying, whatever she said afterwards.",
+  "tr": "Öğretmen gülerek eşlik etmekle zorbalığa fiilen göz yummuş oldu; sonradan ne dediği fark etmez."
+ },
+ {
+  "id": 1276,
+  "en": "My father-in-law denounced television as 'the idiot box' for years, then discovered football on it.",
+  "tr": "Kayınpederim yıllarca televizyonu 'aptal kutusu' diye kınayıp durdu, sonra içinde futbol olduğunu keşfetti."
+ },
+ {
+  "id": 1277,
+  "en": "Her altruism has limits; she'll give you her last lira but not her parking spot.",
+  "tr": "Özgeciliğinin sınırları var; son lirasını verir ama park yerini asla."
+ },
+ {
+  "id": 1278,
+  "en": "Getting a teenager to a family wedding takes a mix of bribery and gentle coercion.",
+  "tr": "Bir ergeni aile düğününe götürmek biraz rüşvet, biraz da nazik zorlama gerektiriyor."
+ },
+ {
+  "id": 1279,
+  "en": "My conscience kept me up all night, and at nine I returned the extra change.",
+  "tr": "Vicdanım bütün gece uyutmadı; sabah dokuzda fazla para üstünü geri götürdüm."
+ }
+]
