@@ -36,12 +36,17 @@ type DeckCardProps = {
 };
 
 function DeckCard({ deck, theme, stats }: DeckCardProps) {
+  const isPersonal = deck.kind === "personal";
   const cardLabel =
     stats === undefined
       ? null
       : stats.total === 0
-        ? "Henüz kart yok"
-        : `${stats.total} kart`;
+        ? isPersonal
+          ? "Henüz kelime yok — ilkini ekle"
+          : "Henüz kart yok"
+        : isPersonal
+          ? `${stats.total} kelime`
+          : `${stats.total} kart`;
 
   return (
     <Link
@@ -56,7 +61,13 @@ function DeckCard({ deck, theme, stats }: DeckCardProps) {
         <div
           className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${theme.icon} shadow-md ring-1 ring-white/30`}
         >
-          <CardsIcon className="h-6 w-6 text-white" />
+          {isPersonal ? (
+            <span aria-hidden="true" className="text-2xl">
+              ✍️
+            </span>
+          ) : (
+            <CardsIcon className="h-6 w-6 text-white" />
+          )}
         </div>
 
         {stats === undefined ? (

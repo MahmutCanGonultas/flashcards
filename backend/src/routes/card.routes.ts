@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { requireAuth } from "../middleware/requireAuth.js";
+import { suggestCard } from "../controllers/suggest.controller.js";
 import {
   createCard,
   getCards,
@@ -12,6 +13,7 @@ import {
 const router = Router();
 
 router.post("/:deckId/cards", requireAuth, createCard);
+router.post("/:deckId/cards/suggest", requireAuth, suggestCard);
 router.get("/:deckId/cards", requireAuth, getCards);
 router.put("/:deckId/cards/:cardId", requireAuth, updateCard);
 router.delete("/:deckId/cards/:cardId", requireAuth, deleteCard);

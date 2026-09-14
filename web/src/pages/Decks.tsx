@@ -12,6 +12,8 @@ import EmptyState from "../components/EmptyState";
 import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
 import TontonSays from "../components/TontonSays";
+import PersonalCardSheet from "../components/PersonalCardSheet";
+import { usePersonalDeck } from "../lib/personal";
 import { buildPath, pathStats } from "../lib/path";
 import { homeLines } from "../lib/tonton";
 import { useStreak } from "../lib/streak";
@@ -56,6 +58,9 @@ function DeckCardSkeleton() {
 function Decks() {
   const queryClient = useQueryClient();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAddWordOpen, setIsAddWordOpen] = useState(false);
+  // Created on first visit, so "your words" is always one tap away.
+  const personalDeck = usePersonalDeck();
 
   const { data, isLoading, isError, refetch } = useQuery<Deck[]>({
     queryKey: ["decks"],
@@ -115,13 +120,18 @@ function Decks() {
     : null;
 
   return (
-    <div className="min-h-screen bg-[#FDF9F3]">
+    <div className="min-h-screen">
       <Header />
 
       <main className="max-w-5xl mx-auto px-6 pt-10 pb-[max(2.5rem,env(safe-area-inset-bottom))]">
         <TontonSays
           size={84}
-          lines={homeLines({ cards: allCards, due: dueTotal, streak })}
+          lines={homeLines({
+            cards: allCards,
+            due: dueTotal,
+            streak,
+            personal: cardQueries[(data ?? []).findIndex((deck) => deck.kind === "personal")]?.data ?? [],
+          })}
         />
 
         <div className="mb-6 mt-6 flex flex-col items-stretch gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -131,12 +141,21 @@ function Decks() {
             </h1>
             <p className="text-stone-500 mt-1">Kaldığın yerden devam et.</p>
           </div>
-          <Button
-            className="w-full shrink-0 whitespace-nowrap sm:w-auto"
-            onClick={() => setIsModalOpen(true)}
-          >
-            <span className="text-xl leading-none">+</span> Yeni deste
-          </Button>
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <Button
+              className="w-full shrink-0 whitespace-nowrap sm:w-auto"
+              onClick={() => setIsAddWordOpen(true)}
+            >
+              ✍️ Kendi kelimeni ekle
+            </Button>
+            <Button
+              variant="secondary"
+              className="w-full shrink-0 whitespace-nowrap sm:w-auto"
+              onClick={() => setIsModalOpen(true)}
+            >
+              <span className="text-xl leading-none">+</span> Yeni deste
+            </Button>
+          </div>
         </div>
 
         {isLoading && (
@@ -180,6 +199,12 @@ function Decks() {
           </div>
         )}
       </main>
+
+      <PersonalCardSheet
+        isOpen={isAddWordOpen}
+        onClose={() => setIsAddWordOpen(false)}
+        deckId={personalDeck.data?.id}
+      />
 
       <DeckFormModal
         mode="create"

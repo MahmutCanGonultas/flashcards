@@ -13,6 +13,9 @@ const createCardSchema = z.object({
   // concrete-noun cards -- most vocabulary can't be shown as an image).
   exampleSentence: z.string().nullable().optional(),
   imageUrl: z.string().url().nullable().optional(),
+  exampleTr: z.string().nullable().optional(),
+  example2: z.string().nullable().optional(),
+  example2Tr: z.string().nullable().optional(),
   // Optional memory aid, usually the word's root/etymology.
   mnemonic: z.string().nullable().optional(),
   // Optional lesson number for path-organised decks.
@@ -28,7 +31,8 @@ export const createCard = async (req: Request, res: Response) => {
     return res.status(400).json({ error: "Kart Bilgileri Gecersiz" });
   }
 
-  const { front, back, tag, exampleSentence, imageUrl, mnemonic, lesson } = validation.data;
+  const { front, back, tag, exampleSentence, imageUrl, mnemonic, lesson, exampleTr, example2, example2Tr } =
+    validation.data;
   const { deckId } = req.params;
 
   // 2-Bu deste gercekten bu kullanicinin mi ? kontrol et.
@@ -43,8 +47,8 @@ export const createCard = async (req: Request, res: Response) => {
 
   // 3-Deste bu kullanicinin - artik karti ekleyebiliriz
   const result = await pool.query(
-    `INSERT INTO cards (deck_id, front, back, tag, example_sentence, image_url, mnemonic, lesson)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
+    `INSERT INTO cards (deck_id, front, back, tag, example_sentence, image_url, mnemonic, lesson, example_tr, example2, example2_tr)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`,
     [
       deckId,
       front,
@@ -54,6 +58,9 @@ export const createCard = async (req: Request, res: Response) => {
       imageUrl ?? null,
       mnemonic ?? null,
       lesson ?? null,
+      exampleTr ?? null,
+      example2 ?? null,
+      example2Tr ?? null,
     ],
   );
 
@@ -85,18 +92,36 @@ export const updateCard = async (req: Request, res: Response) => {
     return res.status(400).json({ error: "Kart bilgileri geçersiz" });
   }
 
-  const { front, back } = validation.data;
+  const { front, back, tag, exampleSentence, imageUrl, mnemonic, exampleTr, example2, example2Tr } =
+    validation.data;
   const { deckId, cardId } = req.params;
 
-  // 2. Güncelle — ama sadece bu kullanıcının destesindeki karta dokun
+  // 2. Güncelle — ama sadece bu kullanıcının destesindeki karta dokun.
+  //    Gönderilmeyen alanlar olduğu gibi kalır (COALESCE); null gönderilen silinir.
   const result = await pool.query(
     `UPDATE cards
-     SET front = $1, back = $2
+     SET front = $1, back = $2,
+         tag = CASE WHEN $6::boolean THEN $7 ELSE tag END,
+         example_sentence = CASE WHEN $8::boolean THEN $9 ELSE example_sentence END,
+         image_url = CASE WHEN $10::boolean THEN $11 ELSE image_url END,
+         mnemonic = CASE WHEN $12::boolean THEN $13 ELSE mnemonic END,
+         example_tr = CASE WHEN $14::boolean THEN $15 ELSE example_tr END,
+         example2 = CASE WHEN $16::boolean THEN $17 ELSE example2 END,
+         example2_tr = CASE WHEN $18::boolean THEN $19 ELSE example2_tr END
      WHERE id = $3
        AND deck_id = $4
        AND deck_id IN (SELECT id FROM decks WHERE user_id = $5)
      RETURNING *`,
-    [front, back, cardId, deckId, req.userId],
+    [
+      front, back, cardId, deckId, req.userId,
+      tag !== undefined, tag ?? null,
+      exampleSentence !== undefined, exampleSentence ?? null,
+      imageUrl !== undefined, imageUrl ?? null,
+      mnemonic !== undefined, mnemonic ?? null,
+      exampleTr !== undefined, exampleTr ?? null,
+      example2 !== undefined, example2 ?? null,
+      example2Tr !== undefined, example2Tr ?? null,
+    ],
   );
 
   // 3. Kart bulunamadıysa (yok, yanlış deste, ya da başkasının)

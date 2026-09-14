@@ -2,6 +2,8 @@ export type Deck = {
   id: number;
   user_id: number;
   name: string;
+  /** 'personal' is the learner's own words; anything else is a normal deck. */
+  kind?: "normal" | "personal";
   created_at: string;
 };
 
