@@ -246,13 +246,7 @@ function DeckDetail() {
             )}
 
             {isPersonal && cardsQuery.isSuccess && (
-              <PersonalDeckView
-                deckId={deckId}
-                cards={cardsQuery.data}
-                onAdd={() => setIsAddOpen(true)}
-                onEdit={setEditingCard}
-                onDelete={setDeletingCard}
-              />
+              <PersonalDeckView deckId={deckId} cards={cardsQuery.data} onAdd={() => setIsAddOpen(true)} />
             )}
 
             {!isPath && !isPersonal && (

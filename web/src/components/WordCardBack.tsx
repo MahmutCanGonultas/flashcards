@@ -44,6 +44,7 @@ function WordCardBack({ card, variant = "full" }: WordCardBackProps) {
   const { text: meaning } = parseBack(card.back);
   const senses = card.senses ?? [];
   const compact = variant === "compact";
+  const mixedTypes = new Set(senses.map((s) => s.pos ?? "")).size > 1;
 
   return (
     <div className={compact ? "space-y-2" : "space-y-3"}>
@@ -55,7 +56,7 @@ function WordCardBack({ card, variant = "full" }: WordCardBackProps) {
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-violet-100 text-[11px] font-extrabold text-violet-700">
                   {i + 1}
                 </span>
-                {sense.pos && (
+                {sense.pos && mixedTypes && (
                   <span className="rounded-full bg-stone-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-stone-500">
                     {posLabel(sense.pos)}
                   </span>
