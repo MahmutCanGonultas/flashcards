@@ -22,6 +22,7 @@ import { buildPath, pathStats } from "../lib/path";
 import { useUnits } from "../lib/units";
 import CardFormModal from "../components/CardFormModal";
 import PersonalCardSheet from "../components/PersonalCardSheet";
+import PersonalDeckView from "../components/PersonalDeckView";
 import type { CardFormValues } from "../components/CardFormModal";
 import DeckFormModal from "../components/DeckFormModal";
 import ConfirmDialog from "../components/ConfirmDialog";
@@ -162,6 +163,7 @@ function DeckDetail() {
   // else keeps the plain card list.
   const units = buildPath(cardsQuery.data ?? [], unitsQuery.data ?? []);
   const isPath = units.length > 0;
+  const isPersonal = deck?.kind === "personal";
   const stats = pathStats(units);
 
   return (
@@ -215,7 +217,7 @@ function DeckDetail() {
             <div className="mt-6">
               <h1 className="text-3xl font-extrabold text-stone-800 tracking-tight flex items-start gap-2">
                 <span aria-hidden="true" className="shrink-0">
-                  📖
+                  {isPersonal ? "🃏" : "📖"}
                 </span>
                 <span className="min-w-0 break-words">{deck.name}</span>
               </h1>
@@ -243,7 +245,17 @@ function DeckDetail() {
               />
             )}
 
-            {!isPath && (
+            {isPersonal && cardsQuery.isSuccess && (
+              <PersonalDeckView
+                deckId={deckId}
+                cards={cardsQuery.data}
+                onAdd={() => setIsAddOpen(true)}
+                onEdit={setEditingCard}
+                onDelete={setDeletingCard}
+              />
+            )}
+
+            {!isPath && !isPersonal && (
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <LinkButton to={`/decks/${deckId}/study`} variant="primary">
                   Çalış 🚀
@@ -267,7 +279,7 @@ function DeckDetail() {
               </div>
             )}
 
-            <div className="mt-8">
+            <div className={isPersonal ? "mt-4" : "mt-8"}>
               {cardsQuery.isLoading && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   {[0, 1, 2].map((n) => (
@@ -286,7 +298,7 @@ function DeckDetail() {
                 />
               )}
 
-              {cardsQuery.isSuccess && cardsQuery.data.length === 0 && (
+              {cardsQuery.isSuccess && cardsQuery.data.length === 0 && !isPersonal && (
                 <EmptyState
                   emoji="🃏"
                   title="Henüz kart yok"
@@ -303,7 +315,7 @@ function DeckDetail() {
                 <LearningPath deckId={deckId} units={units} />
               )}
 
-              {cardsQuery.isSuccess && cardsQuery.data.length > 0 && (!isPath || showAllCards) && (
+              {cardsQuery.isSuccess && cardsQuery.data.length > 0 && !isPersonal && (!isPath || showAllCards) && (
                 <CardGroups
                   key={deckId}
                   cards={cardsQuery.data}

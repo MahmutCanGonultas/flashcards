@@ -9,6 +9,7 @@ import Dialogue from "./pages/Dialogue";
 import UnitTest from "./pages/UnitTest";
 import Placement from "./pages/Placement";
 import Grammar from "./pages/Grammar";
+import Flashcards from "./pages/Flashcards";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { getToken } from "./lib/api";
 import { playTap } from "./lib/sound";
@@ -63,6 +64,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Study />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/decks/:deckId/flashcards"
+        element={
+          <ProtectedRoute>
+            <Flashcards />
           </ProtectedRoute>
         }
       />

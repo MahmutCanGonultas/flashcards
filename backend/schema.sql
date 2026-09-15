@@ -14,7 +14,8 @@ CREATE TABLE decks(
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     name VARCHAR(255) NOT NULL,
     -- 'personal' is the learner's own words: one per user, created on
-    -- demand, its cards folded into the course's lesson recaps.
+    -- demand, reviewed as flip cards on their own schedule — independent of
+    -- the course.
     kind VARCHAR(20) NOT NULL DEFAULT 'normal',
     created_at TIMESTAMP DEFAULT NOW()
 );
@@ -58,6 +59,13 @@ CREATE TABLE cards(
     -- Optional: a memory aid (usually the word's etymology/root) explaining
     -- why it means what it means, rather than just asking you to memorize it.
     mnemonic TEXT,
+    -- A rich card (the learner's own words): every sense of the word with its
+    -- pattern and an example, words that grow from it, and one thing to watch.
+    --   senses:  [{ "pos", "meaning", "pattern", "example_en", "example_tr", "note" }]
+    --   related: [{ "word", "pos", "meaning" }]
+    senses JSONB,
+    related JSONB,
+    watch_out TEXT,
     ease_factor REAL NOT NULL DEFAULT 2.5,
     interval INTEGER NOT NULL DEFAULT 0,
     repetitions INTEGER NOT NULL DEFAULT 0,

@@ -60,6 +60,8 @@ const POS_TR: Record<string, string> = {
 
 export function posLabel(pos: string | null): string | null {
   if (!pos) return null;
+  // "noun / verb" → "isim / fiil": each part on its own.
+  if (pos.includes("/")) return pos.split("/").map((part) => posLabel(part.trim()) ?? part.trim()).join(" / ");
   const key = pos.trim().toLowerCase();
   return POS_TR[key] ?? POS_TR[key.replace(/s$/, "")] ?? pos;
 }
