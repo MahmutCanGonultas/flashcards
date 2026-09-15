@@ -48,10 +48,16 @@ export const calculateSrs = (input: SrsInput): SrsOutput => {
     easeFactor = 1.3;
   }
 
-  // yeni tarih = bugün + interval gün; bilinemeyen kelime on dakika sonra
+  // yeni tarih = bugün + interval gün; bilinemeyen kelime on dakika sonra.
+  // Bilinen kelime o günün başından (UTC gece yarısı) itibaren "vadesi
+  // gelmiş" sayılır: akşam çalışılan kart ertesi akşamki hatırlatmada
+  // saat farkı yüzünden görünmez kalmasın.
   const dueDate = new Date();
   if (quality < 3) dueDate.setMinutes(dueDate.getMinutes() + LAPSE_MINUTES);
-  else dueDate.setDate(dueDate.getDate() + interval);
+  else {
+    dueDate.setUTCDate(dueDate.getUTCDate() + interval);
+    dueDate.setUTCHours(0, 0, 0, 0);
+  }
 
   return { repetitions, interval, easeFactor, dueDate };
 };

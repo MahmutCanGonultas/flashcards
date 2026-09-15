@@ -4,11 +4,14 @@ import { parseBack, posLabel } from "../lib/cardBack";
 import { isDue } from "../lib/path";
 import Button from "./Button";
 import LinkButton from "./LinkButton";
+import { primeSpeech } from "../lib/speech";
 
 type PersonalDeckViewProps = {
   deckId: string;
   cards: Card[];
   onAdd: () => void;
+  /** The review/add buttons; off where a hub above already has them. */
+  showActions?: boolean;
 };
 
 function scheduleLabel(card: Card): { text: string; className: string } {
@@ -25,15 +28,16 @@ function scheduleLabel(card: Card): { text: string; className: string } {
  * next due. Each row opens the word's page — that's where the sentences
  * are. The cards themselves are behind "Tekrar et".
  */
-function PersonalDeckView({ deckId, cards, onAdd }: PersonalDeckViewProps) {
+function PersonalDeckView({ deckId, cards, onAdd, showActions = true }: PersonalDeckViewProps) {
   const due = cards.filter(isDue).length;
   const sorted = [...cards].sort((a, b) => Number(isDue(b)) - Number(isDue(a)) || b.id - a.id);
 
   return (
     <div className="mt-5">
+      {showActions && (
       <div className="flex flex-wrap items-center gap-2">
         {cards.length > 0 && (
-          <LinkButton to={`/decks/${deckId}/flashcards${due > 0 ? "" : "?mode=all"}`}>
+          <LinkButton to={`/decks/${deckId}/flashcards${due > 0 ? "" : "?mode=all"}`} onClick={primeSpeech}>
             {due > 0 ? `🃏 Tekrar et (${due})` : "🃏 Hepsini gözden geçir"}
           </LinkButton>
         )}
@@ -41,6 +45,7 @@ function PersonalDeckView({ deckId, cards, onAdd }: PersonalDeckViewProps) {
           ✍️ Kelime ekle
         </Button>
       </div>
+      )}
 
       {cards.length === 0 ? (
         <div className="mt-8 rounded-3xl bg-white p-8 text-center ring-2 ring-stone-100">
@@ -77,7 +82,7 @@ function PersonalDeckView({ deckId, cards, onAdd }: PersonalDeckViewProps) {
                         <span className="text-lg font-extrabold leading-snug text-stone-800 break-words">{card.front}</span>
                         {pos && <span className="text-[10px] font-bold uppercase tracking-wide text-stone-400">{posLabel(pos)}</span>}
                       </div>
-                      <p className="truncate text-[15px] font-semibold text-violet-700">{text}</p>
+                      <p className="truncate text-[15px] font-semibold text-stone-600">{text}</p>
                       <span className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wide ${schedule.className}`}>
                         {schedule.text}
                       </span>

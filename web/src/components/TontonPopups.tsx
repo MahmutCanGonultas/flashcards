@@ -39,7 +39,8 @@ function TontonPopups() {
     // Everything he might mention comes from what's already loaded; he
     // never fetches on his own.
     const decks = (queryClient.getQueryData(["decks"]) as Deck[] | undefined) ?? [];
-    const personalDeck = decks.find((d) => d.kind === "personal");
+    const personalDeck =
+      decks.find((d) => d.kind === "personal") ?? (queryClient.getQueryData(["personalDeck"]) as Deck | undefined);
     const allCards = queryClient
       .getQueriesData<Card[]>({ queryKey: ["cards"] })
       .flatMap(([, data]) => data ?? []);
@@ -87,7 +88,7 @@ function TontonPopups() {
   return (
     <div
       key={visits}
-      className="pointer-events-none fixed inset-x-0 bottom-0 z-30 flex justify-start px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] animate-[tonton-in_520ms_cubic-bezier(0.34,1.4,0.64,1)_both]"
+      className="tonton-pop pointer-events-none fixed inset-x-0 bottom-0 z-30 flex justify-start px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] animate-[tonton-in_520ms_cubic-bezier(0.34,1.4,0.64,1)_both]"
     >
       <div className="pointer-events-auto flex max-w-[22rem] items-end gap-2">
         <button

@@ -13,6 +13,9 @@ import Skeleton from "../components/Skeleton";
 import SpeakButton from "../components/SpeakButton";
 import ConfirmDialog from "../components/ConfirmDialog";
 import WordCardBack from "../components/WordCardBack";
+import Photo from "../components/Photo";
+import { primeSpeech } from "../lib/speech";
+import AppTabs from "../components/AppTabs";
 
 /** When this card next comes back, in words. */
 function nextReviewLabel(card: Card): string {
@@ -42,7 +45,7 @@ function WordPage() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["cards", deckId] });
       queryClient.invalidateQueries({ queryKey: ["dueCards", deckId] });
-      navigate(`/decks/${deckId}`);
+      navigate("/kartlar");
     },
   });
 
@@ -54,9 +57,9 @@ function WordPage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="mx-auto max-w-2xl px-6 pb-16 pt-8">
+      <main className="mx-auto max-w-2xl px-6 pb-28 pt-8">
         <Link
-          to={`/decks/${deckId}`}
+          to="/kartlar"
           className="-m-2 inline-flex items-center gap-1.5 p-2 font-medium text-stone-500 transition hover:text-stone-800"
         >
           <span aria-hidden="true">←</span> Kelimelerim
@@ -82,10 +85,8 @@ function WordPage() {
         {card && back && (
           <>
             {/* The hero: the picture, the word, what it means. */}
-            <div className="mt-5 overflow-hidden rounded-3xl bg-white ring-2 ring-violet-100 shadow-[0_6px_0_0_var(--color-violet-100)]">
-              {card.image_url && (
-                <img src={card.image_url} alt="" className="h-52 w-full object-cover sm:h-64" />
-              )}
+            <div className="mt-5 overflow-hidden rounded-3xl bg-white ring-1 ring-stone-200 shadow-[0_10px_30px_-18px_rgba(28,25,23,0.4)]">
+              {card.image_url && <Photo src={card.image_url} frameClassName="h-56 w-full sm:h-72" />}
               <div className="p-5">
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                   <h1 className="text-4xl font-extrabold tracking-tight text-stone-800 break-words">{card.front}</h1>
@@ -93,7 +94,7 @@ function WordPage() {
                 </div>
                 <div className="mt-1.5 flex flex-wrap items-center gap-2">
                   {back.pos && (
-                    <span className="rounded-full bg-violet-50 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-violet-600 ring-1 ring-violet-100">
+                    <span className="rounded-full bg-stone-100 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-stone-500">
                       {posLabel(back.pos)}
                     </span>
                   )}
@@ -101,7 +102,7 @@ function WordPage() {
                     {nextReviewLabel(card)}
                   </span>
                 </div>
-                <p className="mt-3 text-2xl font-extrabold leading-snug text-violet-700">{back.text}</p>
+                <p className="mt-3 text-2xl font-extrabold leading-snug text-stone-800">{back.text}</p>
               </div>
             </div>
 
@@ -111,7 +112,7 @@ function WordPage() {
             </div>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-2 border-t border-stone-200/70 pt-6">
-              <LinkButton to={`/decks/${deckId}/flashcards?mode=all`} variant="secondary" size="sm">
+              <LinkButton to={`/decks/${deckId}/flashcards?mode=all`} variant="secondary" size="sm" onClick={primeSpeech}>
                 🃏 Kartlara dön
               </LinkButton>
               <Button variant="ghost" size="sm" onClick={() => setConfirming(true)}>
@@ -130,6 +131,7 @@ function WordPage() {
         message={card ? `"${card.front}" kartı ve tüm notları silinecek.` : ""}
         isLoading={remove.isPending}
       />
+      <AppTabs />
     </div>
   );
 }

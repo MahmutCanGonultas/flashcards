@@ -24,7 +24,7 @@
   body {
     background-color: #fdf9f3;
     background-image:
-      radial-gradient(38rem 38rem at 12% 8%, rgba(167, 139, 250, 0.16), transparent 62%),
+      radial-gradient(38rem 38rem at 12% 8%, rgba(167, 139, 250, 0.09), transparent 62%),
       radial-gradient(34rem 34rem at 88% 22%, rgba(251, 191, 36, 0.14), transparent 62%),
       radial-gradient(40rem 40rem at 50% 100%, rgba(52, 211, 153, 0.12), transparent 62%);
     background-attachment: fixed;
@@ -571,6 +571,31 @@
   }
   to {
     transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* On a screen with the tab bar he lands on top of it, not over it, so the
+   tabs stay tappable while he's talking. */
+body:has(nav[aria-label="Bölümler"]) .tonton-pop {
+  bottom: calc(4.5rem + env(safe-area-inset-bottom));
+  padding-bottom: 0.75rem;
+}
+
+/* Flashcard faces: each hides when it's turned away (Safari needs the prefix). */
+.card-face {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* The next card rising out of the pile to the top. */
+@keyframes card-rise {
+  from {
+    transform: translateY(6px) scale(0.97);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 }

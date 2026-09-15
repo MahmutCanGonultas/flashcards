@@ -43,8 +43,8 @@ function SpeakButton({ text, size = "sm", className = "" }: SpeakButtonProps) {
       aria-label={`Dinle: ${text}`}
       className={`inline-flex shrink-0 items-center justify-center rounded-full transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 ${sizeClasses[size]} ${
         isSpeaking
-          ? "bg-violet-600 text-white"
-          : "bg-violet-100 text-violet-600 hover:bg-violet-200"
+          ? "bg-stone-800 text-white"
+          : "bg-stone-100 text-stone-600 hover:bg-stone-200"
       } ${className}`}
     >
       <SpeakerIcon className={`${iconSizeClasses[size]} ${isSpeaking ? "animate-pulse" : ""}`} />

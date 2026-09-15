@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Decks from "./pages/Decks";
+import Kartlar from "./pages/Kartlar";
+import Kurs from "./pages/Kurs";
 import DeckDetail from "./pages/DeckDetail";
 import Study from "./pages/Study";
 import Dialogue from "./pages/Dialogue";
@@ -18,7 +19,7 @@ import { playTap } from "./lib/sound";
 
 /** Signed in? Go to the decks. Otherwise, go sign in. */
 function RootRedirect() {
-  return <Navigate to={getToken() ? "/decks" : "/login"} replace />;
+  return <Navigate to={getToken() ? "/kartlar" : "/login"} replace />;
 }
 
 /**
@@ -47,11 +48,20 @@ function App() {
       <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/decks" element={<Navigate to="/kartlar" replace />} />
       <Route
-        path="/decks"
+        path="/kartlar"
         element={
           <ProtectedRoute>
-            <Decks />
+            <Kartlar />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/kurs"
+        element={
+          <ProtectedRoute>
+            <Kurs />
           </ProtectedRoute>
         }
       />

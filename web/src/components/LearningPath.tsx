@@ -553,7 +553,7 @@ function LearningPath({ deckId, units }: LearningPathProps) {
                     )}
                   </p>
                   <h2
-                    className={`truncate text-base font-extrabold tracking-tight ${locked ? "text-stone-400" : "text-stone-800"}`}
+                    className={`line-clamp-2 text-base font-extrabold leading-tight tracking-tight ${locked ? "text-stone-400" : "text-stone-800"}`}
                   >
                     {unit.title}
                     {unit.titleTr && (

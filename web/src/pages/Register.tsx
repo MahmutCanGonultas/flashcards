@@ -55,7 +55,7 @@ function Register() {
       // Whoever was signed in before, their cached decks must not survive.
       // removeQueries (not clear) leaves this in-flight mutation untouched.
       queryClient.removeQueries();
-      navigate("/decks", { replace: true });
+      navigate("/kartlar", { replace: true });
     },
   });
 
