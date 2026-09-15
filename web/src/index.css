@@ -562,3 +562,15 @@
     opacity: 1;
   }
 }
+
+/* Tonton popping in at the bottom of the screen. */
+@keyframes tonton-in {
+  from {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

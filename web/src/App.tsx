@@ -10,6 +10,8 @@ import UnitTest from "./pages/UnitTest";
 import Placement from "./pages/Placement";
 import Grammar from "./pages/Grammar";
 import Flashcards from "./pages/Flashcards";
+import WordPage from "./pages/WordPage";
+import TontonPopups from "./components/TontonPopups";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { getToken } from "./lib/api";
 import { playTap } from "./lib/sound";
@@ -40,7 +42,9 @@ function useTapSounds() {
 function App() {
   useTapSounds();
   return (
-    <Routes>
+    <>
+      <TontonPopups />
+      <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route
@@ -64,6 +68,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Study />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/decks/:deckId/words/:cardId"
+        element={
+          <ProtectedRoute>
+            <WordPage />
           </ProtectedRoute>
         }
       />
@@ -109,7 +121,8 @@ function App() {
       />
       <Route path="/" element={<RootRedirect />} />
       <Route path="*" element={<RootRedirect />} />
-    </Routes>
+      </Routes>
+    </>
   );
 }
 

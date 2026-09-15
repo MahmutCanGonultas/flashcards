@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import type { Card, Deck } from "../types";
-import { parseBack } from "../lib/cardBack";
 import { isDue } from "../lib/path";
 import Button from "./Button";
 import LinkButton from "./LinkButton";
@@ -72,15 +71,11 @@ function FlashcardsHub({ deck, cards, onAdd }: FlashcardsHubProps) {
 
         {recent.length > 0 && (
           <ul className="mt-3 flex flex-wrap gap-1.5">
-            {recent.map((card) => {
-              const { emoji } = parseBack(card.back);
-              return (
-                <li key={card.id} className={`rounded-full px-2.5 py-1 text-xs font-extrabold ring-1 ${isDue(card) ? "bg-white text-violet-700 ring-white" : "bg-white/15 text-white ring-white/30"}`}>
-                  {emoji ? `${emoji} ` : ""}
-                  {card.front}
-                </li>
-              );
-            })}
+            {recent.map((card) => (
+              <li key={card.id} className={`rounded-full px-2.5 py-1 text-xs font-extrabold ring-1 ${isDue(card) ? "bg-white text-violet-700 ring-white" : "bg-white/15 text-white ring-white/30"}`}>
+                {card.front}
+              </li>
+            ))}
             {total > recent.length && (
               <li className="rounded-full bg-white/15 px-2.5 py-1 text-xs font-extrabold text-white/80 ring-1 ring-white/30">
                 +{total - recent.length}
@@ -103,7 +98,7 @@ function FlashcardsHub({ deck, cards, onAdd }: FlashcardsHubProps) {
           </Button>
           {deck && total > 0 && (
             <Link to={`/decks/${deck.id}`} className="self-center text-sm font-bold text-white/80 underline-offset-4 hover:underline sm:ml-auto">
-              Tüm kartlar →
+              📖 Kelime sayfaları →
             </Link>
           )}
         </div>

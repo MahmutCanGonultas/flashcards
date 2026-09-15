@@ -16,6 +16,7 @@ import Skeleton from "../components/Skeleton";
 import Mascot from "../components/Mascot";
 import SpeakButton from "../components/SpeakButton";
 import TontonLine from "../components/TontonLine";
+import Modal from "../components/Modal";
 import WordCardBack from "../components/WordCardBack";
 
 /**
@@ -47,6 +48,7 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
   const [plan, setPlan] = useState<Step[]>(() => cards.map((card) => ({ key: `${card.id}:0`, cardId: card.id, attempt: 0 })));
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
+  const [examplesOpen, setExamplesOpen] = useState(false);
   const [outcomes, setOutcomes] = useState<Record<number, Grade>>({});
   const gradedRef = useRef(new Set<number>());
   const recordedDayRef = useRef(false);
@@ -112,6 +114,7 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
         }
       }
       setFlipped(false);
+      setExamplesOpen(false);
       setIndex((i) => i + 1);
     },
     [step, card, flipped, sendReview, recordStudyDay],
@@ -143,7 +146,13 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
   }
 
   if (!card) return null;
-  const { pos, emoji } = parseBack(card.back);
+  const { pos, emoji, text: meaning } = parseBack(card.back);
+  // The back is the word and what it means — nothing more. A word with
+  // several senses lists their meanings; the sentences live on its page.
+  const senseMeanings = (card.senses ?? []).map((sense) => ({ pos: sense.pos ?? null, meaning: sense.meaning }));
+  // Only label senses by type when the types actually differ (approach: verb / noun).
+  const mixedTypes = new Set(senseMeanings.map((s) => s.pos ?? "")).size > 1;
+  const hasDetails = Boolean(card.senses?.length || card.example_sentence || card.related?.length || card.watch_out);
   const progress = Math.round((index / plan.length) * 100);
 
   return (
@@ -216,20 +225,55 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
             </span>
           </div>
         ) : (
-          <div className="rounded-3xl bg-gradient-to-b from-violet-50 to-white p-3 ring-2 ring-violet-200 shadow-[0_6px_0_0_var(--color-violet-200)] animate-[flip-in_360ms_ease-out]">
-            <div className="flex items-center justify-between gap-3 px-1 pb-2">
-              <div className="flex min-w-0 items-center gap-2">
-                {emoji && <span aria-hidden="true" className="text-2xl leading-none">{emoji}</span>}
-                <p className="truncate text-2xl font-extrabold tracking-tight text-stone-800">{card.front}</p>
-              </div>
-              <SpeakButton text={card.front} size="sm" />
+          <div className="relative flex min-h-[19rem] flex-col items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-b from-violet-600 to-fuchsia-600 p-6 text-center text-white ring-2 ring-violet-300 shadow-[0_6px_0_0_var(--color-violet-800)] animate-[flip-in_360ms_ease-out]">
+            <div className="flex items-center gap-2">
+              {card.image_url ? (
+                <img src={card.image_url} alt="" className="h-9 w-9 rounded-lg object-cover ring-2 ring-white/60" />
+              ) : emoji ? (
+                <span aria-hidden="true" className="text-2xl leading-none">
+                  {emoji}
+                </span>
+              ) : null}
+              <p className="text-xl font-extrabold text-white/85">{card.front}</p>
+              {pos && (
+                <span className="rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+                  {posLabel(pos)}
+                </span>
+              )}
             </div>
-            <div className="max-h-[52vh] overflow-y-auto pb-1 pr-0.5">
-              <WordCardBack card={card} />
-            </div>
+            {senseMeanings.length > 1 ? (
+              <ol className="mt-4 space-y-2 text-left">
+                {senseMeanings.map((sense, i) => (
+                  <li key={i} className="flex items-baseline gap-2.5">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/20 text-[11px] font-extrabold">
+                      {i + 1}
+                    </span>
+                    <span className="text-[19px] font-extrabold leading-snug">{sense.meaning}</span>
+                    {sense.pos && mixedTypes && (
+                      <span className="shrink-0 text-[10px] font-bold uppercase tracking-wide text-white/60">{posLabel(sense.pos)}</span>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <p className="mt-4 text-3xl font-extrabold leading-snug break-words">{meaning}</p>
+            )}
+            {hasDetails && (
+              <button
+                type="button"
+                onClick={() => setExamplesOpen(true)}
+                className="mt-5 rounded-full bg-white/15 px-4 py-2 text-sm font-extrabold text-white ring-1 ring-white/40 transition hover:bg-white/25"
+              >
+                📖 Örnek cümleler
+              </button>
+            )}
           </div>
         )}
       </div>
+
+      <Modal isOpen={examplesOpen} onClose={() => setExamplesOpen(false)} title={card.front} emoji="📖">
+        <WordCardBack card={card} />
+      </Modal>
 
       <div className="fixed inset-x-0 bottom-0 z-10 border-t border-stone-200/70 bg-[#FDF9F3]/95 backdrop-blur">
         <div className="mx-auto max-w-2xl px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3">

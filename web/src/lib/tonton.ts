@@ -98,3 +98,93 @@ export function pathLines(stats: PathStats, units: Unit[], isFresh: boolean): st
   lines.push(tip());
   return lines;
 }
+
+/* ------------------------------------------------------------- pop-ins -- */
+
+/**
+ * What Tonton says when he wanders onto the screen uninvited. A wide pool
+ * so it doesn't repeat, split by mood; the caller weaves in the live
+ * lines (what's due, a word to recall) and keeps the last few picks out.
+ */
+const POP_SMALL_TALK = [
+  "Buradayım. Sadece bakıyordum. 👀",
+  "Kulaklarım büyük diye her şeyi duyuyorum sanma. Çoğunu duyuyorum. 👂",
+  "Bugün bir kelime öğrendin mi? Ben 'biscuit' öğrendim. Sonra yedim. 🍪",
+  "Şşş… Kelimeler uyuyor. Uyandıralım mı? 🃏",
+  "Hazır olduğunda buradayım. Acele yok. Ama azıcık var. 😌",
+  "Bir kelime, bir cümle, bir nefes. Sonra yine gel. 🌬️",
+  "Mor olduğum için değil, senin için buradayım. 💜",
+  "İngilizce zor değil; sadece çok kelimesi var. Tek tek alıyoruz. 🧱",
+  "Bana bir kelime söyle, ben sana cümlesini söyleyeyim. Yok, gerçekten söyleyemem ama denerim. 😅",
+  "Kelime kartlarını çevirmek, kalbimi çevirmek gibi. Dramatik oldu. 🎭",
+  "Tonton'un notu: hata yapmak ücretsiz. Bol bol yap. 🆓",
+  "Bugün kimseyle İngilizce konuştun mu? Benimle konuşabilirsin. Cevap veremem ama dinlerim. 🐻",
+];
+
+const POP_TIPS = [
+  "Bir kelimeyi kaçırdıysan, on dakika sonra yine gelir. Kaçış yok. ⏱️",
+  "Kartın arkasına bakmadan önce üç saniye dur. O üç saniye hafızadır. 🧠",
+  "Kelimeyi bir cümlede düşün, tek başına değil. Yalnız kelimeler kaybolur. 🧩",
+  "Yüksek sesle söylemekten utanma; duvarlar İngilizce bilmiyor. 🗣️",
+  "'Zorlandım' demek ayıp değil. O kelimeyi biraz daha sık göstermemi sağlar. 🤔",
+  "Bir kelimeyi üç kez ayrı günlerde bildiysen, o artık senin. 🏅",
+  "Her gün beş dakika, haftada bir saatten iyidir. Seri böyle kurulur. 🔥",
+  "Dizide duyduğun kelimeyi ekle. Sahnesi aklında kaldıkça kelime de kalır. 🎬",
+  "Türkçesini değil, cümlesini hatırla. Anlam cümlede saklı. 📖",
+  "Gramer notları kısa. Bir tanesini oku, sonra bir kart çevir. 📝",
+];
+
+const POP_CHEERS = [
+  "Geldin ya, en zor kısmı bu. Gerisi kelime. 👏",
+  "Dün de buradaydın, bugün de. Seni fark ediyorum. 🌱",
+  "Küçük adımlar. Büyük adımlar dizini incitir. 🐾",
+  "Yanlış cevap verdiğinde bile kelime seni tanıdı. Yarın hatırlar. 🙂",
+  "Bir kart bile çevirsen bugün sayılır. ✅",
+  "Bir yıl sonra bugüne bakacaksın: 'O gün başlamıştım' diyeceksin. 📅",
+];
+
+function shuffleByDay<T>(items: T[], salt: number): T[] {
+  // A stable shuffle for the day, so the order is fresh tomorrow but the
+  // "don't repeat" window works within a day.
+  const seed = dayIndex() * 7919 + salt;
+  return [...items].sort((a, b) => Math.sin(seed + items.indexOf(a) * 13.7) - Math.sin(seed + items.indexOf(b) * 13.7));
+}
+
+/**
+ * A pool of pop-in lines for the moment: the live ones (due cards, a word
+ * to recall, streak) first, then small talk, tips and cheers mixed.
+ */
+export function popLines({
+  cards,
+  personal,
+  streak,
+}: {
+  cards: Card[];
+  personal: Card[];
+  streak: number;
+}): string[] {
+  const live: string[] = [];
+  const personalDue = personal.filter(isDue).length;
+  if (personalDue > 0) {
+    live.push(
+      personalDue === 1
+        ? "Bir kartın seni bekliyor. Bir dakika sürer. 🃏"
+        : `${personalDue} kartın seni bekliyor. Hadi, çabuk çevirelim. 🃏`,
+    );
+  }
+  if (personal.length > 0) {
+    const card = personal[(dayIndex() + new Date().getHours()) % personal.length];
+    const back = parseBack(card.back);
+    live.push(`Küçük sınav: "${card.front}"? … ${back.text}. 🎯`);
+    live.push(`"${card.front}" — bir cümlede kullanabilir misin? Sesli söyle. 🗣️`);
+  }
+  const courseDue = cards.filter(isDue).length;
+  if (courseDue > 0) live.push(`Kursta ${courseDue} kelime tekrar bekliyor. Kısa bir tur? 🔁`);
+  if (streak >= 3) live.push(`${streak} gündür buradasın. Seriyi bozma, bugün bir kart yeter. 🔥`);
+  const hour = new Date().getHours();
+  if (hour >= 22 || hour < 5) live.push("Gece kelimeleri daha iyi yapışır derler. Bir kart, sonra uyku. 🌙");
+  if (hour >= 6 && hour < 10) live.push("Sabah sabah bir kelime, gün boyu aklında döner. ☀️");
+
+  const rest = shuffleByDay([...POP_SMALL_TALK, ...POP_TIPS, ...POP_CHEERS], live.length);
+  return [...shuffleByDay(live, 3), ...rest];
+}

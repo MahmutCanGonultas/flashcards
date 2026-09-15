@@ -14,6 +14,7 @@ import Skeleton from "../components/Skeleton";
 import TontonSays from "../components/TontonSays";
 import PersonalCardSheet from "../components/PersonalCardSheet";
 import FlashcardsHub from "../components/FlashcardsHub";
+import CourseHub from "../components/CourseHub";
 import { usePersonalDeck } from "../lib/personal";
 import { buildPath, pathStats } from "../lib/path";
 import { homeLines } from "../lib/tonton";
@@ -193,18 +194,27 @@ function Decks() {
           />
         )}
 
+        {/* A deck with units is the course and gets the "you are here"
+            sign; any other deck stays a plain tile. */}
         {data && data.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="space-y-5">
             {data.map((deck, i) =>
-              deck.kind === "personal" ? null : (
-                <DeckCard
-                  key={deck.id}
-                  deck={deck}
-                  theme={themeFor(i)}
-                  stats={statsFor(i)}
-                />
-              ),
+              deck.kind === "personal" ? null : (unitQueries[i]?.data?.length ?? 0) > 0 || unitQueries[i]?.isLoading ? (
+                <CourseHub key={deck.id} deck={deck} cards={cardQueries[i]?.data} units={unitQueries[i]?.data} />
+              ) : null,
             )}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {data.map((deck, i) =>
+                deck.kind === "personal" || (unitQueries[i]?.data?.length ?? 0) > 0 || unitQueries[i]?.isLoading ? null : (
+                  <DeckCard
+                    key={deck.id}
+                    deck={deck}
+                    theme={themeFor(i)}
+                    stats={statsFor(i)}
+                  />
+                ),
+              )}
+            </div>
           </div>
         )}
       </main>
