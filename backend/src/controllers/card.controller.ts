@@ -18,6 +18,27 @@ const createCardSchema = z.object({
   example2Tr: z.string().nullable().optional(),
   // Optional memory aid, usually the word's root/etymology.
   mnemonic: z.string().nullable().optional(),
+  // A rich card: every sense with its pattern and example, derived words, a warning.
+  senses: z
+    .array(
+      z.object({
+        pos: z.string().max(40).nullable().optional(),
+        meaning: z.string().min(1).max(200),
+        pattern: z.string().max(200).nullable().optional(),
+        example_en: z.string().max(300).nullable().optional(),
+        example_tr: z.string().max(300).nullable().optional(),
+        note: z.string().max(300).nullable().optional(),
+      }),
+    )
+    .max(8)
+    .nullable()
+    .optional(),
+  related: z
+    .array(z.object({ word: z.string().min(1).max(60), pos: z.string().max(40).nullable().optional(), meaning: z.string().max(200) }))
+    .max(8)
+    .nullable()
+    .optional(),
+  watchOut: z.string().max(400).nullable().optional(),
   // Optional lesson number for path-organised decks.
   lesson: z.number().int().positive().nullable().optional(),
 });
@@ -31,7 +52,7 @@ export const createCard = async (req: Request, res: Response) => {
     return res.status(400).json({ error: "Kart Bilgileri Gecersiz" });
   }
 
-  const { front, back, tag, exampleSentence, imageUrl, mnemonic, lesson, exampleTr, example2, example2Tr } =
+  const { front, back, tag, exampleSentence, imageUrl, mnemonic, lesson, exampleTr, example2, example2Tr, senses, related, watchOut } =
     validation.data;
   const { deckId } = req.params;
 
@@ -47,8 +68,8 @@ export const createCard = async (req: Request, res: Response) => {
 
   // 3-Deste bu kullanicinin - artik karti ekleyebiliriz
   const result = await pool.query(
-    `INSERT INTO cards (deck_id, front, back, tag, example_sentence, image_url, mnemonic, lesson, example_tr, example2, example2_tr)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`,
+    `INSERT INTO cards (deck_id, front, back, tag, example_sentence, image_url, mnemonic, lesson, example_tr, example2, example2_tr, senses, related, watch_out)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING *`,
     [
       deckId,
       front,
@@ -61,6 +82,9 @@ export const createCard = async (req: Request, res: Response) => {
       exampleTr ?? null,
       example2 ?? null,
       example2Tr ?? null,
+      senses ? JSON.stringify(senses) : null,
+      related ? JSON.stringify(related) : null,
+      watchOut ?? null,
     ],
   );
 
@@ -92,7 +116,7 @@ export const updateCard = async (req: Request, res: Response) => {
     return res.status(400).json({ error: "Kart bilgileri geçersiz" });
   }
 
-  const { front, back, tag, exampleSentence, imageUrl, mnemonic, exampleTr, example2, example2Tr } =
+  const { front, back, tag, exampleSentence, imageUrl, mnemonic, exampleTr, example2, example2Tr, senses, related, watchOut } =
     validation.data;
   const { deckId, cardId } = req.params;
 
@@ -107,7 +131,10 @@ export const updateCard = async (req: Request, res: Response) => {
          mnemonic = CASE WHEN $12::boolean THEN $13 ELSE mnemonic END,
          example_tr = CASE WHEN $14::boolean THEN $15 ELSE example_tr END,
          example2 = CASE WHEN $16::boolean THEN $17 ELSE example2 END,
-         example2_tr = CASE WHEN $18::boolean THEN $19 ELSE example2_tr END
+         example2_tr = CASE WHEN $18::boolean THEN $19 ELSE example2_tr END,
+         senses = CASE WHEN $20::boolean THEN $21::jsonb ELSE senses END,
+         related = CASE WHEN $22::boolean THEN $23::jsonb ELSE related END,
+         watch_out = CASE WHEN $24::boolean THEN $25 ELSE watch_out END
      WHERE id = $3
        AND deck_id = $4
        AND deck_id IN (SELECT id FROM decks WHERE user_id = $5)
@@ -121,6 +148,9 @@ export const updateCard = async (req: Request, res: Response) => {
       exampleTr !== undefined, exampleTr ?? null,
       example2 !== undefined, example2 ?? null,
       example2Tr !== undefined, example2Tr ?? null,
+      senses !== undefined, senses ? JSON.stringify(senses) : null,
+      related !== undefined, related ? JSON.stringify(related) : null,
+      watchOut !== undefined, watchOut ?? null,
     ],
   );
 

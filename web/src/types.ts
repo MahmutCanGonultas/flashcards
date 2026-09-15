@@ -7,6 +7,18 @@ export type Deck = {
   created_at: string;
 };
 
+export type Sense = {
+  pos?: string | null;
+  meaning: string;
+  /** How the word is used: "consider + V-ing", "be committed to sth". */
+  pattern?: string | null;
+  example_en?: string | null;
+  example_tr?: string | null;
+  note?: string | null;
+};
+
+export type RelatedWord = { word: string; pos?: string | null; meaning: string };
+
 export type Card = {
   id: number;
   deck_id: number;
@@ -25,6 +37,12 @@ export type Card = {
   image_url: string | null;
   /** Optional memory aid, usually the word's root/etymology. */
   mnemonic: string | null;
+  /** A rich card (the learner's own words): every sense, with pattern and example. */
+  senses?: Sense[] | null;
+  /** Words that grow from this one: commit → commitment. */
+  related?: RelatedWord[] | null;
+  /** The one mistake to avoid with this word. */
+  watch_out?: string | null;
   /** Optional lesson number. A deck whose cards carry these renders as a path. */
   lesson: number | null;
   /** The unit this card's lesson belongs to, for path-organised decks. */

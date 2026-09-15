@@ -110,8 +110,6 @@ type StudySessionProps = {
   deckCardCount?: number;
   /** The deck's full card list, used to draw multiple-choice distractors from. */
   deckCards?: Card[];
-  /** The learner's own words, folded into a lesson's recap ahead of course words. */
-  personalCards?: Card[];
   deckCardsError: unknown;
   onRetryDeckCards: () => void;
 };
@@ -138,7 +136,6 @@ function StudySession({
   lessonNumber = 0,
   deckCardCount,
   deckCards,
-  personalCards = [],
   deckCardsError,
   onRetryDeckCards,
 }: StudySessionProps) {
@@ -147,13 +144,12 @@ function StudySession({
 
   const [queue] = useState(() => cards);
   const [deckCardPool] = useState(() => deckCards ?? []);
-  const [personalPool] = useState(() => personalCards);
 
   // Append-only. Never reorder and never remove: every other operation can
   // shift an index that has already been consumed.
   const [plan, setPlan] = useState<Step[]>(() =>
     mode === "lesson"
-      ? buildLessonPlan(cards, level, lessonNumber, pickRecap([...personalCards, ...(deckCards ?? [])], cards))
+      ? buildLessonPlan(cards, level, lessonNumber, pickRecap(deckCards ?? [], cards))
       : buildReviewPlan(cards),
   );
   // Only the typed round uses this; the multiple-choice rounds use `answer`.
@@ -178,9 +174,9 @@ function StudySession({
 
   const byId = useMemo(() => {
     const map = new Map<number, Card>();
-    for (const card of [...deckCardPool, ...personalPool, ...queue]) map.set(card.id, card);
+    for (const card of [...deckCardPool, ...queue]) map.set(card.id, card);
     return map;
-  }, [deckCardPool, personalPool, queue]);
+  }, [deckCardPool, queue]);
 
   const step: Step | undefined = plan[stepIndex];
   const finished = plan.length > 0 && stepIndex >= plan.length;
@@ -1250,15 +1246,6 @@ function Study() {
   // Unit gates decide which lessons are reachable.
   const unitsQuery = useUnits(deckId);
 
-  // The learner's own words, so a lesson's recap can bring them back. Only
-  // a lesson needs them, and only when this isn't the personal deck itself.
-  const personalDeck = decksQuery.data?.find((deck) => deck.kind === "personal");
-  const personalCardsQuery = useQuery({
-    queryKey: ["cards", String(personalDeck?.id ?? "")],
-    queryFn: () =>
-      api.get<{ cards: Card[] }>(`/decks/${personalDeck!.id}/cards`).then((r) => r.cards),
-    enabled: Boolean(personalDeck) && lessonNumber !== null && String(personalDeck?.id) !== deckId,
-  });
 
   // Every hook has run by now, so this early return is safe.
   if (!deckId) {
@@ -1284,9 +1271,7 @@ function Study() {
       if (
         cardsQuery.isLoading ||
         !cardsQuery.data ||
-        unitsQuery.isLoading ||
-        decksQuery.isLoading ||
-        (personalCardsQuery.isEnabled && personalCardsQuery.isLoading)
+        unitsQuery.isLoading
       ) {
         return <StudySkeleton />;
       }
@@ -1342,7 +1327,6 @@ function Study() {
             lessonNumber={lessonNumber}
             deckCardCount={cardsQuery.data.length}
             deckCards={cardsQuery.data}
-            personalCards={personalCardsQuery.data ?? []}
             deckCardsError={cardsQuery.error}
             onRetryDeckCards={() => void cardsQuery.refetch()}
           />
