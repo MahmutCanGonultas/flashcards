@@ -89,7 +89,7 @@ function Modal({ isOpen, onClose, title, emoji, children }: ModalProps) {
         tabIndex={-1}
         // Body scroll is locked while we're open, so tall content has to scroll
         // in here or a short viewport could hide the buttons.
-        className="w-full max-w-md max-h-[calc(100dvh-2rem)] overflow-y-auto bg-white rounded-3xl p-7 shadow-xl ring-2 ring-stone-100 focus:outline-none animate-[pop-in_180ms_ease-out]"
+        className="w-full max-w-md max-h-[calc(100dvh-2rem)] overflow-y-auto overscroll-contain bg-white rounded-3xl p-6 shadow-xl ring-1 ring-stone-200 focus:outline-none animate-[pop-in_180ms_ease-out]"
       >
         <div className="flex items-start justify-between gap-4 mb-6">
           <h2
@@ -103,7 +103,7 @@ function Modal({ isOpen, onClose, title, emoji, children }: ModalProps) {
             type="button"
             onClick={onClose}
             aria-label="Kapat"
-            className="shrink-0 w-9 h-9 rounded-xl text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition flex items-center justify-center text-xl leading-none"
+            className="shrink-0 -mr-2 -mt-2 w-11 h-11 rounded-xl text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition flex items-center justify-center text-2xl leading-none"
           >
             ×
           </button>

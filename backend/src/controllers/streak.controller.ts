@@ -21,8 +21,16 @@ export const getStreak = async (req: Request, res: Response) => {
   }
 
   const { streak_count, last_study_date } = result.rows[0];
+  // A run that wasn't extended yesterday or today is over, whatever the
+  // stored count says. Dates are compared in the learner's zone.
+  const localDate = typeof req.query.localDate === "string" && /^\d{4}-\d{2}-\d{2}$/.test(req.query.localDate)
+    ? req.query.localDate
+    : new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Istanbul", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+  const dayMs = 86_400_000;
+  const gapDays = last_study_date ? Math.round((Date.parse(localDate) - Date.parse(last_study_date)) / dayMs) : Infinity;
+  const alive = gapDays <= 1;
   return res.status(200).json({
-    streak: streak_count ?? 0,
+    streak: alive ? (streak_count ?? 0) : 0,
     lastStudyDate: last_study_date,
   });
 };

@@ -17,11 +17,13 @@ describe("calculateSrs", () => {
     expect(minutesAhead).toBeLessThan(11);
   });
 
-  it("bildiğinde yarına atar, on dakikaya değil", () => {
-    const before = Date.now();
+  it("bildiğinde yarının başına atar, on dakikaya değil", () => {
     const result = calculateSrs({ repetitions: 0, interval: 0, easeFactor: 2.5, quality: 4 });
-    const hoursAhead = (result.dueDate.getTime() - before) / 3_600_000;
-    expect(hoursAhead).toBeGreaterThan(23);
+    const tomorrow = new Date();
+    tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
+    tomorrow.setUTCHours(0, 0, 0, 0);
+    expect(result.dueDate.getTime()).toBe(tomorrow.getTime());
+    expect(result.dueDate.getTime()).toBeGreaterThan(Date.now());
   });
 
   it("ilk doğru bilişte interval 1 olur", () => {

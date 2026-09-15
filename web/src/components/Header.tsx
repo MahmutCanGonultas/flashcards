@@ -26,7 +26,7 @@ function Header() {
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/decks" aria-label="Destelerine git">
+        <Link to="/kartlar" aria-label="Kartlarına git">
           <Logo size={32} withText />
         </Link>
         <div className="flex items-center gap-1">

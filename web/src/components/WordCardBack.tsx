@@ -5,8 +5,8 @@ import SpeakButton from "./SpeakButton";
 
 type WordCardBackProps = {
   card: Card;
-  /** "full" is the flashcard's back; "compact" is the row on the deck page. */
-  variant?: "full" | "compact";
+  /** "full" is the word page; "compact" the deck row; "flat" the examples sheet (no boxes, dividers). */
+  variant?: "full" | "compact" | "flat";
 };
 
 function Highlighted({ sentence, headword }: { sentence: string; headword: string }) {
@@ -15,7 +15,7 @@ function Highlighted({ sentence, headword }: { sentence: string; headword: strin
   return (
     <>
       {parts.before}
-      <mark className="rounded-md bg-violet-100 px-1 py-0.5 font-extrabold text-violet-800">{parts.match}</mark>
+      <mark className="rounded-md bg-amber-100 px-1 py-0.5 font-extrabold text-stone-900">{parts.match}</mark>
       {parts.after}
     </>
   );
@@ -27,7 +27,7 @@ function TurkishLine({ sentence, meaning }: { sentence: string; meaning: string 
   return (
     <>
       {sentence.slice(0, at.start)}
-      <span className="font-bold text-violet-700">{sentence.slice(at.start, at.end)}</span>
+      <span className="font-bold text-stone-800 underline decoration-amber-300 decoration-2 underline-offset-2">{sentence.slice(at.start, at.end)}</span>
       {sentence.slice(at.end)}
     </>
   );
@@ -44,6 +44,8 @@ function WordCardBack({ card, variant = "full" }: WordCardBackProps) {
   const { text: meaning } = parseBack(card.back);
   const senses = card.senses ?? [];
   const compact = variant === "compact";
+  const flat = variant === "flat";
+  const box = flat ? "border-b border-stone-200 pb-3 last:border-b-0" : `rounded-2xl bg-white ${compact ? "p-3" : "p-4"} ring-1 ring-stone-200`;
   const mixedTypes = new Set(senses.map((s) => s.pos ?? "")).size > 1;
 
   return (
@@ -51,9 +53,9 @@ function WordCardBack({ card, variant = "full" }: WordCardBackProps) {
       {senses.length > 0 ? (
         <ol className={compact ? "space-y-2" : "space-y-3"}>
           {senses.map((sense, i) => (
-            <li key={i} className={`rounded-2xl bg-white ${compact ? "p-3" : "p-4"} ring-1 ring-stone-200`}>
+            <li key={i} className={box}>
               <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-violet-100 text-[11px] font-extrabold text-violet-700">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-200 text-[11px] font-extrabold text-amber-900">
                   {i + 1}
                 </span>
                 {sense.pos && mixedTypes && (
@@ -66,7 +68,7 @@ function WordCardBack({ card, variant = "full" }: WordCardBackProps) {
                 </p>
               </div>
               {sense.pattern && (
-                <p className="mt-1.5 inline-block rounded-lg bg-violet-50 px-2 py-1 font-mono text-[13px] font-bold text-violet-700 ring-1 ring-violet-100">
+                <p className="mt-1.5 inline-block rounded-lg bg-stone-100 px-2 py-1 font-mono text-[13px] font-bold text-stone-700">
                   {sense.pattern}
                 </p>
               )}
@@ -92,7 +94,7 @@ function WordCardBack({ card, variant = "full" }: WordCardBackProps) {
           ))}
         </ol>
       ) : (
-        <div className={`rounded-2xl bg-white ${compact ? "p-3" : "p-4"} ring-1 ring-stone-200`}>
+        <div className={box}>
           <p className={`font-extrabold leading-snug text-stone-800 ${compact ? "text-[15px]" : "text-xl"}`}>{meaning}</p>
           {card.example_sentence && !compact && (
             <div className="mt-2 flex items-start justify-between gap-2">
@@ -126,7 +128,7 @@ function WordCardBack({ card, variant = "full" }: WordCardBackProps) {
 
       {/* Words that grow from this one. */}
       {card.related && card.related.length > 0 && (
-        <div className={`rounded-2xl bg-sky-50 ${compact ? "p-3" : "p-4"} ring-1 ring-sky-100`}>
+        <div className={flat ? "border-b border-stone-200 pb-3" : `rounded-2xl bg-sky-50 ${compact ? "p-3" : "p-4"} ring-1 ring-sky-100`}>
           <p className="text-[11px] font-extrabold uppercase tracking-widest text-sky-700">Aynı aileden</p>
           <ul className="mt-1.5 space-y-1">
             {card.related.map((r, i) => (
@@ -141,7 +143,7 @@ function WordCardBack({ card, variant = "full" }: WordCardBackProps) {
       )}
 
       {card.watch_out && !compact && (
-        <div className="rounded-2xl bg-rose-50 p-4 ring-1 ring-rose-100">
+        <div className={flat ? "pb-1" : "rounded-2xl bg-rose-50 p-4 ring-1 ring-rose-100"}>
           <p className="text-[11px] font-extrabold uppercase tracking-widest text-rose-600">⚠️ Dikkat</p>
           <p className="mt-1 text-[15px] leading-relaxed text-rose-900">{card.watch_out}</p>
         </div>

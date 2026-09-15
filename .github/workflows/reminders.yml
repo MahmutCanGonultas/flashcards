@@ -1,0 +1,18 @@
+# Wakes the API once an hour so it can send that hour's push reminders.
+# The endpoint is idempotent (one reminder per device per local day, only
+# with cards waiting), so a stray extra call costs nothing.
+name: Daily reminders
+
+on:
+  schedule:
+    - cron: "7 * * * *"
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask the API to send this hour's reminders
+        run: |
+          curl -sS -f -X POST --max-time 170 --retry 3 --retry-delay 20 --retry-all-errors \
+            https://flashcards-api-66g9.onrender.com/api/v1/push/run

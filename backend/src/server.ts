@@ -5,6 +5,7 @@ import deckRouter from "./routes/deck.routes.js";
 import cardRouter from "./routes/card.routes.js";
 import streakRouter from "./routes/streak.routes.js";
 import imageRouter from "./routes/image.routes.js";
+import pushRouter from "./routes/push.routes.js";
 import unitRouter from "./routes/unit.routes.js";
 
 // Without these the server still boots and answers the platform's health check,
@@ -42,6 +43,7 @@ app.use("/api/v1/decks", cardRouter);
 app.use("/api/v1/decks", unitRouter);
 app.use("/api/v1/streak", streakRouter);
 app.use("/api/v1/images", imageRouter);
+app.use("/api/v1/push", pushRouter);
 
 app.get("/", (req, res) => {
   res.send("Flashcards API is running 🚀");

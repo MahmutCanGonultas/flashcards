@@ -23,6 +23,7 @@ import { useUnits } from "../lib/units";
 import CardFormModal from "../components/CardFormModal";
 import PersonalCardSheet from "../components/PersonalCardSheet";
 import PersonalDeckView from "../components/PersonalDeckView";
+import AppTabs from "../components/AppTabs";
 import type { CardFormValues } from "../components/CardFormModal";
 import DeckFormModal from "../components/DeckFormModal";
 import ConfirmDialog from "../components/ConfirmDialog";
@@ -124,7 +125,7 @@ function DeckDetail() {
     mutationFn: () => api.delete<{ message: string }>(`/decks/${deckId}`),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["decks"] });
-      navigate("/decks", { replace: true });
+      navigate("/kurs", { replace: true });
     },
   });
 
@@ -170,12 +171,12 @@ function DeckDetail() {
     <div className="min-h-screen">
       <Header />
 
-      <main className="max-w-5xl mx-auto px-6 pt-10 pb-[max(2.5rem,env(safe-area-inset-bottom))]">
+      <main className="max-w-5xl mx-auto px-6 pt-10 pb-28">
         <Link
-          to="/decks"
+          to="/kurs"
           className="-m-2 inline-flex items-center gap-1.5 p-2 font-medium text-stone-500 hover:text-stone-800 transition"
         >
-          <span aria-hidden="true">←</span> Tüm desteler
+          <span aria-hidden="true">←</span> Kurs
         </Link>
 
         {decksQuery.isLoading && (
@@ -204,7 +205,7 @@ function DeckDetail() {
               title="Deste bulunamadı"
               description="Bu deste artık yok ya da bağlantı eskimiş."
               action={
-                <LinkButton to="/decks" variant="primary">
+                <LinkButton to="/kurs" variant="primary">
                   Destelerime dön
                 </LinkButton>
               }
@@ -413,6 +414,7 @@ function DeckDetail() {
           />
         </>
       )}
+      <AppTabs />
     </div>
   );
 }

@@ -109,3 +109,24 @@ CREATE TABLE unit_results(
     source VARCHAR(20) NOT NULL DEFAULT 'test',
     taken_at TIMESTAMP DEFAULT NOW()
 );
+
+-- Server-side settings that must survive deploys without env vars: the
+-- Web Push VAPID key pair, generated on first use.
+CREATE TABLE settings (
+    key VARCHAR(60) PRIMARY KEY,
+    value TEXT NOT NULL
+);
+
+-- One row per device the learner turned reminders on from. `hour` is the
+-- local hour they chose; `last_sent_on` stops a second reminder that day.
+CREATE TABLE push_subscriptions (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    endpoint TEXT UNIQUE NOT NULL,
+    p256dh TEXT NOT NULL,
+    auth TEXT NOT NULL,
+    hour INTEGER NOT NULL DEFAULT 20,
+    timezone VARCHAR(60) NOT NULL DEFAULT 'Europe/Istanbul',
+    last_sent_on DATE,
+    created_at TIMESTAMP DEFAULT NOW()
+);

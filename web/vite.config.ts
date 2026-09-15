@@ -9,6 +9,10 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: "autoUpdate",
+      // Our own worker (src/sw.ts): the same precached shell, plus push.
+      strategies: "injectManifest",
+      srcDir: "src",
+      filename: "sw.ts",
       includeAssets: ["favicon.svg", "icons.svg", "icons/apple-touch-icon.png"],
       manifest: {
         name: "Kelimece — English, one word at a time",
@@ -30,11 +34,8 @@ export default defineConfig({
           },
         ],
       },
-      // The API lives on a different origin and is never precached or served
-      // from the cache — only the app shell (JS/CSS/HTML) is, so a card you
-      // review is always read from and written to the real server.
-      workbox: {
-        navigateFallbackDenylist: [/^\/api/],
+      injectManifest: {
+        globPatterns: ["**/*.{js,css,html,svg,png,woff2}"],
       },
     }),
   ],
