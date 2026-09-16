@@ -16,6 +16,29 @@ interface SrsOutput {
 
 /** Bilinemeyen bir kelimenin yeniden sorulmasına kadar geçecek süre. */
 export const LAPSE_MINUTES = 10;
+/** "Yarın" hangi saat dilimine göre yarın: öğrencininki. */
+export const LEARNER_TIMEZONE = process.env.LEARNER_TIMEZONE ?? "Europe/Istanbul";
+
+/** Bir saat diliminin UTC'ye göre farkı (ms), o tarihte. */
+export function timezoneOffsetMs(timeZone: string, at: Date): number {
+  try {
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone,
+      hour12: false,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    }).formatToParts(at);
+    const get = (type: string) => Number(parts.find((p) => p.type === type)?.value ?? "0");
+    const asUTC = Date.UTC(get("year"), get("month") - 1, get("day"), get("hour") % 24, get("minute"), get("second"));
+    return asUTC - Math.floor(at.getTime() / 1000) * 1000;
+  } catch {
+    return 0;
+  }
+}
 
 export const calculateSrs = (input: SrsInput): SrsOutput => {
   let { repetitions, interval, easeFactor, quality } = input;
@@ -52,11 +75,15 @@ export const calculateSrs = (input: SrsInput): SrsOutput => {
   // Bilinen kelime o günün başından (UTC gece yarısı) itibaren "vadesi
   // gelmiş" sayılır: akşam çalışılan kart ertesi akşamki hatırlatmada
   // saat farkı yüzünden görünmez kalmasın.
-  const dueDate = new Date();
+  let dueDate = new Date();
   if (quality < 3) dueDate.setMinutes(dueDate.getMinutes() + LAPSE_MINUTES);
   else {
-    dueDate.setUTCDate(dueDate.getUTCDate() + interval);
-    dueDate.setUTCHours(0, 0, 0, 0);
+    // Öğrencinin takvimine göre "interval gün sonra"nın gece yarısı: önce
+    // şu anki yerel tarihi bul, gün ekle, o günün 00:00'ını UTC'ye çevir.
+    const offsetMs = timezoneOffsetMs(LEARNER_TIMEZONE, dueDate);
+    const local = new Date(dueDate.getTime() + offsetMs);
+    const midnightUTC = Date.UTC(local.getUTCFullYear(), local.getUTCMonth(), local.getUTCDate() + interval);
+    dueDate = new Date(midnightUTC - offsetMs);
   }
 
   return { repetitions, interval, easeFactor, dueDate };

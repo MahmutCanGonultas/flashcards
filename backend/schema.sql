@@ -66,10 +66,14 @@ CREATE TABLE cards(
     senses JSONB,
     related JSONB,
     watch_out TEXT,
+    -- One Turkish line that ties the card's photo to the word (the memory hook),
+    -- and the chunks the word lives in: [{ "en", "tr" }].
+    hook TEXT,
+    collocations JSONB,
     ease_factor REAL NOT NULL DEFAULT 2.5,
     interval INTEGER NOT NULL DEFAULT 0,
     repetitions INTEGER NOT NULL DEFAULT 0,
-    due_date TIMESTAMP DEFAULT NOW(),
+    due_date TIMESTAMPTZ DEFAULT NOW(),
     created_at TIMESTAMP DEFAULT NOW()
 );
 -- A unit is one themed stretch of a deck's path: a handful of lessons, a

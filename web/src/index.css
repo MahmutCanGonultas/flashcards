@@ -6,6 +6,12 @@
 
 @theme {
   --font-sans: "Nunito Variable", system-ui, "Segoe UI", Roboto, sans-serif;
+  /* The flashcards half is printed in two inks on cream paper, with one
+     warm accent for marks. Purple lives only inside Tonton. */
+  --color-paper: #fdf9f3;
+  --color-ink: #1b1815;
+  --color-graphite: #6f685f;
+  --color-accent: #c8401a;
 }
 
 @layer base {
@@ -18,18 +24,9 @@
     background-color: #fdf9f3;
   }
 
-  /* The room the app lives in: cream, with three soft colour glows that
-     drift so slowly they read as weather rather than motion. Fixed to the
-     viewport so pages scroll over them. */
+  /* Paper reads as paper: a flat cream, nothing drifting behind the type. */
   body {
     background-color: #fdf9f3;
-    background-image:
-      radial-gradient(38rem 38rem at 12% 8%, rgba(167, 139, 250, 0.09), transparent 62%),
-      radial-gradient(34rem 34rem at 88% 22%, rgba(251, 191, 36, 0.14), transparent 62%),
-      radial-gradient(40rem 40rem at 50% 100%, rgba(52, 211, 153, 0.12), transparent 62%);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    animation: room-drift 28s ease-in-out infinite alternate;
   }
 
   body {
@@ -596,6 +593,40 @@ body:has(nav[aria-label="Bölümler"]) .tonton-pop {
   }
   to {
     transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ------------------------------------------------ the cover (flashcards) */
+
+/* The photo settles onto the cover like a print laid on a table. */
+@keyframes cover-settle {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+/* The headline arrives a beat after the paper. */
+@keyframes cover-line {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* A rubber stamp hitting the page. */
+@keyframes stamp {
+  from {
+    transform: scale(1.25) rotate(-8deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(-8deg);
     opacity: 1;
   }
 }

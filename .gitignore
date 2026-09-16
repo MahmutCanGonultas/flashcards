@@ -39,3 +39,5 @@ coverage/
 .idea/
 .DS_Store
 *.swp
+# Local one-off DB scripts (seed holds a test password); never tracked
+backend/scripts/

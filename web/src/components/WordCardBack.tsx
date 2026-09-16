@@ -2,10 +2,11 @@ import type { Card } from "../types";
 import { parseBack, posLabel } from "../lib/cardBack";
 import { locateTurkish, splitOnWord } from "../lib/sentence";
 import SpeakButton from "./SpeakButton";
+import Mascot from "./Mascot";
 
 type WordCardBackProps = {
   card: Card;
-  /** "full" is the word page; "compact" the deck row; "flat" the examples sheet (no boxes, dividers). */
+  /** "compact" is a deck row: meanings only. Everything else gets the full entry. */
   variant?: "full" | "compact" | "flat";
 };
 
@@ -15,7 +16,7 @@ function Highlighted({ sentence, headword }: { sentence: string; headword: strin
   return (
     <>
       {parts.before}
-      <mark className="rounded-md bg-amber-100 px-1 py-0.5 font-extrabold text-stone-900">{parts.match}</mark>
+      <span className="font-extrabold underline decoration-accent decoration-2 underline-offset-4">{parts.match}</span>
       {parts.after}
     </>
   );
@@ -27,97 +28,101 @@ function TurkishLine({ sentence, meaning }: { sentence: string; meaning: string 
   return (
     <>
       {sentence.slice(0, at.start)}
-      <span className="font-bold text-stone-800 underline decoration-amber-300 decoration-2 underline-offset-2">{sentence.slice(at.start, at.end)}</span>
+      <span className="font-bold text-ink">{sentence.slice(at.start, at.end)}</span>
       {sentence.slice(at.end)}
     </>
   );
 }
 
+const KICKER = "text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite";
+
 /**
- * Everything a word means, laid out the way a good dictionary entry is —
- * but only what the learner needs: each sense with the pattern it lives
- * in and one real sentence (English, then Turkish), the words that grow
- * from it, and the one mistake to avoid. A card without senses falls back
- * to its meaning line and example sentences.
+ * The dictionary entry, set like a magazine page: hairline-divided senses
+ * hanging off an accent numeral, the pattern set plain, one real sentence
+ * with the headword underlined and its Turkish beneath; then the chunks
+ * the word lives in, its family, and the one trap — which Tonton delivers.
  */
 function WordCardBack({ card, variant = "full" }: WordCardBackProps) {
   const { text: meaning } = parseBack(card.back);
   const senses = card.senses ?? [];
   const compact = variant === "compact";
-  const flat = variant === "flat";
-  const box = flat ? "border-b border-stone-200 pb-3 last:border-b-0" : `rounded-2xl bg-white ${compact ? "p-3" : "p-4"} ring-1 ring-stone-200`;
   const mixedTypes = new Set(senses.map((s) => s.pos ?? "")).size > 1;
 
+  if (compact) {
+    return (
+      <ol className="space-y-1">
+        {(senses.length > 0 ? senses.map((s) => s.meaning) : [meaning]).map((m, i) => (
+          <li key={i} className="grid grid-cols-[20px_1fr] gap-x-2 text-[14px] leading-snug text-ink">
+            <span className="text-[11px] font-black tabular-nums text-accent">{i + 1}</span>
+            <span className="font-semibold">{m}</span>
+          </li>
+        ))}
+      </ol>
+    );
+  }
+
   return (
-    <div className={compact ? "space-y-2" : "space-y-3"}>
+    <div>
       {senses.length > 0 ? (
-        <ol className={compact ? "space-y-2" : "space-y-3"}>
+        <ol className="divide-y divide-ink/10">
           {senses.map((sense, i) => (
-            <li key={i} className={box}>
-              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-200 text-[11px] font-extrabold text-amber-900">
-                  {i + 1}
-                </span>
-                {sense.pos && mixedTypes && (
-                  <span className="rounded-full bg-stone-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-stone-500">
-                    {posLabel(sense.pos)}
-                  </span>
-                )}
-                <p className={`min-w-0 font-extrabold leading-snug text-stone-800 ${compact ? "text-[15px]" : "text-lg"}`}>
+            <li key={i} className="grid grid-cols-[28px_1fr] gap-x-3 py-4 first:pt-1">
+              <span className="pt-1 text-[13px] font-black tabular-nums text-accent">{i + 1}</span>
+              <div className="min-w-0">
+                <p className="text-[18px] font-extrabold leading-snug text-ink">
                   {sense.meaning}
+                  {sense.pos && mixedTypes && (
+                    <span className="ml-2 whitespace-nowrap text-[10px] font-extrabold uppercase tracking-[0.16em] text-graphite">
+                      {posLabel(sense.pos)}
+                    </span>
+                  )}
                 </p>
-              </div>
-              {sense.pattern && (
-                <p className="mt-1.5 inline-block rounded-lg bg-stone-100 px-2 py-1 font-mono text-[13px] font-bold text-stone-700">
-                  {sense.pattern}
-                </p>
-              )}
-              {sense.example_en && !compact && (
-                <div className="mt-2 flex items-start justify-between gap-2">
-                  <div className="min-w-0">
-                    <p className="text-[16px] leading-relaxed text-stone-800 break-words">
-                      <Highlighted sentence={sense.example_en} headword={card.front} />
-                    </p>
-                    {sense.example_tr && (
-                      <p className="mt-0.5 text-[14px] leading-relaxed text-stone-500 break-words">
-                        <TurkishLine sentence={sense.example_tr} meaning={sense.meaning} />
+                {sense.pattern && <p className="mt-1 font-mono text-[12.5px] leading-snug text-graphite">{sense.pattern}</p>}
+                {sense.example_en && (
+                  <div className="mt-2.5 flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className="text-[17px] leading-[1.5] text-ink break-words">
+                        <Highlighted sentence={sense.example_en} headword={card.front} />
                       </p>
-                    )}
+                      {sense.example_tr && (
+                        <p className="mt-1 text-[14px] leading-[1.5] text-graphite break-words">
+                          <TurkishLine sentence={sense.example_tr} meaning={sense.meaning} />
+                        </p>
+                      )}
+                    </div>
+                    <SpeakButton text={sense.example_en} size="sm" className="!bg-transparent !text-ink ring-1 ring-ink/15" />
                   </div>
-                  <SpeakButton text={sense.example_en} size="sm" />
-                </div>
-              )}
-              {sense.note && !compact && (
-                <p className="mt-2 text-[13px] leading-relaxed text-stone-500">{sense.note}</p>
-              )}
+                )}
+                {sense.note && <p className="mt-2 text-[13px] leading-relaxed text-graphite">{sense.note}</p>}
+              </div>
             </li>
           ))}
         </ol>
       ) : (
-        <div className={box}>
-          <p className={`font-extrabold leading-snug text-stone-800 ${compact ? "text-[15px]" : "text-xl"}`}>{meaning}</p>
-          {card.example_sentence && !compact && (
-            <div className="mt-2 flex items-start justify-between gap-2">
+        <div className="py-1">
+          <p className="text-[20px] font-extrabold leading-snug text-ink">{meaning}</p>
+          {card.example_sentence && (
+            <div className="mt-3 flex items-start justify-between gap-3">
               <div className="min-w-0">
-                <p className="text-[16px] leading-relaxed text-stone-800 break-words">
+                <p className="text-[17px] leading-[1.5] text-ink break-words">
                   <Highlighted sentence={card.example_sentence} headword={card.front} />
                 </p>
                 {card.example_tr && (
-                  <p className="mt-0.5 text-[14px] leading-relaxed text-stone-500 break-words">
+                  <p className="mt-1 text-[14px] leading-[1.5] text-graphite break-words">
                     <TurkishLine sentence={card.example_tr} meaning={meaning} />
                   </p>
                 )}
               </div>
-              <SpeakButton text={card.example_sentence} size="sm" />
+              <SpeakButton text={card.example_sentence} size="sm" className="!bg-transparent !text-ink ring-1 ring-ink/15" />
             </div>
           )}
-          {card.example2 && !compact && (
-            <div className="mt-2 border-t border-dashed border-stone-200 pt-2">
-              <p className="text-[16px] leading-relaxed text-stone-800 break-words">
+          {card.example2 && (
+            <div className="mt-3 border-t border-ink/10 pt-3">
+              <p className="text-[17px] leading-[1.5] text-ink break-words">
                 <Highlighted sentence={card.example2} headword={card.front} />
               </p>
               {card.example2_tr && (
-                <p className="mt-0.5 text-[14px] leading-relaxed text-stone-500 break-words">
+                <p className="mt-1 text-[14px] leading-[1.5] text-graphite break-words">
                   <TurkishLine sentence={card.example2_tr} meaning={meaning} />
                 </p>
               )}
@@ -126,35 +131,52 @@ function WordCardBack({ card, variant = "full" }: WordCardBackProps) {
         </div>
       )}
 
-      {/* Words that grow from this one. */}
-      {card.related && card.related.length > 0 && (
-        <div className={flat ? "border-b border-stone-200 pb-3" : `rounded-2xl bg-sky-50 ${compact ? "p-3" : "p-4"} ring-1 ring-sky-100`}>
-          <p className="text-[11px] font-extrabold uppercase tracking-widest text-sky-700">Aynı aileden</p>
-          <ul className="mt-1.5 space-y-1">
-            {card.related.map((r, i) => (
-              <li key={`${r.word}-${i}`} className="flex flex-wrap items-baseline gap-x-2 text-[15px]">
-                <span className="font-extrabold text-stone-800">{r.word}</span>
-                {r.pos && <span className="text-[11px] font-bold uppercase tracking-wide text-stone-400">{posLabel(r.pos)}</span>}
-                <span className="text-stone-600">{r.meaning}</span>
+      {card.collocations && card.collocations.length > 0 && (
+        <section className="mt-5 border-t border-ink pt-2">
+          <p className={KICKER}>Sık kalıplar</p>
+          <ul className="mt-2 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
+            {card.collocations.map((c, i) => (
+              <li key={`${c.en}-${i}`} className="leading-snug">
+                <span className="block text-[15px] font-extrabold text-ink">{c.en}</span>
+                <span className="block text-[13px] text-graphite">{c.tr}</span>
               </li>
             ))}
           </ul>
-        </div>
+        </section>
       )}
 
-      {card.watch_out && !compact && (
-        <div className={flat ? "pb-1" : "rounded-2xl bg-rose-50 p-4 ring-1 ring-rose-100"}>
-          <p className="text-[11px] font-extrabold uppercase tracking-widest text-rose-600">⚠️ Dikkat</p>
-          <p className="mt-1 text-[15px] leading-relaxed text-rose-900">{card.watch_out}</p>
-        </div>
+      {card.related && card.related.length > 0 && (
+        <section className="mt-5 border-t border-ink/10 pt-2">
+          <p className={KICKER}>Aynı aileden</p>
+          <ul className="mt-2 space-y-1.5">
+            {card.related.map((r, i) => (
+              <li key={`${r.word}-${i}`} className="flex flex-wrap items-baseline gap-x-2 text-[15px] leading-snug">
+                <span className="font-extrabold text-ink">{r.word}</span>
+                {r.pos && <span className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-graphite">{posLabel(r.pos)}</span>}
+                <span className="text-graphite">{r.meaning}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
       )}
 
-      {/* The learner's own note: their memory of the word. */}
-      {card.mnemonic && card.lesson === null && !compact && (
-        <div className="rounded-2xl bg-amber-50 p-4 ring-1 ring-amber-100">
-          <p className="text-[11px] font-extrabold uppercase tracking-widest text-amber-700">Senin notun</p>
-          <p className="mt-1 text-[15px] leading-relaxed text-amber-900">{card.mnemonic}</p>
-        </div>
+      {/* The trap is Tonton's column. */}
+      {card.watch_out && (
+        <section className="mt-6 flex items-start gap-3.5">
+          <Mascot size={44} lively={false} className="shrink-0" />
+          <blockquote className="min-w-0 border-l-2 border-accent pl-3.5">
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-accent">Dikkat</p>
+            <p className="mt-1 text-[15px] leading-relaxed text-ink">{card.watch_out}</p>
+            <cite className="mt-1.5 block text-[10px] font-extrabold uppercase not-italic tracking-[0.18em] text-graphite">— Tonton</cite>
+          </blockquote>
+        </section>
+      )}
+
+      {card.mnemonic && card.lesson === null && (
+        <section className="mt-5 border-t border-ink/10 pt-2">
+          <p className={KICKER}>Senin notun</p>
+          <p className="mt-1.5 text-[15px] leading-relaxed text-graphite">{card.mnemonic}</p>
+        </section>
       )}
     </div>
   );

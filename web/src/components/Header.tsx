@@ -22,7 +22,7 @@ function Header() {
 
   return (
     <header
-      className="sticky top-0 z-10 bg-[#FDF9F3]/80 backdrop-blur border-b border-amber-900/5"
+      className="sticky top-0 z-10 border-b border-ink/10 bg-paper/85 backdrop-blur"
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -33,10 +33,10 @@ function Header() {
           <MusicToggle />
           {streak > 0 && (
             <span
-              className="flex items-center gap-1 rounded-full bg-amber-100 px-3 py-1.5 text-sm font-extrabold text-amber-600 ring-1 ring-amber-200"
+              className="flex items-center gap-1 rounded-full bg-paper px-3 py-1.5 text-sm font-extrabold text-ink ring-1 ring-ink/15 tabular-nums"
               title={`${streak} günlük seri`}
             >
-              <FlameIcon className="h-4 w-4" />
+              <FlameIcon className="h-4 w-4 text-accent" />
               {streak}
             </span>
           )}

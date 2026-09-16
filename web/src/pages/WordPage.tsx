@@ -5,29 +5,27 @@ import { api } from "../lib/api";
 import type { Card } from "../types";
 import { parseBack, posLabel } from "../lib/cardBack";
 import { isDue } from "../lib/path";
+import { primeSpeech } from "../lib/speech";
 import Header from "../components/Header";
-import Button from "../components/Button";
+import AppTabs from "../components/AppTabs";
 import LinkButton from "../components/LinkButton";
 import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
 import SpeakButton from "../components/SpeakButton";
 import ConfirmDialog from "../components/ConfirmDialog";
 import WordCardBack from "../components/WordCardBack";
-import Photo from "../components/Photo";
-import { primeSpeech } from "../lib/speech";
-import AppTabs from "../components/AppTabs";
 
 /** When this card next comes back, in words. */
-function nextReviewLabel(card: Card): string {
-  if (isDue(card)) return card.repetitions === 0 ? "İlk kez sorulacak" : "Tekrar vakti geldi";
+function nextReviewLabel(card: Card): { text: string; due: boolean } {
+  if (isDue(card)) return { text: card.repetitions === 0 ? "İlk kez sorulacak" : "Tekrar vakti", due: true };
   const days = Math.ceil((new Date(card.due_date).getTime() - Date.now()) / 86_400_000);
-  return days <= 1 ? "Yarın tekrar" : `${days} gün sonra tekrar`;
+  return { text: days <= 1 ? "Yarın tekrar" : `${days} gün sonra tekrar`, due: false };
 }
 
 /**
- * One word's page: the reference half of the flashcards. The card asks
- * "what does it mean?"; this page answers everything else — each sense
- * with its pattern and sentences, the family, the trap.
+ * One word's page — the feature opener. The photo full bleed, the caption
+ * that ties it to the word, then the entry: meanings, sentences, chunks,
+ * family, and the trap in Tonton's column.
  */
 function WordPage() {
   const { deckId = "", cardId = "" } = useParams<{ deckId: string; cardId: string }>();
@@ -49,26 +47,25 @@ function WordPage() {
     },
   });
 
-  if (!deckId || !cardId) return <Navigate to="/decks" replace />;
+  if (!deckId || !cardId) return <Navigate to="/kartlar" replace />;
 
   const card = cardsQuery.data?.find((c) => String(c.id) === cardId);
   const back = card ? parseBack(card.back) : null;
+  const schedule = card ? nextReviewLabel(card) : null;
 
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="mx-auto max-w-2xl px-6 pb-28 pt-8">
-        <Link
-          to="/kartlar"
-          className="-m-2 inline-flex items-center gap-1.5 p-2 font-medium text-stone-500 transition hover:text-stone-800"
-        >
-          <span aria-hidden="true">←</span> Kelimelerim
+      <main className="mx-auto max-w-2xl px-6 pb-28 pt-5">
+        <Link to="/kartlar" className="-m-2 inline-block p-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite transition hover:text-ink">
+          ← Kelimelerim
         </Link>
 
         {cardsQuery.isLoading && (
-          <div className="mt-6 space-y-3">
-            <Skeleton className="h-56 w-full rounded-3xl" />
-            <Skeleton className="h-28 w-full rounded-3xl" />
+          <div className="mt-4 space-y-4">
+            <Skeleton className="-mx-6 h-64 rounded-none" />
+            <Skeleton className="h-10 w-2/3 rounded-md" />
+            <Skeleton className="h-24 w-full rounded-md" />
           </div>
         )}
         {cardsQuery.isError && (
@@ -82,44 +79,44 @@ function WordPage() {
           </div>
         )}
 
-        {card && back && (
-          <>
-            {/* The hero: the picture, the word, what it means. */}
-            <div className="mt-5 overflow-hidden rounded-3xl bg-white ring-1 ring-stone-200 shadow-[0_10px_30px_-18px_rgba(28,25,23,0.4)]">
-              {card.image_url && <Photo src={card.image_url} frameClassName="h-56 w-full sm:h-72" />}
-              <div className="p-5">
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <h1 className="text-4xl font-extrabold tracking-tight text-stone-800 break-words">{card.front}</h1>
-                  <SpeakButton text={card.front} size="md" />
+        {card && back && schedule && (
+          <article className="animate-[step-in_180ms_ease-out]">
+            {card.image_url && (
+              <figure className="-mx-6 mt-4">
+                <div className="overflow-hidden bg-ink">
+                  <img src={card.image_url} alt="" className="h-auto max-h-[62vh] w-full object-cover object-center animate-[cover-settle_900ms_ease-out_both]" />
                 </div>
-                <div className="mt-1.5 flex flex-wrap items-center gap-2">
-                  {back.pos && (
-                    <span className="rounded-full bg-stone-100 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-stone-500">
-                      {posLabel(back.pos)}
-                    </span>
-                  )}
-                  <span className="rounded-full bg-amber-50 px-2.5 py-1 text-[11px] font-bold text-amber-700 ring-1 ring-amber-100">
-                    {nextReviewLabel(card)}
-                  </span>
-                </div>
-                <p className="mt-3 text-2xl font-extrabold leading-snug text-stone-800">{back.text}</p>
+                {card.hook && <figcaption className="px-6 pt-3 text-[14px] font-semibold italic leading-snug text-graphite">{card.hook}</figcaption>}
+              </figure>
+            )}
+
+            <p className="mt-5 flex flex-wrap items-center gap-x-3 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">
+              {back.pos && <span>{posLabel(back.pos)}</span>}
+              {back.pos && <span aria-hidden="true">·</span>}
+              <span className={schedule.due ? "text-accent" : ""}>{schedule.text}</span>
+            </p>
+            <h1 className="mt-2 flex items-center gap-3 break-words text-[40px] font-black leading-none tracking-[-0.02em] text-ink">
+              {card.front}
+              <SpeakButton text={card.front} size="md" className="!bg-transparent !text-ink ring-1 ring-ink/15" />
+            </h1>
+            <p className="mt-3 text-[20px] font-semibold leading-snug text-ink">{back.text}</p>
+
+            <section className="mt-6 border-t border-ink pt-2">
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">Anlamlar</p>
+              <div className="mt-2">
+                <WordCardBack card={card} />
               </div>
-            </div>
+            </section>
 
-            <h2 className="mt-7 text-[11px] font-extrabold uppercase tracking-widest text-stone-400">Anlamlar ve örnek cümleler</h2>
-            <div className="mt-2">
-              <WordCardBack card={card} />
-            </div>
-
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-2 border-t border-stone-200/70 pt-6">
-              <LinkButton to={`/decks/${deckId}/flashcards?mode=all`} variant="secondary" size="sm" onClick={primeSpeech}>
-                🃏 Kartlara dön
+            <div className="mt-10 flex items-center justify-between border-t border-ink/10 pt-5">
+              <LinkButton to={`/decks/${deckId}/flashcards?mode=all`} variant="outline" size="sm" onClick={primeSpeech}>
+                Kartlara dön
               </LinkButton>
-              <Button variant="ghost" size="sm" onClick={() => setConfirming(true)}>
+              <button type="button" className="text-[12px] font-bold text-graphite underline underline-offset-4 hover:text-ink" onClick={() => setConfirming(true)}>
                 Bu kelimeyi sil
-              </Button>
+              </button>
             </div>
-          </>
+          </article>
         )}
       </main>
 

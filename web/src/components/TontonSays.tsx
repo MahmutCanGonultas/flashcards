@@ -7,6 +7,8 @@ type TontonSaysProps = {
   lines: string[];
   size?: number;
   className?: string;
+  /** "column": his line set as a pull quote with a rule, the printed half's voice. */
+  variant?: "bubble" | "column";
 };
 
 /** How long a line stays up before Tonton moves on to the next one. */
@@ -19,7 +21,7 @@ const FIDGET_MS = 14000;
  * now and then, and a tap makes him hop, chirp and say the next thing —
  * so the home screen has someone on it rather than a static illustration.
  */
-function TontonSays({ lines, size = 72, className = "" }: TontonSaysProps) {
+function TontonSays({ lines, size = 72, className = "", variant = "bubble" }: TontonSaysProps) {
   const [index, setIndex] = useState(0);
   const [mood, setMood] = useState<MascotMood>("idle");
   // Bumped on every poke so the hop replays even mid-hop.
@@ -52,6 +54,28 @@ function TontonSays({ lines, size = 72, className = "" }: TontonSaysProps) {
     setIndex((i) => i + 1);
     window.setTimeout(() => setMood("idle"), 900);
   };
+
+  if (variant === "column") {
+    return (
+      <div className={`flex items-start gap-3.5 ${className}`}>
+        <button
+          type="button"
+          onClick={poke}
+          aria-label="Tonton'a dokun"
+          data-silent
+          className="shrink-0 rounded-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30"
+        >
+          <Mascot key={pokes} mood={mood} size={size} />
+        </button>
+        {line && (
+          <blockquote key={index} role="status" className="min-w-0 border-l-2 border-accent pl-3.5 animate-[pop-in_220ms_cubic-bezier(0.34,1.56,0.64,1)]">
+            <p className="text-[17px] font-semibold leading-[1.35] text-ink">{line}</p>
+            <cite className="mt-1.5 block text-[10px] font-extrabold uppercase not-italic tracking-[0.18em] text-graphite">— Tonton</cite>
+          </blockquote>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className={`flex items-end gap-3 ${className}`}>

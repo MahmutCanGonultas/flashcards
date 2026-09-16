@@ -17,13 +17,14 @@ describe("calculateSrs", () => {
     expect(minutesAhead).toBeLessThan(11);
   });
 
-  it("bildiğinde yarının başına atar, on dakikaya değil", () => {
+  it("bildiğinde yarının başına atar (İstanbul saatiyle), on dakikaya değil", () => {
     const result = calculateSrs({ repetitions: 0, interval: 0, easeFactor: 2.5, quality: 4 });
-    const tomorrow = new Date();
-    tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
-    tomorrow.setUTCHours(0, 0, 0, 0);
-    expect(result.dueDate.getTime()).toBe(tomorrow.getTime());
-    expect(result.dueDate.getTime()).toBeGreaterThan(Date.now());
+    // Yarın 00:00 İstanbul = bugün 21:00 UTC (yaz/kış fark etmez, +03:00).
+    const now = Date.now();
+    expect(result.dueDate.getTime()).toBeGreaterThan(now);
+    expect(result.dueDate.getTime() - now).toBeLessThanOrEqual(24 * 3_600_000);
+    expect(result.dueDate.getUTCHours()).toBe(21);
+    expect(result.dueDate.getUTCMinutes()).toBe(0);
   });
 
   it("ilk doğru bilişte interval 1 olur", () => {

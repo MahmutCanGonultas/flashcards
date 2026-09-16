@@ -10,10 +10,73 @@ const label = (h: number) => `${String(h).padStart(2, "0")}:00`;
  * "Tonton her akşam haber versin": daily push reminders, on or off, at an
  * hour of the learner's choosing. Sent only on days with cards waiting.
  */
-function ReminderCard() {
+function ReminderCard({ variant = "card" }: { variant?: "card" | "line" }) {
   const reminders = usePushReminders();
   const [hour, setHour] = useState(20);
   const [note, setNote] = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
+
+  if (variant === "line") {
+    const link = "font-extrabold text-ink underline decoration-accent/60 underline-offset-4";
+    if (!reminders.supported) {
+      return (
+        <p className="text-[12px] font-semibold leading-relaxed text-graphite">
+          {reminders.standalone ? "Bu cihaz bildirimleri desteklemiyor." : "Bildirim için uygulamayı Ana Ekran'a ekle (Paylaş → Ana Ekrana Ekle)."}
+        </p>
+      );
+    }
+    if (reminders.subscribed) {
+      return (
+        <p className="text-[12px] font-semibold text-graphite">
+          Hatırlatma açık · {reminders.hour !== null ? label(reminders.hour) : ""} ·{" "}
+          <button type="button" className={link} onClick={() => reminders.disable.mutate()}>
+            Kapat
+          </button>
+          {note && <span className="ml-2">{note}</span>}
+        </p>
+      );
+    }
+    if (reminders.permission === "denied") {
+      return <p className="text-[12px] font-semibold text-graphite">Bildirim izni kapalı — Ayarlar → Kelimece → Bildirimler.</p>;
+    }
+    return (
+      <div className="text-[12px] font-semibold text-graphite">
+        {!open ? (
+          <p>
+            Bildirimler kapalı.{" "}
+            <button type="button" className={link} onClick={() => setOpen(true)}>
+              Tonton haber versin
+            </button>
+          </p>
+        ) : (
+          <div className="flex flex-wrap items-center gap-2">
+            <span>Saat:</span>
+            {HOURS.map((h) => (
+              <button
+                key={h}
+                type="button"
+                role="radio"
+                aria-checked={hour === h}
+                onClick={() => setHour(h)}
+                className={`min-h-10 rounded-full px-3.5 text-xs font-extrabold ring-1 transition ${hour === h ? "bg-ink text-paper ring-ink" : "text-ink ring-ink/20 hover:bg-ink/5"}`}
+              >
+                {label(h)}
+              </button>
+            ))}
+            <button
+              type="button"
+              disabled={reminders.enable.isPending}
+              onClick={() => reminders.enable.mutate(hour, { onError: () => setNote("İzin verilmedi.") })}
+              className="min-h-10 rounded-full bg-ink px-4 text-xs font-black uppercase tracking-[0.12em] text-paper"
+            >
+              Aç
+            </button>
+            {note && <span className="text-accent">{note}</span>}
+          </div>
+        )}
+      </div>
+    );
+  }
 
   if (!reminders.supported) {
     return (
