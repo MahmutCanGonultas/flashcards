@@ -45,8 +45,10 @@ app.use("/api/v1/streak", streakRouter);
 app.use("/api/v1/images", imageRouter);
 app.use("/api/v1/push", pushRouter);
 
+// Which build is answering: Render exposes the deployed commit, so a deploy
+// can be confirmed from outside without a real request that writes data.
 app.get("/", (req, res) => {
-  res.send("Flashcards API is running 🚀");
+  res.json({ ok: true, commit: (process.env.RENDER_GIT_COMMIT ?? "local").slice(0, 7) });
 });
 
 app.listen(PORT, () => {
