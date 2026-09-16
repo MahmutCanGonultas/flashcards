@@ -1,4 +1,6 @@
 export type ButtonVariant =
+  | "ink"
+  | "outline"
   | "primary"
   | "secondary"
   | "danger"
@@ -28,6 +30,9 @@ const press = "hover:-translate-y-0.5 active:translate-y-[3px]";
 const gloss = "ring-1 ring-inset ring-white/25";
 
 const variantClasses: Record<ButtonVariant, string> = {
+  /* The printed half of the app: a solid ink pill and its outlined twin. No slab, no gloss. */
+  ink: `bg-ink text-paper hover:bg-ink/90 focus-visible:ring-ink/30 active:scale-[0.98] uppercase tracking-[0.12em] text-[13px] font-black`,
+  outline: `bg-transparent text-ink ring-[1.5px] ring-inset ring-ink/35 hover:bg-ink/5 focus-visible:ring-ink/30 active:scale-[0.98] uppercase tracking-[0.12em] text-[13px] font-black`,
   primary: `bg-gradient-to-b from-violet-500 to-violet-600 hover:from-violet-500 hover:to-violet-500 text-white ${gloss} focus-visible:ring-violet-300 ${press} shadow-[0_4px_0_0_var(--color-violet-700)] hover:shadow-[0_5px_0_0_var(--color-violet-700)] active:shadow-[0_1px_0_0_var(--color-violet-700)]`,
 
   secondary: `bg-white hover:bg-stone-50 text-stone-700 ring-2 ring-stone-200 focus-visible:ring-stone-300 ${press} shadow-[0_4px_0_0_var(--color-stone-200)] hover:shadow-[0_5px_0_0_var(--color-stone-200)] active:shadow-[0_1px_0_0_var(--color-stone-200)]`,

@@ -39,6 +39,12 @@ const createCardSchema = z.object({
     .nullable()
     .optional(),
   watchOut: z.string().max(400).nullable().optional(),
+  hook: z.string().max(200).nullable().optional(),
+  collocations: z
+    .array(z.object({ en: z.string().min(1).max(80), tr: z.string().min(1).max(120) }))
+    .max(10)
+    .nullable()
+    .optional(),
   // Optional lesson number for path-organised decks.
   lesson: z.number().int().positive().nullable().optional(),
 });
@@ -52,7 +58,7 @@ export const createCard = async (req: Request, res: Response) => {
     return res.status(400).json({ error: "Kart Bilgileri Gecersiz" });
   }
 
-  const { front, back, tag, exampleSentence, imageUrl, mnemonic, lesson, exampleTr, example2, example2Tr, senses, related, watchOut } =
+  const { front, back, tag, exampleSentence, imageUrl, mnemonic, lesson, exampleTr, example2, example2Tr, senses, related, watchOut, hook, collocations } =
     validation.data;
   const { deckId } = req.params;
 
@@ -68,8 +74,8 @@ export const createCard = async (req: Request, res: Response) => {
 
   // 3-Deste bu kullanicinin - artik karti ekleyebiliriz
   const result = await pool.query(
-    `INSERT INTO cards (deck_id, front, back, tag, example_sentence, image_url, mnemonic, lesson, example_tr, example2, example2_tr, senses, related, watch_out)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING *`,
+    `INSERT INTO cards (deck_id, front, back, tag, example_sentence, image_url, mnemonic, lesson, example_tr, example2, example2_tr, senses, related, watch_out, hook, collocations)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *`,
     [
       deckId,
       front,
@@ -85,6 +91,8 @@ export const createCard = async (req: Request, res: Response) => {
       senses ? JSON.stringify(senses) : null,
       related ? JSON.stringify(related) : null,
       watchOut ?? null,
+      hook ?? null,
+      collocations ? JSON.stringify(collocations) : null,
     ],
   );
 
@@ -116,7 +124,7 @@ export const updateCard = async (req: Request, res: Response) => {
     return res.status(400).json({ error: "Kart bilgileri geçersiz" });
   }
 
-  const { front, back, tag, exampleSentence, imageUrl, mnemonic, exampleTr, example2, example2Tr, senses, related, watchOut } =
+  const { front, back, tag, exampleSentence, imageUrl, mnemonic, exampleTr, example2, example2Tr, senses, related, watchOut, hook, collocations } =
     validation.data;
   const { deckId, cardId } = req.params;
 
@@ -134,7 +142,9 @@ export const updateCard = async (req: Request, res: Response) => {
          example2_tr = CASE WHEN $18::boolean THEN $19 ELSE example2_tr END,
          senses = CASE WHEN $20::boolean THEN $21::jsonb ELSE senses END,
          related = CASE WHEN $22::boolean THEN $23::jsonb ELSE related END,
-         watch_out = CASE WHEN $24::boolean THEN $25 ELSE watch_out END
+         watch_out = CASE WHEN $24::boolean THEN $25 ELSE watch_out END,
+         hook = CASE WHEN $26::boolean THEN $27 ELSE hook END,
+         collocations = CASE WHEN $28::boolean THEN $29::jsonb ELSE collocations END
      WHERE id = $3
        AND deck_id = $4
        AND deck_id IN (SELECT id FROM decks WHERE user_id = $5)
@@ -151,6 +161,8 @@ export const updateCard = async (req: Request, res: Response) => {
       senses !== undefined, senses ? JSON.stringify(senses) : null,
       related !== undefined, related ? JSON.stringify(related) : null,
       watchOut !== undefined, watchOut ?? null,
+      hook !== undefined, hook ?? null,
+      collocations !== undefined, collocations ? JSON.stringify(collocations) : null,
     ],
   );
 

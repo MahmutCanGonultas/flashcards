@@ -43,6 +43,10 @@ export type Card = {
   related?: RelatedWord[] | null;
   /** The one mistake to avoid with this word. */
   watch_out?: string | null;
+  /** One Turkish line tying the photo to the word — the memory hook. */
+  hook?: string | null;
+  /** Chunks the word lives in: "take sth into consideration". */
+  collocations?: { en: string; tr: string }[] | null;
   /** Optional lesson number. A deck whose cards carry these renders as a path. */
   lesson: number | null;
   /** The unit this card's lesson belongs to, for path-organised decks. */

@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 
 const TABS = [
-  { to: "/kartlar", label: "Kartlarım", icon: "🃏" },
-  { to: "/kurs", label: "Kurs", icon: "📚" },
+  { to: "/kartlar", label: "Kartlarım" },
+  { to: "/kurs", label: "Kurs" },
 ];
 
 /**
@@ -13,7 +13,7 @@ function AppTabs() {
   return (
     <nav
       aria-label="Bölümler"
-      className="fixed inset-x-0 bottom-0 z-20 border-t border-stone-200/70 bg-[#FDF9F3]/95 pb-[env(safe-area-inset-bottom)] backdrop-blur"
+      className="fixed inset-x-0 bottom-0 z-20 border-t border-ink/10 bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur"
     >
       <div className="mx-auto grid max-w-md grid-cols-2 px-4">
         {TABS.map((tab) => (
@@ -21,21 +21,13 @@ function AppTabs() {
             key={tab.to}
             to={tab.to}
             className={({ isActive }) =>
-              `flex flex-col items-center gap-0.5 py-2 text-xs font-extrabold transition ${
-                isActive ? "text-stone-900" : "text-stone-400 hover:text-stone-600"
+              `flex min-h-14 items-center justify-center text-[11px] font-extrabold uppercase tracking-[0.14em] transition ${
+                isActive ? "text-ink" : "text-graphite hover:text-ink"
               }`
             }
           >
             {({ isActive }) => (
-              <>
-                <span
-                  aria-hidden="true"
-                  className={`flex h-9 w-14 items-center justify-center rounded-2xl text-xl transition ${isActive ? "bg-white shadow-sm ring-1 ring-stone-200" : ""}`}
-                >
-                  {tab.icon}
-                </span>
-                {tab.label}
-              </>
+              <span className={`border-b-2 pb-0.5 ${isActive ? "border-ink" : "border-transparent"}`}>{tab.label}</span>
             )}
           </NavLink>
         ))}
