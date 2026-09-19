@@ -35,7 +35,9 @@ const allowedOrigins = (process.env.CORS_ORIGIN ?? "http://localhost:5173")
 // Behind Render's proxy: req.protocol must read https for the image URLs.
 app.set("trust proxy", 1);
 app.use(express.json());
-app.use(cors({ origin: allowedOrigins }));
+// Without CORS_ORIGIN (local development) any localhost port may call the
+// API, so a second dev server on another port works without ceremony.
+app.use(cors({ origin: process.env.CORS_ORIGIN ? allowedOrigins : /^http:\/\/localhost:\d+$/ }));
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/decks", deckRouter);
