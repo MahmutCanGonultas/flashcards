@@ -691,14 +691,16 @@
   animation: tt-perk-r 320ms ease-out forwards;
 }
 
+/* Sad, once: down and back up on its own, so a Bilemedim doesn't leave
+   him slumped for the rest of the session. */
 .tt-sad .tt-head {
-  animation: tt-droop-head 420ms ease-out forwards;
+  animation: tt-droop-head 420ms ease-out 2 alternate;
 }
 .tt-sad .tt-ear-l {
-  animation: tt-droop-l 420ms ease-out forwards;
+  animation: tt-droop-l 420ms ease-out 2 alternate;
 }
 .tt-sad .tt-ear-r {
-  animation: tt-droop-r 420ms ease-out forwards;
+  animation: tt-droop-r 420ms ease-out 2 alternate;
 }
 
 /* ---------------------------------------------------------- reduced motion */

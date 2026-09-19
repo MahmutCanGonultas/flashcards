@@ -4,30 +4,41 @@ import { isDue, wordTier } from "./path";
 import { parseBack } from "./cardBack";
 
 /**
- * What Tonton says on the home screens. Every pick that looks random is
- * keyed off the day, so a line doesn't change under the learner between
- * one render and the next.
+ * What Tonton says. Every pick that looks random is keyed off the day, so
+ * a line doesn't change under the learner between one render and the
+ * next. His register: dry, warm, short. At most one line in five carries
+ * an emoji; the rest trust the words.
  */
 
 const dayIndex = () => Math.floor(Date.now() / 86_400_000);
 
+/** The part of the day, for the lines that mention it. */
+export type DayPart = "night" | "morning" | "afternoon" | "evening";
+export const dayPart = (hour = new Date().getHours()): DayPart =>
+  hour < 5 ? "night" : hour < 12 ? "morning" : hour < 18 ? "afternoon" : "evening";
+
 function greeting(): string {
-  const hour = new Date().getHours();
-  if (hour < 5) return "Geç saate mi kaldın? Kısa bir ders, sonra uyku. 🌙";
-  if (hour < 12) return "Günaydın! ☀️ Taze kafa, yeni kelimeler.";
-  if (hour < 18) return "İyi günler! 👋 On beş dakikan var mı?";
-  return "İyi akşamlar! 🌙 Yatmadan önce birkaç kelime?";
+  switch (dayPart()) {
+    case "night":
+      return "Geç saate mi kaldın? Kısa bir ders, sonra uyku.";
+    case "morning":
+      return "Günaydın. Taze kafa, yeni kelimeler.";
+    case "afternoon":
+      return "İyi günler. On beş dakikan var mı?";
+    default:
+      return "İyi akşamlar. Yatmadan önce birkaç kelime?";
+  }
 }
 
 const TIPS = [
   "Günde üç kelime, yılda bin kelime eder. 🐢",
-  "Her kelimeyi yüksek sesle söyle — kulakların da öğrenir. 👂",
-  "En çok yanlış cevaplar öğretir. Yine de tahmin et. 💪",
-  "İki kez kaçırdığın kelimeyi bir daha asla unutmazsın. 🧠",
-  "Yarın yine gel: kelime kalmaya o zaman karar verir. 📅",
-  "Örnek cümleyi iki kez oku. Kelime orada yaşar. 📖",
-  "Duymak için kelimeye dokun. Sonra sen de söyle. 🔊",
-  "Bir kelimede mi takıldın? Hafıza ipucu bir dokunuş uzakta. 💡",
+  "Her kelimeyi yüksek sesle söyle; kulakların da öğrenir.",
+  "En çok yanlış cevaplar öğretir. Yine de tahmin et.",
+  "İki kez kaçırdığın kelimeyi bir daha kolay unutmazsın.",
+  "Yarın yine gel: kelime kalmaya o zaman karar verir.",
+  "Örnek cümleyi iki kez oku. Kelime orada yaşar.",
+  "Duymak için kelimeye dokun. Sonra sen de söyle.",
+  "Bir kelimede mi takıldın? Hafıza ipucu bir dokunuş uzakta.",
 ];
 
 const tip = () => TIPS[dayIndex() % TIPS.length];
@@ -58,19 +69,19 @@ export function homeLines({
   // Their own words come first: those are the ones they asked to be reminded of.
   const personalDue = personal.filter(isDue);
   if (personalDue.length > 0) {
-    lines.push(`Kendi kelimelerinden ${personalDue.length} tanesi bugün seni bekliyor. ✍️`);
+    lines.push(`Kendi kelimelerinden ${personalDue.length} tanesi bugün seni bekliyor.`);
   }
   if (personal.length > 0) {
     const card = personal[dayIndex() % personal.length];
     const back = parseBack(card.back);
-    lines.push(`Senin kelimen: "${card.front}" — ${back.text}. Hatırladın mı? ✍️`);
+    lines.push(`Senin kelimen: "${card.front}" — ${back.text}. Hatırladın mı?`);
   } else {
-    lines.push("Sokakta, dizide duyduğun bir kelime mi var? Ekle, fotoğrafını koy; ben sorarım. ✍️");
+    lines.push("Sokakta, dizide duyduğun bir kelime mi var? Ekle, fotoğrafını koy; ben sorarım.");
   }
-  if (due > 0) lines.push(`${due} kelime seni bekliyor. Önce tekrar? 🔁`);
-  else if (cards.length > 0) lines.push("Şu an tekrar edecek bir şey yok — yeni bir ders? ✨");
-  if (streak > 1) lines.push(`${streak} günlük seri! 🔥 Böyle devam.`);
-  else if (streak === 1) lines.push("Serinin ilk günü. Yarın iki olur. 🔥");
+  if (due > 0) lines.push(`${due} kelime seni bekliyor. Önce tekrar?`);
+  else if (cards.length > 0) lines.push("Şu an tekrar edecek bir şey yok. Yeni bir ders?");
+  if (streak > 1) lines.push(`${streak} günlük seri. Böyle devam. 🔥`);
+  else if (streak === 1) lines.push("Serinin ilk günü. Yarın iki olur.");
   const remembered = recall(cards);
   if (remembered) lines.push(remembered);
   lines.push(tip());
@@ -83,16 +94,16 @@ export function pathLines(stats: PathStats, units: Unit[], isFresh: boolean): st
   const cards = lessons.flatMap((lesson) => lesson.cards);
   const lines: string[] = [];
 
-  if (isFresh) lines.push("Yeni misin? Seviye testine gir — ya da direkt Ders 1'den başla. 🎯");
-  if (stats.dueNow > 0) lines.push(`${stats.dueNow} kelime tekrar bekliyor. Önce tekrar? 🔁`);
-  if (stats.testReady) lines.push(`Ünite ${stats.testReady.index} bitti — testi açıldı! 🎯`);
+  if (isFresh) lines.push("Yeni misin? Seviye testine gir; ya da direkt Ders 1'den başla.");
+  if (stats.dueNow > 0) lines.push(`${stats.dueNow} kelime tekrar bekliyor. Önce tekrar?`);
+  if (stats.testReady) lines.push(`Ünite ${stats.testReady.index} bitti; testi açıldı. 🎯`);
   const current = lessons.find((lesson) => lesson.state === "current");
   if (current) {
     lines.push(
-      `${current.learned > 0 ? "Kaldığın yer:" : "Sıradaki durak:"} ${current.cards.map((card) => card.front).join(" · ")} 🚉`,
+      `${current.learned > 0 ? "Kaldığın yer:" : "Sıradaki durak:"} ${current.cards.map((card) => card.front).join(" · ")}`,
     );
   }
-  if (stats.wordsKnown > 0) lines.push(`${stats.wordsKnown} kelime artık gerçekten senin. 🏅`);
+  if (stats.wordsKnown > 0) lines.push(`${stats.wordsKnown} kelime artık gerçekten senin.`);
   const remembered = recall(cards);
   if (remembered) lines.push(remembered);
   lines.push(tip());
@@ -101,47 +112,66 @@ export function pathLines(stats: PathStats, units: Unit[], isFresh: boolean): st
 
 /* ------------------------------------------------------------- pop-ins -- */
 
+/** A line he says on a visit; the kicker is the small label above it. */
+export type PopLine = { text: string; kicker?: string };
+
 /**
  * What Tonton says when he wanders onto the screen uninvited. A wide pool
  * so it doesn't repeat, split by mood; the caller weaves in the live
  * lines (what's due, a word to recall) and keeps the last few picks out.
  */
 const POP_SMALL_TALK = [
-  "Buradayım. Sadece bakıyordum. 👀",
-  "Kulaklarım büyük diye her şeyi duyuyorum sanma. Çoğunu duyuyorum. 👂",
+  "Buradayım. Sadece bakıyordum.",
   "Bugün bir kelime öğrendin mi? Ben 'biscuit' öğrendim. Sonra yedim. 🍪",
-  "Şşş… Kelimeler uyuyor. Uyandıralım mı? 🃏",
-  "Hazır olduğunda buradayım. Acele yok. Ama azıcık var. 😌",
-  "Bir kelime, bir cümle, bir nefes. Sonra yine gel. 🌬️",
-  "Mor olduğum için değil, senin için buradayım. 💜",
-  "İngilizce zor değil; sadece çok kelimesi var. Tek tek alıyoruz. 🧱",
-  "Bana bir kelime söyle, ben sana cümlesini söyleyeyim. Yok, gerçekten söyleyemem ama denerim. 😅",
-  "Kelime kartlarını çevirmek, kalbimi çevirmek gibi. Dramatik oldu. 🎭",
-  "Tonton'un notu: hata yapmak ücretsiz. Bol bol yap. 🆓",
-  "Bugün kimseyle İngilizce konuştun mu? Benimle konuşabilirsin. Cevap veremem ama dinlerim. 🐻",
+  "Şşş… Kelimeler uyuyor. Uyandıralım mı?",
+  "Hazır olduğunda buradayım. Acele yok. Ama azıcık var.",
+  "Bir kelime, bir cümle, bir nefes. Sonra yine gel.",
+  "İngilizce zor değil; sadece çok kelimesi var. Tek tek alıyoruz.",
+  "Tonton'un notu: hata yapmak ücretsiz. Bol bol yap.",
+  "Bugün kimseyle İngilizce konuştun mu? Benimle konuşabilirsin. Cevap veremem ama dinlerim.",
+  "Sayfayı karıştırırken buradaydım. Görülmedim sanırım.",
+  "Kartlar rafta bekliyor. Tozlanmadan çevirelim.",
+  "Bugün hiçbir şey yapmasan da uğradın ya. Sayılır.",
+  "Kendi kendime bekledim burada. Sonra 'ben de karakterim' dedim, geldim.",
+  "Kulaklarım büyük; kısa cevapları da duyarım.",
+  "Ben burada kelime sayıyorum. Sen bir tane ekle, hesap şaşsın.",
+  "Rafa yeni kelime gelmedi. Dizide duyduğun bir şey yok muydu?",
+  "Bugün az, yarın az. Bir ay sonra çok. Matematik böyle.",
+  "Unutmak ayıp değil. Unuttuğunu fark etmek, hafızanın işe geldiği an.",
 ];
 
 const POP_TIPS = [
-  "Bir kelimeyi kaçırdıysan, on dakika sonra yine gelir. Kaçış yok. ⏱️",
-  "Kartın arkasına bakmadan önce üç saniye dur. O üç saniye hafızadır. 🧠",
-  "Kelimeyi bir cümlede düşün, tek başına değil. Yalnız kelimeler kaybolur. 🧩",
-  "Yüksek sesle söylemekten utanma; duvarlar İngilizce bilmiyor. 🗣️",
-  "'Zorlandım' demek ayıp değil. O kelimeyi biraz daha sık göstermemi sağlar. 🤔",
-  "Bir kelimeyi üç kez ayrı günlerde bildiysen, o artık senin. 🏅",
-  "Her gün beş dakika, haftada bir saatten iyidir. Seri böyle kurulur. 🔥",
-  "Dizide duyduğun kelimeyi ekle. Sahnesi aklında kaldıkça kelime de kalır. 🎬",
-  "Türkçesini değil, cümlesini hatırla. Anlam cümlede saklı. 📖",
-  "Gramer notları kısa. Bir tanesini oku, sonra bir kart çevir. 📝",
+  "Bir kelimeyi kaçırdıysan, on dakika sonra yine gelir. Kaçış yok.",
+  "Kartın arkasına bakmadan üç saniye dur. O üç saniye hafızadır.",
+  "Kelimeyi bir cümlede düşün, tek başına değil. Yalnız kelimeler kaybolur.",
+  "Yüksek sesle söylemekten utanma; duvarlar İngilizce bilmiyor.",
+  "'Zorlandım' demek ayıp değil. O kelimeyi biraz daha sık göstermemi sağlar.",
+  "Bir kelimeyi üç kez ayrı günlerde bildiysen, o artık senin.",
+  "Her gün beş dakika, haftada bir saatten iyidir. Seri böyle kurulur.",
+  "Dizide duyduğun kelimeyi ekle. Sahnesi aklında kaldıkça kelime de kalır.",
+  "Türkçesini değil, cümlesini hatırla.",
+  "Bir kelimeye dokun, sesini duy. Kulak da öğrenir.",
+  "Gramer notları kısa. Bir tanesini oku, sonra bir kart çevir.",
+  "Kelimenin kalıbını öğren; kelimeyi bedava alırsın.",
+  "Aynı aileden kelimeler birlikte kalır. Birini bildin mi, ötekine de bak.",
 ];
 
 const POP_CHEERS = [
-  "Geldin ya, en zor kısmı bu. Gerisi kelime. 👏",
-  "Dün de buradaydın, bugün de. Seni fark ediyorum. 🌱",
-  "Küçük adımlar. Büyük adımlar dizini incitir. 🐾",
-  "Yanlış cevap verdiğinde bile kelime seni tanıdı. Yarın hatırlar. 🙂",
-  "Bir kart bile çevirsen bugün sayılır. ✅",
-  "Bir yıl sonra bugüne bakacaksın: 'O gün başlamıştım' diyeceksin. 📅",
+  "Geldin ya, en zor kısmı bu. Gerisi kelime.",
+  "Dün de buradaydın, bugün de. Seni fark ediyorum.",
+  "Küçük adımlar. Büyük adımlar dizini incitir.",
+  "Yanlış cevap verdiğinde bile kelime seni tanıdı. Yarın hatırlar.",
+  "Bir kart bile çevirsen bugün sayılır.",
+  "Bir yıl sonra bugüne bakacaksın: 'O gün başlamıştım' diyeceksin.",
+  "Üç kelime az gibi. Üç yüz gün sonra değil.",
+  "Buraya kadar geldin. Kapıdan dönmek daha zor.",
 ];
+
+/** Small talk that only makes sense if the learner has that word. */
+const WORD_TALK: Record<string, string> = {
+  commit: "Bugün 'commit' kelimesini düşündüm. Evlenmedim ama düşündüm.",
+  consider: "Fotoğraftaki adam hâlâ düşünüyor. Consider, işte böyle bir şey.",
+};
 
 function shuffleByDay<T>(items: T[], salt: number): T[] {
   // A stable shuffle for the day, so the order is fresh tomorrow but the
@@ -152,7 +182,8 @@ function shuffleByDay<T>(items: T[], salt: number): T[] {
 
 /**
  * A pool of pop-in lines for the moment: the live ones (due cards, a word
- * to recall, streak) first, then small talk, tips and cheers mixed.
+ * of the learner's own to recall, streak) first, then small talk, tips
+ * and cheers mixed.
  */
 export function popLines({
   cards,
@@ -162,29 +193,95 @@ export function popLines({
   cards: Card[];
   personal: Card[];
   streak: number;
-}): string[] {
-  const live: string[] = [];
+}): PopLine[] {
+  const live: PopLine[] = [];
   const personalDue = personal.filter(isDue).length;
   if (personalDue > 0) {
-    live.push(
-      personalDue === 1
-        ? "Bir kartın seni bekliyor. Bir dakika sürer. 🃏"
-        : `${personalDue} kartın seni bekliyor. Hadi, çabuk çevirelim. 🃏`,
-    );
+    live.push({
+      text:
+        personalDue === 1
+          ? "Bir kartın seni bekliyor. Bir dakika sürer."
+          : `${personalDue} kartın seni bekliyor. Hadi, çabuk çevirelim.`,
+    });
   }
   if (personal.length > 0) {
+    // The recall lines use the learner's own words, never the course's.
     const card = personal[(dayIndex() + new Date().getHours()) % personal.length];
-    const back = parseBack(card.back);
-    live.push(`Küçük sınav: "${card.front}"? … ${back.text}. 🎯`);
-    live.push(`"${card.front}" — bir cümlede kullanabilir misin? Sesli söyle. 🗣️`);
+    live.push({ kicker: "Küçük sınav", text: `"${card.front}"? … Söyleme, aklından geçir.` });
+    live.push({ text: `"${card.front}" — bir cümlede kullan. Sesli. Duvarlar duymaz.` });
+    const hook = card.hook?.trim();
+    if (hook) live.push({ text: `Fotoğrafı hatırla: ${hook.length > 60 ? `${hook.slice(0, 60).trimEnd()}…` : hook}` });
   }
   const courseDue = cards.filter(isDue).length;
-  if (courseDue > 0) live.push(`Kursta ${courseDue} kelime tekrar bekliyor. Kısa bir tur? 🔁`);
-  if (streak >= 3) live.push(`${streak} gündür buradasın. Seriyi bozma, bugün bir kart yeter. 🔥`);
+  if (courseDue > 0) live.push({ text: `Kursta ${courseDue} kelime tekrar bekliyor. Kısa bir tur?` });
+  if (streak >= 3) live.push({ text: `${streak} gündür buradasın. Seriyi bozma, bugün bir kart yeter.` });
   const hour = new Date().getHours();
-  if (hour >= 22 || hour < 5) live.push("Gece kelimeleri daha iyi yapışır derler. Bir kart, sonra uyku. 🌙");
-  if (hour >= 6 && hour < 10) live.push("Sabah sabah bir kelime, gün boyu aklında döner. ☀️");
+  if (hour >= 22 || hour < 5) live.push({ text: "Gece kelimeleri daha iyi yapışır derler. Bir kart, sonra uyku. 🌙" });
+  if (hour >= 6 && hour < 10) live.push({ text: "Sabah sabah bir kelime, gün boyu aklında döner." });
 
-  const rest = shuffleByDay([...POP_SMALL_TALK, ...POP_TIPS, ...POP_CHEERS], live.length);
-  return [...shuffleByDay(live, 3), ...rest];
+  const fronts = new Set([...cards, ...personal].map((card) => card.front.trim().toLowerCase()));
+  const wordTalk = Object.entries(WORD_TALK)
+    .filter(([word]) => fronts.has(word))
+    .map(([, text]) => text);
+  const rest = shuffleByDay([...POP_SMALL_TALK, ...wordTalk, ...POP_TIPS, ...POP_CHEERS], live.length);
+  return [...shuffleByDay(live, 3), ...rest.map((text) => ({ text }))];
 }
+
+/* ------------------------------------------------------ the director's -- */
+
+/** Right after a grade, on the flashcard screen. Misses get a word only every third time. */
+export const AFTER_GRADE = {
+  known: [
+    "Gördün mü, biliyormuşsun.",
+    "Sessizce not aldım: bildi.",
+    "Bu kelime seni tanıdı. Yarın da tanır.",
+    "Düşünmeden çıktı. Bu artık senin.",
+    "Kısa ve net. Sıradaki.",
+  ],
+  missed: [
+    "Olur öyle. On dakika sonra yine buluşuruz.",
+    "Kaçtı ama uzağa gitmedi. Sırada bekliyor.",
+    "Bu kelime inatçı. Ben daha inatçıyım.",
+  ],
+  hard: [
+    "Zorlandın ama bildin. Hafızanın kas ağrısı bu.",
+    "Dürüstlük için sağ ol. Biraz daha sık getiririm.",
+    "Tereddüt de bir cevap. Not ettim.",
+  ],
+};
+
+export const MILESTONE: Record<"run3" | "run5" | "firstMiss" | "returned", PopLine> = {
+  run3: { kicker: "Üçlü seri", text: "Üç üst üste. Kulaklarım dikildi." },
+  run5: { kicker: "Beşli seri", text: "Beş! Ben bile şaşırdım — ki ben kolay şaşırmam." },
+  firstMiss: { text: "Seri bozuldu, fikir bozulmadı. Devam." },
+  returned: { kicker: "Geri gelen kart", text: "Geri gelen kartı bildin. En sevdiğim an bu." },
+};
+
+/** The first hello of the day, by the hour it happens. */
+export const FIRST_OPEN: Record<DayPart, string> = {
+  morning: "Günaydın. Kahve sende, kelimeler bende.",
+  afternoon: "Öğle arası mı? Üç kart, sonra devam edersin.",
+  evening: "Akşam kelimeleri daha iyi yapışır derler. Deneyelim.",
+  night: "Bu saatte mi? Bir kart, sonra yat. Ciddiyim.",
+};
+
+export const LATE_NIGHT = "Saat geç. Bir kart, sonra ışıkları söndürüyorum.";
+
+export const LONG_ABSENCE = [
+  "Üç gündür yoktun. Kelimeler sordu, 'geliyor' dedim.",
+  "Geldin. Ben de tam 'gelmeyecek' demiştim; içimden.",
+];
+
+export const STREAK_RISK = "Seri bu akşam bir karta bakıyor. Bir tane yeter.";
+export const streakLine = (streak: number) => `${streak}. gün. Alev bugün biraz daha parlak.`;
+
+export const IDLE_NUDGE = "Bakıp durma. Bildiysen bildim, bilmediysen bilemedim. Ceza yok.";
+export const WORD_PAGE_LINGER = "Kalıplar tek kelimeden daha çok akılda kalır. Birini sesli oku.";
+
+export const SUMMARY_LATER = [
+  "Yarın aynı saatte? Ben burada olurum. Genelde buradayım.",
+  "Bugünün kelimeleri cebinde. Kapıyı kapatırken bir daha söyle.",
+];
+
+export const HUSH = "Tamam, sustum. İki saat sonra bakarım.";
+export const AUTO_MUTE = "Tamam, sonra.";
