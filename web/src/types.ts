@@ -47,6 +47,10 @@ export type Card = {
   hook?: string | null;
   /** Chunks the word lives in: "take sth into consideration". */
   collocations?: { en: string; tr: string }[] | null;
+  /** The word's own ink, pulled from its photo ("#c4713f"); lib/tint.ts fills in when null. */
+  tint?: string | null;
+  /** Where the photo's subject is, as CSS object-position ("68% 42%"). */
+  focal?: string | null;
   /** Optional lesson number. A deck whose cards carry these renders as a path. */
   lesson: number | null;
   /** The unit this card's lesson belongs to, for path-organised decks. */

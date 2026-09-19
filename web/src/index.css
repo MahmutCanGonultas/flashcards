@@ -6,12 +6,60 @@
 
 @theme {
   --font-sans: "Nunito Variable", system-ui, "Segoe UI", Roboto, sans-serif;
-  /* The flashcards half is printed in two inks on cream paper, with one
-     warm accent for marks. Purple lives only inside Tonton. */
-  --color-paper: #fdf9f3;
-  --color-ink: #1b1815;
-  --color-graphite: #6f685f;
-  --color-accent: #c8401a;
+
+  /* One warm uncoated stock in three tints: the page, a sheet lying on it
+     (brighter), and a recessed band (deeper). Hairlines are tan, shadows
+     are umber — nothing on the page is grey. */
+  --color-paper: #faf3e6;
+  --color-paper-lift: #fffbf3;
+  --color-paper-deep: #f0e5d2;
+  --color-rule: #d8c9af;
+  --color-umber: #4e3a28;
+
+  /* Inks: bistre (a warm black) for type and covers, a warm grey for the
+     secondary voice. */
+  --color-ink: #2b1d12;
+  --color-graphite: #7a6a58;
+
+  /* Accents, each with one meaning. Vermilion: due / missed / now. Moss:
+     known / later. Gilt: the honest middle — rings, icons and flashes only
+     (gilt-ink is the text-safe shade). Tonton violet: his bubble's rule
+     and focus ring, nowhere else on the page. */
+  --color-accent: #d4471f;
+  --color-moss: #3e7a5a;
+  --color-gilt: #c8922a;
+  --color-gilt-ink: #8f6414;
+  --color-tonton: #6b4fc9;
+
+  /* Shadows are umber, never black: a print lifted off warm paper. */
+  --shadow-print: inset 0 1px 0 rgba(255, 253, 248, 0.9), 0 2px 6px -2px rgba(78, 58, 40, 0.18), 0 24px 48px -26px rgba(78, 58, 40, 0.45);
+  --shadow-cover: inset 0 1px 0 rgba(255, 251, 243, 0.08), 0 4px 10px -4px rgba(43, 29, 18, 0.35), 0 28px 54px -26px rgba(43, 29, 18, 0.6);
+  --shadow-sheet: inset 0 1px 0 rgba(255, 253, 248, 0.9), 0 -18px 44px -22px rgba(78, 58, 40, 0.5);
+  --shadow-button: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 8px 18px -10px rgba(43, 29, 18, 0.55);
+  --shadow-bubble: inset 0 1px 0 rgba(255, 253, 248, 0.9), 0 12px 28px -14px rgba(78, 58, 40, 0.45);
+
+  /* The motion scale. Durations: 100 press · 180 stamp · 220 micro · 260
+     exit · 320 sheet up / 200 down · 360 enter · 420 spring · 480 bar ·
+     500 progress · 560 flip · 380 throw · 600 count · 900 settle.
+     Arrivals decelerate (soft), landings overshoot ≤4% (spring), things
+     leaving by hand accelerate (throw). Exits are ≤65% of their entrance. */
+  --ease-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --ease-throw: cubic-bezier(0.5, 0, 0.8, 0.2);
+  --ease-stamp: cubic-bezier(0.2, 0.9, 0.3, 1.4);
+
+  --animate-rise-in: rise-in 360ms var(--ease-soft) both;
+  --animate-rise-spring: rise-in 420ms var(--ease-spring) both;
+  --animate-bar-print: bar-print 480ms var(--ease-soft) both;
+  --animate-rule-draw: bar-print 420ms var(--ease-soft) both;
+  --animate-stamp: stamp 180ms var(--ease-stamp) both;
+  --animate-gilt-flash: gilt-flash 900ms ease-out 1;
+  --animate-ring-pulse: ring-pulse 600ms ease-out 1;
+  --animate-bubble-in: bubble-in 220ms var(--ease-spring) both;
+  --animate-flip-shadow: flip-shadow 560ms ease-in-out 1;
+  --animate-pile-nudge: pile-nudge 420ms var(--ease-spring) both;
+  --animate-sheet-up: slide-up 320ms var(--ease-soft) both;
+  --animate-sheet-down: tt-sink 200ms ease-in both;
 }
 
 @layer base {
@@ -21,15 +69,13 @@
   }
 
   html {
-    background-color: #fdf9f3;
-  }
-
-  /* Paper reads as paper: a flat cream, nothing drifting behind the type. */
-  body {
-    background-color: #fdf9f3;
+    background-color: #faf3e6;
   }
 
   body {
+    /* Warmer at the top of the page, like light falling on a desk. Static:
+       nothing drifts behind the type. */
+    background: radial-gradient(120% 42rem at 50% -8rem, #fff9ec 0%, rgba(255, 249, 236, 0) 70%), #faf3e6;
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -45,6 +91,236 @@
   h2,
   h3 {
     letter-spacing: -0.015em;
+  }
+}
+
+/* ------------------------------------------------------ the word's ink */
+
+/* Every word carries a fourth ink pulled from its photograph: set
+   `style={tintStyle(card)}` (lib/tint.ts) on a card's root and these
+   utilities pick it up. The tint is only ever a bar, a ring, a ground or
+   a fade mixed into bistre — never a panel behind body text. */
+@utility tint-bar {
+  background-color: var(--tint, var(--color-ink));
+}
+@utility tint-ground {
+  background-color: var(--tint, var(--color-ink));
+}
+@utility tint-text {
+  color: var(--tint, var(--color-ink));
+}
+@utility tint-border {
+  border-color: var(--tint, var(--color-ink));
+}
+@utility tint-ink {
+  background-color: color-mix(in oklab, var(--tint, var(--color-ink)) 45%, var(--color-ink));
+}
+@utility tint-ring {
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--tint, var(--color-ink)) 45%, transparent);
+}
+/* The cover's caption band: the photo fades into the word's own colour
+   mixed into bistre, so the bride fades into terracotta and the airliner
+   into slate — the black slab is gone. */
+@utility cover-fade {
+  background-image: linear-gradient(
+    to top,
+    color-mix(in oklab, var(--tint, var(--color-ink)) 45%, var(--color-ink)) 0%,
+    color-mix(in oklab, color-mix(in oklab, var(--tint, var(--color-ink)) 45%, var(--color-ink)) 82%, transparent) 48%,
+    transparent 100%
+  );
+}
+/* A photograph printed, not pasted: a touch more saturation. Cover and
+   hero only — it costs a compositing layer. */
+@utility photo-print {
+  filter: saturate(1.06) contrast(1.02);
+}
+/* Paper grain on a raised sheet (card back, bottom sheet, Tonton's
+   bubble). Never over a photo: it would read as dirt on skin and sky. */
+@utility paper-grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .31 0 0 0 0 .23 0 0 0 0 .13 0 0 0 .04 0'/></filter><rect width='180' height='180' filter='url(%23g)'/></svg>");
+    background-size: 180px 180px;
+  }
+}
+
+/* ----------------------------------------------------- the motion set */
+
+/* Anything arriving on the page: up a little, in. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* A rule or the word's colour bar drawing itself in from the left. */
+@keyframes bar-print {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.animate-bar-print,
+.animate-rule-draw {
+  transform-origin: 0 50%;
+}
+/* One warm ring for the day's first card: the streak acknowledged. */
+@keyframes gilt-flash {
+  0% {
+    box-shadow: 0 0 0 0 rgba(200, 146, 42, 0);
+  }
+  30% {
+    box-shadow: 0 0 0 6px rgba(200, 146, 42, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgba(200, 146, 42, 0);
+  }
+}
+/* Sound has no picture; a pulse pairs the ear with the eye. */
+@keyframes ring-pulse {
+  from {
+    box-shadow: 0 0 0 0 rgba(43, 29, 18, 0.35);
+  }
+  to {
+    box-shadow: 0 0 0 10px rgba(43, 29, 18, 0);
+  }
+}
+/* Tonton's bubble growing out of his mouth corner. */
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* A shadow that swells at mid-turn: the card lifts off the table. */
+@keyframes flip-shadow {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+/* The pile breathing as the next card rises off it. */
+@keyframes pile-nudge {
+  0% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ---------------------------------------------- Tonton entrances / exits */
+
+@keyframes tt-slide-up {
+  from {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+@keyframes tt-peek-side {
+  0% {
+    transform: translateX(-110%) rotate(-8deg);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(6%) rotate(3deg);
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes tt-drop {
+  0% {
+    transform: translateY(-140%);
+    opacity: 0;
+  }
+  55% {
+    transform: translateY(0) scale(1.06, 0.9);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-6px) scale(0.98, 1.04);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes tt-pop {
+  0% {
+    transform: scale(0.6) translateY(20%);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.05) translateY(-2%);
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+  }
+}
+/* A sneaking entrance for idle visits: the "unexpected" one. */
+@keyframes tt-tiptoe {
+  0% {
+    transform: translateY(110%) rotate(-4deg);
+    opacity: 0;
+  }
+  35% {
+    transform: translateY(40%) rotate(3deg);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(12%) rotate(-2deg);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes tt-sink {
+  to {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+}
+@keyframes tt-shrink {
+  to {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+}
+/* The honey hairline along the bubble's foot that shrinks over his stay. */
+@keyframes tt-stay {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
   }
 }
 
@@ -436,6 +712,10 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  .tonton-pop,
+  .tonton-react {
+    animation: fade-in 1ms both !important;
+  }
 }
 
 /* ----------------------------------------------------------- celebrations */
@@ -507,22 +787,6 @@
   }
   50% {
     transform: translateY(-3px) rotate(3deg);
-  }
-}
-
-/* The glows behind everything wander a little. */
-@keyframes room-drift {
-  from {
-    background-position:
-      0 0,
-      0 0,
-      0 0;
-  }
-  to {
-    background-position:
-      6rem 4rem,
-      -5rem 6rem,
-      3rem -5rem;
   }
 }
 
@@ -619,10 +883,10 @@ body:has(nav[aria-label="Bölümler"]) .tonton-pop {
     transform: none;
   }
 }
-/* A rubber stamp hitting the page. */
+/* A rubber stamp hitting the page: overshoot, then it sits. */
 @keyframes stamp {
   from {
-    transform: scale(1.25) rotate(-8deg);
+    transform: scale(1.35) rotate(-14deg);
     opacity: 0;
   }
   to {
