@@ -14,13 +14,12 @@ function MusicToggle() {
       title={on ? "Müzik açık" : "Müzik kapalı"}
       className={`flex h-9 w-9 items-center justify-center rounded-full text-base transition ${
         on
-          ? "bg-violet-100 text-violet-700 ring-1 ring-violet-200"
-          : "text-stone-400 hover:bg-stone-900/5 hover:text-stone-600"
+          ? "bg-paper-deep text-ink ring-1 ring-rule"
+          : "text-graphite hover:bg-ink/5 hover:text-ink"
       }`}
     >
-      <span aria-hidden="true" className={on ? "animate-[bob_1.6s_ease-in-out_infinite]" : ""}>
-        🎵
-      </span>
+      {/* Pressed-in on the deeper paper is the whole "on" signal: nothing bobs while the screen is idle. */}
+      <span aria-hidden="true">🎵</span>
     </button>
   );
 }

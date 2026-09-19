@@ -6,17 +6,18 @@ type ErrorStateProps = {
   onRetry?: () => void;
 };
 
+/** Something went wrong: a sheet with a vermilion edge, the one colour that means "now". */
 function ErrorState({ title = "Bir şeyler ters gitti", message, onRetry }: ErrorStateProps) {
   return (
-    <div className="rounded-3xl bg-rose-100 ring-2 ring-rose-200 p-6 sm:p-8 text-center">
-      <div className="text-4xl mb-2" aria-hidden="true">
+    <div className="rounded-[28px] border-l-[3px] border-accent bg-paper-lift p-6 text-center ring-1 ring-rule shadow-print sm:p-8">
+      <div className="mb-2 text-4xl" aria-hidden="true">
         😵‍💫
       </div>
-      <h3 className="font-extrabold text-lg text-rose-800">{title}</h3>
-      <p className="text-rose-700 font-medium mt-1">{message}</p>
+      <h3 className="text-lg font-extrabold text-ink">{title}</h3>
+      <p className="mt-1 font-medium text-graphite">{message}</p>
       {onRetry && (
         <div className="mt-5 flex justify-center">
-          <Button variant="danger" size="sm" onClick={onRetry}>
+          <Button variant="ink" size="sm" onClick={onRetry}>
             Tekrar dene
           </Button>
         </div>

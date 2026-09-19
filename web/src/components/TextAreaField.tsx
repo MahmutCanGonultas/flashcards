@@ -1,11 +1,20 @@
 import { useId } from "react";
 import type { TextareaHTMLAttributes } from "react";
-import { fieldClasses } from "../lib/fieldStyles";
 
 type TextAreaFieldProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "id"> & {
   label: string;
   error?: string;
 };
+
+/* Mirrors TextField exactly; kept local so this file exports only its component. */
+const fieldClasses = (hasError: boolean): string =>
+  [
+    "w-full rounded-xl bg-paper px-4 py-3 text-ink ring-1 placeholder:text-graphite/70",
+    "transition focus:bg-paper-lift focus:outline-none focus:ring-2",
+    hasError ? "ring-accent focus:ring-accent/40" : "ring-rule focus:ring-ink/40",
+  ].join(" ");
+const labelClasses =
+  "mb-2 block text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite";
 
 function TextAreaField({ label, error, className = "", ...rest }: TextAreaFieldProps) {
   const id = useId();
@@ -13,10 +22,7 @@ function TextAreaField({ label, error, className = "", ...rest }: TextAreaFieldP
 
   return (
     <div>
-      <label
-        htmlFor={id}
-        className="block text-xs font-semibold text-stone-600 uppercase tracking-wide mb-2"
-      >
+      <label htmlFor={id} className={labelClasses}>
         {label}
       </label>
       <textarea
@@ -27,7 +33,7 @@ function TextAreaField({ label, error, className = "", ...rest }: TextAreaFieldP
         {...rest}
       />
       {error && (
-        <p id={errorId} className="mt-1.5 text-sm font-medium text-rose-600">
+        <p id={errorId} className="mt-1.5 text-sm font-medium text-accent">
           {error}
         </p>
       )}

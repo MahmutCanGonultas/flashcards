@@ -78,7 +78,8 @@ function Kurs() {
       <Header />
       <main className="mx-auto max-w-5xl px-6 pb-28 pt-8">
         <TontonSays
-          size={84}
+          variant="column"
+          size={60}
           lines={
             path.length > 0
               ? pathLines(stats, path, stats.wordsLearned === 0 && path.every((u) => u.state !== "passed"))
@@ -98,30 +99,36 @@ function Kurs() {
               <CourseHub deck={course} cards={courseCards} units={courseUnits} />
             </div>
             {courseCards && courseUnits && path.length > 0 && (
-              <div className="mt-8">
-                <p className="mb-3 text-[11px] font-extrabold uppercase tracking-widest text-stone-400">Yol haritası</p>
+              <div className="mt-10">
+                {/* The map's masthead: a kicker on a rule, like every section of the front page. */}
+                <div className="mb-4 flex items-end justify-between border-b-2 border-ink pb-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">
+                  <span>Yol haritası</span>
+                  <span className="tabular-nums">
+                    {stats.doneLessons}/{stats.totalLessons} ders
+                  </span>
+                </div>
                 <LearningPath deckId={String(course.id)} units={path} />
               </div>
             )}
           </>
         ) : loadingCourse ? (
           <div className="mt-5 space-y-3">
-            <Skeleton className="h-40 w-full rounded-3xl" />
-            <Skeleton className="h-24 w-full rounded-3xl" />
+            <Skeleton className="h-40 w-full rounded-[28px]" />
+            <Skeleton className="h-24 w-full rounded-[28px]" />
           </div>
         ) : null}
 
         {/* Other decks the learner made themselves. */}
-        <div className="mt-10 flex items-end justify-between gap-3">
-          <p className="text-[11px] font-extrabold uppercase tracking-widest text-stone-400">Diğer desteler</p>
-          <Button variant="secondary" size="sm" onClick={() => setIsModalOpen(true)}>
+        <div className="mt-10 flex items-end justify-between gap-3 border-b-2 border-ink pb-2">
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">Diğer desteler</p>
+          <Button variant="outline" size="sm" onClick={() => setIsModalOpen(true)}>
             + Yeni deste
           </Button>
         </div>
         {decks.filter((_, i) => i !== courseIndex).length === 0 ? (
-          <p className="mt-3 text-sm text-stone-400">Kendi destelerin burada görünür.</p>
+          <p className="mt-3 text-sm text-graphite">Kendi destelerin burada görünür.</p>
         ) : (
-          <div className="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {decks.map((deck, i) =>
               i === courseIndex ? null : (
                 <DeckCard

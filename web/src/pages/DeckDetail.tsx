@@ -37,10 +37,10 @@ function errorMessage(error: unknown): string {
 /** Shaped like a real CardItem, so the loading grid doesn't jump around once data lands. */
 function CardItemSkeleton() {
   return (
-    <div className="rounded-3xl bg-white p-6 pl-7 ring-2 ring-stone-100">
+    <div className="rounded-[28px] bg-paper-lift p-6 pl-7 ring-1 ring-rule">
       <Skeleton className="h-5 w-16 rounded-full" />
       <Skeleton className="mt-2.5 h-5 w-2/3 rounded-full" />
-      <div className="my-4 h-px w-full bg-stone-100" />
+      <div className="my-4 h-px w-full bg-rule" />
       <Skeleton className="h-4 w-full rounded-full" />
       <Skeleton className="mt-2 h-4 w-4/5 rounded-full" />
     </div>
@@ -174,7 +174,7 @@ function DeckDetail() {
       <main className="max-w-5xl mx-auto px-6 pt-10 pb-28">
         <Link
           to="/kurs"
-          className="-m-2 inline-flex items-center gap-1.5 p-2 font-medium text-stone-500 hover:text-stone-800 transition"
+          className="-m-2 inline-flex items-center gap-1.5 p-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite transition hover:text-ink"
         >
           <span aria-hidden="true">←</span> Kurs
         </Link>
@@ -205,7 +205,7 @@ function DeckDetail() {
               title="Deste bulunamadı"
               description="Bu deste artık yok ya da bağlantı eskimiş."
               action={
-                <LinkButton to="/kurs" variant="primary">
+                <LinkButton to="/kurs" variant="ink">
                   Destelerime dön
                 </LinkButton>
               }
@@ -216,14 +216,12 @@ function DeckDetail() {
         {deck && (
           <>
             <div className="mt-6">
-              <h1 className="text-3xl font-extrabold text-stone-800 tracking-tight flex items-start gap-2">
-                <span aria-hidden="true" className="shrink-0">
-                  {isPersonal ? "🃏" : "📖"}
-                </span>
-                <span className="min-w-0 break-words">{deck.name}</span>
+              {/* The deck's name is the headline, set the way the front page sets its own. */}
+              <h1 className="break-words text-[34px] font-black leading-[1.05] tracking-tight text-ink">
+                {deck.name}
               </h1>
               {!isPath && cardsQuery.isSuccess ? (
-                <p className="text-stone-500 mt-1.5">{cardCountLabel}</p>
+                <p className="mt-2 text-[17px] text-graphite">{cardCountLabel}</p>
               ) : cardsQuery.isLoading ? (
                 <Skeleton className="h-5 w-24 rounded-full mt-2.5" />
               ) : null}
@@ -252,15 +250,15 @@ function DeckDetail() {
 
             {!isPath && !isPersonal && (
               <div className="mt-6 flex flex-wrap items-center gap-3">
-                <LinkButton to={`/decks/${deckId}/study`} variant="primary">
-                  Çalış 🚀
+                <LinkButton to={`/decks/${deckId}/study`} variant="ink">
+                  Çalış
                 </LinkButton>
                 {cardCount > 0 && (
-                  <LinkButton to={`/decks/${deckId}/study?mode=all`} variant="secondary">
-                    Hepsini tekrar et 📖
+                  <LinkButton to={`/decks/${deckId}/study?mode=all`} variant="outline">
+                    Hepsini tekrar et
                   </LinkButton>
                 )}
-                <Button variant="secondary" size="sm" onClick={() => setIsAddOpen(true)}>
+                <Button variant="outline" size="sm" onClick={() => setIsAddOpen(true)}>
                   + Kart ekle
                 </Button>
                 <div className="w-full sm:w-auto sm:ml-auto flex flex-wrap gap-3">
@@ -299,7 +297,7 @@ function DeckDetail() {
                   title="Henüz kart yok"
                   description="İlk kartını ekle, desteni oluşturmaya başla."
                   action={
-                    <Button onClick={() => setIsAddOpen(true)}>
+                    <Button variant="ink" onClick={() => setIsAddOpen(true)}>
                       + İlk kartını ekle
                     </Button>
                   }
@@ -323,9 +321,9 @@ function DeckDetail() {
             {/* Deck housekeeping lives at the bottom in path mode — the path
                 itself is the point of the screen, not the admin controls. */}
             {isPath && (
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-2 border-t border-stone-200/70 pt-6">
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-2 border-t border-rule pt-6">
                 <Button variant="ghost" size="sm" onClick={() => setShowAllCards((v) => !v)}>
-                  {showAllCards ? "Kelime listesini gizle" : "📋 Tüm kelimeler"}
+                  {showAllCards ? "Kelime listesini gizle" : "Tüm kelimeler"}
                 </Button>
                 <Button variant="ghost" size="sm" onClick={() => setIsAddOpen(true)}>
                   + Kart ekle

@@ -78,10 +78,11 @@ function bucketStatus(bucket: Bucket): BucketStatus {
   return "locked";
 }
 
+/* Moss once a chapter has stuck, ink while it is being worked, tan before it is opened. */
 const statusDot: Record<BucketStatus, string> = {
-  done: "bg-emerald-400",
-  active: "bg-violet-500",
-  locked: "bg-stone-200",
+  done: "bg-moss",
+  active: "bg-ink",
+  locked: "bg-rule",
 };
 
 function CardGrid({
@@ -91,8 +92,8 @@ function CardGrid({
   onDelete,
 }: {
   cards: CardModel[];
-  /** Continues the colour cycle from where the previous group left off,
-   *  so every "Day N" doesn't open on the same violet-sky-rose sequence. */
+  /** Continues the ink cycle from where the previous group left off,
+   *  so every "Day N" doesn't open on the same terracotta-slate-crimson run. */
   themeOffset?: number;
   onEdit: (card: CardModel) => void;
   onDelete: (card: CardModel) => void;
@@ -138,9 +139,9 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
 
   const dayBuckets = buckets.filter((b) => b.key !== "__untagged__");
 
-  // Each bucket's colours continue the cycle where the previous one left
-  // off, so "Day 2" doesn't open on the exact same violet-sky-rose run
-  // "Day 1" did just because both start counting from card index 0.
+  // Each bucket's inks continue the cycle where the previous one left
+  // off, so "Day 2" doesn't open on the exact same terracotta-slate-crimson
+  // run "Day 1" did just because both start counting from card index 0.
   const themeOffsets = new Map<string, number>();
   buckets.reduce((offset, bucket) => {
     themeOffsets.set(bucket.key, offset);
@@ -150,7 +151,7 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
   return (
     <div>
       {dayBuckets.length > 1 && (
-        <p className="mb-3 text-xs font-medium text-stone-400">
+        <p className="mb-3 text-xs font-medium text-graphite">
           Bu gruplar ders sıran, tekrar zamanlayıcısı değil — iyi bildiğin bir kelime, hangi
           grupta olursa olsun, hâlâ öğrendiğin bir kelimeden daha seyrek karşına çıkar.
         </p>
@@ -185,7 +186,7 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
           return (
             <div
               key={bucket.key}
-              className="overflow-hidden rounded-3xl bg-white ring-2 ring-stone-100 shadow-[0_4px_0_0_var(--color-stone-100)]"
+              className="overflow-hidden rounded-[28px] bg-paper-lift ring-1 ring-rule shadow-[0_4px_0_0_var(--color-rule)]"
             >
               <button
                 type="button"
@@ -199,16 +200,16 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
                       ✅
                     </span>
                   )}
-                  <span className="font-extrabold text-stone-800">
+                  <span className="font-extrabold text-ink">
                     {bucket.key === "__untagged__" ? bucket.label : `📘 ${bucket.label}`}
                   </span>
-                  <span className="shrink-0 text-sm font-medium text-stone-400">
+                  <span className="shrink-0 text-sm font-medium text-graphite">
                     {bucket.cards.length} kart
                   </span>
                 </span>
                 <span className="flex shrink-0 items-center gap-2.5">
                   {due > 0 && (
-                    <span className="rounded-full bg-violet-600 px-2.5 py-1 text-xs font-extrabold text-white">
+                    <span className="rounded-full bg-ink px-2.5 py-1 text-xs font-extrabold text-paper-lift">
                       {newDue > 0 && reviewDue > 0
                         ? `${newDue} yeni · ${reviewDue} tekrar`
                         : newDue > 0
@@ -217,7 +218,7 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
                     </span>
                   )}
                   <ChevronDownIcon
-                    className={`h-5 w-5 text-stone-400 transition-transform duration-200 ${
+                    className={`h-5 w-5 text-graphite transition-transform duration-200 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   />
@@ -225,7 +226,7 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
               </button>
 
               {isOpen && (
-                <div className="border-t-2 border-stone-100 p-5">
+                <div className="border-t border-rule p-5">
                   <CardGrid
                     cards={bucket.cards}
                     themeOffset={themeOffsets.get(bucket.key)}

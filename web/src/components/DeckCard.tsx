@@ -35,6 +35,7 @@ type DeckCardProps = {
   stats?: DeckStats;
 };
 
+/** One deck as a sheet on the page: the theme's ink on the small tile and the due badge, nowhere else. */
 function DeckCard({ deck, theme, stats }: DeckCardProps) {
   const isPersonal = deck.kind === "personal";
   const cardLabel =
@@ -51,22 +52,22 @@ function DeckCard({ deck, theme, stats }: DeckCardProps) {
   return (
     <Link
       to={`/decks/${deck.id}`}
-      className={`group relative flex flex-col overflow-hidden rounded-3xl p-5 ring-2 ${theme.ring} ${theme.deckSurface} ${theme.shadow} ${theme.hoverShadow} transition-all duration-150 hover:-translate-y-1 active:scale-[0.97] active:brightness-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-stone-300`}
+      className={`group relative flex flex-col overflow-hidden rounded-[28px] p-5 ring-1 ${theme.ring} ${theme.deckSurface} ${theme.shadow} ${theme.hoverShadow} transition-[transform,box-shadow] duration-150 hover:-translate-y-0.5 active:translate-y-px focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30`}
     >
       <CardStackArt
-        className={`pointer-events-none absolute -bottom-10 -right-10 h-44 w-44 rotate-[-6deg] ${theme.soft} opacity-30 transition-transform duration-300 group-hover:rotate-0 group-hover:scale-105`}
+        className={`pointer-events-none absolute -bottom-10 -right-10 h-44 w-44 rotate-[-6deg] ${theme.soft} transition-transform duration-300 group-hover:rotate-0 group-hover:scale-105`}
       />
 
       <div className="relative flex items-start justify-between gap-3">
         <div
-          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${theme.icon} shadow-md ring-1 ring-white/30`}
+          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${theme.icon} shadow-button`}
         >
           {isPersonal ? (
             <span aria-hidden="true" className="text-2xl">
               ✍️
             </span>
           ) : (
-            <CardsIcon className="h-6 w-6 text-white" />
+            <CardsIcon className="h-6 w-6 text-paper-lift" />
           )}
         </div>
 
@@ -74,18 +75,18 @@ function DeckCard({ deck, theme, stats }: DeckCardProps) {
           <Skeleton className="h-6 w-20 rounded-full" />
         ) : stats.due > 0 ? (
           <span
-            className={`shrink-0 rounded-full ${theme.badge} px-2.5 py-1 text-xs font-extrabold text-white shadow-sm`}
+            className={`shrink-0 rounded-full ${theme.badge} px-2.5 py-1 text-xs font-extrabold`}
           >
             {dueLabel(stats)}
           </span>
         ) : stats.total > 0 ? (
-          <span className="shrink-0 rounded-full bg-white/70 px-2.5 py-1 text-xs font-bold text-stone-500 ring-1 ring-stone-900/5">
+          <span className="shrink-0 rounded-full bg-paper-deep px-2.5 py-1 text-xs font-bold text-graphite">
             Hepsi tamam
           </span>
         ) : null}
       </div>
 
-      <h3 className="relative mt-4 text-lg font-extrabold leading-snug text-stone-800 break-words">
+      <h3 className="relative mt-4 break-words text-lg font-extrabold leading-snug text-ink">
         {deck.name}
       </h3>
 
@@ -94,29 +95,27 @@ function DeckCard({ deck, theme, stats }: DeckCardProps) {
           <Skeleton className="h-4 w-24 rounded-full" />
         ) : stats?.path ? (
           <>
-            <p className="text-sm font-bold text-stone-600">
+            <p className="text-sm font-bold text-graphite">
               Ders {stats.path.currentLesson ?? stats.path.totalLessons}/{stats.path.totalLessons}
             </p>
-            <div className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-white/70">
+            <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-rule">
               <div
-                className={`h-full rounded-full ${stats.path.wordsLearned > 0 ? theme.badge : ""} transition-[width] duration-500`}
+                className={`h-full rounded-full ${stats.path.wordsLearned > 0 ? "bg-ink" : ""} transition-[width] duration-500`}
                 style={{
                   width: `${Math.round((stats.path.wordsLearned / Math.max(stats.path.totalWords, 1)) * 100)}%`,
                 }}
               />
             </div>
-            <p className="mt-1.5 text-xs font-medium text-stone-500">
+            <p className="mt-1.5 text-xs font-medium text-graphite">
               {stats.path.wordsLearned}/{stats.path.totalWords} kelime öğrenildi
             </p>
           </>
         ) : (
-          <p className="text-sm font-medium text-stone-500">{cardLabel}</p>
+          <p className="text-sm font-medium text-graphite">{cardLabel}</p>
         )}
       </div>
 
-      <div
-        className={`relative mt-5 flex items-center gap-1.5 text-sm font-extrabold ${theme.text}`}
-      >
+      <div className="relative mt-5 flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-[0.18em] text-ink">
         Çalış
         <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
       </div>
