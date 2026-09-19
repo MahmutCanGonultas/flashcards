@@ -45,6 +45,9 @@ const createCardSchema = z.object({
     .max(10)
     .nullable()
     .optional(),
+  // The word's own ink and the photo's focal point (see schema.sql).
+  tint: z.string().regex(/^#[0-9a-fA-F]{6}$/).nullable().optional(),
+  focal: z.string().regex(/^\d{1,3}% \d{1,3}%$/).nullable().optional(),
   // Optional lesson number for path-organised decks.
   lesson: z.number().int().positive().nullable().optional(),
 });
@@ -58,7 +61,7 @@ export const createCard = async (req: Request, res: Response) => {
     return res.status(400).json({ error: "Kart Bilgileri Gecersiz" });
   }
 
-  const { front, back, tag, exampleSentence, imageUrl, mnemonic, lesson, exampleTr, example2, example2Tr, senses, related, watchOut, hook, collocations } =
+  const { front, back, tag, exampleSentence, imageUrl, mnemonic, lesson, exampleTr, example2, example2Tr, senses, related, watchOut, hook, collocations, tint, focal } =
     validation.data;
   const { deckId } = req.params;
 
@@ -74,8 +77,8 @@ export const createCard = async (req: Request, res: Response) => {
 
   // 3-Deste bu kullanicinin - artik karti ekleyebiliriz
   const result = await pool.query(
-    `INSERT INTO cards (deck_id, front, back, tag, example_sentence, image_url, mnemonic, lesson, example_tr, example2, example2_tr, senses, related, watch_out, hook, collocations)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *`,
+    `INSERT INTO cards (deck_id, front, back, tag, example_sentence, image_url, mnemonic, lesson, example_tr, example2, example2_tr, senses, related, watch_out, hook, collocations, tint, focal)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18) RETURNING *`,
     [
       deckId,
       front,
@@ -93,6 +96,8 @@ export const createCard = async (req: Request, res: Response) => {
       watchOut ?? null,
       hook ?? null,
       collocations ? JSON.stringify(collocations) : null,
+      tint ?? null,
+      focal ?? null,
     ],
   );
 
@@ -124,7 +129,7 @@ export const updateCard = async (req: Request, res: Response) => {
     return res.status(400).json({ error: "Kart bilgileri geçersiz" });
   }
 
-  const { front, back, tag, exampleSentence, imageUrl, mnemonic, exampleTr, example2, example2Tr, senses, related, watchOut, hook, collocations } =
+  const { front, back, tag, exampleSentence, imageUrl, mnemonic, exampleTr, example2, example2Tr, senses, related, watchOut, hook, collocations, tint, focal } =
     validation.data;
   const { deckId, cardId } = req.params;
 
@@ -144,7 +149,9 @@ export const updateCard = async (req: Request, res: Response) => {
          related = CASE WHEN $22::boolean THEN $23::jsonb ELSE related END,
          watch_out = CASE WHEN $24::boolean THEN $25 ELSE watch_out END,
          hook = CASE WHEN $26::boolean THEN $27 ELSE hook END,
-         collocations = CASE WHEN $28::boolean THEN $29::jsonb ELSE collocations END
+         collocations = CASE WHEN $28::boolean THEN $29::jsonb ELSE collocations END,
+         tint = CASE WHEN $30::boolean THEN $31 ELSE tint END,
+         focal = CASE WHEN $32::boolean THEN $33 ELSE focal END
      WHERE id = $3
        AND deck_id = $4
        AND deck_id IN (SELECT id FROM decks WHERE user_id = $5)
@@ -163,6 +170,8 @@ export const updateCard = async (req: Request, res: Response) => {
       watchOut !== undefined, watchOut ?? null,
       hook !== undefined, hook ?? null,
       collocations !== undefined, collocations ? JSON.stringify(collocations) : null,
+      tint !== undefined, tint ?? null,
+      focal !== undefined, focal ?? null,
     ],
   );
 

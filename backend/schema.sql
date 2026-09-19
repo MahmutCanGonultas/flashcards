@@ -70,6 +70,11 @@ CREATE TABLE cards(
     -- and the chunks the word lives in: [{ "en", "tr" }].
     hook TEXT,
     collocations JSONB,
+    -- The word's own ink pulled from its photo ("#c4713f") and where the
+    -- photo's subject sits, as a CSS object-position ("68% 42%"). Both
+    -- optional: the client derives a tint from the spelling when null.
+    tint VARCHAR(9),
+    focal VARCHAR(20),
     ease_factor REAL NOT NULL DEFAULT 2.5,
     interval INTEGER NOT NULL DEFAULT 0,
     repetitions INTEGER NOT NULL DEFAULT 0,
