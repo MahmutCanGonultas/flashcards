@@ -101,17 +101,19 @@ function SoundMatch({ cards, onComplete }: SoundMatchProps) {
     setPickedMeaning(card.id);
   };
 
+  // Loose sheets on the page: picked lifts and takes an ink ring, a wrong
+  // pair flushes vermilion for a beat, a matched pair sinks into the paper.
   const tileClass = (id: number, picked: boolean) => {
     if (matched.has(id)) {
-      return "pointer-events-none border-stone-100 bg-stone-50 text-stone-300 opacity-60";
+      return "pointer-events-none bg-paper-deep/60 text-graphite ring-1 ring-rule/60 opacity-60";
     }
     if (wrongPair?.includes(id)) {
-      return "border-rose-300 bg-rose-50 text-rose-700 animate-[shake_320ms]";
+      return "bg-accent/8 text-accent ring-2 ring-accent animate-[shake_320ms]";
     }
     if (picked) {
-      return "border-violet-400 bg-violet-50 text-violet-800 -translate-y-0.5";
+      return "bg-paper-lift text-ink ring-2 ring-ink -translate-y-0.5 shadow-print";
     }
-    return "border-stone-200 bg-white text-stone-700 hover:border-violet-200";
+    return "bg-paper-lift text-ink ring-1 ring-rule shadow-print hover:-translate-y-0.5";
   };
 
   return (
@@ -128,16 +130,16 @@ function SoundMatch({ cards, onComplete }: SoundMatchProps) {
               type="button"
               onClick={() => tapSound(card)}
               aria-disabled={matched.has(card.id)}
-              className={`flex w-full items-center gap-2 rounded-2xl border-2 p-3 text-left font-extrabold transition-transform ${tileClass(
+              className={`flex w-full items-center gap-2 rounded-2xl p-3 text-left font-extrabold transition-transform duration-100 active:scale-[0.98] ${tileClass(
                 card.id,
                 pickedSound === card.id,
               )}`}
             >
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-violet-100 text-xs text-violet-600">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-paper-deep text-xs text-graphite">
                 {index + 1}
               </span>
               {audible && !matched.has(card.id) ? (
-                <SpeakerIcon className="h-5 w-5 shrink-0 text-violet-500" />
+                <SpeakerIcon className="h-5 w-5 shrink-0 text-ink" />
               ) : (
                 <span className="min-w-0 break-words">{card.front}</span>
               )}
@@ -152,7 +154,7 @@ function SoundMatch({ cards, onComplete }: SoundMatchProps) {
               type="button"
               onClick={() => tapMeaning(card)}
               aria-disabled={matched.has(card.id)}
-              className={`w-full rounded-2xl border-2 p-3 text-left text-sm font-bold transition-transform ${tileClass(
+              className={`w-full rounded-2xl p-3 text-left text-sm font-bold transition-transform duration-100 active:scale-[0.98] ${tileClass(
                 card.id,
                 pickedMeaning === card.id,
               )}`}
