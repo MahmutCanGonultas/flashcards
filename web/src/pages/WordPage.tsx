@@ -6,6 +6,7 @@ import type { Card } from "../types";
 import { parseBack, posLabel } from "../lib/cardBack";
 import { isDue } from "../lib/path";
 import { primeSpeech } from "../lib/speech";
+import { focalFor, tintStyle } from "../lib/tint";
 import Header from "../components/Header";
 import AppTabs from "../components/AppTabs";
 import LinkButton from "../components/LinkButton";
@@ -15,17 +16,23 @@ import SpeakButton from "../components/SpeakButton";
 import ConfirmDialog from "../components/ConfirmDialog";
 import WordCardBack from "../components/WordCardBack";
 
-/** When this card next comes back, in words. */
-function nextReviewLabel(card: Card): { text: string; due: boolean } {
-  if (isDue(card)) return { text: card.repetitions === 0 ? "İlk kez sorulacak" : "Tekrar vakti", due: true };
+/** When this card next comes back, in words, and how urgently it's coloured. */
+function nextReviewLabel(card: Card): { text: string; tone: "due" | "soon" | "later" } {
+  if (isDue(card)) return { text: card.repetitions === 0 ? "İlk kez sorulacak" : "Tekrar vakti", tone: "due" };
   const days = Math.ceil((new Date(card.due_date).getTime() - Date.now()) / 86_400_000);
-  return { text: days <= 1 ? "Yarın tekrar" : `${days} gün sonra tekrar`, due: false };
+  return days <= 1 ? { text: "Yarın tekrar", tone: "soon" } : { text: `${days} gün sonra tekrar`, tone: "later" };
 }
 
+const TONE = { due: "text-accent", soon: "text-gilt-ink", later: "text-moss" } as const;
+
+/** Entrance delays vanish under reduced motion: the keyframes already collapse, the delays would not. */
+const delay = (ms: number) => ({ animationDelay: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "0ms" : `${ms}ms` });
+
 /**
- * One word's page — the feature opener. The photo full bleed, the caption
- * that ties it to the word, then the entry: meanings, sentences, chunks,
- * family, and the trap in Tonton's column.
+ * One word's page — the feature opener. The photo full bleed on the word's
+ * own ground, the caption that ties it to the word, then the entry:
+ * meanings, sentences, chunks, family, and the trap in Tonton's column.
+ * Only what's above the fold arrives; the rest is simply printed.
  */
 function WordPage() {
   const { deckId = "", cardId = "" } = useParams<{ deckId: string; cardId: string }>();
@@ -57,7 +64,11 @@ function WordPage() {
     <div className="min-h-screen">
       <Header />
       <main className="mx-auto max-w-2xl px-6 pb-28 pt-5">
-        <Link to="/kartlar" className="-m-2 inline-block p-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite transition hover:text-ink">
+        <Link
+          to="/kartlar"
+          viewTransition
+          className="-m-2 inline-block p-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite transition-colors hover:text-ink"
+        >
           ← Kelimelerim
         </Link>
 
@@ -80,39 +91,53 @@ function WordPage() {
         )}
 
         {card && back && schedule && (
-          <article className="animate-[step-in_180ms_ease-out]">
+          <article style={tintStyle(card)}>
             {card.image_url && (
               <figure className="-mx-6 mt-4">
-                <div className="overflow-hidden bg-ink">
-                  <img src={card.image_url} alt="" className="h-auto max-h-[62vh] w-full object-cover object-center animate-[cover-settle_900ms_ease-out_both]" />
+                <div className="overflow-hidden tint-ground">
+                  <img
+                    src={card.image_url}
+                    alt=""
+                    className="h-auto max-h-[62vh] w-full object-cover photo-print animate-[cover-settle_900ms_ease-out_both]"
+                    style={{ objectPosition: focalFor(card), viewTransitionName: `cover-${card.id}` }}
+                  />
                 </div>
-                {card.hook && <figcaption className="px-6 pt-3 text-[14px] font-semibold italic leading-snug text-graphite">{card.hook}</figcaption>}
+                {card.hook && (
+                  <figcaption className="border-l-[3px] tint-border bg-paper-deep/60 px-6 py-3 text-[14px] font-semibold italic leading-snug text-graphite animate-rise-in" style={delay(200)}>
+                    {card.hook}
+                  </figcaption>
+                )}
               </figure>
             )}
 
-            <p className="mt-5 flex flex-wrap items-center gap-x-3 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">
+            <p className="mt-5 flex flex-wrap items-center gap-x-3 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite animate-rise-in" style={delay(240)}>
               {back.pos && <span>{posLabel(back.pos)}</span>}
               {back.pos && <span aria-hidden="true">·</span>}
-              <span className={schedule.due ? "text-accent" : ""}>{schedule.text}</span>
+              <span className={TONE[schedule.tone]}>{schedule.text}</span>
             </p>
-            <h1 className="mt-2 flex items-center gap-3 break-words text-[40px] font-black leading-none tracking-[-0.02em] text-ink">
+            <h1 className="mt-2 flex items-center gap-3 wrap-break-word text-[40px] font-black leading-none tracking-[-0.02em] text-ink animate-rise-in" style={delay(280)}>
               {card.front}
-              <SpeakButton text={card.front} size="md" className="!bg-transparent !text-ink ring-1 ring-ink/15" />
+              <SpeakButton text={card.front} size="md" className="!bg-paper-lift !text-ink ring-1 ring-rule" />
             </h1>
-            <p className="mt-3 text-[20px] font-semibold leading-snug text-ink">{back.text}</p>
+            <p className="mt-3 text-[20px] font-semibold leading-snug text-ink animate-rise-in" style={delay(320)}>{back.text}</p>
 
-            <section className="mt-6 border-t border-ink pt-2">
-              <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">Anlamlar</p>
+            <section className="mt-6">
+              <span aria-hidden="true" className="block h-[2px] w-full tint-bar animate-bar-print" style={delay(360)} />
+              <p className="mt-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">Anlamlar</p>
               <div className="mt-2">
                 <WordCardBack card={card} />
               </div>
             </section>
 
-            <div className="mt-10 flex items-center justify-between border-t border-ink/10 pt-5">
+            <div className="mt-10 flex items-center justify-between border-t border-rule pt-5">
               <LinkButton to={`/decks/${deckId}/flashcards?mode=all`} variant="outline" size="sm" onClick={primeSpeech}>
                 Kartlara dön
               </LinkButton>
-              <button type="button" className="text-[12px] font-bold text-graphite underline underline-offset-4 hover:text-ink" onClick={() => setConfirming(true)}>
+              <button
+                type="button"
+                className="text-[12px] font-bold text-graphite underline underline-offset-4 transition-colors hover:text-ink"
+                onClick={() => setConfirming(true)}
+              >
                 Bu kelimeyi sil
               </button>
             </div>

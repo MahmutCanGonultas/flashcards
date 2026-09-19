@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import AppTabs from "../components/AppTabs";
@@ -13,10 +13,21 @@ import { homeLines } from "../lib/tonton";
 import { primeSpeech } from "../lib/speech";
 import { isDue } from "../lib/path";
 import { parseBack, posLabel } from "../lib/cardBack";
+import { focalFor, tintStyle } from "../lib/tint";
 import type { Card } from "../types";
 
 const DAY_LABELS = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
 const MONTHS = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+
+/**
+ * The page composes itself once per app session — dateline, headline,
+ * covers, column, one after another. Coming back from a word or a session
+ * it's simply there; a front page that re-animates every visit is a tic.
+ */
+let composed = false;
+
+/** Entrance delays vanish under reduced motion: the keyframes already collapse, the delays would not. */
+const delay = (ms: number) => ({ animationDelay: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "0ms" : `${ms}ms` });
 
 function localISO(d: Date): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
@@ -45,7 +56,9 @@ function Dateline() {
           <li
             key={i}
             aria-label={`${DAY_LABELS[d.getDay()]}${lit(i) ? ", çalışıldı" : ""}`}
-            className={`h-[7px] w-[7px] rounded-full ${lit(i) ? "bg-ink" : i === 6 ? "bg-transparent ring-[1.5px] ring-inset ring-accent" : "bg-ink/15"}`}
+            className={`h-[7px] w-[7px] rounded-full ${
+              i === 6 ? "bg-ink ring-[1.5px] ring-inset ring-accent" : lit(i) ? "bg-ink" : "bg-rule"
+            }`}
           />
         ))}
       </ol>
@@ -53,11 +66,15 @@ function Dateline() {
   );
 }
 
-/** The newsstand: the cards that are waiting, as three covers. */
-function Newsstand({ cards }: { cards: Card[] }) {
+/** Which three covers go on the newsstand: the ones waiting first, else the newest. */
+function newsstandPicks(cards: Card[]): Card[] {
   const due = cards.filter(isDue);
-  const shown = (due.length > 0 ? [...due, ...cards.filter((c) => !isDue(c))] : [...cards].sort((a, b) => b.id - a.id)).slice(0, 3);
-  const extra = due.length - 3;
+  return (due.length > 0 ? [...due, ...cards.filter((c) => !isDue(c))] : [...cards].sort((a, b) => b.id - a.id)).slice(0, 3);
+}
+
+/** The newsstand: the cards that are waiting, as three covers in their own inks. */
+function Newsstand({ cards, shown, animate }: { cards: Card[]; shown: Card[]; animate: boolean }) {
+  const extra = cards.filter(isDue).length - 3;
   return (
     <div className="mt-5 grid grid-cols-3 gap-2">
       {shown.map((card, i) => {
@@ -65,23 +82,28 @@ function Newsstand({ cards }: { cards: Card[] }) {
         return (
           <div
             key={card.id}
-            className="relative aspect-[4/5] overflow-hidden rounded-xl bg-ink shadow-[0_10px_24px_-14px_rgba(27,24,21,0.6)] animate-[node-in_360ms_ease-out_both]"
-            style={{ animationDelay: `${i * 60}ms` }}
+            style={{ ...tintStyle(card), ...delay(120 + i * 60) }}
+            className={`relative aspect-[4/5] overflow-hidden rounded-xl bg-ink shadow-cover ring-1 ring-inset ring-paper-lift/10 transition-transform duration-100 active:scale-[0.97] ${
+              animate ? "animate-rise-spring" : ""
+            }`}
           >
             {card.image_url ? (
               <div className="absolute inset-0 flex items-start justify-center">
-                <img src={card.image_url} alt="" className="h-auto max-h-full min-h-[62%] w-full object-cover object-center" />
+                <img
+                  src={card.image_url}
+                  alt=""
+                  className="h-auto max-h-full min-h-[62%] w-full object-cover photo-print"
+                  style={{ objectPosition: focalFor(card), viewTransitionName: `cover-${card.id}` }}
+                />
               </div>
             ) : (
               <span aria-hidden="true" className="absolute inset-x-0 top-6 text-center text-4xl">
                 {emoji ?? "🃏"}
               </span>
             )}
-            <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/70 to-transparent px-2.5 pb-2 pt-6 text-[12px] font-black leading-tight text-paper">
-              {card.front}
-            </span>
+            <span className="absolute inset-x-0 bottom-0 cover-fade px-2.5 pb-2 pt-8 text-[12px] font-black leading-tight text-paper-lift">{card.front}</span>
             {i === 2 && extra > 0 && (
-              <span className="absolute inset-0 grid place-items-center bg-ink/55 text-[22px] font-black text-paper">+{extra}</span>
+              <span className="absolute inset-0 grid place-items-center bg-ink/70 text-[22px] font-black text-paper-lift">+{extra}</span>
             )}
           </div>
         );
@@ -90,12 +112,14 @@ function Newsstand({ cards }: { cards: Card[] }) {
   );
 }
 
-/** When this card next comes back, for the contents list. */
-function scheduleLabel(card: Card): { text: string; due: boolean } {
-  if (isDue(card)) return { text: card.repetitions === 0 ? "Yeni" : "Tekrar", due: true };
+/** When this card next comes back, for the contents list, and how urgently it's coloured. */
+function scheduleLabel(card: Card): { text: string; tone: "due" | "soon" | "later" } {
+  if (isDue(card)) return { text: card.repetitions === 0 ? "Yeni" : "Şimdi", tone: "due" };
   const days = Math.ceil((new Date(card.due_date).getTime() - Date.now()) / 86_400_000);
-  return { text: days <= 1 ? "Yarın" : `${days} gün`, due: false };
+  return days <= 1 ? { text: "Yarın", tone: "soon" } : { text: `${days} gün sonra`, tone: "later" };
 }
+
+const TONE = { due: "text-accent", soon: "text-gilt-ink", later: "text-moss" } as const;
 
 /**
  * Kartlarım — the front page of the printed half. A dateline, a headline
@@ -113,16 +137,45 @@ function Kartlar() {
   const due = cards ? cards.filter(isDue).length : 0;
   const sorted = cards ? [...cards].sort((a, b) => Number(isDue(b)) - Number(isDue(a)) || b.id - a.id) : [];
 
+  // Read once, on the first render of this visit; flipped after it.
+  const [animate] = useState(() => !composed);
+  useEffect(() => {
+    composed = true;
+  }, []);
+  const rise = animate ? "animate-rise-in" : "";
+  // A view-transition name must be unique on the page: a card already on the
+  // newsstand morphs from its cover, the others from their row thumbnail.
+  const picks = cards ? newsstandPicks(cards) : [];
+  const onStand = new Set(picks.map((c) => c.id));
+  const at = (ms: number) => (animate ? delay(ms) : undefined);
+
   return (
     <div className="min-h-screen">
       <Header />
       <main className="mx-auto max-w-5xl px-6 pb-28 pt-7">
-        <Dateline />
+        <div className={rise} style={at(0)}>
+          <Dateline />
+        </div>
 
-        <h1 className="mt-3.5 max-w-[280px] text-[34px] font-black leading-[1.02] tracking-[-0.02em] text-ink">
-          {!cards ? "Kartların" : total === 0 ? "Henüz kart yok" : due > 0 ? `${due} kart seni bekliyor` : "Bugünlük tamam"}
+        <h1 className={`mt-3.5 max-w-[280px] text-[34px] font-black leading-[1.02] tracking-[-0.02em] text-ink ${rise}`} style={at(40)}>
+          {!cards ? (
+            "Kartların"
+          ) : total === 0 ? (
+            "Henüz kart yok"
+          ) : due > 0 ? (
+            `${due} kart seni bekliyor`
+          ) : (
+            <>
+              Bugünlük{" "}
+              <span className="relative">
+                tamam
+                {/* Done for the day: a moss rule drawn under the word. */}
+                <span aria-hidden="true" className="absolute inset-x-0 -bottom-0.5 h-[3px] bg-moss animate-rule-draw [animation-delay:260ms]" />
+              </span>
+            </>
+          )}
         </h1>
-        <p className="mt-2 text-[15px] font-semibold leading-[1.45] text-graphite">
+        <p className={`mt-2 text-[15px] font-semibold leading-[1.45] text-graphite ${rise}`} style={at(80)}>
           {!cards
             ? "Kelimelerin yükleniyor."
             : total === 0
@@ -132,14 +185,14 @@ function Kartlar() {
                 : `Toplam ${total} kelime. Sıradakiler yarından itibaren.`}
         </p>
 
-        {cards && total > 0 && <Newsstand cards={cards} />}
+        {cards && total > 0 && <Newsstand cards={cards} shown={picks} animate={animate} />}
 
-        <div className="mt-4 flex items-center gap-3.5">
+        <div className={`mt-4 flex items-center gap-3.5 ${rise}`} style={at(300)}>
           {deck && total > 0 && (
             <Link
               to={`/decks/${deck.id}/flashcards${due > 0 ? "" : "?mode=all"}`}
               onClick={primeSpeech}
-              className="flex min-h-[54px] flex-1 items-center justify-center rounded-2xl bg-ink text-[13px] font-black uppercase tracking-[0.12em] text-paper transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30"
+              className="flex min-h-[54px] flex-1 items-center justify-center rounded-2xl bg-ink text-[13px] font-black uppercase tracking-[0.12em] text-paper-lift shadow-button transition-transform duration-100 active:translate-y-px active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30"
             >
               {due > 0 ? `Tekrar et · ${due}` : "Hepsini gözden geçir"}
             </Link>
@@ -147,13 +200,17 @@ function Kartlar() {
           <button
             type="button"
             onClick={() => deck && setIsAddOpen(true)}
-            className={`text-[13px] font-extrabold text-ink underline decoration-accent/60 underline-offset-4 ${total === 0 ? "flex min-h-[54px] flex-1 items-center justify-center rounded-2xl bg-ink text-paper no-underline uppercase tracking-[0.12em]" : ""}`}
+            className={`text-[13px] font-extrabold text-ink underline decoration-ink decoration-[1.5px] underline-offset-4 ${
+              total === 0 ? "flex min-h-[54px] flex-1 items-center justify-center rounded-2xl bg-ink text-paper-lift no-underline uppercase tracking-[0.12em] shadow-button" : ""
+            }`}
           >
             + Kelime ekle
           </button>
         </div>
 
-        <TontonSays variant="column" size={60} className="mt-8" lines={homeLines({ cards: [], due: 0, streak, personal: cards ?? [] })} />
+        <div className={`mt-8 ${rise}`} style={at(360)}>
+          <TontonSays variant="column" size={60} lines={homeLines({ cards: [], due: 0, streak, personal: cards ?? [] })} />
+        </div>
 
         {deckQuery.isError || cardsQuery.isError ? (
           <div className="mt-8">
@@ -179,20 +236,26 @@ function Kartlar() {
                 <span>Kelimeler</span>
                 <span className="text-graphite">{total}</span>
               </div>
-              <ul className="divide-y divide-ink/10">
-                {sorted.map((card) => {
+              <ul className="divide-y divide-rule">
+                {sorted.map((card, i) => {
                   const { pos, text, emoji } = parseBack(card.back);
                   const schedule = scheduleLabel(card);
                   return (
-                    <li key={card.id}>
+                    <li key={card.id} className={i < 8 ? rise : ""} style={{ ...tintStyle(card), ...at(360 + i * 40) }}>
                       <Link
                         to={`/decks/${deck.id}/words/${card.id}`}
+                        viewTransition
                         className="grid grid-cols-[56px_1fr_auto] items-center gap-3.5 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/30"
                       >
                         {card.image_url ? (
-                          <img src={card.image_url} alt="" className="h-14 w-14 rounded-lg bg-ink object-cover" />
+                          <img
+                            src={card.image_url}
+                            alt=""
+                            className="h-14 w-14 rounded-lg bg-paper-deep object-cover tint-ring"
+                            style={{ objectPosition: focalFor(card), viewTransitionName: onStand.has(card.id) ? undefined : `cover-${card.id}` }}
+                          />
                         ) : (
-                          <span aria-hidden="true" className="flex h-14 w-14 items-center justify-center rounded-lg bg-ink/5 text-2xl">
+                          <span aria-hidden="true" className="flex h-14 w-14 items-center justify-center rounded-lg bg-paper-deep text-2xl tint-ring">
                             {emoji ?? "🃏"}
                           </span>
                         )}
@@ -203,9 +266,7 @@ function Kartlar() {
                           </p>
                           <p className="mt-0.5 truncate text-[14px] text-graphite">{text}</p>
                         </div>
-                        <span className={`text-[10px] font-extrabold uppercase tracking-[0.14em] tabular-nums ${schedule.due ? "text-accent" : "text-graphite"}`}>
-                          {schedule.text}
-                        </span>
+                        <span className={`text-[10px] font-extrabold uppercase tracking-[0.14em] tabular-nums ${TONE[schedule.tone]}`}>{schedule.text}</span>
                       </Link>
                     </li>
                   );

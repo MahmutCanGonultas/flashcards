@@ -22,7 +22,7 @@ function Header() {
 
   return (
     <header
-      className="sticky top-0 z-10 border-b border-ink/10 bg-paper/85 backdrop-blur"
+      className="sticky top-0 z-10 border-b border-rule bg-paper/88 backdrop-blur"
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -32,15 +32,17 @@ function Header() {
         <div className="flex items-center gap-1">
           <MusicToggle />
           {streak > 0 && (
+            // Keyed on the count so a new day's increment flashes once.
             <span
-              className="flex items-center gap-1 rounded-full bg-paper px-3 py-1.5 text-sm font-extrabold text-ink ring-1 ring-ink/15 tabular-nums"
+              key={streak}
+              className="flex items-center gap-1 rounded-full bg-paper-lift px-3 py-1.5 text-sm font-extrabold text-ink ring-1 ring-rule shadow-print tabular-nums animate-gilt-flash"
               title={`${streak} günlük seri`}
             >
-              <FlameIcon className="h-4 w-4 text-accent" />
+              <FlameIcon className="h-4 w-4 text-gilt" />
               {streak}
             </span>
           )}
-          <Button variant="ghost" size="sm" onClick={handleSignOut}>
+          <Button variant="ghost" size="sm" className="text-graphite hover:text-ink" onClick={handleSignOut}>
             Çıkış
           </Button>
         </div>
