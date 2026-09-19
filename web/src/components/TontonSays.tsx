@@ -63,12 +63,13 @@ function TontonSays({ lines, size = 72, className = "", variant = "bubble" }: To
           onClick={poke}
           aria-label="Tonton'a dokun"
           data-silent
-          className="shrink-0 rounded-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30"
+          className="shrink-0 rounded-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tonton/40"
         >
           <Mascot key={pokes} mood={mood} size={size} />
         </button>
         {line && (
-          <blockquote key={index} role="status" className="min-w-0 border-l-2 border-accent pl-3.5 animate-[pop-in_220ms_cubic-bezier(0.34,1.56,0.64,1)]">
+          // A tan rule, not his violet: the column is part of the page, he is the guest.
+          <blockquote key={index} role="status" className="min-w-0 border-l-2 border-rule pl-3.5 animate-rise-in">
             <p className="text-[17px] font-semibold leading-[1.35] text-ink">{line}</p>
             <cite className="mt-1.5 block text-[10px] font-extrabold uppercase not-italic tracking-[0.18em] text-graphite">— Tonton</cite>
           </blockquote>
@@ -84,7 +85,7 @@ function TontonSays({ lines, size = 72, className = "", variant = "bubble" }: To
         onClick={poke}
         aria-label="Tonton'a dokun"
         data-silent
-        className="shrink-0 rounded-full transition-transform active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-violet-300"
+        className="shrink-0 rounded-full transition-transform active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tonton/40"
       >
         <Mascot key={pokes} mood={mood} size={size} />
       </button>
@@ -92,13 +93,13 @@ function TontonSays({ lines, size = 72, className = "", variant = "bubble" }: To
         <div
           key={index}
           role="status"
-          className="relative mb-3 min-w-0 flex-1 rounded-3xl rounded-bl-md bg-white px-4 py-3 ring-1 ring-stone-200 shadow-[0_4px_14px_-10px_rgba(28,25,23,0.4)] animate-[pop-in_220ms_cubic-bezier(0.34,1.56,0.64,1)]"
+          className="relative mb-3 min-w-0 flex-1 rounded-2xl rounded-bl-md border-l-2 border-tonton bg-paper-lift px-4 py-3 ring-1 ring-rule shadow-bubble paper-grain animate-bubble-in"
         >
           <span
             aria-hidden="true"
-            className="absolute -left-1.5 bottom-3 h-3 w-3 rotate-45 rounded-sm bg-white ring-1 ring-stone-200 [clip-path:polygon(0_0,0_100%,100%_100%)]"
+            className="absolute -left-1.5 bottom-3 h-3 w-3 rotate-45 rounded-sm bg-paper-lift ring-1 ring-rule [clip-path:polygon(0_0,0_100%,100%_100%)]"
           />
-          <p className="text-[15px] font-semibold leading-snug text-stone-700">{line}</p>
+          <p className="text-[15px] font-semibold leading-snug text-ink">{line}</p>
         </div>
       )}
     </div>

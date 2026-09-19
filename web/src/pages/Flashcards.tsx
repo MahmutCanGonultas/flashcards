@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { PointerEvent as ReactPointerEvent } from "react";
+import type { CSSProperties, PointerEvent as ReactPointerEvent } from "react";
 import { Link, Navigate, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../lib/api";
@@ -8,6 +8,7 @@ import { parseBack, posLabel } from "../lib/cardBack";
 import { primeSpeech, speakAuto } from "../lib/speech";
 import { playCorrect, playIncorrect, playLessonComplete, playReveal } from "../lib/sound";
 import { useRecordStudyDay } from "../lib/streak";
+import { focalFor, tintStyle } from "../lib/tint";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import LinkButton from "../components/LinkButton";
@@ -17,34 +18,68 @@ import Skeleton from "../components/Skeleton";
 import Mascot from "../components/Mascot";
 import SpeakButton from "../components/SpeakButton";
 import Sheet from "../components/Sheet";
-import Confetti from "../components/Confetti";
 import WordCardBack from "../components/WordCardBack";
 
 /**
  * Real flashcards for the learner's own words, printed like a magazine.
  *
- * A pile of covers. The top one is the photo, full bleed on ink, with the
- * word as the cover line. Think, flip it (a real turn), and the back is
- * the opening page: the meanings, nothing else. Then say how it went —
- * swipe right for Bildim, left for Bilemedim, up for Zorlandım, or tap.
- * The card flies off; the next issue rises from the pile. A miss comes
- * back before the session ends and again ten minutes later; a hard pass
- * shortens the next gap; an easy one stretches it. One grade per card per
- * session; the repeats are practice.
+ * A pile of covers. The top one is the photo, full bleed on ink, fading
+ * into the word's own colour, with the word as the cover line. Think,
+ * flip it (a real turn), and the back is the opening page: the meanings,
+ * nothing else. Then say how it went — swipe right for Bildim, left for
+ * Bilemedim, up for Zorlandım, or tap. The card is thrown off; the next
+ * issue rises from the pile. A miss comes back before the session ends
+ * and again ten minutes later; a hard pass shortens the next gap; an easy
+ * one stretches it. One grade per card per session; the repeats are practice.
+ *
+ * Tonton isn't here in person (he'd be over the grade bar); the screen
+ * tells him what happened through `tonton:*` window events instead.
  */
 
 type Grade = 1 | 3 | 5;
 type Step = { key: string; cardId: number; attempt: number };
 type Outcome = { grade: Grade; interval: number | null };
 
-const GRADES: { grade: Grade; label: string; className: string; key: string; arrow: string }[] = [
-  { grade: 1, label: "Bilemedim", className: "bg-accent text-paper", key: "1", arrow: "ArrowLeft" },
-  { grade: 3, label: "Zorlandım", className: "bg-paper text-ink ring-[1.5px] ring-inset ring-ink/35", key: "2", arrow: "ArrowUp" },
-  { grade: 5, label: "Bildim", className: "bg-ink text-paper", key: "3", arrow: "ArrowRight" },
+/** Each verdict's colour, once: vermilion missed it, moss knew it, gilt is the honest middle. */
+const GRADES: { grade: Grade; label: string; button: string; stamp: string; wash: string; key: string; arrow: string }[] = [
+  {
+    grade: 1,
+    label: "Bilemedim",
+    button: "bg-accent text-paper-lift shadow-button",
+    stamp: "border-accent text-accent",
+    wash: "bg-accent/14",
+    key: "1",
+    arrow: "ArrowLeft",
+  },
+  {
+    grade: 3,
+    label: "Zorlandım",
+    button: "bg-paper-lift text-gilt-ink ring-[1.5px] ring-inset ring-gilt/70 shadow-print",
+    stamp: "border-gilt text-gilt-ink",
+    wash: "bg-gilt/16",
+    key: "2",
+    arrow: "ArrowUp",
+  },
+  {
+    grade: 5,
+    label: "Bildim",
+    button: "bg-moss text-paper-lift shadow-button",
+    stamp: "border-moss text-moss",
+    wash: "bg-moss/12",
+    key: "3",
+    arrow: "ArrowRight",
+  },
 ];
+const gradeOf = (grade: Grade) => GRADES.find((g) => g.grade === grade)!;
+
+/** Entrance delays vanish under reduced motion: the keyframes already collapse, the delays would not. */
+const delay = (ms: number) => ({ animationDelay: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "0ms" : `${ms}ms` });
 
 /** How far a swipe has to go before it counts. */
 const SWIPE_PX = 96;
+/** The throw lasts 380ms; the next card starts rising 60ms before it ends so the pile never sits empty. */
+const THROW_MS = 380;
+const SETTLE_MS = THROW_MS - 60;
 
 /** When the card comes back, from the grade and (if the server answered) its new interval. */
 function nextLabel({ grade, interval }: Outcome): string {
@@ -54,6 +89,13 @@ function nextLabel({ grade, interval }: Outcome): string {
   if (interval < 30) return `${interval} gün sonra`;
   const months = Math.round(interval / 30);
   return months <= 1 ? "1 ay sonra" : `${months} ay sonra`;
+}
+
+/** The schedule label's colour follows its meaning: now, tomorrow, later. */
+function nextTone(outcome: Outcome): string {
+  if (outcome.grade === 1) return "text-accent";
+  if (outcome.interval !== null && outcome.interval <= 1) return "text-gilt-ink";
+  return "text-moss";
 }
 
 function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; title: string }) {
@@ -105,9 +147,12 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
     };
   }, [queryClient, deckId]);
 
-  // Say the word as each card comes to the top.
+  // Say the word as each card comes to the top, and tell Tonton a new
+  // cover is showing (he keeps quiet while it's face down).
   useEffect(() => {
-    if (card) speakAuto(card.front);
+    if (!card) return;
+    speakAuto(card.front);
+    window.dispatchEvent(new CustomEvent("tonton:card", { detail: { front: card.front, flipped: false } }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step?.key]);
 
@@ -116,6 +161,7 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
     if (flipped || !card || leaving !== null) return;
     playReveal();
     setFlipped(true);
+    window.dispatchEvent(new CustomEvent("tonton:card", { detail: { front: card.front, flipped: true } }));
   }, [flipped, card, leaving]);
 
   const settle = useCallback(
@@ -154,10 +200,13 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
         playCorrect(runRef.current);
       }
       setLeaving(quality);
+      window.dispatchEvent(
+        new CustomEvent("tonton:grade", { detail: { quality, front: card.front, attempt: step.attempt, index, total: plan.length } }),
+      );
       const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-      flyTimer.current = window.setTimeout(() => settle(quality), reduced ? 0 : 320);
+      flyTimer.current = window.setTimeout(() => settle(quality), reduced ? 0 : SETTLE_MS);
     },
-    [step, card, flipped, leaving, settle],
+    [step, card, flipped, leaving, settle, index, plan.length],
   );
 
   // Swipes, only once the answer is showing.
@@ -210,20 +259,26 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
   const mixedTypes = new Set(senseMeanings.map((s) => s.pos ?? "")).size > 1;
   const hasDetails = Boolean(card.senses?.length || card.example_sentence || card.related?.length || card.watch_out);
 
-  // Where the top card is: dragged, flying away, or resting.
+  // Where the top card is: dragged, thrown away, or resting.
   const dx = drag?.dx ?? 0;
   const dy = drag?.dy ?? 0;
   const flyX = leaving === 5 ? 520 : leaving === 1 ? -520 : 0;
   const flyY = leaving === 3 ? -640 : leaving ? -40 : 0;
-  const topStyle = leaving
-    ? { transform: `translate(${flyX}px, ${flyY}px) rotate(${leaving === 5 ? 18 : leaving === 1 ? -18 : 0}deg)`, opacity: 0, transition: "transform 320ms ease-in, opacity 320ms ease-in" }
+  const topStyle: CSSProperties = leaving
+    ? {
+        transform: `translate(${flyX}px, ${flyY}px) rotate(${leaving === 5 ? 22 : leaving === 1 ? -22 : 0}deg) scale(0.96)`,
+        opacity: 0,
+        transition: `transform ${THROW_MS}ms var(--ease-throw), opacity 300ms ease-in 60ms`,
+      }
     : drag
       ? { transform: `translate(${dx}px, ${dy}px) rotate(${dx / 18}deg)` }
-      : { transform: "translate(0, 0) rotate(0)", transition: "transform 260ms cubic-bezier(0.34,1.4,0.64,1)" };
+      : { transform: "translate(0, 0) rotate(0)", transition: "transform 260ms var(--ease-spring)" };
   const swipeHint = drag && !leaving ? (dx > 40 ? 5 : dx < -40 ? 1 : dy < -40 ? 3 : null) : leaving;
   const hintOpacity = drag ? Math.min(1, Math.max(Math.abs(dx), Math.abs(dy)) / SWIPE_PX) : leaving ? 1 : 0;
   const caption =
     step.attempt > 0 ? "Bu bir daha geldi. Bu sefer?" : flipped ? "Dürüst ol; ona göre hatırlatırım." : index === 0 ? "Aklından geçir, sonra çevir." : "Ne demekti?";
+  // The senses land a beat after the flip does; the hook and the hints after them.
+  const senseDelay = (i: number) => delay(220 + Math.min(i, 6) * 60);
 
   return (
     <>
@@ -232,26 +287,28 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
         <Link
           to="/kartlar"
           aria-label="Kartlardan çık"
-          className="-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-full p-2 text-2xl leading-none text-graphite transition hover:text-ink"
+          className="-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-full p-2 text-2xl leading-none text-graphite transition-colors hover:text-ink"
         >
           ×
         </Link>
-        <div className="h-[3px] flex-1 overflow-hidden rounded-full bg-ink/10">
-          <div className="h-full rounded-full bg-ink transition-[width] duration-300" style={{ width: `${Math.round((index / plan.length) * 100)}%` }} />
+        <div className="h-[3px] flex-1 overflow-hidden rounded-full bg-rule">
+          <div className="h-full rounded-full bg-ink transition-[width] duration-500 ease-soft" style={{ width: `${Math.round((index / plan.length) * 100)}%` }} />
         </div>
         <span className="shrink-0 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite tabular-nums">{remaining} kaldı</span>
       </div>
 
-      {/* The pile, with Tonton peeking over its top edge. */}
+      {/* The pile, with Tonton peeking over its top edge. The sheets under
+          the top card breathe as each new one rises off them. */}
       <div className="relative mt-11 h-[30rem] max-h-[calc(100dvh-23rem)]">
+        {/* TODO(tonton): greet={false} quiet — once Mascot grows the props. */}
         <Mascot size={52} mood={flipped ? "idle" : "think"} className="absolute -top-7 right-6" />
-        {remaining > 2 && <div aria-hidden="true" className="absolute inset-x-4 top-3 h-full rounded-[20px] bg-ink/45" />}
-        {remaining > 1 && <div aria-hidden="true" className="absolute inset-x-2 top-1.5 h-full rounded-[20px] bg-ink/70" />}
+        {remaining > 2 && <div key={`${step.key}-3`} aria-hidden="true" className="absolute inset-x-4 top-3 h-full rounded-[20px] bg-umber/45 animate-pile-nudge [animation-delay:60ms]" />}
+        {remaining > 1 && <div key={`${step.key}-2`} aria-hidden="true" className="absolute inset-x-2 top-1.5 h-full rounded-[20px] bg-umber/75 animate-pile-nudge" />}
 
         <div
           key={step.key}
           className={`absolute inset-0 ${flipped ? "touch-none" : ""}`}
-          style={topStyle}
+          style={{ ...tintStyle(card), ...topStyle }}
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
@@ -264,29 +321,35 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
           {swipeHint && (
             <div
               aria-hidden="true"
-              className={`pointer-events-none absolute inset-0 z-20 flex items-center justify-center rounded-[20px] ${
-                swipeHint === 5 ? "bg-ink/12" : swipeHint === 1 ? "bg-accent/15" : "bg-graphite/12"
-              }`}
+              className={`pointer-events-none absolute inset-0 z-20 flex items-center justify-center rounded-[20px] ${gradeOf(swipeHint).wash}`}
               style={{ opacity: hintOpacity }}
             >
               <span
                 key={swipeHint}
-                className={`rounded-md border-[3px] bg-paper/70 px-4 py-1.5 text-[26px] font-black uppercase tracking-[0.18em] animate-[stamp_160ms_ease-out_both] ${
-                  swipeHint === 5 ? "border-ink text-ink" : swipeHint === 1 ? "border-accent text-accent" : "border-graphite text-graphite"
-                }`}
+                className={`rounded-md border-[3px] bg-paper-lift/70 px-4 py-1.5 text-[26px] font-black uppercase tracking-[0.18em] mix-blend-multiply animate-stamp ${gradeOf(swipeHint).stamp}`}
               >
-                {GRADES.find((g) => g.grade === swipeHint)?.label}
+                {gradeOf(swipeHint).label}
               </span>
             </div>
           )}
 
-          <div className="h-full w-full animate-[card-rise_360ms_cubic-bezier(0.34,1.3,0.64,1)] [perspective:1400px]">
+          <div className="relative h-full w-full animate-[card-rise_420ms_var(--ease-spring)] [perspective:1400px]">
+            {/* The shadow swells at mid-turn: the card lifts off the table to flip. */}
             <div
-              className={`relative h-full w-full transition-transform duration-[560ms] [transform-style:preserve-3d] [transition-timing-function:cubic-bezier(.2,.8,.2,1)] ${flipped ? "[transform:rotateY(180deg)]" : ""}`}
+              key={String(flipped)}
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-[-2%] top-[4%] bottom-[-3%] rounded-[22px] opacity-0 animate-flip-shadow"
+              style={{ background: "radial-gradient(60% 40% at 50% 100%, rgba(78,58,40,.55), transparent 70%)" }}
+            />
+            <div
+              className={`relative h-full w-full transition-transform duration-[560ms] ease-soft [transform-style:preserve-3d] motion-reduce:transform-none ${
+                flipped ? "[transform:rotateY(180deg)]" : ""
+              }`}
             >
               {/* FRONT — the cover. The photo bleeds full width, never cropped
                   tighter than 4:3: its height is natural, clamped between 62%
-                  and 100% of the face. */}
+                  and 100% of the face. Under reduced motion the faces crossfade
+                  instead of turning. */}
               <div
                 role="button"
                 tabIndex={flipped ? -1 : 0}
@@ -298,7 +361,9 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
                     flip();
                   }
                 }}
-                className="card-face absolute inset-0 cursor-pointer select-none overflow-hidden rounded-[20px] bg-ink text-paper shadow-[0_18px_40px_-22px_rgba(27,24,21,0.55)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30"
+                className={`card-face absolute inset-0 cursor-pointer select-none overflow-hidden rounded-[20px] bg-ink text-paper-lift shadow-cover ring-1 ring-inset ring-paper-lift/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 motion-reduce:transition-opacity ${
+                  flipped ? "motion-reduce:opacity-0" : ""
+                }`}
               >
                 {card.image_url ? (
                   <div className="absolute inset-0 flex items-start justify-center overflow-hidden">
@@ -306,7 +371,8 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
                       src={card.image_url}
                       alt=""
                       draggable={false}
-                      className="h-auto max-h-full min-h-[62%] w-full object-cover object-center animate-[cover-settle_900ms_ease-out_both]"
+                      className="h-auto max-h-full min-h-[62%] w-full object-cover photo-print animate-[cover-settle_900ms_ease-out_both]"
+                      style={{ objectPosition: focalFor(card) }}
                     />
                   </div>
                 ) : (
@@ -318,41 +384,58 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
                 )}
 
                 <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-ink/55 to-transparent" />
-                <div className="absolute inset-x-0 top-0 flex items-baseline justify-between px-5 pt-4 text-[10px] font-extrabold uppercase tracking-[0.24em] text-paper/80 tabular-nums">
-                  <span className="truncate pr-4">{title}</span>
+                <div className="absolute inset-x-0 top-0 flex items-baseline justify-between px-5 pt-4 text-[10px] font-extrabold uppercase tracking-[0.24em] text-paper-lift/80 tabular-nums">
+                  <span className="min-w-0 pr-4">
+                    <span className="block truncate">{title}</span>
+                    {/* The masthead rule in the word's own ink, printed in from the left. */}
+                    <span aria-hidden="true" className="mt-1 block h-[2px] w-7 tint-bar animate-bar-print [animation-delay:200ms]" />
+                  </span>
                   <span className="shrink-0">
                     {index + 1} / {plan.length}
                   </span>
                 </div>
 
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/80 to-transparent px-5 pb-5 pt-14">
-                  {pos && <p className="mb-1.5 text-[11px] font-extrabold uppercase tracking-[0.2em] text-paper/70">{posLabel(pos)}</p>}
+                {/* The caption band: the photo fades into the word's colour, not into a black slab. */}
+                <div className="absolute inset-x-0 bottom-0 cover-fade px-5 pb-5 pt-16">
+                  {pos && <p className="mb-1.5 text-[11px] font-extrabold uppercase tracking-[0.2em] text-paper-lift/70">{posLabel(pos)}</p>}
                   <h2
-                    className={`break-words font-black leading-[0.95] tracking-[-0.02em] text-paper animate-[cover-line_420ms_cubic-bezier(0.2,0.8,0.2,1)_120ms_both] ${
+                    className={`wrap-break-word font-black leading-[0.95] tracking-[-0.02em] text-paper-lift animate-[cover-line_420ms_var(--ease-soft)_120ms_both] ${
                       card.front.length > 11 ? "text-[34px]" : "text-[44px]"
                     }`}
                   >
                     {card.front}
                   </h2>
                   <div className="mt-3.5 flex items-center gap-3.5">
-                    <span aria-hidden="true" className="h-px flex-1 bg-paper/20" />
-                    <span className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-paper/50">dokun · çevir</span>
+                    <span aria-hidden="true" className="h-px flex-1 bg-paper-lift/20" />
+                    <span className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-paper-lift/50">dokun · çevir</span>
                     <span onClick={(event) => event.stopPropagation()}>
-                      <SpeakButton text={card.front} size="md" className="!bg-paper/10 !text-paper ring-1 ring-paper/40 backdrop-blur-sm hover:!bg-paper/20" />
+                      <SpeakButton
+                        text={card.front}
+                        size="md"
+                        className="!bg-paper-lift/10 !text-paper-lift ring-paper-lift/40 backdrop-blur-sm hover:!bg-paper-lift/20"
+                      />
                     </span>
                   </div>
                 </div>
-                <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-[20px] ring-1 ring-inset ring-paper/10" />
               </div>
 
-              {/* BACK — the opening page. */}
+              {/* BACK — the opening page: lifted paper with a grain, the
+                  word's colour as a rule under the header band. */}
               <div
                 aria-hidden={!flipped}
-                className="card-face absolute inset-0 flex select-none flex-col overflow-hidden rounded-[20px] bg-paper text-ink ring-1 ring-ink/10 shadow-[0_18px_40px_-22px_rgba(27,24,21,0.55)] [-webkit-touch-callout:none] [transform:rotateY(180deg)]"
+                className={`card-face !absolute inset-0 flex select-none flex-col overflow-hidden rounded-[20px] bg-paper-lift text-ink ring-1 ring-rule shadow-print paper-grain [-webkit-touch-callout:none] [transform:rotateY(180deg)] motion-reduce:transform-none motion-reduce:transition-opacity ${
+                  flipped ? "" : "motion-reduce:opacity-0"
+                }`}
               >
-                <div className="flex items-center gap-3 border-b border-ink/10 px-5 pb-3 pt-4">
+                <div className="flex items-center gap-3 border-b border-rule bg-paper-deep/55 px-5 pb-3 pt-4">
                   {card.image_url ? (
-                    <img src={card.image_url} alt="" draggable={false} className="h-9 w-9 shrink-0 rounded-md bg-ink object-cover" />
+                    <img
+                      src={card.image_url}
+                      alt=""
+                      draggable={false}
+                      className="h-9 w-9 shrink-0 rounded-md bg-paper-deep object-cover tint-ring"
+                      style={{ objectPosition: focalFor(card) }}
+                    />
                   ) : emoji ? (
                     <span aria-hidden="true" className="text-2xl leading-none">
                       {emoji}
@@ -367,19 +450,20 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
                       type="button"
                       onClick={() => setExamplesOpen(true)}
                       onPointerDown={(event) => event.stopPropagation()}
-                      className="-my-2 ml-auto shrink-0 rounded-sm py-2 text-[11px] font-extrabold uppercase tracking-[0.14em] text-ink underline decoration-accent/60 decoration-[1.5px] underline-offset-4 transition hover:decoration-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/30"
+                      className="-my-2 ml-auto shrink-0 rounded-sm py-2 text-[11px] font-extrabold uppercase tracking-[0.14em] text-ink underline decoration-ink decoration-2 underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/30"
                     >
                       Örnekler
                     </button>
                   )}
                 </div>
+                <span aria-hidden="true" className="block h-[3px] w-full shrink-0 tint-bar" />
 
-                <div className={`flex min-h-0 flex-1 flex-col overflow-y-auto px-5 pb-3 pt-5 ${flipped ? "animate-[cover-line_300ms_ease-out_220ms_both]" : ""}`}>
+                <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-5 pb-3 pt-5">
                   {senseMeanings.length > 1 ? (
                     <ol className="space-y-3.5">
                       {senseMeanings.map((sense, i) => (
-                        <li key={i} className="grid grid-cols-[28px_1fr] items-baseline gap-x-3">
-                          <span className="text-[13px] font-black tabular-nums text-accent">{i + 1}</span>
+                        <li key={i} className={`grid grid-cols-[28px_1fr] items-baseline gap-x-3 ${flipped ? "animate-rise-in" : "opacity-0"}`} style={senseDelay(i)}>
+                          <span className="text-[13px] font-black tabular-nums tint-text">{i + 1}</span>
                           <p className="text-[21px] font-extrabold leading-[1.2] text-ink">
                             {sense.meaning}
                             {sense.pos && mixedTypes && (
@@ -390,18 +474,26 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
                       ))}
                     </ol>
                   ) : (
-                    <>
-                      <span aria-hidden="true" className="mb-3.5 block h-[3px] w-7 bg-accent" />
-                      <p className="break-words text-[30px] font-black leading-[1.1] tracking-[-0.015em] text-ink">{meaning}</p>
-                    </>
+                    <div className={flipped ? "animate-rise-in" : "opacity-0"} style={senseDelay(0)}>
+                      <span aria-hidden="true" className="mb-3.5 block h-[3px] w-7 tint-bar" />
+                      <p className="wrap-break-word text-[30px] font-black leading-[1.1] tracking-[-0.015em] text-ink">{meaning}</p>
+                    </div>
                   )}
-                  {card.hook && <p className="mt-auto pt-4 text-[12px] font-semibold leading-snug text-graphite">{card.hook}</p>}
+                  {card.hook && (
+                    <p className={`mt-auto pt-4 text-[12px] font-semibold italic leading-snug text-graphite ${flipped ? "animate-rise-in" : "opacity-0"}`} style={delay(460)}>
+                      {card.hook}
+                    </p>
+                  )}
                 </div>
 
-                <div aria-hidden="true" className="flex items-center justify-between border-t border-ink/10 px-5 pb-4 pt-2.5 text-[10px] font-extrabold uppercase tracking-[0.16em] text-graphite">
-                  <span>← bilemedim</span>
-                  <span>↑ zorlandım</span>
-                  <span>bildim →</span>
+                <div
+                  aria-hidden="true"
+                  className={`flex items-center justify-between border-t border-rule px-5 pb-4 pt-2.5 text-[10px] font-extrabold uppercase tracking-[0.16em] ${flipped ? "animate-rise-in" : "opacity-0"}`}
+                  style={delay(520)}
+                >
+                  <span className="text-accent">← bilemedim</span>
+                  <span className="text-gilt-ink">↑ zorlandım</span>
+                  <span className="text-moss">bildim →</span>
                 </div>
               </div>
             </div>
@@ -411,11 +503,13 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
 
       <p className="mt-3 text-center text-[12px] font-bold text-graphite">{caption}</p>
 
-      <Sheet isOpen={examplesOpen} onClose={() => setExamplesOpen(false)} title={card.front} kicker={pos ? posLabel(pos) : null}>
+      <Sheet isOpen={examplesOpen} onClose={() => setExamplesOpen(false)} title={card.front} kicker={pos ? posLabel(pos) : null} style={tintStyle(card)}>
         <WordCardBack card={card} variant="flat" />
       </Sheet>
 
-      <div className="fixed inset-x-0 bottom-0 z-10 border-t border-ink/10 bg-paper/95 backdrop-blur">
+      {/* The grade bar. The three verdicts spring up in turn when the card
+          is flipped, live from the first frame — the animation never gates a tap. */}
+      <div className="fixed inset-x-0 bottom-0 z-10 border-t border-rule bg-paper/92 backdrop-blur">
         <div className="mx-auto max-w-2xl px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3">
           {!flipped ? (
             <Button size="lg" fullWidth variant="ink" onClick={flip}>
@@ -423,12 +517,13 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
             </Button>
           ) : (
             <div className="grid grid-cols-3 gap-2">
-              {GRADES.map((g) => (
+              {GRADES.map((g, i) => (
                 <button
                   key={g.grade}
                   type="button"
                   onClick={() => grade(g.grade)}
-                  className={`min-h-14 rounded-2xl text-[13px] font-black uppercase tracking-[0.1em] transition-transform duration-100 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 ${g.className}`}
+                  style={delay(i * 50)}
+                  className={`min-h-14 rounded-2xl text-[13px] font-black uppercase tracking-[0.1em] transition-transform duration-100 animate-rise-spring active:translate-y-px active:scale-[0.97] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 ${g.button}`}
                 >
                   {g.label}
                 </button>
@@ -442,37 +537,100 @@ function FlipSession({ deckId, cards, title }: { deckId: string; cards: Card[]; 
   );
 }
 
-function FlipSummary({ queue, outcomes, onDone }: { queue: Card[]; outcomes: Record<number, Outcome>; onDone: () => void }) {
+/** A number counting up to its target over 600ms, easing out; timer-driven only. */
+function useCountUp(target: number, ms = 600): number {
+  const [shown, setShown] = useState(0);
   useEffect(() => {
-    playLessonComplete();
-  }, []);
+    if (target === 0) return;
+    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const start = performance.now();
+    let frame = 0;
+    const tick = (now: number) => {
+      const t = reduced ? 1 : Math.min(1, (now - start) / ms);
+      setShown(Math.round(target * (1 - Math.pow(1 - t, 3))));
+      if (t < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [target, ms]);
+  return shown;
+}
+
+/** A clean sweep: two dozen pieces in the page's own inks, once, and gone. */
+const CONFETTI_INKS = ["#d4471f", "#3e7a5a", "#c8922a", "#fffbf3"];
+function PrintConfetti() {
+  const [pieces] = useState(() =>
+    Array.from({ length: 24 }, (_, i) => ({
+      left: Math.random() * 100,
+      delay: Math.random() * 0.3,
+      drift: (Math.random() - 0.5) * 140,
+      colour: CONFETTI_INKS[i % CONFETTI_INKS.length],
+      size: 6 + Math.random() * 6,
+      round: i % 3 === 0,
+    })),
+  );
+  return (
+    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-30 overflow-hidden">
+      {pieces.map((piece, i) => (
+        <span
+          key={i}
+          className="absolute top-0 block animate-[confetti-fall_1.2s_var(--ease-soft)_var(--delay)_both]"
+          style={
+            {
+              left: `${piece.left}%`,
+              width: piece.size,
+              height: piece.round ? piece.size : piece.size * 1.6,
+              backgroundColor: piece.colour,
+              borderRadius: piece.round ? "9999px" : "2px",
+              "--delay": `${piece.delay}s`,
+              "--drift": `${piece.drift}px`,
+            } as CSSProperties
+          }
+        />
+      ))}
+    </div>
+  );
+}
+
+function FlipSummary({ queue, outcomes, onDone }: { queue: Card[]; outcomes: Record<number, Outcome>; onDone: () => void }) {
   const known = queue.filter((c) => outcomes[c.id]?.grade === 5).length;
   const hard = queue.filter((c) => outcomes[c.id]?.grade === 3).length;
   const missed = queue.filter((c) => outcomes[c.id]?.grade === 1).length;
   const perfect = missed === 0 && hard === 0;
+  const shownKnown = useCountUp(known);
+  const shownHard = useCountUp(hard);
+  const shownMissed = useCountUp(missed);
+
+  useEffect(() => {
+    playLessonComplete();
+    window.dispatchEvent(new CustomEvent("tonton:summary", { detail: { known, hard, missed } }));
+    // A summary is mounted once; the counts are fixed by then.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const verdict = perfect
     ? "Hepsini bildin. Bunlar artık daha seyrek gelecek."
     : missed === 0
       ? "Bildin ama zorlandıkların var; onları biraz daha sık getireceğim."
       : `${missed} kelime kaçtı — on dakika sonra tekrar hazır olacak, yarın da geri gelecek.`;
   return (
-    <div className="animate-[pop-in_220ms_ease-out]">
-      {perfect && <Confetti />}
+    <div className="animate-rise-in">
+      {perfect && known >= 3 && <PrintConfetti />}
       <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">Oturum bitti</p>
       <h2 className="mt-2 text-[34px] font-black leading-[1.02] tracking-[-0.02em] text-ink">Kartlar bitti.</h2>
       <div className="mt-4 flex items-start gap-3.5">
         <Mascot mood={missed === 0 ? "happy" : "idle"} size={60} className="shrink-0" />
-        <blockquote className="min-w-0 border-l-2 border-accent pl-3.5">
+        <blockquote className="min-w-0 border-l-2 border-rule pl-3.5">
           <p className="text-[17px] font-semibold leading-[1.35] text-ink">{verdict}</p>
           <cite className="mt-1.5 block text-[10px] font-extrabold uppercase not-italic tracking-[0.18em] text-graphite">— Tonton</cite>
         </blockquote>
       </div>
 
-      <dl className="mt-6 grid grid-cols-3 gap-2 border-y border-ink/10 py-4 text-center">
+      <dl className="mt-6 grid grid-cols-3 gap-2 border-y border-rule py-4 text-center">
         {[
-          [known, "bildin", "text-ink"],
-          [hard, "zorlandın", "text-graphite"],
-          [missed, "kaçtı", "text-accent"],
+          [shownKnown, "bildin", "text-moss"],
+          [shownHard, "zorlandın", "text-gilt-ink"],
+          [shownMissed, "kaçtı", "text-accent"],
         ].map(([n, label, cls]) => (
           <div key={String(label)}>
             <dt className={`text-[30px] font-black leading-none tabular-nums ${cls}`}>{n as number}</dt>
@@ -482,15 +640,15 @@ function FlipSummary({ queue, outcomes, onDone }: { queue: Card[]; outcomes: Rec
       </dl>
 
       {/* Every card, and when it comes back — the schedule made visible. */}
-      <ul className="mt-2 divide-y divide-ink/10">
-        {queue.map((c) => {
+      <ul className="mt-2 divide-y divide-rule">
+        {queue.map((c, i) => {
           const outcome = outcomes[c.id];
           return (
-            <li key={c.id} className="grid grid-cols-[44px_1fr_auto] items-center gap-3 py-3">
+            <li key={c.id} style={{ ...tintStyle(c), ...delay(200 + i * 60) }} className="grid grid-cols-[44px_1fr_auto] items-center gap-3 py-3 animate-rise-in">
               {c.image_url ? (
-                <img src={c.image_url} alt="" className="h-11 w-11 rounded-md bg-ink object-cover" />
+                <img src={c.image_url} alt="" className="h-11 w-11 rounded-md bg-paper-deep object-cover tint-ring" style={{ objectPosition: focalFor(c) }} />
               ) : (
-                <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-md bg-ink/5 text-xl">
+                <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-md bg-paper-deep text-xl tint-ring">
                   {parseBack(c.back).emoji ?? "🃏"}
                 </span>
               )}
@@ -499,9 +657,7 @@ function FlipSummary({ queue, outcomes, onDone }: { queue: Card[]; outcomes: Rec
                 <p className="line-clamp-2 text-[13px] leading-snug text-graphite">{parseBack(c.back).text}</p>
               </div>
               {outcome && (
-                <span className={`shrink-0 text-right text-[10px] font-extrabold uppercase tracking-[0.14em] tabular-nums ${outcome.grade === 1 ? "text-accent" : "text-graphite"}`}>
-                  {nextLabel(outcome)}
-                </span>
+                <span className={`shrink-0 text-right text-[10px] font-extrabold uppercase tracking-[0.14em] tabular-nums ${nextTone(outcome)}`}>{nextLabel(outcome)}</span>
               )}
             </li>
           );
