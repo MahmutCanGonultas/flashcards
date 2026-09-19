@@ -23,12 +23,12 @@ function RoundRail({ stages, activeIndex }: RoundRailProps) {
           <span
             key={stage.id}
             aria-current={isActive ? "step" : undefined}
-            className={`flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-widest transition ${
+            className={`flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-[0.18em] transition ${
               isActive
-                ? "bg-violet-500 text-white"
+                ? "bg-ink text-paper-lift"
                 : isDone
-                  ? "bg-violet-100 text-violet-600"
-                  : "text-stone-400 ring-1 ring-stone-200"
+                  ? "bg-paper-deep text-ink"
+                  : "text-graphite ring-1 ring-rule"
             }`}
           >
             {isDone && <CheckIcon className="h-3 w-3" />}

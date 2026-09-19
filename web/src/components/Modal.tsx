@@ -75,8 +75,9 @@ function Modal({ isOpen, onClose, title, emoji, children }: ModalProps) {
   if (!isOpen) return null;
 
   return createPortal(
+    // The scrim is umber, not black: the page dims like paper in shadow.
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/40 backdrop-blur-sm animate-[fade-in_150ms_ease-out]"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-umber/45 p-4 backdrop-blur-sm animate-[fade-in_150ms_ease-out]"
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
@@ -89,12 +90,12 @@ function Modal({ isOpen, onClose, title, emoji, children }: ModalProps) {
         tabIndex={-1}
         // Body scroll is locked while we're open, so tall content has to scroll
         // in here or a short viewport could hide the buttons.
-        className="w-full max-w-md max-h-[calc(100dvh-2rem)] overflow-y-auto overscroll-contain bg-white rounded-3xl p-6 shadow-xl ring-1 ring-stone-200 focus:outline-none animate-[pop-in_180ms_ease-out]"
+        className="max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto overscroll-contain rounded-[28px] bg-paper-lift p-6 ring-1 ring-rule shadow-sheet paper-grain focus:outline-none animate-rise-spring"
       >
-        <div className="flex items-start justify-between gap-4 mb-6">
+        <div className="mb-6 flex items-start justify-between gap-4">
           <h2
             id={titleId}
-            className="text-2xl font-extrabold text-stone-800 tracking-tight flex items-center gap-2"
+            className="flex items-center gap-2 text-2xl font-extrabold tracking-tight text-ink"
           >
             {title}
             {emoji && <span aria-hidden="true">{emoji}</span>}
@@ -103,7 +104,7 @@ function Modal({ isOpen, onClose, title, emoji, children }: ModalProps) {
             type="button"
             onClick={onClose}
             aria-label="Kapat"
-            className="shrink-0 -mr-2 -mt-2 w-11 h-11 rounded-xl text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition flex items-center justify-center text-2xl leading-none"
+            className="-mr-2 -mt-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-2xl leading-none text-graphite transition hover:bg-ink/5 hover:text-ink"
           >
             ×
           </button>

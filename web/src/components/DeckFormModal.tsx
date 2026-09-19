@@ -62,18 +62,19 @@ function DeckForm({
       {error && (
         <p
           role="alert"
-          className="mt-4 rounded-xl bg-rose-100 px-4 py-3 text-sm font-medium text-rose-700"
+          className="mt-4 rounded-xl border-l-2 border-accent bg-accent/8 px-4 py-3 text-sm font-medium text-accent"
         >
           {error}
         </p>
       )}
 
       <div className="mt-7 flex flex-col-reverse sm:flex-row sm:justify-end gap-3">
-        <Button variant="secondary" onClick={onClose} disabled={isPending}>
+        <Button variant="outline" onClick={onClose} disabled={isPending}>
           Vazgeç
         </Button>
         <Button
           type="submit"
+          variant="ink"
           isLoading={isPending}
           loadingText={isCreate ? "Oluşturuluyor..." : "Kaydediliyor..."}
         >

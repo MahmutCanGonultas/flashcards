@@ -3,7 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { primeSpeech } from "../lib/speech";
 import { playLocked, playStation } from "../lib/sound";
 import type { Lesson, Unit } from "../lib/path";
-import { levelTheme, type LevelTheme } from "../lib/levels";
+import { levelTheme } from "../lib/levels";
+import { themeFor, type DeckTheme } from "../lib/themes";
 import { parseBack } from "../lib/cardBack";
 import Mascot from "./Mascot";
 import { CheckIcon, LockIcon } from "./icons";
@@ -16,11 +17,13 @@ type LearningPathProps = {
 /**
  * The Kelimece Line.
  *
- * The course drawn as a transit map: one coloured line per level, a station
- * per lesson with its three words written beside it, square stops for the
- * unit's grammar note, dialogue and test, and a transfer badge where one
- * level hands over to the next. Tonton stands on the platform at the
- * station you're at — that's the "you are here" marker.
+ * The course drawn as a transit map, printed: one hairline rail down the
+ * left, a station per lesson with its three words written beside it, square
+ * stops for the unit's grammar note, dialogue and test, and a transfer
+ * badge where one level hands over to the next. The rail is ink where
+ * you've been and tan where you haven't; Tonton peeks out beside the
+ * station you're at — that's the "you are here" marker. Each unit carries
+ * one warm ink of its own, used only on its sign's tile.
  *
  * Every row is the same height so the line can be drawn from arithmetic
  * and can never drift away from the stations it joins.
@@ -28,6 +31,10 @@ type LearningPathProps = {
 const ROW = 76;
 const RAIL_W = 76;
 const RAIL_X = RAIL_W / 2;
+
+/** Stations rise in one after another on the first paint only, not on every tab switch. */
+let composed = false;
+const ENTRANCE_CAP = 8;
 
 type Stop =
   | {
@@ -125,11 +132,14 @@ function unitEmoji(unit: Unit): string {
   return best;
 }
 
+const KICKER = "text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite";
+
 /**
- * The line itself, one unit's worth. Solid where you've been, flowing
- * dashes into the station you're at, faint dots on to what's still closed.
+ * The rail itself, one unit's worth. A hairline: solid ink where you've
+ * been, ink dashes into the station you're at, tan on to what's still
+ * closed. Nothing on it moves.
  */
-function Line({ stops, theme }: { stops: Stop[]; theme: LevelTheme }) {
+function Line({ stops }: { stops: Stop[] }) {
   const height = stops.length * ROW;
   return (
     <svg
@@ -149,39 +159,28 @@ function Line({ stops, theme }: { stops: Stop[]; theme: LevelTheme }) {
           x2: RAIL_X,
           y1,
           y2,
-          strokeWidth: 8,
+          strokeWidth: 3,
           strokeLinecap: "round" as const,
         };
-        if (tone === "done")
-          return <line key={i} {...shared} className={theme.stroke} />;
+        if (tone === "done") return <line key={i} {...shared} stroke="var(--color-ink)" />;
         if (tone === "active") {
-          return (
-            <line
-              key={i}
-              {...shared}
-              className={`${theme.stroke} animate-[trail-flow_900ms_linear_infinite]`}
-              strokeDasharray="10 12"
-              opacity="0.8"
-            />
-          );
+          return <line key={i} {...shared} stroke="var(--color-ink)" strokeDasharray="1 9" />;
         }
-        return (
-          <line
-            key={i}
-            {...shared}
-            className={theme.strokeFaint}
-            strokeDasharray="2 12"
-          />
-        );
+        return <line key={i} {...shared} stroke="var(--color-rule)" />;
       })}
     </svg>
   );
 }
 
+/** Every row is a pressable strip with the rail on the left and its sign on the right. */
+const rowClasses = (shaking: boolean) =>
+  `group grid w-full grid-cols-[76px_1fr] items-center rounded-2xl text-left transition-transform duration-100 active:scale-[0.985] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 ${
+    shaking ? "animate-[shake_400ms_ease-in-out]" : ""
+  }`;
+
 /** A lesson station: the marker on the line, then the words that live there. */
 function LessonRow({
   stop,
-  theme,
   justDone,
   arriving,
   onOpen,
@@ -189,7 +188,6 @@ function LessonRow({
   shaking,
 }: {
   stop: Extract<Stop, { kind: "lesson" }>;
-  theme: LevelTheme;
   justDone: boolean;
   /** Tonton walks in from the station above: the learner just finished it. */
   arriving: boolean;
@@ -215,64 +213,47 @@ function LessonRow({
           ? `Ders ${lesson.number}, kilitli`
           : `Ders ${lesson.number}: ${words.join(", ")}${done ? ", tamamlandı" : ""}`
       }
-      className={`group grid w-full grid-cols-[76px_1fr] items-center rounded-2xl text-left transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-violet-300 ${
-        current ? "bg-white/70" : "active:bg-white/60"
-      } ${shaking ? "animate-[shake_400ms_ease-in-out]" : ""}`}
+      className={rowClasses(shaking)}
       style={{ height: ROW }}
     >
-      {/* The station marker. */}
+      {/* The station marker: one circle on the rail, its ring saying how things stand. */}
       <div className="relative flex h-full items-center justify-center">
-        {current ? (
-          <div
-            className={`relative ${arriving ? "animate-[tt-arrive_700ms_cubic-bezier(0.34,1.2,0.64,1)_650ms_both]" : ""}`}
-          >
+        <span
+          className={`relative flex h-11 w-11 items-center justify-center rounded-full bg-paper-lift text-xl ring-2 ${
+            done
+              ? "ring-moss"
+              : current
+                ? "ring-ink"
+                : locked
+                  ? "ring-rule opacity-60 grayscale"
+                  : "ring-rule"
+          } ${justDone ? "animate-[node-done-pop_600ms_cubic-bezier(0.34,1.56,0.64,1)_1]" : ""}`}
+        >
+          {justDone && (
             <span
               aria-hidden="true"
-              className={`absolute -inset-2 rounded-full ${theme.soft} animate-[tt-breathe_2.4s_ease-in-out_infinite]`}
+              className="absolute inset-0 rounded-full bg-moss animate-[burst-ring_700ms_ease-out_forwards]"
             />
-            <span
-              aria-hidden="true"
-              className={`absolute -inset-1 animate-ping rounded-full ${theme.fill} opacity-20`}
-            />
-            <Mascot
-              mood="idle"
-              size={54}
-              className="relative animate-[peek_2.6s_ease-in-out_infinite]"
-            />
-          </div>
-        ) : done ? (
-          <span
-            className={`relative flex h-11 w-11 items-center justify-center rounded-full ${theme.soft} text-xl ring-[3px] ${theme.ring} ${
-              justDone
-                ? "animate-[node-done-pop_600ms_cubic-bezier(0.34,1.56,0.64,1)_1]"
-                : ""
-            }`}
-          >
-            {justDone && (
-              <span
-                aria-hidden="true"
-                className={`absolute inset-0 rounded-full ${theme.fill} animate-[burst-ring_700ms_ease-out_forwards]`}
-              />
-            )}
-            <span aria-hidden="true" className="relative">
-              {stationEmoji}
-            </span>
-            <span
-              className={`absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full ${theme.fill} text-white ring-2 ring-[#FDF9F3]`}
-            >
+          )}
+          <span aria-hidden="true" className="relative">
+            {stationEmoji}
+          </span>
+          {done && (
+            <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-moss text-paper-lift ring-2 ring-paper">
               <CheckIcon className="h-3 w-3" />
             </span>
-          </span>
-        ) : state === "open" ? (
-          <span
-            className={`flex h-11 w-11 items-center justify-center rounded-full border-[3px] border-dashed bg-white text-xl ${theme.border}`}
+          )}
+        </span>
+        {current && (
+          // Tonton on the platform, peeking out from behind the station.
+          <div
+            aria-hidden="true"
+            className={`absolute bottom-0.5 left-0.5 ${
+              arriving ? "animate-[tt-arrive_700ms_cubic-bezier(0.34,1.2,0.64,1)_650ms_both]" : ""
+            }`}
           >
-            <span aria-hidden="true">{stationEmoji}</span>
-          </span>
-        ) : (
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-base ring-[3px] ring-stone-200 grayscale opacity-70">
-            <span aria-hidden="true">{stationEmoji}</span>
-          </span>
+            <Mascot mood="idle" size={40} className="animate-[peek_2.6s_ease-in-out_infinite]" />
+          </div>
         )}
       </div>
 
@@ -280,15 +261,15 @@ function LessonRow({
       <div
         className={`min-w-0 pr-3 transition-transform group-active:translate-x-0.5 ${locked ? "opacity-60" : ""}`}
       >
-        <p className="flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-widest text-stone-400">
+        <p className={`flex items-center gap-2 ${KICKER}`}>
           Ders {lesson.number}
           {lesson.due > 0 && !locked && !current && (
-            <span className="rounded-full bg-amber-100 px-1.5 py-0.5 text-[10px] normal-case tracking-normal text-amber-700">
+            <span className="rounded-full bg-gilt/15 px-1.5 py-0.5 text-[10px] normal-case tracking-normal text-gilt-ink">
               {lesson.due} tekrar
             </span>
           )}
           {state === "open" && (
-            <span className="rounded-full bg-stone-100 px-1.5 py-0.5 text-[10px] normal-case tracking-normal text-stone-500">
+            <span className="rounded-full bg-paper-deep px-1.5 py-0.5 text-[10px] normal-case tracking-normal text-graphite">
               isteğe bağlı
             </span>
           )}
@@ -296,20 +277,14 @@ function LessonRow({
         {/* Station names are on the map even where the line is closed —
             knowing what's coming is half the reason to keep going. */}
         <p
-          className={`mt-0.5 truncate text-[15px] leading-snug ${
-            locked
-              ? "font-bold text-stone-400"
-              : current
-                ? "font-extrabold text-stone-800"
-                : `font-extrabold ${theme.text}`
+          className={`mt-0.5 truncate font-extrabold leading-snug ${
+            locked ? "text-[15px] text-graphite" : current ? "text-[17px] text-ink" : "text-[15px] text-ink"
           }`}
         >
           {words.join(" · ")}
         </p>
         {current && (
-          <span
-            className={`mt-1 inline-flex items-center gap-1 rounded-full bg-gradient-to-r ${theme.badge} px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-white shadow-sm animate-[bob_1.6s_ease-in-out_infinite]`}
-          >
+          <span className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-ink px-3.5 py-1.5 text-[11px] font-black uppercase tracking-[0.14em] text-paper-lift shadow-button">
             {lesson.learned > 0 ? "Devam et" : "Buradan başla"} →
           </span>
         )}
@@ -324,7 +299,6 @@ function StopRow({
   label,
   title,
   state,
-  theme,
   onOpen,
   onBlocked,
   shaking,
@@ -334,7 +308,6 @@ function StopRow({
   label: string;
   title: string;
   state: "open" | "locked" | "passed" | "skippable";
-  theme: LevelTheme;
   onOpen: () => void;
   onBlocked: () => void;
   shaking: boolean;
@@ -348,27 +321,19 @@ function StopRow({
       type="button"
       onClick={locked ? onBlocked : onOpen}
       aria-label={`${label}: ${title}${locked ? ", kilitli" : passed ? ", geçildi" : skippable ? ", bu üniteyi atla" : ""}`}
-      className={`group grid w-full grid-cols-[76px_1fr] items-center rounded-2xl text-left transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-violet-300 ${
-        state === "open" ? "bg-white/70" : "active:bg-white/60"
-      } ${shaking ? "animate-[shake_400ms_ease-in-out]" : ""}`}
+      className={rowClasses(shaking)}
       style={{ height: ROW }}
     >
       <div className="relative flex h-full items-center justify-center">
-        {state === "open" && (
-          <span
-            aria-hidden="true"
-            className={`absolute h-11 w-11 animate-ping rounded-xl ${theme.fill} opacity-20`}
-          />
-        )}
         <span
           className={`relative flex h-10 w-10 items-center justify-center rounded-xl text-xl ${
             passed
-              ? "bg-gradient-to-br from-amber-300 to-amber-500 shadow-[0_2px_0_0_var(--color-amber-600)]"
+              ? "bg-paper-deep ring-2 ring-moss"
               : state === "open"
-                ? `bg-white shadow-[0_2px_0_0_var(--color-stone-200)] outline outline-2 -outline-offset-2 ${theme.outline}`
+                ? "bg-paper-lift ring-2 ring-ink"
                 : skippable
-                  ? "bg-amber-50 outline outline-2 outline-dashed -outline-offset-2 outline-amber-400"
-                  : "bg-stone-100 grayscale opacity-70"
+                  ? "bg-paper-lift ring-2 ring-gilt/70"
+                  : "bg-paper-deep opacity-60 grayscale"
           }`}
         >
           <span aria-hidden="true">{passed ? "🏆" : icon}</span>
@@ -377,19 +342,15 @@ function StopRow({
       <div
         className={`min-w-0 pr-3 transition-transform group-active:translate-x-0.5 ${locked ? "opacity-60" : ""}`}
       >
-        <p className="text-[10px] font-extrabold uppercase tracking-widest text-stone-400">
-          {label}
-        </p>
+        <p className={KICKER}>{label}</p>
         <p
-          className={`mt-0.5 truncate text-[15px] font-extrabold leading-snug ${locked ? "text-stone-400" : "text-stone-800"}`}
+          className={`mt-0.5 truncate text-[15px] font-extrabold leading-snug ${locked ? "text-graphite" : "text-ink"}`}
         >
           {title}
         </p>
-        {extra && (
-          <p className="mt-0.5 text-[11px] font-bold text-amber-700">{extra}</p>
-        )}
+        {extra && <p className="mt-0.5 text-[11px] font-bold text-moss">{extra}</p>}
         {skippable && (
-          <span className="mt-1 inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-extrabold text-amber-700 ring-1 ring-amber-200">
+          <span className="mt-1 inline-block rounded-full px-2.5 py-0.5 text-[11px] font-extrabold text-ink ring-1 ring-rule">
             Bu üniteyi atla →
           </span>
         )}
@@ -400,40 +361,79 @@ function StopRow({
 
 /** The transfer badge where one level's line hands over to the next. */
 function Transfer({ level, reached }: { level: string; reached: boolean }) {
-  const theme = levelTheme(level);
+  const { name, story } = levelTheme(level);
   return (
     <div className="my-6 flex items-center gap-3 px-1">
-      <span
-        className={`h-1 flex-1 rounded-full ${reached ? theme.fill : "bg-stone-200"} ${reached ? "opacity-50" : ""}`}
-      />
-      <div
-        className={`flex items-center gap-3 rounded-full py-2 pl-3 pr-5 ring-2 ${
-          reached
-            ? `bg-gradient-to-r ${theme.badge} text-white ring-white/70 shadow-[0_4px_14px_-6px_rgba(0,0,0,0.35)]`
-            : "bg-white text-stone-400 ring-stone-200"
-        }`}
-      >
+      <span className="h-px flex-1 bg-rule" />
+      <div className="flex items-center gap-3 rounded-full bg-paper-lift py-2 pl-2 pr-5 ring-1 ring-rule shadow-print">
         <span
           className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-extrabold ${
-            reached ? "bg-white/25" : "bg-stone-100"
+            reached ? "bg-ink text-paper-lift" : "bg-paper-deep text-graphite"
           }`}
         >
           {level}
         </span>
         <span className="text-left leading-tight">
-          <span className="block text-xs font-extrabold uppercase tracking-widest">
-            {theme.name}
+          <span className={`block text-xs font-extrabold uppercase tracking-[0.18em] ${reached ? "text-ink" : "text-graphite"}`}>
+            {name}
           </span>
-          <span
-            className={`block text-[11px] font-semibold ${reached ? "text-white/85" : "text-stone-400"}`}
-          >
-            {theme.story}
-          </span>
+          <span className="block text-[11px] font-semibold text-graphite">{story}</span>
         </span>
       </div>
+      <span className="h-px flex-1 bg-rule" />
+    </div>
+  );
+}
+
+/** The unit's station sign: its tile in the unit's own ink, the title, and how far along it is. */
+function UnitSign({ unit, theme }: { unit: Unit; theme: DeckTheme }) {
+  const locked = unit.state === "locked";
+  const doneCount = unit.lessons.filter((l) => l.state === "done").length;
+  return (
+    <div className="sticky top-16 z-[5] mb-1 flex items-center gap-3 overflow-hidden rounded-2xl bg-paper-lift p-3 pr-4 ring-1 ring-rule shadow-print">
       <span
-        className={`h-1 flex-1 rounded-full ${reached ? theme.fill : "bg-stone-200"} ${reached ? "opacity-50" : ""}`}
-      />
+        aria-hidden="true"
+        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-[26px] ${
+          locked ? "bg-paper-deep grayscale" : theme.icon
+        }`}
+      >
+        {unitEmoji(unit)}
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className={`flex items-center gap-2 ${KICKER}`}>
+          Ünite {unit.index}
+          {unit.level && (
+            <span className="rounded-md bg-paper-deep px-1.5 py-0.5 text-[10px] text-graphite">{unit.level}</span>
+          )}
+        </p>
+        <h2
+          className={`line-clamp-2 text-base font-extrabold leading-tight tracking-tight ${locked ? "text-graphite" : "text-ink"}`}
+        >
+          {unit.title}
+          {unit.titleTr && <span className="font-bold text-graphite"> ({unit.titleTr})</span>}
+        </h2>
+        {!locked && unit.state !== "passed" && (
+          <span aria-hidden="true" className="mt-1.5 flex gap-1">
+            {unit.lessons.map((lesson) => (
+              <span
+                key={lesson.number}
+                className={`h-1 w-5 rounded-full ${lesson.state === "done" ? "bg-ink" : "bg-rule"}`}
+              />
+            ))}
+          </span>
+        )}
+      </div>
+      {locked ? (
+        <LockIcon className="h-5 w-5 shrink-0 text-graphite/60" />
+      ) : unit.state === "passed" ? (
+        <span aria-label="Ünite geçildi" className="shrink-0 text-xl">
+          🏆
+        </span>
+      ) : (
+        <span className="shrink-0 rounded-full bg-paper-deep px-2.5 py-1 text-xs font-extrabold tabular-nums text-ink">
+          {doneCount}/{unit.lessons.length}
+        </span>
+      )}
     </div>
   );
 }
@@ -447,6 +447,12 @@ function LearningPath({ deckId, units }: LearningPathProps) {
     null;
   const [shaking, setShaking] = useState<string | null>(null);
   const currentRef = useRef<HTMLDivElement>(null);
+  // Decided once per mount: the first time the map is drawn it composes in;
+  // from then on (every tab switch) it is simply there.
+  const [entering] = useState(() => !composed);
+  useEffect(() => {
+    composed = true;
+  }, []);
 
   const rows = units.map((unit) => ({ unit, stops: stopsFor(unit) }));
   const allStops = rows.flatMap((row) => row.stops);
@@ -498,204 +504,129 @@ function LearningPath({ deckId, units }: LearningPathProps) {
     <div className="pb-4">
       {toast && (
         <div className="pointer-events-none fixed inset-x-0 top-20 z-30 flex justify-center px-4">
-          <div className="flex items-end gap-2 rounded-3xl bg-white/95 p-2 pr-4 shadow-[0_10px_30px_-10px_rgba(28,25,23,0.4)] ring-1 ring-stone-200 backdrop-blur animate-[pop-in_220ms_cubic-bezier(0.34,1.56,0.64,1)]">
+          <div className="flex items-end gap-2 rounded-2xl border-l-2 border-tonton bg-paper-lift p-2 pr-4 ring-1 ring-rule shadow-bubble animate-bubble-in">
             <Mascot mood="sad" size={44} className="shrink-0" />
-            <p className="pb-1 text-sm font-bold text-stone-700">{toast}</p>
+            <p className="pb-1 text-sm font-bold text-ink">{toast}</p>
           </div>
         </div>
       )}
       {rows.map(({ unit, stops }, unitIndex) => {
-        const theme = levelTheme(unit.level);
+        const theme = themeFor(unit.index);
         const previous = units[unitIndex - 1];
         const startsLevel =
           unit.level !== null && unit.level !== (previous?.level ?? null);
-        const locked = unit.state === "locked";
-        const doneCount = unit.lessons.filter((l) => l.state === "done").length;
 
         return (
-          <section key={unit.index} className="mb-3">
+          <section key={unit.index} className="mb-5">
             {startsLevel && unit.level && (
-              <Transfer level={unit.level} reached={!locked} />
+              <Transfer level={unit.level} reached={unit.state !== "locked"} />
             )}
 
-            <div
-              className={`rounded-3xl p-2 pb-1 ${locked ? "bg-stone-100/50" : theme.district} bg-[radial-gradient(circle,rgba(28,25,23,0.07)_1px,transparent_1.2px)] bg-[size:18px_18px]`}
-            >
-              {/* The unit's station sign. */}
-              <div
-                className={`sticky top-16 z-[5] mb-1 flex items-center gap-3 overflow-hidden rounded-2xl bg-white p-3 pr-4 ring-1 ring-stone-200 ${
-                  locked ? "" : "shadow-[0_8px_20px_-14px_rgba(28,25,23,0.45)]"
-                }`}
-              >
-                <span
-                  aria-hidden="true"
-                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-[26px] ${
-                    locked
-                      ? "bg-stone-100 grayscale"
-                      : `bg-gradient-to-br ${theme.badge} shadow-sm`
-                  }`}
-                >
-                  {unitEmoji(unit)}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-widest text-stone-400">
-                    Ünite {unit.index}
-                    {unit.level && (
-                      <span
-                        className={`rounded-md px-1.5 py-0.5 text-[10px] ${
-                          locked
-                            ? "bg-stone-100 text-stone-400"
-                            : `${theme.soft} ${theme.text}`
-                        }`}
-                      >
-                        {unit.level}
-                      </span>
-                    )}
-                  </p>
-                  <h2
-                    className={`line-clamp-2 text-base font-extrabold leading-tight tracking-tight ${locked ? "text-stone-400" : "text-stone-800"}`}
-                  >
-                    {unit.title}
-                    {unit.titleTr && (
-                      <span
-                        className={`font-bold ${locked ? "text-stone-300" : "text-stone-400"}`}
-                      >
-                        {" "}
-                        ({unit.titleTr})
-                      </span>
-                    )}
-                  </h2>
-                  {!locked && unit.state !== "passed" && (
-                    <span aria-hidden="true" className="mt-1 flex gap-1">
-                      {unit.lessons.map((lesson) => (
-                        <span
-                          key={lesson.number}
-                          className={`h-1.5 w-5 rounded-full ${lesson.state === "done" ? theme.fill : "bg-stone-200"}`}
-                        />
-                      ))}
-                    </span>
-                  )}
-                </div>
-                {locked ? (
-                  <LockIcon className="h-5 w-5 shrink-0 text-stone-300" />
-                ) : unit.state === "passed" ? (
-                  <span aria-label="Ünite geçildi" className="shrink-0 text-xl">
-                    🏆
-                  </span>
-                ) : (
-                  <span
-                    className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-extrabold tabular-nums ${theme.soft} ${theme.text}`}
-                  >
-                    {doneCount}/{unit.lessons.length}
-                  </span>
-                )}
-              </div>
+            <UnitSign unit={unit} theme={theme} />
 
-              <div className="relative">
-                <Line stops={stops} theme={theme} />
-                {stops.map((stop, i) => {
-                  const key =
-                    stop.kind === "lesson"
-                      ? `lesson-${stop.lesson.number}`
-                      : `${stop.kind}-${unit.index}`;
-                  const above = stops[i - 1];
-                  const arriving =
-                    justCompleted !== null &&
-                    above?.kind === "lesson" &&
-                    above.lesson.number === justCompleted;
-                  const delay = Math.min(entrance++, 16) * 40;
-                  const isCurrent =
-                    stop.kind === "lesson" && stop.state === "current";
+            <div className="relative">
+              <Line stops={stops} />
+              {stops.map((stop, i) => {
+                const key =
+                  stop.kind === "lesson"
+                    ? `lesson-${stop.lesson.number}`
+                    : `${stop.kind}-${unit.index}`;
+                const above = stops[i - 1];
+                const arriving =
+                  justCompleted !== null &&
+                  above?.kind === "lesson" &&
+                  above.lesson.number === justCompleted;
+                const order = entrance++;
+                const isCurrent =
+                  stop.kind === "lesson" && stop.state === "current";
 
-                  let row: React.ReactNode;
-                  if (stop.kind === "lesson") {
-                    row = (
-                      <LessonRow
-                        stop={stop}
-                        theme={theme}
-                        justDone={justCompleted === stop.lesson.number}
-                        arriving={arriving}
-                        onOpen={() =>
-                          open(
-                            `/decks/${deckId}/study?lesson=${stop.lesson.number}`,
-                          )
-                        }
-                        onBlocked={() => shake(key, "lesson")}
-                        shaking={shaking === key}
-                      />
-                    );
-                  } else if (stop.kind === "grammar") {
-                    row = (
-                      <StopRow
-                        icon="📝"
-                        label="Gramer notu"
-                        title={stop.title}
-                        state={stop.state}
-                        theme={theme}
-                        onOpen={() =>
-                          open(`/decks/${deckId}/units/${unit.id}/grammar`)
-                        }
-                        onBlocked={() => shake(key, "grammar")}
-                        shaking={shaking === key}
-                      />
-                    );
-                  } else if (stop.kind === "dialogue") {
-                    row = (
-                      <StopRow
-                        icon="💬"
-                        label="Diyalog"
-                        title={stop.title}
-                        state={stop.state}
-                        theme={theme}
-                        onOpen={() =>
-                          open(`/decks/${deckId}/units/${unit.id}/dialogue`)
-                        }
-                        onBlocked={() => shake(key, "dialogue")}
-                        shaking={shaking === key}
-                      />
-                    );
-                  } else {
-                    row = (
-                      <StopRow
-                        icon="🎯"
-                        label="Ünite testi"
-                        title={
-                          stop.state === "passed"
-                            ? "Geçildi"
-                            : stop.state === "skippable"
-                              ? "Bu kelimeleri biliyor musun? Atla"
-                              : "15 soru · geçme notu %80"
-                        }
-                        state={stop.state}
-                        theme={theme}
-                        extra={
-                          stop.state === "passed" && stop.bestScore !== null
-                            ? `En iyi %${stop.bestScore}`
-                            : undefined
-                        }
-                        onOpen={() =>
-                          open(
-                            `/decks/${deckId}/units/${unit.id}/test${stop.state === "skippable" ? "?skip=1" : ""}`,
-                          )
-                        }
-                        onBlocked={() => shake(key, "test")}
-                        shaking={shaking === key}
-                      />
-                    );
-                  }
-
-                  return (
-                    <div
-                      key={key}
-                      ref={isCurrent ? currentRef : undefined}
-                      className="relative scroll-mt-40 animate-[node-in_360ms_ease-out_both]"
-                      style={{ animationDelay: `${delay}ms` }}
-                    >
-                      {row}
-                    </div>
+                let row: React.ReactNode;
+                if (stop.kind === "lesson") {
+                  row = (
+                    <LessonRow
+                      stop={stop}
+                      justDone={justCompleted === stop.lesson.number}
+                      arriving={arriving}
+                      onOpen={() =>
+                        open(
+                          `/decks/${deckId}/study?lesson=${stop.lesson.number}`,
+                        )
+                      }
+                      onBlocked={() => shake(key, "lesson")}
+                      shaking={shaking === key}
+                    />
                   );
-                })}
-              </div>
+                } else if (stop.kind === "grammar") {
+                  row = (
+                    <StopRow
+                      icon="📝"
+                      label="Gramer notu"
+                      title={stop.title}
+                      state={stop.state}
+                      onOpen={() =>
+                        open(`/decks/${deckId}/units/${unit.id}/grammar`)
+                      }
+                      onBlocked={() => shake(key, "grammar")}
+                      shaking={shaking === key}
+                    />
+                  );
+                } else if (stop.kind === "dialogue") {
+                  row = (
+                    <StopRow
+                      icon="💬"
+                      label="Diyalog"
+                      title={stop.title}
+                      state={stop.state}
+                      onOpen={() =>
+                        open(`/decks/${deckId}/units/${unit.id}/dialogue`)
+                      }
+                      onBlocked={() => shake(key, "dialogue")}
+                      shaking={shaking === key}
+                    />
+                  );
+                } else {
+                  row = (
+                    <StopRow
+                      icon="🎯"
+                      label="Ünite testi"
+                      title={
+                        stop.state === "passed"
+                          ? "Geçildi"
+                          : stop.state === "skippable"
+                            ? "Bu kelimeleri biliyor musun? Atla"
+                            : "15 soru · geçme notu %80"
+                      }
+                      state={stop.state}
+                      extra={
+                        stop.state === "passed" && stop.bestScore !== null
+                          ? `En iyi %${stop.bestScore}`
+                          : undefined
+                      }
+                      onOpen={() =>
+                        open(
+                          `/decks/${deckId}/units/${unit.id}/test${stop.state === "skippable" ? "?skip=1" : ""}`,
+                        )
+                      }
+                      onBlocked={() => shake(key, "test")}
+                      shaking={shaking === key}
+                    />
+                  );
+                }
+
+                // Only the first few stations get a delay; the rest of a
+                // sixty-unit line arrives with the last of them.
+                const animated = entering && order < ENTRANCE_CAP;
+                return (
+                  <div
+                    key={key}
+                    ref={isCurrent ? currentRef : undefined}
+                    className={`relative scroll-mt-40 ${animated ? "animate-rise-in" : ""}`}
+                    style={animated ? { animationDelay: `${order * 40}ms` } : undefined}
+                  >
+                    {row}
+                  </div>
+                );
+              })}
             </div>
           </section>
         );
@@ -709,17 +640,15 @@ function LearningPath({ deckId, units }: LearningPathProps) {
         >
           <div className="flex justify-center">
             <span
-              className={`flex h-10 w-10 items-center justify-center rounded-full text-xl ring-4 ring-[#FDF9F3] ${
-                everythingDone
-                  ? "bg-amber-400 shadow-[0_3px_0_0_var(--color-amber-600)]"
-                  : "bg-stone-100 outline outline-2 outline-dashed -outline-offset-2 outline-stone-300"
+              className={`flex h-10 w-10 items-center justify-center rounded-full bg-paper-lift text-xl ring-2 ${
+                everythingDone ? "ring-moss" : "ring-rule"
               }`}
               aria-hidden="true"
             >
               {everythingDone ? "🏆" : "🏁"}
             </span>
           </div>
-          <p className="text-[11px] font-extrabold uppercase tracking-widest text-stone-400">
+          <p className={KICKER}>
             {everythingDone
               ? "Hattın sonu · kurs tamamlandı"
               : `Hattın sonu · ${totalLessons} ders`}

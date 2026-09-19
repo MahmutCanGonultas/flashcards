@@ -1,11 +1,22 @@
 import { useId } from "react";
 import type { InputHTMLAttributes } from "react";
-import { fieldClasses } from "../lib/fieldStyles";
 
 type TextFieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, "id"> & {
   label: string;
   error?: string;
 };
+
+/** A field cut into the page: the paper itself, a hairline, ink when it has focus. */
+const fieldClasses = (hasError: boolean): string =>
+  [
+    "w-full rounded-xl bg-paper px-4 py-3 text-ink ring-1 placeholder:text-graphite/70",
+    "transition focus:bg-paper-lift focus:outline-none focus:ring-2",
+    hasError ? "ring-accent focus:ring-accent/40" : "ring-rule focus:ring-ink/40",
+  ].join(" ");
+
+/** The label sits above as a kicker, the way every heading on the page does. */
+const labelClasses =
+  "mb-2 block text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite";
 
 function TextField({ label, error, className = "", ...rest }: TextFieldProps) {
   const id = useId();
@@ -13,10 +24,7 @@ function TextField({ label, error, className = "", ...rest }: TextFieldProps) {
 
   return (
     <div>
-      <label
-        htmlFor={id}
-        className="block text-xs font-semibold text-stone-600 uppercase tracking-wide mb-2"
-      >
+      <label htmlFor={id} className={labelClasses}>
         {label}
       </label>
       <input
@@ -27,7 +35,7 @@ function TextField({ label, error, className = "", ...rest }: TextFieldProps) {
         {...rest}
       />
       {error && (
-        <p id={errorId} className="mt-1.5 text-sm font-medium text-rose-600">
+        <p id={errorId} className="mt-1.5 text-sm font-medium text-accent">
           {error}
         </p>
       )}
