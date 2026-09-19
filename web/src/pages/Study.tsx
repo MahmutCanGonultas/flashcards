@@ -47,6 +47,7 @@ import RoundRail, { type RailStage } from "../components/RoundRail";
 import { SpeakerIcon } from "../components/icons";
 import { useRecordStudyDay } from "../lib/streak";
 import { useUnits } from "../lib/units";
+import { tintStyle, focalFor } from "../lib/tint";
 
 type ReviewInput = { cardId: number; cardDeckId: number; quality: 1 | 4 };
 type SessionMode = "lesson" | "review";
@@ -460,7 +461,7 @@ function StudySession({
         title="Tekrar edecek bir şey yok"
         description="Hepsini hallettin. Sonra yine gel!"
         action={
-          <LinkButton to={`/decks/${deckId}`} variant="secondary">
+          <LinkButton to={`/decks/${deckId}`} variant="outline">
             Desteye dön
           </LinkButton>
         }
@@ -536,7 +537,7 @@ function StudySession({
           type="button"
           onClick={() => navigate(`/decks/${deckId}`)}
           aria-label={mode === "lesson" ? "Dersten çık" : "Tekrardan çık"}
-          className="-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 text-2xl leading-none text-stone-400 transition hover:bg-stone-900/5 hover:text-stone-700"
+          className="-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 text-2xl leading-none text-graphite transition hover:bg-ink/5 hover:text-ink"
         >
           ×
         </button>
@@ -545,9 +546,9 @@ function StudySession({
             <RoundRail stages={stages} activeIndex={activeStage} />
           </div>
         ) : (
-          <div className="h-4 flex-1 overflow-hidden rounded-full bg-stone-200">
+          <div className="h-4 flex-1 overflow-hidden rounded-full bg-rule">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 transition-[width] duration-300"
+              className="h-full rounded-full bg-ink transition-[width] duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -560,7 +561,7 @@ function StudySession({
               muted ? "Sesi aç" : "Sesi kapat"
             }
             className={`-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 transition ${
-              muted ? "text-stone-300" : "text-violet-500"
+              muted ? "text-graphite/50" : "text-ink"
             }`}
           >
             <SpeakerIcon className="h-5 w-5" />
@@ -569,15 +570,15 @@ function StudySession({
       </div>
 
       {stages.length > 0 && (
-        <div className="mt-3 h-2 overflow-hidden rounded-full bg-stone-200">
+        <div className="mt-3 h-2 overflow-hidden rounded-full bg-rule">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 transition-[width] duration-300"
+            className="h-full rounded-full bg-ink transition-[width] duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
       )}
 
-      <p className="mt-5 text-center text-sm font-bold uppercase tracking-widest text-stone-400">
+      <p className="mt-5 text-center text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">
         {actLabel}
       </p>
 
@@ -643,7 +644,7 @@ function ListenStep({
         }}
       />
       <BottomBar>
-        <Button size="lg" fullWidth disabled={!done} onClick={onContinue}>
+        <Button size="lg" fullWidth variant="ink" disabled={!done} onClick={onContinue}>
           {done ? "Sorulara geç" : "Üçünü de eşleştir"}
         </Button>
       </BottomBar>
@@ -689,19 +690,17 @@ function QuestionStep({
     <>
       {/* The hero keeps the same shape on every step, so the word never jumps
           between being taught and being asked about. */}
-      <div className="relative mt-4 min-h-[9.25rem] overflow-hidden rounded-3xl bg-gradient-to-br from-white via-violet-50 to-violet-100 p-6 text-center ring-2 ring-violet-200 shadow-[0_5px_0_0_var(--color-violet-200)] sm:p-8">
-        {/* A light sweep as the card arrives. */}
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/70 to-transparent animate-[shine_900ms_ease-out_1_both]"
-        />
+      <div
+        className="relative mt-4 min-h-[9.25rem] overflow-hidden rounded-3xl bg-paper-lift p-6 text-center ring-1 ring-rule shadow-print sm:p-8"
+        style={tintStyle(card)}
+      >
         {blanked ? (
-          <p className="text-xl font-bold leading-relaxed text-stone-800 break-words sm:text-2xl">
+          <p className="text-xl font-bold leading-relaxed text-ink break-words sm:text-2xl">
             {blanked.text.split(BLANK).map((piece, index, all) => (
               <span key={index}>
                 {piece}
                 {index < all.length - 1 && (
-                  <span className="mx-1 inline-block min-w-[4.5rem] border-b-4 border-violet-400 align-middle" />
+                  <span className="mx-1 inline-block min-w-[4.5rem] border-b-[3px] border-ink align-middle" />
                 )}
               </span>
             ))}
@@ -714,18 +713,19 @@ function QuestionStep({
               <img
                 src={card.image_url}
                 alt=""
-                className="mx-auto h-24 w-24 rounded-2xl object-cover ring-2 ring-white shadow-md"
+                className="mx-auto h-24 w-24 rounded-2xl object-cover ring-1 ring-rule shadow-print"
+                style={{ objectPosition: focalFor(card) }}
               />
             ) : emoji ? (
               <p className="text-4xl leading-none" aria-hidden="true">
                 {emoji}
               </p>
             ) : null}
-            <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-stone-800 break-words sm:text-4xl">
+            <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-ink break-words sm:text-4xl">
               {meaning}
             </p>
             {pos && (
-              <span className="mt-3 inline-block rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-violet-600 ring-1 ring-violet-200">
+              <span className="mt-3 inline-block rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-graphite ring-1 ring-rule">
                 {posLabel(pos)}
               </span>
             )}
@@ -743,41 +743,42 @@ function QuestionStep({
               <img
                 src={card.image_url}
                 alt=""
-                className="-mx-2 -mt-2 h-44 w-[calc(100%+1rem)] max-w-none rounded-2xl object-cover ring-2 ring-white shadow-md"
+                className="-mx-2 -mt-2 h-44 w-[calc(100%+1rem)] max-w-none rounded-2xl object-cover ring-1 ring-rule shadow-print photo-print"
+                style={{ objectPosition: focalFor(card) }}
               />
             ) : emoji ? (
               // The emoji as a sticker: a tile of its own, so every word has
               // the same kind of picture in the same place.
               <span
                 aria-hidden="true"
-                className="flex h-24 w-24 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-br from-white to-violet-100 text-6xl leading-none shadow-[inset_0_-4px_0_0_rgba(139,92,246,0.15)] ring-1 ring-violet-200"
+                className="flex h-24 w-24 shrink-0 items-center justify-center rounded-3xl bg-paper text-6xl leading-none ring-1 ring-rule"
               >
                 {emoji}
               </span>
             ) : null}
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                <p className="text-3xl font-extrabold leading-tight tracking-tight text-stone-800 break-words">
+                <p className="text-3xl font-extrabold leading-tight tracking-tight text-ink break-words">
                   {card.front}
                 </p>
                 <SpeakButton text={card.front} size="md" />
               </div>
               {pos && (
-                <span className="mt-1 inline-block rounded-full bg-white/80 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-violet-600 ring-1 ring-violet-200">
+                <span className="mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-graphite ring-1 ring-rule">
                   {posLabel(pos)}
                 </span>
               )}
-              <p className="mt-1.5 text-xl font-extrabold leading-snug text-violet-700 break-words">{meaning}</p>
+              <p className="mt-1.5 text-xl font-extrabold leading-snug tint-text break-words">{meaning}</p>
             </div>
           </div>
         ) : (
           <>
-            <p className="text-3xl font-extrabold leading-snug tracking-tight text-stone-800 break-words sm:text-5xl">
+            <p className="text-3xl font-extrabold leading-snug tracking-tight text-ink break-words sm:text-5xl">
               {card.front}
             </p>
             <div className="mt-4 flex items-center justify-center gap-2">
               {pos && (
-                <span className="rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-violet-600 ring-1 ring-violet-200">
+                <span className="rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-graphite ring-1 ring-rule">
                   {posLabel(pos)}
                 </span>
               )}
@@ -803,10 +804,10 @@ function QuestionStep({
                     aria-current={here ? "step" : undefined}
                     className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-bold transition ${
                       here
-                        ? "bg-violet-600 text-white shadow-[0_3px_0_0_var(--color-violet-800)]"
+                        ? "bg-ink text-paper-lift shadow-button"
                         : met
-                          ? "bg-violet-100 text-violet-700"
-                          : "bg-stone-100 text-stone-400"
+                          ? "bg-paper-lift text-ink ring-1 ring-rule"
+                          : "bg-paper-deep/60 text-graphite"
                     }`}
                   >
                     <span aria-hidden="true">{parseBack(word.back).emoji ?? (met ? "✓" : "·")}</span>
@@ -816,11 +817,11 @@ function QuestionStep({
               })}
             </ol>
           )}
-          <p className="mt-3 text-center text-sm font-semibold text-stone-400">
+          <p className="mt-3 text-center text-sm font-semibold text-graphite">
             Bir kez daha dinle, sonra yüksek sesle söyle. 🗣️
           </p>
           <BottomBar>
-            <Button size="lg" fullWidth onClick={onContinue}>
+            <Button size="lg" fullWidth variant="ink" onClick={onContinue}>
               Anladım
             </Button>
           </BottomBar>
@@ -850,7 +851,7 @@ function QuestionStep({
             onSelect={onChoose}
           />
           {answer === null && (
-            <p className="mt-5 text-center text-xs font-medium text-stone-400">
+            <p className="mt-5 text-center text-xs font-medium text-graphite">
               Bir cevaba dokun · 1-4 tuşları
             </p>
           )}
@@ -866,10 +867,8 @@ function QuestionStep({
           it is worth most is right after getting it wrong. */}
       {answer !== null && (
         <div
-          className={`fixed inset-x-0 bottom-0 z-20 max-h-[70vh] overflow-y-auto animate-[slide-up_220ms_ease-out] border-t-2 ${
-            answeredRight
-              ? "border-emerald-200 bg-emerald-50"
-              : "border-rose-200 bg-rose-50"
+          className={`fixed inset-x-0 bottom-0 z-20 max-h-[70vh] overflow-y-auto animate-[slide-up_220ms_ease-out] border-t-[3px] bg-paper-lift shadow-sheet ${
+            answeredRight ? "border-moss" : "border-accent"
           }`}
         >
           <div className="mx-auto max-w-2xl px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-4">
@@ -882,7 +881,7 @@ function QuestionStep({
               <div className="min-w-0 flex-1">
                 <p
                   className={`text-lg font-extrabold tracking-tight ${
-                    answeredRight ? "text-emerald-700" : "text-rose-700"
+                    answeredRight ? "text-moss" : "text-accent"
                   }`}
                 >
                   {answeredRight
@@ -895,19 +894,19 @@ function QuestionStep({
                           : "Süper!"
                     : "Olmadı."}
                   {answeredRight && run >= 3 && (
-                    <span className="ml-2 inline-block rounded-full bg-amber-100 px-2 py-0.5 align-middle text-xs font-extrabold text-amber-700 ring-1 ring-amber-200 animate-[pop-in_220ms_cubic-bezier(0.34,1.56,0.64,1)]">
+                    <span className="ml-2 inline-block rounded-full bg-gilt/15 px-2 py-0.5 align-middle text-xs font-extrabold text-gilt-ink ring-1 ring-gilt/40 animate-[pop-in_220ms_cubic-bezier(0.34,1.56,0.64,1)]">
                       🔥 üst üste {run}
                     </span>
                   )}
                 </p>
                 {answeredRight && (
-                  <p className="mt-0.5 text-sm font-semibold text-emerald-800 break-words">
+                  <p className="mt-0.5 text-sm font-semibold text-ink break-words">
                     {card.front} — {meaning}
                   </p>
                 )}
                 {/* The sentence round was about the sentence: show what it said. */}
                 {answeredRight && format === "context" && card.example_tr && (
-                  <p className="mt-1 text-sm text-emerald-700/80 break-words">{card.example_tr}</p>
+                  <p className="mt-1 text-sm text-graphite break-words">{card.example_tr}</p>
                 )}
               </div>
             </div>
@@ -922,7 +921,7 @@ function QuestionStep({
               size="lg"
               fullWidth
               className="mt-3"
-              variant={answeredRight ? "primary" : "danger"}
+              variant="ink"
               onClick={onContinue}
             >
               Devam
@@ -950,7 +949,7 @@ function ListenHero({ word, revealed }: { word: string; revealed: boolean }) {
 
   if (revealed) {
     return (
-      <p className="text-3xl font-extrabold leading-snug tracking-tight text-stone-800 break-words sm:text-5xl animate-[pop-in_200ms_ease-out]">
+      <p className="text-3xl font-extrabold leading-snug tracking-tight text-ink break-words sm:text-5xl animate-[pop-in_200ms_ease-out]">
         {word}
       </p>
     );
@@ -964,8 +963,8 @@ function ListenHero({ word, revealed }: { word: string; revealed: boolean }) {
         aria-label="Kelimeyi dinle"
         className={`flex h-20 w-20 items-center justify-center rounded-full transition ${
           playing
-            ? "bg-violet-600 text-white scale-105"
-            : "bg-violet-100 text-violet-600 hover:bg-violet-200"
+            ? "bg-ink text-paper-lift scale-105 animate-ring-pulse"
+            : "bg-paper-lift text-ink ring-1 ring-rule shadow-print hover:-translate-y-0.5"
         }`}
       >
         <SpeakerIcon className={`h-9 w-9 ${playing ? "animate-pulse" : ""}`} />
@@ -973,7 +972,7 @@ function ListenHero({ word, revealed }: { word: string; revealed: boolean }) {
       <button
         type="button"
         onClick={() => play(0.65)}
-        className="text-xs font-bold text-violet-500 hover:text-violet-700"
+        className="text-xs font-bold text-ink underline decoration-ink/40 underline-offset-2 hover:decoration-ink"
       >
         🐢 Daha yavaş
       </button>
@@ -1017,7 +1016,7 @@ function TypeAnswer({
     >
       <TontonLine mood={answered ? "idle" : "think"}>İngilizcesini yaz</TontonLine>
       {hint && (
-        <p className="mt-1 text-center font-mono text-sm tracking-widest text-violet-500">
+        <p className="mt-1 text-center font-mono text-sm tracking-widest text-gilt-ink">
           {hint}
         </p>
       )}
@@ -1034,13 +1033,14 @@ function TypeAnswer({
         enterKeyHint="done"
         aria-label="Cevabın"
         placeholder="buraya yaz"
-        className="mt-3 w-full rounded-2xl border-2 border-stone-200 bg-white px-4 py-4 text-center text-2xl font-extrabold text-stone-800 outline-none transition placeholder:font-semibold placeholder:text-stone-300 focus:border-violet-400 focus:ring-4 focus:ring-violet-100 disabled:bg-stone-50"
+        className="mt-3 w-full rounded-2xl bg-paper px-4 py-4 text-center text-2xl font-extrabold text-ink outline-none ring-1 ring-rule transition placeholder:font-semibold placeholder:text-graphite/70 focus:ring-2 focus:ring-ink/40 disabled:bg-paper-deep/60"
       />
       {!answered && (
         <Button
           type="submit"
           size="lg"
           fullWidth
+          variant="ink"
           className="mt-3"
           disabled={!text.trim()}
         >
@@ -1054,7 +1054,7 @@ function TypeAnswer({
 /** The fixed slot every forward button lives in, so it never moves between steps. */
 function BottomBar({ children }: { children: React.ReactNode }) {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-10 border-t border-stone-200/70 bg-[#FDF9F3]/95 backdrop-blur">
+    <div className="fixed inset-x-0 bottom-0 z-10 border-t border-rule/70 bg-paper/95 backdrop-blur">
       <div className="mx-auto max-w-2xl px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3">
         {children}
       </div>
@@ -1108,18 +1108,18 @@ function LessonSummary({
         : "Zor bir dersti, ama artık tanışıksınız. Yarın çok daha kolay gelecek. 🌱";
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-white to-emerald-50 p-8 text-center ring-2 ring-emerald-100 shadow-[0_5px_0_0_var(--color-emerald-100)] animate-[pop-in_220ms_ease-out] sm:p-12">
+    <div className="relative overflow-hidden rounded-3xl bg-paper-lift p-8 text-center ring-1 ring-rule shadow-print paper-grain animate-[pop-in_220ms_ease-out] sm:p-12">
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <span className="absolute left-8 top-6 h-3 w-3 animate-bounce rounded-full bg-violet-300" />
-        <span className="absolute right-10 top-10 h-2 w-2 rounded-full bg-emerald-300" />
-        <span className="absolute left-1/2 top-16 h-2.5 w-2.5 animate-pulse rounded-full bg-amber-300" />
-        <span className="absolute bottom-12 left-12 h-2 w-2 animate-pulse rounded-full bg-sky-300" />
-        <span className="absolute bottom-14 right-16 h-3 w-3 animate-bounce rounded-full bg-rose-300" />
+        <span className="absolute left-8 top-6 h-3 w-3 animate-bounce rounded-full bg-accent/70" />
+        <span className="absolute right-10 top-10 h-2 w-2 rounded-full bg-moss/70" />
+        <span className="absolute left-1/2 top-16 h-2.5 w-2.5 animate-pulse rounded-full bg-gilt/80" />
+        <span className="absolute bottom-12 left-12 h-2 w-2 animate-pulse rounded-full bg-moss/60" />
+        <span className="absolute bottom-14 right-16 h-3 w-3 animate-bounce rounded-full bg-gilt/70" />
       </div>
 
       <div className="relative">
         <Mascot mood="happy" size={132} className="mx-auto" />
-        <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-stone-800">
+        <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-ink">
           {heading}
         </h2>
 
@@ -1130,15 +1130,18 @@ function LessonSummary({
               key={card.id}
               type="button"
               onClick={() => void speak(card.front)}
-              className="flex w-full items-center gap-2 rounded-xl bg-white/70 px-3 py-2 text-left ring-1 ring-emerald-100 transition hover:bg-white"
+              className="flex w-full items-center gap-2 rounded-xl bg-paper px-3 py-2 text-left ring-1 ring-rule transition-transform duration-100 active:scale-[0.98]"
             >
-              <span className="shrink-0 text-xs" aria-hidden="true">
+              <span
+                className={`shrink-0 text-xs font-black ${outcomes[card.id] === "right" ? "text-moss" : "text-accent"}`}
+                aria-hidden="true"
+              >
                 {outcomes[card.id] === "right" ? "✓" : "↺"}
               </span>
-              <span className="min-w-0 flex-1 truncate font-extrabold text-stone-800">
+              <span className="min-w-0 flex-1 truncate font-extrabold text-ink">
                 {card.front}
               </span>
-              <span className="min-w-0 flex-1 truncate text-right text-sm text-stone-500">
+              <span className="min-w-0 flex-1 truncate text-right text-sm text-graphite">
                 {parseBack(card.back).text}
               </span>
             </button>
@@ -1146,28 +1149,28 @@ function LessonSummary({
         </div>
 
         <div className="mt-6 flex justify-center gap-3">
-          <div className="min-w-[6.5rem] rounded-2xl bg-white px-4 py-3 ring-2 ring-emerald-100">
-            <p className="text-2xl font-extrabold text-emerald-600">
+          <div className="min-w-[6.5rem] rounded-2xl bg-paper px-4 py-3 ring-1 ring-rule">
+            <p className="text-2xl font-extrabold text-ink tabular-nums">
               {queue.length}
             </p>
-            <p className="text-xs font-bold uppercase tracking-wide text-stone-400">
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">
               Kelime
             </p>
           </div>
           {mode === "review" && (
-            <div className="min-w-[6.5rem] rounded-2xl bg-white px-4 py-3 ring-2 ring-violet-100">
-              <p className="text-2xl font-extrabold text-violet-600">
+            <div className="min-w-[6.5rem] rounded-2xl bg-paper px-4 py-3 ring-1 ring-rule">
+              <p className={`text-2xl font-extrabold tabular-nums ${accuracy >= 60 ? "text-moss" : "text-accent"}`}>
                 %{accuracy}
               </p>
-              <p className="text-xs font-bold uppercase tracking-wide text-stone-400">
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">
                 Doğru
               </p>
             </div>
           )}
           {streak > 0 && (
-            <div className="min-w-[6.5rem] rounded-2xl bg-white px-4 py-3 ring-2 ring-amber-100">
-              <p className="text-2xl font-extrabold text-amber-500">{streak}</p>
-              <p className="text-xs font-bold uppercase tracking-wide text-stone-400">
+            <div className="min-w-[6.5rem] rounded-2xl bg-paper px-4 py-3 ring-1 ring-gilt/70">
+              <p className="text-2xl font-extrabold text-gilt-ink tabular-nums">{streak}</p>
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">
                 Günlük seri
               </p>
             </div>
@@ -1177,7 +1180,7 @@ function LessonSummary({
         {failedReviews > 0 && (
           <p
             role="alert"
-            className="mx-auto mt-5 max-w-sm rounded-2xl bg-amber-50 p-3 text-sm font-medium text-amber-800 ring-1 ring-amber-200"
+            className="mx-auto mt-5 max-w-sm rounded-2xl bg-accent/8 p-3 text-sm font-medium text-accent ring-1 ring-accent/30"
           >
             {failedReviews} cevap kaydedilemedi — bağlantını kontrol edip o
             kelimeleri tekrar çalış.
@@ -1189,7 +1192,7 @@ function LessonSummary({
         </TontonLine>
 
         <div className="mt-6 flex justify-center">
-          <Button size="lg" onClick={onDone}>
+          <Button size="lg" variant="ink" onClick={onDone}>
             Bitti
           </Button>
         </div>
