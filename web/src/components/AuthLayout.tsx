@@ -15,8 +15,9 @@ type AuthLayoutProps = {
 };
 
 /**
- * The shared shell behind Sign in and Sign up: a brand panel carrying the
- * logo's indigo-to-fuchsia gradient, and a cream column holding the form card.
+ * The shared shell behind Sign in and Sign up: on wide screens a solid ink
+ * panel like a magazine's inside cover, and beside it the paper column
+ * holding the form as a raised sheet.
  */
 function AuthLayout({
   headline,
@@ -29,13 +30,11 @@ function AuthLayout({
 }: AuthLayoutProps) {
   return (
     <div className="min-h-screen flex">
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500">
-        <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-white/15 blur-3xl" />
-        <div className="absolute -bottom-32 -left-16 h-96 w-96 rounded-full bg-indigo-300/25 blur-3xl" />
-        <CardStackArt className="pointer-events-none absolute -bottom-16 -right-10 h-96 w-96 text-white/15" />
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-ink text-paper-lift">
+        <CardStackArt className="pointer-events-none absolute -bottom-16 -right-10 h-96 w-96 text-paper-lift/10" />
 
-        <div className="relative z-10 flex flex-col justify-between p-12 text-white">
-          <div className="[&_span]:text-white">
+        <div className="relative z-10 flex flex-col justify-between p-12">
+          <div className="[&_span]:text-paper-lift">
             <Logo size={36} withText />
           </div>
 
@@ -43,17 +42,12 @@ function AuthLayout({
             <h2 className="text-4xl font-extrabold leading-tight tracking-tight">
               {headline}
             </h2>
-            <p className="mt-4 max-w-sm leading-relaxed text-white/80">{subline}</p>
+            <p className="mt-4 max-w-sm leading-relaxed text-paper-lift/75">{subline}</p>
           </div>
 
-          <div className="flex items-center gap-3 text-sm text-white/70">
-            <div className="flex -space-x-2">
-              <div className="h-8 w-8 rounded-full bg-amber-300 ring-2 ring-violet-500" />
-              <div className="h-8 w-8 rounded-full bg-emerald-300 ring-2 ring-violet-500" />
-              <div className="h-8 w-8 rounded-full bg-rose-300 ring-2 ring-violet-500" />
-            </div>
-            <span>Binlerce öğrenciye katıl</span>
-          </div>
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-paper-lift/60">
+            Günde üç kelime · aralıklı tekrar
+          </p>
         </div>
       </div>
 
@@ -63,25 +57,22 @@ function AuthLayout({
             <Logo size={36} withText />
           </div>
 
-          <div className="rounded-3xl bg-white p-7 sm:p-9 ring-2 ring-stone-100 shadow-[0_6px_0_0_var(--color-stone-100)]">
+          <div className="rounded-[28px] bg-paper-lift p-7 ring-1 ring-rule shadow-print paper-grain animate-rise-in sm:p-9">
             <div className="mb-6 flex items-end gap-3">
+              {/* TODO(tonton): pass `greet` once Mascot has it, so the wave is only here. */}
               <Mascot mood="happy" size={72} className="shrink-0" />
-              <div className="relative min-w-0 flex-1 rounded-3xl rounded-bl-md bg-amber-50 px-4 py-3 ring-1 ring-amber-200">
-                <span
-                  aria-hidden="true"
-                  className="absolute -left-1.5 bottom-3 h-3 w-3 rotate-45 rounded-sm bg-amber-50 ring-1 ring-amber-200 [clip-path:polygon(0_0,0_100%,100%_100%)]"
-                />
-                <h1 className="text-xl font-extrabold tracking-tight text-amber-900">
+              <div className="relative min-w-0 flex-1 rounded-3xl rounded-bl-md border-l-2 border-tonton bg-paper-lift px-4 py-3 ring-1 ring-rule shadow-bubble">
+                <h1 className="text-xl font-extrabold tracking-tight text-ink">
                   {title} <span aria-hidden="true">{emoji}</span>
                 </h1>
-                <p className="mt-0.5 text-sm text-amber-800/80">{subtitle}</p>
+                <p className="mt-0.5 text-sm text-graphite">{subtitle}</p>
               </div>
             </div>
 
             {children}
           </div>
 
-          <p className="mt-6 text-center text-sm text-stone-500">{footer}</p>
+          <p className="mt-6 text-center text-sm text-graphite">{footer}</p>
         </div>
       </div>
     </div>

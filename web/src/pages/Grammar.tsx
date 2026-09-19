@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useUnits } from "../lib/units";
 import { playCorrect, playIncorrect, playLessonComplete } from "../lib/sound";
@@ -10,6 +10,29 @@ import Skeleton from "../components/Skeleton";
 import Mascot from "../components/Mascot";
 import SpeakButton from "../components/SpeakButton";
 import type { GrammarQuiz } from "../types";
+
+const KICKER = "text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite";
+
+/* The rules rise in one after another the first time the note opens; on a
+   later visit in the same session the page is simply there. */
+let composed = false;
+const STAGGER_MS = 40;
+const STAGGER_CAP = 8;
+
+type OptionState = "idle" | "right" | "wrong" | "muted";
+
+/*
+ * One system for answer rows, matching the test screens: a sheet with a
+ * hairline down the left and a small index, ink for the pick, moss for
+ * the right answer, vermilion for the wrong one. Colour is never
+ * transitioned (see QuizOptions for the iOS Safari reason).
+ */
+const OPTION_CLASSES: Record<OptionState, string> = {
+  idle: "border-rule bg-paper-lift text-ink ring-rule transition-transform duration-100 active:scale-[0.98]",
+  right: "pointer-events-none border-moss bg-moss/8 text-ink ring-moss animate-ring-pulse",
+  wrong: "pointer-events-none border-accent bg-accent/8 text-ink ring-accent animate-[shake_320ms_ease-in-out]",
+  muted: "pointer-events-none border-rule bg-paper-lift text-graphite/70 ring-rule/60",
+};
 
 /**
  * A three-question check at the end of a grammar note. Not graded, not
@@ -41,12 +64,12 @@ function MiniQuiz({ items }: { items: GrammarQuiz[] }) {
 
   if (done) {
     return (
-      <div className="rounded-3xl bg-gradient-to-b from-white to-emerald-50 p-6 text-center ring-2 ring-emerald-100 animate-[pop-in_220ms_ease-out]">
+      <div className="rounded-3xl bg-paper-lift p-6 text-center ring-1 ring-rule shadow-print paper-grain animate-rise-spring">
         <Mascot mood={score === items.length ? "happy" : "idle"} size={72} className="mx-auto" />
-        <p className="mt-2 text-2xl font-extrabold text-stone-800">
+        <p className="mt-2 text-2xl font-extrabold tabular-nums text-ink">
           {score} / {items.length}
         </p>
-        <p className="mt-1 text-sm text-stone-500">
+        <p className="mt-1 text-sm text-graphite">
           {score === items.length
             ? "Üçü de doğru! Kural artık senin."
             : "Yukarıdaki kurallara bir daha bak, sonra devam et."}
@@ -56,14 +79,14 @@ function MiniQuiz({ items }: { items: GrammarQuiz[] }) {
   }
 
   return (
-    <div className="rounded-3xl bg-white p-5 ring-2 ring-violet-100">
-      <p className="text-[11px] font-extrabold uppercase tracking-widest text-violet-500">
+    <div className="rounded-3xl bg-paper-lift p-5 ring-1 ring-rule shadow-print paper-grain">
+      <p className={KICKER}>
         Hızlı kontrol · {index + 1}/{items.length}
       </p>
-      <p className="mt-2 text-lg font-extrabold leading-snug text-stone-800">{item.question}</p>
-      <div className="mt-3 space-y-2">
+      <p className="mt-2 text-lg font-extrabold leading-snug text-ink">{item.question}</p>
+      <div key={index} className="mt-3 space-y-2">
         {item.options.map((option, i) => {
-          const state =
+          const state: OptionState =
             picked === null
               ? "idle"
               : i === item.answer
@@ -77,27 +100,30 @@ function MiniQuiz({ items }: { items: GrammarQuiz[] }) {
               type="button"
               aria-disabled={picked !== null}
               onClick={() => choose(i)}
-              className={`w-full rounded-2xl px-4 py-3 text-left font-bold ${picked !== null ? "pointer-events-none" : "transition-transform active:scale-[0.99]"} ${
-                state === "idle"
-                  ? "bg-stone-50 text-stone-800 ring-1 ring-stone-200 hover:bg-violet-50 hover:ring-violet-200"
-                  : state === "right"
-                    ? "bg-emerald-100 text-emerald-800 ring-2 ring-emerald-400"
-                    : state === "wrong"
-                      ? "bg-rose-100 text-rose-800 ring-2 ring-rose-400"
-                      : "bg-stone-50 text-stone-300 ring-1 ring-stone-100"
-              }`}
+              className={`flex w-full items-center gap-3 rounded-2xl border-l-[3px] px-4 py-3 text-left font-bold ring-1 ${OPTION_CLASSES[state]}`}
             >
-              {option}
+              <span
+                aria-hidden="true"
+                className={`w-4 shrink-0 text-[11px] font-extrabold tabular-nums ${
+                  state === "right" ? "text-moss" : state === "wrong" ? "text-accent" : "text-graphite"
+                }`}
+              >
+                {i + 1}
+              </span>
+              <span className="min-w-0 flex-1 break-words">{option}</span>
             </button>
           );
         })}
       </div>
       {picked !== null && (
         <div className="mt-3 animate-[fade-in_200ms]">
-          <p className={`text-sm ${picked === item.answer ? "text-emerald-700" : "text-rose-700"}`}>
+          <p className="text-sm leading-relaxed text-ink">
+            <span className={`font-extrabold ${picked === item.answer ? "text-moss" : "text-accent"}`}>
+              {picked === item.answer ? "Doğru." : "Bu değil."}
+            </span>{" "}
             {item.explain}
           </p>
-          <Button size="sm" className="mt-3" onClick={next}>
+          <Button variant="ink" size="sm" className="mt-3" onClick={next}>
             {index + 1 >= items.length ? "Bitir" : "Sonraki"}
           </Button>
         </div>
@@ -110,6 +136,11 @@ function Grammar() {
   const { deckId = "", unitId = "" } = useParams<{ deckId: string; unitId: string }>();
   const navigate = useNavigate();
   const unitsQuery = useUnits(deckId);
+  const animate = !composed;
+
+  useEffect(() => {
+    composed = true;
+  }, []);
 
   if (!deckId || !unitId) return <Navigate to="/decks" replace />;
 
@@ -122,7 +153,7 @@ function Grammar() {
       <main className="mx-auto max-w-2xl px-6 pb-40 pt-8">
         <Link
           to={`/decks/${deckId}`}
-          className="-m-2 inline-flex items-center gap-1.5 p-2 font-medium text-stone-500 transition hover:text-stone-800"
+          className={`-m-2 inline-flex items-center gap-1.5 p-2 transition hover:text-ink ${KICKER}`}
         >
           <span aria-hidden="true">←</span> Patikaya dön
         </Link>
@@ -151,59 +182,67 @@ function Grammar() {
         {unit && note && (
           <>
             {/* Tonton opens with the hook, as a speech bubble. */}
-            <div className="mt-6 flex items-end gap-3">
+            <div className={`mt-6 flex items-end gap-3 ${animate ? "animate-rise-in" : ""}`}>
               <Mascot mood="happy" size={88} className="shrink-0" />
-              <div className="relative min-w-0 flex-1 rounded-3xl rounded-bl-md bg-amber-50 p-4 ring-1 ring-amber-200">
-                <p className="text-[11px] font-extrabold uppercase tracking-widest text-amber-700">
+              <div className="relative min-w-0 flex-1 rounded-3xl rounded-bl-md border-l-2 border-tonton bg-paper-lift p-4 ring-1 ring-rule shadow-bubble">
+                <p className={KICKER}>
                   Ünite {unit.position} · {unit.title}{unit.title_tr && ` (${unit.title_tr})`} · {unit.level}
                 </p>
-                <p className="mt-1 text-base font-semibold leading-relaxed text-amber-900">
+                <p className="mt-1 text-base font-semibold leading-relaxed text-ink">
                   {note.hook}
                 </p>
               </div>
             </div>
 
-            <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-stone-800">
-              {note.title_en}
-            </h1>
-            <p className="text-base font-semibold text-stone-500">{note.title_tr}</p>
+            <div className={animate ? "animate-rise-in [animation-delay:40ms]" : ""}>
+              <p className={`mt-6 ${KICKER}`}>Gramer notu</p>
+              <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-ink">
+                {note.title_en}
+              </h1>
+              <p className="text-base font-semibold text-graphite">{note.title_tr}</p>
+            </div>
 
-            <ol className="mt-5 space-y-3">
+            {/* The rules as a ruled list: a numeral in the margin, the rule,
+                then its example set off by a hairline like a quotation. */}
+            <ol className="mt-5 divide-y divide-rule border-y border-rule">
               {note.rules.map((rule, i) => (
-                <li key={i} className="rounded-3xl bg-white p-4 ring-1 ring-stone-200">
+                <li
+                  key={i}
+                  className={`py-4 ${animate && i < STAGGER_CAP ? "animate-rise-in" : ""}`}
+                  style={animate && i < STAGGER_CAP ? { animationDelay: `${80 + i * STAGGER_MS}ms` } : undefined}
+                >
                   <div className="flex items-start gap-3">
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-violet-100 text-xs font-extrabold text-violet-700">
+                    <span className="w-5 shrink-0 pt-0.5 text-[11px] font-extrabold tabular-nums text-graphite">
                       {i + 1}
                     </span>
-                    <p className="text-[15px] leading-relaxed text-stone-700">{rule.rule}</p>
+                    <p className="text-[15px] leading-relaxed text-ink">{rule.rule}</p>
                   </div>
-                  <div className="mt-3 rounded-2xl bg-violet-50 p-3">
+                  <div className="ml-8 mt-3 border-l-2 border-rule pl-3">
                     <div className="flex items-start justify-between gap-2">
-                      <p className="text-base font-extrabold leading-snug text-violet-800">
+                      <p className="text-base font-extrabold leading-snug text-ink">
                         {rule.example_en}
                       </p>
                       <SpeakButton text={rule.example_en} size="sm" />
                     </div>
-                    <p className="mt-1 text-sm text-violet-600">{rule.example_tr}</p>
+                    <p className="mt-1 text-sm text-graphite">{rule.example_tr}</p>
                   </div>
                 </li>
               ))}
             </ol>
 
-            <div className="mt-4 rounded-3xl bg-rose-50 p-4 ring-1 ring-rose-200">
-              <p className="text-[11px] font-extrabold uppercase tracking-widest text-rose-600">
-                ⚠️ Dikkat
+            {/* The trap: a recessed band, not a red box — the label carries the warning. */}
+            <div className="mt-4 rounded-r-2xl border-l-2 border-rule bg-paper-deep/50 px-4 py-3">
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-gilt-ink">
+                Dikkat
               </p>
-              <p className="mt-1 text-[15px] leading-relaxed text-rose-900">{note.watch_out}</p>
+              <p className="mt-1 text-[15px] leading-relaxed text-ink">{note.watch_out}</p>
             </div>
 
-            <div className="mt-3 flex items-start gap-2">
+            <div className="mt-4 flex items-end gap-2">
               <Mascot mood="idle" size={44} className="shrink-0" />
-              <div className="min-w-0 flex-1 rounded-3xl bg-amber-50 p-4 ring-1 ring-amber-200">
-                <p className="text-[11px] font-extrabold uppercase tracking-widest text-amber-700">
-                  💡 Hafıza hilesi
-                </p>
-                <p className="mt-1 text-[15px] leading-relaxed text-amber-900">{note.memory_trick}</p>
+              <div className="min-w-0 flex-1 rounded-3xl rounded-bl-md border-l-2 border-tonton bg-paper-lift p-4 ring-1 ring-rule shadow-bubble">
+                <p className={KICKER}>Hafıza hilesi</p>
+                <p className="mt-1 text-[15px] leading-relaxed text-ink">{note.memory_trick}</p>
               </div>
             </div>
 
@@ -211,26 +250,30 @@ function Grammar() {
               <MiniQuiz items={note.quiz} />
             </div>
 
-            <div className="fixed inset-x-0 bottom-0 z-10 border-t border-stone-200/70 bg-[#FDF9F3]/95 backdrop-blur">
+            <div className="fixed inset-x-0 bottom-0 z-10 border-t border-rule bg-paper/95 backdrop-blur">
               <div className="mx-auto flex max-w-2xl flex-col gap-2 px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 sm:flex-row">
                 {unit.dialogue ? (
                   <Button
+                    variant="ink"
                     size="lg"
                     fullWidth
+                    className="shadow-button"
                     onClick={() => navigate(`/decks/${deckId}/units/${unit.id}/dialogue`)}
                   >
-                    💬 Diyaloğa geç
+                    Diyaloğa geç
                   </Button>
                 ) : (
                   <Button
+                    variant="ink"
                     size="lg"
                     fullWidth
+                    className="shadow-button"
                     onClick={() => navigate(`/decks/${deckId}/units/${unit.id}/test`)}
                   >
-                    🎯 Ünite testine gir
+                    Ünite testine gir
                   </Button>
                 )}
-                <LinkButton to={`/decks/${deckId}`} variant="ghost">
+                <LinkButton to={`/decks/${deckId}`} variant="outline">
                   Sonra
                 </LinkButton>
               </div>

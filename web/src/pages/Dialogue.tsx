@@ -11,11 +11,23 @@ import Skeleton from "../components/Skeleton";
 import TontonLine from "../components/TontonLine";
 import { SpeakerIcon } from "../components/icons";
 
-/** Two voices, two colours, so the eye tracks who is talking without reading names. */
+const KICKER = "text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite";
+
+/**
+ * Two voices on one stock: the first speaks from a raised sheet on the left,
+ * the second from a recessed band on the right, so the eye tracks who is
+ * talking without reading names — and nothing on the page is blue.
+ */
 const SPEAKER_STYLES = [
-  { chip: "bg-violet-100 text-violet-700", bubble: "bg-white ring-violet-100", side: "items-start" },
-  { chip: "bg-sky-100 text-sky-700", bubble: "bg-sky-50 ring-sky-100", side: "items-end" },
+  { bubble: "bg-paper-lift shadow-print", side: "items-start" },
+  { bubble: "bg-paper-deep/60", side: "items-end" },
 ];
+
+/* The lines rise in one after another the first time the dialogue opens;
+   on a later visit in the same session the page is simply there. */
+let composed = false;
+const STAGGER_MS = 40;
+const STAGGER_CAP = 8;
 
 /**
  * The unit's conversation: every word from its lessons, used by two people
@@ -26,6 +38,7 @@ function Dialogue() {
   const { deckId = "", unitId = "" } = useParams<{ deckId: string; unitId: string }>();
   const navigate = useNavigate();
   const unitsQuery = useUnits(deckId);
+  const animate = !composed;
 
   const [playingLine, setPlayingLine] = useState<number | null>(null);
   const [showTurkish, setShowTurkish] = useState(true);
@@ -33,6 +46,7 @@ function Dialogue() {
   const chainRef = useRef(0);
 
   useEffect(() => {
+    composed = true;
     return () => {
       chainRef.current += 1;
       if (speechSupported) window.speechSynthesis.cancel();
@@ -88,7 +102,7 @@ function Dialogue() {
       <main className="mx-auto max-w-2xl px-6 pb-40 pt-8">
         <Link
           to={`/decks/${deckId}`}
-          className="-m-2 inline-flex items-center gap-1.5 p-2 font-medium text-stone-500 transition hover:text-stone-800"
+          className={`-m-2 inline-flex items-center gap-1.5 p-2 transition hover:text-ink ${KICKER}`}
         >
           <span aria-hidden="true">←</span> Patikaya dön
         </Link>
@@ -122,26 +136,26 @@ function Dialogue() {
 
         {unit?.dialogue && (
           <>
-            <div className="mt-6">
-              <p className="text-[11px] font-extrabold uppercase tracking-widest text-stone-400">
+            <div className={`mt-6 ${animate ? "animate-rise-in" : ""}`}>
+              <p className={KICKER}>
                 Ünite {unit.position} · {unit.title}{unit.title_tr && ` (${unit.title_tr})`} · {unit.level}
               </p>
-              <h1 className="mt-0.5 text-2xl font-extrabold tracking-tight text-stone-800">
+              <h1 className="mt-0.5 text-2xl font-extrabold tracking-tight text-ink">
                 {unit.dialogue.title}
               </h1>
             </div>
-            <TontonLine className="mt-4" mood="happy" size={56} tone="amber">
+            <TontonLine className={`mt-4 ${animate ? "animate-rise-in [animation-delay:40ms]" : ""}`} mood="happy" size={56}>
               Elif ile Tom konuşuyor — bu ünitenin kelimeleri bu sohbetin içinde. Önce dinle, sonra istediğin satıra dokunup bir daha dinle. 🎧
             </TontonLine>
 
-            <div className="mt-5 flex flex-wrap items-center gap-2">
+            <div className={`mt-5 flex flex-wrap items-center gap-2 ${animate ? "animate-rise-in [animation-delay:80ms]" : ""}`}>
               {speechSupported &&
                 (playingLine === null ? (
-                  <Button size="sm" onClick={playAll}>
+                  <Button variant="ink" size="sm" onClick={playAll}>
                     <SpeakerIcon className="h-4 w-4" /> Hepsini dinle
                   </Button>
                 ) : (
-                  <Button size="sm" variant="secondary" onClick={stopAll}>
+                  <Button variant="outline" size="sm" onClick={stopAll}>
                     ■ Durdur
                   </Button>
                 ))}
@@ -151,7 +165,7 @@ function Dialogue() {
                   playReveal();
                   setShowTurkish((v) => !v);
                 }}
-                className="rounded-full bg-white px-3 py-1.5 text-xs font-extrabold text-stone-600 ring-1 ring-stone-200 transition hover:bg-stone-50"
+                className="min-h-11 rounded-full bg-paper-lift px-3.5 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite ring-1 ring-rule transition hover:text-ink active:scale-[0.98]"
               >
                 {showTurkish ? "Türkçeyi gizle" : "Türkçeyi göster"}
               </button>
@@ -161,33 +175,34 @@ function Dialogue() {
               {unit.dialogue.lines.map((line, index) => {
                 const style = styleFor(line.speaker);
                 const isPlaying = playingLine === index;
+                const staggered = animate && index < STAGGER_CAP;
                 return (
-                  <li key={index} className={`flex flex-col ${style.side}`}>
+                  <li
+                    key={index}
+                    className={`flex flex-col ${style.side} ${staggered ? "animate-rise-in" : ""}`}
+                    style={staggered ? { animationDelay: `${120 + index * STAGGER_MS}ms` } : undefined}
+                  >
                     <button
                       type="button"
                       onClick={() => playLine(index)}
                       aria-label={`Dinle: ${line.en}`}
-                      className={`max-w-[88%] rounded-3xl p-4 text-left ring-2 transition ${style.bubble} ${
-                        isPlaying ? "ring-violet-400 shadow-[0_0_0_4px_var(--color-violet-100)]" : ""
+                      className={`max-w-[88%] rounded-3xl p-4 text-left ring-1 transition-[transform,box-shadow] duration-100 active:scale-[0.98] ${style.bubble} ${
+                        isPlaying ? "ring-ink" : "ring-rule"
                       }`}
                     >
-                      <span
-                        className={`mb-1.5 inline-block rounded-full px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider ${style.chip}`}
-                      >
-                        {line.speaker}
-                      </span>
-                      <p className="flex items-start gap-2 text-lg font-bold leading-snug text-stone-800">
+                      <span className={`mb-1 block ${KICKER}`}>{line.speaker}</span>
+                      <p className="flex items-start gap-2 text-lg font-bold leading-snug text-ink">
                         <span className="min-w-0 flex-1 break-words">{line.en}</span>
                         {speechSupported && (
                           <SpeakerIcon
                             className={`mt-1 h-4 w-4 shrink-0 ${
-                              isPlaying ? "animate-pulse text-violet-600" : "text-stone-300"
+                              isPlaying ? "animate-pulse text-ink" : "text-rule"
                             }`}
                           />
                         )}
                       </p>
                       {showTurkish && (
-                        <p className="mt-1 text-sm leading-relaxed text-stone-500 break-words">
+                        <p className="mt-1 text-sm leading-relaxed text-graphite break-words">
                           {line.tr}
                         </p>
                       )}
@@ -197,16 +212,18 @@ function Dialogue() {
               })}
             </ol>
 
-            <div className="fixed inset-x-0 bottom-0 z-10 border-t border-stone-200/70 bg-[#FDF9F3]/95 backdrop-blur">
+            <div className="fixed inset-x-0 bottom-0 z-10 border-t border-rule bg-paper/95 backdrop-blur">
               <div className="mx-auto flex max-w-2xl flex-col gap-2 px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 sm:flex-row">
                 <Button
+                  variant="ink"
                   size="lg"
                   fullWidth
+                  className="shadow-button"
                   onClick={() => navigate(`/decks/${deckId}/units/${unit.id}/test`)}
                 >
-                  🎯 Ünite testine gir
+                  Ünite testine gir
                 </Button>
-                <LinkButton to={`/decks/${deckId}`} variant="ghost">
+                <LinkButton to={`/decks/${deckId}`} variant="outline">
                   Sonra
                 </LinkButton>
               </div>

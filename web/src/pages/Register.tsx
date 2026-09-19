@@ -97,7 +97,7 @@ function Register() {
           Zaten hesabın var mı?{" "}
           <Link
             to="/login"
-            className="font-bold text-violet-600 hover:text-violet-700 hover:underline"
+            className="font-bold text-ink underline decoration-ink underline-offset-4 hover:decoration-2"
           >
             Giriş yap
           </Link>
@@ -130,7 +130,7 @@ function Register() {
         {submitError && (
           <div
             role="alert"
-            className="rounded-xl bg-rose-100 px-4 py-3 text-sm font-medium text-rose-700 ring-1 ring-rose-200"
+            className="rounded-xl bg-accent/8 px-4 py-3 text-sm font-semibold text-accent ring-1 ring-accent/30"
           >
             {submitError}
           </div>
@@ -138,8 +138,10 @@ function Register() {
 
         <Button
           type="submit"
+          variant="ink"
           fullWidth
           size="lg"
+          className="shadow-button"
           isLoading={signUp.isPending}
           loadingText="Hesap oluşturuluyor..."
         >

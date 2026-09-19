@@ -216,34 +216,36 @@ function TestSession({
     // ancestor would pin `fixed` to it instead of to the viewport.
     return (
       <>
-        <div className="animate-[pop-in_220ms_ease-out]">
+        <div className="animate-rise-in">
           <Link
             to={`/decks/${deckId}`}
-            className="-m-2 inline-flex items-center gap-1.5 p-2 font-medium text-stone-500 transition hover:text-stone-800"
+            className="-m-2 inline-flex items-center gap-1.5 p-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite transition hover:text-ink"
           >
             <span aria-hidden="true">←</span> Patikaya dön
           </Link>
+          {/* Tonton's bubble: a sheet on the page with his violet rule down the left. */}
           <div className="mt-6 flex items-end gap-3">
             <Mascot mood="idle" size={88} className="shrink-0" />
-            <div className="relative min-w-0 flex-1 rounded-3xl rounded-bl-md bg-amber-50 p-4 ring-1 ring-amber-200">
-              <p className="text-[11px] font-extrabold uppercase tracking-widest text-amber-700">
+            <div className="relative min-w-0 flex-1 rounded-3xl rounded-bl-md border-l-2 border-tonton bg-paper-lift p-4 ring-1 ring-rule shadow-bubble">
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">
                 Atlama testi · Ünite {unit.position}
               </p>
-              <p className="mt-1 text-base font-semibold leading-relaxed text-amber-900">
+              <p className="mt-1 text-base font-semibold leading-relaxed text-ink">
                 Bu kelimeleri zaten biliyor musun? Göster bakalım, dersleri atla.
               </p>
             </div>
           </div>
-          <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-stone-800">
+          <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-ink">
             {unit.title}
             {unit.title_tr && (
-              <span className="font-bold text-stone-400">
+              <span className="font-bold text-graphite">
                 {" "}
                 ({unit.title_tr})
               </span>
             )}
           </h1>
-          <ul className="mt-5 space-y-2">
+          {/* Three facts as a ruled list, not three boxes: the page is the sheet. */}
+          <ul className="mt-5 divide-y divide-rule border-y border-rule">
             {[
               [
                 "🎯",
@@ -258,26 +260,21 @@ function TestSession({
                 "Daha az alırsan hiçbir şey değişmez — dersler seni bekliyor, onları bitirince test yine burada.",
               ],
             ].map(([icon, text]) => (
-              <li
-                key={text}
-                className="flex items-start gap-3 rounded-2xl bg-white p-4 ring-1 ring-stone-200"
-              >
+              <li key={text} className="flex items-start gap-3 py-3.5">
                 <span aria-hidden="true" className="text-xl leading-none">
                   {icon}
                 </span>
-                <p className="text-[15px] leading-relaxed text-stone-700">
-                  {text}
-                </p>
+                <p className="text-[15px] leading-relaxed text-ink">{text}</p>
               </li>
             ))}
           </ul>
         </div>
-        <div className="fixed inset-x-0 bottom-0 z-10 border-t border-stone-200/70 bg-[#FDF9F3]/95 backdrop-blur">
+        <div className="fixed inset-x-0 bottom-0 z-10 border-t border-rule bg-paper/95 backdrop-blur">
           <div className="mx-auto flex max-w-2xl flex-col gap-2 px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 sm:flex-row">
-            <Button size="lg" fullWidth onClick={() => setBriefed(true)}>
+            <Button variant="ink" size="lg" fullWidth className="shadow-button" onClick={() => setBriefed(true)}>
               Teste başla
             </Button>
-            <LinkButton to={`/decks/${deckId}`} variant="ghost">
+            <LinkButton to={`/decks/${deckId}`} variant="outline">
               Şimdi değil
             </LinkButton>
           </div>
@@ -294,36 +291,37 @@ function TestSession({
             <Link
               to={`/decks/${deckId}`}
               aria-label="Testten çık"
-              className="-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 text-2xl leading-none text-stone-400 transition hover:bg-stone-900/5 hover:text-stone-700"
+              className="-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 text-2xl leading-none text-graphite transition hover:bg-ink/5 hover:text-ink"
             >
               ×
             </Link>
-            <div className="h-4 flex-1 overflow-hidden rounded-full bg-stone-200">
+            {/* The progress rule: ink printing across a tan track. */}
+            <div className="h-2 flex-1 overflow-hidden rounded-full bg-rule">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-amber-400 to-orange-500 transition-[width] duration-300"
+                className="h-full rounded-full bg-ink transition-[width] duration-500 ease-soft"
                 style={{
                   width: `${Math.round((index / questions.length) * 100)}%`,
                 }}
               />
             </div>
-            <span className="shrink-0 text-sm font-extrabold text-stone-400">
+            <span className="shrink-0 text-sm font-extrabold tabular-nums text-graphite">
               {index + 1}/{questions.length}
             </span>
           </div>
 
-          <p className="mt-5 text-center text-sm font-bold uppercase tracking-widest text-amber-600">
+          <p className="mt-5 text-center text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">
             Ünite {unit.position} testi
           </p>
 
           <div key={index} className="animate-[step-in_180ms_ease-out]">
-            <div className="mt-4 min-h-[9.25rem] rounded-3xl bg-gradient-to-br from-white via-amber-50 to-amber-100 p-6 text-center ring-2 ring-amber-200 shadow-[0_5px_0_0_var(--color-amber-200)] sm:p-8">
+            <div className="mt-4 min-h-[9.25rem] rounded-3xl bg-paper-lift p-6 text-center ring-1 ring-rule shadow-print paper-grain sm:p-8">
               {question.format === "context" && question.blanked ? (
-                <p className="text-xl font-bold leading-relaxed text-stone-800 break-words sm:text-2xl">
+                <p className="text-xl font-bold leading-relaxed text-ink break-words sm:text-2xl">
                   {question.blanked.split(BLANK).map((piece, i, all) => (
                     <span key={i}>
                       {piece}
                       {i < all.length - 1 && (
-                        <span className="mx-1 inline-block min-w-[4.5rem] border-b-4 border-amber-400 align-middle" />
+                        <span className="mx-1 inline-block min-w-[4.5rem] border-b-[3px] border-ink align-middle" />
                       )}
                     </span>
                   ))}
@@ -335,21 +333,21 @@ function TestSession({
                       {parseBack(question.card.back).emoji}
                     </p>
                   )}
-                  <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-stone-800 break-words sm:text-4xl">
+                  <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-ink break-words sm:text-4xl">
                     {parseBack(question.card.back).text}
                   </p>
-                  <p className="mt-2 text-xs font-bold uppercase tracking-widest text-stone-400">
+                  <p className="mt-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">
                     İngilizcesi
                   </p>
                 </>
               ) : (
                 <>
-                  <p className="text-3xl font-extrabold leading-snug tracking-tight text-stone-800 break-words sm:text-5xl">
+                  <p className="text-3xl font-extrabold leading-snug tracking-tight text-ink break-words sm:text-5xl">
                     {question.card.front}
                   </p>
                   <div className="mt-4 flex items-center justify-center gap-2">
                     {parseBack(question.card.back).pos && (
-                      <span className="rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-amber-700 ring-1 ring-amber-200">
+                      <span className="rounded-full px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite ring-1 ring-rule">
                         {posLabel(parseBack(question.card.back).pos)}
                       </span>
                     )}
@@ -375,10 +373,8 @@ function TestSession({
 
           {answer !== null && (
             <div
-              className={`fixed inset-x-0 bottom-0 z-20 animate-[slide-up_220ms_ease-out] border-t-2 ${
-                question.options[answer].isCorrect
-                  ? "border-emerald-200 bg-emerald-50"
-                  : "border-rose-200 bg-rose-50"
+              className={`fixed inset-x-0 bottom-0 z-20 animate-sheet-up border-t-2 bg-paper-lift shadow-sheet ${
+                question.options[answer].isCorrect ? "border-moss" : "border-accent"
               }`}
             >
               <div className="mx-auto max-w-2xl px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-4">
@@ -391,28 +387,24 @@ function TestSession({
                   <div className="min-w-0 flex-1">
                     <p
                       className={`text-lg font-extrabold ${
-                        question.options[answer].isCorrect
-                          ? "text-emerald-700"
-                          : "text-rose-700"
+                        question.options[answer].isCorrect ? "text-moss" : "text-accent"
                       }`}
                     >
                       {question.options[answer].isCorrect
                         ? "Doğru!"
                         : "Bu değil."}
                     </p>
-                    <p className="text-sm font-semibold text-stone-700 break-words">
+                    <p className="text-sm font-semibold text-ink break-words">
                       {question.card.front} —{" "}
                       {parseBack(question.card.back).text}
                     </p>
                   </div>
                 </div>
                 <Button
+                  variant="ink"
                   size="lg"
                   fullWidth
-                  className="mt-3"
-                  variant={
-                    question.options[answer].isCorrect ? "primary" : "danger"
-                  }
+                  className="mt-3 shadow-button"
                   onClick={next}
                 >
                   {index + 1 === questions.length ? "Sonucu gör" : "Sonraki"}
@@ -426,47 +418,44 @@ function TestSession({
       {finished && passed && <Confetti />}
       {finished && (
         <div
-          className={`relative overflow-hidden rounded-3xl p-8 text-center ring-2 animate-[pop-in_220ms_ease-out] sm:p-12 ${
-            passed
-              ? "bg-gradient-to-b from-white to-amber-50 ring-amber-200 shadow-[0_5px_0_0_var(--color-amber-200)]"
-              : "bg-gradient-to-b from-white to-stone-50 ring-stone-200 shadow-[0_5px_0_0_var(--color-stone-200)]"
-          }`}
+          className="relative overflow-hidden rounded-3xl bg-paper-lift p-8 text-center ring-1 ring-rule shadow-print paper-grain animate-rise-spring sm:p-12"
         >
           <Mascot
             mood={passed ? "happy" : "sad"}
             size={132}
             className="mx-auto"
           />
-          <p className="mt-3 text-sm font-bold uppercase tracking-widest text-stone-400">
+          <p className="mt-3 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">
             Ünite {unit.position} · {unit.title}
             {unit.title_tr && ` (${unit.title_tr})`}
           </p>
-          <h2 className="mt-1 text-3xl font-extrabold tracking-tight text-stone-800">
+          {/* The verdict carries the colour; the score itself is set in ink. */}
+          <h2
+            className={`mt-1 text-3xl font-extrabold tracking-tight ${
+              passed ? "text-moss" : "text-accent"
+            }`}
+          >
             {passed
               ? skip
                 ? "Atladın!"
                 : "Ünite geçildi!"
               : "Bu sefer olmadı."}
           </h2>
-          <p
-            className={`mt-4 text-6xl font-extrabold tabular-nums ${
-              passed ? "text-amber-500" : "text-stone-400"
-            }`}
-          >
+          <p className="mt-4 text-6xl font-extrabold tabular-nums tracking-tight text-ink">
             %{score}
           </p>
-          <p className="mt-1 text-sm text-stone-500">
+          <p className="mt-1 text-sm text-graphite">
             {correct.length}/{questions.length} doğru · geçme notu %{UNIT_PASS_MARK}
           </p>
 
           {passed ? (
-            <p className="mx-auto mt-5 max-w-sm text-stone-600">
+            <p className="mx-auto mt-5 max-w-sm text-ink/80">
               {skip
                 ? "Bu ünite tamamlanmış sayılıyor, sıradaki açık. Dersleri istersen diye patikada duruyor."
                 : "Sıradaki ünite açık. Bu kelimeler tekrarlarında karşına çıkmaya devam edecek — akılda öyle kalıyorlar."}
             </p>
           ) : skip && missed.length > 0 ? (
-            <p className="mx-auto mt-5 max-w-sm text-stone-600">
+            <p className="mx-auto mt-5 max-w-sm text-ink/80">
               Kaybettiğin bir şey yok —{" "}
               {missed.length === 1 ? "bir kelime" : `${missed.length} kelime`}{" "}
               kaçtı. Bu ünitenin derslerine başla, birkaç güne senin olurlar.
@@ -474,19 +463,19 @@ function TestSession({
           ) : (
             missed.length > 0 && (
               <div className="mx-auto mt-5 max-w-sm text-left">
-                <p className="text-xs font-bold uppercase tracking-widest text-stone-400">
+                <p className="border-b border-ink pb-1.5 text-[11px] font-extrabold uppercase tracking-[0.18em] text-accent">
                   Bunlara bir daha bak
                 </p>
-                <ul className="mt-2 space-y-1.5">
+                <ul className="divide-y divide-rule">
                   {missed.map((card) => (
                     <li
                       key={card.id}
-                      className="flex items-center justify-between gap-3 rounded-xl bg-white px-3 py-2 ring-1 ring-stone-200"
+                      className="flex items-center justify-between gap-3 py-2"
                     >
-                      <span className="font-extrabold text-stone-800">
+                      <span className="font-extrabold text-ink">
                         {card.front}
                       </span>
-                      <span className="min-w-0 truncate text-sm text-stone-500">
+                      <span className="min-w-0 truncate text-sm text-graphite">
                         {parseBack(card.back).text}
                       </span>
                     </li>
@@ -499,7 +488,7 @@ function TestSession({
           {record.isError && (
             <p
               role="alert"
-              className="mx-auto mt-5 max-w-sm rounded-2xl bg-amber-50 p-3 text-sm font-medium text-amber-800 ring-1 ring-amber-200"
+              className="mx-auto mt-5 max-w-sm rounded-2xl bg-accent/8 p-3 text-sm font-semibold text-accent ring-1 ring-accent/30"
             >
               Puanın kaydedilemedi — bağlantını kontrol edip teste tekrar gir.
             </p>
@@ -507,15 +496,15 @@ function TestSession({
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             {passed ? (
-              <Button size="lg" onClick={() => navigate(`/decks/${deckId}`)}>
+              <Button variant="ink" size="lg" className="shadow-button" onClick={() => navigate(`/decks/${deckId}`)}>
                 Devam
               </Button>
             ) : (
               <>
-                <Button size="lg" onClick={onRetry}>
+                <Button variant="ink" size="lg" className="shadow-button" onClick={onRetry}>
                   Tekrar dene
                 </Button>
-                <LinkButton to={`/decks/${deckId}`} variant="ghost">
+                <LinkButton to={`/decks/${deckId}`} variant="outline">
                   Patikaya dön
                 </LinkButton>
               </>

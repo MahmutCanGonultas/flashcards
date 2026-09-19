@@ -170,21 +170,24 @@ function PlacementSession({
 
   if (!started) {
     return (
-      <div className="rounded-3xl bg-gradient-to-b from-white to-violet-50 p-8 text-center ring-2 ring-violet-100 shadow-[0_5px_0_0_var(--color-violet-100)] animate-[pop-in_220ms_ease-out] sm:p-12">
+      <div className="rounded-3xl bg-paper-lift p-8 text-center ring-1 ring-rule shadow-print paper-grain animate-rise-in sm:p-12">
         <Mascot mood="idle" size={120} className="mx-auto" />
-        <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-stone-800">
+        <p className="mt-4 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">
+          Seviye testi
+        </p>
+        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-ink">
           Nereden başlamalısın?
         </h1>
-        <p className="mx-auto mt-3 max-w-sm text-stone-600">
+        <p className="mx-auto mt-3 max-w-sm text-ink/80">
           Patika A1'den C1'e uzanıyor. Sıfırdan başlayanlar ilk üniteden
           başlar. Biraz İngilizce biliyorsan beş dakikalık bir test seviyeni
           bulur ve patikayı oraya kadar açar.
         </p>
         <div className="mt-8 flex flex-col gap-3">
-          <Button size="lg" fullWidth onClick={() => setStarted(true)}>
-            🎯 Seviyemi bul
+          <Button variant="ink" size="lg" fullWidth className="shadow-button" onClick={() => setStarted(true)}>
+            Seviyemi bul
           </Button>
-          <LinkButton to={`/decks/${deckId}`} variant="ghost">
+          <LinkButton to={`/decks/${deckId}`} variant="outline">
             Baştan başla
           </LinkButton>
         </div>
@@ -194,12 +197,19 @@ function PlacementSession({
 
   if (placed) {
     return (
-      <div className="rounded-3xl bg-gradient-to-b from-white to-amber-50 p-8 text-center ring-2 ring-amber-200 shadow-[0_5px_0_0_var(--color-amber-200)] animate-[pop-in_220ms_ease-out] sm:p-12">
+      <div className="rounded-3xl bg-paper-lift p-8 text-center ring-1 ring-rule shadow-print paper-grain animate-rise-spring sm:p-12">
         <Mascot mood="happy" size={120} className="mx-auto" />
-        <p className="mt-4 text-sm font-bold uppercase tracking-widest text-stone-400">Seviyen</p>
-        <p className="mt-1 text-6xl font-extrabold tracking-tight text-amber-500">{placed}</p>
-        <p className="text-lg font-bold text-stone-700">{LEVEL_NAMES[placed]}</p>
-        <p className="mx-auto mt-4 max-w-sm text-stone-600">
+        <p className="mt-4 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">Seviyen</p>
+        {/* The level is the headline of this page: big, ink, with a moss rule drawn under it. */}
+        <p className="relative mx-auto mt-1 inline-block text-6xl font-extrabold tracking-tight text-ink">
+          {placed}
+          <span
+            aria-hidden="true"
+            className="absolute inset-x-0 -bottom-0.5 h-[3px] bg-moss animate-rule-draw [animation-delay:260ms]"
+          />
+        </p>
+        <p className="mt-2 text-lg font-bold text-ink">{LEVEL_NAMES[placed]}</p>
+        <p className="mx-auto mt-4 max-w-sm text-ink/80">
           {startUnit && skipped > 0 ? (
             <>
               <strong>Ünite {startUnit.position}: {startUnit.title}</strong> ile başlayacaksın.
@@ -211,16 +221,16 @@ function PlacementSession({
           )}
         </p>
         {record.isError && (
-          <p role="alert" className="mx-auto mt-4 max-w-sm rounded-2xl bg-rose-50 p-3 text-sm text-rose-700 ring-1 ring-rose-200">
+          <p role="alert" className="mx-auto mt-4 max-w-sm rounded-2xl bg-accent/8 p-3 text-sm font-semibold text-accent ring-1 ring-accent/30">
             Seviyen kaydedilemedi — bağlantını kontrol edip tekrar dene.
           </p>
         )}
         <div className="mt-8 flex flex-col gap-3">
-          <Button size="lg" fullWidth onClick={confirm} disabled={record.isPending}>
+          <Button variant="ink" size="lg" fullWidth className="shadow-button" onClick={confirm} disabled={record.isPending}>
             {placed === "A1" ? "Baştan başla" : `${placed}'den başla`}
           </Button>
           {placed !== "A1" && (
-            <LinkButton to={`/decks/${deckId}`} variant="ghost">
+            <LinkButton to={`/decks/${deckId}`} variant="outline">
               Yine de A1'den başla
             </LinkButton>
           )}
@@ -246,37 +256,38 @@ function PlacementSession({
         <Link
           to={`/decks/${deckId}`}
           aria-label="Testten çık"
-          className="-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 text-2xl leading-none text-stone-400 transition hover:bg-stone-900/5 hover:text-stone-700"
+          className="-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 text-2xl leading-none text-graphite transition hover:bg-ink/5 hover:text-ink"
         >
           ×
         </Link>
+        {/* One pill per level: cleared in ink, the one in play ringed gilt, the rest bare track. */}
         <div className="flex flex-1 items-center gap-1.5">
           {LEVELS.map((l, i) => (
             <span
               key={l}
-              className={`h-3 flex-1 rounded-full transition ${
-                i < levelIndex ? "bg-emerald-400" : i === levelIndex ? "bg-amber-400" : "bg-stone-200"
+              className={`h-2 flex-1 rounded-full transition ${
+                i < levelIndex ? "bg-ink" : i === levelIndex ? "bg-gilt" : "bg-rule"
               }`}
             />
           ))}
         </div>
-        <span className="shrink-0 text-sm font-extrabold text-stone-400">
+        <span className="shrink-0 text-sm font-extrabold tabular-nums text-graphite">
           {index + 1}/{questions.length}
         </span>
       </div>
 
-      <p className="mt-5 text-center text-sm font-bold uppercase tracking-widest text-amber-600">
+      <p className="mt-5 text-center text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">
         Seviye {level} · {LEVEL_NAMES[level]}
       </p>
 
       <div key={`${level}-${index}`} className="animate-[step-in_180ms_ease-out]">
-        <div className="mt-4 min-h-[9.25rem] rounded-3xl bg-gradient-to-br from-white via-amber-50 to-amber-100 p-6 text-center ring-2 ring-amber-200 shadow-[0_5px_0_0_var(--color-amber-200)] sm:p-8">
+        <div className="mt-4 min-h-[9.25rem] rounded-3xl bg-paper-lift p-6 text-center ring-1 ring-rule shadow-print paper-grain sm:p-8">
           {meaning.emoji && (
             <p className="text-4xl leading-none" aria-hidden="true">
               {meaning.emoji}
             </p>
           )}
-          <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-stone-800 break-words sm:text-4xl">
+          <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-ink break-words sm:text-4xl">
             {meaning.text}
           </p>
         </div>
@@ -285,7 +296,7 @@ function PlacementSession({
         </TontonLine>
         <QuizOptions options={question.options} selectedIndex={answer} onSelect={choose} />
         {answer === null && (
-          <p className="mt-5 text-center text-xs font-medium text-stone-400">
+          <p className="mt-5 text-center text-xs font-medium text-graphite">
             Bir cevaba dokun · 1-4 tuşları · bilmiyor musun? Tahmin et, geç.
           </p>
         )}

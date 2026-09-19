@@ -74,7 +74,7 @@ function Login() {
           Hesabın yok mu?{" "}
           <Link
             to="/register"
-            className="font-bold text-violet-600 hover:text-violet-700 hover:underline"
+            className="font-bold text-ink underline decoration-ink underline-offset-4 hover:decoration-2"
           >
             Hesap oluştur
           </Link>
@@ -107,7 +107,7 @@ function Login() {
         {errorMessage && (
           <div
             role="alert"
-            className="rounded-xl bg-rose-100 px-4 py-3 text-sm font-medium text-rose-700 ring-1 ring-rose-200"
+            className="rounded-xl bg-accent/8 px-4 py-3 text-sm font-semibold text-accent ring-1 ring-accent/30"
           >
             {errorMessage}
           </div>
@@ -115,8 +115,10 @@ function Login() {
 
         <Button
           type="submit"
+          variant="ink"
           fullWidth
           size="lg"
+          className="shadow-button"
           isLoading={loginMutation.isPending}
           loadingText="Giriş yapılıyor..."
         >
