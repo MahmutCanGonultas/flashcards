@@ -5,14 +5,18 @@ type TontonLineProps = {
   mood?: MascotMood;
   size?: number;
   className?: string;
-  /** Bubble tint; the default is plain white. */
+  /**
+   * Which paper the bubble is: a lifted sheet (default), the recessed
+   * band (a hint or a result), or his own, with his violet rule on the
+   * left. The names stayed so the course screens keep working.
+   */
   tone?: "white" | "amber" | "violet";
 };
 
 const TONES = {
-  white: "bg-white ring-stone-200 text-stone-700",
-  amber: "bg-amber-50 ring-amber-200 text-amber-900",
-  violet: "bg-violet-50 ring-violet-200 text-violet-900",
+  white: "bg-paper-lift ring-rule text-ink",
+  amber: "bg-paper-deep ring-rule text-ink",
+  violet: "bg-paper-lift ring-rule text-ink border-l-2 border-tonton",
 };
 
 /**
@@ -25,7 +29,7 @@ function TontonLine({ children, mood = "idle", size = 44, className = "", tone =
     <div className={`flex items-end gap-2 ${className}`}>
       <Mascot mood={mood} size={size} className="shrink-0" />
       <div
-        className={`relative mb-1 min-w-0 flex-1 rounded-2xl rounded-bl-sm px-3.5 py-2.5 ring-1 ${TONES[tone]} animate-[pop-in_200ms_cubic-bezier(0.34,1.56,0.64,1)]`}
+        className={`relative mb-1 min-w-0 flex-1 rounded-2xl rounded-bl-sm px-3.5 py-2.5 ring-1 shadow-bubble ${TONES[tone]} animate-[pop-in_200ms_cubic-bezier(0.34,1.56,0.64,1)]`}
       >
         <span
           aria-hidden="true"

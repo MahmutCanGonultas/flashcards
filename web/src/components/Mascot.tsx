@@ -11,10 +11,15 @@ type MascotProps = {
    * ones in dense lists.
    */
   lively?: boolean;
+  /** A wave on arrival. Only the sign-in screens greet; everywhere else he's already here. */
+  greet?: boolean;
+  /** Blink and glance only, no hop, wave or stretch: for when he sits beside something being read. */
+  quiet?: boolean;
 };
 
 type Gesture = "wave" | "hop" | "grow" | "look-l" | "look-r" | "tilt" | "wiggle";
 const GESTURES: Gesture[] = ["wave", "hop", "grow", "look-l", "look-r", "tilt", "wiggle", "grow", "look-l"];
+const QUIET_GESTURES: Gesture[] = ["look-l", "look-r", "tilt", "look-l"];
 const GESTURE_MS: Record<Gesture, number> = {
   wave: 1500,
   hop: 700,
@@ -38,18 +43,19 @@ const GESTURE_MS: Record<Gesture, number> = {
  * droops. Nothing here waits on any of it, and prefers-reduced-motion stills
  * all of it.
  */
-function Mascot({ mood = "idle", size = 96, className = "", lively = true }: MascotProps) {
+function Mascot({ mood = "idle", size = 96, className = "", lively = true, greet = false, quiet = false }: MascotProps) {
   const [gesture, setGesture] = useState<Gesture | null>(null);
   const [blink, setBlink] = useState(false);
 
   // Idle life. Both are timers, so nothing here sets state during render;
   // the first delay is randomised so several Tontons on one screen don't
-  // move in step. He says hello first.
+  // move in step. He only says hello where asked to.
   useEffect(() => {
     if (!lively) return;
     let gestureTimer = 0;
     let blinkTimer = 0;
     let cancelled = false;
+    const gestures = quiet ? QUIET_GESTURES : GESTURES;
     const doGesture = (next: Gesture) => {
       setGesture(next);
       window.setTimeout(() => setGesture(null), GESTURE_MS[next]);
@@ -57,7 +63,7 @@ function Mascot({ mood = "idle", size = 96, className = "", lively = true }: Mas
     const scheduleGesture = (delay: number) => {
       gestureTimer = window.setTimeout(() => {
         if (cancelled) return;
-        doGesture(GESTURES[Math.floor(Math.random() * GESTURES.length)]);
+        doGesture(gestures[Math.floor(Math.random() * gestures.length)]);
         scheduleGesture(3500 + Math.random() * 4500);
       }, delay);
     };
@@ -69,9 +75,11 @@ function Mascot({ mood = "idle", size = 96, className = "", lively = true }: Mas
         scheduleBlink();
       }, 2200 + Math.random() * 3200);
     };
-    const hello = window.setTimeout(() => {
-      if (!cancelled) doGesture("wave");
-    }, 500 + Math.random() * 400);
+    const hello = greet && !quiet
+      ? window.setTimeout(() => {
+          if (!cancelled) doGesture("wave");
+        }, 500 + Math.random() * 400)
+      : 0;
     scheduleGesture(3000 + Math.random() * 3000);
     scheduleBlink();
     return () => {
@@ -80,7 +88,7 @@ function Mascot({ mood = "idle", size = 96, className = "", lively = true }: Mas
       window.clearTimeout(gestureTimer);
       window.clearTimeout(blinkTimer);
     };
-  }, [lively]);
+  }, [lively, greet, quiet]);
 
   const mouth =
     mood === "sad" ? (

@@ -1,120 +1,193 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useSyncExternalStore } from "react";
 import { useLocation } from "react-router-dom";
-import { useQueryClient } from "@tanstack/react-query";
+import { useQueryClient, type QueryClient } from "@tanstack/react-query";
 import type { Card, Deck } from "../types";
 import { getToken } from "../lib/api";
-import { popLines } from "../lib/tonton";
+import { director, type Entrance, type Pop, type Snapshot } from "../lib/tontonDirector";
 import { playChirp } from "../lib/sound";
 import Mascot from "./Mascot";
 
-/** How long Tonton stays, and how long he waits between visits. */
-const STAY_MS = 8000;
-const FIRST_VISIT_MS = 14000;
-const GAP_MIN_MS = 50000;
-const GAP_MAX_MS = 130000;
-/** He never interrupts a question. */
-const QUIET_ROUTES = [/\/study/, /\/flashcards/, /\/placement/, /\/test$/];
-const REMEMBER = 12;
+/** He never chirps at night. */
+const chirp = () => {
+  const hour = new Date().getHours();
+  if (hour >= 23 || hour < 7) return;
+  playChirp();
+};
+
+/** The entrances, as full class strings so Tailwind can see them. */
+const ENTRANCE: Record<Entrance, string> = {
+  "slide-up": "animate-[tt-slide-up_520ms_var(--ease-soft)_both]",
+  tiptoe: "animate-[tt-tiptoe_900ms_var(--ease-soft)_both]",
+  "peek-side": "animate-[tt-peek-side_620ms_var(--ease-soft)_both]",
+  pop: "animate-[tt-pop_420ms_var(--ease-spring)_both]",
+  drop: "animate-[tt-drop_520ms_var(--ease-soft)_both]",
+  fade: "animate-[fade-in_220ms_ease-out_both]",
+};
+const SINK = "animate-[tt-sink_260ms_ease-in_both]";
+const SHRINK = "animate-[tt-shrink_260ms_ease-in_both]";
+
+/** Everything he might mention, from what's already loaded; he never fetches. */
+function readSnapshot(queryClient: QueryClient): Snapshot {
+  const decks = (queryClient.getQueryData(["decks"]) as Deck[] | undefined) ?? [];
+  const personalDeck =
+    decks.find((d) => d.kind === "personal") ?? (queryClient.getQueryData(["personalDeck"]) as Deck | undefined);
+  const allCards = queryClient.getQueriesData<Card[]>({ queryKey: ["cards"] }).flatMap(([, data]) => data ?? []);
+  const personal = allCards.filter((c) => personalDeck && c.deck_id === personalDeck.id);
+  const cards = allCards.filter((c) => !personalDeck || c.deck_id !== personalDeck.id);
+  const streak = queryClient.getQueryData(["streak"]) as { streak?: number; lastStudyDate?: string | null } | undefined;
+  return { cards, personal, streak: streak?.streak ?? 0, lastStudyDate: streak?.lastStudyDate ?? null };
+}
 
 /**
- * Tonton wanders onto the screen now and then — slides in at the bottom
- * corner, says one thing, waves, and goes. The lines are drawn from a
- * wide pool mixed with what's actually going on (cards waiting, a word to
- * recall, the streak), and the last dozen are kept out so he doesn't
- * repeat himself. Tap him for the next line; tap the bubble to dismiss.
+ * Tap or hold. A press of 600ms is a hold; the click that follows it is
+ * swallowed so a hold never also counts as a tap. Refs only change inside
+ * handlers, never during render.
  */
-function TontonPopups() {
-  const location = useLocation();
-  const queryClient = useQueryClient();
-  // A line belongs to the screen it was said on: leave the page and he's
-  // gone; he doesn't follow you around.
-  const [line, setLine] = useState<{ text: string; at: string } | null>(null);
-  const [visits, setVisits] = useState(0);
-  const recentRef = useRef<string[]>([]);
-  const hideTimer = useRef(0);
-
-  const quiet = !getToken() || location.pathname === "/login" || location.pathname === "/register" || QUIET_ROUTES.some((r) => r.test(location.pathname));
-
-  const pick = () => {
-    // Everything he might mention comes from what's already loaded; he
-    // never fetches on his own.
-    const decks = (queryClient.getQueryData(["decks"]) as Deck[] | undefined) ?? [];
-    const personalDeck =
-      decks.find((d) => d.kind === "personal") ?? (queryClient.getQueryData(["personalDeck"]) as Deck | undefined);
-    const allCards = queryClient
-      .getQueriesData<Card[]>({ queryKey: ["cards"] })
-      .flatMap(([, data]) => data ?? []);
-    const personal = allCards.filter((c) => personalDeck && c.deck_id === personalDeck.id);
-    const cards = allCards.filter((c) => !personalDeck || c.deck_id !== personalDeck.id);
-    const streak = (queryClient.getQueryData(["streak"]) as { streak?: number } | undefined)?.streak ?? 0;
-    const pool = popLines({ cards, personal, streak }).filter((l) => !recentRef.current.includes(l));
-    const next = pool[Math.floor(Math.random() * Math.min(pool.length, 6))] ?? pool[0] ?? "Buradayım. 👋";
-    recentRef.current = [next, ...recentRef.current].slice(0, REMEMBER);
-    return next;
+function usePress(onTap: () => void, onHold: () => void) {
+  const timer = useRef(0);
+  const held = useRef(false);
+  useEffect(() => () => window.clearTimeout(timer.current), []);
+  const cancel = () => window.clearTimeout(timer.current);
+  return {
+    onPointerDown: () => {
+      held.current = false;
+      window.clearTimeout(timer.current);
+      timer.current = window.setTimeout(() => {
+        held.current = true;
+        onHold();
+      }, 600);
+    },
+    onPointerUp: cancel,
+    onPointerLeave: cancel,
+    onPointerCancel: cancel,
+    onClick: () => {
+      if (held.current) {
+        held.current = false;
+        return;
+      }
+      onTap();
+    },
+    onContextMenu: (e: React.MouseEvent) => e.preventDefault(),
   };
+}
 
-  // The visits: a first one soon after the app opens, then at irregular gaps.
-  useEffect(() => {
-    if (quiet) return;
-    let timer = 0;
-    const schedule = (delay: number) => {
-      timer = window.setTimeout(() => {
-        setLine({ text: pick(), at: window.location.pathname });
-        setVisits((n) => n + 1);
-        hideTimer.current = window.setTimeout(() => setLine(null), STAY_MS);
-        schedule(GAP_MIN_MS + Math.random() * (GAP_MAX_MS - GAP_MIN_MS));
-      }, delay);
-    };
-    schedule(FIRST_VISIT_MS);
-    return () => {
-      window.clearTimeout(timer);
-      window.clearTimeout(hideTimer.current);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [quiet]);
+/** The gilt hairline along the bubble's foot that shrinks over his stay. */
+function Stay({ ms }: { ms: number }) {
+  return <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] origin-left bg-gilt" style={{ animation: `tt-stay ${ms}ms linear both` }} />;
+}
 
-  // On a quiet screen he simply isn't rendered; the scheduling effect's
-  // cleanup already stopped the timers, so nothing is left running.
-  if (!line || quiet || line.at !== location.pathname) return null;
+function Kicker({ text }: { text?: string }) {
+  if (!text) return null;
+  return <span className="mb-1 block text-[10px] font-extrabold uppercase tracking-[0.18em] text-graphite">{text}</span>;
+}
 
-  const another = () => {
-    playChirp();
-    window.clearTimeout(hideTimer.current);
-    setLine({ text: pick(), at: location.pathname });
-    setVisits((n) => n + 1);
-    hideTimer.current = window.setTimeout(() => setLine(null), STAY_MS);
-  };
-
+/** The visit: bottom-left, Tonton beside a bubble. Tap him for more, tap the bubble to close, hold to hush. */
+function Visit({ pop, leaving }: { pop: Pop; leaving: boolean }) {
+  const mascot = usePress(() => {
+    chirp();
+    director.tap();
+  }, director.hush);
+  const bubble = usePress(director.dismiss, director.hush);
   return (
     <div
-      key={visits}
-      className="tonton-pop pointer-events-none fixed inset-x-0 bottom-0 z-30 flex justify-start px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] animate-[tonton-in_520ms_cubic-bezier(0.34,1.4,0.64,1)_both]"
+      key={pop.visit}
+      className={`tonton-pop pointer-events-none fixed inset-x-0 bottom-0 z-30 flex justify-start px-3 pb-[max(.75rem,env(safe-area-inset-bottom))] ${leaving ? SINK : ENTRANCE[pop.entrance]}`}
     >
-      <div className="pointer-events-auto flex max-w-[22rem] items-end gap-2">
+      <div className="pointer-events-auto flex max-w-[20rem] items-end gap-2">
         <button
           type="button"
-          onClick={another}
+          {...mascot}
           aria-label="Tonton'a dokun (ziyaret)"
           data-silent
-          className="shrink-0 rounded-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-violet-300"
+          className="shrink-0 select-none rounded-full [-webkit-touch-callout:none] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tonton/40"
         >
-          <Mascot mood="happy" size={72} />
+          <Mascot key={`${pop.id}${pop.wave ? "-wave" : ""}`} mood={pop.wave ? "happy" : pop.mood} size={72} />
         </button>
-        <button
-          type="button"
-          onClick={() => setLine(null)}
-          aria-label="Kapat"
-          className="relative mb-4 min-w-0 rounded-3xl rounded-bl-md bg-white px-4 py-3 text-left ring-1 ring-stone-200 shadow-[0_10px_30px_-12px_rgba(28,25,23,0.45)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-violet-300"
-        >
+        <div className="relative mb-4 min-w-0">
           <span
             aria-hidden="true"
-            className="absolute -left-1.5 bottom-4 h-3 w-3 rotate-45 rounded-sm bg-white ring-1 ring-stone-200 [clip-path:polygon(0_0,0_100%,100%_100%)]"
+            className="absolute -left-1.5 bottom-4 -z-10 h-3 w-3 rotate-45 rounded-sm bg-paper-lift ring-1 ring-rule [clip-path:polygon(0_0,0_100%,100%_100%)]"
           />
-          <span className="block text-[15px] font-semibold leading-snug text-stone-700">{line.text}</span>
+          <button
+            key={pop.id}
+            type="button"
+            {...bubble}
+            aria-label="Kapat"
+            className="tt-bubble relative block w-full select-none overflow-hidden rounded-2xl rounded-bl-md border-l-2 border-tonton bg-paper-lift px-4 py-3 text-left ring-1 ring-rule shadow-bubble paper-grain animate-bubble-in [animation-delay:180ms] [-webkit-touch-callout:none] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tonton/40"
+          >
+            <Kicker text={pop.kicker} />
+            <span className="block text-[15px] font-semibold leading-snug text-ink">{pop.text}</span>
+            <Stay ms={pop.stayMs} />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * The reaction: on the flashcard screen, brief, never over the grade bar.
+ * It sits exactly on the Tonton peeking over the pile, so it reads as him
+ * reacting: the mood face swaps in where he already is and only the bubble
+ * drops in beside him, then shrinks back into him. If he isn't there, the
+ * corner under the header.
+ */
+function Reaction({ pop, leaving }: { pop: Pop; leaving: boolean }) {
+  const bubble = usePress(director.dismiss, director.hush);
+  const root = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    const peek = document.querySelector("main svg.tt-mascot");
+    const el = root.current;
+    if (!peek || !el) return;
+    const r = peek.getBoundingClientRect();
+    if (r.width === 0) return;
+    el.style.top = `${r.top}px`;
+    el.style.right = `${window.innerWidth - r.right}px`;
+  }, [pop.visit]);
+  return (
+    <div ref={root} key={pop.visit} className="tonton-react fixed right-4 top-[calc(4rem+env(safe-area-inset-top)+3.25rem)] z-30 h-[52px] w-[52px]">
+      <Mascot key={pop.id} mood={pop.mood} size={52} quiet className="absolute inset-0" />
+      <div
+        className={`absolute bottom-2 right-[calc(100%+6px)] w-max max-w-[15rem] origin-bottom-right ${leaving ? SHRINK : ENTRANCE[pop.entrance]}`}
+      >
+        <span
+          aria-hidden="true"
+          className="absolute -right-1.5 bottom-3 -z-10 h-3 w-3 rotate-45 rounded-sm bg-paper-lift ring-1 ring-rule [clip-path:polygon(0_0,100%_0,100%_100%)]"
+        />
+        <button
+          key={pop.id}
+          type="button"
+          {...bubble}
+          aria-label="Kapat"
+          className="tt-bubble relative block w-full select-none overflow-hidden rounded-2xl rounded-br-md border-l-2 border-tonton bg-paper-lift px-3.5 py-2.5 text-left ring-1 ring-rule shadow-bubble paper-grain animate-bubble-in [animation-delay:120ms] [-webkit-touch-callout:none] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tonton/40"
+        >
+          <Kicker text={pop.kicker} />
+          <span className="block text-[14px] font-semibold leading-snug text-ink">{pop.text}</span>
+          <Stay ms={pop.stayMs} />
         </button>
       </div>
     </div>
   );
+}
+
+/**
+ * Tonton wanders onto the screen now and then, reacts to a grade on the
+ * flashcard screen, and says hello once a day. When and what is the
+ * director's call (lib/tontonDirector.ts); this only draws the current
+ * pop and hands taps back.
+ */
+function TontonPopups() {
+  const location = useLocation();
+  const queryClient = useQueryClient();
+  const { pop, leaving } = useSyncExternalStore(director.subscribe, director.getView);
+
+  useEffect(() => director.attach(() => readSnapshot(queryClient)), [queryClient]);
+  useEffect(() => {
+    director.route(location.pathname);
+  }, [location.pathname]);
+
+  if (!pop || !getToken()) return null;
+  return pop.place === "top" ? <Reaction pop={pop} leaving={leaving} /> : <Visit pop={pop} leaving={leaving} />;
 }
 
 export default TontonPopups;
