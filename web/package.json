@@ -1,7 +1,8 @@
 {
-  "name": "web",
+  "name": "kelimece-web",
+  "version": "1.0.0",
+  "description": "Kelimece web app: React 19 + Vite PWA.",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

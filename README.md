@@ -1,260 +1,142 @@
-# Flashcards
+# Kelimece
 
-A spaced repetition app. You write cards, the app decides when to show them again.
+**English vocabulary for Turkish learners — your own words as magazine-cover flashcards, a 60-unit course, and Tonton, a character who actually shows up.**
 
-The scheduling is SM-2, the algorithm behind Anki and SuperMemo. Every time you grade a card,
-the interval before you see it next either grows or collapses back to a day. Cards you find easy
-drift out to weeks and months; cards you keep forgetting stay in your face. Reviewing a full deck
-of a hundred cards takes a couple of minutes a day once the intervals settle.
+Kelimece is a progressive web app built for one learner first: a few words a day, remembered for good. You add the words you meet in the wild (a series, a street sign, a meeting); the app turns each one into a rich card — meanings, patterns, example sentences, the chunks it lives in, its family, one thing to watch — and brings it back on an SM-2 schedule until it sticks. Alongside your own words runs a structured A1→C1 course with lessons, dialogues, grammar notes and unit tests.
 
-The repository holds two things: an Express API backed by Postgres, and a React web client.
-A mobile client is planned; the API doesn't assume anything about who is calling it.
+<p align="center">
+  <img src="docs/screenshots/home-and-cards.png" alt="Home page, card front and card back" width="900">
+</p>
 
-## How the scheduling works
+## Features
 
-Each card carries three numbers: `repetitions` (how many times you've recalled it in a row),
-`interval` (days until it's next due), and `ease_factor` (how easy you find it, starting at 2.5).
+**Your words, as covers**
+- Every word gets a photograph and its own ink pulled from that photo; the card front reads like a magazine cover, the back is numbered meanings on paper. Examples, collocations and related words live on a separate sheet and on the word page, so the card itself stays word + meaning.
+- Flip, then swipe: left = didn't know, up = hard, right = knew it. A rubber stamp confirms the verdict; the pile shortens as you go.
+- SM-2 scheduling: a lapse comes back in ten minutes, a pass returns at your local midnight on the next interval. "How well you know it" decides how rarely you see it.
+- Front page as a dateline: today's streak, what is waiting, a newsstand of the next covers, and the contents list with each word's next review.
 
-When you grade a card from 0 to 5:
+**A course, on the same paper**
+- 60 units, A1 → C1, ~900 words: a lesson path per unit with meet / listen / recall rounds, a short dialogue that puts the unit's words to work, a grammar note in Tonton's voice with a mini quiz, and a unit test that gates the next unit.
+- A placement test opens the path at the right level; any unit can be tested out of.
 
-- **Below 3** — you forgot it. `repetitions` resets to 0 and the interval drops to 1 day.
-- **3 or above** — you recalled it. The first success schedules it for tomorrow, the second for
-  six days out, and after that each interval is the previous one multiplied by the ease factor.
+**Tonton**
+- The mascot has a director, not a timer: a hello once a day, unexpected visits with different entrances, reactions to a run of right answers or a returning card, a nudge when you stare at a card too long, and an evening word when the streak is at risk. Long-press hushes him for two hours; dismiss him twice quickly and he takes the hint.
 
-The ease factor itself moves with your grades, using SM-2's formula, and never drops below 1.3 —
-that floor is what stops a card you keep failing from being scheduled every few minutes forever.
+**Built for the phone**
+- Installable PWA with an offline shell, Web Push reminders at the hour you choose (sent only when something is actually due), spoken words via the device voice, and a keyboard path for the desktop.
 
-The web client exposes four of the six grades, which is what Anki does too: Again (1), Hard (3),
-Good (4), Easy (5). Grades 0 and 2 exist in the API but add little in practice.
+<p align="center">
+  <img src="docs/screenshots/examples-summary-word.png" alt="Examples sheet, session summary and the word page" width="900">
+</p>
 
-Whenever a deck has at least 4 cards, the study screen grades itself: instead of the four buttons
-above, it shows the front, then a 4-option multiple-choice quiz built from other cards' backs in
-the same deck (`lib/quiz.ts`), and maps a correct pick to Good (4) and a wrong one to Again (1).
-Decks too small to draw 3 distinct distractors from fall back to the plain self-graded reveal.
+<p align="center">
+  <img src="docs/screenshots/course.png" alt="Course path, a lesson and a grammar note" width="900">
+</p>
 
-See `backend/src/services/srs.service.ts` for the implementation and its tests.
+<p align="center">
+  <img src="docs/screenshots/tonton.png" alt="Tonton visiting the home page" width="300">
+</p>
 
 ## Stack
 
-**Backend** — Node, TypeScript, Express 5, Postgres (via `pg`), Zod for request validation,
-bcrypt for password hashing, JWT for sessions, Vitest for tests.
+| | |
+|---|---|
+| **Web** | React 19, TypeScript, Vite 8, Tailwind CSS v4, TanStack Query, React Router 7, `vite-plugin-pwa` (Workbox, custom service worker) |
+| **API** | Node, TypeScript, Express 5, PostgreSQL (`pg`), Zod, JWT + bcrypt, `web-push`, Vitest |
+| **Hosting** | Web on Vercel, API on Render, Postgres on Neon, hourly reminder job on GitHub Actions |
 
-**Web** — Vite, React 19, TypeScript, Tailwind v4, TanStack Query, React Router.
+## How it works
 
-## Layout
+### Scheduling
+
+Each card carries `repetitions`, `interval` (days) and `ease_factor` (starts at 2.5). A grade below 3 resets the card and brings it back ten minutes later; 3 or above schedules the first success for tomorrow, the second for six days out, and every later one for the previous interval × ease. The ease factor moves with your grades and never drops below 1.3. Due dates are stored as `timestamptz` and land on the learner's local midnight (`LEARNER_TIMEZONE`, default `Europe/Istanbul`), so "tomorrow" means tomorrow whatever hour you studied. See [`backend/src/services/srs.service.ts`](backend/src/services/srs.service.ts) and its tests.
+
+### Cards
+
+A personal card is a small document: `senses[]` (part of speech, meaning, pattern, example, its Turkish), `collocations[]`, `related[]`, `watch_out`, a one-line `hook` that ties the photo to the word, plus `tint` and `focal` — the colour pulled from the photo and where its subject sits, used by the covers and thumbnails. Photos are resized on upload and stored in Postgres, served by an unguessable token.
+
+### Reminders
+
+Turning reminders on stores a Web Push subscription with the chosen hour and timezone. A public, idempotent `POST /api/v1/push/run` is called every hour by [`.github/workflows/reminders.yml`](.github/workflows/reminders.yml); it sends at most one notification per device per local day, and only when cards have been due for at least an hour. VAPID keys are generated once and kept in the `settings` table.
+
+### Design system
+
+One warm paper in three tints (page, lifted sheet, recessed band), tan hairlines, umber shadows, a bistre ink. Colours carry meaning: vermilion for *due / missed*, moss for *known / later*, gilt for *hard* and the streak. Each word adds a fourth ink from its photograph. The motion scale, keyframes and the `tint-*` utilities live in [`web/src/index.css`](web/src/index.css); the per-word colour helper in [`web/src/lib/tint.ts`](web/src/lib/tint.ts).
+
+## Running it locally
+
+Prerequisites: Node 22+, a Postgres database (Neon, Supabase or local).
+
+```bash
+# 1. API
+cd backend
+cp .env.example .env          # DATABASE_URL, JWT_SECRET, CORS_ORIGIN
+psql "$DATABASE_URL" -f schema.sql
+npm install
+npm run dev                   # http://localhost:3000
+
+# 2. Web
+cd ../web
+npm install
+npm run dev                   # http://localhost:5173
+```
+
+Optional API settings: `LEARNER_TIMEZONE` (default `Europe/Istanbul`), `ANTHROPIC_API_KEY` (enables auto-filling a new card's meanings and examples; without it the endpoint answers 503 and everything else works), `PUBLIC_API_URL` (absolute base for image URLs behind a proxy).
+
+Checks:
+
+```bash
+cd backend && npx tsc --noEmit && npx vitest run
+cd web && npm run lint && npm run build
+```
+
+## API
+
+All routes are under `/api/v1`; everything except `auth/*`, `images/:token` and `push/run` needs `Authorization: Bearer <token>`.
+
+| Area | Routes |
+|---|---|
+| Auth | `POST auth/register`, `POST auth/login` |
+| Decks | `GET decks`, `POST decks`, `POST decks/personal`, `PUT decks/:id`, `DELETE decks/:id` |
+| Cards | `GET decks/:id/cards`, `GET decks/:id/cards/due`, `POST decks/:id/cards`, `POST decks/:id/cards/suggest`, `PUT decks/:id/cards/:cardId`, `DELETE decks/:id/cards/:cardId`, `POST decks/:id/cards/:cardId/review` |
+| Course | `GET decks/:id/units`, `POST decks/:id/units/:unitId/result`, `POST decks/:id/placement` |
+| Streak | `GET streak`, `POST streak` |
+| Images | `POST images`, `GET images/:token` |
+| Push | `GET push/key`, `GET push/status`, `POST push/subscribe`, `POST push/unsubscribe`, `POST push/test`, `POST push/run` |
+
+## Project layout
 
 ```
 flashcards/
 ├── backend/
-│   ├── schema.sql              tables: users, decks, cards
+│   ├── schema.sql                 users, decks, cards, units, unit_results, images, settings, push_subscriptions
+│   ├── content/                   the course: one JSON per unit (words, dialogue, grammar note)
 │   └── src/
-│       ├── server.ts
-│       ├── db.ts               pg pool
-│       ├── routes/             auth, deck, card
-│       ├── controllers/
-│       ├── middleware/         bearer token check
-│       └── services/           the SM-2 algorithm, plus its tests
-└── web/
-    └── src/
-        ├── lib/api.ts          fetch wrapper: attaches the token, throws ApiError
-        ├── lib/themes.ts       the pastel palette, cycled per deck
-        ├── components/
-        └── pages/              Login, Register, Decks, DeckDetail, Study
+│       ├── server.ts              Express app, CORS, routes
+│       ├── controllers/           auth, deck, card, unit, streak, image, push, suggest
+│       ├── routes/                one router per controller
+│       ├── middleware/            bearer-token check
+│       └── services/              SM-2 (srs.service.ts) + tests
+├── web/
+│   └── src/
+│       ├── pages/                 Kartlar (home), Flashcards, WordPage, Kurs, Study, UnitTest, Grammar, Dialogue, Placement, auth
+│       ├── components/            Mascot, TontonPopups, Sheet, WordCardBack, LearningPath, QuizOptions, …
+│       ├── lib/                   api, tint, tonton + tontonDirector, reminders, speech, quiz, path, …
+│       ├── sw.ts                  service worker: precache + push handlers
+│       └── index.css              design tokens, motion scale, utilities
+├── docs/screenshots/
+└── .github/workflows/             ci.yml (typecheck, tests, lint, build) · reminders.yml (hourly push job)
 ```
 
-## Running it locally
+## Deployment
 
-You need Node 20 or newer — the backend's dev script relies on `--env-file` — and a Postgres
-database. A free Neon instance is enough.
+- **Web** — Vercel, root `web/`, build `npm run build`, output `dist/`; set `VITE_API_URL` to the API's `/api/v1` base.
+- **API** — Render (or any Node host), root `backend/`, build `npm ci && npm run build`, start `npm start`; set `DATABASE_URL`, `JWT_SECRET`, `CORS_ORIGIN` (the web origin). `GET /` reports the deployed commit.
+- **Reminders** — the GitHub Actions cron in `.github/workflows/reminders.yml` calls `push/run` hourly; point it at your API URL.
 
-Create the tables:
+## Roadmap
 
-```bash
-psql "$DATABASE_URL" -f backend/schema.sql
-```
-
-Point the API at your database:
-
-```bash
-cd backend
-cp .env.example .env      # then fill in DATABASE_URL and JWT_SECRET
-npm install
-npm run dev               # http://localhost:3000
-```
-
-Then, in a second terminal:
-
-```bash
-cd web
-npm install
-npm run dev               # http://localhost:5173
-```
-
-The client talks to `http://localhost:3000/api/v1` by default. Set `VITE_API_URL` if your API
-lives somewhere else.
-
-## API
-
-Everything is under `/api/v1`. The deck and card routes need an `Authorization: Bearer <token>`
-header; the auth routes don't.
-
-| Method | Path | Body | Returns |
-| --- | --- | --- | --- |
-| POST | `/auth/register` | `{ email, password }` | `{ user }` |
-| POST | `/auth/login` | `{ email, password }` | `{ token }` |
-| GET | `/decks` | | `{ decks }` |
-| POST | `/decks` | `{ name }` | `{ deck }` |
-| PUT | `/decks/:id` | `{ name }` | `{ deck }` |
-| DELETE | `/decks/:id` | | `{ message }` |
-| GET | `/decks/:deckId/cards` | | `{ cards }` |
-| POST | `/decks/:deckId/cards` | `{ front, back, tag? }` | `{ card }` |
-| PUT | `/decks/:deckId/cards/:cardId` | `{ front, back }` | `{ card }` |
-| DELETE | `/decks/:deckId/cards/:cardId` | | `{ message }` |
-| GET | `/decks/:deckId/cards/due` | | `{ cards }` — due now, soonest first, max 20 |
-| POST | `/decks/:deckId/cards/:cardId/review` | `{ quality }` | `{ card }` — runs SM-2 |
-
-Passwords must be at least six characters. Every query is scoped to the user in the token, so
-you can't read or write another account's decks by guessing an id.
-
-## Notes on the client
-
-The token lives in `localStorage`. `lib/api.ts` is the only place that knows that: it attaches the
-header, throws a typed `ApiError` on a failed response, and on a 401 it clears the token and sends
-you back to the login page. Nothing else calls `fetch`.
-
-Reads go through TanStack Query under three keys — `["decks"]`, `["cards", deckId]` and
-`["dueCards", deckId]` — and every write invalidates the keys it touched.
-
-The study screen is the one place that deliberately doesn't read live query data. Grading a card
-pushes its `due_date` into the future, so refetching the due list mid-session returns a shorter
-one, and anything indexing into it would skip cards. Instead the session snapshots the due list
-once, when the fetch settles, and works from that copy. The caches are refreshed when you leave.
-
-A card's `back` can optionally be written as `"(pos) meaning emoji"` — e.g. `"(verb) başarmak 🏆"`.
-`lib/cardBack.ts` pulls that apart so the part of speech and the emoji render as their own badge/icon
-instead of sitting inline in the text; a `back` that doesn't follow the convention just renders as
-plain text. Pronunciation (`lib/speech.ts`) reads a card's `front` aloud with the browser's own
-speech synthesis — no audio files, no backend involved.
-
-Cards can also carry a `tag` (e.g. `"Day 3"`) to group a large deck into a collapsible accordion
-(`components/CardGroups.tsx`) instead of listing every card at once; a deck with no tagged cards
-renders exactly as before.
-
-Two more optional fields: `example_sentence` (front used in a sentence, shown in italics wherever
-the meaning is) and `image_url` (a photo, shown instead of the emoji). `image_url` is deliberately
-sparse in the seeded deck — a photo only helps for concrete nouns; most vocabulary (discourse
-markers, abstract adjectives, verbs) has no meaningful photo, so those cards keep their emoji.
-
-A fourth field, `mnemonic`, holds a memory aid — for the seeded deck, mostly the word's Latin/Greek
-root rather than a forced sound-alike pun, since a pun forced onto a function word like "however"
-reads as gimmicky and a root at least teaches something reusable. Shown as a collapsed "💡 Memory
-tip" disclosure so it doesn't clutter the default view.
-
-## Installing it as an app
-
-The web client is a PWA (`vite-plugin-pwa`, manifest + service worker + icons under
-`web/public/icons/`). On Android/desktop Chrome, the browser offers an "Install" prompt; on iOS
-Safari, use Share → Add to Home Screen. Either way it opens without browser chrome, using the icon
-and name from `web/vite.config.ts`'s `manifest` block.
-
-## Tests
-
-The SM-2 implementation is unit tested, since it's the one piece where a subtle mistake quietly
-ruins the scheduling months later:
-
-```bash
-cd backend && npm test
-```
-
-The web client is checked with the compiler and the linter:
-
-```bash
-cd web && npm run build && npm run lint
-```
-
-## Deploying
-
-The two halves deploy separately. The database is already remote if you're on Neon, so there are
-three pieces: Postgres, the API, and the static client.
-
-Apply the schema to the production database once:
-
-```bash
-psql "$PRODUCTION_DATABASE_URL" -f backend/schema.sql
-```
-
-Deploy the API first, because the client bakes the API's address into its bundle at build time and
-you need the URL before you can build it. Any host that runs `npm start` works — Render, Railway,
-Fly. Point it at the `backend` directory and run:
-
-```bash
-npm ci --include=dev && npm run build   # build
-npm start                               # run
-```
-
-`--include=dev` is not optional. Hosts set `NODE_ENV=production`, which makes npm skip
-devDependencies — and `typescript` and the `@types/*` packages live there, so a plain
-`npm install` leaves `tsc` with nothing to compile against and the build dies.
-
-The service needs:
-
-| Variable | Value |
-| --- | --- |
-| `DATABASE_URL` | your production Postgres connection string |
-| `JWT_SECRET` | a fresh secret, not the one from your laptop — `openssl rand -base64 32` |
-| `CORS_ORIGIN` | where the client is served from; comma-separated for more than one |
-| `NODE_ENV` | `production`, so Express stops putting stack traces in error responses |
-
-`PORT` is set by the host and read from the environment; don't set it yourself. If `DATABASE_URL` or
-`JWT_SECRET` is missing the server refuses to start, rather than booting green and failing on the
-first request. A trailing slash on `CORS_ORIGIN` is ignored, since browsers never send one.
-
-Then deploy the client with `web` as the project root. Vercel and Netlify both detect Vite. Set
-`VITE_API_URL` to the API's address including the path prefix — `https://your-api.onrender.com/api/v1`
-— before the first build. It is compiled into the JavaScript, so changing it later means rebuilding.
-
-Because the client is a single-page app, the host has to serve `index.html` for routes like
-`/decks/12` instead of returning a 404. `web/vercel.json` does this on Vercel; on Netlify add a
-`_redirects` file containing `/* /index.html 200`.
-
-Finally, come back to the API and set `CORS_ORIGIN` to the client's real URL. The API is deployed
-twice: once to learn its address, once to learn the client's.
-
-## Where it runs
-
-| Piece | Service | Address |
-| --- | --- | --- |
-| Web | Vercel, project root `web` | https://flashcards-two-black.vercel.app |
-| API | Render, service `flashcards-api`, root `backend` | https://flashcards-api-66g9.onrender.com |
-| Database | Neon, project `flashcards-prod` | — |
-
-Both platforms redeploy on every push to `main`.
-
-Two pieces of configuration live in a dashboard and in no committed file, so they would be lost if
-either service were recreated from scratch:
-
-- Render's **Build Command**: `npm ci --include=dev && npm run build`, for the reason above.
-- The environment variables listed in the previous section. `CORS_ORIGIN` has to be the frontend's
-  origin — no path, no trailing slash — and has to change whenever the frontend's URL does.
-
-Everything is on a free tier, which costs latency rather than money: Render sleeps after fifteen
-minutes of quiet and takes about a minute to wake, and Neon's compute sleeps after five and takes
-about half a second. The first visit after a long pause is slow; the rest are not.
-
-## Rough edges
-
-Worth knowing before you build on this:
-
-- The API's error messages are Turkish while the interface is English. The client maps status
-  codes to its own copy rather than showing whatever the server said.
-- There is no error-handling middleware, so an unhandled throw becomes a 500 with an HTML body.
-  Registering an email that already exists is the case you'll actually hit.
-- Sessions are a 180-day JWT with no refresh. When it expires you sign in again.
-- The decks page fetches each deck's cards to show its counts, which is one request per deck.
-  Fine for a personal deck list, not for hundreds.
-- `due` returns at most 20 cards. A long backlog is worked through 20 at a time.
-
-## What's next
-
-A React Native client, sharing the same API. Deck sharing and import/export are the obvious
-features after that.
+- Multi-user onboarding and a native "add a word" flow with automatic meanings, examples and a photo suggestion
+- Import from a phone's notes / screenshots
+- A second language pair

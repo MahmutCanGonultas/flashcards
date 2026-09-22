@@ -1,7 +1,7 @@
 {
-  "name": "backend",
+  "name": "kelimece-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Kelimece API: Express 5 + Postgres, SM-2 scheduling, push reminders.",
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch --env-file=.env src/server.ts",
