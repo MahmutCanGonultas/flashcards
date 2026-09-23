@@ -230,7 +230,7 @@ function WordPage() {
             <header className="relative isolate mt-3 overflow-hidden rounded-[28px] cover-ground px-5 pb-7 pt-4 text-white">
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute -bottom-[0.24em] right-1 -z-10 select-none text-[230px] font-black leading-none tracking-[-0.06em] text-white/[0.13]"
+                className="pointer-events-none absolute -bottom-[0.24em] right-1 -z-10 select-none text-[230px] font-black leading-none tracking-[-0.06em] text-white/[0.08]"
               >
                 {card.front.charAt(0)}
               </span>
@@ -241,8 +241,8 @@ function WordPage() {
               </div>
               <div className="mt-10 flex items-end justify-between gap-3">
                 <h1
-                  className={`min-w-0 wrap-break-word font-black leading-[0.95] tracking-[-0.025em] animate-[cover-line_420ms_var(--ease-soft)_120ms_both] ${
-                    card.front.length > 11 ? "text-[42px]" : "text-[54px]"
+                  className={`min-w-0 wrap-break-word font-black leading-[0.95] tracking-[-0.025em] [text-shadow:0_3px_0_rgba(0,0,0,0.14)] animate-[cover-line_420ms_var(--ease-soft)_120ms_both] ${
+                    card.front.length > 11 ? "text-[42px]" : "text-[56px]"
                   }`}
                   style={{ viewTransitionName: `word-${card.id}` }}
                 >

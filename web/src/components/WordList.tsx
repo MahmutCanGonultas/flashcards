@@ -43,7 +43,7 @@ export function WordRow({ deckId, card, mark = (t) => t }: { deckId: number | st
         {card.front.charAt(0)}
       </span>
       <div className="min-w-0">
-        <p className="flex flex-wrap items-baseline gap-x-2 text-[17px] font-black leading-tight text-ink">
+        <p className="flex flex-wrap items-baseline gap-x-2 text-[18px] font-black leading-tight text-ink">
           <span className="wrap-break-word" style={{ viewTransitionName: `word-${card.id}` }}>
             {mark(card.front)}
           </span>

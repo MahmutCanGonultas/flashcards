@@ -250,6 +250,8 @@ function Quiz({ items, title, backTo, topicSlug, tone }: { items: QuizItem[]; ti
 
   if (!item) return null;
   const q = item.question;
+  // "Hangi cümle yanlış?": the right pick is the broken sentence, so it is struck out once found.
+  const spotting = q.kind === "choice" && /yanlış\?$/i.test(q.prompt.trim());
   const built = answer.built ?? [];
   const fill = checked ? (checked.right ? (q.kind === "type" ? (answer.typed ?? "").trim() : rightAnswer(q)) : rightAnswer(q)) : null;
 
@@ -273,7 +275,7 @@ function Quiz({ items, title, backTo, topicSlug, tone }: { items: QuizItem[]; ti
 
       <main className="flex-1 pb-44 pt-6">
         {item.retry && <p className="mb-2 text-[13px] font-black uppercase tracking-[0.1em] text-tangerine-ink">Önceki hata</p>}
-        <h1 className="text-[24px] font-black leading-tight text-ink">{KIND_PROMPT[q.kind]}</h1>
+        <h1 className="text-[24px] font-black leading-tight text-ink">{spotting ? "Yanlış cümleyi bul" : KIND_PROMPT[q.kind]}</h1>
 
         <div className="mt-5" key={item.key}>
           <Asker mood={checked ? (checked.right ? "happy" : "sad") : "think"}>
@@ -317,7 +319,9 @@ function Quiz({ items, title, backTo, topicSlug, tone }: { items: QuizItem[]; ti
                         {shown + 1}
                       </span>
                       <span className="min-w-0 flex-1">
-                        <Rich text={q.options[optionIndex]} />
+                        <span className={spotting && checked && optionIndex === q.answer ? "line-through decoration-[3px]" : ""}>
+                          <Rich text={q.options[optionIndex]} />
+                        </span>
                       </span>
                     </button>
                   </li>

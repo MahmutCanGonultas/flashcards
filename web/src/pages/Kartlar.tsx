@@ -96,15 +96,15 @@ function Covers({ cards, animate }: { cards: Card[]; animate: boolean }) {
           style={{ ...tintStyle(card), ...delay(120 + i * 60) }}
           className={`relative isolate flex aspect-[4/5] flex-col overflow-hidden rounded-[18px] cover-ground p-2.5 pb-3.5 text-white ${animate ? "animate-rise-spring" : ""}`}
         >
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute -bottom-[0.2em] -right-[0.04em] -z-10 select-none text-[118px] font-black leading-none tracking-[-0.06em] text-white/[0.14]"
-          >
-            {card.front.charAt(0)}
-          </span>
           <StrengthBars card={card} onDark className="self-end" />
-          <span className="mt-auto text-[10px] font-black uppercase tracking-[0.08em] text-white/85">{STAGE_LABEL[stageOf(card)]}</span>
-          <span className={`mt-0.5 wrap-break-word font-black leading-[1.02] tracking-[-0.01em] ${card.front.length > 9 ? "text-[15px]" : "text-[19px]"}`}>{card.front}</span>
+          <span className="mt-auto text-[9px] font-black uppercase tracking-[0.08em] text-white/80">{STAGE_LABEL[stageOf(card)]}</span>
+          <span
+            className={`mt-0.5 wrap-break-word font-black leading-[1.02] tracking-[-0.015em] [text-shadow:0_2px_0_rgba(0,0,0,0.14)] ${
+              card.front.length <= 6 ? "text-[23px]" : card.front.length <= 8 ? "text-[20px]" : card.front.length <= 10 ? "text-[17px]" : "text-[14px]"
+            }`}
+          >
+            {card.front}
+          </span>
           {i === 2 && extra > 0 && (
             <span className="absolute left-2 top-2 rounded-full bg-white px-2 py-0.5 text-[13px] font-black text-ink shadow-[0_2px_0_0_rgba(0,0,0,0.15)]">+{extra}</span>
           )}

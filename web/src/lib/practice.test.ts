@@ -12,6 +12,7 @@ import {
   ownGap,
   sentenceGaps,
   sentencesOf,
+  skipStep,
   TYPED_KINDS,
 } from "./practice";
 import { makeCard } from "./testCards";
@@ -34,6 +35,26 @@ const commit = makeCard({
     { en: "commit a crime", tr: "suç işlemek" },
     { en: "be fully committed to sth", tr: "kendini tamamen adamak" },
   ],
+});
+
+describe("skipStep", () => {
+  const plan = [
+    { key: "1:0", cardId: 1, kind: "recall" as const, graded: true, attempt: 0 },
+    { key: "2:0", cardId: 2, kind: "produce" as const, graded: true, attempt: 0 },
+    { key: "3:0", cardId: 3, kind: "cloze" as const, graded: true, attempt: 0 },
+  ];
+
+  it("puts a passed card at the end of the round once, still graded", () => {
+    const once = skipStep(plan, 0);
+    expect(once.map((s) => s.key)).toEqual(["1:0", "2:0", "3:0", "1:0:skip"]);
+    expect(once[3]).toMatchObject({ cardId: 1, graded: true, skipped: true });
+    // passed again: it leaves the round and stays due
+    expect(skipStep(once, 3)).toBe(once);
+  });
+
+  it("lets the last card go instead of asking it again at once", () => {
+    expect(skipStep(plan, 2)).toBe(plan);
+  });
 });
 
 describe("sentencesOf", () => {

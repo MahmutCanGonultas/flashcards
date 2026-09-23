@@ -65,6 +65,8 @@ export type Exercise = {
   openTranslation?: boolean;
   /** recall after a miss: the word's sentence under its meaning. */
   support?: boolean;
+  /** Passed once without an answer and put back at the end of the round. */
+  skipped?: boolean;
 };
 
 export type Line = { en: string; tr: string | null };
@@ -215,6 +217,17 @@ export function repeatOf(card: Card, attempt: number): Exercise {
 /** The pause after a first real recall, to write a sentence of your own with the word. */
 export function writeStep(card: Card): Exercise {
   return { key: `${card.id}:write`, cardId: card.id, kind: "write", graded: false, attempt: 0 };
+}
+
+/**
+ * Passing a card without answering it ("Geç"): it goes to the end of the
+ * round once, so it's still asked today. Passed a second time — or passed
+ * as the round's last card — it leaves unanswered and simply stays due.
+ */
+export function skipStep(plan: Exercise[], index: number): Exercise[] {
+  const step = plan[index];
+  if (!step || step.skipped || index >= plan.length - 1) return plan;
+  return [...plan, { ...step, key: `${step.key}:skip`, skipped: true }];
 }
 
 /** Where a step goes back in: `gap` steps later, or last if the session ends sooner. */

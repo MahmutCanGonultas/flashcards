@@ -23,6 +23,7 @@ import {
   letterPattern,
   repeatOf,
   sentencesOf,
+  skipStep,
   writeStep,
   type Exercise,
   type Gap,
@@ -43,7 +44,7 @@ import Cover from "../components/Cover";
 import StrengthBars from "../components/StrengthBars";
 import TontonLine from "../components/TontonLine";
 import Confetti from "../components/Confetti";
-import { CheckIcon, SpeakerIcon, XIcon } from "../components/icons";
+import { ArrowRightIcon, CheckIcon, SpeakerIcon, XIcon } from "../components/icons";
 
 /**
  * "Tekrar et": the learner's own words, asked the way each one needs.
@@ -79,6 +80,10 @@ const GRADES: { grade: Grade; label: string; button: string; stamp: string; wash
   { grade: 5, label: "Bildim", button: "bg-grass", stamp: "border-grass text-grass-ink", wash: "bg-grass/15", key: "3", arrow: "ArrowRight" },
 ];
 const gradeOf = (grade: Grade) => GRADES.find((g) => g.grade === grade) ?? GRADES[0];
+/** Passing a card without answering: grey, like something set aside. */
+const SKIP = { label: "Geç", stamp: "border-hare text-graphite", wash: "bg-rule/50" };
+type Leave = Grade | "skip";
+const hintOf = (hint: Leave) => (hint === "skip" ? SKIP : gradeOf(hint));
 
 const reducedMotion = () => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
 /** Entrance delays vanish under reduced motion: the keyframes already collapse, the delays would not. */
@@ -92,6 +97,12 @@ const SETTLE_MS = THROW_MS - 60;
 
 /** The big buttons of the screen: a solid colour on a darker band of itself. */
 const BIG = "face flex min-h-[56px] w-full items-center justify-center rounded-2xl text-[16px] font-black uppercase tracking-[0.08em] text-white shadow-button press-3d focus-visible:outline-none focus-visible:ring-4 disabled:bg-rule disabled:text-hare disabled:shadow-none";
+/**
+ * The word on a card is the loudest thing on the screen: the shorter it is,
+ * the bigger it gets, and it sits a little off its colour on a soft shadow.
+ */
+const wordSize = (word: string) => (word.length <= 7 ? "text-[64px]" : word.length <= 9 ? "text-[56px]" : word.length <= 12 ? "text-[46px]" : "text-[38px]");
+const WORD_ON_COVER = "wrap-break-word font-black leading-[0.95] tracking-[-0.025em] [text-shadow:0_3px_0_rgba(0,0,0,0.14)]";
 /** A white speaker on a coloured cover, its icon in the word's own ink. */
 const COVER_SPEAKER = "!h-12 !w-12 !bg-white !text-(--c-ink) !shadow-[inset_0_-4px_0_0_rgba(0,0,0,0.12)]";
 
@@ -240,13 +251,13 @@ function MeetStep({ card, counter, onDone }: { card: Card; counter: string; onDo
 
   return (
     <div className="mt-6 animate-[card-rise_420ms_var(--ease-spring)]" style={tintStyle(card)}>
-      <Cover card={card} label={KIND_LABEL.meet} counter={counter} ornament={card.front.charAt(0)} className="min-h-[13rem]">
-        <div className="mt-auto pt-8">
-          {firstPos && <PosPill pos={firstPos} className="mb-2 !bg-white/25 !text-white" />}
-          <div className="flex items-end justify-between gap-3">
-            <h2 className={`min-w-0 wrap-break-word font-black leading-[0.95] tracking-[-0.025em] ${card.front.length > 11 ? "text-[38px]" : "text-[48px]"}`}>{card.front}</h2>
-            <SpeakButton text={card.front} size="md" className={COVER_SPEAKER} />
-          </div>
+      <Cover card={card} label={KIND_LABEL.meet} counter={counter} className="min-h-[15rem]">
+        <div className="flex flex-1 flex-col items-center justify-center py-4 text-center">
+          {firstPos && <PosPill pos={firstPos} className="mb-2.5 !bg-white/25 !text-white" />}
+          <h2 className={`max-w-full ${WORD_ON_COVER} ${wordSize(card.front)}`}>{card.front}</h2>
+        </div>
+        <div className="flex justify-end">
+          <SpeakButton text={card.front} size="md" className={COVER_SPEAKER} />
         </div>
       </Cover>
 
@@ -290,6 +301,24 @@ function MeetStep({ card, counter, onDone }: { card: Card; counter: string; onDo
   );
 }
 
+/**
+ * "Geç": on to the next card without marking anything. The card isn't
+ * graded; it comes back once at the end of the round, and if it's passed
+ * again it simply stays due for next time.
+ */
+function SkipButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="flex shrink-0 items-center gap-1 rounded-xl border-2 border-rule bg-white px-3 py-1.5 text-[12px] font-black uppercase tracking-[0.08em] text-graphite shadow-edge press hover:bg-paper-deep focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/30"
+    >
+      Geç
+      <ArrowRightIcon className="h-3.5 w-3.5" />
+    </button>
+  );
+}
+
 /* ---------------------------------------------------------------- flip -- */
 
 /**
@@ -303,17 +332,20 @@ function FlipStep({
   counter,
   remaining,
   onGrade,
+  onSkip,
 }: {
   card: Card;
   step: Exercise;
   counter: string;
   remaining: number;
   onGrade: (grade: Grade) => void;
+  /** On to the next card without an answer; nothing is written to the schedule. */
+  onSkip: () => void;
 }) {
   const [flipped, setFlipped] = useState(false);
   const [examplesOpen, setExamplesOpen] = useState(false);
   const [drag, setDrag] = useState<{ dx: number; dy: number } | null>(null);
-  const [leaving, setLeaving] = useState<Grade | null>(null);
+  const [leaving, setLeaving] = useState<Leave | null>(null);
   const dragStart = useRef<{ x: number; y: number; id: number } | null>(null);
   const flyTimer = useRef(0);
   const listen = step.kind === "listen";
@@ -352,6 +384,13 @@ function FlipStep({
     [flipped, leaving, onGrade],
   );
 
+  // Passing works face up or face down: the card drops out of the bottom.
+  const skip = useCallback(() => {
+    if (leaving !== null) return;
+    setLeaving("skip");
+    flyTimer.current = window.setTimeout(onSkip, reducedMotion() ? 0 : SETTLE_MS);
+  }, [leaving, onSkip]);
+
   // Swipes, only once the answer is showing.
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (!flipped || leaving !== null) return;
@@ -370,6 +409,7 @@ function FlipStep({
     if (dx > SWIPE_PX) grade(5);
     else if (dx < -SWIPE_PX) grade(1);
     else if (dy < -SWIPE_PX && Math.abs(dx) < SWIPE_PX) grade(3);
+    else if (dy > SWIPE_PX && Math.abs(dx) < SWIPE_PX) skip();
     else setDrag(null);
   };
 
@@ -378,6 +418,11 @@ function FlipStep({
       if (event.repeat || examplesOpen) return;
       const target = event.target as HTMLElement | null;
       if (target?.closest?.("input, textarea")) return;
+      if (event.key === "ArrowDown" || event.key === "4") {
+        event.preventDefault();
+        skip();
+        return;
+      }
       if (!flipped && (event.key === " " || event.key === "Enter")) {
         // A focused button or the card itself answers its own Enter.
         if (target?.closest?.("button, a, [role=button]")) return;
@@ -393,13 +438,13 @@ function FlipStep({
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [flipped, flip, grade, examplesOpen]);
+  }, [flipped, flip, grade, skip, examplesOpen]);
 
   // Where the top card is: dragged, thrown away, or resting.
   const dx = drag?.dx ?? 0;
   const dy = drag?.dy ?? 0;
   const flyX = leaving === 5 ? 520 : leaving === 1 ? -520 : 0;
-  const flyY = leaving === 3 ? -640 : leaving ? -40 : 0;
+  const flyY = leaving === "skip" ? 760 : leaving === 3 ? -640 : leaving ? -40 : 0;
   const topStyle: CSSProperties = leaving
     ? {
         transform: `translate(${flyX}px, ${flyY}px) rotate(${leaving === 5 ? 22 : leaving === 1 ? -22 : 0}deg) scale(0.96)`,
@@ -409,7 +454,7 @@ function FlipStep({
     : drag
       ? { transform: `translate(${dx}px, ${dy}px) rotate(${dx / 18}deg)` }
       : { transform: "translate(0, 0) rotate(0)", transition: "transform 260ms var(--ease-spring)" };
-  const swipeHint = drag && !leaving ? (dx > 40 ? 5 : dx < -40 ? 1 : dy < -40 ? 3 : null) : leaving;
+  const swipeHint: Leave | null = drag && !leaving ? (dx > 40 ? 5 : dx < -40 ? 1 : dy < -40 ? 3 : dy > 40 ? "skip" : null) : leaving;
   const hintOpacity = drag ? Math.min(1, Math.max(Math.abs(dx), Math.abs(dy)) / SWIPE_PX) : leaving ? 1 : 0;
   const caption =
     step.attempt > 0
@@ -420,7 +465,7 @@ function FlipStep({
           ? "Dinle, anlamını düşün, sonra çevir."
           : "Aklından geçir, sonra çevir.";
   const label = step.attempt > 0 ? "Bir daha" : KIND_LABEL[step.kind];
-  const mood: MascotMood = leaving === 5 ? "happy" : leaving === 1 ? "sad" : flipped ? "idle" : "think";
+  const mood: MascotMood = leaving === 5 ? "happy" : leaving === 1 ? "sad" : flipped || leaving === "skip" ? "idle" : "think";
 
   return (
     <>
@@ -445,14 +490,14 @@ function FlipStep({
           {swipeHint && (
             <div
               aria-hidden="true"
-              className={`pointer-events-none absolute inset-0 z-20 flex items-center justify-center rounded-[24px] ${gradeOf(swipeHint).wash}`}
+              className={`pointer-events-none absolute inset-0 z-20 flex items-center justify-center rounded-[24px] ${hintOf(swipeHint).wash}`}
               style={{ opacity: hintOpacity }}
             >
               <span
                 key={swipeHint}
-                className={`rounded-xl border-[3px] bg-white px-4 py-1.5 text-[26px] font-black uppercase tracking-[0.14em] animate-stamp ${gradeOf(swipeHint).stamp}`}
+                className={`rounded-xl border-[3px] bg-white px-4 py-1.5 text-[26px] font-black uppercase tracking-[0.14em] animate-stamp ${hintOf(swipeHint).stamp}`}
               >
-                {gradeOf(swipeHint).label}
+                {hintOf(swipeHint).label}
               </span>
             </div>
           )}
@@ -479,7 +524,7 @@ function FlipStep({
                   flipped ? "motion-reduce:opacity-0" : ""
                 }`}
               >
-                <Cover card={card} label={label} counter={counter} ornament={listen ? null : card.front.charAt(0)} className="h-full">
+                <Cover card={card} label={label} counter={counter} className="h-full">
                   {listen ? (
                     <div className="flex flex-1 flex-col items-center justify-center gap-5 text-center">
                       <button
@@ -496,20 +541,14 @@ function FlipStep({
                       <p className="max-w-[16rem] text-[18px] font-black leading-snug text-white">Duyduğun kelime ne demek?</p>
                     </div>
                   ) : (
-                    <div className="flex flex-1 flex-col justify-center">
-                      {firstPos && <PosPill pos={firstPos} className="mb-2.5 w-max !bg-white/25 !text-white" />}
-                      <h2
-                        className={`wrap-break-word font-black leading-[0.95] tracking-[-0.025em] animate-[cover-line_420ms_var(--ease-soft)_120ms_both] ${
-                          card.front.length > 11 ? "text-[42px]" : "text-[56px]"
-                        }`}
-                      >
-                        {card.front}
-                      </h2>
+                    <div className="flex flex-1 flex-col items-center justify-center text-center">
+                      {firstPos && <PosPill pos={firstPos} className="mb-3 !bg-white/25 !text-white" />}
+                      <h2 className={`max-w-full animate-[cover-line_420ms_var(--ease-soft)_120ms_both] ${WORD_ON_COVER} ${wordSize(card.front)}`}>{card.front}</h2>
                     </div>
                   )}
                   <div className="flex items-center gap-3">
                     <StrengthBars card={card} onDark />
-                    <span className="flex-1 text-[12px] font-black uppercase tracking-[0.1em] text-white/90">dokun · çevir</span>
+                    <span className="flex-1 text-[11px] font-black uppercase tracking-[0.1em] text-white/80">dokun · çevir</span>
                     {!listen && (
                       <span onClick={(event) => event.stopPropagation()}>
                         <SpeakButton text={card.front} size="md" className={COVER_SPEAKER} />
@@ -531,7 +570,7 @@ function FlipStep({
                   <span onPointerDown={(event) => event.stopPropagation()} className="shrink-0">
                     <SpeakButton text={card.front} size="sm" className="!bg-white !text-(--c-ink) !shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.12)]" />
                   </span>
-                  <p className="min-w-0 flex-1 truncate text-[24px] font-black leading-tight">{card.front}</p>
+                  <p className={`min-w-0 flex-1 truncate font-black leading-tight [text-shadow:0_2px_0_rgba(0,0,0,0.12)] ${card.front.length <= 10 ? "text-[30px]" : "text-[24px]"}`}>{card.front}</p>
                   {hasDetails && (
                     <button
                       type="button"
@@ -569,7 +608,11 @@ function FlipStep({
         </div>
       </div>
 
-      <p className="mt-3 text-center text-[13px] font-bold text-graphite">{caption}</p>
+      {/* Under the card: what to do, and the way past it without an answer. */}
+      <div className="mt-3 flex items-center justify-between gap-3">
+        <p className="min-w-0 text-[13px] font-bold leading-snug text-graphite">{caption}</p>
+        <SkipButton onClick={skip} />
+      </div>
 
       <Sheet isOpen={examplesOpen} onClose={() => setExamplesOpen(false)} title={card.front} kicker={pos ? posLabel(pos) : null} style={tintStyle(card)}>
         <WordCardBack card={card} variant="flat" />
@@ -632,7 +675,20 @@ const VERDICT_STYLE: Record<Verdict["tone"], { title: string; bar: "right" | "sl
  * mark that was really right (a synonym, a spelling it doesn't know) can be
  * taken back once.
  */
-function TypedStep({ card, step, counter, onDone }: { card: Card; step: Exercise; counter: string; onDone: (grade: Grade) => void }) {
+function TypedStep({
+  card,
+  step,
+  counter,
+  onDone,
+  onSkip,
+}: {
+  card: Card;
+  step: Exercise;
+  counter: string;
+  onDone: (grade: Grade) => void;
+  /** On to the next card without an answer. */
+  onSkip: () => void;
+}) {
   const [text, setText] = useState("");
   const [hints, setHints] = useState(0);
   const [verdict, setVerdict] = useState<Verdict | null>(null);
@@ -758,9 +814,12 @@ function TypedStep({ card, step, counter, onDone }: { card: Card; step: Exercise
             >
               💡 İpucu{hints > 0 ? ` · ${hints} harf` : ""}
             </button>
-            <button type="button" onClick={() => mark({ grade: 1, tone: "wrong" })} className="-mx-2 rounded-xl px-2 py-2 uppercase text-graphite hover:bg-paper-deep hover:text-ink">
-              Bilmiyorum
-            </button>
+            <span className="flex items-center gap-2">
+              <button type="button" onClick={() => mark({ grade: 1, tone: "wrong" })} className="rounded-xl px-2 py-2 uppercase text-graphite hover:bg-paper-deep hover:text-ink">
+                Bilmiyorum
+              </button>
+              <SkipButton onClick={onSkip} />
+            </span>
           </div>
           <TontonLine mood="think" size={46} className="mt-4">
             {step.kind === "produce"
@@ -928,6 +987,8 @@ function Session({ deckId, cards, mode }: { deckId: string; cards: Card[]; mode:
   );
   const [index, setIndex] = useState(0);
   const [results, setResults] = useState<Record<number, Result>>({});
+  // Cards passed without an answer at least once; the summary names the ones never answered.
+  const [skipped, setSkipped] = useState<ReadonlySet<number>>(() => new Set());
   const answeredRef = useRef(new Set<number>());
   const askedSentenceRef = useRef(new Set<number>());
   const recordedDayRef = useRef(false);
@@ -1008,6 +1069,15 @@ function Session({ deckId, cards, mode }: { deckId: string; cards: Card[]; mode:
     [step, card, plan, index, mode, recordStudyDay, sendReview],
   );
 
+  /** "Geç": no grade, nothing written; the card comes back at the end once. */
+  const skip = useCallback(() => {
+    if (!step || !card) return;
+    const next = skipStep(plan, index);
+    if (next !== plan) setPlan(next);
+    setSkipped((s) => new Set(s).add(card.id));
+    setIndex((i) => i + 1);
+  }, [step, card, plan, index]);
+
   const onFlipGrade = useCallback(
     (grade: Grade) => {
       if (grade === 1) playIncorrect();
@@ -1032,6 +1102,7 @@ function Session({ deckId, cards, mode }: { deckId: string; cards: Card[]; mode:
       <Summary
         cards={[...new Map(plan.map((s) => [s.cardId, byId.get(s.cardId)])).values()].filter((c): c is Card => Boolean(c))}
         results={results}
+        skipped={skipped}
         mode={mode}
         onDone={() => navigate(exitTo)}
       />
@@ -1047,9 +1118,9 @@ function Session({ deckId, cards, mode }: { deckId: string; cards: Card[]; mode:
       ) : step.kind === "write" ? (
         <WriteStep key={step.key} card={card} deckId={deckId} onSaved={onSaved} onDone={() => settle(null)} />
       ) : TYPED_KINDS.has(step.kind) ? (
-        <TypedStep key={step.key} card={card} step={step} counter={counter} onDone={settle} />
+        <TypedStep key={step.key} card={card} step={step} counter={counter} onDone={settle} onSkip={skip} />
       ) : (
-        <FlipStep key={step.key} card={card} step={step} counter={counter} remaining={plan.length - index} onGrade={onFlipGrade} />
+        <FlipStep key={step.key} card={card} step={step} counter={counter} remaining={plan.length - index} onGrade={onFlipGrade} onSkip={skip} />
       )}
     </>
   );
@@ -1075,8 +1146,22 @@ function useCountUp(target: number, ms = 600): number {
   return shown;
 }
 
-function Summary({ cards, results, mode, onDone }: { cards: Card[]; results: Record<number, Result>; mode: SessionMode; onDone: () => void }) {
+function Summary({
+  cards,
+  results,
+  skipped,
+  mode,
+  onDone,
+}: {
+  cards: Card[];
+  results: Record<number, Result>;
+  skipped: ReadonlySet<number>;
+  mode: SessionMode;
+  onDone: () => void;
+}) {
   const firsts = Object.values(results);
+  // Passed and never answered: nothing was written, so they are still waiting.
+  const passed = cards.filter((c) => skipped.has(c.id) && !results[c.id]).length;
   const known = firsts.filter((r) => r.grade >= 4).length;
   const hard = firsts.filter((r) => r.grade === 3).length;
   const missed = firsts.filter((r) => r.grade === 1).length;
@@ -1093,13 +1178,17 @@ function Summary({ cards, results, mode, onDone }: { cards: Card[]; results: Rec
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const verdict = practice
-    ? "Güzel alıştırma. Takvime dokunmadım; asıl tekrar sırası gelince."
-    : perfect
-      ? "Hepsini bildin. Bunlar artık daha seyrek gelecek."
-      : missed === 0
-        ? "Bildin ama zorlandıkların var; onları biraz daha sık getireceğim."
-        : `${missed} kelime kaçtı. On dakika sonra yine hazır, yarın da geri gelecek.`;
+  const answered =
+    firsts.length === 0
+      ? "Bu tur hiçbirini işaretlemedin; takvime dokunmadım."
+      : practice
+        ? "Güzel alıştırma. Takvime dokunmadım; asıl tekrar sırası gelince."
+        : perfect
+          ? "Hepsini bildin. Bunlar artık daha seyrek gelecek."
+          : missed === 0
+            ? "Bildin ama zorlandıkların var; onları biraz daha sık getireceğim."
+            : `${missed} kelime kaçtı. On dakika sonra yine hazır, yarın da geri gelecek.`;
+  const verdict = passed > 0 && firsts.length > 0 ? `${answered} Geçtiğin ${passed} kelime sırada bekliyor.` : passed > 0 ? `${answered} Geçtiğin kelimeler sırada bekliyor.` : answered;
 
   return (
     <div className="pt-4 text-center animate-rise-in">
@@ -1141,7 +1230,9 @@ function Summary({ cards, results, mode, onDone }: { cards: Card[]; results: Rec
                 <p className="truncate text-[13px] font-semibold leading-snug text-graphite">{meaningsOf(c).map((m) => m.meaning).join(" · ")}</p>
               </div>
               <div className="flex shrink-0 flex-col items-end gap-1 text-[11px] font-black tabular-nums">
-                {result && !result.graded ? (
+                {!result && skipped.has(c.id) ? (
+                  <span className="rounded-full bg-paper-deep px-2 py-0.5 text-graphite">geçildi · sırada</span>
+                ) : result && !result.graded ? (
                   <span className="rounded-full bg-paper-deep px-2 py-0.5 text-graphite">alıştırma</span>
                 ) : result?.failed ? (
                   <span className="rounded-full bg-berry-soft px-2 py-0.5 text-berry-ink">kaydedilemedi</span>

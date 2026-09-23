@@ -17,6 +17,7 @@ Kelimece is a progressive web app built for one learner first: a few words a day
 - A word that **holds** has to be produced: typed from its Turkish, into its sentence, into one of its chunks (“___ a crime”), by ear, and — once it is yours — into the sentence you wrote with it.
 - Typed answers are marked by the app, fairly: the right form scores full marks, the right word in another form (“commit” for “committed”) nearly so, a small spelling slip counts as hard, a hint caps the mark, and “my answer was right too” takes back a wrong mark once. The verdict arrives as a green, orange or red bar with Tonton's face on it.
 - A miss comes back three cards later, easier and with its sentence, until it is got; only the first answer of a session is written to the schedule. A word missed three times is marked *inatçı* (a leech) and gets extra support.
+- Any card can be passed without marking it — *Geç*, a swipe down, or the down arrow. Nothing is written; it comes back once at the end of the round, and if it's passed again it simply stays due for next time.
 - The moment a word is first recalled, you are asked to write a sentence of your own with it — the strongest cue a word can have. Later reviews blank the word out of it.
 
 **Your words, built to grow**
@@ -31,7 +32,7 @@ Kelimece is a progressive web app built for one learner first: a few words a day
 **Grammar, the learner's own list**
 - 21 topics in three levels (Beginner, Elementary, Pre-Intermediate), in the order they were taught: *to be*, possessives, *have got*, jobs, word types, the present simple, *wh-* questions, sentence order, *to / by / from*, numbers, ordinals and frequency, likes and dislikes, articles, countables, *there is / there are*, quantifiers, the present continuous, imperatives, linking words and the future.
 - Each topic is a page to read: sections with a rule, a table and examples whose parts are colour-coded and explained at the top (green for the form being taught, blue for what decides it, orange for a third part such as the time word), the Turkish under every sentence, a voice for every example, the mistakes people make, and Tonton's trick.
-- Then ten questions the way Duolingo asks them: pick one, type the gap, or build the sentence from tiles. A green or red bar says why; a miss comes back at the end; the first answers make the score, which is saved as the topic's best with up to three stars. A mixed round draws on the topics already practised, more from the weakest.
+- Then ten questions the way Duolingo asks them: pick one, find the wrong sentence, type the gap, or build the sentence from tiles with near-miss tiles mixed in. A green or red bar says why; a miss comes back at the end; the first answers make the score, which is saved as the topic's best with up to three stars. A mixed round draws on the topics already practised, more from the weakest.
 
 **Memory, made visible**
 - The front page shows what is waiting, how many words sit at each stage, the next seven days of reviews, and last week's recall rate.
