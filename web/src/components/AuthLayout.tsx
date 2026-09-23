@@ -30,7 +30,7 @@ function AuthLayout({
 }: AuthLayoutProps) {
   return (
     <div className="min-h-screen flex">
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-ink text-paper-lift">
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-grass text-white">
         <CardStackArt className="pointer-events-none absolute -bottom-16 -right-10 h-96 w-96 text-paper-lift/10" />
 
         <div className="relative z-10 flex flex-col justify-between p-12">

@@ -162,9 +162,9 @@ function Line({ stops }: { stops: Stop[] }) {
           strokeWidth: 3,
           strokeLinecap: "round" as const,
         };
-        if (tone === "done") return <line key={i} {...shared} stroke="var(--color-ink)" />;
+        if (tone === "done") return <line key={i} {...shared} stroke="var(--color-grass)" />;
         if (tone === "active") {
-          return <line key={i} {...shared} stroke="var(--color-ink)" strokeDasharray="1 9" />;
+          return <line key={i} {...shared} stroke="var(--color-grass)" strokeDasharray="1 9" />;
         }
         return <line key={i} {...shared} stroke="var(--color-rule)" />;
       })}
@@ -174,7 +174,7 @@ function Line({ stops }: { stops: Stop[] }) {
 
 /** Every row is a pressable strip with the rail on the left and its sign on the right. */
 const rowClasses = (shaking: boolean) =>
-  `group grid w-full grid-cols-[76px_1fr] items-center rounded-2xl text-left transition-transform duration-100 active:scale-[0.985] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 ${
+  `group grid w-full grid-cols-[76px_1fr] items-center rounded-2xl text-left transition-transform duration-100 active:scale-[0.985] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/30 ${
     shaking ? "animate-[shake_400ms_ease-in-out]" : ""
   }`;
 
@@ -221,9 +221,9 @@ function LessonRow({
         <span
           className={`relative flex h-11 w-11 items-center justify-center rounded-full bg-paper-lift text-xl ring-2 ${
             done
-              ? "ring-moss"
+              ? "ring-grass"
               : current
-                ? "ring-ink"
+                ? "ring-[3px] ring-grass bg-grass-soft"
                 : locked
                   ? "ring-rule opacity-60 grayscale"
                   : "ring-rule"
@@ -232,14 +232,14 @@ function LessonRow({
           {justDone && (
             <span
               aria-hidden="true"
-              className="absolute inset-0 rounded-full bg-moss animate-[burst-ring_700ms_ease-out_forwards]"
+              className="absolute inset-0 rounded-full bg-grass animate-[burst-ring_700ms_ease-out_forwards]"
             />
           )}
           <span aria-hidden="true" className="relative">
             {stationEmoji}
           </span>
           {done && (
-            <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-moss text-paper-lift ring-2 ring-paper">
+            <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-grass text-white ring-2 ring-white">
               <CheckIcon className="h-3 w-3" />
             </span>
           )}
@@ -284,7 +284,7 @@ function LessonRow({
           {words.join(" · ")}
         </p>
         {current && (
-          <span className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-ink px-3.5 py-1.5 text-[11px] font-black uppercase tracking-[0.14em] text-paper-lift shadow-button">
+          <span className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-grass px-3.5 pb-2 pt-1.5 text-[12px] font-black uppercase tracking-[0.1em] text-white shadow-button">
             {lesson.learned > 0 ? "Devam et" : "Buradan başla"} →
           </span>
         )}
@@ -330,7 +330,7 @@ function StopRow({
             passed
               ? "bg-paper-deep ring-2 ring-moss"
               : state === "open"
-                ? "bg-paper-lift ring-2 ring-ink"
+                ? "bg-grass-soft ring-[3px] ring-grass"
                 : skippable
                   ? "bg-paper-lift ring-2 ring-gilt/70"
                   : "bg-paper-deep opacity-60 grayscale"
@@ -368,7 +368,7 @@ function Transfer({ level, reached }: { level: string; reached: boolean }) {
       <div className="flex items-center gap-3 rounded-full bg-paper-lift py-2 pl-2 pr-5 ring-1 ring-rule shadow-print">
         <span
           className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-extrabold ${
-            reached ? "bg-ink text-paper-lift" : "bg-paper-deep text-graphite"
+            reached ? "bg-grass text-white" : "bg-paper-deep text-graphite"
           }`}
         >
           {level}
@@ -417,7 +417,7 @@ function UnitSign({ unit, theme }: { unit: Unit; theme: DeckTheme }) {
             {unit.lessons.map((lesson) => (
               <span
                 key={lesson.number}
-                className={`h-1 w-5 rounded-full ${lesson.state === "done" ? "bg-ink" : "bg-rule"}`}
+                className={`h-1.5 w-5 rounded-full ${lesson.state === "done" ? "bg-grass" : "bg-rule"}`}
               />
             ))}
           </span>

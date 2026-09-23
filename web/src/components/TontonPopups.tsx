@@ -5,6 +5,7 @@ import type { Card, Deck } from "../types";
 import { getToken } from "../lib/api";
 import { director, type Entrance, type Pop, type Snapshot } from "../lib/tontonDirector";
 import { playChirp } from "../lib/sound";
+import type { GrammarProgress } from "../lib/grammar";
 import Mascot from "./Mascot";
 
 /** He never chirps at night. */
@@ -35,7 +36,8 @@ function readSnapshot(queryClient: QueryClient): Snapshot {
   const personal = allCards.filter((c) => personalDeck && c.deck_id === personalDeck.id);
   const cards = allCards.filter((c) => !personalDeck || c.deck_id !== personalDeck.id);
   const streak = queryClient.getQueryData(["streak"]) as { streak?: number; lastStudyDate?: string | null } | undefined;
-  return { cards, personal, streak: streak?.streak ?? 0, lastStudyDate: streak?.lastStudyDate ?? null };
+  const grammar = queryClient.getQueryData(["grammarProgress"]) as GrammarProgress | undefined;
+  return { cards, personal, streak: streak?.streak ?? 0, lastStudyDate: streak?.lastStudyDate ?? null, grammar };
 }
 
 /**
@@ -71,14 +73,14 @@ function usePress(onTap: () => void, onHold: () => void) {
   };
 }
 
-/** The gilt hairline along the bubble's foot that shrinks over his stay. */
+/** The bright line along the bubble's foot that shrinks over his stay. */
 function Stay({ ms }: { ms: number }) {
-  return <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] origin-left bg-gilt" style={{ animation: `tt-stay ${ms}ms linear both` }} />;
+  return <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[3px] origin-left bg-tonton/70" style={{ animation: `tt-stay ${ms}ms linear both` }} />;
 }
 
 function Kicker({ text }: { text?: string }) {
   if (!text) return null;
-  return <span className="mb-1 block text-[10px] font-extrabold uppercase tracking-[0.18em] text-graphite">{text}</span>;
+  return <span className="mb-1 block text-[11px] font-black uppercase tracking-[0.12em] text-tonton">{text}</span>;
 }
 
 /** The visit: bottom-left, Tonton beside a bubble. Tap him for more, tap the bubble to close, hold to hush. */
@@ -104,19 +106,16 @@ function Visit({ pop, leaving }: { pop: Pop; leaving: boolean }) {
           <Mascot key={`${pop.id}${pop.wave ? "-wave" : ""}`} mood={pop.wave ? "happy" : pop.mood} size={72} />
         </button>
         <div className="relative mb-4 min-w-0">
-          <span
-            aria-hidden="true"
-            className="absolute -left-1.5 bottom-4 -z-10 h-3 w-3 rotate-45 rounded-sm bg-paper-lift ring-1 ring-rule [clip-path:polygon(0_0,0_100%,100%_100%)]"
-          />
+          <span aria-hidden="true" className="absolute -left-[6px] bottom-5 z-10 h-3 w-3 rotate-45 border-b-2 border-l-2 border-rule bg-white" />
           <button
             key={pop.id}
             type="button"
             {...bubble}
             aria-label="Kapat"
-            className="tt-bubble relative block w-full select-none overflow-hidden rounded-2xl rounded-bl-md border-l-2 border-tonton bg-paper-lift px-4 py-3 text-left ring-1 ring-rule shadow-bubble paper-grain animate-bubble-in [animation-delay:180ms] [-webkit-touch-callout:none] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tonton/40"
+            className="tt-bubble relative block w-full select-none overflow-hidden rounded-2xl border-2 border-rule bg-white px-4 py-3 text-left shadow-[0_3px_0_0_var(--color-rule)] animate-bubble-in [animation-delay:180ms] [-webkit-touch-callout:none] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tonton/40"
           >
             <Kicker text={pop.kicker} />
-            <span className="block text-[15px] font-semibold leading-snug text-ink">{pop.text}</span>
+            <span className="block text-[15px] font-bold leading-snug text-ink">{pop.text}</span>
             <Stay ms={pop.stayMs} />
           </button>
         </div>
@@ -150,19 +149,16 @@ function Reaction({ pop, leaving }: { pop: Pop; leaving: boolean }) {
       <div
         className={`absolute bottom-2 right-[calc(100%+6px)] w-max max-w-[15rem] origin-bottom-right ${leaving ? SHRINK : ENTRANCE[pop.entrance]}`}
       >
-        <span
-          aria-hidden="true"
-          className="absolute -right-1.5 bottom-3 -z-10 h-3 w-3 rotate-45 rounded-sm bg-paper-lift ring-1 ring-rule [clip-path:polygon(0_0,100%_0,100%_100%)]"
-        />
+        <span aria-hidden="true" className="absolute -right-[6px] bottom-4 z-10 h-3 w-3 rotate-45 border-r-2 border-t-2 border-rule bg-white" />
         <button
           key={pop.id}
           type="button"
           {...bubble}
           aria-label="Kapat"
-          className="tt-bubble relative block w-full select-none overflow-hidden rounded-2xl rounded-br-md border-l-2 border-tonton bg-paper-lift px-3.5 py-2.5 text-left ring-1 ring-rule shadow-bubble paper-grain animate-bubble-in [animation-delay:120ms] [-webkit-touch-callout:none] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tonton/40"
+          className="tt-bubble relative block w-full select-none overflow-hidden rounded-2xl border-2 border-rule bg-white px-3.5 py-2.5 text-left shadow-[0_3px_0_0_var(--color-rule)] animate-bubble-in [animation-delay:120ms] [-webkit-touch-callout:none] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-tonton/40"
         >
           <Kicker text={pop.kicker} />
-          <span className="block text-[14px] font-semibold leading-snug text-ink">{pop.text}</span>
+          <span className="block text-[14px] font-bold leading-snug text-ink">{pop.text}</span>
           <Stay ms={pop.stayMs} />
         </button>
       </div>

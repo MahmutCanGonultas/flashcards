@@ -1,4 +1,7 @@
 export type ButtonVariant =
+  | "go"
+  | "pop"
+  | "blue"
   | "ink"
   | "outline"
   | "primary"
@@ -13,47 +16,52 @@ export type ButtonVariant =
 export type ButtonSize = "sm" | "md" | "lg";
 
 /**
- * Printed buttons: a solid ink key, or a sheet of paper with a tan rule
- * round it. Pressing one sinks it a pixel; nothing slides or glows.
+ * Chunky buttons: a solid colour on a darker band of itself, or a white
+ * key with a grey border and ledge. Pressing one sinks it onto its edge.
  * `pointer-events-none` while disabled stops the hover state firing on a
- * button that can't be clicked.
+ * button that can't be clicked; a disabled button is grey, not faded.
  */
 const base =
-  "inline-flex items-center justify-center gap-2 font-extrabold tracking-tight select-none " +
-  "transition-transform duration-100 " +
+  "inline-flex items-center justify-center gap-2 select-none " +
   "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 focus-visible:ring-offset-paper " +
-  "disabled:opacity-55 disabled:pointer-events-none";
+  "disabled:pointer-events-none";
 
-const press = "active:scale-[0.98] active:translate-y-px";
-const caps = "uppercase tracking-[0.12em] text-[13px] font-black";
+const caps = "uppercase tracking-[0.08em] text-[15px] font-black";
 
-/** Solid ink, the one loud thing on a page. */
-const ink = `bg-ink text-paper-lift shadow-button hover:bg-ink/92 focus-visible:ring-ink/30 ${press} ${caps}`;
-/** Its paper twin: lifted stock, tan rule. */
-const outline = `bg-paper-lift text-ink ring-1 ring-inset ring-rule shadow-print hover:bg-paper-deep/40 focus-visible:ring-ink/30 ${press} ${caps}`;
+/** A solid colour: the forward action. */
+const solid = (colours: string) => `${colours} text-white shadow-button press-3d face ${caps} disabled:bg-rule disabled:text-hare disabled:shadow-none`;
+/** White with a grey border and a ledge of the same grey. */
+const white = (text: string) =>
+  `bg-white ${text} border-2 border-rule shadow-edge press hover:bg-paper-deep focus-visible:ring-ocean/40 ${caps} disabled:text-hare`;
+
+const go = solid("bg-grass focus-visible:ring-grass/40");
+const pop = white("text-ocean-ink");
 
 const variantClasses: Record<ButtonVariant, string> = {
-  ink,
-  outline,
-  // The course half still asks for these names; they wear the same print.
-  primary: ink,
-  secondary: outline,
+  go,
+  pop,
+  blue: solid("bg-ocean focus-visible:ring-ocean/40"),
+  // The older names: every "ink" key is the green forward button now, every outline the white one.
+  ink: go,
+  primary: go,
+  outline: white("text-ink"),
+  secondary: white("text-ink"),
 
-  danger: `bg-accent text-paper-lift shadow-button hover:bg-accent/92 focus-visible:ring-accent/30 ${press} ${caps}`,
+  danger: solid("bg-berry focus-visible:ring-berry/40"),
 
-  ghost: `text-graphite hover:text-ink hover:bg-ink/5 focus-visible:ring-ink/30 font-bold ${press}`,
+  ghost: `text-ocean-ink hover:bg-ocean-soft focus-visible:ring-ocean/30 font-extrabold uppercase tracking-[0.08em] text-[13px] transition-colors`,
 
-  // The study grades: paper with the verdict's colour in the ring and label.
-  softDanger: `bg-paper-lift text-accent ring-[1.5px] ring-inset ring-accent/60 shadow-print hover:bg-paper-deep/40 focus-visible:ring-accent/30 ${press}`,
-  softWarning: `bg-paper-lift text-gilt-ink ring-[1.5px] ring-inset ring-gilt/70 shadow-print hover:bg-paper-deep/40 focus-visible:ring-gilt/40 ${press}`,
-  softInfo: `bg-paper-lift text-ink ring-1 ring-inset ring-rule shadow-print hover:bg-paper-deep/40 focus-visible:ring-ink/30 ${press}`,
-  softSuccess: `bg-paper-lift text-moss ring-[1.5px] ring-inset ring-moss/60 shadow-print hover:bg-paper-deep/40 focus-visible:ring-moss/30 ${press}`,
+  // The study grades: white keys whose label and rule carry the verdict's colour.
+  softDanger: white("text-berry-ink"),
+  softWarning: white("text-tangerine-ink"),
+  softInfo: white("text-ink"),
+  softSuccess: white("text-grass-ink"),
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: "min-h-11 px-4 py-2 text-sm rounded-xl",
-  md: "px-5 py-3 rounded-2xl",
-  lg: "px-6 py-4 text-lg rounded-2xl",
+  sm: "min-h-11 px-4 py-2 rounded-xl !text-[13px]",
+  md: "min-h-[50px] px-5 py-3 rounded-2xl",
+  lg: "min-h-[54px] px-6 py-3.5 rounded-2xl",
 };
 
 export function buttonClasses(

@@ -22,10 +22,10 @@ function Header() {
 
   return (
     <header
-      className="sticky top-0 z-10 border-b border-rule bg-paper/88 backdrop-blur"
+      className="sticky top-0 z-10 border-b-2 border-rule bg-white"
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
-      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-2 px-5">
         <Link to="/kartlar" aria-label="Kartlarına git">
           <Logo size={32} withText />
         </Link>
@@ -35,14 +35,14 @@ function Header() {
             // Keyed on the count so a new day's increment flashes once.
             <span
               key={streak}
-              className="flex items-center gap-1 rounded-full bg-paper-lift px-3 py-1.5 text-sm font-extrabold text-ink ring-1 ring-rule shadow-print tabular-nums animate-gilt-flash"
+              className="flex items-center gap-1 rounded-full px-2.5 py-1.5 text-[17px] font-black text-tangerine tabular-nums animate-gilt-flash"
               title={`${streak} günlük seri`}
             >
-              <FlameIcon className="h-4 w-4 text-gilt" />
+              <FlameIcon className="h-6 w-6 text-tangerine" />
               {streak}
             </span>
           )}
-          <Button variant="ghost" size="sm" className="text-graphite hover:text-ink" onClick={handleSignOut}>
+          <Button variant="ghost" size="sm" className="!px-2.5 !text-graphite hover:!text-ink" onClick={handleSignOut}>
             Çıkış
           </Button>
         </div>

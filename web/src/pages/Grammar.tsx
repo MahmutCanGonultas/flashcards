@@ -28,10 +28,10 @@ type OptionState = "idle" | "right" | "wrong" | "muted";
  * transitioned (see QuizOptions for the iOS Safari reason).
  */
 const OPTION_CLASSES: Record<OptionState, string> = {
-  idle: "border-rule bg-paper-lift text-ink ring-rule transition-transform duration-100 active:scale-[0.98]",
-  right: "pointer-events-none border-moss bg-moss/8 text-ink ring-moss animate-ring-pulse",
-  wrong: "pointer-events-none border-accent bg-accent/8 text-ink ring-accent animate-[shake_320ms_ease-in-out]",
-  muted: "pointer-events-none border-rule bg-paper-lift text-graphite/70 ring-rule/60",
+  idle: "border-rule bg-white text-ink shadow-edge press",
+  right: "pointer-events-none border-grass bg-grass-soft text-grass-ink animate-ring-pulse",
+  wrong: "pointer-events-none border-berry bg-berry-soft text-berry-ink animate-[shake_320ms_ease-in-out]",
+  muted: "pointer-events-none border-rule bg-white text-hare",
 };
 
 /**
@@ -100,7 +100,7 @@ function MiniQuiz({ items }: { items: GrammarQuiz[] }) {
               type="button"
               aria-disabled={picked !== null}
               onClick={() => choose(i)}
-              className={`flex w-full items-center gap-3 rounded-2xl border-l-[3px] px-4 py-3 text-left font-bold ring-1 ${OPTION_CLASSES[state]}`}
+              className={`flex w-full items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left font-bold ${OPTION_CLASSES[state]}`}
             >
               <span
                 aria-hidden="true"
@@ -250,7 +250,7 @@ function Grammar() {
               <MiniQuiz items={note.quiz} />
             </div>
 
-            <div className="fixed inset-x-0 bottom-0 z-10 border-t border-rule bg-paper/95 backdrop-blur">
+            <div className="fixed inset-x-0 bottom-0 z-10 border-t-2 border-rule bg-white">
               <div className="mx-auto flex max-w-2xl flex-col gap-2 px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 sm:flex-row">
                 {unit.dialogue ? (
                   <Button

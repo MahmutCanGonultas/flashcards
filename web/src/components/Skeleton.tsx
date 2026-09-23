@@ -4,7 +4,7 @@ type SkeletonProps = {
 
 /** A recessed band where the content will land: the paper's deeper tint, breathing. */
 function Skeleton({ className = "" }: SkeletonProps) {
-  return <div className={`animate-pulse bg-paper-deep ${className}`} aria-hidden="true" />;
+  return <div className={`animate-pulse bg-rule/70 ${className}`} aria-hidden="true" />;
 }
 
 export default Skeleton;

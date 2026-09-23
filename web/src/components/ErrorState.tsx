@@ -9,7 +9,7 @@ type ErrorStateProps = {
 /** Something went wrong: a sheet with a vermilion edge, the one colour that means "now". */
 function ErrorState({ title = "Bir şeyler ters gitti", message, onRetry }: ErrorStateProps) {
   return (
-    <div className="rounded-[28px] border-l-[3px] border-accent bg-paper-lift p-6 text-center ring-1 ring-rule shadow-print sm:p-8">
+    <div className="rounded-[20px] border-2 border-berry-soft bg-white p-6 text-center shadow-[0_2px_0_0_var(--color-berry-soft)] sm:p-8">
       <div className="mb-2 text-4xl" aria-hidden="true">
         😵‍💫
       </div>

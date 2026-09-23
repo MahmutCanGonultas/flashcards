@@ -167,6 +167,9 @@ function DeckDetail() {
   const isPersonal = deck?.kind === "personal";
   const stats = pathStats(units);
 
+  // The learner's own words have their own home now: a list built for hundreds.
+  if (isPersonal) return <Navigate to="/kelimelerim" replace />;
+
   return (
     <div className="min-h-screen">
       <Header />

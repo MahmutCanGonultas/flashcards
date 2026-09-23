@@ -96,18 +96,18 @@ function Panel({ onClose, title, kicker, style, children }: Omit<SheetProps, "is
         tabIndex={-1}
         style={style}
         onClick={(event) => event.stopPropagation()}
-        className={`max-h-[88dvh] w-full overflow-y-auto overscroll-contain rounded-t-[28px] bg-paper-lift px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] ring-1 ring-rule shadow-sheet paper-grain focus:outline-none ${
+        className={`max-h-[88dvh] w-full overflow-y-auto overscroll-contain rounded-t-[28px] bg-white px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] shadow-sheet focus:outline-none ${
           closing ? "animate-sheet-down" : "animate-sheet-up"
         }`}
       >
         <div
-          className="sticky top-0 z-10 -mx-6 border-b border-rule bg-paper-lift/95 px-6 pb-2 pt-3 backdrop-blur touch-none"
+          className="sticky top-0 z-10 -mx-6 border-b-2 border-rule bg-white px-6 pb-2 pt-3 touch-none"
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerEnd}
           onPointerCancel={onPointerEnd}
         >
-          <span aria-hidden="true" className="mx-auto mb-4 block h-1 w-10 rounded-full tint-bar" />
+          <span aria-hidden="true" className="mx-auto mb-4 block h-1.5 w-12 rounded-full tint-bar" />
           <div className="flex items-baseline justify-between gap-3">
             <h2 id={titleId} className="min-w-0 wrap-break-word text-[28px] font-black tracking-[-0.02em] text-ink">
               {title}

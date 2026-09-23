@@ -9,37 +9,44 @@ import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
 import StrengthBars from "../components/StrengthBars";
 import WordList from "../components/WordList";
+import { BookIcon, CardsIcon, CheckIcon, PlusIcon, StarIcon } from "../components/icons";
 import { useDeckStats, usePersonalCards, usePersonalDeck } from "../lib/personal";
+import { useGrammarProgress, starsFor } from "../lib/grammar";
+import { CATALOG } from "../content/grammar/catalog";
 import { useStreak } from "../lib/streak";
 import { homeLines } from "../lib/tonton";
 import { primeSpeech } from "../lib/speech";
 import { isDue } from "../lib/path";
 import { STAGES, STAGE_LABEL, byNextReview, forecast, stageCounts, stageOf } from "../lib/memory";
-import { STAGE_BG } from "../lib/stageStyle";
+import { STAGE_BG, STAGE_TEXT } from "../lib/stageStyle";
+import { sortCards } from "../lib/wordBrowser";
 import { tintStyle } from "../lib/tint";
 import type { Card } from "../types";
 
 const DAY_LABELS = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+const DAY_SHORT = ["Pz", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"];
 const MONTHS = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+/** Words on the front page's own list; the rest are one tap away. */
+const RECENT = 5;
 
 /**
- * The page composes itself once per app session — dateline, headline,
- * covers, column, one after another. Coming back from a word or a session
- * it's simply there; a front page that re-animates every visit is a tic.
+ * The page composes itself once per app session — week, headline, covers,
+ * tiles, one after another. Coming back from a word or a session it's
+ * simply there; a front page that re-animates every visit is a tic.
  */
 let composed = false;
 
 /** Entrance delays vanish under reduced motion: the keyframes already collapse, the delays would not. */
 const delay = (ms: number) => ({ animationDelay: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "0ms" : `${ms}ms` });
 
-const KICKER = "text-[11px] font-extrabold uppercase tracking-[0.18em]";
+const SECTION = "text-[13px] font-black uppercase tracking-[0.1em] text-graphite";
 
 function localISO(d: Date): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
-/** The dateline: today, the streak, and seven ticks — lit where the run covers them. */
-function Dateline() {
+/** The week so far: today's date, and seven days lit orange where the streak covers them. */
+function Week() {
   const { data } = useStreak();
   const streak = data?.streak ?? 0;
   const last = data?.lastStudyDate ?? null;
@@ -52,17 +59,21 @@ function Dateline() {
   const lastIndex = last ? days.findIndex((d) => localISO(d) === last) : -1;
   const lit = (i: number) => lastIndex !== -1 && i <= lastIndex && lastIndex - i < streak;
   return (
-    <div className={`flex items-center justify-between ${KICKER} text-graphite`}>
-      <span>
-        {DAY_LABELS[today.getDay()]}, {today.getDate()} {MONTHS[today.getMonth()]} · seri {streak} gün
-      </span>
-      <ol className="flex gap-[5px]" aria-label="Son yedi gün">
+    <div className="flex items-center justify-between gap-3">
+      <p className="min-w-0 truncate text-[15px] font-extrabold text-graphite">
+        {DAY_LABELS[today.getDay()]}, {today.getDate()} {MONTHS[today.getMonth()]}
+      </p>
+      <ol className="flex shrink-0 gap-[3px]" aria-label="Son yedi gün">
         {days.map((d, i) => (
           <li
             key={i}
             aria-label={`${DAY_LABELS[d.getDay()]}${lit(i) ? ", çalışıldı" : ""}`}
-            className={`h-[7px] w-[7px] rounded-full ${i === 6 ? "bg-ink ring-[1.5px] ring-inset ring-accent" : lit(i) ? "bg-ink" : "bg-rule"}`}
-          />
+            className={`grid h-6 w-6 place-items-center rounded-full text-[9px] font-black ${
+              lit(i) ? "bg-tangerine text-white" : i === 6 ? "border-2 border-dashed border-tangerine text-tangerine-ink" : "bg-paper-deep text-hare"
+            }`}
+          >
+            {lit(i) ? <CheckIcon className="h-3 w-3" /> : DAY_SHORT[d.getDay()]}
+          </li>
         ))}
       </ol>
     </div>
@@ -78,32 +89,44 @@ function Covers({ cards, animate }: { cards: Card[]; animate: boolean }) {
   const shown = byNextReview(cards).slice(0, 3);
   const extra = cards.filter(isDue).length - 3;
   return (
-    <div className="mt-5 grid grid-cols-3 gap-2">
+    <div className="mt-5 grid grid-cols-3 gap-2.5">
       {shown.map((card, i) => (
         <div
           key={card.id}
           style={{ ...tintStyle(card), ...delay(120 + i * 60) }}
-          className={`relative isolate flex aspect-[4/5] flex-col overflow-hidden rounded-xl cover-ground p-2.5 text-paper-lift shadow-cover ring-1 ring-inset ring-paper-lift/10 ${
-            animate ? "animate-rise-spring" : ""
-          }`}
+          className={`relative isolate flex aspect-[4/5] flex-col overflow-hidden rounded-[18px] cover-ground p-2.5 pb-3.5 text-white ${animate ? "animate-rise-spring" : ""}`}
         >
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute -bottom-[0.2em] -right-[0.04em] -z-10 select-none text-[118px] font-black leading-none tracking-[-0.06em] text-paper-lift/[0.08]"
+            className="pointer-events-none absolute -bottom-[0.2em] -right-[0.04em] -z-10 select-none text-[118px] font-black leading-none tracking-[-0.06em] text-white/[0.14]"
           >
             {card.front.charAt(0)}
           </span>
           <StrengthBars card={card} onDark className="self-end" />
-          <span className="mt-auto text-[9px] font-extrabold uppercase tracking-[0.12em] text-paper-lift/60">{STAGE_LABEL[stageOf(card)]}</span>
-          <span className={`mt-0.5 wrap-break-word font-black leading-[1.02] tracking-[-0.01em] ${card.front.length > 9 ? "text-[15px]" : "text-[19px]"}`}>
-            {card.front}
-          </span>
+          <span className="mt-auto text-[10px] font-black uppercase tracking-[0.08em] text-white/85">{STAGE_LABEL[stageOf(card)]}</span>
+          <span className={`mt-0.5 wrap-break-word font-black leading-[1.02] tracking-[-0.01em] ${card.front.length > 9 ? "text-[15px]" : "text-[19px]"}`}>{card.front}</span>
           {i === 2 && extra > 0 && (
-            <span className="absolute inset-0 grid place-items-center bg-ink/55 text-[24px] font-black text-paper-lift">+{extra}</span>
+            <span className="absolute left-2 top-2 rounded-full bg-white px-2 py-0.5 text-[13px] font-black text-ink shadow-[0_2px_0_0_rgba(0,0,0,0.15)]">+{extra}</span>
           )}
         </div>
       ))}
     </div>
+  );
+}
+
+/** A way into one part of the learner's section: a coloured badge, a name, a line of what's there. */
+function Tile({ to, badge, icon, title, line, children }: { to: string; badge: string; icon: React.ReactNode; title: string; line: string; children?: React.ReactNode }) {
+  return (
+    <Link
+      to={to}
+      viewTransition
+      className="card-3d press flex min-w-0 flex-col rounded-[20px] p-3.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/30"
+    >
+      <span className={`grid h-11 w-11 place-items-center rounded-2xl text-white shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.18)] ${badge}`}>{icon}</span>
+      <span className="mt-2.5 text-[17px] font-black leading-tight text-ink">{title}</span>
+      <span className="mt-0.5 text-[13px] font-bold leading-snug text-graphite">{line}</span>
+      {children}
+    </Link>
   );
 }
 
@@ -117,50 +140,57 @@ function Memory({ cards, stats }: { cards: Card[]; stats: { reviews: number; rem
   const total = cards.length;
   const week = forecast(cards);
   const peak = Math.max(1, ...week.map((d) => d.count));
+  const rate = stats && stats.reviews > 0 ? Math.round((stats.remembered / stats.reviews) * 100) : null;
   return (
-    <section aria-labelledby="memory-heading" className="mt-9">
-      <div className={`flex items-baseline justify-between border-b border-ink pb-2 ${KICKER} text-ink`}>
-        <span id="memory-heading">Hafıza</span>
-        <span className="text-graphite">{total} kelime</span>
+    <section aria-labelledby="memory-heading" className="mt-8 card-3d rounded-[20px] p-4">
+      <div className="flex items-baseline justify-between">
+        <h2 id="memory-heading" className={SECTION}>
+          Hafıza
+        </h2>
+        <span className="text-[13px] font-extrabold text-graphite">{total} kelime</span>
       </div>
 
-      <div className="mt-3.5 flex h-2.5 overflow-hidden rounded-full bg-rule/60" role="img" aria-label={STAGES.map((s) => `${STAGE_LABEL[s]} ${counts[s]}`).join(", ")}>
+      <div className="mt-3 flex h-4 gap-[3px] overflow-hidden rounded-full bg-paper-deep" role="img" aria-label={STAGES.map((s) => `${STAGE_LABEL[s]} ${counts[s]}`).join(", ")}>
         {STAGES.map((stage) =>
           counts[stage] > 0 ? (
-            <span key={stage} className={`h-full ${STAGE_BG[stage]} animate-rule-draw`} style={{ width: `${(counts[stage] / total) * 100}%` }} />
+            <span
+              key={stage}
+              className={`h-full rounded-full ${STAGE_BG[stage]} shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.12)] animate-rule-draw`}
+              style={{ width: `${(counts[stage] / total) * 100}%` }}
+            />
           ) : null,
         )}
       </div>
-      <dl className="mt-3.5 grid grid-cols-4 gap-2">
+      <dl className="mt-3 grid grid-cols-4 gap-2">
         {STAGES.map((stage) => (
-          <div key={stage} className="min-w-0">
-            <span aria-hidden="true" className={`block h-1 w-5 rounded-full ${STAGE_BG[stage]}`} />
-            <dt className="mt-2 text-[24px] font-black leading-none tabular-nums text-ink">{counts[stage]}</dt>
-            <dd className="mt-1.5 truncate text-[10px] font-extrabold uppercase tracking-[0.08em] text-graphite">{STAGE_LABEL[stage]}</dd>
+          <div key={stage} className="min-w-0 rounded-2xl bg-paper-deep px-1 pb-2 pt-2.5 text-center">
+            <dt className={`text-[24px] font-black leading-none tabular-nums ${counts[stage] === 0 ? "text-hare" : STAGE_TEXT[stage]}`}>{counts[stage]}</dt>
+            <dd className="mt-1.5 text-[11px] font-extrabold leading-tight text-graphite">{STAGE_LABEL[stage]}</dd>
           </div>
         ))}
       </dl>
 
-      <p className={`mt-6 ${KICKER} text-graphite`}>Önümüzdeki 7 gün</p>
+      <p className={`mt-5 ${SECTION}`}>Önümüzdeki 7 gün</p>
       <ol className="mt-2.5 grid grid-cols-7 gap-1.5" aria-label="Önümüzdeki yedi günün tekrarları">
         {week.map((day) => (
           <li key={day.label} className="flex flex-col items-center gap-1.5" aria-label={`${day.label}: ${day.count} kelime`}>
-            <span className={`text-[12px] font-black tabular-nums ${day.count === 0 ? "text-graphite/50" : day.today ? "text-accent" : "text-ink"}`}>{day.count}</span>
-            <span className="flex h-12 w-full items-end justify-center">
+            <span className={`text-[12px] font-black tabular-nums ${day.count === 0 ? "text-hare" : day.today ? "text-berry-ink" : "text-ocean-ink"}`}>{day.count}</span>
+            <span className="flex h-14 w-full items-end justify-center">
               <span
-                className={`w-full max-w-[26px] rounded-[4px] ${day.count === 0 ? "bg-rule/70" : day.today ? "bg-accent" : "bg-ink/80"}`}
-                style={{ height: day.count === 0 ? 3 : `${Math.max(12, (day.count / peak) * 100)}%` }}
+                className={`w-full max-w-[28px] rounded-[7px] ${day.count === 0 ? "bg-paper-deep" : day.today ? "bg-berry" : "bg-ocean"} ${day.count > 0 ? "shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.15)]" : ""}`}
+                style={{ height: day.count === 0 ? 5 : `${Math.max(16, (day.count / peak) * 100)}%` }}
               />
             </span>
-            <span className={`text-[10px] font-extrabold uppercase tracking-[0.08em] ${day.today ? "text-ink" : "text-graphite"}`}>{day.label}</span>
+            <span className={`text-[11px] font-extrabold ${day.today ? "text-ink" : "text-graphite"}`}>{day.label}</span>
           </li>
         ))}
       </ol>
 
-      {stats && stats.reviews > 0 && (
-        <p className="mt-4 text-[14px] font-semibold leading-snug text-graphite">
-          Son 7 gün: <span className="font-extrabold text-ink">{stats.reviews} tekrar</span> ·{" "}
-          <span className="font-extrabold text-moss">%{Math.round((stats.remembered / stats.reviews) * 100)} hatırladın</span>
+      {rate !== null && stats && (
+        <p className="mt-4 flex flex-wrap items-center gap-2 text-[14px] font-bold text-graphite">
+          Son 7 gün:
+          <span className="rounded-full bg-ocean-soft px-2.5 py-0.5 font-black text-ocean-ink">{stats.reviews} tekrar</span>
+          <span className="rounded-full bg-grass-soft px-2.5 py-0.5 font-black text-grass-ink">%{rate} hatırladın</span>
         </p>
       )}
     </section>
@@ -168,15 +198,17 @@ function Memory({ cards, stats }: { cards: Card[]; stats: { reviews: number; rem
 }
 
 /**
- * Kartlarım — the front page of the learner's own words. A dateline, a
- * headline saying what's waiting, the next covers, one ink button,
- * Tonton's column, the memory at a glance, and the contents.
+ * Kartlarım — the front page of the learner's own words: the week, a
+ * headline saying what's waiting, the next covers, one green button, the
+ * way into the word list and grammar, Tonton, the memory at a glance and
+ * the words added last.
  */
 function Kartlar() {
   const [isAddOpen, setIsAddOpen] = useState(false);
   const deckQuery = usePersonalDeck();
   const cardsQuery = usePersonalCards(deckQuery.data);
   const statsQuery = useDeckStats(deckQuery.data);
+  const grammar = useGrammarProgress();
   const streak = useStreak().data?.streak ?? 0;
   const cards = cardsQuery.data;
   const deck = deckQuery.data;
@@ -184,6 +216,8 @@ function Kartlar() {
   const waiting = cards ? cards.filter(isDue) : [];
   const due = waiting.length;
   const fresh = waiting.filter((card) => stageOf(card) === "new").length;
+  const stars = CATALOG.reduce((sum, t) => sum + starsFor(grammar.data?.[t.slug]?.best), 0);
+  const started = CATALOG.filter((t) => grammar.data?.[t.slug]).length;
 
   // Read once, on the first render of this visit; flipped after it.
   const [animate] = useState(() => !composed);
@@ -196,30 +230,27 @@ function Kartlar() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="mx-auto max-w-5xl px-6 pb-28 pt-7">
+      <main className="mx-auto max-w-2xl px-5 pb-28 pt-5">
         <div className={rise} style={at(0)}>
-          <Dateline />
+          <Week />
         </div>
 
-        <h1 className={`mt-3.5 max-w-[300px] text-[34px] font-black leading-[1.02] tracking-[-0.02em] text-ink ${rise}`} style={at(40)}>
+        <h1 className={`mt-5 max-w-[320px] text-[34px] font-black leading-[1.02] tracking-[-0.02em] text-ink ${rise}`} style={at(40)}>
           {!cards ? (
             "Kartların"
           ) : total === 0 ? (
             "Henüz kart yok"
           ) : due > 0 ? (
-            `${due} kelime seni bekliyor`
+            <>
+              <span className="text-berry">{due} kelime</span> seni bekliyor
+            </>
           ) : (
             <>
-              Bugünlük{" "}
-              <span className="relative">
-                tamam
-                {/* Done for the day: a moss rule drawn under the word. */}
-                <span aria-hidden="true" className="absolute inset-x-0 -bottom-0.5 h-[3px] bg-moss animate-rule-draw [animation-delay:260ms]" />
-              </span>
+              Bugünlük <span className="text-grass">tamam!</span>
             </>
           )}
         </h1>
-        <p className={`mt-2 text-[15px] font-semibold leading-[1.45] text-graphite ${rise}`} style={at(80)}>
+        <p className={`mt-2 text-[16px] font-bold leading-[1.45] text-graphite ${rise}`} style={at(80)}>
           {!cards
             ? "Kelimelerin yükleniyor."
             : total === 0
@@ -233,29 +264,46 @@ function Kartlar() {
 
         {cards && total > 0 && <Covers cards={cards} animate={animate} />}
 
-        <div className={`mt-4 flex items-center gap-3.5 ${rise}`} style={at(300)}>
-          {deck && total > 0 && (
+        <div className={`mt-5 ${rise}`} style={at(300)}>
+          {deck && total > 0 ? (
             <Link
               to={`/decks/${deck.id}/flashcards${due > 0 ? "" : "?mode=all"}`}
               onClick={primeSpeech}
-              className="flex min-h-[54px] flex-1 items-center justify-center rounded-2xl bg-ink text-[13px] font-black uppercase tracking-[0.12em] text-paper-lift shadow-button transition-transform duration-100 active:translate-y-px active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30"
+              className={`face flex min-h-[58px] w-full items-center justify-center rounded-2xl text-[16px] font-black uppercase tracking-[0.08em] text-white shadow-button press-3d focus-visible:outline-none focus-visible:ring-4 ${
+                due > 0 ? "bg-grass focus-visible:ring-grass/40" : "bg-ocean focus-visible:ring-ocean/40"
+              }`}
             >
               {due > 0 ? `Tekrar et · ${due}` : "Serbest alıştırma"}
             </Link>
+          ) : (
+            <button
+              type="button"
+              onClick={() => deck && setIsAddOpen(true)}
+              className="face flex min-h-[58px] w-full items-center justify-center gap-2 rounded-2xl bg-grass text-[16px] font-black uppercase tracking-[0.08em] text-white shadow-button press-3d"
+            >
+              <PlusIcon className="h-5 w-5" /> Kelime ekle
+            </button>
           )}
-          <button
-            type="button"
-            onClick={() => deck && setIsAddOpen(true)}
-            className={`text-[13px] font-extrabold text-ink underline decoration-ink decoration-[1.5px] underline-offset-4 ${
-              total === 0 ? "flex min-h-[54px] flex-1 items-center justify-center rounded-2xl bg-ink text-paper-lift no-underline uppercase tracking-[0.12em] shadow-button" : ""
-            }`}
-          >
-            + Kelime ekle
-          </button>
         </div>
 
-        <div className={`mt-8 ${rise}`} style={at(360)}>
-          <TontonSays variant="column" size={60} lines={homeLines({ cards: [], due: 0, streak, personal: cards ?? [] })} />
+        <div className={`mt-4 grid grid-cols-2 gap-3 ${rise}`} style={at(340)}>
+          <Tile to="/kelimelerim" badge="bg-ocean" icon={<CardsIcon className="h-6 w-6" />} title="Kelimelerim" line={cards ? `${total} kelime · ara, süz` : "Yükleniyor…"}>
+            {cards && (
+              <span className={`mt-2 w-max rounded-full px-2 py-0.5 text-[12px] font-black ${due > 0 ? "bg-berry-soft text-berry-ink" : "bg-grass-soft text-grass-ink"}`}>
+                {due > 0 ? `${due} sırada` : "Hepsi takvimde"}
+              </span>
+            )}
+          </Tile>
+          <Tile to="/gramer" badge="bg-tangerine" icon={<BookIcon className="h-6 w-6" />} title="Gramer" line={`${CATALOG.length} konu${started > 0 ? ` · ${started} başladı` : ""}`}>
+            <span className="mt-2 flex items-center gap-1 text-[13px] font-black text-sunny-ink">
+              <StarIcon className="h-4 w-4 text-sunny" />
+              {stars} / {CATALOG.length * 3}
+            </span>
+          </Tile>
+        </div>
+
+        <div className={`mt-7 ${rise}`} style={at(380)}>
+          <TontonSays variant="column" size={64} lines={homeLines({ cards: [], due: 0, streak, personal: cards ?? [] })} />
         </div>
 
         {deckQuery.isError || cardsQuery.isError ? (
@@ -270,31 +318,39 @@ function Kartlar() {
             />
           </div>
         ) : !deck || !cards ? (
-          <div className="mt-9 space-y-3">
+          <div className="mt-8 space-y-3">
             {[0, 1, 2].map((n) => (
-              <Skeleton key={n} className="h-14 w-full rounded-lg" />
+              <Skeleton key={n} className="h-16 w-full rounded-2xl" />
             ))}
           </div>
         ) : (
           total > 0 && (
             <>
               <Memory cards={cards} stats={statsQuery.data} />
-              <section className="mt-9">
-                <div className={`flex items-baseline justify-between border-b border-ink pb-2 ${KICKER} text-ink`}>
-                  <span>Kelimeler</span>
-                  <span className="text-graphite">{total}</span>
+
+              <section className="mt-8" aria-labelledby="recent-heading">
+                <div className="flex items-center justify-between">
+                  <h2 id="recent-heading" className={SECTION}>
+                    Son eklenenler
+                  </h2>
+                  <button
+                    type="button"
+                    onClick={() => setIsAddOpen(true)}
+                    className="-mr-2 flex min-h-10 items-center gap-1 rounded-xl px-2 text-[13px] font-black uppercase tracking-[0.08em] text-ocean-ink hover:bg-ocean-soft"
+                  >
+                    <PlusIcon className="h-4 w-4" /> Ekle
+                  </button>
                 </div>
-                {due > 0 && (
-                  <p className="mt-2.5 text-[13px] font-semibold leading-snug text-graphite">
-                    Sırası gelen kelimelerin anlamı tekrardan sonra açılır — önce hatırlamayı dene.
-                  </p>
-                )}
-                <WordList
-                  deckId={deck.id}
-                  cards={cards}
-                  rowClassName={(i) => (i < 8 ? rise : "")}
-                  rowStyle={(i) => (i < 8 ? at(380 + i * 40) : undefined)}
-                />
+                <div className="mt-1">
+                  <WordList deckId={deck.id} cards={sortCards(cards, "recent").slice(0, RECENT)} />
+                </div>
+                <Link
+                  to="/kelimelerim"
+                  viewTransition
+                  className="mt-3 flex min-h-[50px] w-full items-center justify-center rounded-2xl border-2 border-rule bg-white text-[14px] font-black uppercase tracking-[0.08em] text-ocean-ink shadow-edge press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/30"
+                >
+                  {total > RECENT ? `Tüm kelimeler · ${total}` : "Kelimelerim"}
+                </Link>
               </section>
             </>
           )

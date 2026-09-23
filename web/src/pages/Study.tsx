@@ -537,7 +537,7 @@ function StudySession({
         ) : (
           <div className="h-4 flex-1 overflow-hidden rounded-full bg-rule">
             <div
-              className="h-full rounded-full bg-ink transition-[width] duration-300"
+              className="h-full rounded-full bg-grass transition-[width] duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -561,7 +561,7 @@ function StudySession({
       {stages.length > 0 && (
         <div className="mt-3 h-2 overflow-hidden rounded-full bg-rule">
           <div
-            className="h-full rounded-full bg-ink transition-[width] duration-300"
+            className="h-full rounded-full bg-grass transition-[width] duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -774,7 +774,7 @@ function QuestionStep({
                     aria-current={here ? "step" : undefined}
                     className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-bold transition ${
                       here
-                        ? "bg-ink text-paper-lift shadow-button"
+                        ? "bg-ocean text-white shadow-button"
                         : met
                           ? "bg-paper-lift text-ink ring-1 ring-rule"
                           : "bg-paper-deep/60 text-graphite"
@@ -933,8 +933,8 @@ function ListenHero({ word, revealed }: { word: string; revealed: boolean }) {
         aria-label="Kelimeyi dinle"
         className={`flex h-20 w-20 items-center justify-center rounded-full transition ${
           playing
-            ? "bg-ink text-paper-lift scale-105 animate-ring-pulse"
-            : "bg-paper-lift text-ink ring-1 ring-rule shadow-print hover:-translate-y-0.5"
+            ? "bg-ocean-deep text-white scale-105 animate-ring-pulse"
+            : "bg-ocean text-white shadow-[inset_0_-5px_0_0_rgba(0,0,0,0.18)] hover:-translate-y-0.5"
         }`}
       >
         <SpeakerIcon className={`h-9 w-9 ${playing ? "animate-pulse" : ""}`} />
@@ -1024,7 +1024,7 @@ function TypeAnswer({
 /** The fixed slot every forward button lives in, so it never moves between steps. */
 function BottomBar({ children }: { children: React.ReactNode }) {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-10 border-t border-rule/70 bg-paper/95 backdrop-blur">
+    <div className="fixed inset-x-0 bottom-0 z-10 border-t-2 border-rule bg-white">
       <div className="mx-auto max-w-2xl px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3">
         {children}
       </div>

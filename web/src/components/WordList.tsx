@@ -1,70 +1,76 @@
 import { Link } from "react-router-dom";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import type { Card } from "../types";
 import { parseBack, posLabel } from "../lib/cardBack";
-import { isDue } from "../lib/path";
-import { byNextReview, isLeech, nextReview } from "../lib/memory";
-import { TONE_TEXT } from "../lib/stageStyle";
+import { STAGE_LABEL, isLeech, nextReview, stageOf } from "../lib/memory";
+import { STAGE_PILL, TONE_TEXT } from "../lib/stageStyle";
 import { tintStyle } from "../lib/tint";
 import StrengthBars from "./StrengthBars";
 
 type WordListProps = {
   deckId: number | string;
+  /** Shown in the order given; the caller sorts. */
   cards: Card[];
   /** Entrance for the first rows, on a page that composes itself. */
   rowStyle?: (index: number) => CSSProperties | undefined;
   rowClassName?: (index: number) => string;
+  /** Marks the part of the word or meaning that matched a search. */
+  mark?: (text: string) => ReactNode;
 };
 
 /**
- * The contents: every word, one line each — its colour, the word, its
- * meaning, how firmly it's held and when it comes back. The meaning of a
- * word that is waiting stays blurred: reading it here, a minute before the
- * review, would answer the question before it's asked. The word's page
- * (a tap away) still shows everything.
+ * One word per row: its colour as a tile with its initial, the word and
+ * its meaning, where it stands in memory and when it comes back. The whole
+ * row opens the word's page.
  */
-function WordList({ deckId, cards, rowStyle, rowClassName }: WordListProps) {
+export function WordRow({ deckId, card, mark = (t) => t }: { deckId: number | string; card: Card; mark?: (text: string) => ReactNode }) {
+  const { pos, text } = parseBack(card.back);
+  const meaning = card.senses?.length ? card.senses.map((s) => s.meaning).join(" · ") : text;
+  const firstPos = pos ?? card.senses?.[0]?.pos ?? null;
+  const schedule = nextReview(card);
+  const stage = stageOf(card);
   return (
-    <ul className="divide-y divide-rule">
-      {byNextReview(cards).map((card, i) => {
-        const { pos, text } = parseBack(card.back);
-        const schedule = nextReview(card);
-        const waiting = isDue(card);
-        return (
-          <li key={card.id} className={rowClassName?.(i) ?? ""} style={{ ...tintStyle(card), ...rowStyle?.(i) }}>
-            <Link
-              to={`/decks/${deckId}/words/${card.id}`}
-              viewTransition
-              className="-mx-2 grid grid-cols-[3px_1fr_auto] items-center gap-3.5 rounded-xl px-2 py-3 transition-[background-color,transform] duration-100 active:scale-[0.99] active:bg-paper-deep/60 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30"
-            >
-              <span aria-hidden="true" className="h-11 w-[3px] rounded-full tint-bar" />
-              <div className="min-w-0">
-                <p className="flex flex-wrap items-baseline gap-x-2 text-[17px] font-extrabold leading-tight text-ink">
-                  <span className="wrap-break-word" style={{ viewTransitionName: `word-${card.id}` }}>
-                    {card.front}
-                  </span>
-                  {pos && <span className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-graphite">{posLabel(pos)}</span>}
-                  {isLeech(card) && <span className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-gilt-ink">inatçı</span>}
-                </p>
-                {waiting ? (
-                  <p className="mt-0.5 truncate text-[14px] text-graphite">
-                    <span aria-hidden="true" className="select-none blur-[5px]">
-                      {text}
-                    </span>
-                    <span className="sr-only">Anlamı tekrardan sonra görünür</span>
-                  </p>
-                ) : (
-                  <p className="mt-0.5 truncate text-[14px] text-graphite">{text}</p>
-                )}
-              </div>
-              <div className="flex shrink-0 flex-col items-end gap-1.5">
-                <StrengthBars card={card} />
-                <span className={`text-[10px] font-extrabold uppercase tracking-[0.14em] tabular-nums ${TONE_TEXT[schedule.tone]}`}>{schedule.text}</span>
-              </div>
-            </Link>
-          </li>
-        );
-      })}
+    <Link
+      to={`/decks/${deckId}/words/${card.id}`}
+      viewTransition
+      style={tintStyle(card)}
+      className="group -mx-2 grid grid-cols-[44px_1fr_auto] items-center gap-3.5 rounded-2xl px-2 py-2.5 transition-[background-color,transform] duration-100 hover:bg-paper-deep active:scale-[0.99] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/30"
+    >
+      <span
+        aria-hidden="true"
+        className="grid h-11 w-11 place-items-center rounded-[14px] tint-ground text-[20px] font-black uppercase text-white shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.18)]"
+      >
+        {card.front.charAt(0)}
+      </span>
+      <div className="min-w-0">
+        <p className="flex flex-wrap items-baseline gap-x-2 text-[17px] font-black leading-tight text-ink">
+          <span className="wrap-break-word" style={{ viewTransitionName: `word-${card.id}` }}>
+            {mark(card.front)}
+          </span>
+          {firstPos && <span className="text-[11px] font-extrabold lowercase tint-text">{posLabel(firstPos)}</span>}
+          {isLeech(card) && <span className="rounded-full bg-sunny-soft px-2 py-px text-[10px] font-black uppercase tracking-[0.08em] text-sunny-ink">inatçı</span>}
+        </p>
+        <p className="mt-0.5 truncate text-[14px] font-semibold text-graphite">{mark(meaning)}</p>
+      </div>
+      <div className="flex shrink-0 flex-col items-end gap-1">
+        <span className={`inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[11px] font-black ${STAGE_PILL[stage]}`}>
+          <StrengthBars card={card} />
+          {STAGE_LABEL[stage]}
+        </span>
+        <span className={`text-[11px] font-extrabold tabular-nums ${TONE_TEXT[schedule.tone]}`}>{schedule.text}</span>
+      </div>
+    </Link>
+  );
+}
+
+function WordList({ deckId, cards, rowStyle, rowClassName, mark }: WordListProps) {
+  return (
+    <ul className="divide-y-2 divide-paper-deep">
+      {cards.map((card, i) => (
+        <li key={card.id} className={rowClassName?.(i) ?? ""} style={rowStyle?.(i)}>
+          <WordRow deckId={deckId} card={card} mark={mark} />
+        </li>
+      ))}
     </ul>
   );
 }

@@ -77,7 +77,7 @@ function Modal({ isOpen, onClose, title, emoji, children }: ModalProps) {
   return createPortal(
     // The scrim is umber, not black: the page dims like paper in shadow.
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-umber/45 p-4 backdrop-blur-sm animate-[fade-in_150ms_ease-out]"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-umber/45 p-4 animate-[fade-in_150ms_ease-out]"
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}

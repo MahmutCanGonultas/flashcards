@@ -1,8 +1,8 @@
 /**
- * Five warm inks cycled per item across the course half — terracotta,
- * slate, crimson, navy, moss — each used sparingly: a small tile, a bar,
- * a badge, never a panel. The surfaces underneath are always the same
- * paper, so a row of items reads as one printed page, not a rainbow.
+ * Five bright colours cycled per unit across the course half — orange,
+ * sky, red, blue, green — each on a small tile, a bar or a badge. The
+ * cards underneath are always the same white, so a row of units reads as
+ * one page, not a rainbow.
  *
  * Every value is a complete Tailwind class string. Tailwind scans source text
  * for whole class names, so these must never be assembled from fragments.
@@ -44,48 +44,48 @@ const paper = {
 export const themes: DeckTheme[] = [
   {
     ...paper,
-    icon: "bg-[#c4713f]",
-    text: "text-[#c4713f]",
-    badge: "bg-[#c4713f] text-paper-lift",
-    bar: "bg-[#c4713f]",
-    soft: "text-[#c4713f]/25",
-    stroke: "#c4713f",
+    icon: "bg-[#e07c00]",
+    text: "text-[#e07c00]",
+    badge: "bg-[#e07c00] text-white",
+    bar: "bg-[#e07c00]",
+    soft: "text-[#e07c00]/25",
+    stroke: "#e07c00",
   },
   {
     ...paper,
-    icon: "bg-[#5e7a8e]",
-    text: "text-[#5e7a8e]",
-    badge: "bg-[#5e7a8e] text-paper-lift",
-    bar: "bg-[#5e7a8e]",
-    soft: "text-[#5e7a8e]/25",
-    stroke: "#5e7a8e",
+    icon: "bg-[#1899d6]",
+    text: "text-[#1899d6]",
+    badge: "bg-[#1899d6] text-white",
+    bar: "bg-[#1899d6]",
+    soft: "text-[#1899d6]/25",
+    stroke: "#1899d6",
   },
   {
     ...paper,
-    icon: "bg-[#a8232e]",
-    text: "text-[#a8232e]",
-    badge: "bg-[#a8232e] text-paper-lift",
-    bar: "bg-[#a8232e]",
-    soft: "text-[#a8232e]/25",
-    stroke: "#a8232e",
+    icon: "bg-[#ea2b2b]",
+    text: "text-[#ea2b2b]",
+    badge: "bg-[#ea2b2b] text-white",
+    bar: "bg-[#ea2b2b]",
+    soft: "text-[#ea2b2b]/25",
+    stroke: "#ea2b2b",
   },
   {
     ...paper,
-    icon: "bg-[#2e4a6b]",
-    text: "text-[#2e4a6b]",
-    badge: "bg-[#2e4a6b] text-paper-lift",
-    bar: "bg-[#2e4a6b]",
-    soft: "text-[#2e4a6b]/25",
-    stroke: "#2e4a6b",
+    icon: "bg-[#2b70c9]",
+    text: "text-[#2b70c9]",
+    badge: "bg-[#2b70c9] text-white",
+    bar: "bg-[#2b70c9]",
+    soft: "text-[#2b70c9]/25",
+    stroke: "#2b70c9",
   },
   {
     ...paper,
-    icon: "bg-[#3e7a5a]",
-    text: "text-[#3e7a5a]",
-    badge: "bg-[#3e7a5a] text-paper-lift",
-    bar: "bg-[#3e7a5a]",
-    soft: "text-[#3e7a5a]/25",
-    stroke: "#3e7a5a",
+    icon: "bg-[#58a700]",
+    text: "text-[#58a700]",
+    badge: "bg-[#58a700] text-white",
+    bar: "bg-[#58a700]",
+    soft: "text-[#58a700]/25",
+    stroke: "#58a700",
   },
 ];
 

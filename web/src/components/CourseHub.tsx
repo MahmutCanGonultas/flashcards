@@ -68,7 +68,7 @@ function CourseHub({ deck, cards, units }: CourseHubProps) {
             </span>
             <span className="mt-1.5 flex gap-1" aria-hidden="true">
               {unit.lessons.map((l) => (
-                <span key={l.number} className={`h-1 w-4 rounded-full ${l.state === "done" ? "bg-ink" : l.state === "current" ? "bg-ink/35" : "bg-rule"}`} />
+                <span key={l.number} className={`h-1.5 w-4 rounded-full ${l.state === "done" ? "bg-grass" : l.state === "current" ? "bg-grass/40" : "bg-rule"}`} />
               ))}
             </span>
           </div>

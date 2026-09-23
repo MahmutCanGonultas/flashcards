@@ -6,10 +6,10 @@ import Mascot from "./Mascot";
 const HOURS = [9, 13, 18, 20, 21, 22];
 const label = (h: number) => `${String(h).padStart(2, "0")}:00`;
 
-/** One hour chip: paper with a tan rule, ink when it's the chosen one. */
+/** One hour chip: white with a grey border, blue when it's the chosen one. */
 const chip = (active: boolean) =>
-  `min-h-10 rounded-full px-3.5 text-xs font-extrabold ring-1 transition-colors duration-150 ${
-    active ? "bg-ink text-paper-lift ring-ink" : "bg-paper-lift text-ink ring-rule hover:bg-paper-deep/50"
+  `min-h-10 rounded-full border-2 px-3.5 text-xs font-extrabold transition-colors duration-150 ${
+    active ? "border-ocean bg-ocean-soft text-ocean-ink" : "border-rule bg-white text-ink hover:bg-paper-deep"
   }`;
 
 /**
@@ -23,8 +23,8 @@ function ReminderCard({ variant = "card" }: { variant?: "card" | "line" }) {
   const [open, setOpen] = useState(false);
 
   if (variant === "line") {
-    const link = "font-extrabold text-ink underline decoration-ink decoration-[1.5px] underline-offset-4";
-    const line = "rounded-lg bg-paper-deep/60 px-3 py-2 text-[12px] font-semibold leading-relaxed text-graphite";
+    const link = "font-black text-ocean-ink underline decoration-ocean/50 decoration-2 underline-offset-4";
+    const line = "rounded-2xl border-2 border-rule bg-paper-deep px-3.5 py-2.5 text-[13px] font-bold leading-relaxed text-graphite";
     if (!reminders.supported) {
       return <p className={line}>{reminders.standalone ? "Bu cihaz bildirimleri desteklemiyor." : "Bildirim için uygulamayı Ana Ekran'a ekle (Paylaş → Ana Ekrana Ekle)."}</p>;
     }
@@ -63,7 +63,7 @@ function ReminderCard({ variant = "card" }: { variant?: "card" | "line" }) {
               type="button"
               disabled={reminders.enable.isPending}
               onClick={() => reminders.enable.mutate(hour, { onError: () => setNote("İzin verilmedi.") })}
-              className="min-h-10 rounded-full bg-ink px-4 text-xs font-black uppercase tracking-[0.12em] text-paper-lift shadow-button"
+              className="min-h-10 rounded-full bg-grass px-4 text-xs font-black uppercase tracking-[0.1em] text-white shadow-button press-3d"
             >
               Aç
             </button>
@@ -74,7 +74,7 @@ function ReminderCard({ variant = "card" }: { variant?: "card" | "line" }) {
     );
   }
 
-  const panel = "rounded-3xl bg-paper-lift p-4 ring-1 ring-rule shadow-print";
+  const panel = "rounded-3xl card-3d p-4";
 
   if (!reminders.supported) {
     return (

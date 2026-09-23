@@ -21,25 +21,24 @@ function stateFor(option: QuizOption, index: number, selectedIndex: number | nul
  * tapped, then disabled, button painted in its pressed/answered colours
  * until something else on the page moves. Only the press itself animates.
  *
- * Four sheets of paper with one rule down the left edge; the rule takes
- * the verdict's colour (moss right, vermilion wrong) and the sheet barely
- * tints, so the answer is read from the edge, not from a slab of colour.
+ * Four white keys with a grey border and ledge; the verdict turns a key
+ * green or red, border and wash together, the way every answer here does.
  */
 const STATE_CLASSES: Record<VisualState, string> = {
-  idle: "bg-paper-lift text-ink ring-1 ring-rule border-rule shadow-print transition-transform duration-100 hover:-translate-y-0.5 active:scale-[0.98]",
-  correct: "pointer-events-none bg-moss/8 text-ink ring-1 ring-moss border-moss animate-ring-pulse",
-  wrong: "pointer-events-none bg-accent/8 text-ink ring-1 ring-accent border-accent animate-[shake_320ms]",
-  reveal: "pointer-events-none bg-paper-lift text-moss ring-1 ring-moss border-moss",
-  muted: "pointer-events-none bg-paper-lift text-graphite/50 ring-1 ring-rule/60 border-rule/60",
+  idle: "border-rule bg-white text-ink shadow-edge press hover:bg-paper-deep",
+  correct: "pointer-events-none border-grass bg-grass-soft text-grass-ink shadow-[0_2px_0_0_var(--color-grass)] animate-ring-pulse",
+  wrong: "pointer-events-none border-berry bg-berry-soft text-berry-ink shadow-[0_2px_0_0_var(--color-berry)] animate-[shake_320ms]",
+  reveal: "pointer-events-none border-grass bg-white text-grass-ink",
+  muted: "pointer-events-none border-rule bg-white text-hare",
 };
 
 /* The small index at the left edge: the keyboard hint, and what makes four sheets read as a list. */
 const INDEX_CLASSES: Record<VisualState, string> = {
-  idle: "text-graphite",
-  correct: "text-moss",
-  wrong: "text-accent",
-  reveal: "text-moss",
-  muted: "text-graphite/40",
+  idle: "border-rule text-hare",
+  correct: "border-current",
+  wrong: "border-current",
+  reveal: "border-current",
+  muted: "border-rule text-hare",
 };
 
 const KEY_HINTS = ["1", "2", "3", "4"];
@@ -66,14 +65,14 @@ function QuizOptions({ options, selectedIndex, onSelect }: QuizOptionsProps) {
             onClick={() => {
               if (selectedIndex === null) onSelect(index);
             }}
-            className={`relative flex w-full items-center gap-3 rounded-2xl border-l-[3px] px-4 py-4 text-left text-lg font-extrabold ${STATE_CLASSES[state]}`}
+            className={`relative flex w-full items-center gap-3 rounded-2xl border-2 px-4 py-3.5 text-left text-lg font-extrabold ${STATE_CLASSES[state]}`}
           >
             {state === "correct" && (
               <span aria-hidden="true" className="pointer-events-none absolute right-6 top-1/2">
                 {SPARKS.map((spark, i) => (
                   <span
                     key={i}
-                    className="absolute h-2.5 w-2.5 rounded-full bg-gilt animate-[spark_650ms_ease-out_forwards]"
+                    className="absolute h-2.5 w-2.5 rounded-full bg-sunny animate-[spark_650ms_ease-out_forwards]"
                     style={{ "--dx": spark.dx, "--dy": spark.dy, animationDelay: `${i * 30}ms` } as React.CSSProperties}
                   />
                 ))}
@@ -81,7 +80,7 @@ function QuizOptions({ options, selectedIndex, onSelect }: QuizOptionsProps) {
             )}
             <span
               aria-hidden="true"
-              className={`w-4 shrink-0 text-center text-[11px] font-extrabold tabular-nums ${INDEX_CLASSES[state]}`}
+              className={`grid h-7 w-7 shrink-0 place-items-center rounded-lg border-2 text-[13px] font-black tabular-nums ${INDEX_CLASSES[state]}`}
             >
               {KEY_HINTS[index]}
             </span>
@@ -89,12 +88,12 @@ function QuizOptions({ options, selectedIndex, onSelect }: QuizOptionsProps) {
             <span className="min-w-0 flex-1 break-words">{option.text}</span>
 
             {(state === "correct" || state === "reveal") && (
-              <span aria-hidden="true" className="shrink-0 text-xl font-black text-moss">
+              <span aria-hidden="true" className="shrink-0 text-xl font-black text-grass-ink">
                 ✓{option.emoji ? ` ${option.emoji}` : ""}
               </span>
             )}
             {state === "wrong" && (
-              <span aria-hidden="true" className="shrink-0 text-xl font-black text-accent">
+              <span aria-hidden="true" className="shrink-0 text-xl font-black text-berry-ink">
                 ✗
               </span>
             )}

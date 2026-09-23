@@ -81,7 +81,7 @@ function bucketStatus(bucket: Bucket): BucketStatus {
 /* Moss once a chapter has stuck, ink while it is being worked, tan before it is opened. */
 const statusDot: Record<BucketStatus, string> = {
   done: "bg-moss",
-  active: "bg-ink",
+  active: "bg-grass",
   locked: "bg-rule",
 };
 
@@ -209,7 +209,7 @@ function CardGroups({ cards, onEdit, onDelete }: CardGroupsProps) {
                 </span>
                 <span className="flex shrink-0 items-center gap-2.5">
                   {due > 0 && (
-                    <span className="rounded-full bg-ink px-2.5 py-1 text-xs font-extrabold text-paper-lift">
+                    <span className="rounded-full bg-grass px-2.5 py-1 text-xs font-extrabold text-white">
                       {newDue > 0 && reviewDue > 0
                         ? `${newDue} yeni · ${reviewDue} tekrar`
                         : newDue > 0

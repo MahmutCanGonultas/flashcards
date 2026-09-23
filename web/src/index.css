@@ -7,36 +7,77 @@
 @theme {
   --font-sans: "Nunito Variable", system-ui, "Segoe UI", Roboto, sans-serif;
 
-  /* One warm uncoated stock in three tints: the page, a sheet lying on it
-     (brighter), and a recessed band (deeper). Hairlines are tan, shadows
-     are umber — nothing on the page is grey. */
-  --color-paper: #faf3e6;
-  --color-paper-lift: #fffbf3;
-  --color-paper-deep: #f0e5d2;
-  --color-rule: #d8c9af;
-  --color-umber: #4e3a28;
+  /* "Bright" (Sept 2026, after "renkler aşırı siyah"): a white page, white
+     cards with a light grey border and a thicker grey edge underneath, and
+     colour where it means something. The old names stay so every screen
+     picks the new values up: paper = the page, paper-lift = a card on it,
+     paper-deep = a recessed band, rule = every border. */
+  --color-paper: #ffffff;
+  --color-paper-lift: #ffffff;
+  --color-paper-deep: #f7f7f7;
+  --color-rule: #e5e5e5;
+  --color-umber: #4b4b4b;
 
-  /* Inks: bistre (a warm black) for type and covers, a warm grey for the
-     secondary voice. */
-  --color-ink: #2b1d12;
-  --color-graphite: #7a6a58;
+  /* Type: a soft charcoal for words, a mid grey for the second voice, a
+     light grey for placeholders and switched-off things. Nothing is black. */
+  --color-ink: #3c3c3c;
+  --color-graphite: #6f6f6f;
+  --color-hare: #afafaf;
 
-  /* Accents, each with one meaning. Vermilion: due / missed / now. Moss:
-     known / later. Gilt: the honest middle — rings, icons and flashes only
-     (gilt-ink is the text-safe shade). Tonton violet: his bubble's rule
-     and focus ring, nowhere else on the page. */
-  --color-accent: #d4471f;
-  --color-moss: #3e7a5a;
-  --color-gilt: #c8922a;
-  --color-gilt-ink: #8f6414;
-  --color-tonton: #6b4fc9;
+  /* Meanings, unchanged: accent = due / missed / now, moss = known /
+     later, gilt = the honest middle and the streak (gilt-ink is its
+     text-safe shade), tonton = his bubble. All of them brighter now. */
+  --color-accent: #e02d2d;
+  --color-moss: #3a8500;
+  --color-gilt: #ff9600;
+  --color-gilt-ink: #b25c00;
+  --color-tonton: #7c5ce0;
 
-  /* Shadows are umber, never black: a print lifted off warm paper. */
-  --shadow-print: inset 0 1px 0 rgba(255, 253, 248, 0.9), 0 2px 6px -2px rgba(78, 58, 40, 0.18), 0 24px 48px -26px rgba(78, 58, 40, 0.45);
-  --shadow-cover: inset 0 1px 0 rgba(255, 251, 243, 0.08), 0 4px 10px -4px rgba(43, 29, 18, 0.35), 0 28px 54px -26px rgba(43, 29, 18, 0.6);
-  --shadow-sheet: inset 0 1px 0 rgba(255, 253, 248, 0.9), 0 -18px 44px -22px rgba(78, 58, 40, 0.5);
-  --shadow-button: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 8px 18px -10px rgba(43, 29, 18, 0.55);
-  --shadow-bubble: inset 0 1px 0 rgba(255, 253, 248, 0.9), 0 12px 28px -14px rgba(78, 58, 40, 0.45);
+  /* The bright families. Each has its colour, a deeper shade for the 3D
+     edge under a button, a soft wash for a highlight or a chip, and an
+     ink that is safe for small text on white. */
+  --color-grass: #58cc02;
+  --color-grass-deep: #58a700;
+  --color-grass-soft: #d7ffb8;
+  --color-grass-ink: #3f7d00;
+  --color-ocean: #1cb0f6;
+  --color-ocean-deep: #1899d6;
+  --color-ocean-soft: #ddf4ff;
+  --color-ocean-ink: #0b6fa4;
+  --color-berry: #ff4b4b;
+  --color-berry-deep: #ea2b2b;
+  --color-berry-soft: #ffdfe0;
+  --color-berry-ink: #c81e1e;
+  --color-sunny: #ffc800;
+  --color-sunny-deep: #e5a500;
+  --color-sunny-soft: #fff5cc;
+  --color-sunny-ink: #8a6200;
+  --color-tangerine: #ff9600;
+  --color-tangerine-deep: #e07c00;
+  --color-tangerine-soft: #ffefd9;
+  --color-tangerine-ink: #b25c00;
+  --color-plum: #ce82ff;
+  --color-plum-deep: #a568cc;
+  --color-plum-soft: #f5e6ff;
+  --color-plum-ink: #8a3fc7;
+  --color-teal: #1fc7b0;
+  --color-teal-deep: #00a38f;
+  --color-teal-soft: #d5f7f2;
+  --color-teal-ink: #00735f;
+  --color-rose: #ff86d0;
+  --color-rose-deep: #e0409a;
+  --color-rose-soft: #ffe3f3;
+  --color-rose-ink: #b0246f;
+
+  /* Depth is an edge, not a blur: a card sits on a 2px grey ledge, a
+     coloured button on a darker band of its own colour (drawn inside, so
+     any colour gets the right shade). Pressing one takes the edge away. */
+  --shadow-print: 0 2px 0 0 #e5e5e5;
+  --shadow-edge: 0 2px 0 0 #e5e5e5;
+  --shadow-cover: inset 0 -6px 0 0 rgba(0, 0, 0, 0.16);
+  --shadow-sheet: 0 -10px 30px -12px rgba(0, 0, 0, 0.22);
+  --shadow-button: inset 0 -4px 0 0 rgba(0, 0, 0, 0.2);
+  --shadow-bubble: 0 2px 0 0 #e5e5e5;
 
   /* The motion scale. Durations: 100 press · 180 stamp · 220 micro · 260
      exit · 320 sheet up / 200 down · 360 enter · 420 spring · 480 bar ·
@@ -69,13 +110,12 @@
   }
 
   html {
-    background-color: #faf3e6;
+    background-color: #ffffff;
   }
 
   body {
-    /* Warmer at the top of the page, like light falling on a desk. Static:
-       nothing drifts behind the type. */
-    background: radial-gradient(120% 42rem at 50% -8rem, #fff9ec 0%, rgba(255, 249, 236, 0) 70%), #faf3e6;
+    background: #ffffff;
+    color: var(--color-ink);
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -96,51 +136,68 @@
 
 /* ------------------------------------------------------ the word's ink */
 
-/* Every word carries its own colour: set `style={tintStyle(card)}`
-   (lib/tint.ts) on a card's root and these utilities pick it up. The tint
-   is only ever a bar, a ring, a numeral or a ground deepened into bistre —
-   never a panel behind body text. */
+/* Every word carries its own bright colour: set `style={tintStyle(card)}`
+   (lib/tint.ts) on a card's root and these utilities pick it up. tintStyle
+   also sets --tint-deep (the 3D edge), --tint-soft (a wash behind a
+   highlighted word) and --tint-ink (the colour's text-safe shade). */
 @utility tint-bar {
-  background-color: var(--tint, var(--color-ink));
+  background-color: var(--tint, var(--color-ocean));
 }
 @utility tint-ground {
-  background-color: var(--tint, var(--color-ink));
+  background-color: var(--tint, var(--color-ocean));
 }
 @utility tint-text {
-  color: var(--tint, var(--color-ink));
+  color: var(--tint-ink, var(--color-ocean-ink));
 }
 @utility tint-border {
-  border-color: var(--tint, var(--color-ink));
+  border-color: var(--tint, var(--color-ocean));
 }
-@utility tint-ink {
-  background-color: color-mix(in oklab, var(--tint, var(--color-ink)) 45%, var(--color-ink));
+@utility tint-soft {
+  background-color: var(--tint-soft, var(--color-ocean-soft));
 }
-@utility tint-ring {
-  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--tint, var(--color-ink)) 45%, transparent);
-}
-/* A card's cover: the word's colour deepened into bistre so white type
-   reads on every ink in the palette, lit softly from above like a sheet
-   under a lamp and a shade darker at the foot. */
+/* A card's cover: the word's own colour, full strength, a little light in
+   the top-left corner and a darker band along the foot, the 3D edge every
+   button here has. White type sits on it. */
 @utility cover-ground {
-  background-color: color-mix(in oklab, var(--tint, var(--color-ink)) 46%, var(--color-ink));
-  background-image:
-    radial-gradient(120% 70% at 50% -10%, color-mix(in oklab, var(--tint, var(--color-ink)) 34%, transparent) 0%, transparent 70%),
-    linear-gradient(to top, rgba(20, 12, 6, 0.3), transparent 45%);
+  background-color: var(--tint, var(--color-ocean-deep));
+  background-image: radial-gradient(120% 85% at 0% 0%, rgba(255, 255, 255, 0.2), transparent 60%);
+  box-shadow: inset 0 -6px 0 0 rgba(0, 0, 0, 0.16);
 }
-/* Paper grain on a raised sheet (card back, bottom sheet, Tonton's
-   bubble). */
+/* Kept for the screens that still ask for it: a raised sheet is plain
+   white now, so this only positions the sheet's children. */
 @utility paper-grain {
   position: relative;
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .31 0 0 0 0 .23 0 0 0 0 .13 0 0 0 .04 0'/></filter><rect width='180' height='180' filter='url(%23g)'/></svg>");
-    background-size: 180px 180px;
+}
+
+/* A white 3D card: a 2px grey border and a ledge of the same grey under it
+   (the corner radius is the caller's). `press` makes it sink onto the
+   ledge while a finger is on it. */
+@utility card-3d {
+  background-color: #ffffff;
+  border: 2px solid var(--color-rule);
+  box-shadow: 0 2px 0 0 var(--color-rule);
+}
+@utility press {
+  transition: transform 100ms ease-out, box-shadow 100ms ease-out;
+  &:active {
+    transform: translateY(2px);
+    box-shadow: none;
   }
+}
+/* A solid colour button's press: down by its edge, edge gone. */
+@utility press-3d {
+  transition: transform 100ms ease-out, box-shadow 100ms ease-out, filter 150ms ease-out;
+  &:hover {
+    filter: brightness(1.05);
+  }
+  &:active {
+    transform: translateY(3px);
+    box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+  }
+}
+/* The text of a 3D button sits on its top face, above the edge. */
+@utility face {
+  padding-bottom: 4px;
 }
 
 /* ----------------------------------------------------- the motion set */
@@ -172,22 +229,22 @@
 /* One warm ring for the day's first card: the streak acknowledged. */
 @keyframes gilt-flash {
   0% {
-    box-shadow: 0 0 0 0 rgba(200, 146, 42, 0);
+    box-shadow: 0 0 0 0 rgba(255, 150, 0, 0);
   }
   30% {
-    box-shadow: 0 0 0 6px rgba(200, 146, 42, 0.35);
+    box-shadow: 0 0 0 6px rgba(255, 150, 0, 0.35);
   }
   100% {
-    box-shadow: 0 0 0 12px rgba(200, 146, 42, 0);
+    box-shadow: 0 0 0 12px rgba(255, 150, 0, 0);
   }
 }
 /* Sound has no picture; a pulse pairs the ear with the eye. */
 @keyframes ring-pulse {
   from {
-    box-shadow: 0 0 0 0 rgba(43, 29, 18, 0.35);
+    box-shadow: 0 0 0 0 rgba(28, 176, 246, 0.45);
   }
   to {
-    box-shadow: 0 0 0 10px rgba(43, 29, 18, 0);
+    box-shadow: 0 0 0 10px rgba(28, 176, 246, 0);
   }
 }
 /* Tonton's bubble growing out of his mouth corner. */

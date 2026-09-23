@@ -47,11 +47,11 @@ function PathHeader({ stats, units, onReview, onPractice, placementTo, isFresh =
             aria-label={`${stats.wordsKnown} kelime öğrenildi, ${stats.wordsLearning} hâlâ öğreniliyor`}
           >
             <div
-              className="h-full bg-ink transition-[width] duration-500"
+              className="h-full bg-grass transition-[width] duration-500"
               style={{ width: `${knownPct}%` }}
             />
             <div
-              className="h-full bg-ink/35 transition-[width] duration-500"
+              className="h-full bg-grass/35 transition-[width] duration-500"
               style={{ width: `${learningPct}%` }}
             />
           </div>

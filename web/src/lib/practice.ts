@@ -69,7 +69,12 @@ export type Exercise = {
 
 export type Line = { en: string; tr: string | null };
 
-/** Every English sentence a card carries, with its Turkish; the senses' own first. */
+/**
+ * Every English sentence a card carries, with its Turkish: each sense's
+ * main sentence first, then the card's own, then the senses' extra ones —
+ * so the first line is always the one the word's page leads with, and the
+ * rest give the cloze more to rotate through.
+ */
 export function sentencesOf(card: Card): Line[] {
   const seen = new Set<string>();
   const lines: Line[] = [];
@@ -82,6 +87,7 @@ export function sentencesOf(card: Card): Line[] {
   for (const sense of card.senses ?? []) add(sense.example_en, sense.example_tr);
   add(card.example_sentence, card.example_tr);
   add(card.example2, card.example2_tr);
+  for (const sense of card.senses ?? []) for (const extra of sense.examples ?? []) add(extra.en, extra.tr);
   return lines;
 }
 

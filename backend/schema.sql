@@ -121,6 +121,18 @@ CREATE TABLE review_log (
 );
 CREATE INDEX review_log_user_time ON review_log (user_id, created_at);
 
+-- The grammar topics in the learner's own section (their content ships
+-- with the web app): the best quiz score per topic, 0-100, and how often
+-- it was practised. `topic` is the topic's slug ("to-be").
+CREATE TABLE grammar_progress (
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    topic VARCHAR(60) NOT NULL,
+    best INTEGER NOT NULL DEFAULT 0,
+    attempts INTEGER NOT NULL DEFAULT 0,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    PRIMARY KEY (user_id, topic)
+);
+
 -- Server-side settings that must survive deploys without env vars: the
 -- Web Push VAPID key pair, generated on first use.
 CREATE TABLE settings (

@@ -266,7 +266,7 @@ function PlacementSession({
             <span
               key={l}
               className={`h-2 flex-1 rounded-full transition ${
-                i < levelIndex ? "bg-ink" : i === levelIndex ? "bg-gilt" : "bg-rule"
+                i < levelIndex ? "bg-grass" : i === levelIndex ? "bg-gilt" : "bg-rule"
               }`}
             />
           ))}

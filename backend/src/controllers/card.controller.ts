@@ -26,6 +26,13 @@ const createCardSchema = z.object({
         example_en: z.string().max(300).nullable().optional(),
         example_tr: z.string().max(300).nullable().optional(),
         note: z.string().max(300).nullable().optional(),
+        // A learner's-dictionary definition in simple English, and more sentences.
+        definition: z.string().max(300).nullable().optional(),
+        examples: z
+          .array(z.object({ en: z.string().min(1).max(300), tr: z.string().max(300).nullable().optional() }))
+          .max(6)
+          .nullable()
+          .optional(),
       }),
     )
     .max(8)

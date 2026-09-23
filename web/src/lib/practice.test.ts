@@ -11,6 +11,7 @@ import {
   normalizeAnswer,
   ownGap,
   sentenceGaps,
+  sentencesOf,
   TYPED_KINDS,
 } from "./practice";
 import { makeCard } from "./testCards";
@@ -33,6 +34,34 @@ const commit = makeCard({
     { en: "commit a crime", tr: "suç işlemek" },
     { en: "be fully committed to sth", tr: "kendini tamamen adamak" },
   ],
+});
+
+describe("sentencesOf", () => {
+  it("leads with each sense's main sentence and keeps the extra ones for later", () => {
+    const card = makeCard({
+      id: 7,
+      front: "achieve",
+      example_sentence: "Frances achieved great exam results.",
+      senses: [
+        {
+          meaning: "başarmak",
+          example_en: "She achieved her goal.",
+          example_tr: "Hedefine ulaştı.",
+          examples: [
+            { en: "Frances achieved great exam results.", tr: "Frances harika sonuçlar elde etti." },
+            { en: "You can achieve anything.", tr: null },
+          ],
+        },
+        { meaning: "ulaşmak", example_en: "The factory achieved a 30% reduction.", example_tr: null },
+      ],
+    });
+    expect(sentencesOf(card).map((l) => l.en)).toEqual([
+      "She achieved her goal.",
+      "The factory achieved a 30% reduction.",
+      "Frances achieved great exam results.",
+      "You can achieve anything.",
+    ]);
+  });
 });
 
 describe("normalizeAnswer", () => {

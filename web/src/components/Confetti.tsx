@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const COLOURS = ["#8B5CF6", "#F59E0B", "#10B981", "#F43F5E", "#0EA5E9", "#FBBF24"];
+const COLOURS = ["#58cc02", "#1cb0f6", "#ff4b4b", "#ffc800", "#ff9600", "#ce82ff"];
 const PIECES = 36;
 
 type Piece = {

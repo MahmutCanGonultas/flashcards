@@ -1,5 +1,6 @@
 import type { Card } from "../types";
 import type { MascotMood } from "../components/Mascot";
+import type { GrammarProgress } from "./grammar";
 import {
   AFTER_GRADE,
   AUTO_MUTE,
@@ -11,6 +12,7 @@ import {
   MILESTONE,
   STREAK_RISK,
   SUMMARY_LATER,
+  TOPIC_LINGER,
   WORD_PAGE_LINGER,
   dayPart,
   popLines,
@@ -55,30 +57,33 @@ export type Pop = {
 export type View = { pop: Pop | null; leaving: boolean };
 
 /** What the app knows right now; read only at the moment he speaks. */
-export type Snapshot = { cards: Card[]; personal: Card[]; streak: number; lastStudyDate: string | null };
+export type Snapshot = { cards: Card[]; personal: Card[]; streak: number; lastStudyDate: string | null; grammar?: GrammarProgress };
 
 /** 5 right · 4 the right word in another form · 3 hard or a slip · 1 missed. */
 type GradeDetail = { quality: 1 | 3 | 4 | 5; front: string; attempt: number; index: number; total: number };
 type CardDetail = { front: string; flipped: boolean };
 
 const EXIT_MS = 260;
-const MIN_GAP_MS = 18_000;
-const RETRY_MS = 5_000;
-const REACT_GAP_MS = 25_000;
-const NUDGE_MS = 25_000;
-const LINGER_MS = 20_000;
-const SUMMARY_MS = 6_000;
-const FIRST_MS = 2_500;
+const MIN_GAP_MS = 10_000;
+const RETRY_MS = 4_000;
+/** Between two reactions on the practice screen; nearly every card may get one. */
+const REACT_GAP_MS = 8_000;
+const REACT_CHANCE = 0.6;
+const NUDGE_MS = 20_000;
+const LINGER_MS = 15_000;
+const SUMMARY_MS = 5_000;
+const FIRST_MS = 2_000;
 const HUSH_MS = 2 * 60 * 60_000;
 const MUTE_MS = 10 * 60_000;
 const QUICK_DISMISS_MS = 1_500;
-const MAX_AUTO_POPS = 12;
-const REMEMBER = 20;
+const MAX_AUTO_POPS = 40;
+const REMEMBER = 24;
 
-/** He never interrupts a question. */
-const QUIET_ROUTES = [/^\/login/, /^\/register/, /\/placement/, /\/study/, /\/test$/];
-const WANDER_ROUTES = [/^\/kartlar$/, /^\/kurs$/, /^\/decks\/\d+$/, /^\/decks\/\d+\/words\/\d+$/];
+/** He never interrupts a question (the grammar quiz has him on the page already). */
+const QUIET_ROUTES = [/^\/login/, /^\/register/, /\/placement/, /\/study/, /\/test$/, /\/alistirma$/];
+const WANDER_ROUTES = [/^\/kartlar$/, /^\/kurs$/, /^\/kelimelerim$/, /^\/gramer$/, /^\/gramer\/[a-z-]+$/, /^\/decks\/\d+$/, /^\/decks\/\d+\/words\/\d+$/];
 const WORD_ROUTE = /^\/decks\/\d+\/words\/\d+$/;
+const TOPIC_ROUTE = /^\/gramer\/[a-z-]+$/;
 const FLASH_ROUTE = /\/flashcards$/;
 
 /* ------------------------------------------------------------ storage -- */
@@ -160,12 +165,12 @@ const hushed = () => Date.now() < hushUntil;
 const muted = () => Date.now() < muteUntil;
 const rand = (min: number, max: number) => min + Math.random() * (max - min);
 
-/** Draws each visit's gap: mostly a minute or two, sometimes soon, sometimes not for a while. */
+/** Draws each visit's gap: mostly under a minute, now and then almost at once, sometimes a little longer. */
 function drawGap(): number {
   const r = Math.random();
-  if (r < 0.15) return rand(20_000, 35_000);
-  if (r < 0.8) return rand(45_000, 140_000);
-  return rand(150_000, 260_000);
+  if (r < 0.25) return rand(10_000, 20_000);
+  if (r < 0.85) return rand(25_000, 70_000);
+  return rand(80_000, 100_000);
 }
 
 /** How he comes in on a visit: usually up from the edge, sometimes sneaking. */
@@ -196,7 +201,7 @@ function pickFresh(pool: string[]): string {
  * Reasons to stay away right now. A blocked visit isn't lost; the caller
  * tries again a little later.
  */
-function blocked(kind: PopKind): boolean {
+function blocked(): boolean {
   if (typeof document === "undefined") return true;
   if (document.hidden) return true;
   if (document.body.dataset.sheet === "open") return true;
@@ -205,7 +210,7 @@ function blocked(kind: PopKind): boolean {
   if (Date.now() - routeAt < 2_000) return true;
   if (QUIET_ROUTES.some((r) => r.test(route))) return true;
   if (hushed()) return true;
-  if (reducedMotion() && kind !== "first" && kind !== "summary") return true;
+  // Reduced motion changes how he arrives (a fade), never whether he does.
   return false;
 }
 
@@ -280,7 +285,7 @@ function tryWander(forced?: Entrance) {
     scheduleWander(Math.max(hushUntil, muteUntil) - now + drawGap());
     return;
   }
-  if (blocked("wander") || (!forced && (now < busyUntil || now - lastPopAt < MIN_GAP_MS))) {
+  if (blocked() || (!forced && (now < busyUntil || now - lastPopAt < MIN_GAP_MS))) {
     scheduleWander(RETRY_MS + rand(0, 4_000));
     return;
   }
@@ -311,7 +316,7 @@ function tryWander(forced?: Entrance) {
 
 function tryFirst(attempt = 0) {
   if (route !== "/kartlar") return;
-  if (blocked("first") || Date.now() < busyUntil) {
+  if (blocked() || Date.now() < busyUntil) {
     if (attempt < 6) firstTimer = window.setTimeout(() => tryFirst(attempt + 1), 3_000);
     return;
   }
@@ -330,25 +335,27 @@ function tryFirst(attempt = 0) {
 }
 
 function tryLinger() {
-  if (!WORD_ROUTE.test(route) || lingered.has(route)) return;
+  const topic = TOPIC_ROUTE.test(route);
+  if ((!WORD_ROUTE.test(route) && !topic) || lingered.has(route)) return;
   lingered.add(route);
-  if (Math.random() >= 0.4) return;
-  if (blocked("linger") || Date.now() < busyUntil || autoPops >= MAX_AUTO_POPS) return;
+  if (Math.random() >= 0.7) return;
+  if (blocked() || Date.now() < busyUntil || autoPops >= MAX_AUTO_POPS) return;
   autoPops += 1;
   window.clearTimeout(wanderTimer);
+  const text = topic ? pickFresh(TOPIC_LINGER) : pickFresh(WORD_PAGE_LINGER);
   show({
     kind: "linger",
     place: "bottom",
-    text: opener(WORD_PAGE_LINGER),
+    text: opener(text),
     entrance: drawEntrance(),
-    stayMs: stayFor(WORD_PAGE_LINGER),
+    stayMs: stayFor(text),
     mood: "idle",
   });
 }
 
 function tryNudge() {
   if (!FLASH_ROUTE.test(route) || !currentFront || nudgedFront === currentFront) return;
-  if (blocked("nudge") || Date.now() < busyUntil || autoPops >= MAX_AUTO_POPS) return;
+  if (blocked() || Date.now() < busyUntil || autoPops >= MAX_AUTO_POPS) return;
   nudgedFront = currentFront;
   autoPops += 1;
   show({
@@ -387,12 +394,11 @@ function onGrade(detail: GradeDetail) {
   else {
     milestone = false;
     const now = Date.now();
-    if (cardsSincePop < 3 || now - lastReactAt < REACT_GAP_MS || Math.random() >= 0.25) return;
-    if (detail.quality === 1 && misses % 3 !== 0) return;
+    if (now - lastReactAt < REACT_GAP_MS || Math.random() >= REACT_CHANCE) return;
     const pool = knew ? AFTER_GRADE.known : detail.quality === 1 ? AFTER_GRADE.missed : AFTER_GRADE.hard;
     line = { text: pickFresh(pool) };
   }
-  if (!FLASH_ROUTE.test(route) || blocked("react")) return;
+  if (!FLASH_ROUTE.test(route) || blocked()) return;
   // A visit at the bottom (the summary's, say) has the floor.
   if (view.pop && view.pop.place === "bottom" && !view.leaving) return;
   cardsSincePop = 0;
@@ -403,14 +409,15 @@ function onGrade(detail: GradeDetail) {
     text: line.text,
     kicker: line.kicker,
     entrance: reducedMotion() ? "fade" : "drop",
-    stayMs: milestone ? 1_500 : 1_300,
+    stayMs: milestone ? 2_800 : 2_400,
     mood: line === MILESTONE.firstMiss ? "idle" : milestone ? "happy" : mood,
   });
 }
 
 function onCard(detail: CardDetail) {
   window.clearTimeout(nudgeTimer);
-  if (view.pop?.place === "top") leave();
+  // A reaction outlives its card: it is about the answer just given, and
+  // it goes on its own or at the next touch.
   currentFront = detail.front;
   if (streakAtStart === null) streakAtStart = snapshot().streak;
   // The back is showing and nothing happens: one word, and only once per card.
@@ -430,7 +437,7 @@ function onSummary() {
     } else if (Math.random() < 0.4) {
       text = pickFresh(SUMMARY_LATER);
     } else return;
-    if (blocked("summary") || Date.now() < busyUntil || autoPops >= MAX_AUTO_POPS) return;
+    if (blocked() || Date.now() < busyUntil || autoPops >= MAX_AUTO_POPS) return;
     autoPops += 1;
     show({
       kind: "summary",
@@ -537,7 +544,7 @@ function setRoute(pathname: string) {
   }
   if (WANDER_ROUTES.some((r) => r.test(pathname))) scheduleWander();
   else if (!view.pop) phase = "hidden";
-  if (WORD_ROUTE.test(pathname)) lingerTimer = window.setTimeout(tryLinger, LINGER_MS);
+  if (WORD_ROUTE.test(pathname) || TOPIC_ROUTE.test(pathname)) lingerTimer = window.setTimeout(tryLinger, LINGER_MS);
 }
 
 export const director = {

@@ -15,6 +15,10 @@ export type Sense = {
   example_en?: string | null;
   example_tr?: string | null;
   note?: string | null;
+  /** A learner's-dictionary definition, in simple English. */
+  definition?: string | null;
+  /** More sentences for this sense, each with its Turkish. */
+  examples?: { en: string; tr?: string | null }[] | null;
 };
 
 export type RelatedWord = { word: string; pos?: string | null; meaning: string };

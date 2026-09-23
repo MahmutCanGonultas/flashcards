@@ -33,7 +33,7 @@ function RoundRail({ stages, activeIndex }: RoundRailProps) {
             key={stage.id}
             aria-current={isActive ? "step" : undefined}
             className={`shrink-0 rounded-full px-2 py-1 text-[10px] font-extrabold uppercase tracking-[0.08em] transition sm:px-2.5 sm:text-[11px] sm:tracking-[0.18em] ${
-              isActive ? "bg-ink text-paper-lift" : "text-graphite ring-1 ring-inset ring-rule"
+              isActive ? "bg-grass text-white" : "text-graphite ring-2 ring-inset ring-rule"
             }`}
           >
             {stage.label}

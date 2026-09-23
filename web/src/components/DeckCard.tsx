@@ -100,7 +100,7 @@ function DeckCard({ deck, theme, stats }: DeckCardProps) {
             </p>
             <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-rule">
               <div
-                className={`h-full rounded-full ${stats.path.wordsLearned > 0 ? "bg-ink" : ""} transition-[width] duration-500`}
+                className={`h-full rounded-full ${stats.path.wordsLearned > 0 ? "bg-grass" : ""} transition-[width] duration-500`}
                 style={{
                   width: `${Math.round((stats.path.wordsLearned / Math.max(stats.path.totalWords, 1)) * 100)}%`,
                 }}

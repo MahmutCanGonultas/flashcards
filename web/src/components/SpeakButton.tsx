@@ -20,9 +20,9 @@ const iconSizeClasses: Record<NonNullable<SpeakButtonProps["size"]>, string> = {
 };
 
 /**
- * A tappable speaker icon that reads `text` aloud with the device's own
- * voice. Sound has no picture, so each press sends one ring out from the
- * button; the ring is keyed on a counter so a second press replays it.
+ * A blue speaker key that reads `text` aloud with the device's own voice.
+ * Sound has no picture, so each press sends one ring out from the button;
+ * the ring is keyed on a counter so a second press replays it.
  */
 function SpeakButton({ text, size = "sm", className = "" }: SpeakButtonProps) {
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -47,12 +47,12 @@ function SpeakButton({ text, size = "sm", className = "" }: SpeakButtonProps) {
       type="button"
       onClick={handleClick}
       aria-label={`Dinle: ${text}`}
-      className={`relative inline-flex shrink-0 items-center justify-center rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 ${sizeClasses[size]} ${
-        isSpeaking ? "bg-ink text-paper-lift" : "bg-paper-lift text-ink ring-1 ring-rule hover:bg-paper-deep/50"
+      className={`relative inline-flex shrink-0 items-center justify-center rounded-2xl transition-[transform,box-shadow,background-color] duration-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/30 active:translate-y-[2px] ${sizeClasses[size]} ${
+        isSpeaking ? "bg-ocean-deep text-white" : "bg-ocean text-white shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.2)] hover:brightness-105"
       } ${className}`}
     >
       {/* The pulse lives on its own layer so it never fights the ring's box-shadow. */}
-      {presses > 0 && <span key={presses} aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-full animate-ring-pulse" />}
+      {presses > 0 && <span key={presses} aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-2xl animate-ring-pulse" />}
       <SpeakerIcon className={`${iconSizeClasses[size]} ${isSpeaking ? "animate-pulse" : ""}`} />
     </button>
   );

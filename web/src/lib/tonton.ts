@@ -2,6 +2,8 @@ import type { Card } from "../types";
 import type { PathStats, Unit } from "./path";
 import { isDue, wordTier } from "./path";
 import { parseBack } from "./cardBack";
+import type { GrammarProgress } from "./grammar";
+import { CATALOG } from "../content/grammar/catalog";
 
 /**
  * What Tonton says. Every pick that looks random is keyed off the day, so
@@ -38,7 +40,7 @@ const TIPS = [
   "Yarın yine gel: kelime kalmaya o zaman karar verir.",
   "Örnek cümleyi iki kez oku. Kelime orada yaşar.",
   "Duymak için kelimeye dokun. Sonra sen de söyle.",
-  "Bir kelimede mi takıldın? Hafıza ipucu bir dokunuş uzakta.",
+  "Bir kelimede mi takıldın? Sayfasını aç: renkli anlamlar, kalıplar, örnekler.",
 ];
 
 const tip = () => TIPS[dayIndex() % TIPS.length];
@@ -153,6 +155,8 @@ const POP_TIPS = [
   "Türkçesini değil, cümlesini hatırla.",
   "Bir kelimeye dokun, sesini duy. Kulak da öğrenir.",
   "Gramer notları kısa. Bir tanesini oku, sonra bir kart çevir.",
+  "Gramer köşesinde her konu 10 soru. Beş dakika, bir yıldız.",
+  "Bir gramer konusunu okurken örnekleri sesli söyle. Kural kulağa da yerleşir.",
   "Kelimenin kalıbını öğren; kelimeyi bedava alırsın.",
   "Aynı aileden kelimeler birlikte kalır. Birini bildin mi, ötekine de bak.",
   "Yazarak hatırladığın kelime, bakarak hatırladığından iki kat kalır.",
@@ -185,21 +189,36 @@ function shuffleByDay<T>(items: T[], salt: number): T[] {
   return [...items].sort((a, b) => Math.sin(seed + items.indexOf(a) * 13.7) - Math.sin(seed + items.indexOf(b) * 13.7));
 }
 
+/** What he can say about the grammar topics: the next one to open, or one worth another go. */
+function grammarLines(grammar: GrammarProgress | undefined): PopLine[] {
+  if (!grammar) return [];
+  const started = CATALOG.filter((t) => grammar[t.slug]);
+  const next = CATALOG.find((t) => !grammar[t.slug]);
+  const weak = started.filter((t) => (grammar[t.slug]?.best ?? 100) < 70).sort((a, b) => (grammar[a.slug]?.best ?? 0) - (grammar[b.slug]?.best ?? 0))[0];
+  const lines: PopLine[] = [];
+  if (started.length === 0) lines.push({ kicker: "Gramer", text: `Gramer köşesinde ${CATALOG.length} konu var. İlki "${CATALOG[0].title}": okuması iki, alıştırması beş dakika.` });
+  else if (next) lines.push({ kicker: "Gramer", text: `Sıradaki gramer konun: "${next.title}" (${next.titleTr}). Bir göz at?` });
+  if (weak) lines.push({ kicker: "Gramer", text: `"${weak.title}" konusunda en iyin %${grammar[weak.slug]?.best}. Bir tur daha, bir yıldız daha.` });
+  return lines;
+}
+
 /**
  * A pool of pop-in lines for the moment: the live ones (due cards, a word
- * of the learner's own to recall, streak) first, then small talk, tips
- * and cheers mixed.
+ * of the learner's own to recall, streak, grammar) first, then small
+ * talk, tips and cheers mixed.
  */
 export function popLines({
   cards,
   personal,
   streak,
+  grammar,
 }: {
   cards: Card[];
   personal: Card[];
   streak: number;
+  grammar?: GrammarProgress;
 }): PopLine[] {
-  const live: PopLine[] = [];
+  const live: PopLine[] = [...grammarLines(grammar)];
   const personalDue = personal.filter(isDue).length;
   if (personalDue > 0) {
     live.push({
@@ -235,7 +254,7 @@ export function popLines({
 
 /* ------------------------------------------------------ the director's -- */
 
-/** Right after a grade, on the flashcard screen. Misses get a word only every third time. */
+/** Right after a grade, on the flashcard screen: a word on most cards, so the pools are wide. */
 export const AFTER_GRADE = {
   known: [
     "Gördün mü, biliyormuşsun.",
@@ -243,16 +262,31 @@ export const AFTER_GRADE = {
     "Bu kelime seni tanıdı. Yarın da tanır.",
     "Düşünmeden çıktı. Bu artık senin.",
     "Kısa ve net. Sıradaki.",
+    "Tık! Yerine oturdu.",
+    "Bunu bir daha ancak günler sonra görürsün.",
+    "Kulaklarım dikildi. Güzel.",
+    "İşte bu. Hafıza böyle güçlenir.",
+    "Hızlıydın. Ben bile yetişemedim.",
+    "Bir yıldız daha. Hayali, ama olsun. ⭐",
+    "Bu kelimeyle aranız iyi.",
   ],
   missed: [
     "Olur öyle. On dakika sonra yine buluşuruz.",
     "Kaçtı ama uzağa gitmedi. Sırada bekliyor.",
     "Bu kelime inatçı. Ben daha inatçıyım.",
+    "Yanlış cevap da öğretir. Şimdi arkasına iyi bak.",
+    "Unutmak, hatırlamanın ilk adımı. Birazdan yine sorarım.",
+    "Sorun değil. Cümlesini oku, kelime cümleyle gelir.",
+    "Bir daha gelecek; bu sefer hazır ol.",
+    "Hafıza bazen nazlanır. Üstüne gitmeye devam.",
   ],
   hard: [
     "Zorlandın ama bildin. Hafızanın kas ağrısı bu.",
     "Dürüstlük için sağ ol. Biraz daha sık getiririm.",
     "Tereddüt de bir cevap. Not ettim.",
+    "Az kaldı. Yarın daha kolay gelecek.",
+    "Zorlanmak iyidir; kelime tam da o an yapışır.",
+    "Bir dahakine düşünmeden çıkacak, görürsün.",
   ],
 };
 
@@ -282,7 +316,18 @@ export const STREAK_RISK = "Seri bu akşam bir karta bakıyor. Bir tane yeter.";
 export const streakLine = (streak: number) => `${streak}. gün. Alev bugün biraz daha parlak.`;
 
 export const IDLE_NUDGE = "Bakıp durma. Bildiysen bildim, bilmediysen bilemedim. Ceza yok.";
-export const WORD_PAGE_LINGER = "Kalıplar tek kelimeden daha çok akılda kalır. Birini sesli oku.";
+export const WORD_PAGE_LINGER = [
+  "Kalıplar tek kelimeden daha çok akılda kalır. Birini sesli oku.",
+  "Renklere bak: her anlam kendi renginde. Mavi hep birinci anlam.",
+  "Örnek cümlelerden birini yüksek sesle oku. Kulak da öğrenir.",
+  "Dikkat kutusunu atlama: en sık yapılan hata orada.",
+];
+export const TOPIC_LINGER = [
+  "Örnekleri sesli oku; kural kulağına da yerleşsin.",
+  "Yeşil kelimeler konunun kalbi. Onlara bir daha bak.",
+  "Okudun mu? Alıştırma aşağıda seni bekliyor. On soru, beş dakika.",
+  "Sık yapılan hatalar kısmını oku; sınavda değil, burada yanıl.",
+];
 
 export const SUMMARY_LATER = [
   "Yarın aynı saatte? Ben burada olurum. Genelde buradayım.",

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Mascot, { type MascotMood } from "./Mascot";
 import { playChirp } from "../lib/sound";
+import { useTontonAway } from "../lib/useTontonAway";
 
 type TontonSaysProps = {
   /** What Tonton has to say, in the order it comes out. */
@@ -27,6 +28,7 @@ function TontonSays({ lines, size = 72, className = "", variant = "bubble" }: To
   // Bumped on every poke so the hop replays even mid-hop.
   const [pokes, setPokes] = useState(0);
 
+  const away = useTontonAway();
   const count = lines.length;
   const line = count > 0 ? lines[index % count] : "";
 
@@ -57,7 +59,7 @@ function TontonSays({ lines, size = 72, className = "", variant = "bubble" }: To
 
   if (variant === "column") {
     return (
-      <div className={`flex items-start gap-3.5 ${className}`}>
+      <div className={`flex items-start gap-3.5 transition-opacity duration-300 ${away ? "opacity-0" : ""} ${className}`}>
         <button
           type="button"
           onClick={poke}
@@ -68,10 +70,9 @@ function TontonSays({ lines, size = 72, className = "", variant = "bubble" }: To
           <Mascot key={pokes} mood={mood} size={size} />
         </button>
         {line && (
-          // A tan rule, not his violet: the column is part of the page, he is the guest.
-          <blockquote key={index} role="status" className="min-w-0 border-l-2 border-rule pl-3.5 animate-rise-in">
-            <p className="text-[17px] font-semibold leading-[1.35] text-ink">{line}</p>
-            <cite className="mt-1.5 block text-[10px] font-extrabold uppercase not-italic tracking-[0.18em] text-graphite">— Tonton</cite>
+          <blockquote key={index} role="status" className="relative mt-1 min-w-0 flex-1 rounded-2xl border-2 border-rule bg-white px-4 py-3 animate-bubble-in">
+            <span aria-hidden="true" className="absolute -left-[7px] top-5 h-3 w-3 rotate-45 border-b-2 border-l-2 border-rule bg-white" />
+            <p className="text-[16px] font-bold leading-[1.35] text-ink">{line}</p>
           </blockquote>
         )}
       </div>
@@ -79,7 +80,7 @@ function TontonSays({ lines, size = 72, className = "", variant = "bubble" }: To
   }
 
   return (
-    <div className={`flex items-end gap-3 ${className}`}>
+    <div className={`flex items-end gap-3 transition-opacity duration-300 ${away ? "opacity-0" : ""} ${className}`}>
       <button
         type="button"
         onClick={poke}
@@ -90,16 +91,9 @@ function TontonSays({ lines, size = 72, className = "", variant = "bubble" }: To
         <Mascot key={pokes} mood={mood} size={size} />
       </button>
       {line && (
-        <div
-          key={index}
-          role="status"
-          className="relative mb-3 min-w-0 flex-1 rounded-2xl rounded-bl-md border-l-2 border-tonton bg-paper-lift px-4 py-3 ring-1 ring-rule shadow-bubble paper-grain animate-bubble-in"
-        >
-          <span
-            aria-hidden="true"
-            className="absolute -left-1.5 bottom-3 h-3 w-3 rotate-45 rounded-sm bg-paper-lift ring-1 ring-rule [clip-path:polygon(0_0,0_100%,100%_100%)]"
-          />
-          <p className="text-[15px] font-semibold leading-snug text-ink">{line}</p>
+        <div key={index} role="status" className="relative mb-3 min-w-0 flex-1 rounded-2xl border-2 border-rule bg-white px-4 py-3 animate-bubble-in">
+          <span aria-hidden="true" className="absolute -left-[7px] bottom-4 h-3 w-3 rotate-45 border-b-2 border-l-2 border-rule bg-white" />
+          <p className="text-[15px] font-bold leading-snug text-ink">{line}</p>
         </div>
       )}
     </div>

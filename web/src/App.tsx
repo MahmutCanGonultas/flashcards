@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { lazy, Suspense, useEffect, useLayoutEffect, useRef } from "react";
+import { Routes, Route, Navigate, useLocation, useNavigationType } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Kartlar from "./pages/Kartlar";
@@ -12,10 +12,16 @@ import Placement from "./pages/Placement";
 import Grammar from "./pages/Grammar";
 import Flashcards from "./pages/Flashcards";
 import WordPage from "./pages/WordPage";
+import Kelimelerim from "./pages/Kelimelerim";
 import TontonPopups from "./components/TontonPopups";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { getToken } from "./lib/api";
 import { playTap } from "./lib/sound";
+
+// Grammar ships its topics as their own chunk: the home page only needs the catalog.
+const GrammarHub = lazy(() => import("./pages/GrammarHub"));
+const GrammarTopic = lazy(() => import("./pages/GrammarTopic"));
+const GrammarQuiz = lazy(() => import("./pages/GrammarQuiz"));
 
 /** Signed in? Go to the decks. Otherwise, go sign in. */
 function RootRedirect() {
@@ -40,8 +46,40 @@ function useTapSounds() {
   }, []);
 }
 
+/**
+ * A new page opens at its top; going back returns to where the last one
+ * was left. A replace (the word list's search and filters) keeps the
+ * scroll where it is.
+ */
+function useScrollMemory() {
+  const location = useLocation();
+  const type = useNavigationType();
+  const positions = useRef(new Map<string, number>());
+  const current = useRef(location.key);
+
+  useEffect(() => {
+    let frame = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => positions.current.set(current.current, window.scrollY));
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    current.current = location.key;
+    if (type === "PUSH") window.scrollTo(0, 0);
+    else if (type === "POP") window.scrollTo(0, positions.current.get(location.key) ?? 0);
+  }, [location.key, type]);
+}
+
 function App() {
   useTapSounds();
+  useScrollMemory();
   return (
     <>
       <TontonPopups />
@@ -54,6 +92,44 @@ function App() {
         element={
           <ProtectedRoute>
             <Kartlar />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/kelimelerim"
+        element={
+          <ProtectedRoute>
+            <Kelimelerim />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/gramer"
+        element={
+          <ProtectedRoute>
+            <Suspense fallback={null}>
+              <GrammarHub />
+            </Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/gramer/:slug"
+        element={
+          <ProtectedRoute>
+            <Suspense fallback={null}>
+              <GrammarTopic />
+            </Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/gramer/:slug/alistirma"
+        element={
+          <ProtectedRoute>
+            <Suspense fallback={null}>
+              <GrammarQuiz />
+            </Suspense>
           </ProtectedRoute>
         }
       />

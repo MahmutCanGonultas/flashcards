@@ -14,8 +14,8 @@ function MusicToggle() {
       title={on ? "Müzik açık" : "Müzik kapalı"}
       className={`flex h-9 w-9 items-center justify-center rounded-full text-base transition ${
         on
-          ? "bg-paper-deep text-ink ring-1 ring-rule"
-          : "text-graphite hover:bg-ink/5 hover:text-ink"
+          ? "bg-ocean-soft text-ink ring-2 ring-ocean"
+          : "text-graphite hover:bg-paper-deep hover:text-ink"
       }`}
     >
       {/* Pressed-in on the deeper paper is the whole "on" signal: nothing bobs while the screen is idle. */}
