@@ -20,19 +20,6 @@ CREATE TABLE decks(
     created_at TIMESTAMP DEFAULT NOW()
 );
 
--- Photos the learner attaches to their own cards. Small (resized on the
--- phone before upload) and few, so they live in the database rather than
--- in a bucket; served by an unguessable token so an <img> can fetch them
--- without a header.
-CREATE TABLE images (
-    id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    token VARCHAR(48) UNIQUE NOT NULL,
-    mime VARCHAR(40) NOT NULL,
-    data BYTEA NOT NULL,
-    created_at TIMESTAMP DEFAULT NOW()
-);
-
 CREATE TABLE cards(
     id SERIAL PRIMARY KEY,
     deck_id INTEGER NOT NULL REFERENCES decks(id) ON DELETE CASCADE,
@@ -45,9 +32,7 @@ CREATE TABLE cards(
     -- the deck renders as a Duolingo-style path of lesson nodes instead of a
     -- flat card list, and lessons unlock in order rather than by calendar.
     lesson INTEGER,
-    -- Optional: a sentence using `front` in context, and a photo for cards
-    -- where a real image actually helps (concrete nouns) -- most words in a
-    -- vocabulary deck are function/abstract words a photo can't represent.
+    -- Optional: a sentence using `front` in context.
     example_sentence TEXT,
     -- Its natural Turkish translation, shown under the sentence while the
     -- word is being taught.
@@ -55,9 +40,7 @@ CREATE TABLE cards(
     -- A second sentence from a different angle, with its Turkish.
     example2 TEXT,
     example2_tr TEXT,
-    image_url TEXT,
-    -- Optional: a memory aid (usually the word's etymology/root) explaining
-    -- why it means what it means, rather than just asking you to memorize it.
+    -- The learner's own note about the word ("where I heard it").
     mnemonic TEXT,
     -- A rich card (the learner's own words): every sense of the word with its
     -- pattern and an example, words that grow from it, and one thing to watch.
@@ -66,18 +49,23 @@ CREATE TABLE cards(
     senses JSONB,
     related JSONB,
     watch_out TEXT,
-    -- One Turkish line that ties the card's photo to the word (the memory hook),
-    -- and the chunks the word lives in: [{ "en", "tr" }].
-    hook TEXT,
+    -- The chunks the word lives in: [{ "en", "tr" }].
     collocations JSONB,
-    -- The word's own ink pulled from its photo ("#c4713f") and where the
-    -- photo's subject sits, as a CSS object-position ("68% 42%"). Both
-    -- optional: the client derives a tint from the spelling when null.
+    -- The word's own colour ("#c4713f"). Optional: the client derives one
+    -- from the spelling when null.
     tint VARCHAR(9),
-    focal VARCHAR(20),
+    -- A sentence the learner wrote with the word. Writing it is the
+    -- strongest thing they can do for the memory, and later reviews blank
+    -- the word out of it.
+    my_sentence TEXT,
     ease_factor REAL NOT NULL DEFAULT 2.5,
     interval INTEGER NOT NULL DEFAULT 0,
     repetitions INTEGER NOT NULL DEFAULT 0,
+    -- How many graded reviews the word was missed in, over its life, and
+    -- when it was last reviewed. A word missed again and again is a leech
+    -- and gets extra support.
+    lapses INTEGER NOT NULL DEFAULT 0,
+    reviewed_at TIMESTAMPTZ,
     due_date TIMESTAMPTZ DEFAULT NOW(),
     created_at TIMESTAMP DEFAULT NOW()
 );
@@ -118,6 +106,20 @@ CREATE TABLE unit_results(
     source VARCHAR(20) NOT NULL DEFAULT 'test',
     taken_at TIMESTAMP DEFAULT NOW()
 );
+
+-- Every graded review, for the learner's weekly numbers ("how much did I
+-- remember"). The card's own columns hold the schedule; this is history.
+CREATE TABLE review_log (
+    id SERIAL PRIMARY KEY,
+    card_id INTEGER NOT NULL REFERENCES cards(id) ON DELETE CASCADE,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    quality SMALLINT NOT NULL,
+    -- Which exercise asked: recall, listen, produce, cloze, chunk, own; null
+    -- for the course's screens.
+    kind VARCHAR(20),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE INDEX review_log_user_time ON review_log (user_id, created_at);
 
 -- Server-side settings that must survive deploys without env vars: the
 -- Web Push VAPID key pair, generated on first use.

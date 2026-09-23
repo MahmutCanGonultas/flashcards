@@ -57,14 +57,9 @@ function MeetBody({ card, variant = "screen" }: MeetBodyProps) {
   if (variant === "panel") {
     return (
       <div className="rounded-2xl bg-paper-lift p-3 ring-1 ring-rule">
-        <div className="flex items-center gap-3">
-          {card.image_url && (
-            <img src={card.image_url} alt="" className="h-14 w-14 shrink-0 rounded-xl object-cover ring-1 ring-rule" />
-          )}
-          <p className="text-lg font-extrabold leading-snug text-ink break-words">
-            {card.front} <span className="font-bold text-graphite">— {meaning}</span>
-          </p>
-        </div>
+        <p className="text-lg font-extrabold leading-snug text-ink break-words">
+          {card.front} <span className="font-bold text-graphite">— {meaning}</span>
+        </p>
         {card.example_sentence && (
           <div className="mt-2 flex items-start justify-between gap-2">
             <div className="min-w-0">

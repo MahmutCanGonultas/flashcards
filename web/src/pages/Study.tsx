@@ -47,7 +47,7 @@ import RoundRail, { type RailStage } from "../components/RoundRail";
 import { SpeakerIcon } from "../components/icons";
 import { useRecordStudyDay } from "../lib/streak";
 import { useUnits } from "../lib/units";
-import { tintStyle, focalFor } from "../lib/tint";
+import { tintStyle } from "../lib/tint";
 
 type ReviewInput = { cardId: number; cardDeckId: number; quality: 1 | 4 };
 type SessionMode = "lesson" | "review";
@@ -243,17 +243,6 @@ function StudySession({
       }
     };
   }, [queryClient, deckId]);
-
-  // Every photo in the session, fetched up front. Cards now appear several
-  // times, so preloading per card would fire late and repeatedly.
-  useEffect(() => {
-    for (const card of queue) {
-      if (card.image_url) {
-        const preload = new Image();
-        preload.src = card.image_url;
-      }
-    }
-  }, [queue]);
 
   // Say the word whenever a step showing it opens. Keyed on the step, not the
   // card: one word is now met, heard and asked about within a single session.
@@ -542,7 +531,7 @@ function StudySession({
           ×
         </button>
         {stages.length > 0 ? (
-          <div className="flex flex-1 justify-center">
+          <div className="flex min-w-0 flex-1 justify-center">
             <RoundRail stages={stages} activeIndex={activeStage} />
           </div>
         ) : (
@@ -709,18 +698,11 @@ function QuestionStep({
           <ListenHero word={card.front} revealed={answer !== null} />
         ) : format === "reverse" || format === "type" ? (
           <>
-            {card.image_url ? (
-              <img
-                src={card.image_url}
-                alt=""
-                className="mx-auto h-24 w-24 rounded-2xl object-cover ring-1 ring-rule shadow-print"
-                style={{ objectPosition: focalFor(card) }}
-              />
-            ) : emoji ? (
+            {emoji && (
               <p className="text-4xl leading-none" aria-hidden="true">
                 {emoji}
               </p>
-            ) : null}
+            )}
             <p className="mt-2 text-3xl font-extrabold leading-snug tracking-tight text-ink break-words sm:text-4xl">
               {meaning}
             </p>
@@ -731,22 +713,10 @@ function QuestionStep({
             )}
           </>
         ) : isMeet ? (
-          // Meeting the word: the picture, the word and what it means, on one
-          // card, so the sentence below has the rest of the screen. A photo
-          // gets the full width — a picture is the thing that sticks.
-          <div
-            className={`flex gap-4 ${
-              card.image_url ? "flex-col text-left" : emoji ? "items-center text-left" : "justify-center text-center"
-            }`}
-          >
-            {card.image_url ? (
-              <img
-                src={card.image_url}
-                alt=""
-                className="-mx-2 -mt-2 h-44 w-[calc(100%+1rem)] max-w-none rounded-2xl object-cover ring-1 ring-rule shadow-print photo-print"
-                style={{ objectPosition: focalFor(card) }}
-              />
-            ) : emoji ? (
+          // Meeting the word: its sticker, the word and what it means, on one
+          // card, so the sentence below has the rest of the screen.
+          <div className={`flex gap-4 ${emoji ? "items-center text-left" : "justify-center text-center"}`}>
+            {emoji ? (
               // The emoji as a sticker: a tile of its own, so every word has
               // the same kind of picture in the same place.
               <span
@@ -1387,7 +1357,8 @@ function Study() {
     );
   };
 
-  return <div className="mx-auto max-w-2xl">{renderContent()}</div>;
+  // The same side margins as every other page: without them the cards meet the edge of a phone.
+  return <div className="mx-auto max-w-2xl px-5 pt-5 sm:px-6">{renderContent()}</div>;
 }
 
 export default Study;

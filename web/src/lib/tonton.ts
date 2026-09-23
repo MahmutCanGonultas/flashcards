@@ -72,11 +72,12 @@ export function homeLines({
     lines.push(`Kendi kelimelerinden ${personalDue.length} tanesi bugün seni bekliyor.`);
   }
   if (personal.length > 0) {
+    // A question, not the answer: reading the meaning here, a minute before
+    // the session asks it, would spend the retrieval.
     const card = personal[dayIndex() % personal.length];
-    const back = parseBack(card.back);
-    lines.push(`Senin kelimen: "${card.front}" — ${back.text}. Hatırladın mı?`);
+    lines.push(`Isınma: "${card.front}" ne demekti? Söyleme; aklından geçir.`);
   } else {
-    lines.push("Sokakta, dizide duyduğun bir kelime mi var? Ekle, fotoğrafını koy; ben sorarım.");
+    lines.push("Sokakta, dizide duyduğun bir kelime mi var? Ekle; ne zaman soracağımı ben ayarlarım.");
   }
   if (due > 0) lines.push(`${due} kelime seni bekliyor. Önce tekrar?`);
   else if (cards.length > 0) lines.push("Şu an tekrar edecek bir şey yok. Yeni bir ders?");
@@ -154,6 +155,10 @@ const POP_TIPS = [
   "Gramer notları kısa. Bir tanesini oku, sonra bir kart çevir.",
   "Kelimenin kalıbını öğren; kelimeyi bedava alırsın.",
   "Aynı aileden kelimeler birlikte kalır. Birini bildin mi, ötekine de bak.",
+  "Yazarak hatırladığın kelime, bakarak hatırladığından iki kat kalır.",
+  "Kendi cümlen, benim bütün cümlelerimden iyidir. Kelimenin sayfasına bir tane yaz.",
+  "Boşluğu doldururken zorlanıyorsan iyi: hafıza tam da orada güçleniyor.",
+  "Yeni kelimede önce tahmin et. Yanlış tahmin bile doğruyu daha sağlam yerleştirir.",
 ];
 
 const POP_CHEERS = [
@@ -170,7 +175,7 @@ const POP_CHEERS = [
 /** Small talk that only makes sense if the learner has that word. */
 const WORD_TALK: Record<string, string> = {
   commit: "Bugün 'commit' kelimesini düşündüm. Evlenmedim ama düşündüm.",
-  consider: "Fotoğraftaki adam hâlâ düşünüyor. Consider, işte böyle bir şey.",
+  consider: "Bir satranççı gibi: hamleden önce uzun uzun düşün. Consider, işte böyle bir şey.",
 };
 
 function shuffleByDay<T>(items: T[], salt: number): T[] {
@@ -209,8 +214,9 @@ export function popLines({
     const card = personal[(dayIndex() + new Date().getHours()) % personal.length];
     live.push({ kicker: "Küçük sınav", text: `"${card.front}"? … Söyleme, aklından geçir.` });
     live.push({ text: `"${card.front}" — bir cümlede kullan. Sesli. Duvarlar duymaz.` });
-    const hook = card.hook?.trim();
-    if (hook) live.push({ text: `Fotoğrafı hatırla: ${hook.length > 60 ? `${hook.slice(0, 60).trimEnd()}…` : hook}` });
+    const own = card.my_sentence?.trim();
+    if (own) live.push({ kicker: "Senin cümlen", text: own.length > 90 ? `${own.slice(0, 90).trimEnd()}…` : own });
+    else live.push({ text: `"${card.front}" ile kendi cümleni kurdun mu? Kelimenin sayfasında bir yer var.` });
   }
   const courseDue = cards.filter(isDue).length;
   if (courseDue > 0) live.push({ text: `Kursta ${courseDue} kelime tekrar bekliyor. Kısa bir tur?` });

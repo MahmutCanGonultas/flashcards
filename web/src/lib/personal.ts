@@ -3,9 +3,9 @@ import { api } from "./api";
 import type { Card, Deck } from "../types";
 
 /**
- * The learner's own words: a deck the server creates on first use, whose
- * cards are folded into every course lesson's recap and into Tonton's
- * chatter. Everything here is per user.
+ * The learner's own words: a deck the server creates on first use,
+ * reviewed on its own schedule (independent of the course) and mentioned
+ * in Tonton's chatter. Everything here is per user.
  */
 
 export function usePersonalDeck() {
@@ -24,11 +24,19 @@ export function usePersonalCards(deck: Deck | undefined) {
   });
 }
 
+/** The last seven days of one deck: graded reviews, and how many were remembered. */
+export function useDeckStats(deck: Deck | undefined) {
+  return useQuery({
+    queryKey: ["deckStats", String(deck?.id ?? "")],
+    queryFn: () => api.get<{ lastWeek: { reviews: number; remembered: number } }>(`/decks/${deck!.id}/stats`).then((r) => r.lastWeek),
+    enabled: Boolean(deck),
+  });
+}
+
 export type Suggestion = {
   front: string;
   meaning_tr: string;
   pos: string;
-  emoji: string;
   example_en: string;
   example_tr: string;
   example2_en: string;
@@ -54,7 +62,6 @@ export type NewPersonalCard = {
   example2: string | null;
   example2Tr: string | null;
   mnemonic: string | null;
-  imageUrl: string | null;
 };
 
 export function useCreatePersonalCard(deckId: number | undefined) {
@@ -65,33 +72,6 @@ export function useCreatePersonalCard(deckId: number | undefined) {
       queryClient.invalidateQueries({ queryKey: ["cards", String(deckId)] });
       queryClient.invalidateQueries({ queryKey: ["dueCards", String(deckId)] });
       queryClient.invalidateQueries({ queryKey: ["decks"] });
-    },
-  });
-}
-
-/**
- * A photo from the phone, shrunk on the phone: the longest side to 900px,
- * JPEG, so an upload is ~100KB rather than the 4MB a camera produces.
- */
-export async function shrinkImage(file: File): Promise<{ mime: string; data: string }> {
-  const bitmap = await createImageBitmap(file);
-  const scale = Math.min(1, 900 / Math.max(bitmap.width, bitmap.height));
-  const canvas = document.createElement("canvas");
-  canvas.width = Math.round(bitmap.width * scale);
-  canvas.height = Math.round(bitmap.height * scale);
-  const context = canvas.getContext("2d");
-  if (!context) throw new Error("canvas");
-  context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
-  bitmap.close();
-  const dataUrl = canvas.toDataURL("image/jpeg", 0.82);
-  return { mime: "image/jpeg", data: dataUrl.slice(dataUrl.indexOf(",") + 1) };
-}
-
-export function useUploadImage() {
-  return useMutation({
-    mutationFn: async (file: File) => {
-      const shrunk = await shrinkImage(file);
-      return api.post<{ url: string }>("/images", shrunk).then((r) => r.url);
     },
   });
 }

@@ -1,38 +1,174 @@
 import { useState } from "react";
+import type { FormEvent } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../lib/api";
 import type { Card } from "../types";
 import { parseBack, posLabel } from "../lib/cardBack";
-import { isDue } from "../lib/path";
 import { primeSpeech } from "../lib/speech";
-import { focalFor, tintStyle } from "../lib/tint";
+import { tintStyle } from "../lib/tint";
+import { STAGE_LABEL, isLeech, nextReview, stageOf } from "../lib/memory";
+import { STAGE_TEXT, TONE_TEXT } from "../lib/stageStyle";
+import { splitOnWord } from "../lib/sentence";
 import Header from "../components/Header";
 import AppTabs from "../components/AppTabs";
+import Button from "../components/Button";
 import LinkButton from "../components/LinkButton";
 import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
 import SpeakButton from "../components/SpeakButton";
 import ConfirmDialog from "../components/ConfirmDialog";
 import WordCardBack from "../components/WordCardBack";
-
-/** When this card next comes back, in words, and how urgently it's coloured. */
-function nextReviewLabel(card: Card): { text: string; tone: "due" | "soon" | "later" } {
-  if (isDue(card)) return { text: card.repetitions === 0 ? "İlk kez sorulacak" : "Tekrar vakti", tone: "due" };
-  const days = Math.ceil((new Date(card.due_date).getTime() - Date.now()) / 86_400_000);
-  return days <= 1 ? { text: "Yarın tekrar", tone: "soon" } : { text: `${days} gün sonra tekrar`, tone: "later" };
-}
-
-const TONE = { due: "text-accent", soon: "text-gilt-ink", later: "text-moss" } as const;
+import StrengthBars from "../components/StrengthBars";
 
 /** Entrance delays vanish under reduced motion: the keyframes already collapse, the delays would not. */
 const delay = (ms: number) => ({ animationDelay: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "0ms" : `${ms}ms` });
 
+const KICKER = "text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite";
+
+/** Where the word stands: its stage, when it's back, and how often it has slipped. */
+function MemoryLine({ card }: { card: Card }) {
+  const stage = stageOf(card);
+  const next = nextReview(card);
+  const lapses = card.lapses ?? 0;
+  return (
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 border-b border-rule py-3 text-[11px] font-extrabold uppercase tracking-[0.16em]">
+      <StrengthBars card={card} />
+      <span className={STAGE_TEXT[stage]}>{STAGE_LABEL[stage]}</span>
+      <span aria-hidden="true" className="text-rule">
+        ·
+      </span>
+      <span className={TONE_TEXT[next.tone]}>{stage === "new" ? "İlk kez sorulacak" : next.text === "Şimdi" ? "Tekrar vakti" : `Sıradaki: ${next.text}`}</span>
+      {lapses > 0 && (
+        <>
+          <span aria-hidden="true" className="text-rule">
+            ·
+          </span>
+          <span className={isLeech(card) ? "text-gilt-ink" : "text-graphite"}>{isLeech(card) ? `İnatçı · ${lapses} kez kaçtı` : `${lapses} kez kaçtı`}</span>
+        </>
+      )}
+    </div>
+  );
+}
+
 /**
- * One word's page — the feature opener. The photo full bleed on the word's
- * own ground, the caption that ties it to the word, then the entry:
- * meanings, sentences, chunks, family, and the trap in Tonton's column.
- * Only what's above the fold arrives; the rest is simply printed.
+ * The learner's own sentence with the word — the strongest cue a word can
+ * have. Written here or right after the word is first recalled; later
+ * reviews blank the word out of it.
+ */
+function OwnSentence({ card, deckId }: { card: Card; deckId: string }) {
+  const queryClient = useQueryClient();
+  const [editing, setEditing] = useState(!card.my_sentence);
+  const [text, setText] = useState(card.my_sentence ?? "");
+  const [warned, setWarned] = useState(false);
+  const save = useMutation({
+    mutationFn: (sentence: string | null) =>
+      api.put<{ card: Card }>(`/decks/${deckId}/cards/${card.id}`, { front: card.front, back: card.back, mySentence: sentence }),
+    onSuccess: (data) => {
+      queryClient.setQueryData<Card[]>(["cards", deckId], (cards) => cards?.map((c) => (c.id === data.card.id ? { ...c, ...data.card } : c)));
+      setEditing(false);
+    },
+  });
+
+  const submit = (event: FormEvent) => {
+    event.preventDefault();
+    const sentence = text.trim();
+    if (!sentence) return;
+    if (!splitOnWord(sentence, card.front) && !warned) {
+      setWarned(true);
+      return;
+    }
+    save.mutate(sentence);
+  };
+
+  const parts = card.my_sentence ? splitOnWord(card.my_sentence, card.front) : null;
+
+  return (
+    <section className="mt-6 rounded-[20px] bg-paper-lift px-5 pb-5 pt-4 ring-1 ring-rule shadow-print paper-grain">
+      <div className="flex items-baseline justify-between gap-3">
+        <p className={KICKER}>Kendi cümlen</p>
+        {card.my_sentence && !editing && (
+          <button
+            type="button"
+            onClick={() => {
+              setText(card.my_sentence ?? "");
+              setEditing(true);
+            }}
+            className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-ink underline decoration-ink decoration-[1.5px] underline-offset-4"
+          >
+            Değiştir
+          </button>
+        )}
+      </div>
+      {!editing && card.my_sentence ? (
+        <div className="mt-2 flex items-start justify-between gap-3">
+          <p className="min-w-0 text-[19px] leading-[1.45] text-ink wrap-break-word">
+            {parts ? (
+              <>
+                {parts.before}
+                <span className="font-extrabold underline decoration-[var(--tint)] decoration-[2px] underline-offset-4">{parts.match}</span>
+                {parts.after}
+              </>
+            ) : (
+              card.my_sentence
+            )}
+          </p>
+          <SpeakButton text={card.my_sentence} size="sm" className="bg-paper-lift text-ink ring-1 ring-rule" />
+        </div>
+      ) : (
+        <form onSubmit={submit} className="mt-2">
+          <p className="text-[14px] font-semibold leading-snug text-graphite">
+            Bu kelimeyle kendi hayatından bir cümle yaz. En güçlü ipucu budur; tekrarlarda onu da boşluklu soracağım.
+          </p>
+          <label htmlFor={`own-${card.id}`} className="sr-only">
+            Cümlen
+          </label>
+          <textarea
+            id={`own-${card.id}`}
+            value={text}
+            onChange={(event) => {
+              setText(event.target.value);
+              setWarned(false);
+            }}
+            rows={2}
+            maxLength={300}
+            autoCapitalize="sentences"
+            autoCorrect="off"
+            spellCheck={false}
+            placeholder={`I … ${card.front} …`}
+            className="mt-3 w-full resize-none rounded-2xl bg-paper px-4 py-3 text-[17px] leading-snug text-ink outline-none ring-1 ring-rule transition placeholder:text-graphite/50 focus:ring-2 focus:ring-ink/40"
+          />
+          {warned && (
+            <p role="alert" className="mt-2 text-[13px] font-semibold text-gilt-ink">
+              Cümlede “{card.front}” göremedim. Yine de kaydedeyim mi? Bir daha bas.
+            </p>
+          )}
+          {save.isError && (
+            <p role="alert" className="mt-2 text-[13px] font-semibold text-accent">
+              Kaydedilemedi. Bir daha dene.
+            </p>
+          )}
+          <div className="mt-3 flex items-center justify-end gap-3">
+            {card.my_sentence && (
+              <Button type="button" variant="ghost" size="sm" onClick={() => setEditing(false)}>
+                Vazgeç
+              </Button>
+            )}
+            <Button type="submit" variant="ink" size="sm" isLoading={save.isPending} disabled={!text.trim()}>
+              Kaydet
+            </Button>
+          </div>
+        </form>
+      )}
+    </section>
+  );
+}
+
+/**
+ * One word's page: everything about it, in reading order. The word on its
+ * own colour, where it stands in memory, the learner's own sentence, then
+ * the entry — meanings, sentences, chunks, family, the one trap. From here
+ * the word can be drilled on its own, without touching its schedule.
  */
 function WordPage() {
   const { deckId = "", cardId = "" } = useParams<{ deckId: string; cardId: string }>();
@@ -58,7 +194,6 @@ function WordPage() {
 
   const card = cardsQuery.data?.find((c) => String(c.id) === cardId);
   const back = card ? parseBack(card.back) : null;
-  const schedule = card ? nextReviewLabel(card) : null;
 
   return (
     <div className="min-h-screen">
@@ -74,7 +209,7 @@ function WordPage() {
 
         {cardsQuery.isLoading && (
           <div className="mt-4 space-y-4">
-            <Skeleton className="-mx-6 h-64 rounded-none" />
+            <Skeleton className="-mx-6 h-52 rounded-none" />
             <Skeleton className="h-10 w-2/3 rounded-md" />
             <Skeleton className="h-24 w-full rounded-md" />
           </div>
@@ -90,48 +225,51 @@ function WordPage() {
           </div>
         )}
 
-        {card && back && schedule && (
+        {card && back && (
           <article style={tintStyle(card)}>
-            {card.image_url && (
-              <figure className="-mx-6 mt-4">
-                <div className="overflow-hidden tint-ground">
-                  <img
-                    src={card.image_url}
-                    alt=""
-                    className="h-auto max-h-[62vh] w-full object-cover photo-print animate-[cover-settle_900ms_ease-out_both]"
-                    style={{ objectPosition: focalFor(card), viewTransitionName: `cover-${card.id}` }}
-                  />
-                </div>
-                {card.hook && (
-                  <figcaption className="border-l-[3px] tint-border bg-paper-deep/60 px-6 py-3 text-[14px] font-semibold italic leading-snug text-graphite animate-rise-in" style={delay(200)}>
-                    {card.hook}
-                  </figcaption>
-                )}
-              </figure>
-            )}
+            {/* The masthead: the word on its own colour, its initial huge and faint behind it. */}
+            <header className="relative isolate -mx-6 mt-4 overflow-hidden cover-ground px-6 pb-6 pt-5 text-paper-lift">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -bottom-[0.22em] right-2 -z-10 select-none text-[240px] font-black leading-none tracking-[-0.06em] text-paper-lift/[0.07]"
+              >
+                {card.front.charAt(0)}
+              </span>
+              <p className="text-[10px] font-extrabold uppercase tracking-[0.24em] text-paper-lift/70">
+                Kelime{back.pos ? ` · ${posLabel(back.pos)}` : ""}
+              </p>
+              <span aria-hidden="true" className="mt-1 block h-[2px] w-7 bg-paper-lift/70 animate-bar-print" style={delay(120)} />
+              <div className="mt-12 flex items-end justify-between gap-3">
+                <h1
+                  className={`min-w-0 wrap-break-word font-black leading-[0.95] tracking-[-0.02em] animate-[cover-line_420ms_var(--ease-soft)_120ms_both] ${
+                    card.front.length > 11 ? "text-[40px]" : "text-[52px]"
+                  }`}
+                  style={{ viewTransitionName: `word-${card.id}` }}
+                >
+                  {card.front}
+                </h1>
+                <SpeakButton text={card.front} size="md" className="!bg-paper-lift/10 !text-paper-lift ring-1 ring-paper-lift/40 hover:!bg-paper-lift/20" />
+              </div>
+            </header>
 
-            <p className="mt-5 flex flex-wrap items-center gap-x-3 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite animate-rise-in" style={delay(240)}>
-              {back.pos && <span>{posLabel(back.pos)}</span>}
-              {back.pos && <span aria-hidden="true">·</span>}
-              <span className={TONE[schedule.tone]}>{schedule.text}</span>
+            <MemoryLine card={card} />
+            <p className="mt-4 text-[20px] font-semibold leading-snug text-ink animate-rise-in" style={delay(200)}>
+              {back.text}
             </p>
-            <h1 className="mt-2 flex items-center gap-3 wrap-break-word text-[40px] font-black leading-none tracking-[-0.02em] text-ink animate-rise-in" style={delay(280)}>
-              {card.front}
-              <SpeakButton text={card.front} size="md" className="!bg-paper-lift !text-ink ring-1 ring-rule" />
-            </h1>
-            <p className="mt-3 text-[20px] font-semibold leading-snug text-ink animate-rise-in" style={delay(320)}>{back.text}</p>
 
-            <section className="mt-6">
-              <span aria-hidden="true" className="block h-[2px] w-full tint-bar animate-bar-print" style={delay(360)} />
-              <p className="mt-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-graphite">Anlamlar</p>
+            <OwnSentence key={card.id} card={card} deckId={deckId} />
+
+            <section className="mt-7">
+              <span aria-hidden="true" className="block h-[2px] w-full tint-bar animate-bar-print" style={delay(260)} />
+              <p className={`mt-2 ${KICKER}`}>Anlamlar</p>
               <div className="mt-2">
                 <WordCardBack card={card} />
               </div>
             </section>
 
-            <div className="mt-10 flex items-center justify-between border-t border-rule pt-5">
-              <LinkButton to={`/decks/${deckId}/flashcards?mode=all`} variant="outline" size="sm" onClick={primeSpeech}>
-                Kartlara dön
+            <div className="mt-10 flex items-center justify-between gap-4 border-t border-rule pt-5">
+              <LinkButton to={`/decks/${deckId}/flashcards?card=${card.id}`} variant="ink" size="sm" onClick={primeSpeech}>
+                Bu kelimeyi çalış
               </LinkButton>
               <button
                 type="button"

@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { z } from "zod";
 
 /**
- * Fills in a card from just the word: meaning, part of speech, emoji, two
+ * Fills in a card from just the word: meaning, part of speech, two
  * example sentences with Turkish, and a topic — so adding a word is typing
  * it, checking, saving. Needs ANTHROPIC_API_KEY on the server; without it
  * the client falls back to typing everything by hand.
@@ -19,7 +19,6 @@ const RESULT_SHAPE = `{
   "front": "the English headword, corrected spelling/casing (lowercase unless a proper noun)",
   "meaning_tr": "the most natural everyday Turkish meaning, comma-separated if two common senses, max 30 chars",
   "pos": "noun | verb | adjective | adverb | phrasal verb | idiom | interjection | preposition | conjunction | pronoun | expression",
-  "emoji": "one fitting emoji or empty string",
   "example_en": "one natural sentence (max 12 words) using the word or a natural inflection, showing it in a real situation, never a definition",
   "example_tr": "its natural Turkish translation, containing a counterpart of the word",
   "example2_en": "a second sentence from a different situation (max 12 words)",

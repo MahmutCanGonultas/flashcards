@@ -57,7 +57,8 @@ export type View = { pop: Pop | null; leaving: boolean };
 /** What the app knows right now; read only at the moment he speaks. */
 export type Snapshot = { cards: Card[]; personal: Card[]; streak: number; lastStudyDate: string | null };
 
-type GradeDetail = { quality: 1 | 3 | 5; front: string; attempt: number; index: number; total: number };
+/** 5 right · 4 the right word in another form · 3 hard or a slip · 1 missed. */
+type GradeDetail = { quality: 1 | 3 | 4 | 5; front: string; attempt: number; index: number; total: number };
 type CardDetail = { front: string; flipped: boolean };
 
 const EXIT_MS = 260;
@@ -361,14 +362,15 @@ function tryNudge() {
 }
 
 function moodFor(quality: number): MascotMood {
-  return quality === 5 ? "happy" : quality === 1 ? "sad" : "idle";
+  return quality >= 4 ? "happy" : quality === 1 ? "sad" : "idle";
 }
 
 function onGrade(detail: GradeDetail) {
   window.clearTimeout(nudgeTimer);
   cardsSincePop += 1;
   const wasRun = run;
-  if (detail.quality === 5) run += 1;
+  const knew = detail.quality >= 4;
+  if (knew) run += 1;
   else {
     run = 0;
     if (detail.quality === 1) misses += 1;
@@ -378,7 +380,7 @@ function onGrade(detail: GradeDetail) {
 
   let line: PopLine;
   let milestone = true;
-  if (detail.quality === 5 && detail.attempt > 0) line = MILESTONE.returned;
+  if (knew && detail.attempt > 0) line = MILESTONE.returned;
   else if (run === 5) line = MILESTONE.run5;
   else if (run === 3) line = MILESTONE.run3;
   else if (detail.quality === 1 && wasRun >= 3) line = MILESTONE.firstMiss;
@@ -387,7 +389,7 @@ function onGrade(detail: GradeDetail) {
     const now = Date.now();
     if (cardsSincePop < 3 || now - lastReactAt < REACT_GAP_MS || Math.random() >= 0.25) return;
     if (detail.quality === 1 && misses % 3 !== 0) return;
-    const pool = detail.quality === 5 ? AFTER_GRADE.known : detail.quality === 1 ? AFTER_GRADE.missed : AFTER_GRADE.hard;
+    const pool = knew ? AFTER_GRADE.known : detail.quality === 1 ? AFTER_GRADE.missed : AFTER_GRADE.hard;
     line = { text: pickFresh(pool) };
   }
   if (!FLASH_ROUTE.test(route) || blocked("react")) return;
@@ -579,7 +581,7 @@ if (import.meta.env.DEV && typeof window !== "undefined") {
         if (kind === "summary") return onSummary();
         return tryWander((ENTRANCES as string[]).includes(kind ?? "") ? (kind as Entrance) : "slide-up");
       },
-      grade(quality: 1 | 3 | 5, attempt = 0) {
+      grade(quality: 1 | 3 | 4 | 5, attempt = 0) {
         window.dispatchEvent(
           new CustomEvent("tonton:grade", { detail: { quality, front: currentFront ?? "commit", attempt, index: 0, total: 1 } }),
         );

@@ -4,7 +4,6 @@ import authRouter from "./routes/auth.routes.js";
 import deckRouter from "./routes/deck.routes.js";
 import cardRouter from "./routes/card.routes.js";
 import streakRouter from "./routes/streak.routes.js";
-import imageRouter from "./routes/image.routes.js";
 import pushRouter from "./routes/push.routes.js";
 import unitRouter from "./routes/unit.routes.js";
 
@@ -32,8 +31,6 @@ const allowedOrigins = (process.env.CORS_ORIGIN ?? "http://localhost:5173")
   .map((origin) => origin.trim().replace(/\/+$/, ""))
   .filter(Boolean);
 
-// Behind Render's proxy: req.protocol must read https for the image URLs.
-app.set("trust proxy", 1);
 app.use(express.json());
 // Without CORS_ORIGIN (local development) any localhost port may call the
 // API, so a second dev server on another port works without ceremony.
@@ -44,7 +41,6 @@ app.use("/api/v1/decks", deckRouter);
 app.use("/api/v1/decks", cardRouter);
 app.use("/api/v1/decks", unitRouter);
 app.use("/api/v1/streak", streakRouter);
-app.use("/api/v1/images", imageRouter);
 app.use("/api/v1/push", pushRouter);
 
 // Which build is answering: Render exposes the deployed commit, so a deploy

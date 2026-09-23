@@ -96,10 +96,10 @@
 
 /* ------------------------------------------------------ the word's ink */
 
-/* Every word carries a fourth ink pulled from its photograph: set
-   `style={tintStyle(card)}` (lib/tint.ts) on a card's root and these
-   utilities pick it up. The tint is only ever a bar, a ring, a ground or
-   a fade mixed into bistre — never a panel behind body text. */
+/* Every word carries its own colour: set `style={tintStyle(card)}`
+   (lib/tint.ts) on a card's root and these utilities pick it up. The tint
+   is only ever a bar, a ring, a numeral or a ground deepened into bistre —
+   never a panel behind body text. */
 @utility tint-bar {
   background-color: var(--tint, var(--color-ink));
 }
@@ -118,24 +118,17 @@
 @utility tint-ring {
   box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--tint, var(--color-ink)) 45%, transparent);
 }
-/* The cover's caption band: the photo fades into the word's own colour
-   mixed into bistre, so the bride fades into terracotta and the airliner
-   into slate — the black slab is gone. */
-@utility cover-fade {
-  background-image: linear-gradient(
-    to top,
-    color-mix(in oklab, var(--tint, var(--color-ink)) 45%, var(--color-ink)) 0%,
-    color-mix(in oklab, color-mix(in oklab, var(--tint, var(--color-ink)) 45%, var(--color-ink)) 82%, transparent) 48%,
-    transparent 100%
-  );
-}
-/* A photograph printed, not pasted: a touch more saturation. Cover and
-   hero only — it costs a compositing layer. */
-@utility photo-print {
-  filter: saturate(1.06) contrast(1.02);
+/* A card's cover: the word's colour deepened into bistre so white type
+   reads on every ink in the palette, lit softly from above like a sheet
+   under a lamp and a shade darker at the foot. */
+@utility cover-ground {
+  background-color: color-mix(in oklab, var(--tint, var(--color-ink)) 46%, var(--color-ink));
+  background-image:
+    radial-gradient(120% 70% at 50% -10%, color-mix(in oklab, var(--tint, var(--color-ink)) 34%, transparent) 0%, transparent 70%),
+    linear-gradient(to top, rgba(20, 12, 6, 0.3), transparent 45%);
 }
 /* Paper grain on a raised sheet (card back, bottom sheet, Tonton's
-   bubble). Never over a photo: it would read as dirt on skin and sky. */
+   bubble). */
 @utility paper-grain {
   position: relative;
   &::after {

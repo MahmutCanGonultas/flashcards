@@ -9,34 +9,38 @@ type RoundRailProps = {
 };
 
 /**
- * The three acts of a lesson, so it's obvious that being shown a word now
- * means being asked about it shortly. Without this, the teaching screens look
- * like the whole lesson and the quiz arrives as a surprise.
+ * The acts of a lesson, so it's obvious that being shown a word now means
+ * being asked about it shortly. Without this, the teaching screens look like
+ * the whole lesson and the quiz arrives as a surprise. The acts behind you
+ * fold into a tick, so the rail fits a phone's header at every point.
  */
 function RoundRail({ stages, activeIndex }: RoundRailProps) {
   return (
-    <div className="flex items-center gap-1.5">
+    <ol className="flex min-w-0 items-center gap-1.5 overflow-hidden">
       {stages.map((stage, index) => {
         const isDone = index < activeIndex;
         const isActive = index === activeIndex;
+        if (isDone) {
+          return (
+            <li key={stage.id} className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-paper-deep text-ink">
+              <CheckIcon className="h-3 w-3" />
+              <span className="sr-only">{stage.label} bitti</span>
+            </li>
+          );
+        }
         return (
-          <span
+          <li
             key={stage.id}
             aria-current={isActive ? "step" : undefined}
-            className={`flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-[0.18em] transition ${
-              isActive
-                ? "bg-ink text-paper-lift"
-                : isDone
-                  ? "bg-paper-deep text-ink"
-                  : "text-graphite ring-1 ring-rule"
+            className={`shrink-0 rounded-full px-2 py-1 text-[10px] font-extrabold uppercase tracking-[0.08em] transition sm:px-2.5 sm:text-[11px] sm:tracking-[0.18em] ${
+              isActive ? "bg-ink text-paper-lift" : "text-graphite ring-1 ring-inset ring-rule"
             }`}
           >
-            {isDone && <CheckIcon className="h-3 w-3" />}
             {stage.label}
-          </span>
+          </li>
         );
       })}
-    </div>
+    </ol>
   );
 }
 

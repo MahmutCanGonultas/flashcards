@@ -63,6 +63,36 @@ function formsOf(word: string): Set<string> {
   return forms;
 }
 
+/**
+ * Only the inflections — the same word bent to fit a sentence ("commits",
+ * "committed", "committing", "gave") — not its relatives: "commitment" is
+ * another word, and marking it as this one would be too kind.
+ */
+function inflectionsOf(word: string): Set<string> {
+  const base = word.toLowerCase();
+  const forms = new Set([base, ...(IRREGULAR[base] ?? [])]);
+  for (const stem of [base, base.replace(/e$/, ""), base + base.slice(-1)]) {
+    for (const suffix of ["s", "es", "ed", "d", "ing"]) forms.add(stem + suffix);
+  }
+  if (base.endsWith("y")) {
+    const stem = base.slice(0, -1);
+    forms.add(stem + "ies");
+    forms.add(stem + "ied");
+  }
+  return forms;
+}
+
+/**
+ * Whether `word` is the headword itself or one of its inflections:
+ * "committed" is a form of "commit", "gave up" of "give up".
+ */
+export function isFormOf(word: string, headword: string): boolean {
+  const parts = headword.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const words = word.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  if (parts.length === 0 || parts.length !== words.length) return false;
+  return parts.every((part, i) => inflectionsOf(part).has(words[i]));
+}
+
 type Token = { word: string; start: number; end: number };
 
 /**
@@ -152,7 +182,13 @@ export function blankOut(sentence: string, headword: string): BlankedSentence | 
  * is found in "Çay için teşekkürler" by its first word's stem.
  */
 export function locateTurkish(sentence: string, meaning: string): { start: number; end: number } | null {
-  const senses = meaning.split(",").map((s) => s.trim()).filter(Boolean);
+  // Only the meaning itself is looked for, never its notes: in "başarmak
+  // (hedef, sonuç)" a match on "sonuç" would light up the wrong word.
+  const senses = meaning
+    .replace(/\([^)]*\)/g, " ")
+    .split(/[,;—]/)
+    .map((s) => s.trim())
+    .filter(Boolean);
   const lower = sentence.toLocaleLowerCase("tr");
   for (const sense of senses) {
     let head = sense.split(/\s+/)[0]?.toLocaleLowerCase("tr") ?? "";

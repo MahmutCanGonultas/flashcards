@@ -33,9 +33,7 @@ export type Card = {
   /** A second sentence from another angle, with its Turkish. */
   example2?: string | null;
   example2_tr?: string | null;
-  /** Optional photo -- only set for cards where a real image helps (concrete nouns). */
-  image_url: string | null;
-  /** Optional memory aid, usually the word's root/etymology. */
+  /** The learner's own note about the word ("where I heard it"). */
   mnemonic: string | null;
   /** A rich card (the learner's own words): every sense, with pattern and example. */
   senses?: Sense[] | null;
@@ -43,14 +41,12 @@ export type Card = {
   related?: RelatedWord[] | null;
   /** The one mistake to avoid with this word. */
   watch_out?: string | null;
-  /** One Turkish line tying the photo to the word — the memory hook. */
-  hook?: string | null;
   /** Chunks the word lives in: "take sth into consideration". */
   collocations?: { en: string; tr: string }[] | null;
-  /** The word's own ink, pulled from its photo ("#c4713f"); lib/tint.ts fills in when null. */
+  /** The word's own colour ("#c4713f"); lib/tint.ts fills in when null. */
   tint?: string | null;
-  /** Where the photo's subject is, as CSS object-position ("68% 42%"). */
-  focal?: string | null;
+  /** A sentence the learner wrote with the word; later reviews blank the word out of it. */
+  my_sentence?: string | null;
   /** Optional lesson number. A deck whose cards carry these renders as a path. */
   lesson: number | null;
   /** The unit this card's lesson belongs to, for path-organised decks. */
@@ -58,6 +54,10 @@ export type Card = {
   ease_factor: number;
   interval: number;
   repetitions: number;
+  /** Graded reviews the word was missed in, over its life. */
+  lapses?: number;
+  /** When it was last graded; null until the first review. */
+  reviewed_at?: string | null;
   due_date: string;
   created_at: string;
 };

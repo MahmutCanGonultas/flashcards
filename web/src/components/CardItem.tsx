@@ -98,17 +98,8 @@ function CardItem({ card, theme, onEdit, onDelete }: CardItemProps) {
 
       <div className="my-4 border-t-2 border-dashed border-rule" />
 
-      {card.image_url && (
-        <img
-          src={card.image_url}
-          alt=""
-          className="mb-3 h-28 w-full rounded-2xl object-cover"
-          loading="lazy"
-        />
-      )}
-
       <div className="flex items-center gap-3">
-        {!card.image_url && emoji && (
+        {emoji && (
           <span className="text-3xl leading-none" aria-hidden="true">
             {emoji}
           </span>

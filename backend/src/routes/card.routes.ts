@@ -8,6 +8,7 @@ import {
   deleteCard,
   getDueCards,
   reviewCard,
+  getDeckStats,
 } from "../controllers/card.controller.js";
 
 const router = Router();
@@ -19,5 +20,6 @@ router.put("/:deckId/cards/:cardId", requireAuth, updateCard);
 router.delete("/:deckId/cards/:cardId", requireAuth, deleteCard);
 router.get("/:deckId/cards/due", requireAuth, getDueCards);
 router.post("/:deckId/cards/:cardId/review", requireAuth, reviewCard);
+router.get("/:deckId/stats", requireAuth, getDeckStats);
 
 export default router;
