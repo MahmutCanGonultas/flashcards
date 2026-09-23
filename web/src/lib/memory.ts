@@ -56,9 +56,12 @@ const daysUntil = (t: number, now: number): number => Math.round((startOfDay(t) 
 
 export type Tone = "due" | "soon" | "later";
 
+/** Waiting at `now`; the same test as path.ts's isDue, with the clock passed in. */
+export const isDueAt = (card: Pick<Card, "due_date">, now = Date.now()): boolean => new Date(card.due_date).getTime() <= now;
+
 /** When the word comes back, in words, with the ink that means now / soon / later. */
 export function nextReview(card: Card, now = Date.now()): { text: string; tone: Tone } {
-  if (isDue(card)) return { text: hasStarted(card) ? "Şimdi" : "Yeni", tone: "due" };
+  if (isDueAt(card, now)) return { text: hasStarted(card) ? "Şimdi" : "Yeni", tone: "due" };
   const due = new Date(card.due_date).getTime();
   const minutes = Math.ceil((due - now) / 60_000);
   if (minutes < 60) return { text: `${minutes} dk sonra`, tone: "soon" };

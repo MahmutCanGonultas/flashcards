@@ -1,7 +1,6 @@
 import type { Card } from "../types";
 import { isFormOf, splitOnWord } from "./sentence";
-import { isDue } from "./path";
-import { stageOf } from "./memory";
+import { isDueAt, stageOf } from "./memory";
 
 /**
  * The practice engine behind "Tekrar et".
@@ -164,7 +163,7 @@ export type SessionMode = "due" | "all";
  */
 export function buildSession(cards: Card[], { mode, speech, now = Date.now() }: { mode: SessionMode; speech: boolean; now?: number }): Exercise[] {
   const day = dayNumber(now);
-  const graded = (card: Card) => mode === "due" || isDue(card);
+  const graded = (card: Card) => mode === "due" || isDueAt(card, now);
   const fresh = cards.filter((card) => stageOf(card) === "new");
   const reviews = cards
     .filter((card) => stageOf(card) !== "new")
