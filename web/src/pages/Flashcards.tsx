@@ -106,6 +106,24 @@ function meaningsOf(card: Card): { pos: string | null; meaning: string }[] {
   return [{ pos, meaning: text }];
 }
 
+/** The one sentence a card's back has room for (see FlipStep). */
+function backSentence(card: Card): { en: string; tr: string | null; meaning: string } | null {
+  const senses = card.senses ?? [];
+  if (senses.length > 2) {
+    let best: { en: string; tr: string | null; meaning: string } | null = null;
+    for (const sense of senses) {
+      const lines = [{ en: sense.example_en, tr: sense.example_tr }, ...(sense.examples ?? [])];
+      for (const line of lines) {
+        const en = line.en?.trim();
+        if (en && splitOnWord(en, card.front) && (!best || en.length < best.en.length)) best = { en, tr: line.tr?.trim() || null, meaning: sense.meaning };
+      }
+    }
+    if (best) return best;
+  }
+  const first = sentencesOf(card)[0];
+  return first ? { ...first, meaning: meaningsOf(card)[0]?.meaning ?? "" } : null;
+}
+
 /**
  * The meanings as a numbered list, each number in its sense's colour — the
  * same colours the word's page gives its senses, so meaning 2 is always the
@@ -114,6 +132,8 @@ function meaningsOf(card: Card): { pos: string | null; meaning: string }[] {
 function Meanings({ card, animate, large = true }: { card: Card; animate: boolean; large?: boolean }) {
   const meanings = meaningsOf(card);
   const mixedTypes = new Set(meanings.map((m) => m.pos ?? "")).size > 1;
+  // Three senses or more: a tighter list, so the card still has room for a sentence.
+  const tight = meanings.length > 2;
   if (meanings.length === 1 && large) {
     return (
       <p className={`wrap-break-word text-[28px] font-black leading-[1.12] tracking-[-0.01em] text-ink ${animate ? "animate-rise-in" : ""}`} style={delay(200)}>
@@ -122,17 +142,23 @@ function Meanings({ card, animate, large = true }: { card: Card; animate: boolea
     );
   }
   return (
-    <ol className="space-y-2.5">
+    <ol className={tight ? "space-y-1.5" : "space-y-2.5"}>
       {meanings.map((m, i) => (
         <li
           key={i}
           style={{ ...familyStyle(familyAt(i)), ...delay(200 + Math.min(i, 6) * 60) }}
           className={`flex items-start gap-3 ${animate ? "animate-rise-in" : ""}`}
         >
-          <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-(--c) text-[13px] font-black text-white shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.15)]">{i + 1}</span>
-          <p className="min-w-0 text-[19px] font-black leading-snug text-ink">
+          <span
+            className={`grid shrink-0 place-items-center rounded-full bg-(--c) font-black text-white shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.15)] ${
+              tight ? "mt-px h-6 w-6 text-[12px]" : "mt-0.5 h-7 w-7 text-[13px]"
+            }`}
+          >
+            {i + 1}
+          </span>
+          <p className={`min-w-0 font-black text-ink ${tight ? "text-[17px] leading-tight" : "text-[19px] leading-snug"}`}>
             {m.meaning}
-            {m.pos && mixedTypes && <PosPill pos={m.pos} className="ml-2 align-middle" />}
+            {m.pos && mixedTypes && <PosPill pos={m.pos} className={`ml-1.5 align-middle ${tight ? "!px-2 !py-0 !text-[11px]" : ""}`} />}
           </p>
         </li>
       ))}
@@ -293,9 +319,11 @@ function FlipStep({
   const listen = step.kind === "listen";
   const { pos } = parseBack(card.back);
   const firstPos = pos ?? card.senses?.[0]?.pos ?? null;
-  const meanings = meaningsOf(card);
   const hasDetails = Boolean(card.senses?.length || card.example_sentence || card.related?.length || card.watch_out);
-  const sentence = sentencesOf(card)[0] ?? null;
+  // The sentence on the back: the word's first one, or — when there are
+  // many senses to fit — the shortest one the senses carry, with the
+  // meaning it belongs to so its Turkish counterpart still lights up.
+  const sentence = backSentence(card);
 
   useEffect(() => () => window.clearTimeout(flyTimer.current), []);
 
@@ -397,7 +425,7 @@ function FlipStep({
   return (
     <>
       {/* The pile, with Tonton peeking over its top edge. */}
-      <div className="relative mt-11 h-[30rem] max-h-[calc(100dvh-20rem)] min-h-[21rem]">
+      <div className="relative mt-11 h-[36rem] max-h-[calc(100dvh-16rem)] min-h-[21rem]">
         <Mascot size={56} mood={mood} quiet className="absolute -top-8 right-6 z-10" />
         {remaining > 2 && <div aria-hidden="true" className="absolute inset-x-5 top-4 h-full rounded-[24px] border-2 border-rule bg-paper-deep animate-pile-nudge [animation-delay:60ms]" />}
         {remaining > 1 && <div aria-hidden="true" className="absolute inset-x-2.5 top-2 h-full rounded-[24px] border-2 border-rule bg-white animate-pile-nudge" />}
@@ -499,7 +527,7 @@ function FlipStep({
                 }`}
               >
                 {/* Speaker first, the word, then Örnekler: the top-right corner is where Tonton sits. */}
-                <div className="flex items-center gap-2.5 tint-ground px-4 pb-3.5 pt-4 text-white shadow-[inset_0_-4px_0_0_rgba(0,0,0,0.14)]">
+                <div className="flex items-center gap-2.5 tint-ground px-4 pb-3.5 pt-4 text-white shadow-[inset_0_-4px_0_0_rgba(0,0,0,0.14)] [@media(max-height:720px)]:pb-2.5 [@media(max-height:720px)]:pt-3">
                   <span onPointerDown={(event) => event.stopPropagation()} className="shrink-0">
                     <SpeakButton text={card.front} size="sm" className="!bg-white !text-(--c-ink) !shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.12)]" />
                   </span>
@@ -516,18 +544,19 @@ function FlipStep({
                   )}
                 </div>
 
-                <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-4 pb-3 pt-4">
+                <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-4 pb-3 pt-4 [@media(max-height:720px)]:pt-3">
                   {flipped && <Meanings card={card} animate />}
                   {sentence && flipped && (
-                    <div className="mt-auto pt-4 animate-rise-in" style={delay(420)}>
-                      <ExampleBubble en={sentence.en} tr={sentence.tr} headword={card.front} meaning={meanings[0]?.meaning ?? ""} size="sm" />
+                    <div className="mt-auto pt-3 animate-rise-in" style={delay(420)}>
+                      <ExampleBubble en={sentence.en} tr={sentence.tr} headword={card.front} meaning={sentence.meaning} size="sm" />
                     </div>
                   )}
                 </div>
 
+                {/* The swipe hints; on a short screen the grade buttons below say the same, so the sentence gets the room. */}
                 <div
                   aria-hidden="true"
-                  className={`flex items-center justify-between border-t-2 border-paper-deep px-4 pb-3 pt-2 text-[11px] font-black uppercase tracking-[0.08em] ${flipped ? "animate-rise-in" : "opacity-0"}`}
+                  className={`flex items-center justify-between border-t-2 border-paper-deep px-4 pb-3 pt-2 text-[11px] font-black uppercase tracking-[0.08em] [@media(max-height:720px)]:hidden ${flipped ? "animate-rise-in" : "opacity-0"}`}
                   style={delay(520)}
                 >
                   <span className="text-berry-ink">← bilemedim</span>
@@ -1193,7 +1222,7 @@ function Flashcards() {
         {!cardsQuery.isError && loading && (
           <div className="space-y-3 pt-3">
             <Skeleton className="h-4 w-full rounded-full" />
-            <Skeleton className="mt-8 h-[30rem] max-h-[calc(100dvh-20rem)] w-full rounded-[24px]" />
+            <Skeleton className="mt-8 h-[36rem] max-h-[calc(100dvh-16rem)] w-full rounded-[24px]" />
           </div>
         )}
         {!loading && !cardsQuery.isError && cards.length === 0 && (
