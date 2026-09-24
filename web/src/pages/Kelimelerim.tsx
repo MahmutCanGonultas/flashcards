@@ -223,7 +223,7 @@ function Kelimelerim() {
                 <ul className="divide-y-2 divide-paper-deep">
                   {group.cards.map((card) => (
                     <li key={card.id}>
-                      <WordRow deckId={deck.id} card={card} mark={mark} />
+                      <WordRow deckId={deck.id} card={card} mark={mark} query={deferredQuery} />
                     </li>
                   ))}
                 </ul>

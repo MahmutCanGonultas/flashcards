@@ -7,6 +7,7 @@ import { familyAt, familyStyle, posFamily, type Family } from "../lib/palette";
 import SpeakButton from "./SpeakButton";
 import Mascot from "./Mascot";
 import { AlertIcon, FamilyIcon, LinkIcon, QuoteIcon } from "./icons";
+import MeaningText from "./MeaningText";
 
 type WordCardBackProps = {
   card: Card;
@@ -127,7 +128,9 @@ function SenseCard({ sense, index, headword, showPos }: { sense: Sense; index: n
         <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-(--c) text-[15px] font-black text-white shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.15)]">{index + 1}</span>
         {showPos && <PosPill pos={sense.pos} />}
       </div>
-      <p className="mt-2.5 text-[20px] font-black leading-snug text-ink">{sense.meaning}</p>
+      <p className="mt-2.5 text-[20px] font-black leading-snug text-ink">
+        <MeaningText text={sense.meaning} />
+      </p>
       {sense.definition && <p className="mt-1 text-[15px] font-semibold italic leading-snug text-(--c-ink)">“{sense.definition}”</p>}
       {sense.pattern && <Patterns text={sense.pattern} />}
       {sentences.length > 0 && (
@@ -220,7 +223,9 @@ function WordCardBack({ card, variant = "full" }: WordCardBackProps) {
         {senses.map((s, i) => (
           <li key={i} style={familyStyle(familyAt(i))} className="grid grid-cols-[20px_1fr] gap-x-2 text-[14px] leading-snug text-ink">
             <span className="text-[12px] font-black tabular-nums text-(--c-ink)">{i + 1}</span>
-            <span className="font-bold">{s.meaning}</span>
+            <span className="font-bold">
+              <MeaningText text={s.meaning} noteClassName="font-semibold text-graphite" />
+            </span>
           </li>
         ))}
       </ol>

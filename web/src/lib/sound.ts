@@ -1,17 +1,60 @@
 /**
- * Synthesized feedback sounds -- generated on the fly with the Web Audio
- * API, so there are no audio files to host, load or license.
+ * The app's sounds, played through the Web Audio API.
  *
- * The palette is small and consistent: soft triangle tones through a gentle
- * low-pass, in one key (C major), so a right answer, a finished lesson and a
- * passed unit sound like three sizes of the same good news. Wrong answers
- * are a nudge, never a buzzer.
+ * The two that matter most — a right answer and a wrong one — are recorded
+ * sounds (public/sounds, CC0 from Freesound, credited in the README): a
+ * clean rising chime, and a low, soft "bwoom" that goes down and darker,
+ * a nudge rather than a buzzer. Everything else is synthesized on the fly
+ * in one key (C major): soft triangle tones through a gentle low-pass.
  *
  * Created lazily inside a click/keypress handler, which is exactly the kind
- * of user gesture browsers require before audio can play.
+ * of user gesture browsers require before audio can play; the two recorded
+ * sounds are fetched and decoded at that moment, so they are ready by the
+ * first answer. Until they are, the synthesized versions stand in.
  */
 let audioContext: AudioContext | null = null;
 let bus: BiquadFilterNode | null = null;
+
+type Sample = "correct" | "wrong";
+const SAMPLE_URL: Record<Sample, string> = { correct: "/sounds/correct.wav", wrong: "/sounds/wrong.wav" };
+const samples: Partial<Record<Sample, AudioBuffer>> = {};
+let samplesRequested = false;
+
+function loadSamples(ctx: AudioContext) {
+  if (samplesRequested) return;
+  samplesRequested = true;
+  for (const name of Object.keys(SAMPLE_URL) as Sample[]) {
+    fetch(SAMPLE_URL[name])
+      .then((response) => (response.ok ? response.arrayBuffer() : Promise.reject(new Error(String(response.status)))))
+      .then((data) => ctx.decodeAudioData(data))
+      .then((buffer) => {
+        samples[name] = buffer;
+      })
+      .catch(() => {
+        // Offline before the first load, or an old browser: the synthesized sound plays instead.
+      });
+  }
+}
+
+/**
+ * A recorded sound, straight to the speaker (not through the low-pass: the
+ * chime's shimmer is the point). `semitones` shifts its pitch, for a streak.
+ * Returns false when it isn't loaded yet, so the caller can fall back.
+ */
+function playSample(name: Sample, { gain = 0.7, semitones = 0 } = {}): boolean {
+  const ctx = getContext();
+  const buffer = samples[name];
+  if (!ctx || !buffer) return false;
+  const source = ctx.createBufferSource();
+  const volume = ctx.createGain();
+  source.buffer = buffer;
+  source.playbackRate.value = Math.pow(2, semitones / 12);
+  volume.gain.value = gain;
+  source.connect(volume);
+  volume.connect(ctx.destination);
+  source.start();
+  return true;
+}
 
 function getContext(): AudioContext | null {
   if (typeof window === "undefined") return null;
@@ -27,6 +70,7 @@ function getContext(): AudioContext | null {
     bus.type = "lowpass";
     bus.frequency.value = 2400;
     bus.connect(audioContext.destination);
+    loadSamples(audioContext);
   }
   if (audioContext.state === "suspended") void audioContext.resume();
   return audioContext;
@@ -71,11 +115,13 @@ const F4 = 349.23;
 const G4 = 392.0;
 
 /**
- * A right answer: a quick, bright three-note lift. Pass the streak and the
- * lift climbs with it — one extra note per answer in a row, up to a full
- * octave run at five, so a hot streak sounds like one.
+ * A right answer: the chime. Pass the streak and it climbs with it — a
+ * semitone higher for each answer in a row, up to four — so a hot streak
+ * sounds like one. Before the chime has loaded, a synthesized lift that
+ * grows with the streak the same way.
  */
 export function playCorrect(streak = 1): void {
+  if (playSample("correct", { gain: 0.75, semitones: Math.min(Math.max(streak, 1) - 1, 4) })) return;
   const ctx = getContext();
   if (!ctx) return;
   const run = [C5, E5, G5, C6, E5 * 2];
@@ -136,8 +182,9 @@ export function playReveal(): void {
   tone(ctx, E5, 0, 0.14, 0.06, "sine");
 }
 
-/** A wrong answer: two soft notes stepping down -- a nudge, not a punishment. */
+/** A wrong answer: a low, soft "bwoom" going down — a nudge, not a punishment. */
 export function playIncorrect(): void {
+  if (playSample("wrong", { gain: 0.8 })) return;
   const ctx = getContext();
   if (!ctx) return;
   tone(ctx, A4, 0, 0.18, 0.08, "sine");

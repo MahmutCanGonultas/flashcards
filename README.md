@@ -1,69 +1,85 @@
 # Kelimece
 
-**English vocabulary for Turkish learners — your own words, asked the way memory needs them, 21 grammar topics to read and practise, a 60-unit course, and Tonton, a character who actually shows up.**
+An English vocabulary app for Turkish speakers. You add the words you come across, and the app keeps bringing them back until you know them. It also has 21 grammar topics with quizzes, a 60-unit course, and a mascot called Tonton.
 
-Kelimece is a progressive web app built for one learner first: a few words a day, remembered for good. You add the words you meet in the wild (a series, a street sign, a meeting); the app turns each one into a rich card — meanings in their own colours, a plain-English definition, patterns, example sentences, the chunks it lives in, its family, one thing to watch — and brings it back on an SM-2 schedule. How it asks changes as the word settles: first you recognise it, then you produce it, in its sentences, its chunks and finally a sentence of your own. Beside the words sits the learner's own grammar list — from *to be* to the future — with colour-coded examples and a Duolingo-style quiz for every topic, and a structured A1→C1 course with lessons, dialogues, grammar notes and unit tests.
+It's a web app made for the phone (you can install it like a regular app), built around a short daily session: a few new words a day and about fifteen minutes of practice.
 
 <p align="center">
-  <img src="docs/screenshots/home-and-meet.png" alt="Home page, meeting a new word, and the back of a recall card" width="900">
+  <img src="docs/screenshots/home-and-meet.png" alt="The home page, meeting a new word, and the back of a card" width="900">
+  <br><sub>The home page, a new word being introduced, and the back of a card.</sub>
 </p>
 
 ## Features
 
-**Practice that follows the memory**
-- Every word moves through four stages you can see — *Yeni* (new), *Öğreniyor* (learning), *Pekişiyor* (settling), *Kalıcı* (held) — drawn as signal bars on every card and list row.
-- A **new** word is met before it is asked: the word, the word at work in a sentence, a moment to guess what it means, then the meaning. It is asked a few cards later, with a review in between.
-- A word being **learned** is recognised: see it, recall the Turkish, flip, grade yourself — swipe right for *Bildim*, left for *Bilemedim*, up for *Zorlandım*. The back always carries one of the word's sentences, the word lit up in its colour. The next day it comes back as a gap in its own sentence, the Turkish open.
-- A word that **holds** has to be produced: typed from its Turkish, into its sentence, into one of its chunks (“___ a crime”), by ear, and — once it is yours — into the sentence you wrote with it.
-- Typed answers are marked by the app, fairly: the right form scores full marks, the right word in another form (“commit” for “committed”) nearly so, a small spelling slip counts as hard, a hint caps the mark, and “my answer was right too” takes back a wrong mark once. The verdict arrives as a green, orange or red bar with Tonton's face on it.
-- A miss comes back three cards later, easier and with its sentence, until it is got; only the first answer of a session is written to the schedule. A word missed three times is marked *inatçı* (a leech) and gets extra support.
-- Any card can be passed without marking it — *Geç*, a swipe down, or the down arrow. Nothing is written; it comes back once at the end of the round, and if it's passed again it simply stays due for next time.
-- The moment a word is first recalled, you are asked to write a sentence of your own with it — the strongest cue a word can have. Later reviews blank the word out of it.
+### Practice that changes as you learn a word
 
-**Your words, built to grow**
-- *Kelimelerim* holds every word the learner has added and is made for hundreds: one search over everything a card says — English or Turkish, with or without the accents (“endise” finds *endişe*) — a filter per stage with its count, three orders (next up, A–Z, newest) with headings that break the list into parts, and pages of forty. Search and filters live in the address, so coming back from a word keeps them.
-- The front page keeps only the last five words added, with the way into the full list and into grammar as two tiles.
-
-**Word pages in colour**
-- The word on its own bright colour, its short meaning under it, three small cards for strength, when it comes back and how often it slipped, and a green button to drill it.
-- Every sense is its own card in its own colour — the same colours the practice screen gives its meanings, so meaning 2 is always the green one — with a plain-English definition, its patterns as chips, and its sentences as soft bubbles: the English with the word lit up, the Turkish beneath in a second voice with the word's counterpart picked out.
-- The chunks it lives in, its family, the learner's own sentence, and the one trap split into a red ✗ sentence and a green ✓ one.
-
-**Grammar, the learner's own list**
-- 21 topics in three levels (Beginner, Elementary, Pre-Intermediate), in the order they were taught: *to be*, possessives, *have got*, jobs, word types, the present simple, *wh-* questions, sentence order, *to / by / from*, numbers, ordinals and frequency, likes and dislikes, articles, countables, *there is / there are*, quantifiers, the present continuous, imperatives, linking words and the future.
-- Each topic is a page to read: sections with a rule, a table and examples whose parts are colour-coded and explained at the top (green for the form being taught, blue for what decides it, orange for a third part such as the time word), the Turkish under every sentence, a voice for every example, the mistakes people make, and Tonton's trick.
-- Then ten questions the way Duolingo asks them: pick one, find the wrong sentence, type the gap, or build the sentence from tiles with near-miss tiles mixed in. A green or red bar says why; a miss comes back at the end; the first answers make the score, which is saved as the topic's best with up to three stars. A mixed round draws on the topics already practised, more from the weakest.
-
-**Memory, made visible**
-- The front page shows what is waiting, how many words sit at each stage, the next seven days of reviews, and last week's recall rate.
-- Each session ends with every word's new stage and when it comes back. Any word can be drilled on its own from its page without touching its schedule.
-
-**A course alongside**
-- 60 units, A1 → C1, ~900 words: a lesson path per unit with meet / listen / recall rounds, a short dialogue that puts the unit's words to work, a grammar note in Tonton's voice with a mini quiz, and a unit test that gates the next unit.
-- A placement test opens the path at the right level; any unit can be tested out of.
-
-**Tonton**
-- The mascot has a director, not a timer: a hello once a day, visits every minute or so on the reading pages (the word list, a word, grammar, the course) with different entrances, a word after most answers in a session, milestones for a run of right answers or a returning card, a nudge when you stare at a card too long, a line on the grammar page you linger on, and an evening word when the streak is at risk. He knows the learner's grammar too: the next topic to open, the one worth another go.
-- He is on every question screen in person — guessing a new word with you, reading the sentence you are asked to fill, reacting in the verdict bar — and there is only one of him: when he comes out on a visit, the Tonton drawn into the page steps out of his spot. Long-press hushes him for two hours; dismiss him twice quickly and he takes the hint.
-
-**Built for the phone**
-- Installable PWA with an offline shell, Web Push reminders at the hour you choose (sent only when something is actually due), spoken words via the device voice, and a keyboard path for the desktop.
+- Every word has a stage you can see: *Yeni* (new), *Öğreniyor* (learning), *Pekişiyor* (getting there), *Kalıcı* (learned). Stages show up as signal bars on cards and word pages.
+- A new word is introduced before you're tested on it. You see it in a sentence, guess what it means, then check. It comes back a few cards later.
+- While you're learning a word, you recognise it: look at the word, think of the Turkish, flip the card and grade yourself. Swipe right for *Bildim* (knew it), left for *Bilemedim* (didn't), up for *Zorlandım* (hard). Once you've got it, it comes back as a gap in its own sentence, with the Turkish shown.
+- When a word starts to stick, you have to produce it: type it from its Turkish meanings, fill it into its sentence, complete one of its phrases ("___ a crime"), and later fill it into a sentence you wrote yourself. Now and then you only hear it and have to remember what it means.
+- Typed answers are marked fairly. The right word in a different form ("commit" instead of "committed") gets nearly full marks, a small typo counts as hard, using a hint lowers the mark, and you can overrule a wrong mark once if your answer was actually fine.
+- A missed word comes back three cards later with more help. Only your first answer in a session changes the schedule. A word you miss three times is marked *inatçı* (stubborn) and gets extra support.
+- You can pass any card without answering: tap *Geç*, swipe down or press the down arrow. Nothing is saved. The card comes back once at the end of the round, and if you pass it again it just stays due for next time.
+- The first time you get a word right, you're asked to write your own sentence with it. Later reviews blank the word out of that sentence.
+- A right answer plays a short chime that goes up a little with each right answer in a row. A miss plays a soft, low tone instead of a buzzer.
 
 <p align="center">
-  <img src="docs/screenshots/production.png" alt="A gap in the word's sentence, a small slip marked in orange, and writing your own sentence" width="900">
+  <img src="docs/screenshots/production.png" alt="Typing a word from its Turkish meanings, a small typo marked in orange, and completing a phrase" width="900">
+  <br><sub>Typing the word from its meanings, a typo marked "almost", and completing a phrase.</sub>
 </p>
 
-<p align="center">
-  <img src="docs/screenshots/word-pages.png" alt="The word list, a word's page, and its senses in their own colours" width="900">
-</p>
+### Your word list
+
+- *Kelimelerim* is made to hold hundreds of words. Each row shows the word and its meaning, nothing else. Tap a row to see all its meanings, an example sentence, its stage and next review, and buttons to hear it, practise it or open its page.
+- One search box covers everything on a card, in English or Turkish, with or without Turkish letters ("endise" finds *endişe*). You can filter by stage (with counts) and sort by next review, A–Z or newest, with headings between groups.
+- Search and filters are saved in the URL, so going back from a word page keeps your place.
+
+### Word pages
+
+- Every word has its own colour, and its meanings are numbered in colours that stay the same everywhere in the app, so meaning 2 is always green.
+- Each meaning has a plain-English definition, common patterns, and example sentences with the word highlighted and a Turkish translation underneath.
+- The page also shows the phrases the word is used in, related words, your own sentence, and one common mistake as a wrong sentence next to a right one.
 
 <p align="center">
-  <img src="docs/screenshots/grammar.png" alt="The grammar list, a topic with its colour-coded table and examples, and a quiz answer" width="900">
+  <img src="docs/screenshots/word-pages.png" alt="The word list, a row opened, and a word's page" width="900">
+  <br><sub>The word list, a row tapped open, and a word's page.</sub>
 </p>
 
+### Grammar
+
+- 21 topics in three levels (Beginner, Elementary, Pre-Intermediate), in the order they were taught: *to be*, possessives, *have got*, jobs, word types, the present simple, *wh-* questions, word order, *to / by / from*, numbers, ordinals and frequency, likes and dislikes, articles, countable nouns, *there is / there are*, quantifiers, the present continuous, imperatives, linking words and the future.
+- Each topic is a page to read, with rules, tables and examples. Colours mark the parts of a sentence (green for the form being taught, blue for what decides it, orange for extras such as time words). Every example has a Turkish translation and can be played aloud.
+- Each topic has a 10-question quiz: pick the answer, find the wrong sentence, fill the gap, or build the sentence from word tiles with a few extra tiles mixed in. Mistakes come back at the end, and your best score is saved with up to three stars. A mixed quiz takes questions from topics you've already done, more from your weakest ones.
+
 <p align="center">
-  <img src="docs/screenshots/progress-and-course.png" alt="Session summary, the course path, and Tonton visiting the home page" width="900">
+  <img src="docs/screenshots/grammar.png" alt="The grammar topics, a topic page with a colour-coded table, and a quiz answer" width="900">
+  <br><sub>The grammar topics, a table from the present continuous, and a quiz question.</sub>
 </p>
+
+### Tonton
+
+- Tonton says hello once a day, drops by now and then on the reading pages, reacts to your answers during practice, and reminds you in the evening if your streak is about to break. He knows your grammar scores and points you to the next topic.
+- He doesn't always talk. Sometimes he just waves and goes, and every now and then he turns up huge: standing up from the bottom of the screen, leaning in from the side, or popping up in the middle. Tap anywhere and he leaves.
+- Press and hold him to mute him for two hours. Close him twice in a row and he gets the hint.
+
+<p align="center">
+  <img src="docs/screenshots/tonton.png" alt="Tonton visiting at full size on the home page and the word list, and a normal visit on the grammar page" width="900">
+  <br><sub>Tonton's big visits, and a normal one.</sub>
+</p>
+
+### Progress and the course
+
+- The home page shows what's due, how many words are at each stage, reviews for the next seven days and how much you remembered last week. Every session ends with each word's new stage and when you'll see it again.
+- The course has 60 units from A1 to C1 (about 900 words), each with lessons, a short dialogue, a grammar note with a mini quiz, and a unit test. A placement test starts you at the right level.
+
+<p align="center">
+  <img src="docs/screenshots/progress-and-course.png" alt="Writing your own sentence, the end of a session, and the course" width="900">
+  <br><sub>Writing your own sentence, the end of a session, and the course.</sub>
+</p>
+
+### Made for the phone
+
+- Installable, with an offline shell, push reminders at the hour you pick (only sent when something is due), words read aloud with the phone's own voice, and keyboard shortcuts on a computer.
 
 ## Stack
 
@@ -77,31 +93,39 @@ Kelimece is a progressive web app built for one learner first: a few words a day
 
 ### Scheduling
 
-Each card carries `repetitions`, `interval` (days) and `ease_factor` (starts at 2.5). A grade below 3 resets the card and brings it back ten minutes later; 3 or above schedules the first success for tomorrow, the second for six days out, and every later one for the previous interval × ease. The ease factor moves with your grades and never drops below 1.3. Due dates are stored as `timestamptz` and land on the learner's local midnight (`LEARNER_TIMEZONE`, default `Europe/Istanbul`), so "tomorrow" means tomorrow whatever hour you studied. Every graded review also lands in `review_log`, which feeds the weekly numbers. See [`backend/src/services/srs.service.ts`](backend/src/services/srs.service.ts) and its tests.
+Each card stores `repetitions`, `interval` (in days) and `ease_factor` (starting at 2.5). A grade below 3 resets the card and shows it again ten minutes later. A grade of 3 or more schedules the first success for tomorrow, the second for six days later, and each one after that for the previous interval times the ease factor. The ease factor moves with your grades and never goes below 1.3. Due dates are `timestamptz` values set to the learner's local midnight (`LEARNER_TIMEZONE`, default `Europe/Istanbul`), so "tomorrow" means tomorrow no matter what time you studied. Every graded review is also written to `review_log`, which feeds the weekly numbers. See [`backend/src/services/srs.service.ts`](backend/src/services/srs.service.ts) and its tests.
 
 ### Practice
 
-[`web/src/lib/practice.ts`](web/src/lib/practice.ts) decides how each word is asked today, from its stage ([`lib/memory.ts`](web/src/lib/memory.ts)) and what its card carries: sentences, chunks, the learner's own sentence, whether sound is on. The choice rotates by day, so a word isn't always met from the same side. A session is built once when it starts — one known word to warm up, new words met in threes and each asked again a few cards later, then the rest in the order they fell due — and grows as misses are put back in. The marking (normalising, inflections, slips counted as an optimal string alignment distance, hints) lives in the same file, and both are covered by tests.
+[`web/src/lib/practice.ts`](web/src/lib/practice.ts) decides how each word is asked today, based on its stage ([`lib/memory.ts`](web/src/lib/memory.ts)) and what the card has: sentences, phrases, your own sentence, and whether sound is on. The choice rotates by day, so a word isn't always asked the same way. A session is planned when it starts (one familiar word to warm up, new words introduced in threes and asked again a few cards later, then the rest in the order they became due) and grows as missed words are added back. Answer marking lives in the same file: normalising, other forms of the word, typos measured as an edit distance, and hints. Both are covered by tests.
 
 ### Cards
 
-A personal card is a small document: `senses[]` (part of speech, meaning, a plain-English `definition`, pattern, a main example with its Turkish and more `examples[]`), `collocations[]`, `related[]`, `watch_out` (written “✗ wrong → ✓ right. Why…” and split for display by [`lib/watchOut.ts`](web/src/lib/watchOut.ts)), the learner's `my_sentence`, a `tint` (the word's own colour), and `lapses` — how many graded reviews it was missed in. The word list's search, filters, orders and headings live in [`lib/wordBrowser.ts`](web/src/lib/wordBrowser.ts), with tests.
+A personal card holds `senses[]` (part of speech, meaning, a plain-English `definition`, pattern, an example with its Turkish, and more `examples[]`), `collocations[]`, `related[]`, `watch_out` (written as "✗ wrong → ✓ right. Why…" and split for display by [`lib/watchOut.ts`](web/src/lib/watchOut.ts)), the learner's `my_sentence`, a `tint` (the word's colour) and `lapses` (how many reviews it was missed in). Search, filters, sorting and grouping for the word list are in [`lib/wordBrowser.ts`](web/src/lib/wordBrowser.ts), with tests.
 
 ### Grammar
 
-The topics ship with the web app as typed content in [`web/src/content/grammar/`](web/src/content/grammar) — `catalog.ts` holds the order and titles (light enough for the home page), one file per level holds the pages. Every English line can carry colour marks (`{form}`, `[subject]`, `<extra>`, `**bold**`, `~~wrong~~`) that [`lib/rich.ts`](web/src/lib/rich.ts) parses and `components/Rich.tsx` draws; each topic's `legend` says what its colours mean. A content test checks every topic: marks closed, table rows as wide as their header, three kinds of question, answers that exist, tiles that really build their sentence. The quiz engine — shuffling, marking, the score, the mixed round weighted towards weak topics — is [`lib/grammarQuiz.ts`](web/src/lib/grammarQuiz.ts). Only the numbers live on the server: `grammar_progress` keeps each topic's best score and attempts.
+The topics ship with the web app as typed content in [`web/src/content/grammar/`](web/src/content/grammar). `catalog.ts` has the order and titles (small enough for the home page), and there is one file per level with the pages. English lines can carry colour marks (`{form}`, `[subject]`, `<extra>`, `**bold**`, `~~wrong~~`), which [`lib/rich.ts`](web/src/lib/rich.ts) parses and `components/Rich.tsx` draws. Each topic's `legend` explains its colours. A content test checks every topic: marks are closed, table rows match their header, there are three kinds of question, answers exist, and tiles really build their sentence. The quiz logic (shuffling, marking, scoring, and the mixed quiz weighted towards weak topics) is in [`lib/grammarQuiz.ts`](web/src/lib/grammarQuiz.ts). Only scores are stored on the server: `grammar_progress` keeps each topic's best score and number of attempts.
+
+### Tonton
+
+[`lib/tontonDirector.ts`](web/src/lib/tontonDirector.ts) decides when Tonton appears and what he says: how long to wait between visits, which pages he may visit, how often a visit is silent or full-screen, and when to keep out of the way (he never interrupts a question). [`components/TontonPopups.tsx`](web/src/components/TontonPopups.tsx) only draws the current visit and passes taps back.
+
+### Sounds
+
+The right and wrong answer sounds are two short recordings in [`web/public/sounds/`](web/public/sounds) (see Credits). They are loaded when audio is first allowed and cached for offline use. Everything else, and a fallback until the recordings load, is generated with the Web Audio API in [`lib/sound.ts`](web/src/lib/sound.ts).
 
 ### Reminders
 
-Turning reminders on stores a Web Push subscription with the chosen hour and timezone. A public, idempotent `POST /api/v1/push/run` is called every hour by [`.github/workflows/reminders.yml`](.github/workflows/reminders.yml); it sends at most one notification per device per local day, and only when cards have been due for at least an hour. VAPID keys are generated once and kept in the `settings` table.
+Turning reminders on saves a Web Push subscription with the chosen hour and timezone. [`.github/workflows/reminders.yml`](.github/workflows/reminders.yml) calls a public, idempotent `POST /api/v1/push/run` every hour. It sends at most one notification per device per day, and only when cards have been due for at least an hour. VAPID keys are generated once and kept in the `settings` table.
 
-### Design system
+### Design
 
-*Bright*, after Duolingo's: a white page, white cards with a 2px grey border and a grey ledge under them, and chunky buttons in solid colour on a darker band of themselves that sink when pressed. Eight colour families (grass, ocean, berry, sunny, tangerine, plum, teal, rose), each with a base, a deep shade for the 3D edge, a soft wash and a text-safe ink. Colours keep their meanings: green is *known / go*, orange the honest middle and the streak, red *due / missed*; stages go grey → orange → blue → green. Each word carries a bright colour of its own on its cover, and its senses take the family colours in a fixed order. Nothing is blurred and nothing is black. Tokens, the 3D utilities (`card-3d`, `press`, `press-3d`) and the motion scale live in [`web/src/index.css`](web/src/index.css); the per-word colour in [`web/src/lib/tint.ts`](web/src/lib/tint.ts), the families in [`web/src/lib/palette.ts`](web/src/lib/palette.ts).
+The look is based on Duolingo's: a white page, white cards with a 2px grey border and a grey edge underneath, and solid-colour buttons with a darker bottom edge that press down when tapped. There are eight colour families (grass, ocean, berry, sunny, tangerine, plum, teal, rose), each with a base, a darker shade for the edge, a light background and a readable text colour. Colours keep their meaning: green is right or go, orange is the middle ground and the streak, red is due or missed, and stages go grey, orange, blue, green. Every word has its own bright colour, and its meanings take the family colours in a fixed order. Nothing is blurred and nothing is black. Tokens, the 3D utilities (`card-3d`, `press`, `press-3d`) and animation timings are in [`web/src/index.css`](web/src/index.css), word colours in [`web/src/lib/tint.ts`](web/src/lib/tint.ts), and the families in [`web/src/lib/palette.ts`](web/src/lib/palette.ts).
 
 ## Running it locally
 
-Prerequisites: Node 22+, a Postgres database (Neon, Supabase or local).
+You need Node 22+ and a Postgres database (Neon, Supabase or local).
 
 ```bash
 # 1. API
@@ -117,7 +141,7 @@ npm install
 npm run dev                   # http://localhost:5173
 ```
 
-Optional API settings: `LEARNER_TIMEZONE` (default `Europe/Istanbul`), `ANTHROPIC_API_KEY` (enables auto-filling a new card's meanings and examples; without it the endpoint answers 503 and everything else works).
+Optional API settings: `LEARNER_TIMEZONE` (default `Europe/Istanbul`) and `ANTHROPIC_API_KEY`, which turns on auto-filling a new card's meanings and examples. Without the key, that one endpoint returns 503 and everything else works.
 
 Checks:
 
@@ -128,7 +152,7 @@ cd web && npm run lint && npm test && npm run build
 
 ## API
 
-All routes are under `/api/v1`; everything except `auth/*` and `push/run` needs `Authorization: Bearer <token>`.
+All routes are under `/api/v1`. Everything except `auth/*` and `push/run` needs `Authorization: Bearer <token>`.
 
 | Area | Routes |
 |---|---|
@@ -137,7 +161,7 @@ All routes are under `/api/v1`; everything except `auth/*` and `push/run` needs 
 | Cards | `GET decks/:id/cards`, `GET decks/:id/cards/due`, `POST decks/:id/cards`, `POST decks/:id/cards/suggest`, `PUT decks/:id/cards/:cardId`, `DELETE decks/:id/cards/:cardId`, `POST decks/:id/cards/:cardId/review` (`{ quality, kind? }`) |
 | Course | `GET decks/:id/units`, `POST decks/:id/units/:unitId/result`, `POST decks/:id/placement` |
 | Streak | `GET streak`, `POST streak` |
-| Grammar | `GET grammar/progress`, `POST grammar/progress` (`{ topic, score }`: keeps the best, counts the attempt) |
+| Grammar | `GET grammar/progress`, `POST grammar/progress` (`{ topic, score }`, keeps the best score and counts the attempt) |
 | Push | `GET push/key`, `GET push/status`, `POST push/subscribe`, `POST push/unsubscribe`, `POST push/test`, `POST push/run` |
 
 ## Project layout
@@ -146,33 +170,41 @@ All routes are under `/api/v1`; everything except `auth/*` and `push/run` needs 
 flashcards/
 ├── backend/
 │   ├── schema.sql                 users, decks, cards, review_log, units, unit_results, grammar_progress, settings, push_subscriptions
-│   ├── content/                   the course: one JSON per unit (words, dialogue, grammar note)
+│   ├── content/                   the course: one JSON file per unit (words, dialogue, grammar note)
 │   └── src/
 │       ├── server.ts              Express app, CORS, routes
 │       ├── controllers/           auth, deck, card, unit, streak, push, suggest, grammar
 │       ├── routes/                one router per controller
-│       ├── middleware/            bearer-token check
-│       └── services/              SM-2 (srs.service.ts) + tests
+│       ├── middleware/            bearer token check
+│       └── services/              SM-2 (srs.service.ts) and its tests
 ├── web/
+│   ├── public/sounds/             the right and wrong answer sounds
 │   └── src/
-│       ├── pages/                 Kartlar (home), Kelimelerim, WordPage, Flashcards (practice), GrammarHub / GrammarTopic / GrammarQuiz, Kurs, Study, UnitTest, Grammar (course notes), Dialogue, Placement, auth
-│       ├── components/            Cover, StrengthBars, WordList, WordCardBack, Rich, Mascot, TontonLine, TontonPopups, Sheet, LearningPath, …
-│       ├── content/grammar/       the 21 topics: catalog + one file per level, and the content test
-│       ├── lib/                   practice + memory, wordBrowser, grammarQuiz, rich, watchOut (all with tests), palette, tint, tonton + tontonDirector, …
-│       ├── sw.ts                  service worker: precache + push handlers
-│       └── index.css              design tokens, motion scale, utilities
+│       ├── pages/                 Kartlar (home), Kelimelerim, WordPage, Flashcards (practice), GrammarHub, GrammarTopic, GrammarQuiz, Kurs, Study, UnitTest, Grammar (course notes), Dialogue, Placement, auth
+│       ├── components/            Cover, StrengthBars, WordList, WordCardBack, MeaningText, Rich, Mascot, TontonLine, TontonPopups, Sheet, LearningPath, …
+│       ├── content/grammar/       the 21 topics: catalog, one file per level, and the content test
+│       ├── lib/                   practice, memory, wordBrowser, grammarQuiz, rich, watchOut (all tested), palette, tint, sound, tonton, tontonDirector, …
+│       ├── sw.ts                  service worker: precache and push handlers
+│       └── index.css              design tokens, animations, utilities
 ├── docs/screenshots/
-└── .github/workflows/             ci.yml (typecheck, tests, lint, build) · reminders.yml (hourly push job)
+└── .github/workflows/             ci.yml (typecheck, tests, lint, build) and reminders.yml (hourly push job)
 ```
 
 ## Deployment
 
-- **Web** — Vercel, root `web/`, build `npm run build`, output `dist/`; set `VITE_API_URL` to the API's `/api/v1` base.
-- **API** — Render (or any Node host), root `backend/`, build `npm ci && npm run build`, start `npm start`; set `DATABASE_URL`, `JWT_SECRET`, `CORS_ORIGIN` (the web origin). `GET /` reports the deployed commit.
-- **Reminders** — the GitHub Actions cron in `.github/workflows/reminders.yml` calls `push/run` hourly; point it at your API URL.
+- **Web**: Vercel, root `web/`, build `npm run build`, output `dist/`. Set `VITE_API_URL` to the API's `/api/v1` base.
+- **API**: Render (or any Node host), root `backend/`, build `npm ci && npm run build`, start `npm start`. Set `DATABASE_URL`, `JWT_SECRET` and `CORS_ORIGIN` (the web origin). `GET /` reports the deployed commit.
+- **Reminders**: the GitHub Actions cron in `.github/workflows/reminders.yml` calls `push/run` every hour. Point it at your API URL.
+
+## Credits
+
+Both answer sounds come from [Freesound](https://freesound.org) under CC0 (public domain), trimmed and levelled for the app:
+
+- Right answer: ["victory chime"](https://freesound.org/people/1bob/sounds/717771/) by 1bob
+- Wrong answer: ["Training Program, Incorrect1.aif"](https://freesound.org/people/timgormly/sounds/181858/) by timgormly
 
 ## Roadmap
 
-- Multi-user onboarding and a native "add a word" flow with automatic meanings and examples
-- Speaking practice: say the word, have it checked
-- Import from a phone's notes / screenshots
+- Sign-up for more learners, and an "add a word" flow that fills in meanings and examples automatically
+- Speaking practice: say the word and have it checked
+- Importing words from a phone's notes or screenshots

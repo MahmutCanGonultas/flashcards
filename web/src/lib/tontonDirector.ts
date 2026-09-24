@@ -33,8 +33,8 @@ import {
  * never fetches on his own.
  */
 
-export type Entrance = "slide-up" | "tiptoe" | "peek-side" | "pop" | "drop" | "fade";
-export type PopKind = "first" | "wander" | "risk" | "react" | "nudge" | "summary" | "linger" | "hush" | "mute";
+export type Entrance = "slide-up" | "tiptoe" | "peek-side" | "pop" | "drop" | "fade" | "giant-rise" | "giant-peek" | "giant-pop";
+export type PopKind = "first" | "wander" | "risk" | "react" | "nudge" | "summary" | "linger" | "hush" | "mute" | "big";
 export type Phase = "hidden" | "scheduled" | "entering" | "showing" | "leaving" | "cooldown";
 
 export type Pop = {
@@ -43,8 +43,11 @@ export type Pop = {
   /** Changes with every arrival, so the entrance re-runs. */
   visit: number;
   kind: PopKind;
-  /** Bottom-left, the visit; top-right, the reaction on the flashcard screen. */
-  place: "bottom" | "top";
+  /**
+   * Bottom-left, the visit; top-right, the reaction on the flashcard screen;
+   * big, now and then, for no reason at all: a giant Tonton across the screen.
+   */
+  place: "bottom" | "top" | "big";
   text: string;
   kicker?: string;
   entrance: Entrance;
@@ -64,6 +67,8 @@ type GradeDetail = { quality: 1 | 3 | 4 | 5; front: string; attempt: number; ind
 type CardDetail = { front: string; flipped: boolean };
 
 const EXIT_MS = 260;
+/** The giant takes a little longer to get off the screen. */
+const BIG_EXIT_MS = 380;
 const MIN_GAP_MS = 10_000;
 const RETRY_MS = 4_000;
 /** Between two reactions on the practice screen; nearly every card may get one. */
@@ -77,6 +82,15 @@ const HUSH_MS = 2 * 60 * 60_000;
 const MUTE_MS = 10 * 60_000;
 const QUICK_DISMISS_MS = 1_500;
 const MAX_AUTO_POPS = 40;
+/** A visit without a word: he comes, waves, and goes. */
+const SILENT_CHANCE = 0.3;
+/** The giant visit: rare, a few minutes apart at least, a few per session at most. */
+const BIG_CHANCE = 0.14;
+const BIG_GAP_MS = 4 * 60_000;
+const MAX_BIG = 3;
+const BIG_STAY_MS = 3_400;
+/** Reactions on the practice screen that are just his face, no words. */
+const SILENT_REACT_CHANCE = 0.45;
 const REMEMBER = 24;
 
 /** He never interrupts a question (the grammar quiz has him on the page already). */
@@ -125,6 +139,8 @@ let lastReactAt = 0;
 let arrivedAt = 0;
 let tapsThisVisit = 0;
 let autoPops = 0;
+let bigVisits = 0;
+let lastBigAt = 0;
 let sessionOpened = false;
 let quickDismissals = 0;
 let muteUntil = 0;
@@ -187,6 +203,7 @@ function drawEntrance(): Entrance {
 const stayFor = (text: string) => Math.min(9_000, Math.max(5_500, 5_000 + text.length * 45));
 
 function remember(text: string) {
+  if (!text) return;
   recent = [text, ...recent.filter((t) => t !== text)].slice(0, REMEMBER);
   write("tt:recent", JSON.stringify(recent));
 }
@@ -233,7 +250,7 @@ function show(pop: Omit<Pop, "id" | "visit">) {
   arrivedAt = now;
   tapsThisVisit = 0;
   lastPopAt = now;
-  busyUntil = now + pop.stayMs + EXIT_MS;
+  busyUntil = now + pop.stayMs + exitFor(pop);
   remember(pop.text);
   phase = "entering";
   set({ pop: { ...pop, id: seq, visit }, leaving: false });
@@ -249,7 +266,7 @@ function say(patch: Partial<Pop>) {
   window.clearTimeout(stayTimer);
   seq += 1;
   const pop: Pop = { ...view.pop, ...patch, id: seq };
-  busyUntil = Date.now() + pop.stayMs + EXIT_MS;
+  busyUntil = Date.now() + pop.stayMs + exitFor(pop);
   remember(pop.text);
   set({ pop, leaving: false });
   stayTimer = window.setTimeout(leave, pop.stayMs);
@@ -259,13 +276,18 @@ function leave() {
   if (!view.pop || view.leaving) return;
   window.clearTimeout(stayTimer);
   phase = "leaving";
+  const exitMs = exitFor(view.pop);
   set({ pop: view.pop, leaving: true });
   exitTimer = window.setTimeout(() => {
     set({ pop: null, leaving: false });
     phase = "cooldown";
     if (WANDER_ROUTES.some((r) => r.test(route))) scheduleWander();
     else phase = "hidden";
-  }, EXIT_MS);
+  }, exitMs);
+}
+
+function exitFor(pop: Pick<Pop, "place">) {
+  return pop.place === "big" ? BIG_EXIT_MS : EXIT_MS;
 }
 
 /* ------------------------------------------------------------ triggers -- */
@@ -299,6 +321,17 @@ function tryWander(forced?: Entrance) {
     line = { text: STREAK_RISK };
     kind = "risk";
   } else {
+    // Now and then he just shows up: sometimes huge, sometimes without a word.
+    const roll = Math.random();
+    if (!forced && roll < BIG_CHANCE && bigVisits < MAX_BIG && now - lastBigAt > BIG_GAP_MS) {
+      showBig();
+      return;
+    }
+    if (!forced && roll < BIG_CHANCE + SILENT_CHANCE) {
+      autoPops += 1;
+      show({ kind, place: "bottom", text: "", entrance: drawEntrance(), stayMs: 2_600, mood: "happy" });
+      return;
+    }
     const pool = popLines(snap).filter((l) => !recent.includes(l.text));
     line = pool[Math.floor(Math.random() * Math.min(pool.length, 6))] ?? pool[0] ?? { text: "Buradayım." };
   }
@@ -312,6 +345,21 @@ function tryWander(forced?: Entrance) {
     stayMs: stayFor(line.text),
     mood: "idle",
   });
+}
+
+/** How the giant arrives: standing up from the bottom, peeking in from the side, or popping up in the middle. */
+function drawBigEntrance(): Entrance {
+  if (reducedMotion()) return "fade";
+  const r = Math.random();
+  return r < 0.45 ? "giant-rise" : r < 0.75 ? "giant-peek" : "giant-pop";
+}
+
+/** The giant visit: no words, a wave, gone in a few seconds or at a touch. */
+function showBig(entrance: Entrance = drawBigEntrance()) {
+  autoPops += 1;
+  bigVisits += 1;
+  lastBigAt = Date.now();
+  show({ kind: "big", place: "big", text: "", entrance, stayMs: BIG_STAY_MS, mood: "happy" });
 }
 
 function tryFirst(attempt = 0) {
@@ -396,7 +444,8 @@ function onGrade(detail: GradeDetail) {
     const now = Date.now();
     if (now - lastReactAt < REACT_GAP_MS || Math.random() >= REACT_CHANCE) return;
     const pool = knew ? AFTER_GRADE.known : detail.quality === 1 ? AFTER_GRADE.missed : AFTER_GRADE.hard;
-    line = { text: pickFresh(pool) };
+    // Often it's just his face: a hop or a droop, no bubble.
+    line = { text: Math.random() < SILENT_REACT_CHANCE ? "" : pickFresh(pool) };
   }
   if (!FLASH_ROUTE.test(route) || blocked()) return;
   // A visit at the bottom (the summary's, say) has the floor.
@@ -409,7 +458,7 @@ function onGrade(detail: GradeDetail) {
     text: line.text,
     kicker: line.kicker,
     entrance: reducedMotion() ? "fade" : "drop",
-    stayMs: milestone ? 2_800 : 2_400,
+    stayMs: milestone ? 2_800 : line.text ? 2_400 : 1_500,
     mood: line === MILESTONE.firstMiss ? "idle" : milestone ? "happy" : mood,
   });
 }
@@ -456,7 +505,7 @@ function onSummary() {
 function tap() {
   const pop = view.pop;
   if (!pop || view.leaving || pop.place === "top") return;
-  if (pop.kind === "hush" || pop.kind === "mute" || tapsThisVisit >= 2) {
+  if (pop.kind === "hush" || pop.kind === "mute" || pop.place === "big" || tapsThisVisit >= 2) {
     window.clearTimeout(stayTimer);
     set({ pop: { ...pop, wave: true }, leaving: false });
     stayTimer = window.setTimeout(leave, 700);
@@ -586,6 +635,13 @@ if (import.meta.env.DEV && typeof window !== "undefined") {
           return tryLinger();
         }
         if (kind === "summary") return onSummary();
+        if (kind === "big" || kind === "giant-rise" || kind === "giant-peek" || kind === "giant-pop") {
+          return showBig(kind === "big" ? drawBigEntrance() : (kind as Entrance));
+        }
+        if (kind === "silent") {
+          autoPops += 1;
+          return show({ kind: "wander", place: "bottom", text: "", entrance: drawEntrance(), stayMs: 2_600, mood: "happy" });
+        }
         return tryWander((ENTRANCES as string[]).includes(kind ?? "") ? (kind as Entrance) : "slide-up");
       },
       grade(quality: 1 | 3 | 4 | 5, attempt = 0) {

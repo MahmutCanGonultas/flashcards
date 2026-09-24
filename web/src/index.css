@@ -364,6 +364,64 @@
     opacity: 0;
   }
 }
+/* The giant visit: up from the bottom edge, in from the side, or out of the middle. */
+@keyframes tt-giant-rise {
+  0% {
+    transform: translateY(100%);
+  }
+  62% {
+    transform: translateY(-5%);
+  }
+  82% {
+    transform: translateY(2%);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes tt-giant-sink {
+  to {
+    transform: translateY(110%);
+  }
+}
+@keyframes tt-giant-peek {
+  0% {
+    transform: translateX(100%) rotate(-8deg);
+  }
+  70% {
+    transform: translateX(-5%) rotate(3deg);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes tt-giant-peek-out {
+  to {
+    transform: translateX(110%) rotate(-8deg);
+  }
+}
+@keyframes tt-giant-pop {
+  0% {
+    transform: scale(0.15) rotate(-10deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.08) rotate(3deg);
+    opacity: 1;
+  }
+  82% {
+    transform: scale(0.97);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes tt-giant-shrink {
+  to {
+    transform: scale(0.15);
+    opacity: 0;
+  }
+}
 /* The honey hairline along the bubble's foot that shrinks over his stay. */
 @keyframes tt-stay {
   from {

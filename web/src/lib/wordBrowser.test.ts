@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { browse, filterCounts, fold, groupCards, matchRanges, matches, sortCards } from "./wordBrowser";
+import { browse, coreMeaning, filterCounts, fold, groupCards, matchRanges, matches, sortCards } from "./wordBrowser";
 import { makeCard } from "./testCards";
 
 // 23 Sept 2026, 12:00 in the learner's own time zone.
@@ -49,6 +49,18 @@ describe("fold / matches", () => {
   it("marks where the query sits, accents or not", () => {
     expect(matchRanges("endişe, kaygı", "endise")).toEqual([[0, 6]]);
     expect(matchRanges("no cause for concern", "for con")).toEqual([[9, 12], [13, 16]]);
+  });
+});
+
+describe("coreMeaning", () => {
+  it("drops the note at the end, keeps the rest", () => {
+    expect(coreMeaning("yaklaşmak (yer ya da zaman olarak)")).toBe("yaklaşmak");
+    expect(coreMeaning("kurmak, oluşturmak (şirket, kurum, sistem — uzun sürecek bir şey)")).toBe("kurmak, oluşturmak");
+    expect(coreMeaning("endişe, kaygı")).toBe("endişe, kaygı");
+  });
+  it("keeps a bracket that is part of the meaning", () => {
+    expect(coreMeaning("mesele, öncelik; (birinin) işi")).toBe("mesele, öncelik; (birinin) işi");
+    expect(coreMeaning("(birinin) işi")).toBe("(birinin) işi");
   });
 });
 

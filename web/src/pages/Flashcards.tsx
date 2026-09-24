@@ -43,6 +43,7 @@ import WordCardBack, { ExampleBubble, PosPill } from "../components/WordCardBack
 import Cover from "../components/Cover";
 import StrengthBars from "../components/StrengthBars";
 import TontonLine from "../components/TontonLine";
+import MeaningText from "../components/MeaningText";
 import Confetti from "../components/Confetti";
 import { ArrowRightIcon, CheckIcon, SpeakerIcon, XIcon } from "../components/icons";
 
@@ -148,7 +149,7 @@ function Meanings({ card, animate, large = true }: { card: Card; animate: boolea
   if (meanings.length === 1 && large) {
     return (
       <p className={`wrap-break-word text-[28px] font-black leading-[1.12] tracking-[-0.01em] text-ink ${animate ? "animate-rise-in" : ""}`} style={delay(200)}>
-        {meanings[0].meaning}
+        <MeaningText text={meanings[0].meaning} />
       </p>
     );
   }
@@ -168,7 +169,7 @@ function Meanings({ card, animate, large = true }: { card: Card; animate: boolea
             {i + 1}
           </span>
           <p className={`min-w-0 font-black text-ink ${tight ? "text-[17px] leading-tight" : "text-[19px] leading-snug"}`}>
-            {m.meaning}
+            <MeaningText text={m.meaning} />
             {m.pos && mixedTypes && <PosPill pos={m.pos} className={`ml-1.5 align-middle ${tight ? "!px-2 !py-0 !text-[11px]" : ""}`} />}
           </p>
         </li>
@@ -647,6 +648,36 @@ function FlipStep({
 
 /* --------------------------------------------------------------- typed -- */
 
+/**
+ * What "İngilizcesi?" asks from: one meaning big, or every sense on a
+ * numbered line of its own, never one long run the word gets lost in.
+ */
+function ProducePrompt({ card }: { card: Card }) {
+  const meanings = meaningsOf(card).map((m) => m.meaning);
+  if (meanings.length === 1) {
+    return (
+      <p className="wrap-break-word text-[30px] font-black leading-[1.12] tracking-[-0.01em]">
+        <MeaningText text={meanings[0]} noteClassName="font-extrabold opacity-80" />
+      </p>
+    );
+  }
+  const long = meanings.length > 3 || meanings.join("").length > 80;
+  return (
+    <ol className={long ? "space-y-1.5" : "space-y-2"}>
+      {meanings.map((m, i) => (
+        <li key={i} className="flex items-start gap-2.5">
+          <span className={`grid shrink-0 place-items-center rounded-full bg-white/25 font-black ${long ? "mt-px h-6 w-6 text-[12px]" : "mt-0.5 h-7 w-7 text-[13px]"}`}>
+            {i + 1}
+          </span>
+          <p className={`min-w-0 wrap-break-word font-black ${long ? "text-[19px] leading-[1.22]" : "text-[22px] leading-[1.18]"}`}>
+            <MeaningText text={m} noteClassName="font-extrabold opacity-80" />
+          </p>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 /** The gap in a sentence: a line the width of the missing word, or the word itself once answered. */
 function GapLine({ gap, filled }: { gap: Gap; filled: boolean }) {
   return (
@@ -696,8 +727,7 @@ function TypedStep({
   const [showTurkish, setShowTurkish] = useState(Boolean(step.openTranslation) || step.kind === "chunk");
   const inputRef = useRef<HTMLInputElement>(null);
   const expected = expectedAnswer(step, card);
-  const { pos, text: gloss } = parseBack(card.back);
-  const meaning = card.senses?.length ? card.senses.map((s) => s.meaning).join(" · ") : gloss;
+  const { pos } = parseBack(card.back);
   const gap = step.gap ?? null;
   const example = gap ? null : (sentencesOf(card)[0] ?? null);
   const answered = verdict !== null;
@@ -761,7 +791,7 @@ function TypedStep({
           {step.kind === "produce" ? (
             <>
               {pos && <PosPill pos={pos} className="mb-2 !bg-white/25 !text-white" />}
-              <p className="wrap-break-word text-[30px] font-black leading-[1.12] tracking-[-0.01em]">{meaning}</p>
+              <ProducePrompt card={card} />
               {answered && <p className="mt-2.5 w-max rounded-xl bg-white px-2.5 py-0.5 text-[30px] font-black leading-tight tracking-[-0.02em] text-(--c-ink) animate-rise-in">{card.front}</p>}
             </>
           ) : gap ? (

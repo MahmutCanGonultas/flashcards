@@ -87,6 +87,11 @@ export function matchRanges(text: string, query: string): [number, number][] {
   return merged;
 }
 
+/** "yaklaşmak (yer ya da zaman olarak)" → "yaklaşmak": a row shows the bare meaning; the note waits for the tap. */
+export function coreMeaning(meaning: string): string {
+  return meaning.replace(/\s*\([^()]*\)\s*$/, "").trim() || meaning;
+}
+
 /* ------------------------------------------------------------ filters -- */
 
 export function passes(card: Card, filter: Filter, now = Date.now()): boolean {
