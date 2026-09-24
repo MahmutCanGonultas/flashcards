@@ -47,6 +47,7 @@ import RoundRail, { type RailStage } from "../components/RoundRail";
 import { SpeakerIcon } from "../components/icons";
 import { useRecordStudyDay } from "../lib/streak";
 import { useUnits } from "../lib/units";
+import { lessonOverBudget, useDayBudget } from "../lib/plan";
 import { tintStyle } from "../lib/tint";
 
 type ReviewInput = { cardId: number; cardDeckId: number; quality: 1 | 4 };
@@ -219,11 +220,15 @@ function StudySession({
       api.post<{ card: Card }>(`/decks/${cardDeckId}/cards/${cardId}/review`, {
         quality,
       }),
-    retry: 2,
+    // The day's new words already used up (409) isn't a lost connection:
+    // asking again gets the same answer, and the word simply waits.
+    retry: (count, error) => !(error instanceof ApiError && error.status === 409) && count < 2,
     onSuccess: () => {
       didReviewRef.current = true;
     },
-    onError: () => setFailedReviews((n) => n + 1),
+    onError: (error) => {
+      if (!(error instanceof ApiError && error.status === 409)) setFailedReviews((n) => n + 1);
+    },
   });
   const { mutate: mutateReview } = reviewMutation;
 
@@ -234,12 +239,14 @@ function StudySession({
   }, [recordStudyDay]);
 
   // Refresh the deck's other screens when this one is left, so the path and
-  // review counts reflect what just happened.
+  // review counts reflect what just happened. Every deck's plan too: a
+  // lesson's new words come out of the same three a day as the own words'.
   useEffect(() => {
     return () => {
       if (didReviewRef.current) {
         queryClient.invalidateQueries({ queryKey: ["dueCards", deckId] });
         queryClient.invalidateQueries({ queryKey: ["cards", deckId] });
+        queryClient.invalidateQueries({ queryKey: ["plan"] });
       }
     };
   }, [queryClient, deckId]);
@@ -1219,6 +1226,9 @@ function Study() {
   // Unit gates decide which lessons are reachable.
   const unitsQuery = useUnits(deckId);
 
+  // A lesson's new words come out of the day's three, shared with the own words.
+  const budgetQuery = useDayBudget(deckId, lessonNumber !== null);
+
 
   // Every hook has run by now, so this early return is safe.
   if (!deckId) {
@@ -1244,7 +1254,9 @@ function Study() {
       if (
         cardsQuery.isLoading ||
         !cardsQuery.data ||
-        unitsQuery.isLoading
+        unitsQuery.isLoading ||
+        // The budget is read fresh before a lesson opens; a failed read lets the server decide.
+        (lessonNumber !== null && budgetQuery.isFetching && !budgetQuery.isError)
       ) {
         return <StudySkeleton />;
       }
@@ -1283,6 +1295,22 @@ function Study() {
               action={
                 <LinkButton to={`/decks/${deckId}`}>
                   Patikaya dön
+                </LinkButton>
+              }
+            />
+          );
+        }
+        // Today's three new words are used up (the own words count too): the
+        // lesson waits for tomorrow. One with nothing new in it never waits.
+        if (lessonOverBudget(budgetQuery.data, lesson.cards)) {
+          return (
+            <EmptyState
+              emoji="🌙"
+              title={`Bugünün ${budgetQuery.data?.cap ?? 3} yeni kelimesi tamam`}
+              description={`Ders ${lessonNumber} yarın açılır. Tekrarların varsa onlar hazır.`}
+              action={
+                <LinkButton to="/kurs">
+                  Kursa dön
                 </LinkButton>
               }
             />

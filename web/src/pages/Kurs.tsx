@@ -3,7 +3,7 @@ import { useMutation, useQueries, useQuery, useQueryClient } from "@tanstack/rea
 import { api, ApiError } from "../lib/api";
 import type { Card, Deck, UnitRecord } from "../types";
 import { themeFor } from "../lib/themes";
-import { buildPath, pathStats } from "../lib/path";
+import { buildPath, hasStarted, pathStats } from "../lib/path";
 import { pathLines } from "../lib/tonton";
 import Header from "../components/Header";
 import AppTabs from "../components/AppTabs";
@@ -17,9 +17,10 @@ import DeckFormModal from "../components/DeckFormModal";
 import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
 
+/** What the deck's due round would bring: a word the path hasn't reached is met in its lesson, never there. */
 function dueStats(cards: Card[]): Pick<DeckStats, "due" | "newDue" | "reviewDue"> {
   const now = Date.now();
-  const due = cards.filter((card) => new Date(card.due_date).getTime() <= now);
+  const due = cards.filter((card) => new Date(card.due_date).getTime() <= now && (hasStarted(card) || card.lesson === null));
   const newDue = due.filter((card) => card.repetitions === 0).length;
   return { due: due.length, newDue, reviewDue: due.length - newDue };
 }

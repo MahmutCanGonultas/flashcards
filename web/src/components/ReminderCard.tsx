@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { usePushReminders } from "../lib/reminders";
+import { dismissPrompt, promptDismissed } from "../lib/reminderPrompt";
 import Button from "./Button";
 import Mascot from "./Mascot";
 
-const HOURS = [9, 13, 18, 20, 21, 22];
+const HOURS = [9, 13, 18, 20, 21, 22, 23];
+/** The evening hours the prompt after a round offers. */
+const EVENING = [20, 21, 22, 23];
 const label = (h: number) => `${String(h).padStart(2, "0")}:00`;
+/** "22:00'de", "23:00'te": the hour as it is read aloud decides the ending. */
+const UNIT_ENDING = ["", "de", "de", "te", "te", "te", "da", "de", "de", "da"];
+const atHour = (h: number) => `${label(h)}'${h % 10 !== 0 ? UNIT_ENDING[h % 10] : h === 20 ? "de" : "da"}`;
 
 /** One hour chip: white with a grey border, blue when it's the chosen one. */
 const chip = (active: boolean) =>
@@ -15,12 +21,95 @@ const chip = (active: boolean) =>
 /**
  * "Tonton her akşam haber versin": daily push reminders, on or off, at an
  * hour of the learner's choosing. Sent only on days with cards waiting.
+ *
+ * The "prompt" variant is the question asked once at the end of a round of
+ * cards, to someone who has never answered the browser's permission
+ * question: an evening hour, yes or not now. Not now keeps it quiet for a
+ * week (lib/reminderPrompt.ts). In a Safari tab, where there is no push at
+ * all, it says how to install the app first.
  */
-function ReminderCard({ variant = "card" }: { variant?: "card" | "line" }) {
+function ReminderCard({ variant = "card", defaultHour = 20 }: { variant?: "card" | "line" | "prompt"; defaultHour?: number }) {
   const reminders = usePushReminders();
-  const [hour, setHour] = useState(20);
+  const [hour, setHour] = useState(defaultHour);
   const [note, setNote] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
+  // The prompt: read once, when it first shows; "Şimdi değil" and "Evet" settle it for this visit.
+  const [quiet, setQuiet] = useState(() => variant === "prompt" && promptDismissed());
+  const [enabledAt, setEnabledAt] = useState<number | null>(null);
+
+  if (variant === "prompt") {
+    const later = () => {
+      dismissPrompt();
+      setQuiet(true);
+    };
+    const title = <p className="text-[17px] font-black leading-snug text-ink">Her akşam haber vereyim mi?</p>;
+    const panel = "card-3d flex gap-3 rounded-[20px] p-4 text-left animate-rise-in";
+    if (enabledAt !== null) {
+      return (
+        <section className={`${panel} items-center`}>
+          <Mascot mood="happy" size={44} lively={false} className="shrink-0" />
+          <p className="min-w-0 text-[15px] font-extrabold leading-snug text-ink">Tamam: kelimelerin beklediği akşamlar saat {atHour(enabledAt)} haber veririm.</p>
+        </section>
+      );
+    }
+    if (quiet) return null;
+    if (!reminders.supported) {
+      // Installed and still no push: this device can't; nothing to ask.
+      if (reminders.standalone) return null;
+      return (
+        <section className={panel}>
+          <Mascot mood="idle" size={44} lively={false} className="shrink-0" />
+          <div className="min-w-0 flex-1">
+            {title}
+            <p className="mt-1 text-[14px] font-bold leading-snug text-graphite">Bildirim için önce Kelimece'yi Ana Ekran'a ekle: Paylaş → Ana Ekrana Ekle. Sonra oradan aç.</p>
+            <button type="button" onClick={later} className="-ml-2 mt-2 min-h-10 rounded-xl px-2 text-[13px] font-black uppercase tracking-[0.08em] text-ocean-ink hover:bg-ocean-soft">
+              Şimdi değil
+            </button>
+          </div>
+        </section>
+      );
+    }
+    // Only someone never asked: on, turned off here, or refused are all answers already.
+    if (reminders.permission !== "default" && note === null) return null;
+    return (
+      <section className="card-3d rounded-[20px] p-4 text-left animate-rise-in">
+        <div className="flex items-start gap-3">
+          <Mascot mood="idle" size={44} lively={false} className="shrink-0" />
+          <div className="min-w-0 flex-1">
+            {title}
+            <p className="mt-1 text-[14px] font-bold leading-snug text-graphite">Kelimelerin beklediği akşamlar seçtiğin saatte tek bir bildirim gelir.</p>
+          </div>
+        </div>
+        <div className="mt-3 grid grid-cols-4 gap-1.5" role="radiogroup" aria-label="Saat">
+          {EVENING.map((h) => (
+            <button key={h} type="button" role="radio" aria-checked={hour === h} onClick={() => setHour(h)} className={`${chip(hour === h)} !px-0`}>
+              {label(h)}
+            </button>
+          ))}
+        </div>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <Button
+            size="sm"
+            variant="go"
+            className="flex-1 whitespace-nowrap"
+            isLoading={reminders.enable.isPending}
+            onClick={() =>
+              reminders.enable.mutate(hour, {
+                onSuccess: () => setEnabledAt(hour),
+                onError: () => setNote("İzin verilmedi. İstersen sonra Kartlarım'ın altından açarsın."),
+              })
+            }
+          >
+            Evet, {atHour(hour)}
+          </Button>
+          <Button size="sm" variant="ghost" onClick={later}>
+            Şimdi değil
+          </Button>
+        </div>
+        {note && <p className="mt-2 text-[13px] font-bold text-berry-ink">{note}</p>}
+      </section>
+    );
+  }
 
   if (variant === "line") {
     const link = "font-black text-ocean-ink underline decoration-ocean/50 decoration-2 underline-offset-4";

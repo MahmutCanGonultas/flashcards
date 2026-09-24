@@ -6,6 +6,7 @@ import { getToken } from "../lib/api";
 import { director, type Entrance, type Pop, type Snapshot } from "../lib/tontonDirector";
 import { playChirp } from "../lib/sound";
 import type { GrammarProgress } from "../lib/grammar";
+import type { DailyPlan } from "../lib/plan";
 import Mascot from "./Mascot";
 
 /** He never chirps at night. */
@@ -47,7 +48,9 @@ function readSnapshot(queryClient: QueryClient): Snapshot {
   const cards = allCards.filter((c) => !personalDeck || c.deck_id !== personalDeck.id);
   const streak = queryClient.getQueryData(["streak"]) as { streak?: number; lastStudyDate?: string | null } | undefined;
   const grammar = queryClient.getQueryData(["grammarProgress"]) as GrammarProgress | undefined;
-  return { cards, personal, streak: streak?.streak ?? 0, lastStudyDate: streak?.lastStudyDate ?? null, grammar };
+  // Today's plan on their own words, when the home screen has loaded it: its counts, not the raw list's.
+  const plan = personalDeck ? (queryClient.getQueryData(["plan", String(personalDeck.id)]) as DailyPlan | undefined) : undefined;
+  return { cards, personal, streak: streak?.streak ?? 0, lastStudyDate: streak?.lastStudyDate ?? null, grammar, plan };
 }
 
 /**

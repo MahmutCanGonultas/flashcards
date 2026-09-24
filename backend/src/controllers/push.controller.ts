@@ -2,14 +2,15 @@ import { Request, Response } from "express";
 import { z } from "zod";
 import webpush from "web-push";
 import pool from "../db.js";
+import { dailyPlan, pushLine } from "../services/daily.service.js";
 
 /**
  * Daily reminders as Web Push. The learner turns them on from the app (a
  * user gesture, as browsers require), picks an hour, and once an hour a
  * scheduled job asks the server to send. The server sends to everyone
  * whose hour it is in their own time zone, at most once a day, and only
- * when they actually have cards waiting — a reminder with nothing behind
- * it teaches people to ignore reminders.
+ * when there is something to do — a reminder with nothing behind it
+ * teaches people to ignore reminders.
  *
  * The VAPID keys are generated once and kept in the settings table, so
  * no deploy-time configuration is needed.
@@ -108,14 +109,6 @@ function nowIn(timezone: string): { hour: number; date: string } {
   }
 }
 
-const LINES = [
-  (n: number) => `${n} kart seni bekliyor. Bir dakika sürer, söz. 🃏`,
-  (n: number) => `Kartlar hazır: ${n} tane. Çevirip puanla, gerisini ben hallederim. 🔁`,
-  (n: number) => `Bugün ${n} kelime seni soruyor. Ne demekti? 🤔`,
-  (n: number) => `${n} kart bekliyor. Kaçırırsan yarın daha çok olur; bilirsin. 🌱`,
-  (n: number) => `Tonton'dan: ${n} kartlık kısa bir tur, sonra rahat uyku. 🌙`,
-];
-
 type Sub = { id: number; user_id: number; endpoint: string; p256dh: string; auth: string; hour: number; timezone: string; last_sent_on: string | null };
 
 async function sendToAll(subs: Sub[], payload: { title: string; body: string; url: string }): Promise<number> {
@@ -146,7 +139,9 @@ async function sendToAll(subs: Sub[], payload: { title: string; body: string; ur
 /**
  * Called on the hour by the scheduler. Public and idempotent: whoever
  * calls it, each subscription is sent at most once per local day, only
- * at its own hour, only with cards waiting.
+ * at its own hour, only with something to do. What is waiting comes from
+ * today's plan (read-only), so the reminder names the same numbers as the
+ * home screen.
  */
 export const runPushReminders = async (_req: Request, res: Response) => {
   const { rows: subs } = await pool.query<Sub>(
@@ -164,22 +159,29 @@ export const runPushReminders = async (_req: Request, res: Response) => {
   }
   let sent = 0;
   for (const [userId, userSubs] of byUser) {
-    // Cards due for at least an hour: a word missed ten minutes ago is not
-    // a reason to buzz someone who is clearly studying right now.
+    // Course cards due for at least an hour: a word missed ten minutes ago
+    // is not a reason to buzz someone who is clearly studying right now.
     const { rows: [due] } = await pool.query(
-      `SELECT COUNT(*) FILTER (WHERE d.kind = 'personal')::int AS personal,
-              COUNT(*) FILTER (WHERE d.kind <> 'personal')::int AS course
+      `SELECT COUNT(*)::int AS course
        FROM cards c JOIN decks d ON d.id = c.deck_id
-       WHERE d.user_id = $1 AND c.due_date <= NOW() - INTERVAL '1 hour'
-         AND (d.kind = 'personal' OR (c.repetitions > 0 OR c.interval > 0))`,
+       WHERE d.user_id = $1 AND d.kind <> 'personal' AND c.due_date <= NOW() - INTERVAL '1 hour'
+         AND (c.repetitions > 0 OR c.interval > 0)`,
       [userId],
     );
-    const total = (due?.personal ?? 0) + (due?.course ?? 0);
-    if (total === 0) continue;
-    const { rows: [personal] } = await pool.query(`SELECT id FROM decks WHERE user_id = $1 AND kind = 'personal' LIMIT 1`, [userId]);
-    const line = LINES[Math.floor(Math.random() * LINES.length)](total);
-    const url = due.personal > 0 && personal ? `/decks/${personal.id}/flashcards` : "/kurs";
-    const count = await sendToAll(userSubs, { title: "Kelimece", body: line, url });
+    const { rows: [personal] } = await pool.query(
+      `SELECT id FROM decks WHERE user_id = $1 AND kind = 'personal' ORDER BY id LIMIT 1`,
+      [userId],
+    );
+    const plan = personal ? await dailyPlan(pool, userId, personal.id) : null;
+    const line = pushLine({
+      deckId: personal?.id ?? null,
+      plan,
+      course: due?.course ?? 0,
+      exercisesToday: plan?.exercisesToday ?? 0,
+      started: plan?.exercisable ?? 0,
+    });
+    if (!line) continue;
+    const count = await sendToAll(userSubs, { title: "Kelimece", ...line });
     sent += count;
     const today = nowIn(userSubs[0].timezone || TIMEZONE_DEFAULT).date;
     await pool.query(`UPDATE push_subscriptions SET last_sent_on = $1 WHERE id = ANY($2::int[])`, [today, userSubs.map((s) => s.id)]);

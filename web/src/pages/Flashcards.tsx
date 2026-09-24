@@ -2,37 +2,46 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { CSSProperties, FormEvent, PointerEvent as ReactPointerEvent, ReactNode } from "react";
 import { Link, Navigate, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { api } from "../lib/api";
+import { ApiError, api } from "../lib/api";
 import type { Card } from "../types";
-import { parseBack, posLabel } from "../lib/cardBack";
+import { posLabel } from "../lib/cardBack";
 import { isSpeechMuted, primeSpeech, speak, speakAuto, speechSupported } from "../lib/speech";
 import { playCorrect, playIncorrect, playLessonComplete, playReveal } from "../lib/sound";
 import { useRecordStudyDay } from "../lib/streak";
 import { tintStyle } from "../lib/tint";
-import { familyAt, familyStyle } from "../lib/palette";
-import { STAGE_LABEL, byNextReview, nextReview, stageOf } from "../lib/memory";
+import { familyStyle } from "../lib/palette";
+import { STAGE_LABEL, nextReview, stageOf } from "../lib/memory";
+import { hasStarted } from "../lib/path";
 import { STAGE_PILL, TONE_PILL } from "../lib/stageStyle";
+import { learnerDayNumber } from "../lib/day";
+import { usePractice, type PracticePhase } from "../lib/personal";
+import { anchorOf, backLine, coreChunk, coreGloss, corePos, secondGloss } from "../lib/senses";
+import { afterLearnAnswer, afterReviewAnswer, takeUnwritten, type LearnState, type Tally } from "../lib/learning";
 import {
   KIND_LABEL,
   TYPED_KINDS,
   buildDrill,
   buildExercises,
   buildSession,
+  captionFor,
   checkAnswer,
   expectedAnswer,
   insertLater,
+  labelFor,
   letterPattern,
-  repeatOf,
+  placeApart,
   retryOf,
-  sentencesOf,
   skipStep,
+  wantsOwnSentence,
   writeStep,
+  type Direction,
   type Exercise,
   type Gap,
-  type Kind,
   type Verdict,
 } from "../lib/practice";
 import { splitOnWord } from "../lib/sentence";
+import { flipOrder, usePlan } from "../lib/plan";
+import { summaryView, type RoundMode, type RoundResult } from "../lib/summary";
 import Button from "../components/Button";
 import LinkButton from "../components/LinkButton";
 import ErrorState from "../components/ErrorState";
@@ -41,29 +50,35 @@ import Skeleton from "../components/Skeleton";
 import Mascot, { type MascotMood } from "../components/Mascot";
 import SpeakButton from "../components/SpeakButton";
 import Sheet from "../components/Sheet";
-import WordCardBack, { ExampleBubble, PosPill } from "../components/WordCardBack";
+import WordCardBack, { ExampleBubble, PosPill, TurkishLit } from "../components/WordCardBack";
 import Cover from "../components/Cover";
 import StrengthBars from "../components/StrengthBars";
 import TontonLine from "../components/TontonLine";
 import MeaningText from "../components/MeaningText";
 import Confetti from "../components/Confetti";
-import { ArrowRightIcon, CheckIcon, SpeakerIcon, XIcon } from "../components/icons";
+import ReminderCard from "../components/ReminderCard";
+import { ArrowRightIcon, CheckIcon, PencilIcon, SpeakerIcon, XIcon } from "../components/icons";
 
 /**
  * The learner's own words, practised two ways that never mix.
  *
- * "Tekrar et" is the cards: a new word is met first (its sentence, a guess,
- * then the meaning) and asked a few cards later; every other word is
- * flipped: see it, recall the Turkish, turn it over, say honestly how it
- * went (swipe right for Bildim, left for Bilemedim, up for Zorlandım). A
- * miss comes back a few cards later until it's got; only the first answer
- * is written to the schedule. With nothing due, the cards can still be
- * gone through; only the due ones count.
+ * "Tekrar et" is the cards. A new word (three a day at most) is met first
+ * — its sentence, a guess, then its one core meaning — and asked three
+ * times in the round with other cards in between, the last time from the
+ * Turkish; it is written to the schedule once, at its second right answer.
+ * Every other word is flipped: see it (or, on alternate reviews, its
+ * Turkish), say the answer aloud, turn it over, say honestly how it went
+ * (swipe right for Bildim, left for Bilemedim, up for Zorlandım). A miss
+ * comes back twice more in the round; only the first answer is written to
+ * the schedule. With nothing due, the cards can still be gone through; only
+ * the due ones count.
  *
  * "Egzersiz" is the exercises, on their own: the word typed into its
  * sentence, into a phrase, from its Turkish, into the learner's own
  * sentence, or caught by ear, marked by the app, and never written to the
- * schedule. The rules live in lib/practice.ts; this is the screen.
+ * schedule. Every answer that isn't a graded review is logged apart
+ * (/practice), so the numbers stay honest. The rules live in
+ * lib/practice.ts and lib/learning.ts; this is the screen.
  *
  * Tonton sits on the screen with each question (his line changes with the
  * step and his face with the answer), and the director hears about every
@@ -71,20 +86,18 @@ import { ArrowRightIcon, CheckIcon, SpeakerIcon, XIcon } from "../components/ico
  */
 
 type Grade = 1 | 3 | 4 | 5;
-type SessionMode = "due" | "all" | "drill" | "exercises";
+type SessionMode = RoundMode;
 /** A card's first answer this session, and what the schedule made of it. */
-type Result = { grade: Grade; graded: boolean; before: Card; after: Card | null; failed?: boolean };
+type Result = RoundResult;
 
 /** Sentences asked for in one round of exercises: one, so it stays a moment and not a chore. */
 const MAX_WRITES = 1;
-/** Words in one round of going through the cards when nothing is due. */
-const PRACTICE_LIMIT = 20;
 
-/** Each verdict's colour, once: red missed it, orange was hard, green knew it. */
-const GRADES: { grade: Grade; label: string; button: string; stamp: string; wash: string; key: string; arrow: string }[] = [
-  { grade: 1, label: "Bilemedim", button: "bg-berry", stamp: "border-berry text-berry-ink", wash: "bg-berry/15", key: "1", arrow: "ArrowLeft" },
-  { grade: 3, label: "Zorlandım", button: "bg-tangerine", stamp: "border-tangerine text-tangerine-ink", wash: "bg-tangerine/15", key: "2", arrow: "ArrowUp" },
-  { grade: 5, label: "Bildim", button: "bg-grass", stamp: "border-grass text-grass-ink", wash: "bg-grass/15", key: "3", arrow: "ArrowRight" },
+/** Each verdict's colour, once: red missed it, orange was hard, green knew it; and the standard it is held to. */
+const GRADES: { grade: Grade; label: string; hint: string; button: string; stamp: string; wash: string; key: string; arrow: string }[] = [
+  { grade: 1, label: "Bilemedim", hint: "gelmedi", button: "bg-berry", stamp: "border-berry text-berry-ink", wash: "bg-berry/15", key: "1", arrow: "ArrowLeft" },
+  { grade: 3, label: "Zorlandım", hint: "geç ya da yarım", button: "bg-tangerine", stamp: "border-tangerine text-tangerine-ink", wash: "bg-tangerine/15", key: "2", arrow: "ArrowUp" },
+  { grade: 5, label: "Bildim", hint: "hemen geldi", button: "bg-grass", stamp: "border-grass text-grass-ink", wash: "bg-grass/15", key: "3", arrow: "ArrowRight" },
 ];
 const gradeOf = (grade: Grade) => GRADES.find((g) => g.grade === grade) ?? GRADES[0];
 /** Passing a card without answering: grey, like something set aside. */
@@ -117,70 +130,45 @@ function tellTonton(name: "card" | "grade", detail: Record<string, unknown>) {
   window.dispatchEvent(new CustomEvent(`tonton:${name}`, { detail }));
 }
 
-/** The word's meanings, one per sense, or the short gloss for a plain card. */
-function meaningsOf(card: Card): { pos: string | null; meaning: string }[] {
-  if (card.senses && card.senses.length > 0) return card.senses.map((s) => ({ pos: s.pos ?? null, meaning: s.meaning }));
-  const { pos, text } = parseBack(card.back);
-  return [{ pos, meaning: text }];
-}
-
-/** The one sentence a card's back has room for (see FlipStep). */
-function backSentence(card: Card): { en: string; tr: string | null; meaning: string } | null {
-  const senses = card.senses ?? [];
-  if (senses.length > 2) {
-    let best: { en: string; tr: string | null; meaning: string } | null = null;
-    for (const sense of senses) {
-      const lines = [{ en: sense.example_en, tr: sense.example_tr }, ...(sense.examples ?? [])];
-      for (const line of lines) {
-        const en = line.en?.trim();
-        if (en && splitOnWord(en, card.front) && (!best || en.length < best.en.length)) best = { en, tr: line.tr?.trim() || null, meaning: sense.meaning };
-      }
-    }
-    if (best) return best;
-  }
-  const first = sentencesOf(card)[0];
-  return first ? { ...first, meaning: meaningsOf(card)[0]?.meaning ?? "" } : null;
+/**
+ * The meaning a card teaches, big: its core sense's gloss, the standard
+ * every grade is held to. Once the word holds, its second sense joins on a
+ * smaller line in sense 2's colour; the rest wait on the word's page.
+ */
+function CoreMeaning({ card, animate, second = null }: { card: Card; animate: boolean; second?: string | null }) {
+  return (
+    <>
+      <p className={`wrap-break-word text-[28px] font-black leading-[1.12] tracking-[-0.01em] text-ink ${animate ? "animate-rise-in" : ""}`} style={delay(200)}>
+        <MeaningText text={coreGloss(card)} />
+      </p>
+      {second && (
+        <p style={{ ...familyStyle("grass"), ...delay(280) }} className={`mt-2 text-[17px] font-extrabold leading-snug text-graphite ${animate ? "animate-rise-in" : ""}`}>
+          <span className="font-black text-(--c-ink)">2 · </span>
+          <MeaningText text={second} />
+        </p>
+      )}
+    </>
+  );
 }
 
 /**
- * The meanings as a numbered list, each number in its sense's colour — the
- * same colours the word's page gives its senses, so meaning 2 is always the
- * green one.
+ * A sentence on a coloured cover: white type, the word as a white chip in
+ * the word's own ink (the soft highlight elsewhere would vanish on the colour).
  */
-function Meanings({ card, animate, large = true }: { card: Card; animate: boolean; large?: boolean }) {
-  const meanings = meaningsOf(card);
-  const mixedTypes = new Set(meanings.map((m) => m.pos ?? "")).size > 1;
-  // Three senses or more: a tighter list, so the card still has room for a sentence.
-  const tight = meanings.length > 2;
-  if (meanings.length === 1 && large) {
-    return (
-      <p className={`wrap-break-word text-[28px] font-black leading-[1.12] tracking-[-0.01em] text-ink ${animate ? "animate-rise-in" : ""}`} style={delay(200)}>
-        <MeaningText text={meanings[0].meaning} />
-      </p>
-    );
-  }
+function CoverSentence({ sentence, headword }: { sentence: string; headword: string }) {
+  const parts = splitOnWord(sentence, headword);
   return (
-    <ol className={tight ? "space-y-1.5" : "space-y-2.5"}>
-      {meanings.map((m, i) => (
-        <li
-          key={i}
-          style={{ ...familyStyle(familyAt(i)), ...delay(200 + Math.min(i, 6) * 60) }}
-          className={`flex items-start gap-3 ${animate ? "animate-rise-in" : ""}`}
-        >
-          <span
-            className={`grid shrink-0 place-items-center rounded-full bg-(--c) font-black text-white shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.15)] ${
-              tight ? "mt-px h-6 w-6 text-[12px]" : "mt-0.5 h-7 w-7 text-[13px]"
-            }`}
-          >
-            {i + 1}
-          </span>
-          <p className={`min-w-0 font-black text-ink ${tight ? "text-[17px] leading-tight" : "text-[19px] leading-snug"}`}>
-            <MeaningText text={m.meaning} />
-            {m.pos && mixedTypes && <PosPill pos={m.pos} className={`ml-1.5 align-middle ${tight ? "!px-2 !py-0 !text-[11px]" : ""}`} />}
-          </p>
-        </li>
-      ))}
-    </ol>
+    <p className="mt-5 max-w-[21rem] text-[17px] font-bold leading-[1.45] text-white wrap-break-word animate-[cover-line_420ms_var(--ease-soft)_200ms_both]">
+      {parts ? (
+        <>
+          {parts.before}
+          <span className="rounded-md bg-white px-1 font-black text-(--c-ink) [box-decoration-break:clone]">{parts.match}</span>
+          {parts.after}
+        </>
+      ) : (
+        sentence
+      )}
+    </p>
   );
 }
 
@@ -219,18 +207,19 @@ function BottomBar({ children, tone = "plain", tall = false }: { children: React
 /* ---------------------------------------------------------------- meet -- */
 
 /**
- * Meeting a word: the word, then the word at work in a sentence, and a
- * moment to guess what it means before it's shown. A guess — even a wrong
- * one — makes the meaning land harder than being told outright.
+ * Meeting a word: the word, then the word at work in its anchor sentence,
+ * and a moment to guess what it means before it's shown. A guess — even a
+ * wrong one — makes the meaning land harder than being told outright. Then
+ * one meaning and one chunk, nothing else: the rest of the word waits
+ * until this much holds.
  */
 function MeetStep({ card, counter, onDone }: { card: Card; counter: string; onDone: () => void }) {
-  const line = sentencesOf(card)[0] ?? null;
+  const line = anchorOf(card);
+  const anchor = line?.en ?? null;
   const [revealed, setRevealed] = useState(!line);
   const meaningRef = useRef<HTMLDivElement>(null);
-  const { pos } = parseBack(card.back);
-  const firstPos = pos ?? card.senses?.[0]?.pos ?? null;
-  const meanings = meaningsOf(card);
-  const chunk = card.collocations?.[0] ?? null;
+  const pos = corePos(card);
+  const chunk = coreChunk(card);
 
   useEffect(() => {
     speakAuto(card.front);
@@ -240,9 +229,11 @@ function MeetStep({ card, counter, onDone }: { card: Card; counter: string; onDo
   const reveal = useCallback(() => {
     playReveal();
     setRevealed(true);
+    // The sentence once more, a little slower, now that it means something.
+    if (anchor) speakAuto(anchor, { rate: 0.85 });
     // The meanings open below the fold on a phone: bring them up.
     window.setTimeout(() => meaningRef.current?.scrollIntoView({ block: "nearest", behavior: reducedMotion() ? "auto" : "smooth" }), 60);
-  }, []);
+  }, [anchor]);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -260,7 +251,7 @@ function MeetStep({ card, counter, onDone }: { card: Card; counter: string; onDo
     <div className="mt-6 animate-[card-rise_420ms_var(--ease-spring)]" style={tintStyle(card)}>
       <Cover card={card} label={KIND_LABEL.meet} counter={counter} className="min-h-[15rem]">
         <div className="flex flex-1 flex-col items-center justify-center py-4 text-center">
-          {firstPos && <PosPill pos={firstPos} className="mb-2.5 !bg-white/25 !text-white" />}
+          {pos && <PosPill pos={pos} className="mb-2.5 !bg-white/25 !text-white" />}
           <h2 className={`max-w-full ${WORD_ON_COVER} ${wordSize(card.front)}`}>{card.front}</h2>
         </div>
         <div className="flex justify-end">
@@ -269,7 +260,7 @@ function MeetStep({ card, counter, onDone }: { card: Card; counter: string; onDo
       </Cover>
 
       <div className="mt-4 space-y-3">
-        {line && <ExampleBubble en={line.en} tr={revealed ? line.tr : null} headword={card.front} meaning={meanings[0]?.meaning ?? ""} />}
+        {line && <ExampleBubble en={line.en} tr={revealed ? line.tr : null} headword={card.front} meaning={line.gloss} />}
 
         {!revealed ? (
           <TontonLine mood="think" size={54}>
@@ -279,7 +270,7 @@ function MeetStep({ card, counter, onDone }: { card: Card; counter: string; onDo
           <>
             <section ref={meaningRef} className="card-3d scroll-mb-40 rounded-[22px] p-4">
               <p className="mb-2.5 text-[13px] font-black uppercase tracking-[0.1em] text-graphite">Anlamı</p>
-              <Meanings card={card} animate />
+              <CoreMeaning card={card} animate />
               {chunk && (
                 <p className="mt-3.5 rounded-2xl bg-tangerine-soft px-3.5 py-2.5 text-[15px] font-bold leading-snug text-ink animate-rise-in" style={delay(360)}>
                   <span className="font-black text-tangerine-ink">{chunk.en}</span> — {chunk.tr}
@@ -287,7 +278,14 @@ function MeetStep({ card, counter, onDone }: { card: Card; counter: string; onDo
               )}
             </section>
             <TontonLine mood="happy" size={46} className="animate-rise-in">
-              Tahminin tuttu mu? Birkaç kart sonra ben soracağım; o arada aklında tut.
+              {chunk ? (
+                <>
+                  Kalıbı bir kez sesli söyle: <span className="font-black">{chunk.en}</span>.
+                </>
+              ) : (
+                "Kelimeyi bir kez sesli söyle."
+              )}{" "}
+              Bugün sana üç kez soracağım; arada başka kartlar gelecek.
             </TontonLine>
           </>
         )}
@@ -300,7 +298,7 @@ function MeetStep({ card, counter, onDone }: { card: Card; counter: string; onDo
           </button>
         ) : (
           <button type="button" onClick={onDone} className={`${BIG} bg-grass focus-visible:ring-grass/40`}>
-            Tamam, birazdan sor
+            Tamam
           </button>
         )}
       </BottomBar>
@@ -329,15 +327,17 @@ function SkipButton({ onClick }: { onClick: () => void }) {
 /* ---------------------------------------------------------------- flip -- */
 
 /**
- * Recognition: the word (or its sound) on the cover; think, turn it over,
- * grade yourself. The back carries the meanings and one sentence with the
- * word lit up — the meaning always arrives with a picture of it in use.
+ * Recall: the word (or its sound) on the cover — or, the other way round,
+ * its Turkish on a plain white card; say the answer aloud, turn it over,
+ * grade yourself. The back carries the core meaning and one sentence with
+ * the word lit up — the meaning always arrives with a picture of it in use.
  */
 function FlipStep({
   card,
   step,
   counter,
   remaining,
+  rushed,
   onGrade,
   onSkip,
 }: {
@@ -345,7 +345,10 @@ function FlipStep({
   step: Exercise;
   counter: string;
   remaining: number;
-  onGrade: (grade: Grade) => void;
+  /** The last few cards were turned in a blink: the caption asks for a moment first. */
+  rushed: boolean;
+  /** The grade, and how long the front was up before it was turned. */
+  onGrade: (grade: Grade, thinkMs: number | null) => void;
   /** On to the next card without an answer; nothing is written to the schedule. */
   onSkip: () => void;
 }) {
@@ -353,40 +356,50 @@ function FlipStep({
   const [examplesOpen, setExamplesOpen] = useState(false);
   const [drag, setDrag] = useState<{ dx: number; dy: number } | null>(null);
   const [leaving, setLeaving] = useState<Leave | null>(null);
+  // The day, fixed when the card comes up: the sentence on the back rotates with it.
+  const [day] = useState(() => learnerDayNumber());
   const dragStart = useRef<{ x: number; y: number; id: number } | null>(null);
   const flyTimer = useRef(0);
+  const shownAt = useRef(0);
+  const thinkMs = useRef<number | null>(null);
   const listen = step.kind === "listen";
-  const { pos } = parseBack(card.back);
-  const firstPos = pos ?? card.senses?.[0]?.pos ?? null;
+  const reverse = step.kind === "reverse";
+  const pos = corePos(card);
   const hasDetails = Boolean(card.senses?.length || card.example_sentence || card.related?.length || card.watch_out);
-  // The sentence on the back: the word's first one, or — when there are
-  // many senses to fit — the shortest one the senses carry, with the
-  // meaning it belongs to so its Turkish counterpart still lights up.
-  const sentence = backSentence(card);
+  // The sentence on the back: the one the word was met in, or — once it
+  // holds — one of its core sense's by the day. Asked from the Turkish,
+  // it is the sentence whose Turkish was on the front.
+  const line = reverse ? anchorOf(card) : backLine(card, day);
+  const cue = step.support && !reverse ? anchorOf(card) : null;
+  const chunk = reverse ? coreChunk(card) : null;
+  const second = secondGloss(card);
 
   useEffect(() => () => window.clearTimeout(flyTimer.current), []);
 
   // Say the word as the card comes to the top — for a listening card that
-  // *is* the question — and tell Tonton a new card is face down.
+  // *is* the question; a card asked from the Turkish stays silent, or it
+  // would say the answer — and tell Tonton a new card is face down.
   useEffect(() => {
-    speakAuto(card.front);
+    shownAt.current = performance.now();
+    if (!reverse) speakAuto(card.front);
     tellTonton("card", { front: card.front, flipped: false });
-  }, [card.front]);
+  }, [card.front, reverse]);
 
   const flip = useCallback(() => {
     primeSpeech();
     if (flipped || leaving !== null) return;
+    thinkMs.current = Math.round(performance.now() - shownAt.current);
     playReveal();
     setFlipped(true);
-    if (listen) speakAuto(card.front);
+    if (listen || reverse) speakAuto(card.front);
     tellTonton("card", { front: card.front, flipped: true });
-  }, [flipped, leaving, listen, card.front]);
+  }, [flipped, leaving, listen, reverse, card.front]);
 
   const grade = useCallback(
     (quality: Grade) => {
       if (!flipped || leaving !== null) return;
       setLeaving(quality);
-      flyTimer.current = window.setTimeout(() => onGrade(quality), reducedMotion() ? 0 : SETTLE_MS);
+      flyTimer.current = window.setTimeout(() => onGrade(quality, thinkMs.current), reducedMotion() ? 0 : SETTLE_MS);
     },
     [flipped, leaving, onGrade],
   );
@@ -463,15 +476,8 @@ function FlipStep({
       : { transform: "translate(0, 0) rotate(0)", transition: "transform 260ms var(--ease-spring)" };
   const swipeHint: Leave | null = drag && !leaving ? (dx > 40 ? 5 : dx < -40 ? 1 : dy < -40 ? 3 : dy > 40 ? "skip" : null) : leaving;
   const hintOpacity = drag ? Math.min(1, Math.max(Math.abs(dx), Math.abs(dy)) / SWIPE_PX) : leaving ? 1 : 0;
-  const caption =
-    step.attempt > 0
-      ? "Bu bir daha geldi. Bu sefer?"
-      : flipped
-        ? "Dürüst ol; ona göre hatırlatırım."
-        : listen
-          ? "Dinle, anlamını düşün, sonra çevir."
-          : "Aklından geçir, sonra çevir.";
-  const label = step.attempt > 0 ? "Bir daha" : KIND_LABEL[step.kind];
+  const caption = captionFor({ kind: step.kind, attempt: step.attempt, flipped, support: Boolean(cue), rushed });
+  const label = labelFor(step);
   const mood: MascotMood = leaving === 5 ? "happy" : leaving === 1 ? "sad" : flipped || leaving === "skip" ? "idle" : "think";
 
   return (
@@ -515,11 +521,11 @@ function FlipStep({
                 flipped ? "[transform:rotateY(180deg)]" : ""
               }`}
             >
-              {/* FRONT — the word, or its sound, on the word's own colour. */}
+              {/* FRONT — the word, or its sound, on the word's own colour; its Turkish on plain white. */}
               <div
                 role="button"
                 tabIndex={flipped ? -1 : 0}
-                aria-label={listen ? "Duyduğun kelime — kartı çevir" : `${card.front} — kartı çevir`}
+                aria-label={listen ? "Duyduğun kelime — kartı çevir" : reverse ? "İngilizcesi ne? — kartı çevir" : `${card.front} — kartı çevir`}
                 onClick={flip}
                 onKeyDown={(event) => {
                   if (event.key === "Enter" || event.key === " ") {
@@ -531,41 +537,67 @@ function FlipStep({
                   flipped ? "motion-reduce:opacity-0" : ""
                 }`}
               >
-                <Cover card={card} label={label} counter={counter} className="h-full">
-                  {listen ? (
-                    <div className="flex flex-1 flex-col items-center justify-center gap-5 text-center">
-                      <button
-                        type="button"
-                        aria-label="Bir daha dinle"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          void speak(card.front);
-                        }}
-                        className="grid h-28 w-28 place-items-center rounded-[32px] bg-white text-(--c-ink) shadow-[inset_0_-6px_0_0_rgba(0,0,0,0.12)] transition-transform duration-100 active:translate-y-[3px] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/60"
-                      >
-                        <SpeakerIcon className="h-12 w-12" />
-                      </button>
-                      <p className="max-w-[16rem] text-[18px] font-black leading-snug text-white">Duyduğun kelime ne demek?</p>
+                {reverse ? (
+                  // White, not the word's colour: with a handful of words, the colour alone would give it away.
+                  <div style={familyStyle("ocean")} className="card-3d flex h-full flex-col rounded-[24px] px-5 pb-6 pt-4 text-ink">
+                    <div className="flex items-center justify-between gap-3 tabular-nums">
+                      <span data-cover-label className="min-w-0 truncate rounded-full bg-(--c) px-3 py-1 text-[12px] font-black uppercase tracking-[0.1em] text-white">{label}</span>
+                      <span className="shrink-0 text-[12px] font-black tracking-[0.06em] text-graphite">{counter}</span>
                     </div>
-                  ) : (
                     <div className="flex flex-1 flex-col items-center justify-center text-center">
-                      {firstPos && <PosPill pos={firstPos} className="mb-3 !bg-white/25 !text-white" />}
-                      <h2 className={`max-w-full animate-[cover-line_420ms_var(--ease-soft)_120ms_both] ${WORD_ON_COVER} ${wordSize(card.front)}`}>{card.front}</h2>
+                      {pos && <PosPill pos={pos} className="mb-3" />}
+                      <p className="max-w-full wrap-break-word text-[28px] font-black leading-[1.12] tracking-[-0.01em] text-ink animate-[cover-line_420ms_var(--ease-soft)_120ms_both]">
+                        <MeaningText text={coreGloss(card)} />
+                      </p>
+                      {line?.tr && (
+                        <p className="mt-5 max-w-[21rem] text-[17px] font-bold leading-[1.45] text-graphite wrap-break-word">
+                          <TurkishLit sentence={line.tr} meaning={line.gloss} />
+                        </p>
+                      )}
                     </div>
-                  )}
-                  <div className="flex items-center gap-3">
-                    <StrengthBars card={card} onDark />
-                    <span className="flex-1 text-[11px] font-black uppercase tracking-[0.1em] text-white/80">dokun · çevir</span>
-                    {!listen && (
-                      <span onClick={(event) => event.stopPropagation()}>
-                        <SpeakButton text={card.front} size="md" className={COVER_SPEAKER} />
-                      </span>
-                    )}
+                    <div className="flex items-center gap-3">
+                      <StrengthBars card={card} />
+                      <span className="flex-1 text-[11px] font-black uppercase tracking-[0.1em] text-hare">dokun · çevir</span>
+                    </div>
                   </div>
-                </Cover>
+                ) : (
+                  <Cover card={card} label={label} counter={counter} className="h-full">
+                    {listen ? (
+                      <div className="flex flex-1 flex-col items-center justify-center gap-5 text-center">
+                        <button
+                          type="button"
+                          aria-label="Bir daha dinle"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            void speak(card.front);
+                          }}
+                          className="grid h-28 w-28 place-items-center rounded-[32px] bg-white text-(--c-ink) shadow-[inset_0_-6px_0_0_rgba(0,0,0,0.12)] transition-transform duration-100 active:translate-y-[3px] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/60"
+                        >
+                          <SpeakerIcon className="h-12 w-12" />
+                        </button>
+                        <p className="max-w-[16rem] text-[18px] font-black leading-snug text-white">Duyduğun kelime ne demek?</p>
+                      </div>
+                    ) : (
+                      <div className="flex flex-1 flex-col items-center justify-center text-center">
+                        {pos && <PosPill pos={pos} className="mb-3 !bg-white/25 !text-white" />}
+                        <h2 className={`max-w-full animate-[cover-line_420ms_var(--ease-soft)_120ms_both] ${WORD_ON_COVER} ${wordSize(card.front)}`}>{card.front}</h2>
+                        {cue && <CoverSentence sentence={cue.en} headword={card.front} />}
+                      </div>
+                    )}
+                    <div className="flex items-center gap-3">
+                      <StrengthBars card={card} onDark />
+                      <span className="flex-1 text-[11px] font-black uppercase tracking-[0.1em] text-white/80">dokun · çevir</span>
+                      {!listen && (
+                        <span onClick={(event) => event.stopPropagation()}>
+                          <SpeakButton text={card.front} size="md" className={COVER_SPEAKER} />
+                        </span>
+                      )}
+                    </div>
+                  </Cover>
+                )}
               </div>
 
-              {/* BACK — white, the word on a band of its colour, the meanings, one sentence. */}
+              {/* BACK — white, the word on a band of its colour, the core meaning, one sentence. */}
               <div
                 aria-hidden={!flipped}
                 className={`card-face !absolute inset-0 flex select-none flex-col overflow-hidden rounded-[24px] border-2 border-rule bg-white text-ink [-webkit-touch-callout:none] [transform:rotateY(180deg)] motion-reduce:transform-none motion-reduce:transition-opacity ${
@@ -591,10 +623,15 @@ function FlipStep({
                 </div>
 
                 <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-4 pb-3 pt-4 [@media(max-height:720px)]:pt-3">
-                  {flipped && <Meanings card={card} animate />}
-                  {sentence && flipped && (
+                  {flipped && <CoreMeaning card={card} animate second={second} />}
+                  {chunk && flipped && (
+                    <p className="mt-3 rounded-2xl bg-tangerine-soft px-3.5 py-2 text-[15px] font-bold leading-snug text-ink animate-rise-in" style={delay(340)}>
+                      <span className="font-black text-tangerine-ink">{chunk.en}</span> — {chunk.tr}
+                    </p>
+                  )}
+                  {line && flipped && (
                     <div className="mt-auto pt-3 animate-rise-in" style={delay(420)}>
-                      <ExampleBubble en={sentence.en} tr={sentence.tr} headword={card.front} meaning={sentence.meaning} size="sm" />
+                      <ExampleBubble en={line.en} tr={line.tr} headword={card.front} meaning={line.gloss} size="sm" />
                     </div>
                   )}
                 </div>
@@ -615,8 +652,8 @@ function FlipStep({
         </div>
       </div>
 
-      {/* Under the card: what to do, and the way past it without an answer. */}
-      <div className="mt-3 flex items-center justify-between gap-3">
+      {/* Under the card (clear of the pile's lowest edge, 16px down): what to do, and the way past it without an answer. */}
+      <div className="mt-5 flex items-center justify-between gap-3">
         <p className="min-w-0 text-[13px] font-bold leading-snug text-graphite">{caption}</p>
         <SkipButton onClick={skip} />
       </div>
@@ -640,9 +677,11 @@ function FlipStep({
                 type="button"
                 onClick={() => grade(g.grade)}
                 style={delay(i * 50)}
-                className={`face min-h-[56px] rounded-2xl text-[14px] font-black uppercase tracking-[0.04em] text-white shadow-button press-3d animate-rise-spring focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/30 ${g.button}`}
+                className={`face flex min-h-[64px] flex-col items-center justify-center rounded-2xl px-1 text-white shadow-button press-3d animate-rise-spring focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/30 ${g.button}`}
               >
-                {g.label}
+                {/* Under 360px "ZORLANDIM" is wider than its third of the bar: a size and spacing down. */}
+                <span className="text-[14px] font-black uppercase leading-tight tracking-[0.04em] max-[359px]:text-[12px] max-[359px]:tracking-normal">{g.label}</span>
+                <span className="mt-0.5 text-[11px] font-bold leading-tight text-white/90">{g.hint}</span>
               </button>
             ))}
           </div>
@@ -654,33 +693,12 @@ function FlipStep({
 
 /* --------------------------------------------------------------- typed -- */
 
-/**
- * What "İngilizcesi?" asks from: one meaning big, or every sense on a
- * numbered line of its own, never one long run the word gets lost in.
- */
+/** What "İngilizcesi?" asks from: the core meaning, big — the one the cards teach. */
 function ProducePrompt({ card }: { card: Card }) {
-  const meanings = meaningsOf(card).map((m) => m.meaning);
-  if (meanings.length === 1) {
-    return (
-      <p className="wrap-break-word text-[30px] font-black leading-[1.12] tracking-[-0.01em]">
-        <MeaningText text={meanings[0]} noteClassName="font-extrabold opacity-80" />
-      </p>
-    );
-  }
-  const long = meanings.length > 3 || meanings.join("").length > 80;
   return (
-    <ol className={long ? "space-y-1.5" : "space-y-2"}>
-      {meanings.map((m, i) => (
-        <li key={i} className="flex items-start gap-2.5">
-          <span className={`grid shrink-0 place-items-center rounded-full bg-white/25 font-black ${long ? "mt-px h-6 w-6 text-[12px]" : "mt-0.5 h-7 w-7 text-[13px]"}`}>
-            {i + 1}
-          </span>
-          <p className={`min-w-0 wrap-break-word font-black ${long ? "text-[19px] leading-[1.22]" : "text-[22px] leading-[1.18]"}`}>
-            <MeaningText text={m} noteClassName="font-extrabold opacity-80" />
-          </p>
-        </li>
-      ))}
-    </ol>
+    <p className="wrap-break-word text-[30px] font-black leading-[1.12] tracking-[-0.01em]">
+      <MeaningText text={coreGloss(card)} noteClassName="font-extrabold opacity-80" />
+    </p>
   );
 }
 
@@ -733,9 +751,9 @@ function TypedStep({
   const [showTurkish, setShowTurkish] = useState(Boolean(step.openTranslation) || step.kind === "chunk");
   const inputRef = useRef<HTMLInputElement>(null);
   const expected = expectedAnswer(step, card);
-  const { pos } = parseBack(card.back);
+  const pos = corePos(card);
   const gap = step.gap ?? null;
-  const example = gap ? null : (sentencesOf(card)[0] ?? null);
+  const example = gap ? null : anchorOf(card);
   const answered = verdict !== null;
 
   useEffect(() => {
@@ -870,7 +888,7 @@ function TypedStep({
       ) : (
         example && (
           <div className="mt-4 animate-rise-in">
-            <ExampleBubble en={example.en} tr={example.tr} headword={card.front} meaning={meaningsOf(card)[0]?.meaning ?? ""} />
+            <ExampleBubble en={example.en} tr={example.tr} headword={card.front} meaning={example.gloss} />
           </div>
         )
       )}
@@ -920,14 +938,14 @@ function TypedStep({
 /* --------------------------------------------------------------- write -- */
 
 /**
- * After a word is first recalled: a sentence of the learner's own. Writing
- * it is the strongest thing they can do for the memory, and from then on
- * reviews blank the word out of it.
+ * After a word from an earlier day is got right in the exercises: a
+ * sentence of the learner's own. Writing it is the strongest thing they can
+ * do for the memory, and from then on the exercises blank the word out of it.
  */
 function WriteStep({ card, deckId, onSaved, onDone }: { card: Card; deckId: string; onSaved: (card: Card) => void; onDone: () => void }) {
   const [text, setText] = useState("");
   const [warned, setWarned] = useState(false);
-  const example = sentencesOf(card)[0] ?? null;
+  const example = anchorOf(card);
   const save = useMutation({
     mutationFn: (sentence: string) => api.put<{ card: Card }>(`/decks/${deckId}/cards/${card.id}`, { front: card.front, back: card.back, mySentence: sentence }),
     onSuccess: (data) => {
@@ -959,12 +977,12 @@ function WriteStep({ card, deckId, onSaved, onDone }: { card: Card; deckId: stri
         <span className="rounded-lg tint-ground px-1.5 text-white">{card.front}</span> ile bir cümle kur
       </h2>
       <TontonLine mood="happy" size={54} className="mt-4">
-        Kendi hayatından olsun: dün olan bir şey, bir plan, bir dert. İleride bu cümleyi sana boşluklu soracağım.
+        Kendi hayatından bir cümle kur: her gün yaptığın, şu an olan ya da yakında olacak bir şey (I usually… · I'm …-ing · I'm going to …). İleride bu cümleyi sana boşluklu soracağım.
       </TontonLine>
       {example && (
         <div className="mt-3">
           <p className="mb-1.5 text-[12px] font-black uppercase tracking-[0.1em] text-graphite">Örnek</p>
-          <ExampleBubble en={example.en} tr={example.tr} headword={card.front} meaning={meaningsOf(card)[0]?.meaning ?? ""} size="sm" />
+          <ExampleBubble en={example.en} tr={example.tr} headword={card.front} meaning={example.gloss} size="sm" />
         </div>
       )}
       <label htmlFor={`sentence-${card.id}`} className="sr-only">
@@ -1011,51 +1029,123 @@ function WriteStep({ card, deckId, onSaved, onDone }: { card: Card; deckId: stri
 
 /* ------------------------------------------------------------- session -- */
 
-function Session({ deckId, cards, mode }: { deckId: string; cards: Card[]; mode: SessionMode }) {
+/** A write to the schedule: a graded review, or a new word's one learning write. */
+type ReviewWrite = { cardId: number; quality: Grade; kind: string; phase: "learn" | "review"; direction?: Direction; thinkMs?: number };
+
+/** Think time as the server takes it: whole milliseconds, ten minutes at most. */
+const thinkOf = (ms: number | null): number | undefined => (ms === null ? undefined : Math.min(600_000, Math.max(0, Math.round(ms))));
+
+/** Three fronts in a row turned faster than this, and the next caption asks for a moment. */
+const RUSHED_MS = 1500;
+
+function Session({
+  deckId,
+  cards,
+  mode,
+  fillers = [],
+  focusIds = [],
+}: {
+  deckId: string;
+  cards: Card[];
+  mode: SessionMode;
+  /** Words not due, to flip between a new word's steps when nothing else is left. */
+  fillers?: Card[];
+  /** Words the exercises start with. */
+  focusIds?: number[];
+}) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const recordStudyDay = useRecordStudyDay();
+  const { mutate: recordStudyDay } = useRecordStudyDay();
+  const { mutate: logPractice } = usePractice(deckId);
 
   // Snapshotted at the start; a saved sentence updates its card in place.
-  const [byId, setById] = useState(() => new Map(cards.map((card) => [card.id, card])));
+  const [byId, setById] = useState(() => new Map([...fillers, ...cards].map((card) => [card.id, card])));
   const [plan, setPlan] = useState<Exercise[]>(() =>
     mode === "drill"
       ? buildDrill(cards[0])
       : mode === "exercises"
-        ? buildExercises(cards, { speech: speechSupported && !isSpeechMuted() })
-        : buildSession(cards, { mode }),
+        ? buildExercises(cards, { speech: speechSupported && !isSpeechMuted(), focusIds })
+        : buildSession(cards, { mode, fillers }),
   );
   const [index, setIndex] = useState(0);
   const [results, setResults] = useState<Record<number, Result>>({});
   // Cards passed without an answer at least once; the summary names the ones never answered.
   const [skipped, setSkipped] = useState<ReadonlySet<number>>(() => new Set());
+  // New words the server turned away: the day's three were already in (a course lesson, another phone).
+  const [refused, setRefused] = useState<ReadonlySet<number>>(() => new Set());
+  // How long the last three fronts were up before they were turned.
+  const [thinks, setThinks] = useState<number[]>([]);
+  // The exercises' typed first tries, and how many of them were right.
+  const [typed, setTyped] = useState({ n: 0, right: 0 });
   const answeredRef = useRef(new Set<number>());
   const askedSentenceRef = useRef(new Set<number>());
-  const recordedDayRef = useRef(false);
+  // Each new word's learning steps so far, and each missed word's extra asks (learning.ts).
+  const learningRef = useRef(new Map<number, LearnState>());
+  const tallyRef = useRef(new Map<number, Tally>());
+  // New words already written (or refused) this round: each is written once.
+  const writtenRef = useRef(new Set<number>());
+  const answeredAnyRef = useRef(false);
+  const finishedRef = useRef(false);
   const touchedRef = useRef(false);
   const runRef = useRef(0);
 
   const review = useMutation({
-    mutationFn: ({ cardId, quality, kind }: { cardId: number; quality: Grade; kind: Kind }) =>
-      api.post<{ card: Card }>(`/decks/${deckId}/cards/${cardId}/review`, { quality, kind }),
-    retry: 2,
+    mutationFn: ({ cardId, ...body }: ReviewWrite) => api.post<{ card: Card }>(`/decks/${deckId}/cards/${cardId}/review`, body),
+    // The day's new words already used up (409) isn't a hiccup: asking again gets the same answer.
+    retry: (count, error) => !(error instanceof ApiError && error.status === 409) && count < 2,
     onSuccess: (data, { cardId }) => {
       if (!data?.card) return;
       setResults((r) => (r[cardId] ? { ...r, [cardId]: { ...r[cardId], after: data.card } } : r));
     },
-    onError: (_error, { cardId }) => {
+    onError: (error, { cardId }) => {
+      if (error instanceof ApiError && error.status === 409) {
+        // Refused, nothing written: the word stays unwritten and is met again another day.
+        setResults((r) => {
+          const next = { ...r };
+          delete next[cardId];
+          return next;
+        });
+        setRefused((s) => new Set(s).add(cardId));
+        return;
+      }
       setResults((r) => (r[cardId] ? { ...r, [cardId]: { ...r[cardId], failed: true } } : r));
     },
   });
   const { mutate: sendReview } = review;
 
-  // Refresh the deck's lists when a session that changed something is left.
+  /**
+   * An answer the schedule doesn't count, logged apart so the numbers stay
+   * honest. A missed exercise asked again goes in as its retry ("cloze-retry"):
+   * the typed tally counts first tries, as the summary does.
+   */
+  const log = useCallback(
+    (step: Exercise, quality: Grade, phase: PracticePhase, thinkMs?: number) => {
+      touchedRef.current = true;
+      const kind = (phase === "exercise" || phase === "drill") && step.attempt > 0 ? `${step.kind}-retry` : step.kind;
+      logPractice({ cardId: step.cardId, quality, kind, phase, direction: step.direction, thinkMs });
+    },
+    [logPractice],
+  );
+
+  // Leaving: the new words asked but not written yet go in as not learned
+  // (back tomorrow), once each; then the deck's lists and plan refresh.
   useEffect(() => {
+    const learning = learningRef.current;
+    const written = writtenRef.current;
     return () => {
+      const pending = takeUnwritten(learning, written).map((cardId) =>
+        api.post(`/decks/${deckId}/cards/${cardId}/review`, { quality: 1, kind: "learn", phase: "learn" }).catch(() => null),
+      );
+      if (pending.length > 0) touchedRef.current = true;
       if (!touchedRef.current) return;
-      queryClient.invalidateQueries({ queryKey: ["dueCards", deckId] });
-      queryClient.invalidateQueries({ queryKey: ["cards", deckId] });
-      queryClient.invalidateQueries({ queryKey: ["deckStats", deckId] });
+      const refresh = () => {
+        queryClient.invalidateQueries({ queryKey: ["dueCards", deckId] });
+        queryClient.invalidateQueries({ queryKey: ["cards", deckId] });
+        queryClient.invalidateQueries({ queryKey: ["deckStats", deckId] });
+        queryClient.invalidateQueries({ queryKey: ["plan", deckId] });
+      };
+      refresh();
+      if (pending.length > 0) void Promise.all(pending).then(refresh);
     };
   }, [queryClient, deckId]);
 
@@ -1063,65 +1153,130 @@ function Session({ deckId, cards, mode }: { deckId: string; cards: Card[]; mode:
   const card = step ? byId.get(step.cardId) : undefined;
   const finished = index >= plan.length;
   const counter = `${Math.min(index + 1, plan.length)} / ${plan.length}`;
+  const rushed = thinks.length >= 3 && thinks.every((ms) => ms < RUSHED_MS);
+
+  /**
+   * The round is over: the new words asked but never got twice are written
+   * as not learned yet, and the day counts for the streak — a finished
+   * round, not a started one, lights it (the drill doesn't count).
+   */
+  const finish = useCallback(() => {
+    if (finishedRef.current) return;
+    finishedRef.current = true;
+    const unwritten = takeUnwritten(learningRef.current, writtenRef.current);
+    if (unwritten.length > 0) {
+      touchedRef.current = true;
+      for (const cardId of unwritten) sendReview({ cardId, quality: 1, kind: "learn", phase: "learn" });
+      setResults((r) => {
+        const next = { ...r };
+        for (const cardId of unwritten) {
+          const before = byId.get(cardId);
+          if (before) next[cardId] = { grade: 1, graded: true, before, after: null };
+        }
+        return next;
+      });
+    }
+    if (mode !== "drill" && answeredAnyRef.current) recordStudyDay();
+  }, [byId, mode, recordStudyDay, sendReview]);
+
+  /**
+   * On to the next step, with the plan as the answer left it — from the top
+   * of the page: a meeting that scrolled down to its meaning would otherwise
+   * open the next card with its counter and the way out above the screen.
+   */
+  const advance = useCallback(
+    (next: Exercise[]) => {
+      if (next !== plan) setPlan(next);
+      setIndex((i) => i + 1);
+      if (window.scrollY > 0) window.scrollTo({ top: 0, behavior: "instant" });
+      if (index + 1 >= next.length) finish();
+    },
+    [plan, index, finish],
+  );
 
   /** Every step ends here: a grade for the ones that ask, null for meeting and writing. */
   const settle = useCallback(
-    (grade: Grade | null) => {
+    (grade: Grade | null, thinkMs: number | null = null) => {
       if (!step || !card) return;
       let next = plan;
       if (grade !== null) {
+        answeredAnyRef.current = true;
         if (grade === 1) runRef.current = 0;
         else runRef.current += 1;
         tellTonton("grade", { quality: grade, front: card.front, attempt: step.attempt, index, total: plan.length });
-        if (!recordedDayRef.current) {
-          recordedDayRef.current = true;
-          recordStudyDay.mutate();
-        }
-        if (!answeredRef.current.has(card.id)) {
-          answeredRef.current.add(card.id);
-          setResults((r) => ({ ...r, [card.id]: { grade, graded: step.graded, before: card, after: null } }));
-          if (step.graded) {
+        const think = thinkOf(thinkMs);
+        const onCards = mode === "due" || mode === "all";
+
+        if (step.learn) {
+          // A new word's learning step: never graded itself; the word is written once, at its second right answer.
+          const outcome = afterLearnAnswer(plan, index, step, grade, learningRef.current.get(card.id));
+          learningRef.current.set(card.id, outcome.state);
+          next = outcome.plan;
+          log(step, grade, "learn-step", think);
+          const quality = outcome.write;
+          if (quality && !writtenRef.current.has(card.id)) {
+            writtenRef.current.add(card.id);
             touchedRef.current = true;
-            sendReview({ cardId: card.id, quality: grade, kind: step.kind });
+            setResults((r) => ({ ...r, [card.id]: { grade: quality, graded: true, before: card, after: null } }));
+            sendReview({ cardId: card.id, quality, kind: "learn", phase: "learn", direction: "fwd", thinkMs: think });
+          }
+        } else {
+          const first = !answeredRef.current.has(card.id);
+          if (first) {
+            answeredRef.current.add(card.id);
+            setResults((r) => ({ ...r, [card.id]: { grade, graded: step.graded, before: card, after: null } }));
+          }
+          if (first && step.graded) {
+            touchedRef.current = true;
+            sendReview({ cardId: card.id, quality: grade, kind: step.kind, phase: "review", direction: step.direction ?? "fwd", thinkMs: think });
+          } else {
+            const phase: PracticePhase = !onCards ? (mode === "drill" ? "drill" : "exercise") : step.relearn ? "relearn" : step.filler ? "filler" : "practice";
+            log(step, grade, phase, think);
+          }
+
+          if (onCards) {
+            // A missed card comes back twice more in the round: with its sentence, then without.
+            const outcome = afterReviewAnswer(plan, index, step, grade, tallyRef.current.get(card.id));
+            tallyRef.current.set(card.id, outcome.tally);
+            next = outcome.plan;
+          } else {
+            if (mode === "exercises" && step.attempt === 0 && TYPED_KINDS.has(step.kind)) setTyped((t) => ({ n: t.n + 1, right: t.right + (grade >= 4 ? 1 : 0) }));
+            if (grade === 1) {
+              // A missed exercise comes back as the same question, once — never next to the word's other one.
+              const again = retryOf(step);
+              if (again) next = placeApart(next, index, again);
+            } else if (
+              // A word from an earlier day just got right is the moment to write a sentence of your own with it.
+              mode === "exercises" &&
+              grade >= 4 &&
+              wantsOwnSentence(card) &&
+              !askedSentenceRef.current.has(card.id) &&
+              askedSentenceRef.current.size < MAX_WRITES
+            ) {
+              askedSentenceRef.current.add(card.id);
+              next = insertLater(next, index, writeStep(card), 0);
+            }
           }
         }
-        const onCards = mode === "due" || mode === "all";
-        if (grade === 1) {
-          // A missed card comes back as a card, its sentence to help; a missed exercise as the same question, once.
-          const again = onCards ? repeatOf(card, step.attempt + 1) : retryOf(step);
-          if (again) next = insertLater(next, index, again);
-        } else if (
-          // In the exercises, a word just got right is the moment to write a sentence of your own with it.
-          mode === "exercises" &&
-          grade >= 4 &&
-          !card.my_sentence &&
-          !askedSentenceRef.current.has(card.id) &&
-          askedSentenceRef.current.size < MAX_WRITES
-        ) {
-          askedSentenceRef.current.add(card.id);
-          next = insertLater(next, index, writeStep(card), 0);
-        }
       }
-      if (next !== plan) setPlan(next);
-      setIndex((i) => i + 1);
+      advance(next);
     },
-    [step, card, plan, index, mode, recordStudyDay, sendReview],
+    [step, card, plan, index, mode, log, sendReview, advance],
   );
 
   /** "Geç": no grade, nothing written; the card comes back at the end once. */
   const skip = useCallback(() => {
     if (!step || !card) return;
-    const next = skipStep(plan, index);
-    if (next !== plan) setPlan(next);
     setSkipped((s) => new Set(s).add(card.id));
-    setIndex((i) => i + 1);
-  }, [step, card, plan, index]);
+    advance(skipStep(plan, index));
+  }, [step, card, plan, index, advance]);
 
   const onFlipGrade = useCallback(
-    (grade: Grade) => {
+    (grade: Grade, thinkMs: number | null) => {
       if (grade === 1) playIncorrect();
       else playCorrect(runRef.current + 1);
-      settle(grade);
+      if (thinkMs !== null) setThinks((t) => [...t, thinkMs].slice(-3));
+      settle(grade, thinkMs);
     },
     [settle],
   );
@@ -1137,13 +1292,29 @@ function Session({ deckId, cards, mode }: { deckId: string; cards: Card[]; mode:
   const exitTo = mode === "drill" && cards[0] ? `/decks/${deckId}/words/${cards[0].id}` : "/kartlar";
 
   if (finished) {
+    // What the exercises could ask now: the words met before the round (the
+    // whole deck rides along as fillers in a 'due' round) and the ones written today.
+    const pool = [...byId.values()].filter((c) => hasStarted(c) || results[c.id]?.graded).length;
     return (
       <Summary
+        deckId={deckId}
         cards={[...new Map(plan.map((s) => [s.cardId, byId.get(s.cardId)])).values()].filter((c): c is Card => Boolean(c))}
         results={results}
         skipped={skipped}
+        refused={refused}
         mode={mode}
-        onDone={() => navigate(exitTo)}
+        typed={typed}
+        pool={pool}
+        exitTo={exitTo}
+        onGo={(to) => {
+          if (to.includes("mode=exercises")) {
+            // Straight on to the exercises: the words just written go in as the server
+            // returned them, so today's new ones are there before the list refetches.
+            const written = new Map(Object.values(results).flatMap((r) => (r.after ? [[r.after.id, r.after] as const] : [])));
+            queryClient.setQueryData<Card[]>(["cards", deckId], (list) => list?.map((c) => ({ ...c, ...written.get(c.id) })));
+            navigate(to, { replace: true });
+          } else navigate(to);
+        }}
       />
     );
   }
@@ -1159,7 +1330,7 @@ function Session({ deckId, cards, mode }: { deckId: string; cards: Card[]; mode:
       ) : TYPED_KINDS.has(step.kind) ? (
         <TypedStep key={step.key} card={card} step={step} counter={counter} onDone={settle} onSkip={skip} />
       ) : (
-        <FlipStep key={step.key} card={card} step={step} counter={counter} remaining={plan.length - index} onGrade={onFlipGrade} onSkip={skip} />
+        <FlipStep key={step.key} card={card} step={step} counter={counter} remaining={plan.length - index} rushed={rushed} onGrade={onFlipGrade} onSkip={skip} />
       )}
     </>
   );
@@ -1185,27 +1356,70 @@ function useCountUp(target: number, ms = 600): number {
   return shown;
 }
 
+/** When a weak word is asked again, as the schedule set it: most come back tomorrow; a hard review may hold its gap. */
+function againLine(result: Result | undefined): string {
+  const next = result?.after ? nextReview(result.after) : null;
+  return !next || next.text === "Yarın" ? "yarın yine" : `${next.text.toLocaleLowerCase("tr")} yine`;
+}
+
+/** The words worth another go before tomorrow, each with its meaning: the exercises below start with them. */
+function WeakWords({ cards, results }: { cards: Card[]; results: Record<number, Result> }) {
+  return (
+    <section aria-labelledby="weak-heading" className="card-3d mt-6 rounded-[20px] p-4 text-left animate-rise-in" style={delay(160)}>
+      <h3 id="weak-heading" className="text-[13px] font-black uppercase tracking-[0.1em] text-graphite">
+        Biraz daha çalışalım
+      </h3>
+      <ul className="mt-2.5 space-y-2">
+        {cards.map((c) => (
+          <li key={c.id} style={tintStyle(c)} className="flex items-center gap-3">
+            <span aria-hidden="true" className="grid h-9 w-9 shrink-0 place-items-center rounded-xl tint-ground text-[16px] font-black uppercase text-white shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.18)]">
+              {c.front.charAt(0)}
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-[16px] font-black leading-tight text-ink">{c.front}</p>
+              <p className="line-clamp-2 wrap-break-word text-[13px] font-semibold leading-snug text-graphite">{coreGloss(c)}</p>
+            </div>
+            <span className="shrink-0 rounded-full bg-tangerine-soft px-2 py-0.5 text-[11px] font-black text-tangerine-ink">{againLine(results[c.id])}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 function Summary({
+  deckId,
   cards,
   results,
   skipped,
+  refused,
   mode,
-  onDone,
+  typed,
+  pool,
+  exitTo,
+  onGo,
 }: {
+  deckId: string;
   cards: Card[];
   results: Record<number, Result>;
   skipped: ReadonlySet<number>;
+  /** New words the server turned away: the day's three were already in. */
+  refused: ReadonlySet<number>;
   mode: SessionMode;
-  onDone: () => void;
+  /** The exercises' typed first tries, and how many were right. */
+  typed: { n: number; right: number };
+  /** Words met by now: what the exercises can ask. */
+  pool: number;
+  exitTo: string;
+  onGo: (to: string) => void;
 }) {
+  const view = summaryView({ cards, results, mode, deckId, exitTo, skipped, typed, pool });
   const firsts = Object.values(results);
-  // Passed and never answered: nothing was written, so they are still waiting.
-  const passed = cards.filter((c) => skipped.has(c.id) && !results[c.id]).length;
   const known = firsts.filter((r) => r.grade >= 4).length;
   const hard = firsts.filter((r) => r.grade === 3).length;
   const missed = firsts.filter((r) => r.grade === 1).length;
   const perfect = missed === 0 && hard === 0 && known > 0;
-  const practice = firsts.length > 0 && firsts.every((r) => !r.graded);
+  const handoff = view.secondary;
   const shownKnown = useCountUp(known);
   const shownHard = useCountUp(hard);
   const shownMissed = useCountUp(missed);
@@ -1217,26 +1431,39 @@ function Summary({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const answered =
-    firsts.length === 0
-      ? "Bu tur hiçbirini işaretlemedin; takvime dokunmadım."
-      : mode === "exercises"
-        ? "Güzel iş! Egzersizler takvime dokunmaz; ne zaman soracağımı kartlar belirler."
-        : practice
-          ? "Güzel alıştırma. Takvime dokunmadım; asıl tekrar sırası gelince."
-        : perfect
-          ? "Hepsini bildin. Bunlar artık daha seyrek gelecek."
-          : missed === 0
-            ? "Bildin ama zorlandıkların var; onları biraz daha sık getireceğim."
-            : `${missed} kelime kaçtı. On dakika sonra yine hazır, yarın da geri gelecek.`;
-  const verdict = passed > 0 && firsts.length > 0 ? `${answered} Geçtiğin ${passed} kelime sırada bekliyor.` : passed > 0 ? `${answered} Geçtiğin kelimeler sırada bekliyor.` : answered;
-
   return (
     <div className="pt-4 text-center animate-rise-in">
       {perfect && known >= 3 && <Confetti />}
       <Mascot mood={missed === 0 ? "happy" : "idle"} size={120} greet className="mx-auto" />
-      <h2 className="mt-3 text-[32px] font-black leading-tight tracking-[-0.02em] text-sunny-deep">{mode === "drill" ? "Alıştırma bitti!" : mode === "exercises" ? "Egzersiz bitti!" : "Oturum tamam!"}</h2>
-      <p className="mx-auto mt-2 max-w-[22rem] text-[16px] font-bold leading-snug text-ink">{verdict}</p>
+      <h2 className="mt-3 text-[32px] font-black leading-tight tracking-[-0.02em] text-sunny-deep">{view.title}</h2>
+      <p className="mx-auto mt-2 max-w-[22rem] text-[16px] font-bold leading-snug text-ink">{view.line}</p>
+
+      {/* The day's cards are done: on to the exercises, the weak words first. */}
+      {view.weak.length > 0 && <WeakWords cards={view.weak} results={results} />}
+      {handoff && (
+        <div className="mt-6 space-y-2.5">
+          <button
+            type="button"
+            onClick={() => onGo(view.primary.to)}
+            className={`${BIG} gap-2 bg-grass px-3 focus-visible:ring-grass/40 max-[359px]:text-[14px] max-[359px]:tracking-[0.04em]`}
+          >
+            <PencilIcon className="h-5 w-5 shrink-0 max-[359px]:hidden" />
+            {view.primary.label}
+          </button>
+          <button
+            type="button"
+            onClick={() => onGo(handoff.to)}
+            className="flex min-h-[52px] w-full items-center justify-center rounded-2xl border-2 border-rule bg-white text-[15px] font-black uppercase tracking-[0.08em] text-ocean-ink shadow-edge press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/30"
+          >
+            {handoff.label}
+          </button>
+        </div>
+      )}
+      {mode === "due" && firsts.length > 0 && (
+        <div className="mt-6">
+          <ReminderCard variant="prompt" defaultHour={22} />
+        </div>
+      )}
 
       <dl className="mt-6 grid grid-cols-3 gap-2.5">
         {(
@@ -1257,6 +1484,7 @@ function Summary({
       <ul className="mt-6 space-y-2 text-left">
         {cards.map((c, i) => {
           const result = results[c.id];
+          const fresh = !hasStarted(c);
           const after = result?.after ?? null;
           const before = stageOf(c);
           const now = after ? stageOf(after) : null;
@@ -1268,18 +1496,28 @@ function Summary({
               </span>
               <div className="min-w-0 flex-1">
                 <p className="truncate text-[17px] font-black leading-tight text-ink">{c.front}</p>
-                <p className="truncate text-[13px] font-semibold leading-snug text-graphite">{meaningsOf(c).map((m) => m.meaning).join(" · ")}</p>
+                <p className="line-clamp-2 wrap-break-word text-[13px] font-semibold leading-snug text-graphite">{coreGloss(c)}</p>
               </div>
               <div className="flex shrink-0 flex-col items-end gap-1 text-[11px] font-black tabular-nums">
                 {!result && skipped.has(c.id) ? (
                   <span className="rounded-full bg-paper-deep px-2 py-0.5 text-graphite">geçildi · sırada</span>
+                ) : !result && refused.has(c.id) ? (
+                  <span className="rounded-full bg-paper-deep px-2 py-0.5 text-graphite">bugünün 3'ü doldu · yarın</span>
+                ) : !result && fresh && mode === "due" ? (
+                  // Met but not asked twice: it is met again next time.
+                  <span className="rounded-full bg-paper-deep px-2 py-0.5 text-graphite">yarım kaldı · sırada</span>
                 ) : result && !result.graded ? (
                   <span className="rounded-full bg-paper-deep px-2 py-0.5 text-graphite">{mode === "exercises" ? "egzersiz" : "alıştırma"}</span>
                 ) : result?.failed ? (
                   <span className="rounded-full bg-berry-soft px-2 py-0.5 text-berry-ink">kaydedilemedi</span>
+                ) : fresh && result?.grade === 1 ? (
+                  <span className="rounded-full bg-tangerine-soft px-2 py-0.5 text-tangerine-ink">yarın yeniden</span>
                 ) : next && now ? (
                   <>
-                    <span className={`rounded-full px-2 py-0.5 ${TONE_PILL[next.tone]}`}>{result?.grade === 1 ? `${next.text}, yarın yine` : next.text}</span>
+                    <span className={`rounded-full px-2 py-0.5 ${TONE_PILL[next.tone]}`}>
+                      {/* A miss is back tomorrow anyway; only a sooner return (the old ten minutes) needs "yarın yine" after it. */}
+                      {result?.grade === 1 && next.text !== "Yarın" ? `${next.text}, yarın yine` : next.text}
+                    </span>
                     {now !== before && (
                       <span className={`rounded-full px-2 py-0.5 ${STAGE_PILL[now]}`}>
                         {STAGE_LABEL[before]} → {STAGE_LABEL[now]}
@@ -1294,9 +1532,11 @@ function Summary({
           );
         })}
       </ul>
-      <button type="button" onClick={onDone} className={`${BIG} mt-8 bg-grass focus-visible:ring-grass/40`}>
-        Devam
-      </button>
+      {!handoff && (
+        <button type="button" onClick={() => onGo(view.primary.to)} className={`${BIG} mt-8 bg-grass focus-visible:ring-grass/40`}>
+          {view.primary.label}
+        </button>
+      )}
     </div>
   );
 }
@@ -1309,6 +1549,11 @@ function Flashcards() {
   const drillId = searchParams.get("card");
   const asked = searchParams.get("mode");
   const mode: SessionMode = drillId ? "drill" : asked === "exercises" ? "exercises" : asked === "all" ? "all" : "due";
+  // The exercises can be pointed at words: ?focus=12,34 (the summary's weak ones).
+  const focusIds = (searchParams.get("focus") ?? "")
+    .split(",")
+    .map(Number)
+    .filter((id) => Number.isInteger(id) && id > 0);
 
   const cardsQuery = useQuery({
     queryKey: ["cards", deckId],
@@ -1324,20 +1569,29 @@ function Flashcards() {
     refetchOnReconnect: false,
   });
 
-  if (!deckId) return <Navigate to="/kartlar" replace />;
-
   const loading = cardsQuery.isLoading || (mode === "due" && (!dueQuery.data || dueQuery.isFetching));
-  // Going through the cards takes the twenty words coming back soonest: the
-  // ones about to be asked are the ones worth a warm-up. The exercises take
-  // them in the same order and keep the first dozen.
+  // Going through the cards takes twenty words already met, the ones not
+  // seen today first (lib/plan.ts): a word in the queue is met on the day's
+  // round, three a day, never here. The exercises take the words already met
+  // and pick their own order (practice.ts); the drill, one word already met
+  // (a link to a word still in the queue would teach it outside the three).
+  const all = cardsQuery.data ?? [];
   const cards =
     mode === "drill"
-      ? (cardsQuery.data ?? []).filter((c) => String(c.id) === drillId)
+      ? all.filter((c) => String(c.id) === drillId && hasStarted(c))
       : mode === "all"
-        ? byNextReview(cardsQuery.data ?? []).slice(0, PRACTICE_LIMIT)
+        ? flipOrder(all)
         : mode === "exercises"
-          ? byNextReview(cardsQuery.data ?? [])
+          ? all.filter(hasStarted)
           : (dueQuery.data ?? []);
+  const anyMet = all.some(hasStarted);
+  // Nothing to go through yet, because nothing is met: "Önce kartlar".
+  const metFirst = !loading && !cardsQuery.isError && cards.length === 0 && (mode === "drill" ? all.some((c) => String(c.id) === drillId) : mode !== "due" && all.length > 0);
+  // Read only for the empty screens: whether today's round still has new words to meet.
+  const plan = usePlan(metFirst ? { id: deckId } : undefined).data;
+  const noneToday = plan !== undefined && plan.newIds.length === 0 && plan.reviewsDue === 0;
+
+  if (!deckId) return <Navigate to="/kartlar" replace />;
 
   return (
     <div className="min-h-screen">
@@ -1361,18 +1615,50 @@ function Flashcards() {
             <Skeleton className="mt-8 h-[36rem] max-h-[calc(100dvh-16rem)] w-full rounded-[24px]" />
           </div>
         )}
-        {!loading && !cardsQuery.isError && cards.length === 0 && (
+        {metFirst && (
+          <div className="pt-6">
+            <EmptyState
+              emoji="🃏"
+              title="Önce kartlar"
+              description={`${
+                mode === "exercises"
+                  ? "Önce kartlarda yeni kelimelerle tanış; egzersizler sonra açılır."
+                  : mode === "drill"
+                    ? "Bu kelimeyle önce kartlarda tanış; sırası gelince burada alıştırırsın."
+                    : "Önce kartlarda yeni kelimelerle tanış; tanıştıklarını burada istediğin zaman çevirirsin."
+              }${noneToday ? " Bugünün yeni kelimeleri tamam; yenileriyle yarın tanışırsın." : ""}`}
+              action={
+                // With no new word left for today, "Tekrar et" would open an empty round.
+                noneToday ? (
+                  <LinkButton to="/kartlar" variant="go">
+                    Kartlarım
+                  </LinkButton>
+                ) : (
+                  <LinkButton to={`/decks/${deckId}/flashcards`} variant="go" onClick={primeSpeech}>
+                    Tekrar et
+                  </LinkButton>
+                )
+              }
+            />
+          </div>
+        )}
+        {!loading && !cardsQuery.isError && cards.length === 0 && !metFirst && (
           <div className="pt-6">
             <EmptyState
               emoji={mode === "due" ? "🎉" : "🃏"}
               title={mode === "due" ? "Bugünlük tamam" : "Henüz kartın yok"}
               description={
-                mode === "due"
-                  ? "Şu an sırası gelen kelime yok. İstersen kartlara yine de bak ya da egzersiz yap; takvim değişmez."
-                  : "Bir kelime ekle, kartın hazır olsun."
+                mode !== "due"
+                  ? "Bir kelime ekle, kartın hazır olsun."
+                  : anyMet
+                    ? "Şu an sırası gelen kelime yok. İstersen kartlara yine de bak ya da egzersiz yap; takvim değişmez."
+                    : all.length > 0
+                      ? "Şu an sırası gelen kelime yok. Bugünün yeni kelimeleri tamam; yenileriyle yarın tanışırsın."
+                      : "Şu an sırası gelen kelime yok."
               }
               action={
-                mode === "due" && (cardsQuery.data?.length ?? 0) > 0 ? (
+                // Flipping and the exercises take words already met: with none, both would be empty.
+                mode === "due" && anyMet ? (
                   <div className="flex flex-col gap-2 sm:flex-row">
                     <LinkButton to={`/decks/${deckId}/flashcards?mode=all`} variant="go" onClick={primeSpeech}>
                       Kartları çalış
@@ -1392,7 +1678,14 @@ function Flashcards() {
         )}
         {!loading && !cardsQuery.isError && cards.length > 0 && (
           <div className="pt-2">
-            <Session key={`${deckId}-${mode}-${drillId ?? ""}`} deckId={deckId} cards={cards} mode={mode} />
+            <Session
+              key={`${deckId}-${mode}-${drillId ?? ""}`}
+              deckId={deckId}
+              cards={cards}
+              mode={mode}
+              fillers={mode === "due" ? cardsQuery.data : undefined}
+              focusIds={focusIds}
+            />
           </div>
         )}
       </main>

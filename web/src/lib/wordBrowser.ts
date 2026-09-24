@@ -1,6 +1,8 @@
 import type { Card } from "../types";
 import { parseBack } from "./cardBack";
 import { byNextReview, isDueAt, isLeech, stageOf, type Stage } from "./memory";
+import { hasStarted } from "./path";
+import { learnerDayStart } from "./day";
 
 /**
  * The word list, built to hold hundreds of words: a search over everything
@@ -99,7 +101,8 @@ export function passes(card: Card, filter: Filter, now = Date.now()): boolean {
     case "all":
       return true;
     case "due":
-      return isDueAt(card, now);
+      // Words already met and waiting; the queue comes three a day, by the plan.
+      return hasStarted(card) && isDueAt(card, now);
     case "leech":
       return isLeech(card);
     default:
@@ -115,8 +118,8 @@ export function filterCounts(cards: Card[], now = Date.now()): Record<Filter, nu
 
 /* -------------------------------------------------------------- order -- */
 
-export function sortCards(cards: Card[], sort: Sort): Card[] {
-  if (sort === "next") return byNextReview(cards);
+export function sortCards(cards: Card[], sort: Sort, now = Date.now()): Card[] {
+  if (sort === "next") return byNextReview(cards, now);
   if (sort === "az") return [...cards].sort((a, b) => a.front.localeCompare(b.front, "en", { sensitivity: "base" }) || a.id - b.id);
   return [...cards].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime() || b.id - a.id);
 }
@@ -126,12 +129,8 @@ export function sortCards(cards: Card[], sort: Sort): Card[] {
 export type Group = { key: string; label: string; cards: Card[] };
 
 const DAY = 86_400_000;
-function startOfDay(t: number): number {
-  const d = new Date(t);
-  d.setHours(0, 0, 0, 0);
-  return d.getTime();
-}
-const daysBetween = (from: number, to: number) => Math.round((startOfDay(to) - startOfDay(from)) / DAY);
+/** Whole learner days between two moments (they turn at 04:00, lib/day.ts), as the cards count them. */
+const daysBetween = (from: number, to: number) => Math.round((learnerDayStart(to) - learnerDayStart(from)) / DAY);
 
 const MONTHS = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
 
@@ -150,6 +149,7 @@ export function groupOf(card: Card, sort: Sort, now = Date.now()): { key: string
     const d = new Date(added);
     return { key: `m${d.getFullYear()}-${d.getMonth()}`, label: `${MONTHS[d.getMonth()]} ${d.getFullYear()}` };
   }
+  if (!hasStarted(card)) return { key: "queue", label: "Tanışmayı bekleyenler" };
   if (isDueAt(card, now)) return { key: "now", label: "Şimdi sırada" };
   const days = daysBetween(now, new Date(card.due_date).getTime());
   if (days <= 0) return { key: "today", label: "Bugün, biraz sonra" };
@@ -176,5 +176,6 @@ export function browse(cards: Card[], { query, filter, sort, now = Date.now() }:
   return sortCards(
     cards.filter((card) => passes(card, filter, now) && matches(card, query)),
     sort,
+    now,
   );
 }

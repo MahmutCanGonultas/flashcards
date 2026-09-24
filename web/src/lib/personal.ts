@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "./api";
-import type { Card, Deck } from "../types";
+import type { Card, Deck, ReviewQuality } from "../types";
 
 /**
  * The learner's own words: a deck the server creates on first use,
@@ -16,20 +16,53 @@ export function usePersonalDeck() {
   });
 }
 
+/** Fresh whenever the app comes back to the front, like the day's plan (lib/plan.ts). */
 export function usePersonalCards(deck: Deck | undefined) {
   return useQuery({
     queryKey: ["cards", String(deck?.id ?? "")],
     queryFn: () => api.get<{ cards: Card[] }>(`/decks/${deck!.id}/cards`).then((r) => r.cards),
     enabled: Boolean(deck),
+    refetchOnWindowFocus: true,
   });
 }
 
-/** The last seven days of one deck: graded reviews, and how many were remembered. */
+/**
+ * The last seven days of one deck: graded reviews and how each went
+ * (remembered is knew + hard, for older builds), and the typed exercises
+ * with how many were right.
+ */
+export type DeckStats = { reviews: number; knew?: number; hard?: number; missed?: number; remembered: number; typed?: number; typedRight?: number };
+
 export function useDeckStats(deck: Deck | undefined) {
   return useQuery({
     queryKey: ["deckStats", String(deck?.id ?? "")],
-    queryFn: () => api.get<{ lastWeek: { reviews: number; remembered: number } }>(`/decks/${deck!.id}/stats`).then((r) => r.lastWeek),
+    queryFn: () => api.get<{ lastWeek: DeckStats }>(`/decks/${deck!.id}/stats`).then((r) => r.lastWeek),
     enabled: Boolean(deck),
+  });
+}
+
+/** Where an answer that doesn't move the schedule was given. */
+export type PracticePhase = "learn-step" | "relearn" | "filler" | "practice" | "exercise" | "drill";
+
+export type PracticeAnswer = {
+  cardId: number;
+  quality: ReviewQuality;
+  kind: string;
+  phase: PracticePhase;
+  direction?: "fwd" | "rev";
+  thinkMs?: number;
+};
+
+/**
+ * Logs an answer the schedule doesn't count — a new word's learning steps,
+ * a missed word's repeats, the exercises, the drill — so the week's numbers
+ * can tell them apart from the graded reviews. Fire and forget: the card is
+ * never touched, and a lost log costs nothing but a row.
+ */
+export function usePractice(deckId: number | string) {
+  return useMutation({
+    mutationFn: ({ cardId, ...body }: PracticeAnswer) => api.post<{ ok: true }>(`/decks/${deckId}/cards/${cardId}/practice`, body),
+    retry: 1,
   });
 }
 
@@ -71,6 +104,8 @@ export function useCreatePersonalCard(deckId: number | undefined) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["cards", String(deckId)] });
       queryClient.invalidateQueries({ queryKey: ["dueCards", String(deckId)] });
+      // A new word joins the queue behind today's.
+      queryClient.invalidateQueries({ queryKey: ["plan", String(deckId)] });
       queryClient.invalidateQueries({ queryKey: ["decks"] });
     },
   });

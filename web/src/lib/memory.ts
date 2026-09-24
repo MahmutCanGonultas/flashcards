@@ -1,5 +1,6 @@
 import type { Card } from "../types";
-import { hasStarted, isDue } from "./path";
+import { hasStarted } from "./path";
+import { learnerDayStart } from "./day";
 
 /**
  * How firmly a word is held, in four stages the learner can see:
@@ -25,7 +26,11 @@ export const STAGE_LABEL: Record<Stage, string> = {
 
 /** From this gap on a word counts as held for good. */
 export const MATURE_DAYS = 21;
-/** Missed this many times, a word is a leech: it gets a sentence and extra support. */
+/**
+ * Lapsed this many times (a forward miss once the word had held across
+ * days), a word is a leech: its first card of a round shows its sentence on
+ * the front, and it stays on its core meaning.
+ */
 export const LEECH_LAPSES = 3;
 
 export function stageOf(card: Pick<Card, "repetitions" | "interval">): Stage {
@@ -46,22 +51,26 @@ export function strengthOf(card: Pick<Card, "repetitions" | "interval">): number
 export const isLeech = (card: Pick<Card, "lapses">): boolean => (card.lapses ?? 0) >= LEECH_LAPSES;
 
 const DAY = 86_400_000;
-const startOfDay = (t: number): number => {
-  const d = new Date(t);
-  d.setHours(0, 0, 0, 0);
-  return d.getTime();
-};
-/** Whole calendar days from `now` to `t`: tomorrow is 1 whatever the hour. */
-const daysUntil = (t: number, now: number): number => Math.round((startOfDay(t) - startOfDay(now)) / DAY);
+/**
+ * Whole learner days from `now` to `t` (lib/day.ts: they turn at 04:00):
+ * tomorrow is 1 whatever the hour, and at 00:30 a word due at 04:00 is
+ * tomorrow's.
+ */
+const daysUntil = (t: number, now: number): number => Math.round((learnerDayStart(t) - learnerDayStart(now)) / DAY);
 
 export type Tone = "due" | "soon" | "later";
 
 /** Waiting at `now`; the same test as path.ts's isDue, with the clock passed in. */
 export const isDueAt = (card: Pick<Card, "due_date">, now = Date.now()): boolean => new Date(card.due_date).getTime() <= now;
 
-/** When the word comes back, in words, with the ink that means now / soon / later. */
+/**
+ * When the word comes back, in words, with the ink that means now / soon /
+ * later. A word never met yet is in the queue: the day's plan decides when
+ * it comes (three a day), not its date.
+ */
 export function nextReview(card: Card, now = Date.now()): { text: string; tone: Tone } {
-  if (isDueAt(card, now)) return { text: hasStarted(card) ? "Şimdi" : "Yeni", tone: "due" };
+  if (!hasStarted(card)) return { text: "Sırada", tone: "soon" };
+  if (isDueAt(card, now)) return { text: "Şimdi", tone: "due" };
   const due = new Date(card.due_date).getTime();
   const minutes = Math.ceil((due - now) / 60_000);
   if (minutes < 60) return { text: `${minutes} dk sonra`, tone: "soon" };
@@ -73,10 +82,16 @@ export function nextReview(card: Card, now = Date.now()): { text: string; tone: 
   return { text: months <= 1 ? "1 ay sonra" : `${months} ay sonra`, tone: "later" };
 }
 
-/** Waiting words first, then in the order they come back. */
-export function byNextReview(cards: Card[]): Card[] {
+/**
+ * Waiting words first, then the ones still to be met (in the order they
+ * will be: by id), then the rest in the order they come back.
+ */
+export function byNextReview(cards: Card[], now = Date.now()): Card[] {
+  const rank = (card: Card) => (!hasStarted(card) ? 1 : isDueAt(card, now) ? 0 : 2);
   return [...cards].sort(
-    (a, b) => Number(isDue(b)) - Number(isDue(a)) || new Date(a.due_date).getTime() - new Date(b.due_date).getTime() || b.id - a.id,
+    (a, b) =>
+      rank(a) - rank(b) ||
+      (rank(a) === 1 ? a.id - b.id : new Date(a.due_date).getTime() - new Date(b.due_date).getTime() || b.id - a.id),
   );
 }
 
@@ -91,17 +106,22 @@ const WEEKDAY = ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"];
 export type ForecastDay = { label: string; count: number; today: boolean };
 
 /**
- * How many words come back on each of the next `days` days. Today holds
- * everything already waiting as well, so the first bar is the day's work.
+ * How many words come back on each of the next `days` learner days. Today
+ * holds everything already waiting as well, plus today's new words
+ * (`fresh`, from the day's plan), so the first bar is the day's work. Words
+ * still in the queue have no day yet and are left out.
  */
-export function forecast(cards: Card[], days = 7, now = Date.now()): ForecastDay[] {
+export function forecast(cards: Card[], days = 7, now = Date.now(), fresh = 0): ForecastDay[] {
   const counts = Array.from({ length: days }, () => 0);
+  counts[0] = fresh;
   for (const card of cards) {
+    if (!hasStarted(card)) continue;
     const offset = Math.max(0, daysUntil(new Date(card.due_date).getTime(), now));
     if (offset < days) counts[offset] += 1;
   }
   return counts.map((count, i) => ({
-    label: i === 0 ? "Bugün" : i === 1 ? "Yarın" : WEEKDAY[new Date(startOfDay(now) + i * DAY + 12 * 3_600_000).getDay()],
+    // Noon of that learner day, so the name is right whatever the hour now.
+    label: i === 0 ? "Bugün" : i === 1 ? "Yarın" : WEEKDAY[new Date(learnerDayStart(now, i) + 8 * 3_600_000).getDay()],
     count,
     today: i === 0,
   }));

@@ -1,5 +1,5 @@
 import type { Card } from "../types";
-import { isDue } from "../lib/path";
+import { planHref, planView, usePlan } from "../lib/plan";
 import Button from "./Button";
 import LinkButton from "./LinkButton";
 import WordList from "./WordList";
@@ -16,11 +16,15 @@ type PersonalDeckViewProps = {
 /**
  * The learner's own words, as a contents list: the same list the front
  * page prints, so the two read as one book. Each row opens the word's page
- * — that's where the sentences are. The cards themselves are behind
- * "Tekrar et".
+ * — that's where the sentences are. The cards themselves are behind the
+ * same two buttons as the front page's, read from the day's plan.
  */
 function PersonalDeckView({ deckId, cards, onAdd, showActions = true }: PersonalDeckViewProps) {
-  const due = cards.filter(isDue).length;
+  const plan = usePlan({ id: deckId }).data;
+  const view = plan ? planView(plan) : null;
+  // Until the plan is in: the day's round and the exercises, as on a fresh morning.
+  const primary = view?.primary ?? { label: "Tekrar et", mode: "due" as const, tone: "grass" as const };
+  const secondary = view?.secondary ?? { label: "Egzersiz yap", mode: "exercises" as const };
 
   return (
     <div className="mt-5">
@@ -28,11 +32,11 @@ function PersonalDeckView({ deckId, cards, onAdd, showActions = true }: Personal
       <div className="flex flex-wrap items-center gap-2">
         {cards.length > 0 && (
           <>
-            <LinkButton to={`/decks/${deckId}/flashcards${due > 0 ? "" : "?mode=all"}`} variant="ink" onClick={primeSpeech}>
-              {due > 0 ? `Tekrar et (${due})` : "Kartları çalış"}
+            <LinkButton to={planHref(deckId, primary.mode)} variant={primary.tone === "grass" ? "go" : "blue"} onClick={primeSpeech}>
+              {primary.label}
             </LinkButton>
-            <LinkButton to={`/decks/${deckId}/flashcards?mode=exercises`} variant="outline" onClick={primeSpeech}>
-              Egzersiz yap
+            <LinkButton to={planHref(deckId, secondary.mode)} variant="outline" onClick={primeSpeech}>
+              {secondary.label}
             </LinkButton>
           </>
         )}

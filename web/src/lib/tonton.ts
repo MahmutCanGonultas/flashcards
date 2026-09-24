@@ -1,8 +1,9 @@
 import type { Card } from "../types";
 import type { PathStats, Unit } from "./path";
-import { isDue, wordTier } from "./path";
+import { hasStarted, isDue, isDueReview, wordTier } from "./path";
 import { parseBack } from "./cardBack";
 import type { GrammarProgress } from "./grammar";
+import type { DailyPlan } from "./plan";
 import { CATALOG } from "../content/grammar/catalog";
 
 /**
@@ -41,9 +42,20 @@ const TIPS = [
   "Örnek cümleyi iki kez oku. Kelime orada yaşar.",
   "Duymak için kelimeye dokun. Sonra sen de söyle.",
   "Bir kelimede mi takıldın? Sayfasını aç: renkli anlamlar, kalıplar, örnekler.",
+  "Tur bitince gün yanar.",
 ];
 
 const tip = () => TIPS[dayIndex() % TIPS.length];
+
+/**
+ * How many of the learner's own words wait today: the day's plan when it is
+ * loaded (its reviews and today's new words), else the met words that are
+ * due. Never the queue: those come three a day.
+ */
+function ownWaiting(personal: Card[], plan: Pick<DailyPlan, "reviewsDue" | "newIds"> | null | undefined): number {
+  if (plan) return plan.reviewsDue + plan.newIds.length;
+  return personal.filter((card) => hasStarted(card) && isDue(card)).length;
+}
 
 /** One word the learner has actually kept, brought back for a second. */
 function recall(cards: Card[]): string | null {
@@ -60,25 +72,30 @@ export function homeLines({
   due,
   streak,
   personal = [],
+  plan,
 }: {
   cards: Card[];
   due: number;
   streak: number;
   /** The learner's own words, if they have added any. */
   personal?: Card[];
+  /** Today's plan on them, once loaded. */
+  plan?: Pick<DailyPlan, "reviewsDue" | "newIds"> | null;
 }): string[] {
   const lines = [greeting()];
   // Their own words come first: those are the ones they asked to be reminded of.
-  const personalDue = personal.filter(isDue);
-  if (personalDue.length > 0) {
-    lines.push(`Kendi kelimelerinden ${personalDue.length} tanesi bugün seni bekliyor.`);
+  const personalDue = ownWaiting(personal, plan);
+  if (personalDue > 0) {
+    lines.push(`Kendi kelimelerinden ${personalDue} tanesi bugün seni bekliyor.`);
   }
-  if (personal.length > 0) {
+  // Only a word already met: asking one still waiting in the queue would be a quiz on nothing.
+  const met = personal.filter(hasStarted);
+  if (met.length > 0) {
     // A question, not the answer: reading the meaning here, a minute before
     // the session asks it, would spend the retrieval.
-    const card = personal[dayIndex() % personal.length];
-    lines.push(`Isınma: "${card.front}" ne demekti? Söyleme; aklından geçir.`);
-  } else {
+    const card = met[dayIndex() % met.length];
+    lines.push(`Isınma: "${card.front}" ne demekti? Sesli söyle.`);
+  } else if (personal.length === 0) {
     lines.push("Sokakta, dizide duyduğun bir kelime mi var? Ekle; ne zaman soracağımı ben ayarlarım.");
   }
   if (due > 0) lines.push(`${due} kelime seni bekliyor. Önce tekrar?`);
@@ -144,7 +161,7 @@ const POP_SMALL_TALK = [
 ];
 
 const POP_TIPS = [
-  "Bir kelimeyi kaçırdıysan, on dakika sonra yine gelir. Kaçış yok.",
+  "Bir kelimeyi kaçırdıysan, birkaç kart sonra yine gelir. Kaçış yok.",
   "Kartın arkasına bakmadan üç saniye dur. O üç saniye hafızadır.",
   "Kelimeyi bir cümlede düşün, tek başına değil. Yalnız kelimeler kaybolur.",
   "Yüksek sesle söylemekten utanma; duvarlar İngilizce bilmiyor.",
@@ -176,10 +193,13 @@ const POP_CHEERS = [
   "Buraya kadar geldin. Kapıdan dönmek daha zor.",
 ];
 
-/** Small talk that only makes sense if the learner has that word. */
+/**
+ * Small talk that only makes sense once the learner has met that word. It
+ * asks, never tells: a meaning read here would spend the card's recall.
+ */
 const WORD_TALK: Record<string, string> = {
-  commit: "Bugün 'commit' kelimesini düşündüm. Evlenmedim ama düşündüm.",
-  consider: "Bir satranççı gibi: hamleden önce uzun uzun düşün. Consider, işte böyle bir şey.",
+  commit: "Bugün aklıma 'commit' geldi. Sen hatırlıyor musun? Sesli söyle.",
+  consider: "'consider' diye bir kelimen var. Ne demekti? Ben beklerim.",
 };
 
 function shuffleByDay<T>(items: T[], salt: number): T[] {
@@ -212,14 +232,17 @@ export function popLines({
   personal,
   streak,
   grammar,
+  plan,
 }: {
   cards: Card[];
   personal: Card[];
   streak: number;
   grammar?: GrammarProgress;
+  /** Today's plan on the learner's own words, once loaded. */
+  plan?: Pick<DailyPlan, "reviewsDue" | "newIds"> | null;
 }): PopLine[] {
   const live: PopLine[] = [...grammarLines(grammar)];
-  const personalDue = personal.filter(isDue).length;
+  const personalDue = ownWaiting(personal, plan);
   if (personalDue > 0) {
     live.push({
       text:
@@ -228,23 +251,25 @@ export function popLines({
           : `${personalDue} kartın seni bekliyor. Hadi, çabuk çevirelim.`,
     });
   }
-  if (personal.length > 0) {
-    // The recall lines use the learner's own words, never the course's.
-    const card = personal[(dayIndex() + new Date().getHours()) % personal.length];
-    live.push({ kicker: "Küçük sınav", text: `"${card.front}"? … Söyleme, aklından geçir.` });
+  // The recall lines use the learner's own words, never the course's, and only ones already met.
+  const met = personal.filter(hasStarted);
+  if (met.length > 0) {
+    const card = met[(dayIndex() + new Date().getHours()) % met.length];
+    live.push({ kicker: "Küçük sınav", text: `"${card.front}"? … Sesli söyle.` });
     live.push({ text: `"${card.front}" — bir cümlede kullan. Sesli. Duvarlar duymaz.` });
     const own = card.my_sentence?.trim();
     if (own) live.push({ kicker: "Senin cümlen", text: own.length > 90 ? `${own.slice(0, 90).trimEnd()}…` : own });
     else live.push({ text: `"${card.front}" ile kendi cümleni kurdun mu? Kelimenin sayfasında bir yer var.` });
   }
-  const courseDue = cards.filter(isDue).length;
+  // Reviews only: a course word the path hasn't reached isn't waiting yet.
+  const courseDue = cards.filter(isDueReview).length;
   if (courseDue > 0) live.push({ text: `Kursta ${courseDue} kelime tekrar bekliyor. Kısa bir tur?` });
   if (streak >= 3) live.push({ text: `${streak} gündür buradasın. Seriyi bozma, bugün bir kart yeter.` });
   const hour = new Date().getHours();
   if (hour >= 22 || hour < 5) live.push({ text: "Gece kelimeleri daha iyi yapışır derler. Bir kart, sonra uyku. 🌙" });
   if (hour >= 6 && hour < 10) live.push({ text: "Sabah sabah bir kelime, gün boyu aklında döner." });
 
-  const fronts = new Set([...cards, ...personal].map((card) => card.front.trim().toLowerCase()));
+  const fronts = new Set([...cards, ...personal].filter(hasStarted).map((card) => card.front.trim().toLowerCase()));
   const wordTalk = Object.entries(WORD_TALK)
     .filter(([word]) => fronts.has(word))
     .map(([, text]) => text);
@@ -263,7 +288,6 @@ export const AFTER_GRADE = {
     "Düşünmeden çıktı. Bu artık senin.",
     "Kısa ve net. Sıradaki.",
     "Tık! Yerine oturdu.",
-    "Bunu bir daha ancak günler sonra görürsün.",
     "Kulaklarım dikildi. Güzel.",
     "İşte bu. Hafıza böyle güçlenir.",
     "Hızlıydın. Ben bile yetişemedim.",
@@ -271,7 +295,7 @@ export const AFTER_GRADE = {
     "Bu kelimeyle aranız iyi.",
   ],
   missed: [
-    "Olur öyle. On dakika sonra yine buluşuruz.",
+    "Olur öyle. Birkaç kart sonra yine buluşuruz.",
     "Kaçtı ama uzağa gitmedi. Sırada bekliyor.",
     "Bu kelime inatçı. Ben daha inatçıyım.",
     "Yanlış cevap da öğretir. Şimdi arkasına iyi bak.",

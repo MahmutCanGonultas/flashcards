@@ -92,7 +92,7 @@ function Kelimelerim() {
           <div className="min-w-0">
             <h1 className="text-[32px] font-black leading-[1.05] tracking-[-0.02em] text-ink">Kelimelerim</h1>
             <p className="mt-1 text-[15px] font-bold text-graphite">
-              {!cards ? "Yükleniyor…" : `${cards.length} kelime${due > 0 ? ` · ${due} tanesi sırada` : ""}`}
+              {!cards ? "Yükleniyor…" : `${cards.length} kelime${due > 0 ? ` · ${due} tekrar bekliyor` : ""}`}
             </p>
           </div>
           <button

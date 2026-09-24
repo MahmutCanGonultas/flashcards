@@ -1,6 +1,7 @@
 import type { Card } from "../types";
 import type { MascotMood } from "../components/Mascot";
 import type { GrammarProgress } from "./grammar";
+import type { DailyPlan } from "./plan";
 import {
   AFTER_GRADE,
   AUTO_MUTE,
@@ -60,7 +61,7 @@ export type Pop = {
 export type View = { pop: Pop | null; leaving: boolean };
 
 /** What the app knows right now; read only at the moment he speaks. */
-export type Snapshot = { cards: Card[]; personal: Card[]; streak: number; lastStudyDate: string | null; grammar?: GrammarProgress };
+export type Snapshot = { cards: Card[]; personal: Card[]; streak: number; lastStudyDate: string | null; grammar?: GrammarProgress; plan?: DailyPlan | null };
 
 /** 5 right · 4 the right word in another form · 3 hard or a slip · 1 missed. */
 type GradeDetail = { quality: 1 | 3 | 4 | 5; front: string; attempt: number; index: number; total: number };

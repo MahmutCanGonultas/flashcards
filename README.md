@@ -13,9 +13,12 @@ It's a web app made for the phone (you can install it like a regular app), built
 
 ### Cards and exercises, kept apart
 
-- **Cards** (*Tekrar et*) are plain flashcards, and they are the only thing that changes the schedule. A new word is introduced first: you see it in a sentence, guess what it means, then check, and it's asked a few cards later. Every other word is the word on the front and its meaning on the back. Flip it and grade yourself: swipe right for *Bildim* (knew it), left for *Bilemedim* (didn't), up for *Zorlandım* (hard). When nothing is due you can still go through your cards; only the due ones count.
+- **At most three new words a day.** The server picks them, and never puts two look-alike words (same first letters, or the same word type on one day) side by side. The rest wait their turn, and new words pause on days when too many reviews are waiting.
+- **One meaning first.** A word with several meanings is taught, shown and graded on its core meaning only. The second meaning joins the card once the word has held for a week; the rest stay on the word page.
+- **Cards** (*Tekrar et*) are plain flashcards, and they are the only thing that changes the schedule. A new word is introduced first: you see it in a sentence, guess what it means, then check. On its first day it is asked three times with other cards in between, the last time the other way round (the Turkish on the front, you say the English), and only then written to the schedule. Every other word is the word on the front and its meaning on the back, and on alternate reviews the Turkish on the front instead. You say the answer aloud, flip, and grade yourself: swipe right for *Bildim* (it came at once), left for *Bilemedim* (it didn't come), up for *Zorlandım* (slow or half). When nothing is due you can still go through the words you have met; only the due ones count.
 - Every word has a stage you can see: *Yeni* (new), *Öğreniyor* (learning), *Pekişiyor* (getting there), *Kalıcı* (learned). Stages show up as signal bars on cards and word pages.
-- A missed card comes back three cards later with its sentence, until you get it. Only your first answer in a session changes the schedule. A word you miss three times is marked *inatçı* (stubborn).
+- A missed card comes back twice more in the same round, the first time with its sentence on the front. Only your first answer in a session changes the schedule. A word you miss three times is marked *inatçı* (stubborn).
+- The home page shows the day's plan in two steps (cards, then exercises) with the minutes each takes, and the end of a round of cards leads straight to the exercises for the words that were shaky.
 - You can pass any card without answering: tap *Geç*, swipe down or press the down arrow. Nothing is saved. The card comes back once at the end of the round, and if you pass it again it just stays due for next time.
 - **Exercises** (*Egzersiz yap*) have their own button and never change the schedule. You fill the word into its sentence (with the Turkish shown while the word is new), complete one of its phrases ("___ your options"), type it from its Turkish meanings, fill it into your own sentence, or recognise it by ear. Which one you get depends on how well you know the word. A missed exercise comes back once.
 - Typed answers are marked fairly. The right word in a different form ("commit" instead of "committed") gets nearly full marks, a small typo counts as hard, using a hint lowers the mark, and you can overrule a wrong mark once if your answer was actually fine.
@@ -93,15 +96,17 @@ It's a web app made for the phone (you can install it like a regular app), built
 
 ### Scheduling
 
-Each card stores `repetitions`, `interval` (in days) and `ease_factor` (starting at 2.5). A grade below 3 resets the card and shows it again ten minutes later. A grade of 3 or more schedules the first success for tomorrow, the second for six days later, and each one after that for the previous interval times the ease factor. The ease factor moves with your grades and never goes below 1.3. Due dates are `timestamptz` values set to the learner's local midnight (`LEARNER_TIMEZONE`, default `Europe/Istanbul`), so "tomorrow" means tomorrow no matter what time you studied. Every graded review is also written to `review_log`, which feeds the weekly numbers. See [`backend/src/services/srs.service.ts`](backend/src/services/srs.service.ts) and its tests.
+Each card stores `repetitions`, `interval` (in days) and `ease_factor` (starting at 2.5). The learner's own words use a gentle policy: a word that is known comes back after 1, 3 and 7 days, and after that the interval grows by the ease factor. *Zorlandım* keeps the word on its step and stretches the gap only a little. A miss brings it back the next day; it counts as a lapse only once the word had already held across days, and never on a Turkish-to-English card. The course keeps classic SM-2 (1 day, 6 days, then times the ease), and setting `SRS_POLICY_PERSONAL=classic` puts the own words back on it. The learner's day runs from 04:00 to 04:00 in `LEARNER_TIMEZONE` (default `Europe/Istanbul`), so a session after midnight still belongs to the evening before, and cards fall due at 04:00. See [`backend/src/services/srs.service.ts`](backend/src/services/srs.service.ts) and its tests.
+
+The daily plan ([`backend/src/services/daily.service.ts`](backend/src/services/daily.service.ts)) decides which new words come today: at most three a day across the learner's own words and the course together, the day each word was first written kept in `cards.introduced_on`, and a 409 from the review endpoint if a stale client tries a fourth. Every answer lands in `review_log`: the ones that move the schedule with `scheduled = true`, practice answers (learning steps, repeats, exercises) with `scheduled = false`, each with its phase, direction and think time. The weekly numbers count only the scheduled ones.
 
 ### Practice
 
-[`web/src/lib/practice.ts`](web/src/lib/practice.ts) builds both kinds of practice. A round of cards is planned when it starts (one familiar word to warm up, new words introduced in threes and asked again a few cards later, then the rest in the order they became due) and grows as missed cards are added back. A round of exercises takes up to twelve words, the ones already met first, and picks each word's exercise from its stage ([`lib/memory.ts`](web/src/lib/memory.ts)) and what the card has: sentences, phrases, your own sentence, and whether sound is on. Exercises are never sent to the schedule. Answer marking lives in the same file: normalising, other forms of the word, typos measured as an edit distance, and hints. All of it is covered by tests.
+[`web/src/lib/practice.ts`](web/src/lib/practice.ts) builds both kinds of practice. A round of cards is planned when it starts: one familiar word to warm up, the day's new words met one after another, then each new word's three learning steps placed with at least three and five other cards in between (reviews first, spare cards as fillers), and the Turkish-to-English steps at the end. [`lib/learning.ts`](web/src/lib/learning.ts) follows each new word through the round and writes it to the schedule once, at its second correct answer; a miss brings a supported retry. [`lib/senses.ts`](web/src/lib/senses.ts) decides which meanings a card shows. A round of exercises takes up to twelve words, the ones already met first, and picks each word's exercise from its stage ([`lib/memory.ts`](web/src/lib/memory.ts)) and what the card has: sentences, phrases, your own sentence, and whether sound is on. Exercises are never sent to the schedule. Answer marking lives in the same file: normalising, other forms of the word, typos measured as an edit distance, and hints. All of it is covered by tests.
 
 ### Cards
 
-A personal card holds `senses[]` (part of speech, meaning, a plain-English `definition`, pattern, an example with its Turkish, and more `examples[]`), `collocations[]`, `related[]`, `watch_out` (written as "✗ wrong → ✓ right. Why…" and split for display by [`lib/watchOut.ts`](web/src/lib/watchOut.ts)), the learner's `my_sentence`, a `tint` (the word's colour) and `lapses` (how many reviews it was missed in). Search, filters, sorting and grouping for the word list are in [`lib/wordBrowser.ts`](web/src/lib/wordBrowser.ts), with tests.
+A personal card holds `senses[]` (part of speech, meaning, a short `gloss` for the card face, a `tier` saying when it is taught, a plain-English `definition`, pattern, an example with its Turkish, and more `examples[]`), `collocations[]`, `related[]`, `watch_out` (written as "✗ wrong → ✓ right. Why…" and split for display by [`lib/watchOut.ts`](web/src/lib/watchOut.ts)), the learner's `my_sentence`, a `tint` (the word's colour) and `lapses` (how many reviews it was missed in). Search, filters, sorting and grouping for the word list are in [`lib/wordBrowser.ts`](web/src/lib/wordBrowser.ts), with tests.
 
 ### Grammar
 
@@ -158,7 +163,7 @@ All routes are under `/api/v1`. Everything except `auth/*` and `push/run` needs 
 |---|---|
 | Auth | `POST auth/register`, `POST auth/login` |
 | Decks | `GET decks`, `POST decks`, `POST decks/personal`, `PUT decks/:id`, `DELETE decks/:id`, `GET decks/:id/stats` |
-| Cards | `GET decks/:id/cards`, `GET decks/:id/cards/due`, `POST decks/:id/cards`, `POST decks/:id/cards/suggest`, `PUT decks/:id/cards/:cardId`, `DELETE decks/:id/cards/:cardId`, `POST decks/:id/cards/:cardId/review` (`{ quality, kind? }`) |
+| Cards | `GET decks/:id/cards`, `GET decks/:id/cards/due` (own words: `{ cards, plan }`), `GET decks/:id/plan`, `POST decks/:id/cards`, `POST decks/:id/cards/suggest`, `PUT decks/:id/cards/:cardId`, `DELETE decks/:id/cards/:cardId`, `POST decks/:id/cards/:cardId/review` (`{ quality, kind?, phase?, direction?, thinkMs? }`, 409 past the day's three new words), `POST decks/:id/cards/:cardId/practice` (logs an answer that doesn't touch the schedule) |
 | Course | `GET decks/:id/units`, `POST decks/:id/units/:unitId/result`, `POST decks/:id/placement` |
 | Streak | `GET streak`, `POST streak` |
 | Grammar | `GET grammar/progress`, `POST grammar/progress` (`{ topic, score }`, keeps the best score and counts the attempt) |
@@ -176,14 +181,14 @@ flashcards/
 │       ├── controllers/           auth, deck, card, unit, streak, push, suggest, grammar
 │       ├── routes/                one router per controller
 │       ├── middleware/            bearer token check
-│       └── services/              SM-2 (srs.service.ts) and its tests
+│       └── services/              scheduling (srs), the learner day (day), the daily plan (daily), stats, all with tests
 ├── web/
 │   ├── public/sounds/             the right and wrong answer sounds
 │   └── src/
 │       ├── pages/                 Kartlar (home), Kelimelerim, WordPage, Flashcards (practice), GrammarHub, GrammarTopic, GrammarQuiz, Kurs, Study, UnitTest, Grammar (course notes), Dialogue, Placement, auth
 │       ├── components/            Cover, StrengthBars, WordList, WordCardBack, MeaningText, Rich, Mascot, TontonLine, TontonPopups, Sheet, LearningPath, …
 │       ├── content/grammar/       the 21 topics: catalog, one file per level, and the content test
-│       ├── lib/                   practice, memory, wordBrowser, grammarQuiz, rich, watchOut (all tested), palette, tint, sound, tonton, tontonDirector, …
+│       ├── lib/                   practice, learning, senses, memory, day, plan, wordBrowser, grammarQuiz, rich, watchOut (all tested), palette, tint, sound, tonton, tontonDirector, …
 │       ├── sw.ts                  service worker: precache and push handlers
 │       └── index.css              design tokens, animations, utilities
 ├── docs/screenshots/

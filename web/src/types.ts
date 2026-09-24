@@ -19,6 +19,14 @@ export type Sense = {
   definition?: string | null;
   /** More sentences for this sense, each with its Turkish. */
   examples?: { en: string; tr?: string | null }[] | null;
+  /**
+   * How soon the sense is taught (lib/senses.ts): 1 is the core meaning the
+   * cards ask from day one, 2 joins once the word holds, 3 stays on the
+   * word's page. Unset on older cards: the first sense is 1, the rest 2.
+   */
+  tier?: 1 | 2 | 3;
+  /** The short Turkish the card's face shows ("(yapmayı) düşünmek"); the meaning, bare, when unset. */
+  gloss?: string;
 };
 
 export type RelatedWord = { word: string; pos?: string | null; meaning: string };
@@ -45,8 +53,8 @@ export type Card = {
   related?: RelatedWord[] | null;
   /** The one mistake to avoid with this word. */
   watch_out?: string | null;
-  /** Chunks the word lives in: "take sth into consideration". */
-  collocations?: { en: string; tr: string }[] | null;
+  /** Chunks the word lives in: "take sth into consideration", each tied to the sense it belongs to (an index into senses). */
+  collocations?: { en: string; tr: string; sense?: number }[] | null;
   /** The word's own colour ("#c4713f"); lib/tint.ts fills in when null. */
   tint?: string | null;
   /** A sentence the learner wrote with the word; later reviews blank the word out of it. */
@@ -62,6 +70,8 @@ export type Card = {
   lapses?: number;
   /** When it was last graded; null until the first review. */
   reviewed_at?: string | null;
+  /** The learner day ('YYYY-MM-DD') the word was first written to the schedule; null until then. */
+  introduced_on?: string | null;
   due_date: string;
   created_at: string;
 };

@@ -1,15 +1,14 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "./api";
+import { learnerDay } from "./day";
 
 type StreakResponse = { streak: number; lastStudyDate: string | null };
 
-/** Today where the learner actually is — the server runs on UTC. */
-function localDate(): string {
-  const now = new Date();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  return `${now.getFullYear()}-${month}-${day}`;
-}
+/**
+ * Today where the learner actually is — the server runs on UTC — and on
+ * the learner's day: a round finished at 00:30 counts for the evening before.
+ */
+const localDate = (): string => learnerDay();
 
 export function useStreak() {
   return useQuery({
@@ -19,7 +18,7 @@ export function useStreak() {
   });
 }
 
-/** Call once a study session actually happens, to extend the run. */
+/** Call once a round is actually finished, to extend the run. */
 export function useRecordStudyDay() {
   const queryClient = useQueryClient();
   return useMutation({

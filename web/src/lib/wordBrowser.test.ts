@@ -28,7 +28,7 @@ const achieve = makeCard({
   created_at: at(-1, 10),
 });
 const trend = makeCard({ id: 3, front: "trend", back: "(noun) eğilim", repetitions: 0, interval: 0, due_date: at(-1, 0), created_at: at(0, 8) });
-const approach = makeCard({ id: 4, front: "approach", back: "(verb) yaklaşmak", repetitions: 2, interval: 6, lapses: 3, due_date: at(1, 0), created_at: at(-30, 8) });
+const approach = makeCard({ id: 4, front: "approach", back: "(verb) yaklaşmak", repetitions: 2, interval: 6, lapses: 3, due_date: at(1, 4), created_at: at(-30, 8) });
 const cards = [concern, achieve, trend, approach];
 
 describe("fold / matches", () => {
@@ -66,7 +66,11 @@ describe("coreMeaning", () => {
 
 describe("filters and order", () => {
   it("counts every filter at once", () => {
-    expect(filterCounts(cards, NOW)).toEqual({ all: 4, due: 2, new: 1, learning: 1, young: 1, mature: 1, leech: 1 });
+    expect(filterCounts(cards, NOW)).toEqual({ all: 4, due: 1, new: 1, learning: 1, young: 1, mature: 1, leech: 1 });
+  });
+
+  it("counts only words already met as due: the queue waits for the day's plan", () => {
+    expect(browse(cards, { query: "", filter: "due", sort: "az", now: NOW }).map((c) => c.front)).toEqual(["concern"]);
   });
 
   it("sorts A–Z and newest first", () => {
@@ -75,16 +79,17 @@ describe("filters and order", () => {
   });
 
   it("searches inside a filter", () => {
-    expect(browse(cards, { query: "e", filter: "due", sort: "az", now: NOW }).map((c) => c.front)).toEqual(["concern", "trend"]);
+    expect(browse(cards, { query: "e", filter: "all", sort: "az", now: NOW }).map((c) => c.front)).toEqual(["achieve", "concern", "trend"]);
     expect(browse(cards, { query: "yaklaş", filter: "all", sort: "az", now: NOW }).map((c) => c.front)).toEqual(["approach"]);
   });
 });
 
 describe("groupCards", () => {
-  it("heads a list in schedule order by when the words come back", () => {
-    const groups = groupCards([concern, trend, approach, achieve], "next", NOW);
+  it("heads a list in schedule order by when the words come back, the queue after the waiting ones", () => {
+    const groups = groupCards(sortCards(cards, "next", NOW), "next", NOW);
     expect(groups.map((g) => [g.label, g.cards.map((c) => c.front)])).toEqual([
-      ["Şimdi sırada", ["concern", "trend"]],
+      ["Şimdi sırada", ["concern"]],
+      ["Tanışmayı bekleyenler", ["trend"]],
       ["Yarın", ["approach"]],
       ["Bu ay", ["achieve"]],
     ]);

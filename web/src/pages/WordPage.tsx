@@ -46,7 +46,7 @@ function tontonLine(card: Card): string {
   if (isLeech(card)) return `"${card.front}" seninle inatlaşıyor. Sesli oku, bir cümle kur, sonra "Bu kelimeyi çalış"a bas; bu sefer kalır.`;
   if (!card.my_sentence) return `"${card.front}" ile kendi hayatından bir cümle yaz. Benim bütün örneklerimden daha iyi hatırlatır.`;
   if (senses > 1 && chunks > 0) return `${senses} anlamı, ${chunks} kalıbı var. Önce 1. anlamı oku, sonra kalıpları sesli söyle.`;
-  if (senses > 1) return `${senses} anlamı var ama hepsi aynı kökten. Renklere bak: her anlam kendi rengiyle.`;
+  if (senses > 1) return "Önce büyük yazan anlamı öğren; diğerleri kelime oturunca kartına gelir.";
   return "Örnek cümleyi sesli oku; kelime cümlesinde yaşar.";
 }
 
@@ -179,6 +179,7 @@ function WordPage() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["cards", deckId] });
       queryClient.invalidateQueries({ queryKey: ["dueCards", deckId] });
+      queryClient.invalidateQueries({ queryKey: ["plan", deckId] });
       navigate("/kelimelerim");
     },
   });
@@ -269,13 +270,20 @@ function WordPage() {
               </Fact>
             </div>
 
-            <Link
-              to={`/decks/${deckId}/flashcards?card=${card.id}`}
-              onClick={primeSpeech}
-              className="face mt-4 flex min-h-[56px] w-full items-center justify-center rounded-2xl bg-grass text-[16px] font-black uppercase tracking-[0.08em] text-white shadow-button press-3d focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-grass/40"
-            >
-              Bu kelimeyi çalış
-            </Link>
+            {stage === "new" ? (
+              // Not met yet: the day's round meets it (three a day); drilling it first would skip the meeting.
+              <p className="mt-4 flex min-h-[56px] w-full items-center justify-center rounded-full bg-paper-deep text-[16px] font-black uppercase tracking-[0.08em] text-graphite">
+                Sırası gelince
+              </p>
+            ) : (
+              <Link
+                to={`/decks/${deckId}/flashcards?card=${card.id}`}
+                onClick={primeSpeech}
+                className="face mt-4 flex min-h-[56px] w-full items-center justify-center rounded-2xl bg-grass text-[16px] font-black uppercase tracking-[0.08em] text-white shadow-button press-3d focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-grass/40"
+              >
+                Bu kelimeyi çalış
+              </Link>
+            )}
 
             <TontonLine className="mt-6" size={54}>
               {tontonLine(card)}

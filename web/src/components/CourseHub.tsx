@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import type { Card, Deck, UnitRecord } from "../types";
 import { buildPath, pathStats } from "../lib/path";
+import { lessonOverBudget, useDayBudget } from "../lib/plan";
 import { themeFor } from "../lib/themes";
+import Button from "./Button";
 import LinkButton from "./LinkButton";
 import Skeleton from "./Skeleton";
 
@@ -20,6 +22,9 @@ const KICKER = "text-[11px] font-extrabold uppercase tracking-[0.18em] text-grap
  * the page with the unit's ink down its left edge.
  */
 function CourseHub({ deck, cards, units }: CourseHubProps) {
+  // New words are three a day across the course and the own words alike.
+  const budget = useDayBudget(deck.id).data;
+
   if (!cards || !units) {
     return (
       <section className="rounded-[28px] bg-paper-lift p-5 ring-1 ring-rule shadow-print">
@@ -38,6 +43,7 @@ function CourseHub({ deck, cards, units }: CourseHubProps) {
   const unit = current ?? path.find((u) => u.state !== "passed") ?? path[path.length - 1];
   const theme = themeFor(unit?.index ?? 0);
   const done = unit ? unit.lessons.filter((l) => l.state === "done").length : 0;
+  const waits = lesson ? lessonOverBudget(budget, lesson.cards) : false;
 
   return (
     <section
@@ -91,7 +97,11 @@ function CourseHub({ deck, cards, units }: CourseHubProps) {
       )}
 
       <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-        {lesson ? (
+        {lesson && waits ? (
+          <Button variant="ink" disabled className="text-center">
+            Bugünün {budget?.cap ?? 3} yeni kelimesi tamam · Ders {lesson.number} yarın
+          </Button>
+        ) : lesson ? (
           <LinkButton to={`/decks/${deck.id}/study?lesson=${lesson.number}`} variant="ink">
             {lesson.learned > 0 ? "Derse devam et" : "Derse başla"}
           </LinkButton>

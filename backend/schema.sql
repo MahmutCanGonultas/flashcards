@@ -67,8 +67,13 @@ CREATE TABLE cards(
     lapses INTEGER NOT NULL DEFAULT 0,
     reviewed_at TIMESTAMPTZ,
     due_date TIMESTAMPTZ DEFAULT NOW(),
+    -- The learner day (Istanbul, 04:00 rollover) the word's first answer was
+    -- written to the schedule. Null until then. At most three words a day
+    -- get one, counted over every deck.
+    introduced_on DATE,
     created_at TIMESTAMP DEFAULT NOW()
 );
+CREATE INDEX cards_deck_introduced ON cards (deck_id, introduced_on);
 -- A unit is one themed stretch of a deck's path: a handful of lessons, a
 -- dialogue that puts their words to work, and a test that gates the next
 -- unit. Cards point at their unit; the path is drawn from that.
@@ -107,16 +112,25 @@ CREATE TABLE unit_results(
     taken_at TIMESTAMP DEFAULT NOW()
 );
 
--- Every graded review, for the learner's weekly numbers ("how much did I
+-- Every answer, for the learner's weekly numbers ("how much did I
 -- remember"). The card's own columns hold the schedule; this is history.
 CREATE TABLE review_log (
     id SERIAL PRIMARY KEY,
     card_id INTEGER NOT NULL REFERENCES cards(id) ON DELETE CASCADE,
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     quality SMALLINT NOT NULL,
-    -- Which exercise asked: recall, listen, produce, cloze, chunk, own; null
-    -- for the course's screens.
+    -- Which exercise asked: recall, reverse, listen, produce, cloze, chunk,
+    -- own; null for the course's screens.
     kind VARCHAR(20),
+    -- True for a graded review that moved the card's schedule; false for
+    -- practice that never touched it (learning steps, repeats, exercises).
+    scheduled BOOLEAN NOT NULL DEFAULT TRUE,
+    -- How it was asked: 'learn' or 'review' when scheduled; 'learn-step',
+    -- 'relearn', 'filler', 'practice', 'exercise' or 'drill' when not.
+    phase VARCHAR(12),
+    -- 'fwd' (English to Turkish) or 'rev', and the milliseconds before the flip.
+    direction VARCHAR(3),
+    think_ms INTEGER,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 CREATE INDEX review_log_user_time ON review_log (user_id, created_at);

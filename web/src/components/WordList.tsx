@@ -7,8 +7,8 @@ import { STAGE_LABEL, isLeech, nextReview, stageOf } from "../lib/memory";
 import { STAGE_PILL, TONE_PILL } from "../lib/stageStyle";
 import { tintStyle } from "../lib/tint";
 import { familyAt, familyStyle } from "../lib/palette";
-import { sentencesOf } from "../lib/practice";
-import { coreMeaning, matchRanges } from "../lib/wordBrowser";
+import { anchorOf, coreGloss } from "../lib/senses";
+import { matchRanges } from "../lib/wordBrowser";
 import { primeSpeech } from "../lib/speech";
 import StrengthBars from "./StrengthBars";
 import SpeakButton from "./SpeakButton";
@@ -42,7 +42,7 @@ function meaningsOf(card: Card): string[] {
  */
 function WordPeek({ deckId, card }: { deckId: number | string; card: Card }) {
   const meanings = meaningsOf(card);
-  const sentence = sentencesOf(card)[0] ?? null;
+  const sentence = anchorOf(card);
   const stage = stageOf(card);
   const next = nextReview(card);
   const lapses = card.lapses ?? 0;
@@ -62,7 +62,7 @@ function WordPeek({ deckId, card }: { deckId: number | string; card: Card }) {
       )}
       {sentence && (
         <div className="mb-3">
-          <ExampleBubble en={sentence.en} tr={sentence.tr} headword={card.front} meaning={meanings[0] ?? ""} size="sm" />
+          <ExampleBubble en={sentence.en} tr={sentence.tr} headword={card.front} meaning={sentence.gloss} size="sm" />
         </div>
       )}
       <div className="flex flex-wrap items-center gap-1.5 text-[12px] font-black">
@@ -75,13 +75,18 @@ function WordPeek({ deckId, card }: { deckId: number | string; card: Card }) {
       </div>
       <div className="mt-3 flex items-center gap-2">
         <SpeakButton text={card.front} size="sm" />
-        <Link
-          to={`/decks/${deckId}/flashcards?card=${card.id}`}
-          onClick={primeSpeech}
-          className="flex min-h-10 items-center rounded-xl bg-grass px-3.5 text-[12px] font-black uppercase tracking-[0.08em] text-white shadow-button press-3d face"
-        >
-          Çalış
-        </Link>
+        {stage === "new" ? (
+          // Not met yet: it is met on the day's round, three a day, not drilled ahead of it.
+          <span className="flex min-h-10 items-center rounded-full bg-paper-deep px-3.5 text-[12px] font-black uppercase tracking-[0.08em] text-graphite">Sırası gelince</span>
+        ) : (
+          <Link
+            to={`/decks/${deckId}/flashcards?card=${card.id}`}
+            onClick={primeSpeech}
+            className="flex min-h-10 items-center rounded-xl bg-grass px-3.5 text-[12px] font-black uppercase tracking-[0.08em] text-white shadow-button press-3d face"
+          >
+            Çalış
+          </Link>
+        )}
         <Link
           to={`/decks/${deckId}/words/${card.id}`}
           viewTransition
@@ -101,11 +106,11 @@ function WordPeek({ deckId, card }: { deckId: number | string; card: Card }) {
 export function WordRow({ deckId, card, mark = (t) => t, query = "" }: { deckId: number | string; card: Card; mark?: (text: string) => ReactNode; query?: string }) {
   const [open, setOpen] = useState(false);
   const meanings = meaningsOf(card);
-  // Searching shows the meaning that matched, whole; otherwise the first, bare.
+  // Searching shows the meaning that matched, whole; otherwise the core one, as the cards show it.
   const matched = query.trim() ? meanings.find((m) => matchRanges(m, query).length > 0) : undefined;
   const more = meanings.length - 1;
   // Opened, the numbered list below says it all; a single meaning shows here with its note.
-  const shown = open ? (more > 0 ? null : meanings[0]) : (matched ?? coreMeaning(meanings[0]));
+  const shown = open ? (more > 0 ? null : meanings[0]) : (matched ?? coreGloss(card));
   return (
     <div style={tintStyle(card)}>
       <button

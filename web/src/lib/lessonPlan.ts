@@ -160,13 +160,15 @@ export function buildLessonPlan(
  * Reviews and practice. A card that somehow reaches a review without ever
  * having been taught — "+ Add card" creates one that is unstarted and
  * immediately due — gets its meet screen inline, right before its own
- * question, rather than restructuring the session around an accident.
+ * question, rather than restructuring the session around an accident. A
+ * word of the path never does: it is met in its lesson, which the day's
+ * three new words gate, so a review round leaves it out.
  *
  * Reviews rotate their format so a word isn't always met from the same side:
  * mostly meaning, every third time the reverse, every fourth by ear.
  */
 export function buildReviewPlan(cards: Card[]): Step[] {
-  return cards.flatMap((card, index) => {
+  return cards.filter((card) => hasStarted(card) || card.lesson === null).flatMap((card, index) => {
     const format: QuizFormat =
       card.repetitions >= 2 && index % 4 === 3
         ? "listen"

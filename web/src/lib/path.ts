@@ -14,7 +14,7 @@ export type Lesson = {
   state: LessonState;
   /** Words in this lesson that have been studied at least once. */
   learned: number;
-  /** Words in this lesson currently due for review. */
+  /** Words in this lesson already met and due for review now. */
   due: number;
 };
 
@@ -45,6 +45,12 @@ export type Unit = {
 export const hasStarted = (card: Card): boolean => card.repetitions > 0 || card.interval > 0;
 
 export const isDue = (card: Card): boolean => new Date(card.due_date).getTime() <= Date.now();
+
+/**
+ * A word met and waiting for its review. A word the path hasn't reached has
+ * no review yet, whatever its date says: it is met in its lesson.
+ */
+export const isDueReview = (card: Card): boolean => hasStarted(card) && isDue(card);
 
 export type WordTier = "new" | "learning" | "known";
 
@@ -166,7 +172,7 @@ export function buildPath(cards: Card[], units: UnitRecord[] = []): Unit[] {
           cards: lessonCards,
           state,
           learned,
-          due: lessonCards.filter(isDue).length,
+          due: lessonCards.filter(isDueReview).length,
         };
       });
 
@@ -215,7 +221,7 @@ export function pathStats(units: Unit[]): PathStats {
     wordsKnown: cards.filter((card) => wordTier(card) === "known").length,
     wordsLearning: cards.filter((card) => wordTier(card) === "learning").length,
     totalWords: cards.length,
-    dueNow: cards.filter(isDue).length,
+    dueNow: cards.filter(isDueReview).length,
     testReady:
       units.find((u) => u.id !== null && u.state === "open" && u.lessonsDone) ?? null,
   };

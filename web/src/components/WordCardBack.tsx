@@ -1,12 +1,14 @@
+import { useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import type { Card, Sense } from "../types";
 import { parseBack, posLabel } from "../lib/cardBack";
+import { tierOf } from "../lib/senses";
 import { locateTurkish, splitOnWord } from "../lib/sentence";
 import { parseWatchOut } from "../lib/watchOut";
 import { familyAt, familyStyle, posFamily, type Family } from "../lib/palette";
 import SpeakButton from "./SpeakButton";
 import Mascot from "./Mascot";
-import { AlertIcon, FamilyIcon, LinkIcon, QuoteIcon } from "./icons";
+import { AlertIcon, ChevronDownIcon, FamilyIcon, LinkIcon, QuoteIcon } from "./icons";
 import MeaningText from "./MeaningText";
 
 type WordCardBackProps = {
@@ -199,9 +201,11 @@ export function TrapCard({ text }: { text: string }) {
  * The dictionary entry, in colour: every sense its own card in its own
  * colour, its sentences as soft bubbles with the word lit up and the
  * Turkish in a second voice; then the chunks the word lives in, its
- * family, and the one trap.
+ * family, and the one trap. The senses the cards never ask (tier 3) wait
+ * folded under "Diğer anlamlar", so the ones being learned lead.
  */
 function WordCardBack({ card, variant = "full" }: WordCardBackProps) {
+  const [othersOpen, setOthersOpen] = useState(false);
   const { text: meaning, pos } = parseBack(card.back);
   const senses: Sense[] =
     card.senses && card.senses.length > 0
@@ -232,15 +236,39 @@ function WordCardBack({ card, variant = "full" }: WordCardBackProps) {
     );
   }
 
+  const numbered = senses.map((sense, i) => ({ sense, i }));
+  const taught = numbered.filter(({ sense, i }) => tierOf(sense, i) < 3);
+  const others = numbered.filter(({ sense, i }) => tierOf(sense, i) === 3);
+
   return (
     <div className="space-y-7">
       <section>
         <SectionHead icon={<QuoteIcon className="h-5 w-5" />} family="ocean" title="Anlamlar" count={senses.length} />
         <ol className="mt-3 space-y-3.5">
-          {senses.map((sense, i) => (
+          {taught.map(({ sense, i }) => (
             <SenseCard key={i} sense={sense} index={i} headword={card.front} showPos={mixedTypes || i === 0} />
           ))}
         </ol>
+        {others.length > 0 && (
+          <>
+            <button
+              type="button"
+              aria-expanded={othersOpen}
+              onClick={() => setOthersOpen((open) => !open)}
+              className="mt-3.5 flex min-h-10 items-center gap-1.5 rounded-xl border-2 border-rule bg-white px-3.5 text-[12px] font-black uppercase tracking-[0.08em] text-ocean-ink shadow-edge press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/30"
+            >
+              Diğer anlamlar · {others.length}
+              <ChevronDownIcon className={`h-4 w-4 transition-transform duration-200 ${othersOpen ? "rotate-180" : ""}`} />
+            </button>
+            {othersOpen && (
+              <ol className="mt-3.5 space-y-3.5">
+                {others.map(({ sense, i }) => (
+                  <SenseCard key={i} sense={sense} index={i} headword={card.front} showPos={mixedTypes} />
+                ))}
+              </ol>
+            )}
+          </>
+        )}
       </section>
 
       {card.collocations && card.collocations.length > 0 && (
