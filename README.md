@@ -5,27 +5,27 @@ An English vocabulary app for Turkish speakers. You add the words you come acros
 It's a web app made for the phone (you can install it like a regular app), built around a short daily session: a few new words a day and about fifteen minutes of practice.
 
 <p align="center">
-  <img src="docs/screenshots/home-and-meet.png" alt="The home page, meeting a new word, and the back of a card" width="900">
-  <br><sub>The home page, a new word being introduced, and the back of a card.</sub>
+  <img src="docs/screenshots/home-and-meet.png" alt="The home page with its two buttons, meeting a new word, and the back of a card" width="900">
+  <br><sub>The home page, a new word being introduced on the cards, and the back of a card.</sub>
 </p>
 
 ## Features
 
-### Practice that changes as you learn a word
+### Cards and exercises, kept apart
 
+- **Cards** (*Tekrar et*) are plain flashcards, and they are the only thing that changes the schedule. A new word is introduced first: you see it in a sentence, guess what it means, then check, and it's asked a few cards later. Every other word is the word on the front and its meaning on the back. Flip it and grade yourself: swipe right for *Bildim* (knew it), left for *Bilemedim* (didn't), up for *Zorlandım* (hard). When nothing is due you can still go through your cards; only the due ones count.
 - Every word has a stage you can see: *Yeni* (new), *Öğreniyor* (learning), *Pekişiyor* (getting there), *Kalıcı* (learned). Stages show up as signal bars on cards and word pages.
-- A new word is introduced before you're tested on it. You see it in a sentence, guess what it means, then check. It comes back a few cards later.
-- While you're learning a word, you recognise it: look at the word, think of the Turkish, flip the card and grade yourself. Swipe right for *Bildim* (knew it), left for *Bilemedim* (didn't), up for *Zorlandım* (hard). Once you've got it, it comes back as a gap in its own sentence, with the Turkish shown.
-- When a word starts to stick, you have to produce it: type it from its Turkish meanings, fill it into its sentence, complete one of its phrases ("___ a crime"), and later fill it into a sentence you wrote yourself. Now and then you only hear it and have to remember what it means.
-- Typed answers are marked fairly. The right word in a different form ("commit" instead of "committed") gets nearly full marks, a small typo counts as hard, using a hint lowers the mark, and you can overrule a wrong mark once if your answer was actually fine.
-- A missed word comes back three cards later with more help. Only your first answer in a session changes the schedule. A word you miss three times is marked *inatçı* (stubborn) and gets extra support.
+- A missed card comes back three cards later with its sentence, until you get it. Only your first answer in a session changes the schedule. A word you miss three times is marked *inatçı* (stubborn).
 - You can pass any card without answering: tap *Geç*, swipe down or press the down arrow. Nothing is saved. The card comes back once at the end of the round, and if you pass it again it just stays due for next time.
-- The first time you get a word right, you're asked to write your own sentence with it. Later reviews blank the word out of that sentence.
+- **Exercises** (*Egzersiz yap*) have their own button and never change the schedule. You fill the word into its sentence (with the Turkish shown while the word is new), complete one of its phrases ("___ your options"), type it from its Turkish meanings, fill it into your own sentence, or recognise it by ear. Which one you get depends on how well you know the word. A missed exercise comes back once.
+- Typed answers are marked fairly. The right word in a different form ("commit" instead of "committed") gets nearly full marks, a small typo counts as hard, using a hint lowers the mark, and you can overrule a wrong mark once if your answer was actually fine.
+- After a right answer, an exercise round asks you once to write your own sentence with the word. Later exercises blank the word out of it.
+- Example sentences only use grammar from the learner's own list (the present simple and continuous, *will* / *going to*, imperatives, *there is / there are* and so on), so a new word never comes wrapped in grammar that hasn't been covered yet.
 - A right answer plays a short chime that goes up a little with each right answer in a row. A miss plays a soft, low tone instead of a buzzer.
 
 <p align="center">
-  <img src="docs/screenshots/production.png" alt="Typing a word from its Turkish meanings, a small typo marked in orange, and completing a phrase" width="900">
-  <br><sub>Typing the word from its meanings, a typo marked "almost", and completing a phrase.</sub>
+  <img src="docs/screenshots/production.png" alt="Exercises: filling a gap in a sentence, typing a word from its Turkish meanings, and completing a phrase" width="900">
+  <br><sub>Exercises: filling a gap, typing the word from its meanings, and completing a phrase.</sub>
 </p>
 
 ### Your word list
@@ -73,8 +73,8 @@ It's a web app made for the phone (you can install it like a regular app), built
 - The course has 60 units from A1 to C1 (about 900 words), each with lessons, a short dialogue, a grammar note with a mini quiz, and a unit test. A placement test starts you at the right level.
 
 <p align="center">
-  <img src="docs/screenshots/progress-and-course.png" alt="Writing your own sentence, the end of a session, and the course" width="900">
-  <br><sub>Writing your own sentence, the end of a session, and the course.</sub>
+  <img src="docs/screenshots/progress-and-course.png" alt="Writing your own sentence, the end of a round of cards, and the course" width="900">
+  <br><sub>Writing your own sentence, the end of a round of cards, and the course.</sub>
 </p>
 
 ### Made for the phone
@@ -97,7 +97,7 @@ Each card stores `repetitions`, `interval` (in days) and `ease_factor` (starting
 
 ### Practice
 
-[`web/src/lib/practice.ts`](web/src/lib/practice.ts) decides how each word is asked today, based on its stage ([`lib/memory.ts`](web/src/lib/memory.ts)) and what the card has: sentences, phrases, your own sentence, and whether sound is on. The choice rotates by day, so a word isn't always asked the same way. A session is planned when it starts (one familiar word to warm up, new words introduced in threes and asked again a few cards later, then the rest in the order they became due) and grows as missed words are added back. Answer marking lives in the same file: normalising, other forms of the word, typos measured as an edit distance, and hints. Both are covered by tests.
+[`web/src/lib/practice.ts`](web/src/lib/practice.ts) builds both kinds of practice. A round of cards is planned when it starts (one familiar word to warm up, new words introduced in threes and asked again a few cards later, then the rest in the order they became due) and grows as missed cards are added back. A round of exercises takes up to twelve words, the ones already met first, and picks each word's exercise from its stage ([`lib/memory.ts`](web/src/lib/memory.ts)) and what the card has: sentences, phrases, your own sentence, and whether sound is on. Exercises are never sent to the schedule. Answer marking lives in the same file: normalising, other forms of the word, typos measured as an edit distance, and hints. All of it is covered by tests.
 
 ### Cards
 
@@ -141,7 +141,7 @@ npm install
 npm run dev                   # http://localhost:5173
 ```
 
-Optional API settings: `LEARNER_TIMEZONE` (default `Europe/Istanbul`) and `ANTHROPIC_API_KEY`, which turns on auto-filling a new card's meanings and examples. Without the key, that one endpoint returns 503 and everything else works.
+Optional API settings: `LEARNER_TIMEZONE` (default `Europe/Istanbul`) and `ANTHROPIC_API_KEY`, which turns on auto-filling a new card's meanings and examples (kept within the learner's grammar, `LEARNER_GRAMMAR` in `suggest.controller.ts`). Without the key, that one endpoint returns 503 and everything else works.
 
 Checks:
 

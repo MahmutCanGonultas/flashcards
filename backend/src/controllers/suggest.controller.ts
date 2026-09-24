@@ -15,6 +15,25 @@ const suggestSchema = z.object({
 
 const MODEL = "claude-haiku-4-5-20251001";
 
+/**
+ * The grammar the learner has covered so far (their own list, the app's
+ * grammar section). Example sentences stay inside it, so a new word never
+ * arrives wrapped in structures they haven't met. Widen it as topics are
+ * learned.
+ */
+export const LEARNER_GRAMMAR = `Write every English sentence ONLY with grammar the learner already knows:
+- to be (am / is / are), have got / has got, possessive 's and of, my / your / his / her / its / our / their
+- the present simple, with always / usually / often / sometimes / never, and do / does in questions and negatives
+- the present continuous (am / is / are + -ing)
+- the future with will and going to
+- imperatives (Do it. / Don't do it.)
+- there is / there are, a / an / the, countable and uncountable nouns
+- some, any, many, much, a lot of, a few, a little, too
+- like / love / hate / enjoy + -ing
+- wh- questions, numbers, ordinals, and the prepositions to / by / from
+- linking words: and, but, or, so, because
+Never use: a past tense (was, were, did, -ed past forms), the present perfect, can / could / should / must / would / may / might, if-clauses, when / before / after clauses, relative clauses (who / which / that), the passive, comparatives or superlatives, or verb + to-infinitive (want to, need to, try to). Keep each sentence short (6 to 12 words), everyday and around A2: neither babyish nor hard.`;
+
 const RESULT_SHAPE = `{
   "front": "the English headword, corrected spelling/casing (lowercase unless a proper noun)",
   "meaning_tr": "the most natural everyday Turkish meaning, comma-separated if two common senses, max 30 chars",
@@ -37,6 +56,7 @@ export const suggestCard = async (req: Request, res: Response) => {
   const prompt = `You are the content writer for Kelimece, an English course for Turkish speakers. The learner wants a flashcard for the English word or phrase: "${word}".${note ? ` Their own note about it: "${note}". Respect what they mean by it.` : ""}
 Return ONLY a JSON object with exactly these fields (no prose, no code fences):
 ${RESULT_SHAPE}
+${LEARNER_GRAMMAR}
 Use proper Turkish characters (ı İ ş ğ ü ö ç). Sentences must be everyday, concrete, warm.`;
 
   const response = await fetch("https://api.anthropic.com/v1/messages", {

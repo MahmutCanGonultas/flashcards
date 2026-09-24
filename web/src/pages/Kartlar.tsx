@@ -9,7 +9,7 @@ import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
 import StrengthBars from "../components/StrengthBars";
 import WordList from "../components/WordList";
-import { BookIcon, CardsIcon, CheckIcon, PlusIcon, StarIcon } from "../components/icons";
+import { BookIcon, CardsIcon, CheckIcon, PencilIcon, PlusIcon, StarIcon } from "../components/icons";
 import { useDeckStats, usePersonalCards, usePersonalDeck } from "../lib/personal";
 import { useGrammarProgress, starsFor } from "../lib/grammar";
 import { CATALOG } from "../content/grammar/catalog";
@@ -199,9 +199,10 @@ function Memory({ cards, stats }: { cards: Card[]; stats: { reviews: number; rem
 
 /**
  * Kartlarım — the front page of the learner's own words: the week, a
- * headline saying what's waiting, the next covers, one green button, the
- * way into the word list and grammar, Tonton, the memory at a glance and
- * the words added last.
+ * headline saying what's waiting, the next covers, the green button for the
+ * cards and a white one for the exercises (kept apart on purpose), the way
+ * into the word list and grammar, Tonton, the memory at a glance and the
+ * words added last.
  */
 function Kartlar() {
   const [isAddOpen, setIsAddOpen] = useState(false);
@@ -257,24 +258,38 @@ function Kartlar() {
               ? "İlk kelimeni ekle; ne zaman soracağımı ben ayarlarım."
               : due > 0
                 ? fresh > 0
-                  ? `${fresh} yeni kelimeyle tanışacaksın, ${due - fresh} kelimeyi hatırlayacaksın.`
+                  ? due > fresh
+                    ? `${fresh} yeni kelimeyle tanışacaksın, ${due - fresh} kelimeyi hatırlayacaksın.`
+                    : `${fresh} yeni kelimeyle tanışacaksın.`
                   : "Ne kadar iyi bilirsen o kadar seyrek gelir; zorlandıkların sık."
-                : "Sıradakiler takvimde. İstersen serbest alıştırma yap; takvim değişmez."}
+                : "Sıradakiler takvimde. İstersen kartlara yine bak ya da egzersiz yap; takvim değişmez."}
         </p>
 
         {cards && total > 0 && <Covers cards={cards} animate={animate} />}
 
         <div className={`mt-5 ${rise}`} style={at(300)}>
           {deck && total > 0 ? (
-            <Link
-              to={`/decks/${deck.id}/flashcards${due > 0 ? "" : "?mode=all"}`}
-              onClick={primeSpeech}
-              className={`face flex min-h-[58px] w-full items-center justify-center rounded-2xl text-[16px] font-black uppercase tracking-[0.08em] text-white shadow-button press-3d focus-visible:outline-none focus-visible:ring-4 ${
-                due > 0 ? "bg-grass focus-visible:ring-grass/40" : "bg-ocean focus-visible:ring-ocean/40"
-              }`}
-            >
-              {due > 0 ? `Tekrar et · ${due}` : "Serbest alıştırma"}
-            </Link>
+            <div className="space-y-2.5">
+              {/* The cards: word on the front, meaning on the back. Only these move the schedule. */}
+              <Link
+                to={`/decks/${deck.id}/flashcards${due > 0 ? "" : "?mode=all"}`}
+                onClick={primeSpeech}
+                className={`face flex min-h-[58px] w-full items-center justify-center rounded-2xl text-[16px] font-black uppercase tracking-[0.08em] text-white shadow-button press-3d focus-visible:outline-none focus-visible:ring-4 ${
+                  due > 0 ? "bg-grass focus-visible:ring-grass/40" : "bg-ocean focus-visible:ring-ocean/40"
+                }`}
+              >
+                {due > 0 ? `Tekrar et · ${due}` : "Kartları çalış"}
+              </Link>
+              {/* The exercises, on their own: gaps, phrases, typing, listening. */}
+              <Link
+                to={`/decks/${deck.id}/flashcards?mode=exercises`}
+                onClick={primeSpeech}
+                className="flex min-h-[52px] w-full items-center justify-center gap-2 rounded-2xl border-2 border-rule bg-white text-[15px] font-black uppercase tracking-[0.08em] text-ocean-ink shadow-edge press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/30"
+              >
+                <PencilIcon className="h-5 w-5" />
+                Egzersiz yap
+              </Link>
+            </div>
           ) : (
             <button
               type="button"

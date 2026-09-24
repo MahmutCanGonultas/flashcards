@@ -3,25 +3,25 @@ import { isFormOf, splitOnWord } from "./sentence";
 import { isDueAt, stageOf } from "./memory";
 
 /**
- * The practice engine behind "Tekrar et".
+ * The practice engine: the cards ("Tekrar et") and, apart from them, the
+ * exercises ("Egzersiz").
  *
- * Seeing a word and waiting for its meaning to surface is the weakest way to
- * hold it; producing it is the strongest. So a word is asked differently as
- * it grows (stages: memory.ts):
+ * The cards are plain flashcards, and only they move the schedule. A new
+ * word is met first (the word in a sentence, a guess, then the meaning)
+ * and asked a few cards later; every other word is the word on the front
+ * and its meaning on the back, graded by the learner. A miss comes back a
+ * few cards later until it's got; only the first answer of the session is
+ * written to the schedule.
  *
- *   new        meet it — the word in a sentence, guess, then the meaning —
- *              and get asked a few cards later
- *   learning   recognise it: the word → its meaning (flip, graded by you);
- *              once recalled on a later day, find it again in a sentence
- *   young      produce it: Turkish → type the English, or type it into its
- *              sentence
- *   mature     keep it: its chunks, your own sentence, by ear, a sentence
- *              without the Turkish
+ * The exercises are where a word gets produced, and they never touch the
+ * schedule: find it in its sentence (the Turkish open while the word is
+ * new), complete one of its phrases, type it from its Turkish, fill it into
+ * the learner's own sentence, or catch it by ear. Which one depends on how
+ * well the word is held (stages: memory.ts), and a miss comes back as the
+ * same question.
  *
  * A typed answer is marked by the app, not by the learner: right (5), the
- * right word in the wrong form (4), a small slip (3), wrong (1). A miss comes
- * back a few cards later until it's got — only the first answer of the
- * session is written to the schedule.
+ * right word in the wrong form (4), a small slip (3), wrong (1).
  */
 
 export type Kind = "meet" | "recall" | "listen" | "produce" | "cloze" | "chunk" | "own" | "write";
@@ -124,9 +124,21 @@ function rotate<T>(options: T[], card: Card, day: number, salt = 0): T {
 
 type Shape = Omit<Exercise, "key" | "cardId" | "graded" | "attempt">;
 
-/** How a started word is asked today. New words are met instead — see buildSession. */
-export function exerciseFor(card: Card, { day, speech, graded }: { day: number; speech: boolean; graded: boolean }): Exercise {
-  const base = { key: `${card.id}:0`, cardId: card.id, graded, attempt: 0 };
+/**
+ * A word on the cards: the word, then its meaning. Missed last time, its
+ * sentence comes along on the back to help.
+ */
+export function cardFor(card: Card, graded: boolean): Exercise {
+  const step: Exercise = { key: `${card.id}:0`, cardId: card.id, kind: "recall", graded, attempt: 0 };
+  return stageOf(card) === "learning" && card.repetitions === 0 ? { ...step, support: true } : step;
+}
+
+/**
+ * A word's exercise: the easy ways in while it's new, producing it once it
+ * holds. Never graded, never a flip of the card itself.
+ */
+export function exerciseFor(card: Card, { day, speech }: { day: number; speech: boolean }): Exercise {
+  const base = { key: `${card.id}:ex`, cardId: card.id, graded: false, attempt: 0 };
   const sentences = sentenceGaps(card);
   const sentence = sentences.length > 0 ? rotate(sentences, card, day, 1) : null;
   const chunks = chunkGaps(card);
@@ -135,23 +147,20 @@ export function exerciseFor(card: Card, { day, speech, graded }: { day: number; 
   const stage = stageOf(card);
 
   let options: Shape[];
-  if (stage === "learning" && card.repetitions === 0) {
-    // Missed last time: recognise it again, with its sentence on the answer side.
-    options = [{ kind: "recall", support: true }];
-  } else if (stage === "learning") {
-    // Recalled once, on a later day it is found in a sentence, the Turkish open.
-    options = sentence ? [{ kind: "cloze", gap: sentence, openTranslation: true }, { kind: "cloze", gap: sentence, openTranslation: true }] : [{ kind: "recall" }];
-    options.push(speech ? { kind: "listen" } : { kind: "recall" });
-  } else if (stage === "young") {
-    options = [{ kind: "produce" }];
-    if (sentence) options.push({ kind: "cloze", gap: sentence });
+  if (stage === "new" || stage === "learning") {
+    // Still new to it: find it in a sentence with the Turkish open, or in one of its phrases.
+    options = [];
+    if (sentence) options.push({ kind: "cloze", gap: sentence, openTranslation: true });
     if (chunk) options.push({ kind: "chunk", gap: chunk });
+    if (options.length === 0) options.push({ kind: "produce" });
   } else {
     options = [{ kind: "produce" }];
     if (sentence) options.push({ kind: "cloze", gap: sentence });
     if (chunk) options.push({ kind: "chunk", gap: chunk });
-    if (own) options.push({ kind: "own", gap: own });
-    options.push(speech ? { kind: "listen" } : { kind: "recall" });
+    if (stage === "mature") {
+      if (own) options.push({ kind: "own", gap: own });
+      if (speech) options.push({ kind: "listen" });
+    }
   }
   return { ...base, ...rotate(options, card, day) };
 }
@@ -159,7 +168,7 @@ export function exerciseFor(card: Card, { day, speech, graded }: { day: number; 
 export type SessionMode = "due" | "all";
 
 /**
- * A session, built once when it starts.
+ * A round of cards, built once when it starts.
  *
  * One word already known goes first, to warm up. New words then come in
  * threes: met one after another, then asked one by one with a review in
@@ -167,15 +176,13 @@ export type SessionMode = "due" | "all";
  * that the answer isn't simply on the screen a second ago. Everything else
  * follows in the order it fell due.
  *
- * "all" is practice: only words that are actually due are graded.
+ * "all" is looking through the cards whenever you like: only words that
+ * are actually due are graded.
  */
-export function buildSession(cards: Card[], { mode, speech, now = Date.now() }: { mode: SessionMode; speech: boolean; now?: number }): Exercise[] {
-  const day = dayNumber(now);
+export function buildSession(cards: Card[], { mode, now = Date.now() }: { mode: SessionMode; now?: number }): Exercise[] {
   const graded = (card: Card) => mode === "due" || isDueAt(card, now);
   const fresh = cards.filter((card) => stageOf(card) === "new");
-  const reviews = cards
-    .filter((card) => stageOf(card) !== "new")
-    .map((card) => exerciseFor(card, { day, speech, graded: graded(card) }));
+  const reviews = cards.filter((card) => stageOf(card) !== "new").map((card) => cardFor(card, graded(card)));
 
   const steps: Exercise[] = [];
   if (reviews.length > 0) steps.push(reviews.shift()!);
@@ -189,6 +196,21 @@ export function buildSession(cards: Card[], { mode, speech, now = Date.now() }: 
   }
   steps.push(...reviews);
   return steps;
+}
+
+/** Words in one round of exercises. */
+export const EXERCISE_LIMIT = 12;
+
+/**
+ * A round of exercises: each word once, in the order given, the words
+ * already met first and brand-new ones after them. The question changes
+ * from one round to the next, so doing it twice in a day isn't a rerun.
+ */
+export function buildExercises(cards: Card[], { speech, now = Date.now() }: { speech: boolean; now?: number }): Exercise[] {
+  const round = Math.floor(now / 60_000);
+  const met = cards.filter((card) => stageOf(card) !== "new");
+  const fresh = cards.filter((card) => stageOf(card) === "new");
+  return [...met, ...fresh].slice(0, EXERCISE_LIMIT).map((card) => exerciseFor(card, { day: round, speech }));
 }
 
 /**
@@ -214,7 +236,17 @@ export function repeatOf(card: Card, attempt: number): Exercise {
   return { key: `${card.id}:again:${attempt}`, cardId: card.id, kind: "recall", graded: false, attempt, support: true };
 }
 
-/** The pause after a first real recall, to write a sentence of your own with the word. */
+/**
+ * A missed exercise, asked again a few steps later: the same question, the
+ * Turkish open this time. Once only: missed twice, the answer has been shown
+ * twice and the round moves on, so a hard word can't hold it forever.
+ */
+export function retryOf(step: Exercise): Exercise | null {
+  if (step.attempt >= 1) return null;
+  return { ...step, key: `${step.key}:again`, attempt: step.attempt + 1, graded: false, skipped: false, openTranslation: true };
+}
+
+/** The pause after a right answer in the exercises, to write a sentence of your own with the word. */
 export function writeStep(card: Card): Exercise {
   return { key: `${card.id}:write`, cardId: card.id, kind: "write", graded: false, attempt: 0 };
 }

@@ -10,18 +10,20 @@ import { playCorrect, playIncorrect, playLessonComplete, playReveal } from "../l
 import { useRecordStudyDay } from "../lib/streak";
 import { tintStyle } from "../lib/tint";
 import { familyAt, familyStyle } from "../lib/palette";
-import { STAGE_LABEL, byNextReview, isLeech, nextReview, stageOf } from "../lib/memory";
+import { STAGE_LABEL, byNextReview, nextReview, stageOf } from "../lib/memory";
 import { STAGE_PILL, TONE_PILL } from "../lib/stageStyle";
 import {
   KIND_LABEL,
   TYPED_KINDS,
   buildDrill,
+  buildExercises,
   buildSession,
   checkAnswer,
   expectedAnswer,
   insertLater,
   letterPattern,
   repeatOf,
+  retryOf,
   sentencesOf,
   skipStep,
   writeStep,
@@ -48,16 +50,20 @@ import Confetti from "../components/Confetti";
 import { ArrowRightIcon, CheckIcon, SpeakerIcon, XIcon } from "../components/icons";
 
 /**
- * "Tekrar et": the learner's own words, asked the way each one needs.
+ * The learner's own words, practised two ways that never mix.
  *
- * A new word is met first — its sentence, a guess, then the meaning — and
- * asked a few cards later. A word still being learned is flipped: see it,
- * recall the Turkish, turn it over, say honestly how it went (swipe right
- * for Bildim, left for Bilemedim, up for Zorlandım). A word that holds has
- * to be produced — typed from its Turkish, into its sentence, into a chunk,
- * into the learner's own sentence — and the app marks it. A miss comes back
- * a few cards later until it's got; only the first answer is written to
- * the schedule. The rules live in lib/practice.ts; this is the screen.
+ * "Tekrar et" is the cards: a new word is met first (its sentence, a guess,
+ * then the meaning) and asked a few cards later; every other word is
+ * flipped: see it, recall the Turkish, turn it over, say honestly how it
+ * went (swipe right for Bildim, left for Bilemedim, up for Zorlandım). A
+ * miss comes back a few cards later until it's got; only the first answer
+ * is written to the schedule. With nothing due, the cards can still be
+ * gone through; only the due ones count.
+ *
+ * "Egzersiz" is the exercises, on their own: the word typed into its
+ * sentence, into a phrase, from its Turkish, into the learner's own
+ * sentence, or caught by ear, marked by the app, and never written to the
+ * schedule. The rules live in lib/practice.ts; this is the screen.
  *
  * Tonton sits on the screen with each question (his line changes with the
  * step and his face with the answer), and the director hears about every
@@ -65,13 +71,13 @@ import { ArrowRightIcon, CheckIcon, SpeakerIcon, XIcon } from "../components/ico
  */
 
 type Grade = 1 | 3 | 4 | 5;
-type SessionMode = "due" | "all" | "drill";
+type SessionMode = "due" | "all" | "drill" | "exercises";
 /** A card's first answer this session, and what the schedule made of it. */
 type Result = { grade: Grade; graded: boolean; before: Card; after: Card | null; failed?: boolean };
 
-/** Sentences asked for in one session, at most: each takes a minute, and the session is fifteen. */
-const MAX_WRITES = 3;
-/** Words in one free-practice session. */
+/** Sentences asked for in one round of exercises: one, so it stays a moment and not a chore. */
+const MAX_WRITES = 1;
+/** Words in one round of going through the cards when nothing is due. */
 const PRACTICE_LIMIT = 20;
 
 /** Each verdict's colour, once: red missed it, orange was hard, green knew it. */
@@ -1013,7 +1019,11 @@ function Session({ deckId, cards, mode }: { deckId: string; cards: Card[]; mode:
   // Snapshotted at the start; a saved sentence updates its card in place.
   const [byId, setById] = useState(() => new Map(cards.map((card) => [card.id, card])));
   const [plan, setPlan] = useState<Exercise[]>(() =>
-    mode === "drill" ? buildDrill(cards[0]) : buildSession(cards, { mode, speech: speechSupported && !isSpeechMuted() }),
+    mode === "drill"
+      ? buildDrill(cards[0])
+      : mode === "exercises"
+        ? buildExercises(cards, { speech: speechSupported && !isSpeechMuted() })
+        : buildSession(cards, { mode }),
   );
   const [index, setIndex] = useState(0);
   const [results, setResults] = useState<Record<number, Result>>({});
@@ -1075,19 +1085,18 @@ function Session({ deckId, cards, mode }: { deckId: string; cards: Card[]; mode:
             sendReview({ cardId: card.id, quality: grade, kind: step.kind });
           }
         }
-        // The moment to write a sentence with a word: it has just been
-        // recalled for the first time in its life, or a stubborn one has
-        // just come back.
-        const firstHold = step.graded && card.repetitions === 0 && grade >= 3;
-        const leechBack = step.attempt > 0 && isLeech(card);
+        const onCards = mode === "due" || mode === "all";
         if (grade === 1) {
-          next = insertLater(next, index, repeatOf(card, step.attempt + 1));
+          // A missed card comes back as a card, its sentence to help; a missed exercise as the same question, once.
+          const again = onCards ? repeatOf(card, step.attempt + 1) : retryOf(step);
+          if (again) next = insertLater(next, index, again);
         } else if (
-          mode !== "drill" &&
+          // In the exercises, a word just got right is the moment to write a sentence of your own with it.
+          mode === "exercises" &&
+          grade >= 4 &&
           !card.my_sentence &&
           !askedSentenceRef.current.has(card.id) &&
-          askedSentenceRef.current.size < MAX_WRITES &&
-          (firstHold || leechBack)
+          askedSentenceRef.current.size < MAX_WRITES
         ) {
           askedSentenceRef.current.add(card.id);
           next = insertLater(next, index, writeStep(card), 0);
@@ -1211,8 +1220,10 @@ function Summary({
   const answered =
     firsts.length === 0
       ? "Bu tur hiçbirini işaretlemedin; takvime dokunmadım."
-      : practice
-        ? "Güzel alıştırma. Takvime dokunmadım; asıl tekrar sırası gelince."
+      : mode === "exercises"
+        ? "Güzel iş! Egzersizler takvime dokunmaz; ne zaman soracağımı kartlar belirler."
+        : practice
+          ? "Güzel alıştırma. Takvime dokunmadım; asıl tekrar sırası gelince."
         : perfect
           ? "Hepsini bildin. Bunlar artık daha seyrek gelecek."
           : missed === 0
@@ -1224,7 +1235,7 @@ function Summary({
     <div className="pt-4 text-center animate-rise-in">
       {perfect && known >= 3 && <Confetti />}
       <Mascot mood={missed === 0 ? "happy" : "idle"} size={120} greet className="mx-auto" />
-      <h2 className="mt-3 text-[32px] font-black leading-tight tracking-[-0.02em] text-sunny-deep">{mode === "drill" ? "Alıştırma bitti!" : "Oturum tamam!"}</h2>
+      <h2 className="mt-3 text-[32px] font-black leading-tight tracking-[-0.02em] text-sunny-deep">{mode === "drill" ? "Alıştırma bitti!" : mode === "exercises" ? "Egzersiz bitti!" : "Oturum tamam!"}</h2>
       <p className="mx-auto mt-2 max-w-[22rem] text-[16px] font-bold leading-snug text-ink">{verdict}</p>
 
       <dl className="mt-6 grid grid-cols-3 gap-2.5">
@@ -1263,7 +1274,7 @@ function Summary({
                 {!result && skipped.has(c.id) ? (
                   <span className="rounded-full bg-paper-deep px-2 py-0.5 text-graphite">geçildi · sırada</span>
                 ) : result && !result.graded ? (
-                  <span className="rounded-full bg-paper-deep px-2 py-0.5 text-graphite">alıştırma</span>
+                  <span className="rounded-full bg-paper-deep px-2 py-0.5 text-graphite">{mode === "exercises" ? "egzersiz" : "alıştırma"}</span>
                 ) : result?.failed ? (
                   <span className="rounded-full bg-berry-soft px-2 py-0.5 text-berry-ink">kaydedilemedi</span>
                 ) : next && now ? (
@@ -1296,7 +1307,8 @@ function Flashcards() {
   const { deckId = "" } = useParams<{ deckId: string }>();
   const [searchParams] = useSearchParams();
   const drillId = searchParams.get("card");
-  const mode: SessionMode = drillId ? "drill" : searchParams.get("mode") === "all" ? "all" : "due";
+  const asked = searchParams.get("mode");
+  const mode: SessionMode = drillId ? "drill" : asked === "exercises" ? "exercises" : asked === "all" ? "all" : "due";
 
   const cardsQuery = useQuery({
     queryKey: ["cards", deckId],
@@ -1315,14 +1327,17 @@ function Flashcards() {
   if (!deckId) return <Navigate to="/kartlar" replace />;
 
   const loading = cardsQuery.isLoading || (mode === "due" && (!dueQuery.data || dueQuery.isFetching));
-  // Free practice takes the twenty words coming back soonest: the ones
-  // about to be asked are the ones worth a warm-up.
+  // Going through the cards takes the twenty words coming back soonest: the
+  // ones about to be asked are the ones worth a warm-up. The exercises take
+  // them in the same order and keep the first dozen.
   const cards =
     mode === "drill"
       ? (cardsQuery.data ?? []).filter((c) => String(c.id) === drillId)
       : mode === "all"
         ? byNextReview(cardsQuery.data ?? []).slice(0, PRACTICE_LIMIT)
-        : (dueQuery.data ?? []);
+        : mode === "exercises"
+          ? byNextReview(cardsQuery.data ?? [])
+          : (dueQuery.data ?? []);
 
   return (
     <div className="min-h-screen">
@@ -1353,17 +1368,17 @@ function Flashcards() {
               title={mode === "due" ? "Bugünlük tamam" : "Henüz kartın yok"}
               description={
                 mode === "due"
-                  ? "Şu an sırası gelen kelime yok. İstersen hepsiyle alıştırma yap; takvim değişmez."
+                  ? "Şu an sırası gelen kelime yok. İstersen kartlara yine de bak ya da egzersiz yap; takvim değişmez."
                   : "Bir kelime ekle, kartın hazır olsun."
               }
               action={
                 mode === "due" && (cardsQuery.data?.length ?? 0) > 0 ? (
                   <div className="flex flex-col gap-2 sm:flex-row">
                     <LinkButton to={`/decks/${deckId}/flashcards?mode=all`} variant="go" onClick={primeSpeech}>
-                      Serbest alıştırma
+                      Kartları çalış
                     </LinkButton>
-                    <LinkButton to="/kartlar" variant="ghost">
-                      Kartlarım
+                    <LinkButton to={`/decks/${deckId}/flashcards?mode=exercises`} variant="outline" onClick={primeSpeech}>
+                      Egzersiz yap
                     </LinkButton>
                   </div>
                 ) : (

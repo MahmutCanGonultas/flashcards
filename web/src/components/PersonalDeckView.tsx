@@ -27,9 +27,14 @@ function PersonalDeckView({ deckId, cards, onAdd, showActions = true }: Personal
       {showActions && (
       <div className="flex flex-wrap items-center gap-2">
         {cards.length > 0 && (
-          <LinkButton to={`/decks/${deckId}/flashcards${due > 0 ? "" : "?mode=all"}`} variant="ink" onClick={primeSpeech}>
-            {due > 0 ? `Tekrar et (${due})` : "Serbest alıştırma"}
-          </LinkButton>
+          <>
+            <LinkButton to={`/decks/${deckId}/flashcards${due > 0 ? "" : "?mode=all"}`} variant="ink" onClick={primeSpeech}>
+              {due > 0 ? `Tekrar et (${due})` : "Kartları çalış"}
+            </LinkButton>
+            <LinkButton to={`/decks/${deckId}/flashcards?mode=exercises`} variant="outline" onClick={primeSpeech}>
+              Egzersiz yap
+            </LinkButton>
+          </>
         )}
         <Button variant="outline" onClick={onAdd}>
           Kelime ekle

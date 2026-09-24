@@ -1,15 +1,19 @@
 import { describe, expect, it } from "vitest";
 import {
   buildDrill,
+  buildExercises,
   buildSession,
+  cardFor,
   checkAnswer,
   chunkGaps,
   editDistance,
+  EXERCISE_LIMIT,
   exerciseFor,
   insertLater,
   letterPattern,
   normalizeAnswer,
   ownGap,
+  retryOf,
   sentenceGaps,
   sentencesOf,
   skipStep,
@@ -159,40 +163,54 @@ describe("gaps", () => {
   });
 });
 
-describe("exerciseFor", () => {
-  const ctx = { day: 20354, speech: true, graded: true };
+describe("cardFor", () => {
+  it("is the word and its meaning, graded as asked", () => {
+    const young = { ...commit, repetitions: 2, interval: 6 };
+    expect(cardFor(young, true)).toEqual({ key: "1281:0", cardId: 1281, kind: "recall", graded: true, attempt: 0 });
+    expect(cardFor(young, false).graded).toBe(false);
+  });
 
-  it("asks a just-missed word the easy way, with its sentence to help", () => {
+  it("brings the sentence along for a word missed last time", () => {
     const missed = { ...commit, repetitions: 0, interval: 1, lapses: 1 };
-    expect(exerciseFor(missed, ctx)).toMatchObject({ kind: "recall", support: true, graded: true });
+    expect(cardFor(missed, true)).toMatchObject({ kind: "recall", support: true });
   });
+});
 
-  it("asks a word recalled once in a sentence, Turkish open, or by ear", () => {
-    const kinds = new Set(Array.from({ length: 6 }, (_, day) => exerciseFor({ ...commit, repetitions: 1, interval: 1 }, { ...ctx, day }).kind));
-    expect([...kinds].sort()).toEqual(["cloze", "listen"]);
-    const cloze = Array.from({ length: 6 }, (_, day) => exerciseFor({ ...commit, repetitions: 1, interval: 1 }, { ...ctx, day })).find((e) => e.kind === "cloze");
-    expect(cloze?.openTranslation).toBe(true);
-  });
+describe("exerciseFor", () => {
+  const ctx = { day: 20354, speech: true };
+  const all = (card: typeof commit, days = 12, speech = true) => Array.from({ length: days }, (_, day) => exerciseFor(card, { day, speech }));
 
-  it("makes a word that holds be produced", () => {
-    const kinds = new Set(Array.from({ length: 9 }, (_, day) => exerciseFor({ ...commit, repetitions: 3, interval: 15 }, { ...ctx, day }).kind));
-    expect([...kinds].sort()).toEqual(["chunk", "cloze", "produce"]);
-  });
-
-  it("brings the learner's own sentence in once a word is mature", () => {
-    const mature = { ...commit, repetitions: 5, interval: 40, my_sentence: "I committed to running every morning." };
-    const kinds = new Set(Array.from({ length: 12 }, (_, day) => exerciseFor(mature, { ...ctx, day }).kind));
-    expect(kinds.has("own")).toBe(true);
-    expect(kinds.has("listen")).toBe(true);
-  });
-
-  it("never offers listening without speech", () => {
-    for (let day = 0; day < 12; day++) {
-      expect(exerciseFor({ ...commit, repetitions: 1, interval: 1 }, { ...ctx, day, speech: false }).kind).not.toBe("listen");
+  it("eases a new or half-learned word in: its sentence with the Turkish open, or one of its phrases", () => {
+    for (const card of [commit, { ...commit, repetitions: 1, interval: 1 }, { ...commit, repetitions: 0, interval: 1, lapses: 1 }]) {
+      const asked = all(card);
+      expect([...new Set(asked.map((e) => e.kind))].sort()).toEqual(["chunk", "cloze"]);
+      expect(asked.filter((e) => e.kind === "cloze").every((e) => e.openTranslation)).toBe(true);
     }
   });
 
-  it("gives the same word the same question all day", () => {
+  it("makes a word that holds be produced", () => {
+    const kinds = new Set(all({ ...commit, repetitions: 3, interval: 15 }).map((e) => e.kind));
+    expect([...kinds].sort()).toEqual(["chunk", "cloze", "produce"]);
+  });
+
+  it("brings the learner's own sentence and listening in once a word is mature", () => {
+    const mature = { ...commit, repetitions: 5, interval: 40, my_sentence: "I committed to running every morning." };
+    const kinds = new Set(all(mature).map((e) => e.kind));
+    expect(kinds.has("own")).toBe(true);
+    expect(kinds.has("listen")).toBe(true);
+    expect(all(mature, 12, false).some((e) => e.kind === "listen")).toBe(false);
+  });
+
+  it("is never graded and never the card itself", () => {
+    for (const card of [commit, { ...commit, repetitions: 3, interval: 15 }, { ...commit, repetitions: 5, interval: 40 }]) {
+      for (const e of all(card)) {
+        expect(e.graded).toBe(false);
+        expect(["recall", "meet", "write"]).not.toContain(e.kind);
+      }
+    }
+  });
+
+  it("gives the same word the same question in the same round", () => {
     const young = { ...commit, repetitions: 2, interval: 6 };
     expect(exerciseFor(young, ctx)).toEqual(exerciseFor(young, ctx));
   });
@@ -205,13 +223,13 @@ describe("buildSession", () => {
   const reviews = [1, 2].map((i) => makeCard({ id: 200 + i, front: `known${i}`, repetitions: 2, interval: 6, due_date: due }));
 
   it("meets new words in threes and asks each of them later, reviews in between", () => {
-    const plan = buildSession([...reviews, ...fresh], { mode: "due", speech: false, now: NOW });
+    const plan = buildSession([...reviews, ...fresh], { mode: "due", now: NOW });
     expect(plan.map((s) => `${s.kind}:${s.cardId}`)).toEqual([
-      "produce:201",
+      "recall:201",
       "meet:101",
       "meet:102",
       "meet:103",
-      "produce:202",
+      "recall:202",
       "recall:101",
       "recall:102",
       "recall:103",
@@ -223,17 +241,54 @@ describe("buildSession", () => {
     expect(plan.filter((s) => s.kind === "recall").every((s) => s.graded)).toBe(true);
   });
 
+  it("is only ever cards: no exercise is mixed in, whatever the word's stage", () => {
+    const mature = makeCard({ ...commit, id: 400, repetitions: 5, interval: 40, due_date: due, my_sentence: "I committed to running." });
+    const young = makeCard({ ...commit, id: 401, repetitions: 3, interval: 15, due_date: due });
+    const plan = buildSession([mature, young, ...reviews, ...fresh], { mode: "due", now: NOW });
+    expect(new Set(plan.map((s) => s.kind))).toEqual(new Set(["meet", "recall"]));
+  });
+
   it("puts every due word in exactly once, graded", () => {
-    const plan = buildSession([...reviews, ...fresh], { mode: "due", speech: false, now: NOW });
+    const plan = buildSession([...reviews, ...fresh], { mode: "due", now: NOW });
     const graded = plan.filter((s) => s.graded).map((s) => s.cardId).sort();
     expect(graded).toEqual([101, 102, 103, 104, 201, 202]);
   });
 
-  it("grades only the words that are due when practising everything", () => {
+  it("grades only the words that are due when going through all the cards", () => {
     const notYet = makeCard({ id: 300, front: "later", repetitions: 2, interval: 6, due_date: later });
-    const plan = buildSession([reviews[0], notYet], { mode: "all", speech: false, now: NOW });
+    const plan = buildSession([reviews[0], notYet], { mode: "all", now: NOW });
     expect(plan.find((s) => s.cardId === 201)?.graded).toBe(true);
     expect(plan.find((s) => s.cardId === 300)?.graded).toBe(false);
+  });
+});
+
+describe("buildExercises", () => {
+  const met = [1, 2, 3].map((i) => makeCard({ ...commit, id: 500 + i, repetitions: 2, interval: 6 }));
+  const fresh = [1, 2].map((i) => makeCard({ ...commit, id: 600 + i }));
+
+  it("asks every word once, words already met first, and grades nothing", () => {
+    const plan = buildExercises([...fresh, ...met], { speech: false, now: NOW });
+    expect(plan.map((s) => s.cardId)).toEqual([501, 502, 503, 601, 602]);
+    expect(plan.every((s) => !s.graded && s.kind !== "recall" && s.kind !== "meet")).toBe(true);
+    expect(new Set(plan.map((s) => s.key)).size).toBe(plan.length);
+  });
+
+  it("keeps a round to a dozen words", () => {
+    const many = Array.from({ length: 20 }, (_, i) => makeCard({ ...commit, id: 700 + i, repetitions: 2, interval: 6 }));
+    expect(buildExercises(many, { speech: false, now: NOW })).toHaveLength(EXERCISE_LIMIT);
+  });
+});
+
+describe("retryOf", () => {
+  it("asks a missed exercise again once, as the same question with the Turkish open, ungraded", () => {
+    const held = { ...commit, repetitions: 3, interval: 15 };
+    const first = Array.from({ length: 12 }, (_, day) => exerciseFor(held, { day, speech: false })).find((e) => e.kind === "cloze")!;
+    const again = retryOf(first);
+    expect(first.openTranslation).toBeUndefined();
+    expect(again).toMatchObject({ kind: "cloze", cardId: first.cardId, gap: first.gap, attempt: 1, graded: false, openTranslation: true });
+    expect(again!.key).not.toBe(first.key);
+    // missed again: the round moves on
+    expect(retryOf(again!)).toBeNull();
   });
 });
 
