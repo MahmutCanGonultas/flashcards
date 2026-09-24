@@ -56,7 +56,6 @@ import StrengthBars from "../components/StrengthBars";
 import TontonLine from "../components/TontonLine";
 import MeaningText from "../components/MeaningText";
 import Confetti from "../components/Confetti";
-import ReminderCard from "../components/ReminderCard";
 import { ArrowRightIcon, CheckIcon, PencilIcon, SpeakerIcon, XIcon } from "../components/icons";
 
 /**
@@ -1457,11 +1456,6 @@ function Summary({
           >
             {handoff.label}
           </button>
-        </div>
-      )}
-      {mode === "due" && firsts.length > 0 && (
-        <div className="mt-6">
-          <ReminderCard variant="prompt" defaultHour={22} />
         </div>
       )}
 

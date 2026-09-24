@@ -82,7 +82,7 @@ It's a web app made for the phone (you can install it like a regular app), built
 
 ### Made for the phone
 
-- Installable, with an offline shell, push reminders at the hour you pick (only sent when something is due), words read aloud with the phone's own voice, and keyboard shortcuts on a computer.
+- Installable, with an offline shell, words read aloud with the phone's own voice, and keyboard shortcuts on a computer. No notifications: the app doesn't ask for them.
 
 ## Stack
 
@@ -122,7 +122,7 @@ The right and wrong answer sounds are two short recordings in [`web/public/sound
 
 ### Reminders
 
-Turning reminders on saves a Web Push subscription with the chosen hour and timezone. [`.github/workflows/reminders.yml`](.github/workflows/reminders.yml) calls a public, idempotent `POST /api/v1/push/run` every hour. It sends at most one notification per device per day, and only when cards have been due for at least an hour. VAPID keys are generated once and kept in the `settings` table.
+The app no longer offers reminders (the learner didn't want notifications), but the server side stays in place. A Web Push subscription holds the chosen hour and timezone. [`.github/workflows/reminders.yml`](.github/workflows/reminders.yml) calls a public, idempotent `POST /api/v1/push/run` every hour. It sends at most one notification per device per day, and only when cards have been due for at least an hour. VAPID keys are generated once and kept in the `settings` table.
 
 ### Design
 

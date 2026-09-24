@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import AppTabs from "../components/AppTabs";
 import TontonSays from "../components/TontonSays";
-import ReminderCard from "../components/ReminderCard";
 import PersonalCardSheet from "../components/PersonalCardSheet";
 import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
@@ -476,10 +475,6 @@ function Kartlar() {
             </>
           )
         )}
-
-        <div className="mt-7">
-          <ReminderCard variant="line" />
-        </div>
       </main>
 
       <PersonalCardSheet isOpen={isAddOpen} onClose={() => setIsAddOpen(false)} deckId={deck?.id} />
