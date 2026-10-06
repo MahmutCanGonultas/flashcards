@@ -13,6 +13,7 @@ import Grammar from "./pages/Grammar";
 import Flashcards from "./pages/Flashcards";
 import WordPage from "./pages/WordPage";
 import Kelimelerim from "./pages/Kelimelerim";
+import Hafta from "./pages/Hafta";
 import TontonPopups from "./components/TontonPopups";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { getToken } from "./lib/api";
@@ -133,6 +134,14 @@ function App() {
             <Suspense fallback={null}>
               <GrammarQuiz />
             </Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/hafta"
+        element={
+          <ProtectedRoute>
+            <Hafta />
           </ProtectedRoute>
         }
       />

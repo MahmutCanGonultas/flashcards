@@ -1,22 +1,25 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { BookIcon, CardsIcon } from "./icons";
+import { BookIcon, CardsIcon, PathIcon } from "./icons";
 
 /**
- * The two halves of the app, one tab each: the words (the weekly
- * programme, the cards, the word list) and the grammar. The course is
- * hidden while the programme runs (its pages still open by address). The
- * active tab sits in a blue key, the way a pressed button looks here.
+ * Three tabs: the cards (and the word list behind them), the week of the
+ * programme (its texts, the test, the exercises, the numbers) and the
+ * grammar. The course is hidden while the programme runs (its pages still
+ * open by address). The active tab sits in a blue key, the way a pressed
+ * button looks here.
  */
 function AppTabs() {
   const { pathname } = useLocation();
   const grammar = /^\/gramer/.test(pathname);
+  const week = /^\/hafta/.test(pathname);
   const tabs = [
-    { to: "/kartlar", label: "Kelimeler", icon: CardsIcon, active: !grammar },
+    { to: "/kartlar", label: "Kartlar", icon: CardsIcon, active: !grammar && !week },
+    { to: "/hafta", label: "Hafta", icon: PathIcon, active: week },
     { to: "/gramer", label: "Gramer", icon: BookIcon, active: grammar },
   ];
   return (
     <nav aria-label="Bölümler" className="fixed inset-x-0 bottom-0 z-20 border-t-2 border-rule bg-white pb-[env(safe-area-inset-bottom)]">
-      <div className="mx-auto grid max-w-md grid-cols-2 gap-3 px-4 py-2">
+      <div className="mx-auto grid max-w-md grid-cols-3 gap-2 px-3 py-2">
         {tabs.map((tab) => (
           <NavLink
             key={tab.to}

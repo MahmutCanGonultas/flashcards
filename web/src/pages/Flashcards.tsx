@@ -1028,6 +1028,16 @@ function WriteStep({ card, deckId, onSaved, onDone }: { card: Card; deckId: stri
 
 /* ------------------------------------------------------------- session -- */
 
+/** A copy in random order (Fisher–Yates). */
+function shuffled<T>(items: T[]): T[] {
+  const out = [...items];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
 /** A write to the schedule: a graded review, or a new word's one learning write. */
 type ReviewWrite = { cardId: number; quality: Grade; kind: string; phase: "learn" | "review"; direction?: Direction; thinkMs?: number };
 
@@ -1062,12 +1072,14 @@ function Session({
 
   // Snapshotted at the start; a saved sentence updates its card in place.
   const [byId, setById] = useState(() => new Map([...fillers, ...cards].map((card) => [card.id, card])));
+  // The cards come mixed, a new order every round: the same order every
+  // day would teach the order, not the words.
   const [plan, setPlan] = useState<Exercise[]>(() =>
     mode === "drill"
       ? buildDrill(cards[0])
       : mode === "exercises"
         ? buildExercises(cards, { speech: speechSupported && !isSpeechMuted(), focusIds, test })
-        : buildSession(cards, { mode, fillers }),
+        : buildSession(shuffled(cards), { mode, fillers }),
   );
   const [index, setIndex] = useState(0);
   const [results, setResults] = useState<Record<number, Result>>({});
