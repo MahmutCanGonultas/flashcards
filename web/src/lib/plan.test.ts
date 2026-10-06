@@ -86,7 +86,7 @@ describe("planView", () => {
   it("says why no new word comes, or how many wait in the queue", () => {
     expect(planView(plan({ reviewsDue: 25, paused: "reviews", queued: 4 })).note).toBe("Bugün yeni kelime yok: önce tekrarları sağlamlaştıralım.");
     expect(planView(plan({ reviewsDue: 4, shaky: 10, paused: "shaky", queued: 4 })).note).toBe("Öğrenmekte olduğun kelimeler birikti; bugün onlara odaklanalım.");
-    expect(planView(plan({ newIds: [1, 2, 3], queued: 5 })).note).toBe("Sırada 5 yeni kelime var · her gün en fazla 3'ü gelir.");
+    expect(planView(plan({ newIds: [1, 2, 3], queued: 5 })).note).toBe("Sırada 5 yeni kelime var · haftada 10'u gelir.");
     expect(planView(plan({ newIds: [1, 2, 3] })).note).toBeNull();
   });
 

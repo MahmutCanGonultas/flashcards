@@ -3,7 +3,10 @@ import {
   type IntroducedWord,
   type PlanCard,
   introductionDay,
+  newSlots,
   newWordAllowed,
+  weekStartOf,
+  weekdayOf,
   pickNewWords,
   planCounts,
   planFrom,
@@ -257,5 +260,56 @@ describe("pushLine", () => {
     expect(pushLine({ ...base, plan: empty, exercisesToday: 6 })).toBeNull();
     expect(pushLine({ ...base, plan: empty, started: 0 })).toBeNull();
     expect(pushLine({ deckId: null, plan: null, course: 0, exercisesToday: 0, started: 0 })).toBeNull();
+  });
+});
+
+describe("the weekly programme", () => {
+  // Monday 2026-10-05 … Sunday 2026-10-11.
+  const week = (n: number, id: number, front: string, pos = "noun") =>
+    ({ ...word(id, front, pos), tag: `Hafta ${n} · Para` }) as PlanCard;
+  const programme = [
+    ...["budget", "salary", "debt", "afford", "invest", "loan", "income", "expensive", "cheap", "spend"].map((f, i) => week(1, 100 + i, f)),
+    ...["career", "deadline", "manage"].map((f, i) => week(2, 200 + i, f)),
+  ];
+  const met = (cards: PlanCard[], day: string) => cards.map((c) => ({ ...c, introduced_on: day }) as IntroducedWord);
+
+  it("knows the weekday and the Monday of a learner day", () => {
+    expect(weekdayOf("2026-10-05")).toBe(0);
+    expect(weekdayOf("2026-10-11")).toBe(6);
+    expect(weekStartOf("2026-10-08")).toBe("2026-10-05");
+    expect(weekStartOf("2026-10-05")).toBe("2026-10-05");
+  });
+
+  it("allows 3, 3, 2, 2 and makes up a missed day, never more than 3 a day or 10 a week", () => {
+    expect(newSlots("2026-10-05", 0, 0)).toBe(3); // Monday
+    expect(newSlots("2026-10-06", 0, 3)).toBe(3); // Tuesday
+    expect(newSlots("2026-10-07", 0, 6)).toBe(2); // Wednesday
+    expect(newSlots("2026-10-08", 0, 8)).toBe(2); // Thursday
+    expect(newSlots("2026-10-09", 0, 10)).toBe(0); // Friday: the week is full
+    expect(newSlots("2026-10-06", 0, 0)).toBe(3); // Monday missed: still 3 a day at most
+    expect(newSlots("2026-10-09", 0, 9)).toBe(1); // made up on Friday
+    expect(newSlots("2026-10-05", 3, 3)).toBe(0); // the day's 3 are met
+  });
+
+  it("guards a write past the week's target", () => {
+    expect(newWordAllowed(false, null, 0, { day: "2026-10-09", newThisWeek: 10 })).toBe(false);
+    expect(newWordAllowed(false, null, 0, { day: "2026-10-05", newThisWeek: 0 })).toBe(true);
+  });
+
+  it("takes the programme's words in week order, never jumping ahead", () => {
+    const day = "2026-10-05";
+    const result = planFrom({ day, now: eveningOf(day), cards: [...programme].reverse(), introduced: [] });
+    expect(result.newIds).toEqual([100, 101, 102]);
+    expect(result.week).toMatchObject({ number: 1, theme: "Para", weekday: 0, met: 3, target: 10 });
+  });
+
+  it("finishes a week before the next, and stops at ten", () => {
+    const day = "2026-10-08";
+    const firstEight = programme.slice(0, 8);
+    const cards = [...firstEight.map((c) => ({ ...c, repetitions: 1, interval: 1, introduced_on: "2026-10-05", due_date: "2026-10-20T01:00:00Z" })), ...programme.slice(8)];
+    const result = planFrom({ day, now: eveningOf(day), cards, introduced: met(firstEight, "2026-10-05") });
+    expect(result.newIds).toEqual([108, 109]);
+    expect(result.week.met).toBe(10);
+    expect(result.tomorrow.new).toBe(0);
   });
 });

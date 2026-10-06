@@ -1,0 +1,31 @@
+{
+  "week": 20,
+  "theme_tr": "Karakter ve kişilik",
+  "reading": {
+    "title": "The Honest Profile",
+    "lines": [
+      { "en": "My brother Emre is single, so tonight I'm writing his profile for a dating app.", "tr": "Kardeşim Emre bekâr, o yüzden bu akşam bir flört uygulaması için onun profilini yazıyorum." },
+      { "en": "'Emre is generous, confident and kind. He never judges people.'", "tr": "'Emre cömert, kendinden emin ve nazik. İnsanları asla yargılamaz.'" },
+      { "en": "'His main strength? He's a great cook, and he never shows off.'", "tr": "'Asıl güçlü yönü mü? Harika bir aşçı ve asla hava atmaz.'" },
+      { "en": "Emre is reading over my shoulder, and he isn't happy.", "tr": "Emre omzumun üstünden okuyor ve hiç mutlu değil." },
+      { "en": "'This isn't me,' he says. 'Write the truth. People aren't stupid.'", "tr": "'Bu ben değilim,' diyor. 'Doğruyu yaz. İnsanlar aptal değil.'" },
+      { "en": "He takes my laptop and starts his own list.", "tr": "Dizüstü bilgisayarımı alıyor ve kendi listesine başlıyor." },
+      { "en": "'I'm stubborn, and I'm a bit selfish with the TV remote.'", "tr": "'İnatçıyım ve televizyon kumandası konusunda biraz bencilim.'" },
+      { "en": "'My weakness is football. On Sundays I behave like a ten-year-old.'", "tr": "'Zaafım futbol. Pazar günleri on yaşında bir çocuk gibi davranırım.'" },
+      { "en": "'But I admire honest people, and I'm always on time.'", "tr": "'Ama dürüst insanlara hayranım ve her zaman dakiğimdir.'" },
+      { "en": "On Friday, his phone is full of messages. Honesty works.", "tr": "Cuma günü telefonu mesajlarla dolu. Dürüstlük işe yarıyor." }
+    ]
+  },
+  "translation": {
+    "title": "Yeni müdürümüz",
+    "lines": [
+      { "tr": "Yeni müdürümüz çok kendinden emin ama hiç hava atmıyor.", "en": "Our new manager is very confident, but she never shows off." },
+      { "tr": "Kimseyi yargılamıyor ve herkesi dinliyor.", "en": "She doesn't judge anyone, and she listens to everyone." },
+      { "tr": "Zamanı konusunda çok cömert; her hafta herkesle tek tek konuşuyor.", "en": "She's very generous with her time; every week she talks with everyone one by one." },
+      { "tr": "Onun asıl güçlü yönü sabrı.", "en": "Her main strength is her patience." },
+      { "tr": "Tek zayıf yönü kahve: günde altı fincan içiyor!", "en": "Her only weakness is coffee: she drinks six cups a day!" },
+      { "tr": "Ekipteki herkes ona hayran.", "en": "Everyone on the team admires her." },
+      { "tr": "Toplantılarda artık kimse çocuk gibi davranmıyor.", "en": "In meetings, nobody behaves like a child now." }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "week": 39,
+  "theme_tr": "İkna ve etki",
+  "reading": {
+    "title": "The Perfect Flat",
+    "lines": [
+      {"en": "Burak is an estate agent, and big commissions motivate him.", "tr": "Burak bir emlakçı ve onu yüksek komisyonlar motive ediyor."},
+      {"en": "Today he is showing a small flat to a young couple.", "tr": "Bugün genç bir çifte küçük bir daire gösteriyor."},
+      {"en": "\"Isn't it charming?\" he asks. \"Look at that old wooden floor!\"", "tr": "\"Büyüleyici değil mi?\" diye soruyor. \"Şu eski ahşap zemine bakın!\""},
+      {"en": "The price is tempting, and the river view really appeals to them.", "tr": "Fiyat cazip ve nehir manzarası onlara gerçekten çekici geliyor."},
+      {"en": "His arguments are convincing, and his smile makes a great impression.", "tr": "Argümanları ikna edici ve gülümsemesi harika bir izlenim bırakıyor."},
+      {"en": "\"I urge you: sign today. This price isn't going to last.\"", "tr": "\"Israrla söylüyorum: bugün imzalayın. Bu fiyat uzun sürmeyecek.\""},
+      {"en": "He almost persuades them, but the woman has got one question.", "tr": "Onları neredeyse ikna ediyor ama kadının bir sorusu var."},
+      {"en": "\"Why is the price so low? What's downstairs?\"", "tr": "\"Fiyat neden bu kadar düşük? Alt katta ne var?\""},
+      {"en": "Burak sighs. \"A music club. It's open all night, every night.\"", "tr": "Burak iç çekiyor. \"Bir müzik kulübü. Her gece, sabaha kadar açık.\""},
+      {"en": "His honesty is bad for his commission, but good for his reputation.", "tr": "Dürüstlüğü komisyonu için kötü ama itibarı için iyi."}
+    ]
+  },
+  "translation": {
+    "title": "Yarınki mülakat",
+    "lines": [
+      {"tr": "Yarınki mülakatın için birkaç tavsiyem var.", "en": "I've got some tips for your interview tomorrow."},
+      {"tr": "İlk izlenim çok önemli, o yüzden zamanında orada ol.", "en": "First impressions are very important, so be there on time."},
+      {"tr": "Şirketin iyi bir itibarı var ve maaş çok cazip.", "en": "The company has got a good reputation, and the salary is very tempting."},
+      {"tr": "Onları rakamlarla ve gerçek örneklerle ikna et.", "en": "Persuade them with numbers and real examples."},
+      {"tr": "Cevapların kısa ama ikna edici olsun.", "en": "Keep your answers short but convincing."},
+      {"tr": "Mutlaka \"Sizi ne motive ediyor?\" diye soracaklar.", "en": "They are going to ask: \"What motivates you?\""},
+      {"tr": "Israrla söylüyorum: kendin ol, çünkü sen zaten çok sevimli birisin.", "en": "I urge you: be yourself, because you are already very charming."}
+    ]
+  }
+}

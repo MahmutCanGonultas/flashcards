@@ -1043,6 +1043,7 @@ function Session({
   mode,
   fillers = [],
   focusIds = [],
+  test = false,
 }: {
   deckId: string;
   cards: Card[];
@@ -1051,6 +1052,8 @@ function Session({
   fillers?: Card[];
   /** Words the exercises start with. */
   focusIds?: number[];
+  /** The week's test: each word once, typed from its Turkish. */
+  test?: boolean;
 }) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -1063,7 +1066,7 @@ function Session({
     mode === "drill"
       ? buildDrill(cards[0])
       : mode === "exercises"
-        ? buildExercises(cards, { speech: speechSupported && !isSpeechMuted(), focusIds })
+        ? buildExercises(cards, { speech: speechSupported && !isSpeechMuted(), focusIds, test })
         : buildSession(cards, { mode, fillers }),
   );
   const [index, setIndex] = useState(0);
@@ -1302,6 +1305,7 @@ function Session({
         skipped={skipped}
         refused={refused}
         mode={mode}
+        test={test}
         typed={typed}
         pool={pool}
         exitTo={exitTo}
@@ -1393,6 +1397,7 @@ function Summary({
   skipped,
   refused,
   mode,
+  test,
   typed,
   pool,
   exitTo,
@@ -1405,6 +1410,8 @@ function Summary({
   /** New words the server turned away: the day's three were already in. */
   refused: ReadonlySet<number>;
   mode: SessionMode;
+  /** The week's test. */
+  test: boolean;
   /** The exercises' typed first tries, and how many were right. */
   typed: { n: number; right: number };
   /** Words met by now: what the exercises can ask. */
@@ -1412,7 +1419,7 @@ function Summary({
   exitTo: string;
   onGo: (to: string) => void;
 }) {
-  const view = summaryView({ cards, results, mode, deckId, exitTo, skipped, typed, pool });
+  const view = summaryView({ cards, results, mode, deckId, exitTo, skipped, typed, pool, test });
   const firsts = Object.values(results);
   const known = firsts.filter((r) => r.grade >= 4).length;
   const hard = firsts.filter((r) => r.grade === 3).length;
@@ -1544,10 +1551,14 @@ function Flashcards() {
   const asked = searchParams.get("mode");
   const mode: SessionMode = drillId ? "drill" : asked === "exercises" ? "exercises" : asked === "all" ? "all" : "due";
   // The exercises can be pointed at words: ?focus=12,34 (the summary's weak ones).
+  // With &only=1 a round takes those words and nothing else (the week's test,
+  // Sunday's look back); &test=1 makes the exercises the week's test.
   const focusIds = (searchParams.get("focus") ?? "")
     .split(",")
     .map(Number)
     .filter((id) => Number.isInteger(id) && id > 0);
+  const only = searchParams.get("only") === "1" && focusIds.length > 0;
+  const test = mode === "exercises" && searchParams.get("test") === "1";
 
   const cardsQuery = useQuery({
     queryKey: ["cards", deckId],
@@ -1570,13 +1581,14 @@ function Flashcards() {
   // and pick their own order (practice.ts); the drill, one word already met
   // (a link to a word still in the queue would teach it outside the three).
   const all = cardsQuery.data ?? [];
+  const pool = only ? all.filter((c) => focusIds.includes(c.id)) : all;
   const cards =
     mode === "drill"
       ? all.filter((c) => String(c.id) === drillId && hasStarted(c))
       : mode === "all"
-        ? flipOrder(all)
+        ? flipOrder(pool)
         : mode === "exercises"
-          ? all.filter(hasStarted)
+          ? pool.filter(hasStarted)
           : (dueQuery.data ?? []);
   const anyMet = all.some(hasStarted);
   // Nothing to go through yet, because nothing is met: "Önce kartlar".
@@ -1679,6 +1691,7 @@ function Flashcards() {
               mode={mode}
               fillers={mode === "due" ? cardsQuery.data : undefined}
               focusIds={focusIds}
+              test={test}
             />
           </div>
         )}

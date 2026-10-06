@@ -7,6 +7,7 @@ import {
   isStarted,
   newWordAllowed,
   newWordsOn,
+  newWordsThisWeek,
   planCounts,
   repeatedLearnWrite,
 } from "../services/daily.service.js";
@@ -336,9 +337,11 @@ export const reviewCard = async (req: Request, res: Response) => {
   // 4. Günde en fazla 3 yeni kelime, kurs dahil. Hiç başlamamış bir kelimenin
   //    ilk yazımı bugünün payından yer; pay dolduysa hiçbir şey yazılmaz.
   //    Eski bir uygulama sürümüne ve kursa karşı da geçerli.
-  const newToday = started || card.introduced_on !== null ? 0 : await newWordsOn(pool, req.userId!, day);
-  if (!newWordAllowed(started, card.introduced_on, newToday)) {
-    return res.status(409).json({ error: `Bugünün ${NEW_PER_DAY} yeni kelimesi doldu` });
+  const fresh = !started && card.introduced_on === null;
+  const newToday = fresh ? await newWordsOn(pool, req.userId!, day) : 0;
+  const newThisWeek = fresh ? await newWordsThisWeek(pool, req.userId!, day) : 0;
+  if (!newWordAllowed(started, card.introduced_on, newToday, { day, newThisWeek })) {
+    return res.status(409).json({ error: newToday >= NEW_PER_DAY ? `Bugünün ${NEW_PER_DAY} yeni kelimesi doldu` : "Bu haftanın yeni kelimeleri doldu" });
   }
 
   // Başlamış ama tanışma günü yazılmamış kelime (API'nin eski sürümünde

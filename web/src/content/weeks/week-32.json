@@ -1,0 +1,32 @@
+{
+ "week": 32,
+ "theme_tr": "Sosyal medya",
+ "reading": {
+  "title": "Selin's Perfect Kitchen",
+  "lines": [
+   { "en": "Selin has got 200,000 followers and a beautiful kitchen on Instagram.", "tr": "Selin'in Instagram'da 200.000 takipçisi ve çok güzel bir mutfağı var." },
+   { "en": "Every day she posts videos of perfect cakes and fresh bread.", "tr": "Her gün mükemmel keklerin ve taze ekmeklerin videolarını paylaşıyor." },
+   { "en": "People love her content, and her reactions to comments are always sweet.", "tr": "İnsanlar içeriklerine bayılıyor, yorumlara verdiği tepkiler de hep çok tatlı." },
+   { "en": "Her neighbour Burak scrolls through her page every night on the sofa.", "tr": "Komşusu Burak her gece kanepede onun sayfasını kaydırıyor." },
+   { "en": "He is a little addicted: he never misses a single video.", "tr": "Biraz bağımlı: tek bir videoyu bile kaçırmıyor." },
+   { "en": "But every evening he smells burnt toast from Selin's flat.", "tr": "Ama her akşam Selin'in dairesinden yanık ekmek kokusu geliyor." },
+   { "en": "So one day he leaves a comment: \"Are these cakes fake?\"", "tr": "Bu yüzden bir gün bir yorum bırakıyor: \"Bu kekler sahte mi?\"" },
+   { "en": "Selin calls the comment inappropriate and blocks him at once.", "tr": "Selin yorumu uygunsuz buluyor ve onu hemen engelliyor." },
+   { "en": "Too late: the comment is already getting a lot of attention.", "tr": "Ama çok geç: yorum şimdiden çok ilgi görüyor." },
+   { "en": "The cakes come from the bakery downstairs, and the baker is Burak's mum.", "tr": "Kekler alt kattaki fırından geliyor ve fırıncı da Burak'ın annesi." }
+  ]
+ },
+ "translation": {
+  "title": "Bir ay sosyal medyasız",
+  "lines": [
+   { "tr": "Bu ay sosyal medyaya ara veriyorum.", "en": "This month I'm taking a break from social media." },
+   { "tr": "Telefonuma fazla bağımlıyım ve bu çok yorucu.", "en": "I'm too addicted to my phone, and it's very tiring." },
+   { "tr": "Her gece saatlerce sahte hayatları kaydırıyorum.", "en": "Every night I scroll through fake lives for hours." },
+   { "tr": "Herkesin ilgisi için bir şeyler paylaşıyorum.", "en": "I post things for everybody's attention." },
+   { "tr": "Ayrıca uygunsuz içerikleri ve kavgaları hiç sevmiyorum.", "en": "I also hate the inappropriate content and the fights." },
+   { "tr": "Bir ay boyunca haberleri radyodan takip edeceğim.", "en": "For a month I'm going to keep up with the news on the radio." },
+   { "tr": "Lütfen beni WhatsApp'tan engelleme, orada olacağım!", "en": "Please don't block me on WhatsApp, I'm going to be there!" },
+   { "tr": "Bu mesaja tepkin ne?", "en": "What's your reaction to this message?" }
+  ]
+ }
+}

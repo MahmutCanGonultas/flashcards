@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import AppTabs from "../components/AppTabs";
 import TontonSays from "../components/TontonSays";
 import PersonalCardSheet from "../components/PersonalCardSheet";
+import WeekProgram from "../components/WeekProgram";
 import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
 import StrengthBars from "../components/StrengthBars";
@@ -404,6 +405,12 @@ function Kartlar() {
             </button>
           )}
         </div>
+
+        {deck && cards && plan?.week && (
+          <div className={rise} style={at(320)}>
+            <WeekProgram deckId={deck.id} cards={cards} week={plan.week} />
+          </div>
+        )}
 
         <div className={`mt-4 grid grid-cols-2 gap-3 ${rise}`} style={at(340)}>
           <Tile to="/kelimelerim" badge="bg-ocean" icon={<CardsIcon className="h-6 w-6" />} title="Kelimelerim" line={cards ? `${total} kelime · ara, süz` : "Yükleniyor…"}>

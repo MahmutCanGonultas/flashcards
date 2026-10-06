@@ -388,9 +388,14 @@ export function exerciseOrder(cards: Card[], { now = Date.now(), focusIds = [] }
  * question changes from one round to the next, so doing it twice in a day
  * isn't a rerun.
  */
-export function buildExercises(cards: Card[], { speech, now = Date.now(), focusIds = [] }: { speech: boolean; now?: number; focusIds?: number[] }): Exercise[] {
+export function buildExercises(
+  cards: Card[],
+  { speech, now = Date.now(), focusIds = [], test = false }: { speech: boolean; now?: number; focusIds?: number[]; test?: boolean },
+): Exercise[] {
   const round = Math.floor(now / 60_000);
   const words = exerciseOrder(cards.filter(hasStarted), { now, focusIds }).slice(0, EXERCISE_LIMIT);
+  // The week's test: every word once, from its Turkish, nothing to lean on.
+  if (test) return words.map((card) => ({ key: `${card.id}:test`, cardId: card.id, kind: "produce", graded: false, attempt: 0 }));
   const context = { day: round, speech, now };
   const firsts = words.map((card) => exerciseFor(card, context));
   if (words.length >= TWO_EACH_BELOW) return firsts;

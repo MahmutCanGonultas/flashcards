@@ -1,0 +1,31 @@
+{
+ "week": 34,
+ "theme_tr": "Şirketler ve ticaret",
+ "reading": {
+  "title": "The Café Across the Street",
+  "lines": [
+   { "en": "Mert has got a small independent café in Kadıköy, and business is good.", "tr": "Mert'in Kadıköy'de küçük, bağımsız bir kafesi var ve işler iyi gidiyor." },
+   { "en": "He makes a small profit every month, and his customers love him.", "tr": "Her ay küçük bir kâr ediyor ve müşterileri onu çok seviyor." },
+   { "en": "Then a leading global brand opens a huge shop across the street.", "tr": "Sonra önde gelen küresel bir marka, caddenin karşısında kocaman bir dükkân açıyor." },
+   { "en": "The competition is terrible: their coffee is cheap, and their cups are everywhere online.", "tr": "Rekabet korkunç: kahveleri ucuz ve bardakları internette her yerde." },
+   { "en": "Mert isn't going to give up, so he launches \"Friday School\".", "tr": "Mert pes etmeyecek, bu yüzden \"Cuma Okulu\"nu başlatıyor." },
+   { "en": "It's a free evening class for small business owners in his café.", "tr": "Bu, kafesinde küçük işletme sahipleri için ücretsiz bir akşam dersi." },
+   { "en": "Young people come with plans, and some of them set up their own shops.", "tr": "Gençler planlarıyla geliyor ve bazıları kendi dükkânını kuruyor." },
+   { "en": "The café is always full, and soon Mert expands into the shop next door.", "tr": "Kafe hep dolu ve kısa süre sonra Mert yandaki dükkâna doğru büyüyor." },
+   { "en": "And the global brand? It closes in March.", "tr": "Ya küresel marka? Martta kapanıyor." },
+   { "en": "Its manager now works for Mert. \"Small places succeed with people,\" she says.", "tr": "Eski müdürü artık Mert'in yanında çalışıyor. \"Küçük yerler insanlarla başarılı olur,\" diyor." }
+  ]
+ },
+ "translation": {
+  "title": "Kendi işimi kuruyorum",
+  "lines": [
+   { "tr": "Gelecek yıl kendi şirketimi kuracağım.", "en": "Next year I'm going to set up my own company." },
+   { "tr": "Bağımsız tasarımcılar için bir uygulama olacak.", "en": "It's going to be an app for independent designers." },
+   { "tr": "Uygulamayı önce İzmir'de piyasaya süreceğiz.", "en": "We are going to launch the app in Izmir first." },
+   { "tr": "Rekabet çok fazla ama bizim fikrimiz farklı.", "en": "There is a lot of competition, but our idea is different." },
+   { "tr": "İlk yıl kâr beklemiyorum.", "en": "I don't expect a profit in the first year." },
+   { "tr": "Sonra Avrupa'ya açılacağız ve küresel bir marka olacağız.", "en": "Then we are going to expand into Europe and become a global brand." },
+   { "tr": "Bence başarılı olacağız, çünkü ekibimiz harika.", "en": "I think we are going to succeed, because our team is great." }
+  ]
+ }
+}

@@ -1,0 +1,31 @@
+{
+  "week": 36,
+  "theme_tr": "Ekonomi",
+  "reading": {
+    "title": "The Croissant Theory",
+    "lines": [
+      {"en": "Every morning, Selin's café is full of office workers in a hurry.", "tr": "Her sabah Selin'in kafesi aceleyle koşturan ofis çalışanlarıyla dolu."},
+      {"en": "But this month, her croissant sales are declining dramatically.", "tr": "Ama bu ay kruvasan satışları büyük ölçüde düşüyor."},
+      {"en": "Her nephew Emre, an economics student, has got a theory.", "tr": "Ekonomi öğrencisi olan yeğeni Emre'nin bir teorisi var."},
+      {"en": "\"Inflation is high, so people are cutting back on small luxuries.\"", "tr": "\"Enflasyon yüksek, bu yüzden insanlar küçük lükslerden kısıyor.\""},
+      {"en": "\"Unemployment is rising too, and a croissant is a significant cost now.\"", "tr": "\"İşsizlik de artıyor ve bir kruvasan artık ciddi bir masraf.\""},
+      {"en": "He estimates a thirty percent fall in café sales across the city.", "tr": "Şehir genelinde kafe satışlarında yüzde otuzluk bir düşüş tahmin ediyor."},
+      {"en": "But Selin's prices are stable, and the economy looks fine in the news.", "tr": "Ama Selin'in fiyatları sabit ve haberlere bakılırsa ekonomi iyi görünüyor."},
+      {"en": "Then she looks out of the window and sees a long queue.", "tr": "Sonra pencereden dışarı bakıyor ve uzun bir kuyruk görüyor."},
+      {"en": "A new bakery across the street is boosting its sales with one-euro croissants.", "tr": "Karşıdaki yeni fırın, bir avroluk kruvasanlarla satışlarını artırıyor."},
+      {"en": "\"There's no shortage of customers,\" she says. \"They're just over there.\"", "tr": "\"Müşteri kıtlığı yok,\" diyor. \"Hepsi sadece karşıda.\""}
+    ]
+  },
+  "translation": {
+    "title": "Ev bütçesi",
+    "lines": [
+      {"tr": "Bu akşam ev bütçemizi konuşuyoruz, çünkü enflasyon çok yüksek.", "en": "We are talking about our household budget tonight, because inflation is very high."},
+      {"tr": "Market faturamız her ay büyük ölçüde artıyor.", "en": "Our supermarket bill is rising dramatically every month."},
+      {"tr": "Yemek siparişlerini ve taksileri kısacağız.", "en": "We are going to cut back on takeaways and taxis."},
+      {"tr": "Elektrik faturası sabit, ama kira ciddi bir sorun.", "en": "The electricity bill is stable, but the rent is a significant problem."},
+      {"tr": "Yıllık harcamamızı yaklaşık otuz bin avro olarak tahmin ediyorum.", "en": "I estimate our yearly spending at about thirty thousand euros."},
+      {"tr": "Şehirde işsizlik artıyor, ama ikimizin de işi güvende.", "en": "Unemployment in the city is rising, but both our jobs are safe."},
+      {"tr": "Haftada bir evde yemek akşamı moralimizi yükseltecek.", "en": "A home dinner night once a week is going to boost our mood."}
+    ]
+  }
+}

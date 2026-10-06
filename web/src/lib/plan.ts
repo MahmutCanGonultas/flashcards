@@ -32,7 +32,12 @@ export type DailyPlan = DayBudget & {
   /** Words already met: what the exercises can ask. */
   exercisable: number;
   tomorrow: { reviews: number; new: number };
+  /** Where the learner is in the programme (absent from an older API). */
+  week?: WeekCounts;
 };
+
+/** The programme week: its number and theme, today's weekday (0 = Monday), and this week's new words met against ten. */
+export type WeekCounts = { number: number | null; theme: string | null; weekday: number; met: number; target: number };
 
 /**
  * The personal deck's plan. Fresh whenever the app comes back to the front
@@ -150,7 +155,7 @@ export function planView(plan: DailyPlan): PlanView {
       : plan.paused === "shaky"
         ? "Öğrenmekte olduğun kelimeler birikti; bugün onlara odaklanalım."
         : plan.queued > 0
-          ? `Sırada ${plan.queued} yeni kelime var · her gün en fazla 3'ü gelir.`
+          ? `Sırada ${plan.queued} yeni kelime var · haftada 10'u gelir.`
           : null;
   const toCourse = !plan.paused && fresh === 0 && plan.queued === 0 && plan.newToday < plan.cap;
   const base = { count, note, toCourse, steps };

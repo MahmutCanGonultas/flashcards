@@ -1,0 +1,32 @@
+{
+  "week": 7,
+  "theme_tr": "Para ve bütçe",
+  "reading": {
+    "title": "Grandma's Painting",
+    "lines": [
+      { "en": "Leyla earns a reasonable salary, but she is still in debt.", "tr": "Leyla makul bir maaş kazanıyor ama hâlâ borç içinde." },
+      { "en": "She owes the bank 80,000 lira for her car.", "tr": "Arabası için bankaya 80.000 lira borçlu." },
+      { "en": "Every evening, she looks at her budget and sighs.", "tr": "Her akşam bütçesine bakıyor ve iç çekiyor." },
+      { "en": "On her wall, there is an ugly old painting from her grandmother.", "tr": "Duvarında büyükannesinden kalma çirkin, eski bir tablo var." },
+      { "en": "\"Maybe it's valuable,\" her friend says. \"Take it to an expert.\"", "tr": "\"Belki değerlidir,\" diyor arkadaşı. \"Onu bir uzmana götür.\"" },
+      { "en": "So on Saturday, Leyla is at a small gallery with the painting.", "tr": "Böylece cumartesi günü Leyla, tabloyla birlikte küçük bir galeride." },
+      { "en": "The expert looks at it for a long time and says nothing.", "tr": "Uzman uzun süre tabloya bakıyor ve hiçbir şey söylemiyor." },
+      { "en": "\"Is it going to pay off my debt?\" Leyla asks nervously.", "tr": "\"Borcumu kapatacak mı?\" diye soruyor Leyla gergin bir şekilde." },
+      { "en": "\"The painting? No. But the frame is very old and very valuable.\"", "tr": "\"Tablo mu? Hayır. Ama çerçeve çok eski ve çok değerli.\"" },
+      { "en": "\"You're going to afford a holiday too. Your financial problems are over!\"", "tr": "\"Bir tatile bile gücün yetecek. Mali sorunların bitti!\"" }
+    ]
+  },
+  "translation": {
+    "title": "İlk maaşın için tavsiyeler",
+    "lines": [
+      { "tr": "İlk işinde iyi para kazanacaksın, ama dikkatli ol.", "en": "You're going to earn good money in your first job, but be careful." },
+      { "tr": "Her ay basit bir bütçe yap ve ona sadık kal.", "en": "Make a simple budget every month and stick to it." },
+      { "tr": "Maaşının bir kısmını her zaman biriktir.", "en": "Always save a part of your salary." },
+      { "tr": "Kredi kartı borcu çok tehlikeli; kartını her ay tamamen kapat.", "en": "Credit card debt is very dangerous; pay off your card every month." },
+      { "tr": "Şimdilik pahalı bir arabaya gücün yetmeyecek, o yüzden otobüse bin.", "en": "For now, you aren't going to afford an expensive car, so take the bus." },
+      { "tr": "Kirası makul bir daire bul, mesela Kadıköy'de.", "en": "Find a flat with a reasonable rent, for example in Kadıköy." },
+      { "tr": "Mali bir sorunun mu var? Beni ara.", "en": "Have you got a financial problem? Call me." },
+      { "tr": "Ve unutma, bana hâlâ 3.000 lira borçlusun!", "en": "And don't forget, you still owe me 3,000 lira!" }
+    ]
+  }
+}

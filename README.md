@@ -11,6 +11,13 @@ It's a web app made for the phone (you can install it like a regular app), built
 
 ## Features
 
+### A weekly word programme
+
+- The learner doesn't pick the words: a programme of 500 words, from the end of A2 to B2, ten a week, each week a theme (making decisions, money, work, feelings, health, the economy…). Every card, sentence and text uses only the grammar the learner has covered.
+- New words come Monday to Thursday (3, 3, 2, 2); a missed day is made up later in the week, never more than three a day.
+- Friday has a short reading built from the week's words, read aloud sentence by sentence. Saturday has a Turkish text to translate, then compare with a model line by line. Sunday has the week's test (each word typed from its Turkish) and a look back: twenty words from earlier weeks, the ones not seen for the longest first, so a word from three weeks or three months ago keeps coming round.
+- Cards and exercises are there every day. The course is hidden while the programme runs; the tabs are the words and the grammar.
+
 ### Cards and exercises, kept apart
 
 - **At most three new words a day.** The server picks them, and never puts two look-alike words (same first letters, or the same word type on one day) side by side. The rest wait their turn, and new words pause on days when too many reviews are waiting.

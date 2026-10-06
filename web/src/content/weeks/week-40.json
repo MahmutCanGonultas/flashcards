@@ -1,0 +1,32 @@
+{
+  "week": 40,
+  "theme_tr": "Risk almak",
+  "reading": {
+    "title": "Grandma's Gamble",
+    "lines": [
+      {"en": "Mert is an accountant, and he is cautious about everything.", "tr": "Mert bir muhasebeci ve her konuda temkinli."},
+      {"en": "His friend Cem is opening a food truck, and he needs money.", "tr": "Arkadaşı Cem bir yemek kamyonu açıyor ve paraya ihtiyacı var."},
+      {"en": "\"It's a bold plan,\" says Cem. \"Big risk, but big rewards!\"", "tr": "\"Cesur bir plan,\" diyor Cem. \"Büyük risk ama büyük ödüller!\""},
+      {"en": "Mert weighs up the numbers all weekend in a long spreadsheet.", "tr": "Mert bütün hafta sonu uzun bir tabloda rakamları tartıyor."},
+      {"en": "The main drawback? Cem has got no experience in a kitchen.", "tr": "Asıl dezavantaj ne mi? Cem'in mutfakta hiç deneyimi yok."},
+      {"en": "\"I don't dare gamble my savings,\" Mert says, and he hesitates for weeks.", "tr": "\"Birikimlerimi riske atmaya cesaret edemiyorum,\" diyor Mert ve haftalarca tereddüt ediyor."},
+      {"en": "Then his grandmother calls Cem. \"How much? Fine. I'm in.\"", "tr": "Sonra büyükannesi Cem'i arıyor. \"Ne kadar? Tamam. Ben varım.\""},
+      {"en": "A year on, the truck has got a long queue every lunchtime.", "tr": "Bir yıl sonra kamyonun önünde her öğlen uzun bir kuyruk var."},
+      {"en": "\"Every decision has got consequences,\" Grandma tells Mert with a smile.", "tr": "\"Her kararın sonuçları var,\" diyor büyükanne Mert'e gülümseyerek."},
+      {"en": "\"And I'm a fortunate old lady: free lunch every day!\"", "tr": "\"Ben de şanslı bir yaşlı kadınım: her gün bedava öğle yemeği!\""}
+    ]
+  },
+  "translation": {
+    "title": "Yamaç paraşütü",
+    "lines": [
+      {"tr": "Bu cumartesi Ölüdeniz'de bir yamaç paraşütü gezimiz var.", "en": "We have got a paragliding trip in Ölüdeniz this Saturday."},
+      {"tr": "Biraz tereddüt ediyorum, çünkü yükseklikten korkuyorum.", "en": "I am hesitating a little, because I'm afraid of heights."},
+      {"tr": "Annem çok temkinli ve buna çılgın bir fikir diyor.", "en": "My mum is very cautious, and she calls it a crazy idea."},
+      {"tr": "Artıları ve eksileri tartıyorum.", "en": "I'm weighing up the pros and cons."},
+      {"tr": "Tek dezavantajı fiyat: kişi başı yüz avro.", "en": "The only drawback is the price: a hundred euros per person."},
+      {"tr": "Ama ödül muhteşem bir manzara ve harika bir anı olacak.", "en": "But the reward is going to be an amazing view and a great memory."},
+      {"tr": "Hava tahminine göre cumartesi güneşli, yani şanslıyız.", "en": "The forecast says Saturday is sunny, so we are fortunate."},
+      {"tr": "Kardeşim bana meydan okuyor: \"Hadi, atla!\"", "en": "My brother dares me: \"Come on, jump!\""}
+    ]
+  }
+}

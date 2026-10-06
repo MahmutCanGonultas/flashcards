@@ -76,6 +76,7 @@ export function summaryView({
   skipped = new Set(),
   typed = { n: 0, right: 0 },
   pool = 0,
+  test = false,
 }: {
   cards: Card[];
   results: Record<number, RoundResult>;
@@ -88,6 +89,8 @@ export function summaryView({
   typed?: { n: number; right: number };
   /** Words met by the end of the round: what the exercises can ask. */
   pool?: number;
+  /** The week's test: its own title, and the score is the whole line. */
+  test?: boolean;
 }): SummaryView {
   const firsts = Object.values(results);
   // Passed and never answered: nothing was written, so they are still waiting.
@@ -104,8 +107,10 @@ export function summaryView({
           ? "Güzel alıştırma. Takvime dokunmadım; asıl tekrar sırası gelince."
           : roundLine(cards, results);
   const line = passed > 0 && firsts.length > 0 ? `${answered} Geçtiğin ${passed} kelime sırada bekliyor.` : passed > 0 ? `${answered} Geçtiğin kelimeler sırada bekliyor.` : answered;
-  const title = mode === "drill" ? "Alıştırma bitti!" : mode === "exercises" ? "Egzersiz bitti!" : "Oturum tamam!";
-  const done = { title, line, weak: [], primary: { label: "Devam", to: exitTo }, secondary: null };
+  const title = test ? "Haftanın testi bitti!" : mode === "drill" ? "Alıştırma bitti!" : mode === "exercises" ? "Egzersiz bitti!" : "Oturum tamam!";
+  const testLine =
+    typed.n === 0 ? line : typed.right === typed.n ? `${typed.n} kelimenin hepsini yazarak bildin. Bu hafta tamam!` : `${typed.n} kelimeden ${typed.right} tanesini yazarak bildin. Kaçanlar aşağıda; onlara bir kez daha bak.`;
+  const done = { title, line: test ? testLine : line, weak: [], primary: { label: "Devam", to: exitTo }, secondary: null };
 
   if (mode !== "due" || firsts.length === 0 || pool === 0) return done;
 

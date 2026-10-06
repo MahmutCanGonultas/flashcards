@@ -1,0 +1,31 @@
+{
+  "week": 12,
+  "theme_tr": "Şehir hayatı",
+  "reading": {
+    "title": "A Message from Lisbon",
+    "lines": [
+      { "en": "Hi Ece! I'm in Lisbon for three months, and I love it here.", "tr": "Selam Ece! Üç aylığına Lizbon'dayım ve burayı çok seviyorum." },
+      { "en": "My neighborhood is small and old, and it's very lively at night.", "tr": "Mahallem küçük ve eski, geceleri de çok canlı." },
+      { "en": "I usually get around by tram, but the trams are always crowded.", "tr": "Genelde tramvayla dolaşıyorum ama tramvaylar hep kalabalık." },
+      { "en": "Nobody rushes here: people walk slowly and talk a lot.", "tr": "Burada kimse acele etmiyor: insanlar yavaş yürüyor ve çok konuşuyor." },
+      { "en": "Every weekend I explore a new part of the city with my camera.", "tr": "Her hafta sonu fotoğraf makinemle şehrin yeni bir bölümünü keşfediyorum." },
+      { "en": "The local people are friendly, and they recycle everything.", "tr": "Yerel halk cana yakın ve her şeyi geri dönüştürüyor." },
+      { "en": "There isn't much pollution, because there aren't many cars in the old town.", "tr": "Pek kirlilik yok, çünkü eski şehirde fazla araba yok." },
+      { "en": "The sports facilities near my flat are free for everybody.", "tr": "Evimin yakınındaki spor tesisleri herkes için ücretsiz." },
+      { "en": "There is only one problem: I'm never going to come home!", "tr": "Tek bir sorun var: Eve asla dönmeyeceğim!" }
+    ]
+  },
+  "translation": {
+    "title": "Kiralık daire ilanı",
+    "lines": [
+      { "tr": "Bu daire canlı ve güvenli bir mahallede.", "en": "This flat is in a lively and safe neighborhood." },
+      { "tr": "Yakında bir sürü yerel kafe ve küçük dükkân var.", "en": "There are a lot of local cafés and small shops nearby." },
+      { "tr": "Binanın modern imkânları var: bir spor salonu ve bir havuz.", "en": "The building has got modern facilities: a gym and a pool." },
+      { "tr": "Metro durağı beş dakika uzaklıkta, o yüzden şehirde kolayca dolaşırsınız.", "en": "The metro station is five minutes away, so you get around the city easily." },
+      { "tr": "Metro sabahları biraz kalabalık, ama otobüs de var.", "en": "The metro is a bit crowded in the morning, but there's a bus too." },
+      { "tr": "Sokakta trafik yok, bu yüzden kirlilik çok az.", "en": "There is no traffic on the street, so there is very little pollution." },
+      { "tr": "Her katta geri dönüşüm kutuları var.", "en": "There are recycling bins on every floor." },
+      { "tr": "Kararınızı aceleye getirmeyin: bu hafta sonu gelin ve bölgeyi keşfedin.", "en": "Don't rush your decision: come and explore the area this weekend." }
+    ]
+  }
+}

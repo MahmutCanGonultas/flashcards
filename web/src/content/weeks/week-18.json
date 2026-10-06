@@ -1,0 +1,31 @@
+{
+  "week": 18,
+  "theme_tr": "Banka ve ödemeler",
+  "reading": {
+    "title": "A Message From the Bank",
+    "lines": [
+      { "en": "My grandmother is seventy-eight, and she's got a smartphone, a bank app and a lot of opinions.", "tr": "Babaannem yetmiş sekiz yaşında; bir akıllı telefonu, bir banka uygulaması ve bir sürü fikri var." },
+      { "en": "This morning she's reading a message from her 'bank' at the kitchen table.", "tr": "Bu sabah mutfak masasında 'bankasından' gelen bir mesajı okuyor." },
+      { "en": "'Your card expires today. Your insurance and your loan are in danger!'", "tr": "'Kartınızın süresi bugün doluyor. Sigortanız ve krediniz tehlikede!'" },
+      { "en": "'Transfer all your money to this secure account now. There is no fee.'", "tr": "'Tüm paranızı hemen bu güvenli hesaba aktarın. Hiçbir ücret yok.'" },
+      { "en": "I'm worried, but my grandmother is very calm.", "tr": "Ben endişeliyim ama babaannem çok sakin." },
+      { "en": "'Darling, I haven't got a loan, and my card is valid until 2029.'", "tr": "'Canım, benim kredim yok ve kartım 2029'a kadar geçerli.'" },
+      { "en": "She calls the number in the message and puts the phone on speaker.", "tr": "Mesajdaki numarayı arıyor ve telefonu hoparlöre alıyor." },
+      { "en": "A young man answers. 'Madam, please withdraw your money and transfer it to us today.'", "tr": "Genç bir adam açıyor. 'Hanımefendi, lütfen paranızı çekin ve bugün bize aktarın.'" },
+      { "en": "'Young man,' she says, 'I'm a retired bank manager. Find a real job.'", "tr": "'Delikanlı,' diyor, 'ben emekli bir banka müdürüyüm. Kendine gerçek bir iş bul.'" },
+      { "en": "Then she invests ten minutes in a long, serious lecture about honesty.", "tr": "Sonra dürüstlük üzerine uzun, ciddi bir nutka on dakika ayırıyor." }
+    ]
+  },
+  "translation": {
+    "title": "Yeni bütçe",
+    "lines": [
+      { "tr": "Bu ay eşimle yeni bir aylık bütçe yapıyoruz.", "en": "This month my wife and I are making a new monthly budget." },
+      { "tr": "Ev için bankadan kredi çekiyoruz, o yüzden her kuruş önemli.", "en": "We're getting a loan from the bank for a house, so every lira is important." },
+      { "tr": "Bankamız her havale için ücret alıyor, bu yüzden bankamızı değiştireceğiz.", "en": "Our bank takes a fee for every transfer, so we're going to change banks." },
+      { "tr": "Ayrıca araba sigortamızın süresi gelecek ay doluyor.", "en": "Also, our car insurance expires next month." },
+      { "tr": "Artık her hafta nakit çekmeyeceğim; kartla ödeyeceğim.", "en": "I'm not going to withdraw cash every week now; I'm going to pay by card." },
+      { "tr": "Eşim her ay biraz altına yatırım yapıyor.", "en": "My wife invests a little money in gold every month." },
+      { "tr": "Bence asıl önemli şey güvenli bir gelecek.", "en": "In my opinion, the important thing is a secure future." }
+    ]
+  }
+}

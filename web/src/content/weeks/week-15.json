@@ -1,0 +1,31 @@
+{
+  "week": 15,
+  "theme_tr": "Günlük hayat ve ev işleri",
+  "reading": {
+    "title": "An Ordinary Saturday",
+    "lines": [
+      { "en": "It's an ordinary Saturday, and Emre has got a long list of jobs.", "tr": "Sıradan bir cumartesi ve Emre'nin uzun bir iş listesi var." },
+      { "en": "There's a pile of laundry on the chair and a mess in the kitchen.", "tr": "Sandalyenin üstünde bir yığın çamaşır, mutfakta da bir dağınıklık var." },
+      { "en": "He's running out of coffee, and the bathroom light isn't working properly.", "tr": "Kahvesi bitmek üzere ve banyonun ışığı düzgün çalışmıyor." },
+      { "en": "But Emre is exhausted after a long week at work.", "tr": "Ama Emre, işteki uzun bir haftanın ardından bitkin." },
+      { "en": "So he puts off everything and lies on the sofa with his phone.", "tr": "O yüzden her şeyi erteliyor ve telefonuyla kanepeye uzanıyor." },
+      { "en": "At eleven, his phone reminds him about an appointment: 'Lunch with Mom, 12:00.'", "tr": "Saat on birde telefonu ona bir randevuyu hatırlatıyor: 'Annemle öğle yemeği, 12.00.'" },
+      { "en": "His mom is coming for lunch, and she notices everything!", "tr": "Annesi öğle yemeğine geliyor ve o her şeyi fark eder!" },
+      { "en": "In fifty minutes, Emre cleans the kitchen, does the laundry and replaces the bulb.", "tr": "Elli dakikada Emre mutfağı temizliyor, çamaşırları yıkıyor ve ampulü değiştiriyor." },
+      { "en": "His mom arrives and looks around: 'Why is it so clean? Are you ill?'", "tr": "Annesi geliyor ve etrafa bakıyor: 'Burası neden bu kadar temiz? Hasta mısın?'" }
+    ]
+  },
+  "translation": {
+    "title": "Ev arkadaşıma not",
+    "lines": [
+      { "tr": "Bu hafta sonu Bursa'dayım, o yüzden işte sana küçük bir liste.", "en": "I'm in Bursa this weekend, so here is a small list for you." },
+      { "tr": "Kahvemiz ve deterjanımız bitiyor, o yüzden alışverişi erteleme.", "en": "We're running out of coffee and washing powder, so don't put off the shopping." },
+      { "tr": "Banyodaki ampul çalışmıyor, o yüzden lütfen onu değiştir.", "en": "The bulb in the bathroom isn't working, so please replace it." },
+      { "tr": "Çamaşırlar makinede, o yüzden lütfen onları düzgünce as.", "en": "The laundry is in the machine, so please hang it out properly." },
+      { "tr": "Salı günü saat onda dişçi randevun var, unutma!", "en": "You've got a dentist appointment on Tuesday at ten, so don't forget!" },
+      { "tr": "Mutfaktaki dağınıklık için kusura bakma, pazar günü temizleyeceğim.", "en": "Sorry about the mess in the kitchen; I'm going to clean it on Sunday." },
+      { "tr": "Bu akşam bitkin olacaksın, o yüzden pizza söyle ve erken yat.", "en": "You're going to be exhausted tonight, so order pizza and go to bed early." },
+      { "tr": "Merak etme, telefonun sana her şeyi hatırlatacak.", "en": "Don't worry: your phone is going to remind you about everything." }
+    ]
+  }
+}

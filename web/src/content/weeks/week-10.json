@@ -1,0 +1,32 @@
+{
+  "week": 10,
+  "theme_tr": "Sağlık ve beden",
+  "reading": {
+    "title": "The Wrong Glasses",
+    "lines": [
+      { "en": "Burak is at the doctor's, and he is very worried.", "tr": "Burak doktorda ve çok endişeli." },
+      { "en": "\"I feel dizzy all day, and my eyes are always sore,\" he says.", "tr": "\"Bütün gün başım dönüyor ve gözlerim hep ağrıyor,\" diyor." },
+      { "en": "\"I also suffer from terrible headaches at work.\"", "tr": "\"İş yerinde de korkunç baş ağrılarından muzdaribim.\"" },
+      { "en": "The doctor listens and writes down every symptom.", "tr": "Doktor dinliyor ve her belirtiyi not ediyor." },
+      { "en": "\"Any injuries? Do you do any physical exercise?\" she asks.", "tr": "\"Herhangi bir yaralanma var mı? Hiç fiziksel egzersiz yapıyor musun?\" diye soruyor." },
+      { "en": "\"No injuries. I swim twice a week, and I breathe without any problems.\"", "tr": "\"Yaralanma yok. Haftada iki kez yüzüyorum ve rahat nefes alıyorum.\"" },
+      { "en": "The doctor looks at his face for a moment and smiles.", "tr": "Doktor bir an yüzüne bakıyor ve gülümsüyor." },
+      { "en": "\"Are these glasses yours? They look like a woman's glasses.\"", "tr": "\"Bu gözlük senin mi? Kadın gözlüğüne benziyor.\"" },
+      { "en": "Burak goes red. \"Oh no. They're my wife's!\"", "tr": "Burak kızarıyor. \"Eyvah. Bunlar karımın!\"" },
+      { "en": "\"Your treatment: give them back today. You're going to recover by tomorrow.\"", "tr": "\"İşte tedavin: onları bugün geri ver, yarına kadar iyileşeceksin.\"" }
+    ]
+  },
+  "translation": {
+    "title": "Grip mevsimi için öneriler",
+    "lines": [
+      { "tr": "Bu kış birçok insan gripten muzdarip.", "en": "This winter, a lot of people are suffering from the flu." },
+      { "tr": "Yaygın belirtiler ateş, öksürük ve boğaz ağrısıdır.", "en": "Common symptoms are a fever, a cough and a sore throat." },
+      { "tr": "Bazı hastaların başı da dönüyor.", "en": "Some patients also feel dizzy." },
+      { "tr": "Ellerini sık sık yıka; temiz eller gribi önler.", "en": "Wash your hands often; clean hands prevent the flu." },
+      { "tr": "Düzenli fiziksel aktivite de bağışıklık sistemin için iyidir.", "en": "Regular physical activity is also good for your immune system." },
+      { "tr": "Hasta mısın? Evde kal, dinlen ve bol su iç.", "en": "Are you ill? Stay at home, rest and drink a lot of water." },
+      { "tr": "Göğsün ağrıyor mu, nefes almakta zorlanıyor musun? Hemen doktora git.", "en": "Is your chest sore? Are you breathing with difficulty? See a doctor right away." },
+      { "tr": "Doğru tedaviyle birkaç günde iyileşeceksin.", "en": "With the right treatment, you're going to recover in a few days." }
+    ]
+  }
+}

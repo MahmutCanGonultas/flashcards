@@ -1,0 +1,31 @@
+{
+  "week": 22,
+  "theme_tr": "Spor ve yaşam tarzı",
+  "reading": {
+    "title": "Day One at the Gym",
+    "lines": [
+      {"en": "It's Monday morning, and Emre is starting a new life.", "tr": "Pazartesi sabahı ve Emre yeni bir hayata başlıyor."},
+      {"en": "He is gaining weight, and his doctor isn't happy about it.", "tr": "Kilo alıyor ve doktoru bundan memnun değil."},
+      {"en": "So today he is going to work out for the first time.", "tr": "O yüzden bugün ilk kez spor yapacak."},
+      {"en": "First, he stretches for ten minutes next to a very fit old man.", "tr": "Önce çok formda, yaşlı bir adamın yanında on dakika esneme yapıyor."},
+      {"en": "Then the class begins, and it is really tough.", "tr": "Sonra ders başlıyor ve gerçekten çok zor."},
+      {"en": "After twenty minutes, Emre is sweating and every muscle hurts.", "tr": "Yirmi dakika sonra Emre ter içinde ve her kası ağrıyor."},
+      {"en": "The old man is still on one leg, in perfect balance.", "tr": "Yaşlı adam hâlâ tek ayağının üstünde, kusursuz bir dengede."},
+      {"en": "'Don't worry,' he says, 'the benefits come slowly.'", "tr": "'Merak etme,' diyor, 'faydaları yavaş yavaş gelir.'"},
+      {"en": "'And your sofa is harmful to you, so come again tomorrow.'", "tr": "'Bir de kanepen sana zararlı, o yüzden yarın yine gel.'"},
+      {"en": "Then Emre reads a sign on the wall: 'Happy 90th birthday, Hasan!'", "tr": "Sonra Emre duvardaki bir yazıyı okuyor: '90. yaşın kutlu olsun, Hasan!'"}
+    ]
+  },
+  "translation": {
+    "title": "Koçumdan mesaj",
+    "lines": [
+      {"tr": "Yarın saat yedide parkta spor yapacağız.", "en": "We are going to work out in the park tomorrow at seven."},
+      {"tr": "Önce on dakika esneme yap, sonra birlikte koşarız.", "en": "First stretch for ten minutes, and then we run together."},
+      {"tr": "Program zor ama sağlığına faydaları çok büyük.", "en": "The programme is tough, but the benefits for your health are huge."},
+      {"tr": "Yanına su al, çünkü çok terleyeceksin.", "en": "Bring some water, because you are going to sweat a lot."},
+      {"tr": "Geç saatteki akşam yemekleri zararlı, o yüzden akşamları hafif bir şey ye.", "en": "Late dinners are harmful, so eat something light in the evening."},
+      {"tr": "Üç ay içinde kas kazanacak ve formda olacaksın.", "en": "In three months, you are going to gain muscle and be fit."},
+      {"tr": "Ama iş ve spor arasında bir denge kur; her gün antrenman yapma.", "en": "But find a balance between work and sport; don't train every day."}
+    ]
+  }
+}

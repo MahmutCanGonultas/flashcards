@@ -1,20 +1,18 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { CardsIcon, PathIcon } from "./icons";
-
-/** Kartlarım holds the learner's own words and everything around them: the word list, the word pages, grammar. */
-const OWN_ROUTES = [/^\/kartlar/, /^\/kelimelerim/, /^\/gramer/, /^\/decks\/\d+\/words\//];
+import { BookIcon, CardsIcon } from "./icons";
 
 /**
- * The two halves of the app, one tab each: the learner's own words on the
- * left, the course on the right. The active tab sits in a blue key, the
- * way a pressed button looks here.
+ * The two halves of the app, one tab each: the words (the weekly
+ * programme, the cards, the word list) and the grammar. The course is
+ * hidden while the programme runs (its pages still open by address). The
+ * active tab sits in a blue key, the way a pressed button looks here.
  */
 function AppTabs() {
   const { pathname } = useLocation();
-  const own = OWN_ROUTES.some((r) => r.test(pathname));
+  const grammar = /^\/gramer/.test(pathname);
   const tabs = [
-    { to: "/kartlar", label: "Kartlarım", icon: CardsIcon, active: own },
-    { to: "/kurs", label: "Kurs", icon: PathIcon, active: !own },
+    { to: "/kartlar", label: "Kelimeler", icon: CardsIcon, active: !grammar },
+    { to: "/gramer", label: "Gramer", icon: BookIcon, active: grammar },
   ];
   return (
     <nav aria-label="Bölümler" className="fixed inset-x-0 bottom-0 z-20 border-t-2 border-rule bg-white pb-[env(safe-area-inset-bottom)]">

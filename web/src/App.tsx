@@ -22,6 +22,9 @@ import { playTap } from "./lib/sound";
 const GrammarHub = lazy(() => import("./pages/GrammarHub"));
 const GrammarTopic = lazy(() => import("./pages/GrammarTopic"));
 const GrammarQuiz = lazy(() => import("./pages/GrammarQuiz"));
+// The programme week's two texts, each in its own chunk.
+const WeekReading = lazy(() => import("./pages/WeekReading"));
+const WeekTranslation = lazy(() => import("./pages/WeekTranslation"));
 
 /** Signed in? Go to the decks. Otherwise, go sign in. */
 function RootRedirect() {
@@ -129,6 +132,26 @@ function App() {
           <ProtectedRoute>
             <Suspense fallback={null}>
               <GrammarQuiz />
+            </Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/hafta/:week/okuma"
+        element={
+          <ProtectedRoute>
+            <Suspense fallback={null}>
+              <WeekReading />
+            </Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/hafta/:week/ceviri"
+        element={
+          <ProtectedRoute>
+            <Suspense fallback={null}>
+              <WeekTranslation />
             </Suspense>
           </ProtectedRoute>
         }

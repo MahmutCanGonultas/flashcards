@@ -1,0 +1,31 @@
+{
+  "week": 9,
+  "theme_tr": "Arkadaşlık ve ilişkiler",
+  "reading": {
+    "title": "Good News, Strange News",
+    "lines": [
+      { "en": "Elif and Zeynep are old school friends, and they always keep in touch.", "tr": "Elif ile Zeynep eski okul arkadaşları ve her zaman iletişimde kalırlar." },
+      { "en": "They get along well, and there is a lot of trust between them.", "tr": "Çok iyi anlaşırlar ve aralarında büyük bir güven var." },
+      { "en": "Today Zeynep is at Elif's door with a cake and a nervous smile.", "tr": "Bugün Zeynep elinde bir pasta ve gergin bir gülümsemeyle Elif'in kapısında." },
+      { "en": "\"I've got some news, and I'm a bit scared,\" she says.", "tr": "\"Bir haberim var ve biraz korkuyorum,\" diyor." },
+      { "en": "\"I'm in a serious relationship, and we're getting married in June.\"", "tr": "\"Ciddi bir ilişkim var ve haziranda evleniyoruz.\"" },
+      { "en": "Elif hugs her. \"That's great! I'm not jealous, I promise.\"", "tr": "Elif ona sarılıyor. \"Harika! Kıskanmıyorum, söz.\"" },
+      { "en": "\"Wait. Please be honest with me: do you support us?\"", "tr": "\"Bekle. Lütfen bana karşı dürüst ol: bizi destekliyor musun?\"" },
+      { "en": "\"Us? Who is he?\" Elif asks. Zeynep looks at the floor.", "tr": "\"Bizi mi? Kim o?\" diye soruyor Elif. Zeynep yere bakıyor." },
+      { "en": "\"It's your brother, Murat. I apologize for the big secret.\"", "tr": "\"Ağabeyin Murat. Bu büyük sır için özür dilerim.\"" },
+      { "en": "Elif laughs. \"I forgive you both, sister-in-law. But I'm choosing the music!\"", "tr": "Elif gülüyor. \"İkinizi de affediyorum, yenge. Ama müziği ben seçiyorum!\"" }
+    ]
+  },
+  "translation": {
+    "title": "Arkadaşına tavsiye",
+    "lines": [
+      { "tr": "Sen ve Deniz bu aralar hiç iyi anlaşmıyorsunuz.", "en": "You and Deniz aren't getting along at all these days." },
+      { "tr": "Kıskançsın, biliyorum, ama o kız sadece onun iş arkadaşı.", "en": "You're jealous, I know, but that girl is only his colleague." },
+      { "tr": "Ona karşı dürüst ol ve sorunu konuş.", "en": "Be honest with him and talk about the problem." },
+      { "tr": "İyi bir ilişkide güven ve saygı çok önemlidir.", "en": "Trust and respect are very important in a good relationship." },
+      { "tr": "Bu akşam ondan özür dile; o da seni affedecek, eminim.", "en": "Apologize to him tonight; he's going to forgive you too, I'm sure." },
+      { "tr": "Ben her zaman seni destekliyorum, bunu unutma.", "en": "I always support you, don't forget that." },
+      { "tr": "Yarın beni ara, iletişimde kalalım.", "en": "Call me tomorrow, and let's keep in touch." }
+    ]
+  }
+}
