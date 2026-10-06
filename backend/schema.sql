@@ -15,7 +15,8 @@ CREATE TABLE decks(
     name VARCHAR(255) NOT NULL,
     -- 'personal' is the learner's own words: one per user, created on
     -- demand, reviewed as flip cards on their own schedule — independent of
-    -- the course.
+    -- the course. 'notebook' is the words they write down themselves:
+    -- kept and looked at, never scheduled.
     kind VARCHAR(20) NOT NULL DEFAULT 'normal',
     created_at TIMESTAMP DEFAULT NOW()
 );

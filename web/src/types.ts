@@ -3,7 +3,7 @@ export type Deck = {
   user_id: number;
   name: string;
   /** 'personal' is the learner's own words; anything else is a normal deck. */
-  kind?: "normal" | "personal";
+  kind?: "normal" | "personal" | "notebook";
   created_at: string;
 };
 

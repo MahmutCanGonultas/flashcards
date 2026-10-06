@@ -37,7 +37,7 @@ function Kurs() {
     queryKey: ["decks"],
     queryFn: () => api.get<{ decks: Deck[] }>("/decks").then((r) => r.decks),
   });
-  const decks = (decksQuery.data ?? []).filter((deck) => deck.kind !== "personal");
+  const decks = (decksQuery.data ?? []).filter((deck) => deck.kind !== "personal" && deck.kind !== "notebook");
 
   const cardQueries = useQueries({
     queries: decks.map((deck) => ({

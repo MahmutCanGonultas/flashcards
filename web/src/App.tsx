@@ -14,6 +14,7 @@ import Flashcards from "./pages/Flashcards";
 import WordPage from "./pages/WordPage";
 import Kelimelerim from "./pages/Kelimelerim";
 import Hafta from "./pages/Hafta";
+import Defter from "./pages/Defter";
 import TontonPopups from "./components/TontonPopups";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { getToken } from "./lib/api";
@@ -157,6 +158,14 @@ function App() {
         }
       />
       <Route path="/hafta" element={<Navigate to="/bugun" replace />} />
+      <Route
+        path="/defter"
+        element={
+          <ProtectedRoute>
+            <Defter />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/hafta/:week/okuma"
         element={

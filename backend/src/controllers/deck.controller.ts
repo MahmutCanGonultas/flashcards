@@ -92,3 +92,22 @@ export const getPersonalDeck = async (req: Request, res: Response) => {
   );
   return res.status(201).json({ deck: created.rows[0] });
 };
+
+/**
+ * The learner's notebook: words they write down themselves, apart from the
+ * programme. One deck per user (kind 'notebook'), made the first time it's
+ * asked for. Its cards are never scheduled: the notebook is for keeping and
+ * looking, and its practice writes nothing.
+ */
+export const getNotebookDeck = async (req: Request, res: Response) => {
+  const existing = await pool.query(
+    "SELECT * FROM decks WHERE user_id = $1 AND kind = 'notebook' ORDER BY id LIMIT 1",
+    [req.userId],
+  );
+  if (existing.rows.length > 0) return res.status(200).json({ deck: existing.rows[0] });
+  const created = await pool.query(
+    "INSERT INTO decks (user_id, name, kind) VALUES ($1, $2, 'notebook') RETURNING *",
+    [req.userId, "Defterim"],
+  );
+  return res.status(201).json({ deck: created.rows[0] });
+};

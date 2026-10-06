@@ -6,7 +6,6 @@ import AppTabs from "../components/AppTabs";
 import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
 import TontonLine from "../components/TontonLine";
-import PersonalCardSheet from "../components/PersonalCardSheet";
 import { WordRow } from "../components/WordList";
 import { PlusIcon, SearchIcon, XIcon } from "../components/icons";
 import { usePersonalCards, usePersonalDeck } from "../lib/personal";
@@ -48,7 +47,6 @@ function highlighter(query: string) {
  */
 function Kelimelerim() {
   const [params, setParams] = useSearchParams();
-  const [isAddOpen, setIsAddOpen] = useState(false);
   const [limit, setLimit] = useState(PAGE);
   const deckQuery = usePersonalDeck();
   const cardsQuery = usePersonalCards(deckQuery.data);
@@ -95,14 +93,15 @@ function Kelimelerim() {
               {!cards ? "Yükleniyor…" : `${cards.length} kelime${due > 0 ? ` · ${due} tekrar bekliyor` : ""}`}
             </p>
           </div>
-          <button
-            type="button"
-            onClick={() => deck && setIsAddOpen(true)}
-            className="flex min-h-11 shrink-0 items-center gap-1.5 rounded-2xl border-2 border-rule bg-white px-3.5 text-[13px] font-black uppercase tracking-[0.08em] text-ocean-ink shadow-edge press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/30"
+          {/* The programme's list; the learner's own words go in the notebook. */}
+          <Link
+            to="/defter"
+            viewTransition
+            className="flex min-h-11 shrink-0 items-center gap-1.5 rounded-2xl border-2 border-rule bg-white px-3.5 text-[13px] font-black uppercase tracking-[0.08em] text-sunny-ink shadow-edge press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sunny/40"
           >
             <PlusIcon className="h-4 w-4" />
-            Ekle
-          </button>
+            Defterim
+          </Link>
         </div>
 
         {/* Search: the English, the Turkish, a sentence, a chunk — all of it. */}
@@ -242,7 +241,6 @@ function Kelimelerim() {
         )}
       </main>
 
-      <PersonalCardSheet isOpen={isAddOpen} onClose={() => setIsAddOpen(false)} deckId={deck?.id} />
       <AppTabs />
     </div>
   );
