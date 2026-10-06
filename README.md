@@ -1,6 +1,6 @@
 # Kelimece
 
-An English vocabulary app for Turkish speakers. You add the words you come across, and the app keeps bringing them back until you know them. It also has 21 grammar topics with quizzes, a 60-unit course, and a mascot called Tonton.
+An English vocabulary app for Turkish speakers. You add the words you come across, and the app keeps bringing them back until you know them. It also has 24 grammar topics with quizzes, a 60-unit course, and a mascot called Tonton.
 
 It's a web app made for the phone (you can install it like a regular app), built around a short daily session: a few new words a day and about fifteen minutes of practice.
 
@@ -60,7 +60,7 @@ It's a web app made for the phone (you can install it like a regular app), built
 
 - 24 topics in four levels (Beginner, Elementary, Pre-Intermediate, Intermediate), in the order they were taught: *to be*, possessives, *have got*, jobs, word types, the present simple, *wh-* questions, word order, *to / by / from*, numbers, ordinals and frequency, likes and dislikes, articles, countable nouns, *there is / there are*, quantifiers, the present continuous, imperatives, linking words, the future, Turkish noun cases (-i, -e, -de, -den) in English, object pronouns and reflexive pronouns.
 - **Hatırla**: every topic boiled down to a card to glance at between other things: three to five rules, a few colour-marked examples you can hear, and the one trap a Turkish speaker falls into.
-- Each topic is a page to read, with rules, tables and examples. Colours mark the parts of a sentence (green for the form being taught, blue for what decides it, orange for extras such as time words). Every example has a Turkish translation and can be played aloud.
+- Each topic is a page to read. It opens with **Bir bakışta**, the topic seen whole: its idea in one sentence, its patterns as one sentence cut into coloured bricks with what goes in each slot written underneath, and Turkish beside English so you see what changes between the two. Chips jump to the sections below: rules, tables and examples. Colours mark the parts of a sentence (green for the form being taught, blue for what decides it, orange for extras such as time words). Every example has a Turkish translation and can be played aloud. The common mistakes come as wrong sentences to fix in your head first, with the right one a tap away. The page ends with the quiz, the topic's Hatırla card and the next topic.
 - Each topic has a 10-question quiz: pick the answer, find the wrong sentence, fill the gap, or build the sentence from word tiles with a few extra tiles mixed in. Mistakes come back at the end, and your best score is saved with up to three stars. A mixed quiz takes questions from topics you've already done, more from your weakest ones.
 
 <p align="center">
@@ -70,7 +70,7 @@ It's a web app made for the phone (you can install it like a regular app), built
 
 ### Tonton
 
-- Tonton says hello once a day, drops by now and then on the reading pages, reacts to your answers during practice, and reminds you in the evening if your streak is about to break. He knows your grammar scores and points you to the next topic.
+- Tonton says hello once a day, drops by now and then on the reading pages, and reacts to your answers during practice. He knows your grammar scores and points you to the next topic.
 - He doesn't always talk. Sometimes he just waves and goes, and every now and then he turns up huge: standing up from the bottom of the screen, leaning in from the side, or popping up in the middle. Tap anywhere and he leaves.
 - Press and hold him to mute him for two hours. Close him twice in a row and he gets the hint.
 
@@ -119,7 +119,7 @@ A personal card holds `senses[]` (part of speech, meaning, a short `gloss` for t
 
 ### Grammar
 
-The topics ship with the web app as typed content in [`web/src/content/grammar/`](web/src/content/grammar). `catalog.ts` has the order and titles (small enough for the home page), and there is one file per level with the pages. English lines can carry colour marks (`{form}`, `[subject]`, `<extra>`, `**bold**`, `~~wrong~~`), which [`lib/rich.ts`](web/src/lib/rich.ts) parses and `components/Rich.tsx` draws. Each topic's `legend` explains its colours. A content test checks every topic: marks are closed, table rows match their header, there are three kinds of question, answers exist, and tiles really build their sentence. The quiz logic (shuffling, marking, scoring, and the mixed quiz weighted towards weak topics) is in [`lib/grammarQuiz.ts`](web/src/lib/grammarQuiz.ts). Only scores are stored on the server: `grammar_progress` keeps each topic's best score and number of attempts.
+The topics ship with the web app as typed content in [`web/src/content/grammar/`](web/src/content/grammar). `catalog.ts` has the order and titles (small enough for the home page), and there is one file per level with the pages. English lines can carry colour marks (`{form}`, `[subject]`, `<extra>`, `**bold**`, `~~wrong~~`), which [`lib/rich.ts`](web/src/lib/rich.ts) parses and `components/Rich.tsx` draws. Each topic's `legend` explains its colours. A content test checks every topic: marks are closed, the glance's bricks make a real sentence and fit on a phone, table rows match their header, there are three kinds of question, answers exist, and tiles really build their sentence. The quiz logic (shuffling, marking, scoring, and the mixed quiz weighted towards weak topics) is in [`lib/grammarQuiz.ts`](web/src/lib/grammarQuiz.ts). Only scores are stored on the server: `grammar_progress` keeps each topic's best score and number of attempts.
 
 ### Tonton
 
@@ -196,7 +196,7 @@ flashcards/
 │   └── src/
 │       ├── pages/                 Kartlar (home), Kelimelerim, WordPage, Flashcards (practice), GrammarHub, GrammarTopic, GrammarQuiz, Kurs, Study, UnitTest, Grammar (course notes), Dialogue, Placement, auth
 │       ├── components/            Cover, StrengthBars, WordList, WordCardBack, MeaningText, Rich, Mascot, TontonLine, TontonPopups, Sheet, LearningPath, …
-│       ├── content/grammar/       the 21 topics: catalog, one file per level, and the content test
+│       ├── content/grammar/       the 24 topics: catalog, one file per level, and the content test
 │       ├── lib/                   practice, learning, senses, memory, day, plan, wordBrowser, grammarQuiz, rich, watchOut (all tested), palette, tint, sound, tonton, tontonDirector, …
 │       ├── sw.ts                  service worker: precache and push handlers
 │       └── index.css              design tokens, animations, utilities

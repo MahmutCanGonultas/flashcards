@@ -4,11 +4,48 @@ import type { Recall, TopicBody } from "./types";
 export const INTERMEDIATE: Record<string, TopicBody> = {
   "noun-cases": {
     intro: "Türkçede isim cümledeki işine göre ek alır: arabayı, okula, evde, İzmir'den. İngilizcede bu ekler yok. Onların işini ya kelimenin cümledeki yeri ya da to, in, at, from gibi küçük bir kelime görür. Dört eki tek tek İngilizceye taşıyalım.",
+    glance: {
+      idea: "Türkçe eki ismin sonuna takar: okul{a}, ev{de}, İzmir'{den}. İngilizce ismi hiç değiştirmez, önüne {to}, {at}, {from} gibi küçük bir kelime koyar. -i'nin işini ise sıra görür.",
+      formulas: [
+        {
+          label: "-i: sıra",
+          parts: [
+            { text: "I", role: "plain", name: "özne" },
+            { text: "see", role: "extra", name: "fiil" },
+            { text: "the bus.", role: "focus", name: "-i → fiilin ardı" },
+          ],
+        },
+        {
+          label: "-e ve -den: yön",
+          parts: [
+            { text: "I go", role: "extra", name: "özne + fiil" },
+            { text: "from", role: "focus", name: "-den → from" },
+            { text: "home", role: "partner", name: "nereden?" },
+            { text: "to", role: "focus", name: "-e → to" },
+            { text: "work.", role: "partner", name: "nereye?" },
+          ],
+        },
+        {
+          label: "-de: yer",
+          parts: [
+            { text: "The cat is", role: "plain", name: "özne + be" },
+            { text: "in", role: "focus", name: "-de → in/at/on" },
+            { text: "the box.", role: "partner", name: "nerede?" },
+          ],
+        },
+      ],
+      compare: [
+        { tr: "Otobüs{ü} <görüyorum>.", en: "I <see> {the bus}." },
+        { tr: "[Ev]{den} [iş]{e} <giderim>.", en: "I <go> {from} [home] {to} [work]." },
+        { tr: "[Ev]{de}yim.", en: "I'm {at} [home]." },
+      ],
+      compareNote: "Türkçe ek ismin sonuna gelir, İngilizce karşılığı ismin önüne; -i'nin karşılığı ise bir kelime değil, fiilin hemen arkasındaki yerdir.",
+    },
     legend: { focus: "Türkçe ek ve İngilizce karşılığı", partner: "isim: yer, kişi, eşya", extra: "fiil" },
     sections: [
       {
         title: "Dört ek, dört karşılık",
-        body: "Türkçede 'okul' kelimesi cümleye göre okul{u}, okul{a}, okul{da}, okul{dan} olur. İngilizcede [school] hiç değişmez; değişen, önüne gelen kelimedir. Tek istisna -i: onun bir karşılığı yok, nesne fiilin hemen arkasına gelir, o kadar.",
+        body: "Türkçede 'okul' cümleye göre okul{u}, okul{a}, okul{da}, okul{dan} olur. İngilizcede [school] hiç değişmez; ekin işini ismin önüne gelen küçük bir kelime görür: {to} [school], {at} [school], {from} [school]. Bu kelimelere edat denir; yalnızca -i'nin edatı yok, nesne fiilin hemen arkasına gelir.",
         table: {
           head: ["Türkçe hali", "İngilizce", "Örnek"],
           rows: [
@@ -22,7 +59,7 @@ export const INTERMEDIATE: Record<string, TopicBody> = {
       },
       {
         title: "-i: ek yok, sıra var",
-        body: "Türkçede -i eki nesneyi her yerde belli eder: 'Arabayı Ali yıkıyor' da olur, 'Ali arabayı yıkıyor' da. İngilizcede ek olmadığı için iş sıraya kalır: önce özne, sonra <fiil>, hemen arkasından {nesne}. Araya edat girmez.",
+        body: "Türkçede -i eki nesneyi, yani işten etkilenen şeyi, cümlenin her yerinde belli eder: 'Arabayı Ali yıkıyor' da olur, 'Ali arabayı yıkıyor' da. İngilizcede ek olmadığı için iş sıraya kalır: önce özne (işi yapan), sonra <fiil>, hemen arkasından {nesne}. Araya edat girmez.",
         examples: [
           { en: "Ali <is washing> {the car}.", tr: "Ali araba{yı} <yıkıyor>." },
           { en: "I <know> {your sister}.", tr: "Kız kardeşin{i} <tanıyorum>." },
@@ -53,7 +90,7 @@ export const INTERMEDIATE: Record<string, TopicBody> = {
       },
       {
         title: "-de: in mi, at mi, on mu?",
-        body: "Bulunma eki tek, İngilizcede üç seçenek var. Karar veren [isim]: içinde olunan bir alan mı ({in}), bir nokta ya da bir binanın işi mi ({at}), üstünde durulan bir yüzey mi ({on})? Aynı üçlü zaman için de kullanılır.",
+        body: "Türkçede tek ek var, İngilizcede üç seçenek. Karar veren [isim]: içinde olunan bir alan mı ({in}), bir nokta ya da orada yapılan iş mi ({at}: işte, okulda), üstünde durulan bir yüzey mi ({on})? Aynı üçlü zaman için de kullanılır.",
         table: {
           head: ["Edat", "Yer", "Zaman"],
           rows: [
@@ -137,11 +174,47 @@ export const INTERMEDIATE: Record<string, TopicBody> = {
 
   "object-pronouns": {
     intro: "Türkçede 'o' kelimesi yerine göre onu, ona, ondan olur. İngilizcede de özne zamiri nesne olunca kılık değiştirir: he → him, she → her. Ama iş daha kolay: her kişinin tek bir nesne hali var, dört değil.",
+    glance: {
+      idea: "İşi yapan <I>, <he>, <she>; işten etkilenen {me}, {him}, {her}. Türkçedeki beni, bana, benimle İngilizcede hep {me}'dir; farkı önündeki fiil ya da edat yapar.",
+      formulas: [
+        {
+          label: "Fiilden sonra",
+          parts: [
+            { text: "She", role: "extra", name: "özne" },
+            { text: "loves", role: "partner", name: "fiil" },
+            { text: "him.", role: "focus", name: "me · him · her…" },
+          ],
+        },
+        {
+          label: "Edattan sonra",
+          parts: [
+            { text: "She", role: "extra", name: "özne" },
+            { text: "lives", role: "plain", name: "fiil" },
+            { text: "with", role: "partner", name: "edat" },
+            { text: "us.", role: "focus", name: "me · us · them…" },
+          ],
+        },
+        {
+          label: "Eşya da nesne",
+          parts: [
+            { text: "I", role: "extra", name: "özne" },
+            { text: "love", role: "partner", name: "fiil" },
+            { text: "it.", role: "focus", name: "it · them" },
+          ],
+        },
+      ],
+      compare: [
+        { tr: "{Beni} [ara].", en: "[Call] {me}." },
+        { tr: "{Bana} [yardım et].", en: "[Help] {me}." },
+        { tr: "{Benim}[le] gel.", en: "Come [with] {me}." },
+      ],
+      compareNote: "Türkçede 'ben' ek alıp kılık değiştirir (beni, bana, benimle); İngilizcede hep {me} kalır, ekin işini önündeki fiil ya da edat görür.",
+    },
     legend: { extra: "özne (I, he…)", focus: "nesne zamiri (me, him…)", partner: "onu isteyen fiil ya da edat" },
     sections: [
       {
         title: "Özne ve nesne",
-        body: "İşi yapan özne zamiridir: <I>, <he>, <they>. İşten etkilenen ya da bir edattan sonra gelen ise nesne zamiri: {me}, {him}, {them}. Türkçedeki 'beni, bana' gibi hallerin işini İngilizcede bu kelimeler görür.",
+        body: "Zamir, ismin yerine geçen kelimedir (ben, sen, o). İşi yapan özne zamiridir: <I>, <he>, <they>. İşten etkilenen ya da with, to, for gibi bir edattan sonra gelen ise nesne zamiri: {me}, {him}, {them}; Türkçedeki 'beni, bana, benimle'nin işini görür.",
         table: {
           head: ["Özne", "Nesne", "Türkçe"],
           rows: [
@@ -243,11 +316,47 @@ export const INTERMEDIATE: Record<string, TopicBody> = {
 
   "reflexive-pronouns": {
     intro: "'Kendim yaparım', 'Kendine iyi bak', 'Kendini evinde hisset'. Türkçede 'kendi' çok çalışkan bir kelime. İngilizcede karşılığı -self ile biten zamirler: myself, yourself… Ama dikkat: Türkçede 'kendimi' dediğin her yerde İngilizce onları istemez.",
+    glance: {
+      idea: "İşi yapan ile işten etkilenen aynı kişiyse 'kendi' gelir: {myself}, {yourself}, {herself}… Ama Türkçedeki her 'kendini' İngilizceye geçmez: I feel happy.",
+      formulas: [
+        {
+          label: "Kendine dönen iş",
+          parts: [
+            { text: "He", role: "partner", name: "özne" },
+            { text: "talks to", role: "extra", name: "fiil" },
+            { text: "himself.", role: "focus", name: "-self · -selves" },
+          ],
+        },
+        {
+          label: "Tek başına",
+          parts: [
+            { text: "I", role: "partner", name: "özne" },
+            { text: "live", role: "extra", name: "fiil" },
+            { text: "by myself.", role: "focus", name: "by + -self" },
+          ],
+        },
+        {
+          label: "Vurgu",
+          parts: [
+            { text: "I", role: "partner", name: "özne" },
+            { text: "make", role: "extra", name: "fiil" },
+            { text: "the bread", role: "plain", name: "nesne" },
+            { text: "myself.", role: "focus", name: "başkası değil" },
+          ],
+        },
+      ],
+      compare: [
+        { tr: "{Kendini} <kesme>!", en: "Don't <cut> {yourself}!" },
+        { tr: "{Tek başıma} <yaşıyorum>.", en: "[I] <live> {by myself}." },
+        { tr: "{Kendimi} mutlu <hissediyorum>.", en: "[I] <feel> happy." },
+      ],
+      compareNote: "İş kendine dönünce iki dil de 'kendi' der; ama 'kendimi mutlu hissediyorum' gibi kalıplarda İngilizce -self kullanmaz.",
+    },
     legend: { partner: "özne", focus: "dönüşlü zamir (myself…)", extra: "fiil" },
     sections: [
       {
         title: "Kim, kendini?",
-        body: "Her özne zamirinin bir -self hali var. Hangisini seçeceğine [özne] karar verir: [I] … {myself}, [she] … {herself}, [they] … {themselves}.",
+        body: "Her özne zamirinin (I, you, he…) bir -self hali var. Bunlara dönüşlü zamir denir, çünkü iş dönüp yapana gelir. Hangisini seçeceğine [özne] karar verir: [I] … {myself}, [she] … {herself}, [they] … {themselves}.",
         table: {
           head: ["Özne", "Dönüşlü", "Türkçe"],
           rows: [

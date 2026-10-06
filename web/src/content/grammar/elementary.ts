@@ -4,6 +4,34 @@ import type { TopicBody } from "./types";
 export const ELEMENTARY: Record<string, TopicBody> = {
   "noun-adjective-verb": {
     intro: "Bir cümleyi çözmenin ilk adımı parçalarını tanımak: kim ya da ne (isim), nasıl (sıfat), ne yapıyor (fiil). Bu üçünü ayırabilen, sözlükte doğru kelimeyi bulur.",
+    glance: {
+      idea: "Her kelimeye bir soru sor: kim? ne? → [isim], ne yapıyor? → {fiil}, nasıl? → <sıfat>. Sıfat Türkçedeki gibi ismin önüne gelir.",
+      formulas: [
+        {
+          label: "Sıfat isimden önce",
+          parts: [
+            { text: "Ali", role: "partner", name: "isim" },
+            { text: "drinks", role: "focus", name: "fiil" },
+            { text: "strong", role: "extra", name: "sıfat" },
+            { text: "tea.", role: "partner", name: "isim" },
+          ],
+        },
+        {
+          label: "Sıfat be'den sonra",
+          parts: [
+            { text: "The tea", role: "partner", name: "isim" },
+            { text: "is", role: "plain", name: "am · is · are" },
+            { text: "strong.", role: "extra", name: "sıfat" },
+          ],
+        },
+      ],
+      compare: [
+        { tr: "<küçük> bir [ev]", en: "a <small> [house]" },
+        { tr: "[Ev] <küçük>.", en: "[The house] is <small>." },
+        { tr: "[Ali] [çay] {içer}.", en: "[Ali] {drinks} [tea]." },
+      ],
+      compareNote: "Sıfatın yeri iki dilde de aynı, ismin önü; değişen fiilin yeri: Türkçede sonda, İngilizcede ilk ismin hemen arkasında.",
+    },
     legend: { partner: "isim (noun)", focus: "fiil (verb)", extra: "sıfat (adjective)" },
     sections: [
       {
@@ -24,14 +52,14 @@ export const ELEMENTARY: Record<string, TopicBody> = {
         examples: [
           { en: "[My brother] {drinks} <strong> [coffee].", tr: "Ağabeyim sert kahve içer." },
           { en: "[Ayşe] {has} a <beautiful> [voice].", tr: "Ayşe'nin güzel bir sesi var." },
-          { en: "The [film] was <long> but <funny>.", tr: "Film uzundu ama komikti." },
+          { en: "The [film] is <long> but <funny>.", tr: "Film uzun ama komik." },
           { en: "[We] {live} in a <small> [town].", tr: "Küçük bir kasabada yaşıyoruz." },
         ],
         note: "Sıfat çoğul olmaz: <big> [houses], asla 'bigs houses'.",
       },
       {
         title: "Aynı aile, farklı tür",
-        body: "Bir kelime ailesinde isim, fiil ve sıfat çoğu zaman ekle ayrılır. Sonlar ipucu verir: -tion, -ment, -ness genelde [isim]; -ful, -ous, -able, -ive genelde <sıfat>.",
+        body: "Bir kelime ailesinde isim, fiil ve sıfat çoğu zaman ekle ayrılır, Türkçedeki 'karar → kararlı' gibi. Sonlar ipucu verir: -tion, -ment, -ness genelde [isim]; -ful, -ous, -able, -ive genelde <sıfat>.",
         table: {
           head: ["Fiil", "İsim", "Sıfat"],
           rows: [
@@ -46,9 +74,9 @@ export const ELEMENTARY: Record<string, TopicBody> = {
       },
       {
         title: "Bir kelime, iki görev",
-        body: "Bazı kelimeler hiç değişmeden hem isim hem fiil olur. Hangisi olduğunu cümledeki yeri söyler.",
+        body: "Bazı kelimeler hiç değişmeden hem isim hem fiil olur. Hangisi olduğunu cümledeki yeri söyler: önünde a, the, your gibi bir kelime varsa [isim]dir; özneden (işi yapandan) hemen sonra geliyorsa {fiil}dir.",
         examples: [
-          { en: "Thanks for your [help]. — Can you {help} me?", tr: "Yardımın için sağ ol. — Bana yardım eder misin?" },
+          { en: "Thanks for your [help]. — I {help} my mum in the kitchen.", tr: "Yardımın için sağ ol. — Mutfakta anneme yardım ederim." },
           { en: "Let's go for a [walk]. — We {walk} to work.", tr: "Hadi yürüyüşe çıkalım. — İşe yürüyerek gideriz." },
           { en: "I need a [drink]. — I {drink} tea every morning.", tr: "Bir şey içmem lazım. — Her sabah çay içerim." },
         ],
@@ -58,7 +86,7 @@ export const ELEMENTARY: Record<string, TopicBody> = {
       { wrong: "She is a ~~woman beautiful~~.", right: "She is a <beautiful> [woman].", why: "Sıfat ismin önüne gelir." },
       { wrong: "They are ~~bigs~~ houses.", right: "They are <big> [houses].", why: "Sıfatlar çoğul eki almaz." },
       { wrong: "I ~~am agree~~.", right: "I {agree}.", why: "agree bir fiil; önüne am gelmez." },
-      { wrong: "The film was very ~~enjoy~~.", right: "The film was very <enjoyable>.", why: "was'tan sonra sıfat gerekir." },
+      { wrong: "The film is very ~~enjoy~~.", right: "The film is very <enjoyable>.", why: "is'ten sonra sıfat gerekir." },
     ],
     tip: "Kelimenin sonuna bak: -tion / -ment / -ness → [isim], -ful / -ous / -able → <sıfat>. Bir kelimeyi öğrenirken ailesini de sor: decide, [decision], <decisive>.",
     quiz: [
@@ -67,21 +95,58 @@ export const ELEMENTARY: Record<string, TopicBody> = {
       { kind: "choice", prompt: "She has a ___ car.", tr: "Yeni bir arabası var.", options: ["new", "newly", "news"], answer: 0, explain: "İsmin önünde sıfat: a **new** car." },
       { kind: "choice", prompt: "Hangisi doğru?", options: ["I have a dog black.", "I have a black dog.", "I have black a dog."], answer: 1, explain: "Sıfat ismin önünde: a **black** dog." },
       { kind: "type", prompt: "Thank you for your ___.", tr: "Yardımın için teşekkürler. (help)", answer: ["help"], explain: "Burada **help** bir isim." },
-      { kind: "choice", prompt: "The lesson was really ___.", tr: "Ders gerçekten faydalıydı.", options: ["use", "useful", "usefully"], answer: 1, explain: "was'tan sonra sıfat: **useful**." },
-      { kind: "type", prompt: "I made a ___.", tr: "Bir karar verdim. (decide)", answer: ["decision"], explain: "decide fiilinin ismi: **decision**." },
+      { kind: "choice", prompt: "The lesson is really ___.", tr: "Ders gerçekten faydalı.", options: ["use", "useful", "usefully"], answer: 1, explain: "is'ten sonra sıfat: **useful**." },
+      { kind: "type", prompt: "I'm going to make a ___.", tr: "Bir karar vereceğim. (decide)", answer: ["decision"], explain: "decide fiilinin ismi: **decision**." },
       { kind: "order", tr: "Küçük bir evde yaşıyoruz.", answer: "We live in a small house.", extra: ["smalls", "houses"], explain: "Sıfat ismin önünde ve çoğul olmaz." },
       { kind: "order", tr: "Bu kahve çok sert.", answer: "This coffee is very strong.", extra: ["strongly", "are"], explain: "is'ten sonra sıfat: **strong**." },
-      { kind: "type", prompt: "The film was really ___.", tr: "Film gerçekten keyifliydi. (enjoy)", answer: ["enjoyable"], explain: "was'tan sonra sıfat: enjoy → **enjoyable**." },
+      { kind: "type", prompt: "The film is really ___.", tr: "Film gerçekten keyifli. (enjoy)", answer: ["enjoyable"], explain: "is'ten sonra sıfat: enjoy → **enjoyable**." },
     ],
   },
 
   "simple-present": {
     intro: "Geniş zaman, alışkanlıkların zamanı: her sabah kahve içerim, İzmir'de yaşarım, hafta sonu çalışmam. Tek tuzağı var: he, she, it'e gelen -s.",
+    glance: {
+      idea: "İki kural yeter: [he / she / it] ile fiil {-s} alır. Olumsuzda ve soruda {does} gelir, -s ona geçer ve fiil yalın (eksiz) kalır.",
+      formulas: [
+        {
+          label: "Olumlu",
+          parts: [
+            { text: "She", role: "partner", name: "he · she · it" },
+            { text: "works", role: "focus", name: "fiil + -s" },
+            { text: "late.", role: "extra", name: "zaman" },
+          ],
+        },
+        {
+          label: "Olumsuz",
+          parts: [
+            { text: "She", role: "partner", name: "özne" },
+            { text: "doesn't", role: "focus", name: "don't · doesn't" },
+            { text: "work", role: "focus", name: "yalın fiil" },
+            { text: "late.", role: "extra", name: "zaman" },
+          ],
+        },
+        {
+          label: "Soru",
+          parts: [
+            { text: "Does", role: "focus", name: "do · does" },
+            { text: "she", role: "partner", name: "özne" },
+            { text: "work", role: "focus", name: "yalın fiil" },
+            { text: "late?", role: "extra", name: "zaman" },
+          ],
+        },
+      ],
+      compare: [
+        { tr: "[O] <her gün> {çalışır}.", en: "[She] {works} <every day>." },
+        { tr: "[O] çalış{maz}.", en: "[She] {doesn't} work." },
+        { tr: "[O] çalışır {mı}?", en: "{Does} [she] work?" },
+      ],
+      compareNote: "Türkçede olumsuzluk ve soru fiilin sonuna eklenir (-maz, mı); İngilizcede fiilin önüne does gelir ve -s de ona geçer.",
+    },
     legend: { partner: "özne", focus: "fiil · do · does", extra: "sıklık / zaman" },
     sections: [
       {
         title: "Ne zaman kullanılır?",
-        body: "Her zaman olan, tekrar eden ya da genel olarak doğru olan şeyler için: alışkanlıklar, rutinler, gerçekler, tarifeler.",
+        body: "Tekrar eden ya da her zaman doğru olan şeyler için: alışkanlıklar, rutinler, gerçekler, tarifeler (otobüs, tren saatleri). Türkçedeki geniş zamanın karşılığıdır: içerim, çalışır, kalkar.",
         examples: [
           { en: "[I] {drink} coffee <every morning>.", tr: "Her sabah kahve içerim." },
           { en: "[My sister] {works} in a bank.", tr: "Kız kardeşim bir bankada çalışır." },
@@ -91,7 +156,7 @@ export const ELEMENTARY: Record<string, TopicBody> = {
       },
       {
         title: "he / she / it: -s",
-        body: "Olumlu cümlede he, she, it (ya da tek bir kişi, tek bir şey) için fiile {-s} eklenir: I work → she work{s}. Türkçede 'o çalışır' derken ek değişmez; İngilizcede değişen tek yer burası.",
+        body: "Olumlu cümlede özne (işi yapan) [he], [she], [it] ya da tek bir kişi, tek bir şeyse fiile {-s} eklenir: I work → she work{s}. Türkçede fiil her kişide ayrı ek alır (çalışırım, çalışırsın, çalışır); İngilizcede fiil yalnızca he, she, it'te değişir.",
         table: {
           head: ["Özne", "Fiil", "Örnek"],
           rows: [
@@ -114,7 +179,7 @@ export const ELEMENTARY: Record<string, TopicBody> = {
       },
       {
         title: "Olumsuz ve soru: do / does",
-        body: "Olumsuz ve soruda yardımcı fiil gelir: {do} / {does}. -s artık does'a geçer, asıl fiil yalın kalır: She works → She {doesn't} work. / {Does} she work?",
+        body: "Olumsuzda ve soruda asıl fiilin önüne yardımcı fiil gelir: {do} / {does}. Türkçedeki '-maz' ve 'mı'nın işini görür. Özne he / she / it ise -s does'a geçer, asıl fiil yalın (eksiz) kalır: She works → She {doesn't} work. / {Does} [she] work?",
         table: {
           head: ["", "I / you / we / they", "he / she / it"],
           rows: [
@@ -132,7 +197,7 @@ export const ELEMENTARY: Record<string, TopicBody> = {
       },
       {
         title: "Birlikte gelen zaman sözleri",
-        body: "Geniş zaman cümlelerinde bu sözler sık görülür: <every day>, <on Mondays>, <at the weekend>, <in the morning>, <always>, <usually>, <sometimes>, <never>.",
+        body: "Geniş zaman cümlelerinde bu sözler sık görülür: <every day>, <on Mondays>, <at the weekend>, <in the morning>, <always>, <usually>, <sometimes>, <never>. Çoğu cümlenin sonuna gelir; always, usually, sometimes, never ise fiilin hemen önüne: [She] <never> {eats} breakfast.",
         examples: [
           { en: "[I] {play} football <on Sundays>.", tr: "Pazar günleri futbol oynarım." },
           { en: "[She] <never> {eats} breakfast.", tr: "Hiç kahvaltı yapmaz." },
@@ -163,6 +228,43 @@ export const ELEMENTARY: Record<string, TopicBody> = {
 
   "wh-questions": {
     intro: "Evet / hayır soruları sohbeti açar; wh- soruları sürdürür. What, where, when, who, why, how: ne, nerede, ne zaman, kim, neden, nasıl.",
+    glance: {
+      idea: "Wh- sorusu, başına soru kelimesi eklenmiş bir evet / hayır sorusudur: {Where} [do] <you> live? Türkçede olmayan yardımcı fiil burada da şart.",
+      formulas: [
+        {
+          label: "Evet / hayır sorusu",
+          parts: [
+            { text: "Do", role: "partner", name: "do · does" },
+            { text: "you", role: "extra", name: "özne" },
+            { text: "live", role: "plain", name: "fiil" },
+            { text: "in İzmir?", role: "plain", name: "yer" },
+          ],
+        },
+        {
+          label: "Soru kelimesi başa",
+          parts: [
+            { text: "Where", role: "focus", name: "soru kelimesi" },
+            { text: "do", role: "partner", name: "do · does" },
+            { text: "you", role: "extra", name: "özne" },
+            { text: "live?", role: "plain", name: "fiil" },
+          ],
+        },
+        {
+          label: "am · is · are ile",
+          parts: [
+            { text: "How old", role: "focus", name: "soru kelimesi" },
+            { text: "is", role: "partner", name: "am · is · are" },
+            { text: "your son?", role: "extra", name: "özne" },
+          ],
+        },
+      ],
+      compare: [
+        { tr: "<Sen> {nerede} yaşıyorsun?", en: "{Where} [do] <you> live?" },
+        { tr: "<İstasyon> {nerede}?", en: "{Where} [is] <the station>?" },
+        { tr: "<Baban> {ne} iş yapıyor?", en: "{What} [does] <your dad> do?" },
+      ],
+      compareNote: "Türkçede soru kelimesi cümlenin içinde kalır; İngilizcede hep en başa geçer, arkasından da yardımcı fiil gelir.",
+    },
     legend: { focus: "soru kelimesi", partner: "yardımcı fiil", extra: "özne" },
     sections: [
       {
@@ -176,21 +278,21 @@ export const ELEMENTARY: Record<string, TopicBody> = {
             ["{Who}", "kim?", "{Who} [is] <that man>?"],
             ["{Why}", "neden?", "{Why} [are] <you> sad?"],
             ["{How}", "nasıl?", "{How} [are] <you>?"],
-            ["{Which}", "hangi(si)?", "{Which} bus [goes] to Kadıköy?"],
+            ["{Which}", "hangi(si)?", "{Which} bus goes to Kadıköy?"],
             ["{Whose}", "kimin?", "{Whose} bag [is] this?"],
           ],
         },
       },
       {
         title: "Kalıp: soru kelimesi + yardımcı + özne + fiil",
-        body: "Soru kelimesi en başa gelir; arkasından evet / hayır sorusundaki sıra aynen korunur.",
+        body: "Soru kelimesi en başa gelir; arkasından evet / hayır sorusundaki sıra aynen korunur: {soru kelimesi} + [yardımcı fiil] + <özne> + fiil. Yardımcı fiil, soruyu kuran küçük kelimedir (do, does, am, is, are). Türkçede karşılığı yoktur, ama İngilizcede atlanmaz.",
         table: {
           head: ["Soru kelimesi", "Yardımcı", "Özne", "Geri kalanı"],
           rows: [
             ["{Where}", "[do]", "<you>", "live?"],
             ["{What}", "[does]", "<she>", "do?"],
             ["{Why}", "[are]", "<they>", "late?"],
-            ["{When}", "[can]", "<we>", "meet?"],
+            ["{When}", "[are]", "<we>", "meeting?"],
           ],
         },
         examples: [
@@ -216,11 +318,11 @@ export const ELEMENTARY: Record<string, TopicBody> = {
       },
       {
         title: "Who: özneyi mi soruyor?",
-        body: "Who cümlenin öznesini soruyorsa do / does gelmez, fiil he / she / it gibi davranır: {Who} lives here? Nesneyi soruyorsa yardımcı gelir: {Who} [do] <you> live with?",
+        body: "Who işi yapanı (özneyi) soruyorsa do / does gelmez, fiil he / she / it gibi -s alır: {Who} lives here? (Burada kim yaşıyor?) İşi yapanı değil de başka birini soruyorsa (kimi? kiminle?) yardımcı fiil gelir: {Who} [do] <you> live with? (Kiminle yaşıyorsun?)",
         examples: [
           { en: "{Who} wants tea?", tr: "Kim çay ister?" },
-          { en: "{Who} [did] <you> see at the party?", tr: "Partide kimi gördün?" },
-          { en: "{What} happened?", tr: "Ne oldu?" },
+          { en: "{Who} [do] <you> call every evening?", tr: "Her akşam kimi ararsın?" },
+          { en: "{What} happens next?", tr: "Sonra ne oluyor?" },
         ],
       },
     ],
@@ -247,11 +349,48 @@ export const ELEMENTARY: Record<string, TopicBody> = {
 
   "sentence-building": {
     intro: "Türkçede fiil sonda: 'Ben her sabah kahve içerim.' İngilizcede fiil öznenin hemen arkasında: 'I drink coffee every morning.' Bu tek kural cümlelerinin yarısını düzeltir.",
+    glance: {
+      idea: "İngilizcede sıra sabittir: [özne] + {fiil} + <nesne, yer, zaman>. Türkçede sonda bekleyen fiil, İngilizcede öznenin hemen arkasına geçer.",
+      formulas: [
+        {
+          label: "Temel sıra",
+          parts: [
+            { text: "I", role: "partner", name: "özne" },
+            { text: "drink", role: "focus", name: "fiil" },
+            { text: "coffee.", role: "extra", name: "nesne" },
+          ],
+        },
+        {
+          label: "Yer, sonra zaman",
+          parts: [
+            { text: "We", role: "partner", name: "özne" },
+            { text: "meet", role: "focus", name: "fiil" },
+            { text: "here", role: "extra", name: "yer" },
+            { text: "at six.", role: "extra", name: "zaman" },
+          ],
+        },
+        {
+          label: "Öznesiz olmaz",
+          parts: [
+            { text: "It", role: "partner", name: "özne" },
+            { text: "is", role: "focus", name: "fiil" },
+            { text: "cold", role: "plain", name: "durum" },
+            { text: "today.", role: "extra", name: "zaman" },
+          ],
+        },
+      ],
+      compare: [
+        { tr: "[Ben] <kahve> {içerim}.", en: "[I] {drink} <coffee>." },
+        { tr: "[Ali] <her sabah> <parkta> {koşar}.", en: "[Ali] {runs} <in the park> <every morning>." },
+        { tr: "{Geliyorum}!", en: "[I]'m {coming}!" },
+      ],
+      compareNote: "Türkçede sonda bekleyen fiil İngilizcede öznenin hemen arkasına geçer, geri kalan sıra da aynadaki gibi ters döner; özne ise hiç düşmez.",
+    },
     legend: { partner: "özne", focus: "fiil", extra: "nesne / yer / zaman" },
     sections: [
       {
         title: "Özne + fiil + nesne",
-        body: "İngilizce cümlenin iskeleti: [özne] + {fiil} + <nesne>. Türkçede fiil sondadır; İngilizcede fiili sondan alıp öznenin yanına koyarsın.",
+        body: "İngilizce cümlenin iskeleti: [özne] (işi yapan) + {fiil} (yapılan iş) + <nesne> (işten etkilenen: neyi? kimi?). Türkçede fiil sondadır; İngilizcede fiili sondan alıp öznenin hemen arkasına koyarsın.",
         table: {
           head: ["", "Özne", "Fiil", "Nesne"],
           rows: [
@@ -267,22 +406,22 @@ export const ELEMENTARY: Record<string, TopicBody> = {
       },
       {
         title: "Yer ve zaman sona",
-        body: "Yer ve zaman bilgisi genelde cümlenin sonuna gelir. Sıra: ne → nerede → ne zaman.",
+        body: "Yer ve zaman bilgisi genelde cümlenin sonuna gelir. Sıra: ne → nerede → ne zaman. Türkçedeki sıranın tersidir: 'her gün evde' → <at home> <every day>.",
         table: {
           head: ["Özne + fiil", "Nesne", "Yer", "Zaman"],
           rows: [
             ["[I] {study}", "<English>", "<at home>", "<every day>."],
-            ["[We] {watched}", "<a film>", "<at the cinema>", "<last night>."],
+            ["[We]'re {watching}", "<a film>", "<at the cinema>", "<tonight>."],
           ],
         },
         examples: [
           { en: "[I] {meet} <my friends> <in Kadıköy> <on Fridays>.", tr: "Cuma günleri Kadıköy'de arkadaşlarımla buluşurum." },
-          { en: "[She] {left} <her keys> <in the car> <this morning>.", tr: "Bu sabah anahtarlarını arabada unuttu." },
+          { en: "[She] {leaves} <her car> <at the station> <every morning>.", tr: "Her sabah arabasını istasyonda bırakır." },
         ],
       },
       {
         title: "Öznesiz cümle olmaz",
-        body: "Türkçede 'Geliyorum' tek başına yeter; İngilizcede özne şart: [I]'m coming. Hava, saat, mesafe için bile bir özne vardır: [It].",
+        body: "Türkçede fiilin eki kişiyi söyler, o yüzden 'Geliyorum' tek başına yeter. İngilizcede fiil kişiyi söylemez; özne şart: [I]'m coming. Hava, saat, mesafe için bile bir özne vardır: [It] (Türkçeye çevrilmez).",
         examples: [
           { en: "[It] {is} cold today.", tr: "Bugün hava soğuk." },
           { en: "[It]'s late. Let's go.", tr: "Geç oldu. Gidelim." },
@@ -292,11 +431,11 @@ export const ELEMENTARY: Record<string, TopicBody> = {
       },
       {
         title: "Cümleleri bağla",
-        body: "İki basit cümleyi and, but, because, so ile birleştir. İki tarafta da özne + fiil korunur.",
+        body: "İki basit cümleyi and (ve), but (ama), because (çünkü), so (bu yüzden) ile birleştir. İki tarafta da [özne] + {fiil} korunur.",
         examples: [
           { en: "[I] {like} <tea>, but [my wife] {prefers} <coffee>.", tr: "Ben çayı severim ama karım kahveyi tercih eder." },
-          { en: "[I] {stayed} <at home> because [I] {was} sick.", tr: "Hastaydım, o yüzden evde kaldım." },
-          { en: "[It] {was} late, so [we] {took} <a taxi>.", tr: "Geç olmuştu, o yüzden taksiye bindik." },
+          { en: "[I] {am staying} <at home> today because [I] {am} sick.", tr: "Bugün evde kalıyorum çünkü hastayım." },
+          { en: "[It] {is} late, so [we] {are taking} <a taxi>.", tr: "Geç oldu, o yüzden taksiye biniyoruz." },
         ],
       },
     ],
@@ -312,17 +451,56 @@ export const ELEMENTARY: Record<string, TopicBody> = {
       { kind: "choice", prompt: "___ is raining again.", tr: "Yine yağmur yağıyor.", options: ["It", "—", "There"], answer: 0, explain: "Hava için bile özne: **It** is raining." },
       { kind: "choice", prompt: "Hangisi doğru?", options: ["She plays very well the piano.", "She plays the piano very well.", "She very well plays the piano."], answer: 1, explain: "Nesne fiilin arkasında, very well sonda." },
       { kind: "type", prompt: "___ is a long way to the airport.", tr: "Havaalanına çok yol var.", answer: ["It"], explain: "Mesafe için özne: **It** is a long way…" },
-      { kind: "choice", prompt: "I was tired, ___ I went to bed early.", tr: "Yorgundum, o yüzden erken yattım.", options: ["because", "so", "but"], answer: 1, explain: "Sonuç: **so**." },
+      { kind: "choice", prompt: "I'm tired, ___ I'm going to bed early.", tr: "Yorgunum, o yüzden erken yatıyorum.", options: ["because", "so", "but"], answer: 1, explain: "Sonuç: **so**." },
       { kind: "order", tr: "Her gün evde İngilizce çalışırım.", answer: "I study English at home every day.", extra: ["studies", "in"], explain: "Özne + fiil + nesne + yer + zaman." },
       { kind: "order", tr: "Kardeşim her sabah parkta koşar.", answer: "My brother runs in the park every morning.", extra: ["run", "on"], explain: "Özne + fiil (-s!) + yer + zaman." },
-      { kind: "order", tr: "Dün akşam sinemada bir film izledik.", answer: "We watched a film at the cinema last night.", extra: ["watch", "yesterday"], explain: "Ne → nerede → ne zaman." },
-      { kind: "type", prompt: "___ takes ten minutes to walk there.", tr: "Oraya yürümek on dakika sürüyor.", answer: ["It"], explain: "Süre için özne: **It** takes…" },
+      { kind: "order", tr: "Bu akşam sinemada bir film izliyoruz.", answer: "We are watching a film at the cinema tonight.", extra: ["watch", "tomorrow"], explain: "Ne → nerede → ne zaman." },
+      { kind: "type", prompt: "___ takes ten minutes on foot.", tr: "Yürüyerek on dakika sürüyor.", answer: ["It"], explain: "Süre için özne: **It** takes…" },
       { kind: "choice", prompt: "I like dogs, ___ my husband likes cats.", tr: "Ben köpekleri severim ama kocam kedileri sever.", options: ["and", "but", "because"], answer: 1, explain: "Zıtlık: **but**." },
     ],
   },
 
   "to-by-from": {
-    intro: "Üç küçük edat, üç soru: nereye (to), nereden (from), nasıl ya da kimin tarafından (by). Türkçede bunlar ek: -e, -den, ile.",
+    intro: "Üç küçük edat (ismin önüne gelen kelime), üç soru: nereye (to), nereden (from), neyle ya da kimin tarafından (by). Türkçede bunlar ek: -e, -den, ile.",
+    glance: {
+      idea: "Türkçede isme yapışan ek, İngilizcede ismin önünde ayrı bir kelimedir: -e → {to}, -den → {from}, ile → {by}. by ayrıca 'en geç' demektir.",
+      formulas: [
+        {
+          label: "Nereye, neyle?",
+          parts: [
+            { text: "I go", role: "plain", name: "özne + fiil" },
+            { text: "to", role: "focus", name: "-e · -a" },
+            { text: "work", role: "partner", name: "yer" },
+            { text: "by", role: "focus", name: "ile" },
+            { text: "bus.", role: "partner", name: "araç" },
+          ],
+        },
+        {
+          label: "Nereden nereye?",
+          parts: [
+            { text: "I work", role: "plain", name: "özne + fiil" },
+            { text: "from", role: "focus", name: "-den · -dan" },
+            { text: "nine", role: "partner", name: "başlangıç" },
+            { text: "to", role: "focus", name: "-e kadar" },
+            { text: "six.", role: "partner", name: "bitiş" },
+          ],
+        },
+        {
+          label: "En geç ne zaman?",
+          parts: [
+            { text: "Finish it", role: "plain", name: "yapılacak iş" },
+            { text: "by", role: "focus", name: "en geç" },
+            { text: "Friday.", role: "partner", name: "zaman" },
+          ],
+        },
+      ],
+      compare: [
+        { tr: "[İş]{e} [otobüs]{le} giderim.", en: "I go {to} [work] {by} [bus]." },
+        { tr: "[Trabzon]{'dan}ım.", en: "I'm {from} [Trabzon]." },
+        { tr: "Bunu [Selin]{'e} ver.", en: "Give this {to} [Selin]." },
+      ],
+      compareNote: "Türkçede ek ismin sonuna yapışır; İngilizcede ayrı bir kelime olur ve ismin önüne geçer.",
+    },
     legend: { focus: "to · by · from", partner: "yer / kişi / araç / zaman" },
     sections: [
       {
@@ -364,7 +542,7 @@ export const ELEMENTARY: Record<string, TopicBody> = {
         examples: [
           { en: "I travel {from} [Ankara] {to} [İzmir] {by} [train].", tr: "Ankara'dan İzmir'e trenle giderim." },
           { en: "Please send the report {to} [Selin] {by} [Monday].", tr: "Raporu en geç pazartesiye Selin'e gönder lütfen." },
-          { en: "This photo was taken {by} [my grandfather] in 1970.", tr: "Bu fotoğraf 1970'te dedem tarafından çekildi." },
+          { en: "This photo {by} [my grandfather] is {from} [1970].", tr: "Dedemin çektiği bu fotoğraf 1970'ten kalma." },
         ],
       },
     ],
@@ -377,11 +555,11 @@ export const ELEMENTARY: Record<string, TopicBody> = {
     tip: "Türkçe eki düşün: -e → {to}, -den → {from}, 'ile' (araç) → {by}. to ileri gider, from geriden gelir, by yanında durur.",
     quiz: [
       { kind: "choice", prompt: "I'm ___ Antalya.", tr: "Antalyalıyım.", options: ["from", "to", "by"], answer: 0, explain: "Köken: **from**." },
-      { kind: "choice", prompt: "We went to Bursa ___ car.", tr: "Bursa'ya arabayla gittik.", options: ["with", "by", "from"], answer: 1, explain: "Ulaşım: **by** car." },
-      { kind: "choice", prompt: "Can you send this ___ Ahmet?", tr: "Bunu Ahmet'e gönderebilir misin?", options: ["to", "from", "by"], answer: 0, explain: "Alan kişi: **to** Ahmet." },
-      { kind: "choice", prompt: "I have to finish the project ___ Friday.", tr: "Projeyi en geç cumaya bitirmem lazım.", options: ["until", "by", "to"], answer: 1, explain: "Son an: **by** Friday." },
+      { kind: "choice", prompt: "We go to Bursa ___ car.", tr: "Bursa'ya arabayla gideriz.", options: ["with", "by", "from"], answer: 1, explain: "Ulaşım: **by** car." },
+      { kind: "choice", prompt: "Please send this ___ Ahmet.", tr: "Lütfen bunu Ahmet'e gönder.", options: ["to", "from", "by"], answer: 0, explain: "Alan kişi: **to** Ahmet." },
+      { kind: "choice", prompt: "I'm going to finish the project ___ Friday.", tr: "Projeyi en geç cumaya kadar bitireceğim.", options: ["until", "by", "to"], answer: 1, explain: "Son an: **by** Friday." },
       { kind: "type", prompt: "The shop is open ___ nine to five.", tr: "Dükkân dokuzdan beşe açık.", answer: ["from"], explain: "**from** … to …" },
-      { kind: "type", prompt: "This book was written ___ a young Turkish writer.", tr: "Bu kitap genç bir Türk yazar tarafından yazıldı.", answer: ["by"], explain: "Yapan kişi: **by**." },
+      { kind: "type", prompt: "This is a book ___ a young Turkish writer.", tr: "Bu, genç bir Türk yazarın kitabı.", answer: ["by"], explain: "Yapan kişi: **by**." },
       { kind: "choice", prompt: "Hangi cümle yanlış?", options: ["I go home by bus.", "I go to home by bus.", "I come from Rize."], answer: 1, explain: "home ile to yok: **go home**." },
       { kind: "order", tr: "Her gün trenle işe giderim.", answer: "I go to work by train every day.", extra: ["from", "the"], explain: "to work (nereye) + by train (nasıl)." },
       { kind: "order", tr: "Bu mektup annemden.", answer: "This letter is from my mother.", extra: ["to", "by"], explain: "Gönderen: **from**." },
@@ -391,6 +569,39 @@ export const ELEMENTARY: Record<string, TopicBody> = {
 
   numbers: {
     intro: "Sayılar her yerde: fiyat, saat, telefon, yaş. Zor olan sayılar değil, okunuşları: thirteen mi dedi, thirty mi?",
+    glance: {
+      idea: "Büyük sayıyı Türkçedeki gibi parça parça kur, yalnızca yüzlerden sonra and ekle. 13–19 ile 30–90'ı vurgudan ayır: fif-TEEN, FIF-ty.",
+      formulas: [
+        {
+          label: "Vurgu",
+          parts: [
+            { text: "Fifteen", role: "focus", name: "fif-TEEN · 15" },
+            { text: "or", role: "plain", name: "ya da" },
+            { text: "fifty?", role: "focus", name: "FIF-ty · 50" },
+          ],
+        },
+        {
+          label: "Büyük sayı",
+          parts: [
+            { text: "Two hundred", role: "focus", name: "yüzler (-s yok)" },
+            { text: "and", role: "plain", name: "yüzden sonra" },
+            { text: "forty-five.", role: "focus", name: "onlar-birler" },
+          ],
+        },
+        {
+          label: "Yaş",
+          parts: [
+            { text: "I'm", role: "plain", name: "be (have değil)" },
+            { text: "thirty-four.", role: "focus", name: "sayı" },
+          ],
+        },
+      ],
+      compare: [
+        { tr: "{iki yüz} {kırk beş}", en: "{two hundred} **and** {forty-five}" },
+        { tr: "[1.500] kişi · [2,5] kilo", en: "[1,500] people · [2.5] kilos" },
+      ],
+      compareNote: "İngilizce yüzlerden sonra bir and ekler; binleri ayıran nokta ile ondalık virgül de iki dilde yer değiştirir.",
+    },
     legend: { focus: "sayı", partner: "rakam" },
     sections: [
       {
@@ -431,7 +642,7 @@ export const ELEMENTARY: Record<string, TopicBody> = {
       },
       {
         title: "Büyük sayılar",
-        body: "100 = a / one {hundred}, 1.000 = a {thousand}, 1.000.000 = a {million}. İngiltere'de yüzlerden sonra and gelir: 245 = two hundred {and} forty-five. Onlar ile birler arasına tire gelir: forty{-}five.",
+        body: "Yüz = a / one {hundred}, bin = a / one {thousand}, milyon = a / one {million}. İngiltere'de yüzlerden sonra **and** gelir: [245] = two {hundred} **and** forty-five. Onlar ile birler arasına tire konur: forty**-**five.",
         examples: [
           { en: "[245] — two {hundred} and forty-five", tr: "iki yüz kırk beş" },
           { en: "[1,500] — one {thousand} five {hundred}", tr: "bin beş yüz" },
@@ -461,7 +672,7 @@ export const ELEMENTARY: Record<string, TopicBody> = {
     quiz: [
       { kind: "choice", prompt: "15 = ?", options: ["fiveteen", "fifteen", "fifty"], answer: 1, explain: "five → **fif**teen." },
       { kind: "choice", prompt: "40 = ?", options: ["fourty", "forty", "fourteen"], answer: 1, explain: "u yok: **forty**." },
-      { kind: "choice", prompt: "There were three ___ people at the concert.", tr: "Konserde üç yüz kişi vardı.", options: ["hundred", "hundreds", "hundreds of"], answer: 0, explain: "Sayıdan sonra çoğul yok: three **hundred**." },
+      { kind: "choice", prompt: "There are three ___ people at the concert.", tr: "Konserde üç yüz kişi var.", options: ["hundred", "hundreds", "hundreds of"], answer: 0, explain: "Sayıdan sonra çoğul yok: three **hundred**." },
       { kind: "type", prompt: "19 = ___", answer: ["nineteen"], explain: "nine + teen: **nineteen** (e kalır)." },
       { kind: "type", prompt: "80 = ___", answer: ["eighty"], explain: "eight + y: **eighty** (tek t)." },
       { kind: "choice", prompt: "'Thirteen' hangi sayı?", options: ["30", "13", "3"], answer: 1, explain: "-teen: **13**. (30 = thirty)" },
@@ -474,6 +685,43 @@ export const ELEMENTARY: Record<string, TopicBody> = {
 
   "ordinals-frequency": {
     intro: "Sıra sayıları sırayı söyler (birinci, ikinci), sıklık sözleri ne kadar sık olduğunu (her zaman, bazen, asla). İkisi de takvimde, programda, sohbette her gün karşına çıkar.",
+    glance: {
+      idea: "Tarihte, katta, sıralamada sıra sayısı kullan: the {fifth} of May. Sıklık sözü asıl fiilin önüne, am / is / are'ın ise arkasına gelir.",
+      formulas: [
+        {
+          label: "Tarih",
+          parts: [
+            { text: "It's", role: "plain" },
+            { text: "the", role: "plain", name: "the şart" },
+            { text: "fifth", role: "focus", name: "sıra sayısı" },
+            { text: "of May.", role: "plain", name: "of + ay" },
+          ],
+        },
+        {
+          label: "Fiilden önce",
+          parts: [
+            { text: "I", role: "plain", name: "özne" },
+            { text: "usually", role: "focus", name: "sıklık sözü" },
+            { text: "walk", role: "partner", name: "fiil" },
+            { text: "to work.", role: "plain", name: "yer" },
+          ],
+        },
+        {
+          label: "be'den sonra",
+          parts: [
+            { text: "He", role: "plain", name: "özne" },
+            { text: "is", role: "partner", name: "am · is · are" },
+            { text: "never", role: "focus", name: "sıklık sözü" },
+            { text: "late.", role: "plain", name: "durum" },
+          ],
+        },
+      ],
+      compare: [
+        { tr: "{Yirmi üç} Nisan", en: "the {twenty-third} of April" },
+        { tr: "<Haftada> {iki kez}", en: "{twice} <a week>" },
+      ],
+      compareNote: "Türkçe tarihte düz sayı, İngilizce sıra sayısı kullanır; 'haftada iki kez' de ters döner: önce kaç kez, sonra süre.",
+    },
     legend: { focus: "sıra / sıklık", partner: "fiil", extra: "süre" },
     sections: [
       {
@@ -497,12 +745,12 @@ export const ELEMENTARY: Record<string, TopicBody> = {
       },
       {
         title: "Tarih, kat, sıralama",
-        body: "Tarihte the ve of da gelir: the {23rd} of September. Amerikan kullanımı: September {23rd}. Katlarda ve sıralamalarda da hep sıra sayısı.",
+        body: "Tarih, kat ve sıralamada hep sıra sayısı kullanılır. Türkçede '23 Eylül' düz sayıyla okunur (yirmi üç); İngilizcede sıra sayısı gelir, önüne the, arkasına of: the {23rd} of September. Amerikan kullanımı: September {23rd}.",
         examples: [
           { en: "My birthday is on the {fifth} of May.", tr: "Doğum günüm beş mayısta." },
           { en: "We live on the {third} floor.", tr: "Üçüncü katta oturuyoruz." },
           { en: "This is my {first} time in London.", tr: "Londra'ya ilk gelişim." },
-          { en: "She finished {second} in the race.", tr: "Yarışı ikinci bitirdi." },
+          { en: "Our team is {second} in the league.", tr: "Takımımız ligde ikinci." },
         ],
       },
       {
@@ -518,7 +766,7 @@ export const ELEMENTARY: Record<string, TopicBody> = {
             ["{never}", "asla, hiç", "%0"],
           ],
         },
-        body: "Yeri: asıl fiilin önü, ama am / is / are'ın arkası: I {usually} [get up] at seven. / She [is] {always} late.",
+        body: "Sıklık sözü asıl fiilin hemen önüne, yani özne ile fiilin arasına girer: I {usually} [get up] at seven. Tek istisna am / is / are; söz onların arkasına geçer: She [is] {always} late.",
         examples: [
           { en: "I {usually} [walk] to work.", tr: "Genellikle işe yürüyerek giderim." },
           { en: "He [is] {never} late.", tr: "Asla geç kalmaz." },
@@ -527,7 +775,7 @@ export const ELEMENTARY: Record<string, TopicBody> = {
       },
       {
         title: "Kaç kez? once, twice, three times",
-        body: "Sıklığı saymak için: {once} (bir kez), {twice} (iki kez), {three times} (üç kez)… ardından süre: <a day>, <a week>, <a month>. Soru: How often…?",
+        body: "Kaç kez olduğunu saymak için {once} (bir kez), {twice} (iki kez), {three times} (üç kez)… ve ardından süre: <a day>, <a week>, <a month>. Sıra Türkçenin tersidir: 'haftada iki kez' → {twice} <a week>. Soru: How often…?",
         table: {
           head: ["İfade", "Türkçe"],
           rows: [

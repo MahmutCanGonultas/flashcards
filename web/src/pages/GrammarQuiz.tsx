@@ -41,15 +41,21 @@ type Checked = { right: boolean; praise: string };
 function Prompt({ text, fill, tone }: { text: string; fill: string | null; tone: "right" | "wrong" | null }) {
   const parts = text.split(/_{2,}/);
   if (parts.length === 1) return <Rich text={text} />;
+  const rest = parts.slice(1).join("___");
+  // The empty slot is a box, which a line may break after: a full stop or a question mark right after it is kept with it, not left to wrap alone.
+  const stuck = fill ? "" : (rest.match(/^[.,!?;:'’)]+/)?.[0] ?? "");
   return (
     <>
       <Rich text={parts[0]} />
       {fill ? (
         <span className={`mx-0.5 rounded-md px-1.5 font-black ${tone === "wrong" ? "bg-grass-soft text-grass-ink ring-2 ring-grass/60" : "bg-grass-soft text-grass-ink"}`}>{fill}</span>
       ) : (
-        <span aria-label="boşluk" className="mx-1 inline-block w-[3.2em] translate-y-[3px] border-b-[3px] border-hare align-baseline" />
+        <span className="whitespace-nowrap">
+          <span aria-label="boşluk" className="mx-1 inline-block w-[3.2em] translate-y-[3px] border-b-[3px] border-hare align-baseline" />
+          {stuck}
+        </span>
       )}
-      <Rich text={parts.slice(1).join("___")} />
+      <Rich text={rest.slice(stuck.length)} />
     </>
   );
 }

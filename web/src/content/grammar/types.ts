@@ -95,6 +95,38 @@ export type Recall = {
   trap?: { wrong: string; right: string };
 };
 
+/**
+ * A sentence pattern as coloured bricks: one real sentence cut into its
+ * parts, each in its mark's colour, with what goes there written under it.
+ * "She | is | not | at home" over "özne | am / is / are | değil | yer".
+ */
+export type Formula = {
+  /** What the pattern is for: "Olumlu", "Olumsuz", "Soru"… */
+  label: string;
+  /**
+   * The sentence's parts in order (joined with spaces they read as the
+   * sentence, and are spoken so); `role` is the colour, `name` what any
+   * sentence puts in that slot (Turkish, or the forms it can take).
+   */
+  parts: { text: string; role: "focus" | "partner" | "extra" | "plain"; name?: string }[];
+};
+
+/**
+ * "Bir bakışta": the topic seen whole before its details. The idea in one
+ * sentence, the patterns as blocks, and Turkish next to English so the
+ * learner sees what changes between the two.
+ */
+export type Glance = {
+  /** The topic in one Turkish sentence: what to walk away with. */
+  idea: string;
+  /** 1 to 3 patterns. */
+  formulas: Formula[];
+  /** The same thing in Turkish and in English, the counterpart parts marked the same way. */
+  compare: { tr: string; en: string }[];
+  /** One Turkish line on what the comparison shows. */
+  compareNote?: string;
+};
+
 export type TopicMeta = {
   slug: string;
   level: Level;
@@ -107,6 +139,8 @@ export type TopicMeta = {
 export type TopicBody = {
   /** Tonton's opening line: why this matters, in one or two sentences. */
   intro: string;
+  /** The topic at a glance, shown before the sections. */
+  glance?: Glance;
   /** What the colour marks mean on this topic's page. */
   legend?: { focus?: string; partner?: string; extra?: string };
   sections: Section[];

@@ -49,6 +49,33 @@ describe("grammar content", () => {
     }
   });
 
+  // One case per topic, so a failure names it: one idea, a few patterns as real sentences, Turkish beside English.
+  it.each(TOPICS.map((topic) => [topic.slug, topic] as const))("shows %s at a glance", (_, topic) => {
+    const glance = topic.glance;
+    expect(glance, `${topic.slug}: glance`).toBeDefined();
+    if (!glance) return;
+    expect(glance.idea.length, `${topic.slug}: idea`).toBeGreaterThan(30);
+    expect(plain(glance.idea).length, `${topic.slug}: idea is one or two sentences`).toBeLessThanOrEqual(190);
+    expect(glance.formulas.length, `${topic.slug}: formulas`).toBeGreaterThanOrEqual(1);
+    expect(glance.formulas.length, `${topic.slug}: formulas`).toBeLessThanOrEqual(3);
+    expect(new Set(glance.formulas.map((f) => f.label)).size, `${topic.slug}: formula labels`).toBe(glance.formulas.length);
+    for (const formula of glance.formulas) {
+      const where = `${topic.slug} / ${formula.label}`;
+      expect(formula.parts.length, `${where}: parts`).toBeGreaterThanOrEqual(2);
+      expect(formula.parts.length, `${where}: parts`).toBeLessThanOrEqual(5);
+      // The bricks are spoken as one sentence, so they must make one.
+      const sentence = formula.parts.map((part) => part.text).join(" ");
+      expect(sentence, `${where}: a sentence`).toMatch(/^[A-Z0-9].*[.?!]$/);
+      for (const part of formula.parts) {
+        expect(part.text, `${where}: no marks inside a brick`).not.toMatch(/[{}[\]<>]|\*\*|~~/);
+        expect(part.text.length, `${where}: "${part.text}" fits a brick`).toBeLessThanOrEqual(16);
+        expect((part.name ?? "").length, `${where}: "${part.name}" fits under a brick`).toBeLessThanOrEqual(16);
+      }
+    }
+    expect(glance.compare.length, `${topic.slug}: compare`).toBeGreaterThanOrEqual(2);
+    expect(glance.compare.length, `${topic.slug}: compare`).toBeLessThanOrEqual(3);
+  });
+
   it("asks questions that can be answered, and only one way", () => {
     for (const topic of TOPICS) {
       for (const [i, q] of topic.quiz.entries()) {

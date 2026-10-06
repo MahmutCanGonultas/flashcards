@@ -94,7 +94,8 @@ function GrammarRecall() {
           return (
             <section key={level.key} style={familyStyle(level.tone)} className="mt-7" aria-labelledby={`level-${level.key}`}>
               <h2 id={`level-${level.key}`} className="flex items-baseline gap-2 text-[13px] font-black uppercase tracking-[0.12em] text-(--c-ink)">
-                {level.title}
+                {/* English upper-cased by English rules: BEGINNER, not BEGİNNER. */}
+                <span lang="en">{level.title}</span>
                 <span className="font-bold normal-case tracking-normal text-graphite">{level.titleTr}</span>
               </h2>
               <ul className="mt-2.5 space-y-2.5">

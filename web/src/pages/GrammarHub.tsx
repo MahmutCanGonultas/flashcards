@@ -94,6 +94,7 @@ function GrammarHub() {
                 <h2 id={`level-${level.key}`} className="mt-0.5 text-[24px] font-black leading-tight">
                   {level.title}
                 </h2>
+                <p className="mt-1 max-w-[85%] text-[14px] font-bold leading-snug text-white/90">{level.about}</p>
                 <div className="mt-2.5 flex items-center gap-2.5">
                   <span className="h-3 flex-1 overflow-hidden rounded-full bg-black/15">
                     <span className="block h-full rounded-full bg-white transition-[width] duration-500" style={{ width: `${(done / topics.length) * 100}%` }} />

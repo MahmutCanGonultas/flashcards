@@ -4,6 +4,42 @@ import type { TopicBody } from "./types";
 export const BEGINNER: Record<string, TopicBody> = {
   "to-be": {
     intro: "İngilizcede neredeyse her cümlenin bir fiili vardır. Türkçede 'Yorgunum' der geçeriz; İngilizcede o '-um' eki ayrı bir kelime olur: am, is, are. Hepsi bu kadar.",
+    glance: {
+      idea: "Türkçedeki '-ım, -sın, -dır' ekleri İngilizcede ayrı bir kelimedir: am, is, are. Hangisinin geleceğini özne seçer.",
+      formulas: [
+        {
+          label: "Olumlu",
+          parts: [
+            { text: "She", role: "partner", name: "özne" },
+            { text: "is", role: "focus", name: "am · is · are" },
+            { text: "at home.", role: "plain", name: "durum, yer" },
+          ],
+        },
+        {
+          label: "Olumsuz",
+          parts: [
+            { text: "She", role: "partner", name: "özne" },
+            { text: "is", role: "focus", name: "am · is · are" },
+            { text: "not", role: "extra", name: "değil" },
+            { text: "at home.", role: "plain", name: "durum, yer" },
+          ],
+        },
+        {
+          label: "Soru",
+          parts: [
+            { text: "Is", role: "focus", name: "öne geçer" },
+            { text: "she", role: "partner", name: "özne" },
+            { text: "at home?", role: "plain", name: "durum, yer" },
+          ],
+        },
+      ],
+      compare: [
+        { tr: "[Ben] yorgun{um}.", en: "[I] {am} tired." },
+        { tr: "[Sen] haklı{sın}.", en: "[You] {are} right." },
+        { tr: "[Biz] evde{yiz}.", en: "[We] {are} at home." },
+      ],
+      compareNote: "Türkçede kelimenin sonuna yapışan ek, İngilizcede öznenin hemen arkasına ayrı bir kelime olarak gelir.",
+    },
     legend: { partner: "özne", focus: "am · is · are", extra: "not" },
     sections: [
       {
@@ -76,6 +112,42 @@ export const BEGINNER: Record<string, TopicBody> = {
 
   "possessive-s-of": {
     intro: "'Ali'nin arabası', 'filmin sonu': Türkçede ikisi de aynı ekle söylenir. İngilizcede iki yol var: insanlar için 's, eşyalar için of. Hangisini seçeceğini sahip söyler.",
+    glance: {
+      idea: "Türkçedeki '-nin' İngilizcede iki yolla söylenir. İnsan ve hayvan için {'s}: sıra Türkçeyle aynı. Eşya ve yer için {of}: sıra ters döner.",
+      formulas: [
+        {
+          label: "İnsan: 's",
+          parts: [
+            { text: "Ali's", role: "partner", name: "sahip + 's" },
+            { text: "car", role: "extra", name: "sahip olunan" },
+            { text: "is red.", role: "plain" },
+          ],
+        },
+        {
+          label: "Çok kişi: s'",
+          parts: [
+            { text: "My parents'", role: "partner", name: "çoğul sahip + '" },
+            { text: "house", role: "extra", name: "sahip olunan" },
+            { text: "is big.", role: "plain" },
+          ],
+        },
+        {
+          label: "Eşya: of",
+          parts: [
+            { text: "The end", role: "extra", name: "sahip olunan" },
+            { text: "of", role: "focus", name: "of" },
+            { text: "the film", role: "partner", name: "sahip" },
+            { text: "is sad.", role: "plain" },
+          ],
+        },
+      ],
+      compare: [
+        { tr: "[Ali]{'nin} <arabası>", en: "[Ali]{'s} <car>" },
+        { tr: "[Annemle babam]{ın} <evi>", en: "[My parents]{'} <house>" },
+        { tr: "[Film]{in} <sonu>", en: "<The end> {of} [the film]" },
+      ],
+      compareNote: "İnsanda yalnızca ek değişir ('nin → 's) ve sıra aynı kalır; eşyada of araya girer, sahip sona geçer.",
+    },
     legend: { partner: "sahip (kimin?)", focus: "'s · of", extra: "sahip olunan" },
     sections: [
       {
@@ -90,7 +162,7 @@ export const BEGINNER: Record<string, TopicBody> = {
       },
       {
         title: "Birden çok sahip: s'",
-        body: "Sahip -s ile biten bir çoğulsa yalnızca kesme işareti eklenir: [my parents]{'} house. -s ile bitmeyen çoğullar normal 's alır: [the children]{'s} toys, [people]{'s} ideas.",
+        body: "Sahip -s ile biten bir çoğulsa yalnızca kesme işareti (') eklenir: [my parents]{'} house. -s ile bitmeyen çoğullar normal 's alır: [the children]{'s} toys, [people]{'s} ideas.",
         table: {
           head: ["Sahip", "Yazılışı", "Anlamı"],
           rows: [
@@ -107,7 +179,7 @@ export const BEGINNER: Record<string, TopicBody> = {
         body: "Sahip bir insan ya da hayvan değilse (bir eşya, bir yer, bir fikir) genelde {of} kullanılır ve sıra ters döner: önce sahip olunan, sonra sahip. <the end> {of} [the film] = filmin sonu.",
         examples: [
           { en: "What's <the name> {of} [this street]?", tr: "[Bu sokağ]ın <adı> ne?" },
-          { en: "I fell asleep before <the end> {of} [the film].", tr: "[Film]in <sonundan> önce uyuyakaldım." },
+          { en: "<The end> {of} [the film] is very sad.", tr: "[Film]in <sonu> çok üzücü." },
           { en: "Ankara is <the capital> {of} [Turkey].", tr: "Ankara [Türkiye]'nin <başkentidir>." },
           { en: "Write your name at <the top> {of} [the page].", tr: "Adını [sayfa]nın <en üstüne> yaz." },
         ],
@@ -137,9 +209,9 @@ export const BEGINNER: Record<string, TopicBody> = {
       { kind: "choice", prompt: "My ___ house is near the sea.", tr: "Büyükannemle büyükbabamın evi denize yakın.", options: ["grandparents'", "grandparents's", "grandparent of"], answer: 0, explain: "Çoğul ve -s ile bitiyor: yalnızca kesme → **grandparents'**." },
       { kind: "choice", prompt: "What's the name ___ this song?", tr: "Bu şarkının adı ne?", options: ["of", "'s", "from"], answer: 0, explain: "Şarkı bir şey, insan değil: the name **of** this song." },
       { kind: "type", prompt: "The ___ toys are everywhere!", tr: "Çocukların oyuncakları her yerde! (children)", answer: ["children's"], explain: "children -s ile bitmez: **children's**." },
-      { kind: "type", prompt: "My ___ bedroom is bigger than mine.", tr: "Kız kardeşlerimin yatak odası benimkinden büyük. (sisters)", answer: ["sisters'"], explain: "Birden çok kız kardeş, -s ile biten çoğul: **sisters'**." },
+      { kind: "type", prompt: "My ___ bedroom is big and bright.", tr: "Kız kardeşlerimin yatak odası büyük ve aydınlık. (sisters)", answer: ["sisters'"], explain: "Birden çok kız kardeş, -s ile biten çoğul: **sisters'**." },
       { kind: "choice", prompt: "Hangi cümle yanlış?", options: ["This is James's car.", "My parents's house is big.", "The children's toys are here."], answer: 1, explain: "-s ile biten çoğula yalnızca ' gelir: **my parents' house**." },
-      { kind: "choice", prompt: "Did you read ___ newspaper?", tr: "Bugünün gazetesini okudun mu?", options: ["today's", "today", "of today"], answer: 0, explain: "Zaman ifadeleri 's alır: **today's** newspaper." },
+      { kind: "choice", prompt: "Where is ___ newspaper?", tr: "Bugünün gazetesi nerede?", options: ["today's", "today", "of today"], answer: 0, explain: "Zaman ifadeleri 's alır: **today's** newspaper." },
       { kind: "order", tr: "Ali'nin arabası kırmızı.", answer: "Ali's car is red.", extra: ["of", "Ali"], explain: "Sahip + **'s** + sahip olunan." },
       { kind: "order", tr: "Kitabın sonu harika.", answer: "The end of the book is great.", extra: ["book's", "from"], explain: "Eşya: the end **of** the book." },
       { kind: "choice", prompt: "The ___ names are Can and Ece.", tr: "İkizlerin adları Can ve Ece.", options: ["twins'", "twin's", "twins's"], answer: 0, explain: "İki kişi, -s ile biten çoğul: **twins'**." },
@@ -148,11 +220,49 @@ export const BEGINNER: Record<string, TopicBody> = {
 
   "possessive-adjectives": {
     intro: "Türkçede sahiplik bir ektir: kitab-ım, kitab-ın. İngilizcede ek yok; ismin önüne küçük bir kelime gelir: my book, your book. Yedi tane, hepsi bu.",
+    glance: {
+      idea: "'Kitabım'daki -ım eki İngilizcede ismin önüne geçen ayrı bir kelimedir: {my} book. Kelimeyi eşya değil, sahibi seçer: erkekse {his}, kadınsa {her}.",
+      formulas: [
+        {
+          label: "Benim",
+          parts: [
+            { text: "I", role: "partner", name: "kişi" },
+            { text: "love", role: "plain", name: "fiil" },
+            { text: "my", role: "focus", name: "my · your · our" },
+            { text: "job.", role: "plain", name: "isim" },
+          ],
+        },
+        {
+          label: "Onun (erkek)",
+          parts: [
+            { text: "Ali", role: "partner", name: "kişi: erkek" },
+            { text: "loves", role: "plain", name: "fiil" },
+            { text: "his", role: "focus", name: "sahip erkekse" },
+            { text: "job.", role: "plain", name: "isim" },
+          ],
+        },
+        {
+          label: "Onun (kadın)",
+          parts: [
+            { text: "Elif", role: "partner", name: "kişi: kadın" },
+            { text: "loves", role: "plain", name: "fiil" },
+            { text: "her", role: "focus", name: "sahip kadınsa" },
+            { text: "job.", role: "plain", name: "isim" },
+          ],
+        },
+      ],
+      compare: [
+        { tr: "Kitab{ım}", en: "{My} book" },
+        { tr: "[Ali] ve anne{si}", en: "[Ali] and {his} mother" },
+        { tr: "[Elif] ve anne{si}", en: "[Elif] and {her} mother" },
+      ],
+      compareNote: "Türkçede ek ismin sonuna yapışır ve 'onun' için hep aynıdır (-si); İngilizcede kelime ismin önüne geçer ve sahibe göre his ya da her olur.",
+    },
     legend: { partner: "kişi", focus: "my · your · his · her · its · our · their" },
     sections: [
       {
         title: "Benim, senin, onun…",
-        body: "Her kişinin bir sahiplik kelimesi var ve hep bir isimle birlikte gelir. Tek başına durmaz: {my} book, {our} house.",
+        body: "Her kişinin bir sahiplik kelimesi var ve hep bir ismin önüne gelir, tek başına durmaz: {my} book, {our} house. Türkçedeki 'kitabım, evimiz' eklerinin işini görür.",
         table: {
           head: ["Kişi", "Sahiplik", "Örnek"],
           rows: [
@@ -181,7 +291,7 @@ export const BEGINNER: Record<string, TopicBody> = {
         title: "its ≠ it's, their ≠ there",
         body: "{its} = onun (sahiplik). it's = it is. {their} = onların. there = orada. Kesme işareti hep bir harfin düştüğünü gösterir: it's = it is, they're = they are.",
         examples: [
-          { en: "The company changed {its} name.", tr: "Şirket adını değiştirdi." },
+          { en: "The company is changing {its} name.", tr: "Şirket adını değiştiriyor." },
           { en: "It's cold today.", tr: "Bugün hava soğuk. (it is)" },
           { en: "{Their} flat is small but bright.", tr: "Daireleri küçük ama aydınlık." },
           { en: "They're at work now.", tr: "Şu an işteler. (they are)" },
@@ -192,7 +302,7 @@ export const BEGINNER: Record<string, TopicBody> = {
         examples: [
           { en: "What's {your} name?", tr: "Adın ne?" },
           { en: "{Our} teacher is from Canada.", tr: "Öğretmenimiz Kanadalı." },
-          { en: "I can't find {my} keys.", tr: "Anahtarlarımı bulamıyorum." },
+          { en: "I'm looking for {my} keys.", tr: "Anahtarlarımı arıyorum." },
           { en: "The kids are in {their} room.", tr: "Çocuklar odalarında." },
         ],
       },
@@ -207,10 +317,10 @@ export const BEGINNER: Record<string, TopicBody> = {
     quiz: [
       { kind: "choice", prompt: "[My sister] and ___ husband live in İzmir.", tr: "Kız kardeşim ve kocası İzmir'de yaşıyor.", options: ["his", "her", "their"], answer: 1, explain: "Sahip kız kardeş (kadın) → **her** husband." },
       { kind: "choice", prompt: "[Selin] is with ___ friends.", tr: "Selin arkadaşlarıyla.", options: ["his", "her", "their"], answer: 1, explain: "Selin kadın → **her**." },
-      { kind: "choice", prompt: "[My parents] sold ___ car.", tr: "Annemle babam arabalarını sattı.", options: ["their", "there", "they're"], answer: 0, explain: "Sahiplik: **their**." },
-      { kind: "choice", prompt: "The tree lost ___ leaves.", tr: "Ağaç yapraklarını döktü.", options: ["its", "it's", "his"], answer: 0, explain: "Eşya ya da bitki: **its** (kesmesiz)." },
+      { kind: "choice", prompt: "[My parents] are selling ___ car.", tr: "Annemle babam arabalarını satıyor.", options: ["their", "there", "they're"], answer: 0, explain: "Sahiplik: **their**." },
+      { kind: "choice", prompt: "The tree is losing ___ leaves.", tr: "Ağaç yapraklarını döküyor.", options: ["its", "it's", "his"], answer: 0, explain: "Eşya ya da bitki: **its** (kesmesiz)." },
       { kind: "type", prompt: "[Ali and Deniz] love ___ new flat.", tr: "Ali ve Deniz yeni dairelerini çok seviyor.", answer: ["their"], explain: "Ali and Deniz = they → **their**." },
-      { kind: "type", prompt: "[Mert] can't find ___ phone.", tr: "Mert telefonunu bulamıyor.", answer: ["his"], explain: "Mert erkek → **his**." },
+      { kind: "type", prompt: "[Mert] is looking for ___ phone.", tr: "Mert telefonunu arıyor.", answer: ["his"], explain: "Mert erkek → **his**." },
       { kind: "choice", prompt: "Hangi cümle yanlış?", options: ["Their car is new.", "Is this you're bag?", "Its name is Duman."], answer: 1, explain: "Sahiplik: **your** bag. you're = you are." },
       { kind: "order", tr: "Onların evi çok büyük.", answer: "Their house is very big.", extra: ["There", "They're"], explain: "Sahiplik: **Their** house." },
       { kind: "order", tr: "Kedi kuyruğuyla oynuyor.", answer: "The cat is playing with its tail.", extra: ["it's", "his"], explain: "Hayvanın sahipliği: **its**." },
@@ -220,11 +330,49 @@ export const BEGINNER: Record<string, TopicBody> = {
 
   "have-got": {
     intro: "'Arabam var', 'İki kardeşim var', 'Başım ağrıyor'. Türkçede 'var' deriz; İngilizcede 'sahibim' deriz: I have got. Aile, eşya, görünüş, hastalık, hepsi bununla söylenir.",
+    glance: {
+      idea: "Türkçe 'Arabam var' der; İngilizce 'Ben bir arabaya sahibim' gibi kurar: önce sahip, sonra {have got}. he, she, it için {has got}.",
+      formulas: [
+        {
+          label: "Olumlu",
+          parts: [
+            { text: "She", role: "partner", name: "özne (sahip)" },
+            { text: "has got", role: "focus", name: "have · has got" },
+            { text: "a car.", role: "plain", name: "sahip olunan" },
+          ],
+        },
+        {
+          label: "Olumsuz",
+          parts: [
+            { text: "She", role: "partner", name: "özne (sahip)" },
+            { text: "has", role: "focus", name: "have · has" },
+            { text: "not", role: "extra", name: "yok" },
+            { text: "got", role: "focus", name: "got" },
+            { text: "a car.", role: "plain", name: "sahip olunan" },
+          ],
+        },
+        {
+          label: "Soru",
+          parts: [
+            { text: "Has", role: "focus", name: "öne geçer" },
+            { text: "she", role: "partner", name: "özne (sahip)" },
+            { text: "got", role: "focus", name: "got" },
+            { text: "a car?", role: "plain", name: "sahip olunan" },
+          ],
+        },
+      ],
+      compare: [
+        { tr: "Bir araba[m] {var}.", en: "[I] {have got} a car." },
+        { tr: "Erkek kardeş[i] {yok}.", en: "[He] {hasn't got} a brother." },
+        { tr: "Kalem[in] {var mı}?", en: "{Have} [you] {got} a pen?" },
+      ],
+      compareNote: "Türkçede sahip, kelimenin sonundaki ektir (araba-m) ve 'var' sona gelir; İngilizcede sahip cümlenin başına geçer, 'var'ın yerini have got alır.",
+    },
     legend: { partner: "özne", focus: "have got · has got", extra: "not" },
     sections: [
       {
         title: "Sahip olmak",
-        body: "Bir şeyin sende olduğunu söylemek için: [I] {have got} a car. Kısaca [I]{'ve got} a car. Türkçedeki 'var' ile aynı yerde kullanılır ama cümle sahiple başlar.",
+        body: "Bir şeyin sende olduğunu söyler, Türkçedeki 'var' gibi. Ama cümle sahiple başlar: 'Arabam var' → [I] {have got} a car. Konuşurken kısalır: [I]{'ve got} a car.",
         examples: [
           { en: "[I] {have got} two brothers.", tr: "İki erkek kardeşim var." },
           { en: "[She] {has got} blue eyes.", tr: "Mavi gözleri var." },
@@ -257,7 +405,7 @@ export const BEGINNER: Record<string, TopicBody> = {
       },
       {
         title: "have got ile have",
-        body: "Aynı anlamda iki yol var: 'I {'ve got} a car' (İngiltere'de, konuşurken) ve 'I have a car' (her yerde). have tek başına olunca olumsuz ve soruda do / does ister.",
+        body: "Aynı anlamda iki yol var: 'I{'ve got} a car' (İngiltere'de, konuşurken) ve 'I have a car' (her yerde). have tek başına olunca olumsuz ve soruda do / does ister.",
         table: {
           head: ["", "have got", "have"],
           rows: [
@@ -266,7 +414,7 @@ export const BEGINNER: Record<string, TopicBody> = {
             ["Soru", "{Have} you {got} a dog?", "Do you have a dog?"],
           ],
         },
-        note: "Geçmişte got kullanılmaz: 'Bir köpeğim vardı' = I had a dog.",
+        note: "he / she / it ile de iki yol var: She{'s got} a dog = She has a dog. Olumsuzda: She {hasn't got} a dog = She doesn't have a dog.",
       },
     ],
     mistakes: [
@@ -286,12 +434,46 @@ export const BEGINNER: Record<string, TopicBody> = {
       { kind: "choice", prompt: "Hangi cümle yanlış?", options: ["We've got a big garden.", "Does she have got a car?", "They haven't got time."], answer: 1, explain: "have got sorusunda does yok: **Has she got** a car?" },
       { kind: "order", tr: "Başım ağrıyor.", answer: "I have got a headache.", also: ["I've got a headache."], extra: ["has", "am"], explain: "Hastalıklar da sahiplik: I **have got** a headache." },
       { kind: "order", tr: "Kız kardeşimin uzun saçları yok.", answer: "My sister hasn't got long hair.", also: ["My sister has not got long hair."], extra: ["haven't", "don't"], explain: "My sister = she → **hasn't got**." },
-      { kind: "choice", prompt: "[We] ___ a big garden when I was a child.", tr: "Ben çocukken büyük bir bahçemiz vardı.", options: ["have got", "had", "has got"], answer: 1, explain: "Geçmişte got kullanılmaz: **had**." },
+      { kind: "choice", prompt: "[Our house] ___ a big garden.", tr: "Evimizin büyük bir bahçesi var.", options: ["have got", "has got", "is got"], answer: 1, explain: "Our house = it → **has got**. 'is got' diye bir şey yok." },
     ],
   },
 
   jobs: {
     intro: "'Ne iş yapıyorsun?' günde bir kez sorulan bir soru. Cevabın en çok atlanan kelimesi Türkçede olmayan bir 'a': I'm a nurse. Önce onu, sonra meslekleri öğrenelim.",
+    glance: {
+      idea: "Türkçe 'Öğretmenim' der; İngilizce meslekten önce bir {a} ister: I'm {a} teacher. Sesli harften önce {an}, çoğulda hiçbiri.",
+      formulas: [
+        {
+          label: "Tek kişi: a",
+          parts: [
+            { text: "I'm", role: "plain", name: "özne + be" },
+            { text: "a", role: "focus", name: "a · an" },
+            { text: "teacher.", role: "partner", name: "meslek" },
+          ],
+        },
+        {
+          label: "Sesli harf: an",
+          parts: [
+            { text: "She's", role: "plain", name: "özne + be" },
+            { text: "an", role: "focus", name: "sesliden önce" },
+            { text: "engineer.", role: "partner", name: "meslek" },
+          ],
+        },
+        {
+          label: "Çoğul: a yok",
+          parts: [
+            { text: "They're", role: "plain", name: "özne + be" },
+            { text: "doctors.", role: "partner", name: "meslek + -s" },
+          ],
+        },
+      ],
+      compare: [
+        { tr: "[Öğretmen]im.", en: "I'm {a} [teacher]." },
+        { tr: "Babam [mühendis].", en: "My father is {an} [engineer]." },
+        { tr: "Onlar [doktor].", en: "They're [doctors]." },
+      ],
+      compareNote: "Türkçede meslekten önce hiçbir kelime yok; İngilizcede tek kişinin mesleği a ya da an ister, çoğulda a düşer ve meslek -s alır.",
+    },
     legend: { focus: "a · an · -er · -or · -ist", partner: "meslek" },
     sections: [
       {
@@ -301,7 +483,7 @@ export const BEGINNER: Record<string, TopicBody> = {
           { en: "What do you do? — I'm {a} [nurse].", tr: "Ne iş yapıyorsun? — Hemşireyim." },
           { en: "My father is {an} [engineer].", tr: "Babam mühendis." },
           { en: "She works as {a} [designer] in Istanbul.", tr: "İstanbul'da tasarımcı olarak çalışıyor." },
-          { en: "I want to be {a} [pilot] one day.", tr: "Bir gün pilot olmak istiyorum." },
+          { en: "One day I'm going to be {a} [pilot].", tr: "Bir gün pilot olacağım." },
         ],
       },
       {
@@ -345,7 +527,7 @@ export const BEGINNER: Record<string, TopicBody> = {
       },
       {
         title: "a mı, an mı?",
-        body: "Meslek bir sesli harf sesiyle başlıyorsa {an}: {an} engineer, {an} actor, {an} architect. Diğerlerinde {a}. Bakılan harf değil, ses: {a} university ('yu' sesi), {an} hour ('h' okunmaz).",
+        body: "Meslek bir sesli harf sesiyle (a, e, i, o, u gibi) başlıyorsa {an}: {an} engineer, {an} actor, {an} architect. Diğerlerinde {a}. Bakılan harf değil, ses: {a} university ('yu' sesi), {an} hour ('h' okunmaz).",
         examples: [
           { en: "She's {an} [architect].", tr: "Mimar." },
           { en: "He's {a} [police officer].", tr: "Polis memuru." },
@@ -367,8 +549,8 @@ export const BEGINNER: Record<string, TopicBody> = {
       { kind: "choice", prompt: "My uncle is ___ engineer.", tr: "Amcam mühendis.", options: ["a", "an", "—"], answer: 1, explain: "engineer sesli harfle başlıyor: **an**." },
       { kind: "choice", prompt: "She's ___ honest lawyer.", tr: "Dürüst bir avukat.", options: ["a", "an", "—"], answer: 1, explain: "honest'ta h okunmaz; ses sesliyle başlar: **an** honest lawyer." },
       { kind: "choice", prompt: "Who helps people with the law, often in court?", tr: "Kim insanlara hukuk konusunda, çoğu zaman mahkemede yardım eder?", options: ["a lawyer", "an accountant", "a waiter"], answer: 0, explain: "**Lawyer** = avukat. Accountant muhasebeci, waiter garson." },
-      { kind: "type", prompt: "Someone who teaches is a ___.", tr: "Öğreten kişi bir …", answer: ["teacher"], explain: "teach + **er** = teacher." },
-      { kind: "type", prompt: "Someone who drives a bus is a bus ___.", tr: "Otobüs kullanan kişi bir otobüs …", answer: ["driver"], explain: "drive + **r** = driver." },
+      { kind: "type", prompt: "My mother teaches children. She's a ___.", tr: "Annem çocuklara ders veriyor. O bir …", answer: ["teacher"], explain: "teach + **er** = teacher." },
+      { kind: "type", prompt: "My brother drives a bus. He's a bus ___.", tr: "Ağabeyim otobüs kullanıyor. O bir otobüs …", answer: ["driver"], explain: "drive + **r** = driver." },
       { kind: "choice", prompt: "What do you ___? — I'm a chef.", tr: "Ne iş yapıyorsun? — Aşçıyım.", options: ["do", "work", "job"], answer: 0, explain: "Kalıp: What do you **do**?" },
       { kind: "order", tr: "Kız kardeşim bir avukat.", answer: "My sister is a lawyer.", extra: ["an", "lawyers"], explain: "lawyer sessizle başlıyor: **a** lawyer." },
       { kind: "order", tr: "Onlar hemşire.", answer: "They are nurses.", extra: ["a", "nurse"], explain: "Çoğulda a yok: They are **nurses**." },

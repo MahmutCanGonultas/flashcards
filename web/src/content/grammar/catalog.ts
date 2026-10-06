@@ -6,11 +6,11 @@ import type { Level, Tone, TopicMeta } from "./types";
  * pages themselves live in beginner.ts, elementary.ts, preIntermediate.ts and
  * intermediate.ts.
  */
-export const LEVELS: { key: Level; title: string; titleTr: string; tone: Tone }[] = [
-  { key: "beginner", title: "Beginner", titleTr: "Başlangıç", tone: "grass" },
-  { key: "elementary", title: "Elementary", titleTr: "Temel", tone: "ocean" },
-  { key: "pre-intermediate", title: "Pre-Intermediate", titleTr: "Orta öncesi", tone: "tangerine" },
-  { key: "intermediate", title: "Intermediate", titleTr: "Orta", tone: "plum" },
+export const LEVELS: { key: Level; title: string; titleTr: string; tone: Tone; about: string }[] = [
+  { key: "beginner", title: "Beginner", titleTr: "Başlangıç", tone: "grass", about: "Cümlenin temeli: kim, ne, kimin, neyi var." },
+  { key: "elementary", title: "Elementary", titleTr: "Temel", tone: "ocean", about: "Her gün olanları anlatmak, soru sormak, cümle kurmak." },
+  { key: "pre-intermediate", title: "Pre-Intermediate", titleTr: "Orta öncesi", tone: "tangerine", about: "Şu an olanlar, planlar, miktarlar, cümleleri bağlamak." },
+  { key: "intermediate", title: "Intermediate", titleTr: "Orta", tone: "plum", about: "Türkçedeki eklerin ve zamirlerin İngilizcedeki karşılığı." },
 ];
 
 export const CATALOG: TopicMeta[] = [
