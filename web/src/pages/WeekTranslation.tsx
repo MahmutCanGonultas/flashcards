@@ -9,6 +9,7 @@ import LitWords from "../components/LitWords";
 import { familyStyle } from "../lib/palette";
 import BackHome from "../components/BackHome";
 import { useWeekText, useWeekWords } from "../lib/weekText";
+import { markDone } from "../lib/dailyDone";
 
 const draftKey = (week: number) => `kelimece:translation:${week}`;
 
@@ -98,7 +99,10 @@ function WeekTranslation() {
             {!shown ? (
               <button
                 type="button"
-                onClick={() => setShown(true)}
+                onClick={() => {
+                  setShown(true);
+                  markDone("translation");
+                }}
                 className="face mt-4 flex min-h-[56px] w-full items-center justify-center rounded-2xl bg-tangerine text-[15px] font-black uppercase tracking-[0.08em] text-white shadow-button press-3d"
               >
                 {draft.trim() ? "Örnek çeviriyle karşılaştır" : "Örnek çeviriyi göster"}

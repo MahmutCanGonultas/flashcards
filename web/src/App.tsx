@@ -23,6 +23,7 @@ import { playTap } from "./lib/sound";
 const GrammarHub = lazy(() => import("./pages/GrammarHub"));
 const GrammarTopic = lazy(() => import("./pages/GrammarTopic"));
 const GrammarQuiz = lazy(() => import("./pages/GrammarQuiz"));
+const GrammarRecall = lazy(() => import("./pages/GrammarRecall"));
 // The programme week's two texts, each in its own chunk.
 const WeekReading = lazy(() => import("./pages/WeekReading"));
 const WeekTranslation = lazy(() => import("./pages/WeekTranslation"));
@@ -118,6 +119,16 @@ function App() {
         }
       />
       <Route
+        path="/gramer/hatirla"
+        element={
+          <ProtectedRoute>
+            <Suspense fallback={null}>
+              <GrammarRecall />
+            </Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
         path="/gramer/:slug"
         element={
           <ProtectedRoute>
@@ -138,13 +149,14 @@ function App() {
         }
       />
       <Route
-        path="/hafta"
+        path="/bugun"
         element={
           <ProtectedRoute>
             <Hafta />
           </ProtectedRoute>
         }
       />
+      <Route path="/hafta" element={<Navigate to="/bugun" replace />} />
       <Route
         path="/hafta/:week/okuma"
         element={

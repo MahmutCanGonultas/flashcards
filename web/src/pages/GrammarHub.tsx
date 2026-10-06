@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import AppTabs from "../components/AppTabs";
 import TontonLine from "../components/TontonLine";
 import Stars from "../components/Stars";
-import { BoltIcon, CheckIcon, StarIcon } from "../components/icons";
+import { BoltIcon, BulbIcon, CheckIcon, StarIcon } from "../components/icons";
 import { CATALOG, LEVELS } from "../content/grammar/catalog";
 import { starsFor, useGrammarProgress } from "../lib/grammar";
 import { familyStyle } from "../lib/palette";
@@ -33,10 +33,7 @@ function GrammarHub() {
     <div className="min-h-screen">
       <Header />
       <main className="mx-auto max-w-2xl px-5 pb-28 pt-5">
-        <Link to="/kartlar" viewTransition className="-m-2 inline-block p-2 text-[13px] font-black uppercase tracking-[0.08em] text-ocean-ink">
-          ← Kartlarım
-        </Link>
-        <div className="mt-2 flex items-end justify-between gap-3">
+        <div className="flex items-end justify-between gap-3">
           <div>
             <h1 className="text-[32px] font-black leading-[1.05] tracking-[-0.02em] text-ink">Gramer</h1>
             <p className="mt-1 text-[15px] font-bold text-graphite">
@@ -53,6 +50,26 @@ function GrammarHub() {
         <TontonLine className="mt-5" size={56}>
           {hubLine(started, stars)}
         </TontonLine>
+
+        {/* Grammar as something to glance at: each topic's few rules, one tap away. */}
+        <Link
+          to="/gramer/hatirla"
+          viewTransition
+          style={familyStyle("plum")}
+          className="relative mt-5 flex items-center gap-3.5 overflow-hidden rounded-[22px] bg-(--c) p-4 text-white shadow-[inset_0_-5px_0_0_rgba(0,0,0,0.15)] press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-plum/40"
+        >
+          <span aria-hidden="true" className="pointer-events-none absolute -right-4 -top-5 select-none text-[96px] leading-none opacity-20">
+            💡
+          </span>
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white text-(--c-ink) shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.12)]">
+            <BulbIcon className="h-7 w-7" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-[20px] font-black leading-tight">Hatırla</span>
+            <span className="mt-0.5 block text-[14px] font-bold text-white/90">Her konunun püf noktaları, tek bakışta</span>
+          </span>
+          <span aria-hidden="true" className="text-[22px] font-black">→</span>
+        </Link>
 
         <Link
           to="/gramer/karisik/alistirma"

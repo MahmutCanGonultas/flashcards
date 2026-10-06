@@ -12,7 +12,7 @@
  * always means something the learner has been told.
  */
 
-export type Level = "beginner" | "elementary" | "pre-intermediate";
+export type Level = "beginner" | "elementary" | "pre-intermediate" | "intermediate";
 
 /** The bright families (index.css); a level or a table header wears one. */
 export type Tone = "grass" | "ocean" | "berry" | "sunny" | "tangerine" | "plum" | "teal" | "rose";
@@ -81,6 +81,19 @@ export type Question =
       extra?: string[];
       explain: string;
     };
+
+/**
+ * "Hatırla": a topic boiled down to what has to stay in mind, for a quick
+ * look between other things (recall.ts holds one per topic).
+ */
+export type Recall = {
+  /** 3 to 5 short rules in Turkish, the essential ones; marks allowed. */
+  points: string[];
+  /** 2 to 4 colour-marked examples that show the rules. */
+  examples: Example[];
+  /** The one trap a Turkish speaker falls into: the wrong line and the right one (marks allowed). */
+  trap?: { wrong: string; right: string };
+};
 
 export type TopicMeta = {
   slug: string;

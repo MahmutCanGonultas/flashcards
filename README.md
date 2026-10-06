@@ -16,7 +16,7 @@ It's a web app made for the phone (you can install it like a regular app), built
 - The learner doesn't pick the words: a programme of 500 words, from the end of A2 to B2, ten a week, each week a theme (making decisions, money, work, feelings, health, the economy…). Every card, sentence and text uses only the grammar the learner has covered.
 - New words come Monday to Thursday (3, 3, 2, 2); a missed day is made up later in the week, never more than three a day.
 - Friday has a short reading built from the week's words, read aloud sentence by sentence. Saturday has a Turkish text to translate, then compare with a model line by line. Sunday has the week's test (each word typed from its Turkish) and a look back: twenty words from earlier weeks, the ones not seen for the longest first, so a word from three weeks or three months ago keeps coming round.
-- The app has three tabs. **Kartlar** is the cards and nothing else: the day's pile (tap it to start), one button, and how many of the 500 words are already yours. **Hafta** holds the week's programme, the exercises and the numbers. **Gramer** is the grammar. The course is hidden while the programme runs.
+- The app has three tabs. **Kartlar** is the cards and nothing else: the day's pile (tap it to start), one button, and how many of the 500 words are already yours. **Bugün** is the day as a checklist (the cards, the exercises, and the day's own piece: a grammar reminder Monday to Thursday, the reading, the translation, the test and the look back), each ticked as it's done, then the week's programme and the numbers. **Gramer** is the grammar. The course is hidden while the programme runs.
 - A round's cards come in a new random order every time, so the order is never what gets learned.
 
 ### Cards and exercises, kept apart
@@ -58,7 +58,8 @@ It's a web app made for the phone (you can install it like a regular app), built
 
 ### Grammar
 
-- 21 topics in three levels (Beginner, Elementary, Pre-Intermediate), in the order they were taught: *to be*, possessives, *have got*, jobs, word types, the present simple, *wh-* questions, word order, *to / by / from*, numbers, ordinals and frequency, likes and dislikes, articles, countable nouns, *there is / there are*, quantifiers, the present continuous, imperatives, linking words and the future.
+- 24 topics in four levels (Beginner, Elementary, Pre-Intermediate, Intermediate), in the order they were taught: *to be*, possessives, *have got*, jobs, word types, the present simple, *wh-* questions, word order, *to / by / from*, numbers, ordinals and frequency, likes and dislikes, articles, countable nouns, *there is / there are*, quantifiers, the present continuous, imperatives, linking words, the future, Turkish noun cases (-i, -e, -de, -den) in English, object pronouns and reflexive pronouns.
+- **Hatırla**: every topic boiled down to a card to glance at between other things: three to five rules, a few colour-marked examples you can hear, and the one trap a Turkish speaker falls into.
 - Each topic is a page to read, with rules, tables and examples. Colours mark the parts of a sentence (green for the form being taught, blue for what decides it, orange for extras such as time words). Every example has a Turkish translation and can be played aloud.
 - Each topic has a 10-question quiz: pick the answer, find the wrong sentence, fill the gap, or build the sentence from word tiles with a few extra tiles mixed in. Mistakes come back at the end, and your best score is saved with up to three stars. A mixed quiz takes questions from topics you've already done, more from your weakest ones.
 

@@ -18,13 +18,13 @@ type CoverProps = {
 };
 
 /**
- * A card's face: the word's own bright colour with a darker band along the
- * foot (the 3D edge), what is being asked in a white pill, and the content
- * in white type.
+ * A card's face: the word's own bright colour with a soft light across it
+ * and a darker band along the foot (the 3D edge); what is being asked and
+ * where the round is, quietly at the top; the content in white type.
  */
 function Cover({ card, label, counter, ornament, className = "", children }: CoverProps) {
   return (
-    <div style={tintStyle(card)} className={`relative isolate flex flex-col overflow-hidden rounded-[24px] cover-ground px-5 pb-6 pt-4 text-white ${className}`}>
+    <div style={tintStyle(card)} className={`relative isolate flex flex-col overflow-hidden rounded-[28px] cover-ground px-5 pb-6 pt-5 text-white ${className}`}>
       {ornament && (
         <span
           aria-hidden="true"
@@ -34,8 +34,8 @@ function Cover({ card, label, counter, ornament, className = "", children }: Cov
         </span>
       )}
       <div className="flex items-center justify-between gap-3 tabular-nums">
-        <span data-cover-label className="min-w-0 truncate rounded-full bg-white/22 px-3 py-1 text-[12px] font-black uppercase tracking-[0.1em]">{label}</span>
-        {counter && <span className="shrink-0 text-[12px] font-black tracking-[0.06em] text-white/90">{counter}</span>}
+        <span data-cover-label className="min-w-0 truncate text-[11px] font-black uppercase tracking-[0.16em] text-white/80">{label}</span>
+        {counter && <span className="shrink-0 text-[11px] font-black tracking-[0.1em] text-white/70">{counter}</span>}
       </div>
       {children}
     </div>

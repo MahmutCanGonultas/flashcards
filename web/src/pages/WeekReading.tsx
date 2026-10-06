@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import AppTabs from "../components/AppTabs";
 import TontonLine from "../components/TontonLine";
@@ -9,6 +9,7 @@ import LitWords from "../components/LitWords";
 import BackHome from "../components/BackHome";
 import { familyStyle } from "../lib/palette";
 import { useWeekText, useWeekWords } from "../lib/weekText";
+import { markDone } from "../lib/dailyDone";
 
 /**
  * Friday's reading: a short text made of the week's words and the ones
@@ -20,6 +21,7 @@ function WeekReading() {
   const text = useWeekText(week);
   const words = useWeekWords(week);
   const [turkish, setTurkish] = useState(false);
+  const navigate = useNavigate();
   const reading = text.data?.reading;
 
   return (
@@ -64,6 +66,16 @@ function WeekReading() {
                 </li>
               ))}
             </ol>
+            <button
+              type="button"
+              onClick={() => {
+                markDone("reading");
+                navigate("/bugun");
+              }}
+              className="face mt-6 flex min-h-[56px] w-full items-center justify-center rounded-2xl bg-grass text-[15px] font-black uppercase tracking-[0.08em] text-white shadow-button press-3d"
+            >
+              Okudum ✓
+            </button>
             {words.length > 0 && (
               <div className="mt-6">
                 <p className="text-[12px] font-black uppercase tracking-[0.12em] text-graphite">Bu haftanın kelimeleri</p>

@@ -2,19 +2,18 @@ import { NavLink, useLocation } from "react-router-dom";
 import { BookIcon, CardsIcon, PathIcon } from "./icons";
 
 /**
- * Three tabs: the cards (and the word list behind them), the week of the
- * programme (its texts, the test, the exercises, the numbers) and the
- * grammar. The course is hidden while the programme runs (its pages still
+ * Three tabs: the cards (and the word list behind them), today (what to do
+ * now, the week of the programme, the numbers) and the grammar. The course is hidden while the programme runs (its pages still
  * open by address). The active tab sits in a blue key, the way a pressed
  * button looks here.
  */
 function AppTabs() {
   const { pathname } = useLocation();
   const grammar = /^\/gramer/.test(pathname);
-  const week = /^\/hafta/.test(pathname);
+  const week = /^\/(bugun|hafta)/.test(pathname);
   const tabs = [
     { to: "/kartlar", label: "Kartlar", icon: CardsIcon, active: !grammar && !week },
-    { to: "/hafta", label: "Hafta", icon: PathIcon, active: week },
+    { to: "/bugun", label: "Bugün", icon: PathIcon, active: week },
     { to: "/gramer", label: "Gramer", icon: BookIcon, active: grammar },
   ];
   return (

@@ -32,6 +32,7 @@ export const LEARNER_GRAMMAR = `Write every English sentence ONLY with grammar t
 - like / love / hate / enjoy + -ing
 - wh- questions, numbers, ordinals, and the prepositions to / by / from
 - linking words: and, but, or, so, because
+- object pronouns (me, him, her, us, them) and reflexive pronouns (myself, yourself…); prepositions for Turkish cases (to, at, in, on, from)
 Never use: a past tense (was, were, did, -ed past forms), the present perfect, can / could / should / must / would / may / might, if-clauses, when / before / after clauses, relative clauses (who / which / that), the passive, comparatives or superlatives, or verb + to-infinitive (want to, need to, try to). Keep each sentence short (6 to 12 words), everyday and around A2: neither babyish nor hard.`;
 
 const RESULT_SHAPE = `{

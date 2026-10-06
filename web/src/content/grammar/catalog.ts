@@ -3,12 +3,14 @@ import type { Level, Tone, TopicMeta } from "./types";
 /**
  * The topics in the learner's own order (the list they were taught in),
  * light enough for the home page to import: titles and badges only. The
- * pages themselves live in beginner.ts, elementary.ts and preIntermediate.ts.
+ * pages themselves live in beginner.ts, elementary.ts, preIntermediate.ts and
+ * intermediate.ts.
  */
 export const LEVELS: { key: Level; title: string; titleTr: string; tone: Tone }[] = [
   { key: "beginner", title: "Beginner", titleTr: "Başlangıç", tone: "grass" },
   { key: "elementary", title: "Elementary", titleTr: "Temel", tone: "ocean" },
   { key: "pre-intermediate", title: "Pre-Intermediate", titleTr: "Orta öncesi", tone: "tangerine" },
+  { key: "intermediate", title: "Intermediate", titleTr: "Orta", tone: "plum" },
 ];
 
 export const CATALOG: TopicMeta[] = [
@@ -35,6 +37,10 @@ export const CATALOG: TopicMeta[] = [
   { slug: "imperatives", level: "pre-intermediate", title: "Imperatives", titleTr: "Emir cümleleri", emoji: "📣" },
   { slug: "linking-words", level: "pre-intermediate", title: "Linking Words", titleTr: "Bağlaçlara giriş", emoji: "🔗" },
   { slug: "future", level: "pre-intermediate", title: "Future Tense", titleTr: "Gelecek zaman", emoji: "🚀" },
+
+  { slug: "noun-cases", level: "intermediate", title: "Noun Cases: -i, -e, -de, -den", titleTr: "İsmin halleri", emoji: "🧳" },
+  { slug: "object-pronouns", level: "intermediate", title: "Object Pronouns", titleTr: "me, you, him, her…", emoji: "🎯" },
+  { slug: "reflexive-pronouns", level: "intermediate", title: "Reflexive Pronouns", titleTr: "myself, yourself…", emoji: "🪞" },
 ];
 
 export const levelOf = (level: Level) => LEVELS.find((l) => l.key === level) ?? LEVELS[0];

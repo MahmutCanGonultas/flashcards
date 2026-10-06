@@ -8,6 +8,7 @@ import { posLabel } from "../lib/cardBack";
 import { isSpeechMuted, primeSpeech, speak, speakAuto, speechSupported } from "../lib/speech";
 import { playCorrect, playIncorrect, playLessonComplete, playReveal } from "../lib/sound";
 import { useRecordStudyDay } from "../lib/streak";
+import { markDone, type DoneTask } from "../lib/dailyDone";
 import { tintStyle } from "../lib/tint";
 import { familyStyle } from "../lib/palette";
 import { STAGE_LABEL, nextReview, stageOf } from "../lib/memory";
@@ -52,7 +53,6 @@ import SpeakButton from "../components/SpeakButton";
 import Sheet from "../components/Sheet";
 import WordCardBack, { ExampleBubble, PosPill, TurkishLit } from "../components/WordCardBack";
 import Cover from "../components/Cover";
-import StrengthBars from "../components/StrengthBars";
 import TontonLine from "../components/TontonLine";
 import MeaningText from "../components/MeaningText";
 import Confetti from "../components/Confetti";
@@ -137,7 +137,7 @@ function tellTonton(name: "card" | "grade", detail: Record<string, unknown>) {
 function CoreMeaning({ card, animate, second = null }: { card: Card; animate: boolean; second?: string | null }) {
   return (
     <>
-      <p className={`wrap-break-word text-[28px] font-black leading-[1.12] tracking-[-0.01em] text-ink ${animate ? "animate-rise-in" : ""}`} style={delay(200)}>
+      <p className={`wrap-break-word text-[32px] font-black leading-[1.1] tracking-[-0.015em] text-ink ${animate ? "animate-rise-in" : ""}`} style={delay(200)}>
         <MeaningText text={coreGloss(card)} />
       </p>
       {second && (
@@ -477,15 +477,13 @@ function FlipStep({
   const hintOpacity = drag ? Math.min(1, Math.max(Math.abs(dx), Math.abs(dy)) / SWIPE_PX) : leaving ? 1 : 0;
   const caption = captionFor({ kind: step.kind, attempt: step.attempt, flipped, support: Boolean(cue), rushed });
   const label = labelFor(step);
-  const mood: MascotMood = leaving === 5 ? "happy" : leaving === 1 ? "sad" : flipped || leaving === "skip" ? "idle" : "think";
 
   return (
     <>
-      {/* The pile, with Tonton peeking over its top edge. */}
-      <div className="relative mt-11 h-[36rem] max-h-[calc(100dvh-16rem)] min-h-[21rem]">
-        <Mascot size={56} mood={mood} quiet className="absolute -top-8 right-6 z-10" />
-        {remaining > 2 && <div aria-hidden="true" className="absolute inset-x-5 top-4 h-full rounded-[24px] border-2 border-rule bg-paper-deep animate-pile-nudge [animation-delay:60ms]" />}
-        {remaining > 1 && <div aria-hidden="true" className="absolute inset-x-2.5 top-2 h-full rounded-[24px] border-2 border-rule bg-white animate-pile-nudge" />}
+      {/* The pile: the card on top, the next ones just showing under it. */}
+      <div className="relative mt-7 h-[36rem] max-h-[calc(100dvh-15rem)] min-h-[21rem]">
+        {remaining > 2 && <div aria-hidden="true" className="absolute inset-x-6 top-4 h-full rounded-[28px] bg-paper-deep animate-pile-nudge [animation-delay:60ms]" />}
+        {remaining > 1 && <div aria-hidden="true" className="absolute inset-x-3 top-2 h-full rounded-[28px] border-2 border-rule bg-white animate-pile-nudge" />}
 
         <div
           className={`absolute inset-0 ${flipped ? "touch-none" : ""}`}
@@ -502,7 +500,7 @@ function FlipStep({
           {swipeHint && (
             <div
               aria-hidden="true"
-              className={`pointer-events-none absolute inset-0 z-20 flex items-center justify-center rounded-[24px] ${hintOf(swipeHint).wash}`}
+              className={`pointer-events-none absolute inset-0 z-20 flex items-center justify-center rounded-[28px] ${hintOf(swipeHint).wash}`}
               style={{ opacity: hintOpacity }}
             >
               <span
@@ -532,32 +530,29 @@ function FlipStep({
                     flip();
                   }
                 }}
-                className={`card-face absolute inset-0 cursor-pointer select-none rounded-[24px] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/40 motion-reduce:transition-opacity ${
+                className={`card-face absolute inset-0 cursor-pointer select-none rounded-[28px] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/40 motion-reduce:transition-opacity ${
                   flipped ? "motion-reduce:opacity-0" : ""
                 }`}
               >
                 {reverse ? (
                   // White, not the word's colour: with a handful of words, the colour alone would give it away.
-                  <div style={familyStyle("ocean")} className="card-3d flex h-full flex-col rounded-[24px] px-5 pb-6 pt-4 text-ink">
+                  <div style={familyStyle("ocean")} className="card-3d flex h-full flex-col rounded-[28px] px-5 pb-6 pt-5 text-ink">
                     <div className="flex items-center justify-between gap-3 tabular-nums">
-                      <span data-cover-label className="min-w-0 truncate rounded-full bg-(--c) px-3 py-1 text-[12px] font-black uppercase tracking-[0.1em] text-white">{label}</span>
-                      <span className="shrink-0 text-[12px] font-black tracking-[0.06em] text-graphite">{counter}</span>
+                      <span data-cover-label className="min-w-0 truncate text-[11px] font-black uppercase tracking-[0.16em] text-ocean-ink">{label}</span>
+                      <span className="shrink-0 text-[11px] font-black tracking-[0.1em] text-hare">{counter}</span>
                     </div>
                     <div className="flex flex-1 flex-col items-center justify-center text-center">
-                      {pos && <PosPill pos={pos} className="mb-3" />}
-                      <p className="max-w-full wrap-break-word text-[28px] font-black leading-[1.12] tracking-[-0.01em] text-ink animate-[cover-line_420ms_var(--ease-soft)_120ms_both]">
+                      <p className="max-w-full wrap-break-word text-[32px] font-black leading-[1.1] tracking-[-0.015em] text-ink animate-[cover-line_420ms_var(--ease-soft)_120ms_both]">
                         <MeaningText text={coreGloss(card)} />
                       </p>
+                      {pos && <p className="mt-2 text-[12px] font-black uppercase tracking-[0.16em] text-hare">{posLabel(pos)}</p>}
                       {line?.tr && (
                         <p className="mt-5 max-w-[21rem] text-[17px] font-bold leading-[1.45] text-graphite wrap-break-word">
                           <TurkishLit sentence={line.tr} meaning={line.gloss} />
                         </p>
                       )}
                     </div>
-                    <div className="flex items-center gap-3">
-                      <StrengthBars card={card} />
-                      <span className="flex-1 text-[11px] font-black uppercase tracking-[0.1em] text-hare">dokun · çevir</span>
-                    </div>
+                    <p className="text-center text-[11px] font-black uppercase tracking-[0.16em] text-hare">dokun · çevir</p>
                   </div>
                 ) : (
                   <Cover card={card} label={label} counter={counter} className="h-full">
@@ -578,19 +573,19 @@ function FlipStep({
                       </div>
                     ) : (
                       <div className="flex flex-1 flex-col items-center justify-center text-center">
-                        {pos && <PosPill pos={pos} className="mb-3 !bg-white/25 !text-white" />}
                         <h2 className={`max-w-full animate-[cover-line_420ms_var(--ease-soft)_120ms_both] ${WORD_ON_COVER} ${wordSize(card.front)}`}>{card.front}</h2>
+                        {pos && <p className="mt-3 text-[12px] font-black uppercase tracking-[0.16em] text-white/75">{posLabel(pos)}</p>}
                         {cue && <CoverSentence sentence={cue.en} headword={card.front} />}
                       </div>
                     )}
-                    <div className="flex items-center gap-3">
-                      <StrengthBars card={card} onDark />
-                      <span className="flex-1 text-[11px] font-black uppercase tracking-[0.1em] text-white/80">dokun · çevir</span>
+                    {/* The speaker in the middle of the foot, and the one thing to do. */}
+                    <div className="flex flex-col items-center gap-2.5">
                       {!listen && (
                         <span onClick={(event) => event.stopPropagation()}>
                           <SpeakButton text={card.front} size="md" className={COVER_SPEAKER} />
                         </span>
                       )}
+                      <span className="text-[11px] font-black uppercase tracking-[0.16em] text-white/75">dokun · çevir</span>
                     </div>
                   </Cover>
                 )}
@@ -599,51 +594,42 @@ function FlipStep({
               {/* BACK — white, the word on a band of its colour, the core meaning, one sentence. */}
               <div
                 aria-hidden={!flipped}
-                className={`card-face !absolute inset-0 flex select-none flex-col overflow-hidden rounded-[24px] border-2 border-rule bg-white text-ink [-webkit-touch-callout:none] [transform:rotateY(180deg)] motion-reduce:transform-none motion-reduce:transition-opacity ${
+                className={`card-face !absolute inset-0 flex select-none flex-col overflow-hidden rounded-[28px] border-2 border-rule bg-white text-ink shadow-[0_4px_0_0_var(--color-rule)] [-webkit-touch-callout:none] [transform:rotateY(180deg)] motion-reduce:transform-none motion-reduce:transition-opacity ${
                   flipped ? "" : "motion-reduce:opacity-0"
                 }`}
               >
-                {/* Speaker first, the word, then Örnekler: the top-right corner is where Tonton sits. */}
-                <div className="flex items-center gap-2.5 tint-ground px-4 pb-3.5 pt-4 text-white shadow-[inset_0_-4px_0_0_rgba(0,0,0,0.14)] [@media(max-height:720px)]:pb-2.5 [@media(max-height:720px)]:pt-3">
+                {/* The word, quietly, in its colour; its sound; and the rest of its page behind Örnekler. */}
+                <div className="flex items-center gap-2.5 px-5 pt-4">
+                  <span aria-hidden="true" className="h-3 w-3 shrink-0 rounded-full tint-ground" />
+                  <p className="min-w-0 flex-1 truncate text-[17px] font-black tint-text">{card.front}</p>
                   <span onPointerDown={(event) => event.stopPropagation()} className="shrink-0">
-                    <SpeakButton text={card.front} size="sm" className="!bg-white !text-(--c-ink) !shadow-[inset_0_-3px_0_0_rgba(0,0,0,0.12)]" />
+                    <SpeakButton text={card.front} size="sm" />
                   </span>
-                  <p className={`min-w-0 flex-1 truncate font-black leading-tight [text-shadow:0_2px_0_rgba(0,0,0,0.12)] ${card.front.length <= 10 ? "text-[30px]" : "text-[24px]"}`}>{card.front}</p>
                   {hasDetails && (
                     <button
                       type="button"
                       onClick={() => setExamplesOpen(true)}
                       onPointerDown={(event) => event.stopPropagation()}
-                      className="mt-3 shrink-0 rounded-full bg-white/25 px-3 py-1.5 text-[12px] font-black uppercase tracking-[0.08em] text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                      className="shrink-0 rounded-xl px-2 py-1.5 text-[12px] font-black uppercase tracking-[0.08em] text-ocean-ink hover:bg-ocean-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ocean/40"
                     >
                       Örnekler
                     </button>
                   )}
                 </div>
 
-                <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-4 pb-3 pt-4 [@media(max-height:720px)]:pt-3">
+                {/* The meaning in the middle, big; its phrase; the sentence it lives in. */}
+                <div className="flex min-h-0 flex-1 flex-col justify-center overflow-y-auto px-5 pb-5 pt-3 text-center">
                   {flipped && <CoreMeaning card={card} animate second={second} />}
                   {chunk && flipped && (
-                    <p className="mt-3 rounded-2xl bg-tangerine-soft px-3.5 py-2 text-[15px] font-bold leading-snug text-ink animate-rise-in" style={delay(340)}>
-                      <span className="font-black text-tangerine-ink">{chunk.en}</span> — {chunk.tr}
+                    <p className="mx-auto mt-4 w-max max-w-full rounded-full bg-tangerine-soft px-3.5 py-1.5 text-[14px] font-bold leading-snug text-ink animate-rise-in" style={delay(340)}>
+                      <span className="font-black text-tangerine-ink">{chunk.en}</span> · {chunk.tr}
                     </p>
                   )}
                   {line && flipped && (
-                    <div className="mt-auto pt-3 animate-rise-in" style={delay(420)}>
+                    <div className="mt-5 text-left animate-rise-in" style={delay(420)}>
                       <ExampleBubble en={line.en} tr={line.tr} headword={card.front} meaning={line.gloss} size="sm" />
                     </div>
                   )}
-                </div>
-
-                {/* The swipe hints; on a short screen the grade buttons below say the same, so the sentence gets the room. */}
-                <div
-                  aria-hidden="true"
-                  className={`flex items-center justify-between border-t-2 border-paper-deep px-4 pb-3 pt-2 text-[11px] font-black uppercase tracking-[0.08em] [@media(max-height:720px)]:hidden ${flipped ? "animate-rise-in" : "opacity-0"}`}
-                  style={delay(520)}
-                >
-                  <span className="text-berry-ink">← bilemedim</span>
-                  <span className="text-tangerine-ink">↑ zorlandım</span>
-                  <span className="text-grass-ink">bildim →</span>
                 </div>
               </div>
             </div>
@@ -1054,6 +1040,7 @@ function Session({
   fillers = [],
   focusIds = [],
   test = false,
+  doneTask = null,
 }: {
   deckId: string;
   cards: Card[];
@@ -1064,6 +1051,8 @@ function Session({
   focusIds?: number[];
   /** The week's test: each word once, typed from its Turkish. */
   test?: boolean;
+  /** Today's piece of work this round is, ticked when it ends. */
+  doneTask?: DoneTask | null;
 }) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -1318,6 +1307,7 @@ function Session({
         refused={refused}
         mode={mode}
         test={test}
+        doneTask={doneTask}
         typed={typed}
         pool={pool}
         exitTo={exitTo}
@@ -1410,6 +1400,7 @@ function Summary({
   refused,
   mode,
   test,
+  doneTask,
   typed,
   pool,
   exitTo,
@@ -1424,6 +1415,8 @@ function Summary({
   mode: SessionMode;
   /** The week's test. */
   test: boolean;
+  /** Today's piece of work this round was. */
+  doneTask: DoneTask | null;
   /** The exercises' typed first tries, and how many were right. */
   typed: { n: number; right: number };
   /** Words met by now: what the exercises can ask. */
@@ -1444,6 +1437,7 @@ function Summary({
 
   useEffect(() => {
     playLessonComplete();
+    if (doneTask && firsts.length > 0) markDone(doneTask);
     window.dispatchEvent(new CustomEvent("tonton:summary", { detail: { known, hard, missed } }));
     // A summary is mounted once; the counts are fixed by then.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -1570,6 +1564,9 @@ function Flashcards() {
     .map(Number)
     .filter((id) => Number.isInteger(id) && id > 0);
   const only = searchParams.get("only") === "1" && focusIds.length > 0;
+  // A round started from today's list: its piece of work is ticked when the round ends.
+  const doneParam = searchParams.get("done");
+  const doneTask: DoneTask | null = doneParam === "test" || doneParam === "lookback" ? doneParam : null;
   const test = mode === "exercises" && searchParams.get("test") === "1";
 
   const cardsQuery = useQuery({
@@ -1704,6 +1701,7 @@ function Flashcards() {
               fillers={mode === "due" ? cardsQuery.data : undefined}
               focusIds={focusIds}
               test={test}
+              doneTask={doneTask}
             />
           </div>
         )}

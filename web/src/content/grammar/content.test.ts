@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { CATALOG, LEVELS } from "./catalog";
 import { BODIES, TOPICS } from "./index";
+import { RECALL } from "./recall";
 import { plain } from "../../lib/rich";
 import { isRight, prepare, wordsOf } from "../../lib/grammarQuiz";
 
@@ -15,7 +16,7 @@ function strings(value: unknown, path = ""): [string, string][] {
 describe("grammar content", () => {
   it("has a page for every topic in the list, and nothing else", () => {
     expect(Object.keys(BODIES).sort()).toEqual(CATALOG.map((t) => t.slug).sort());
-    expect(TOPICS).toHaveLength(21);
+    expect(TOPICS).toHaveLength(24);
     expect(new Set(CATALOG.map((t) => t.slug)).size).toBe(CATALOG.length);
     for (const level of LEVELS) expect(CATALOG.some((t) => t.level === level.key)).toBe(true);
   });
@@ -74,5 +75,17 @@ describe("grammar content", () => {
         expect(q.explain.length, `${where}: explains`).toBeGreaterThan(3);
       }
     }
+  });
+
+  it("gives every topic a Hatırla card: a few rules, a few examples, one trap, every mark closed", () => {
+    expect(Object.keys(RECALL).sort()).toEqual(CATALOG.map((t) => t.slug).sort());
+    for (const [slug, recall] of Object.entries(RECALL)) {
+      expect(recall.points.length, `${slug}: points`).toBeGreaterThanOrEqual(3);
+      expect(recall.points.length, `${slug}: points`).toBeLessThanOrEqual(5);
+      expect(recall.examples.length, `${slug}: examples`).toBeGreaterThanOrEqual(2);
+      expect(recall.examples.length, `${slug}: examples`).toBeLessThanOrEqual(4);
+      for (const [path, text] of strings(recall)) expect(plain(text), `${slug}.${path}`).not.toMatch(/[{}[\]<>]|\*\*|~~/);
+    }
+    expect(JSON.stringify(RECALL)).not.toMatch(/serdar|hoca/i);
   });
 });
