@@ -1,0 +1,32 @@
+{
+  "week": 26,
+  "theme_tr": "Toplantı ve ekip çalışması",
+  "reading": {
+    "title": "Short and Sweet",
+    "lines": [
+      { "en": "Our new manager, Deniz, has got one simple rule: every meeting is brief.", "tr": "Yeni müdürümüz Deniz'in basit bir kuralı var: her toplantı kısa." },
+      { "en": "There is no long agenda, only three questions on a small card.", "tr": "Uzun bir gündem yok, küçük bir kartta sadece üç soru var." },
+      { "en": "Everyone stands, and everyone contributes one idea in two minutes.", "tr": "Herkes ayakta duruyor ve herkes iki dakikada bir fikirle katkıda bulunuyor." },
+      { "en": "Then Deniz assigns each task to one person, not to the whole team.", "tr": "Sonra Deniz her görevi bütün ekibe değil, tek bir kişiye veriyor." },
+      { "en": "After the meeting, she sends a short summary and asks for honest feedback.", "tr": "Toplantıdan sonra kısa bir özet gönderiyor ve dürüst geri bildirim istiyor." },
+      { "en": "On Thursday she follows up with everyone, so nobody forgets their task.", "tr": "Perşembe günü herkesle konuyu takip ediyor, böylece kimse görevini unutmuyor." },
+      { "en": "Suddenly our meetings are short, clear and very productive.", "tr": "Toplantılarımız birden kısa, net ve çok verimli oluyor." },
+      { "en": "This week, quiet Murat comes up with a brilliant idea.", "tr": "Bu hafta sessiz Murat harika bir fikir buluyor." },
+      { "en": "His idea is simple: no meetings at all on Fridays.", "tr": "Fikri basit: cuma günleri hiç toplantı yok." },
+      { "en": "Deniz is a flexible boss, so she says yes, and the whole office loves her.", "tr": "Deniz esnek bir patron, o yüzden evet diyor ve bütün ofis ona bayılıyor." }
+    ]
+  },
+  "translation": {
+    "title": "Yarınki müşteri toplantısı",
+    "lines": [
+      { "tr": "Merhaba Emre, yarınki toplantının gündemi bu e-postada.", "en": "Hi Emre, the agenda for tomorrow's meeting is in this email." },
+      { "tr": "Toplantı kısa olacak, sadece yarım saat.", "en": "The meeting is going to be brief, only half an hour." },
+      { "tr": "Müşteri yeni tasarım hakkında geri bildirim istiyor.", "en": "The client wants feedback on the new design." },
+      { "tr": "Lütfen fiyatlar için birkaç fikir bul.", "en": "Please come up with a few ideas for the prices." },
+      { "tr": "Sunumu Ayşe'ye, raporu da sana veriyorum.", "en": "I'm assigning the presentation to Ayşe and the report to you." },
+      { "tr": "Müşteri tarih konusunda esnek değil, o yüzden işi cuma günü bitirelim.", "en": "The client isn't flexible about the date, so let's finish the work on Friday." },
+      { "tr": "Toplantıdan sonra kısa bir özet yazacağım.", "en": "After the meeting, I'm going to write a short summary." },
+      { "tr": "Perşembe günü de müşteriyle konuyu takip edeceğim.", "en": "Then I'm going to follow up with the client on Thursday." }
+    ]
+  }
+}

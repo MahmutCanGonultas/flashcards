@@ -1,0 +1,31 @@
+{
+  "week": 46,
+  "theme_tr": "İklim ve gezegen",
+  "reading": {
+    "title": "The Wind Town",
+    "lines": [
+      {"en": "Kirazlı is a small town on the Aegean coast with an unusual plan.", "tr": "Kirazlı, Ege kıyısında sıra dışı bir planı olan küçük bir kasaba."},
+      {"en": "Ten wind turbines on the hill generate electricity day and night.", "tr": "Tepedeki on rüzgâr türbini gece gündüz elektrik üretiyor."},
+      {"en": "The town consumes only half of this power, so it sells the rest.", "tr": "Kasaba bu elektriğin yalnızca yarısını tüketiyor, bu yüzden kalanını satıyor."},
+      {"en": "Now every house is switching to renewable heating, and the bills are tiny.", "tr": "Şimdi her ev yenilenebilir ısınmaya geçiyor ve faturalar çok küçük."},
+      {"en": "The old olive trees around the town also absorb a lot of carbon.", "tr": "Kasabanın etrafındaki yaşlı zeytin ağaçları da bol miktarda karbon emiyor."},
+      {"en": "The mayor's next target is zero emissions from cars and buses.", "tr": "Belediye başkanının bir sonraki hedefi, arabalardan ve otobüslerden sıfır salım."},
+      {"en": "But there is a problem: a rare bird species lives on the same hill.", "tr": "Ama bir sorun var: aynı tepede nadir bir kuş türü yaşıyor."},
+      {"en": "Scientists say this bird is almost extinct in Europe.", "tr": "Bilim insanları bu kuşun Avrupa'da neslinin neredeyse tükendiğini söylüyor."},
+      {"en": "So every spring, the town turns off the turbines for six weeks.", "tr": "Bu yüzden kasaba her bahar türbinleri altı haftalığına kapatıyor."},
+      {"en": "\"Wind is a resource, but a sustainable future needs birds too,\" says the mayor.", "tr": "\"Rüzgâr bir kaynak ama sürdürülebilir bir geleceğin kuşlara da ihtiyacı var,\" diyor belediye başkanı."}
+    ]
+  },
+  "translation": {
+    "title": "Ofisimiz yeşile dönüyor",
+    "lines": [
+      {"tr": "Şirketimiz bu yıl yenilenebilir enerjiye geçiyor.", "en": "Our company is switching to renewable energy this year."},
+      {"tr": "Ofisimiz her ay çok fazla elektrik tüketiyor.", "en": "Our office consumes too much electricity every month."},
+      {"tr": "Çatıdaki paneller elektriğimizin yarısını üretecek.", "en": "The panels on the roof are going to generate half of our electricity."},
+      {"tr": "Patron her hafta salım rakamlarımızı kontrol ediyor.", "en": "The boss checks our emission numbers every week."},
+      {"tr": "Kâğıt ve su da değerli kaynaklar, o yüzden onları boşa harcamayın.", "en": "Paper and water are also precious resources, so don't waste them."},
+      {"tr": "Mutfakta yalnızca yerel ve mevsimlik yiyecekler olacak.", "en": "There are going to be only local, seasonal foods in the kitchen."},
+      {"tr": "Bu sürdürülebilir bir plan ve herkes onu destekliyor.", "en": "This is a sustainable plan, and everybody supports it."}
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "week": 47,
+  "theme_tr": "Gerçekler ve kanıtlar",
+  "reading": {
+    "title": "The Shark in the Street",
+    "lines": [
+      {"en": "A photo of a shark on a flooded street is everywhere online today.", "tr": "Bugün internette, su basmış bir sokakta yüzen bir köpekbalığının fotoğrafı her yerde."},
+      {"en": "Apparently, it's from a coastal city, and thousands of people are sharing it.", "tr": "Görünüşe göre fotoğraf bir kıyı şehrinden ve binlerce kişi onu paylaşıyor."},
+      {"en": "Many people assume the photo is real because it looks so scary.", "tr": "Pek çok kişi, çok korkutucu göründüğü için fotoğrafı gerçek sanıyor."},
+      {"en": "Some people even exaggerate the story: \"There are three sharks!\"", "tr": "Bazıları hikâyeyi abartıyor bile: \"Üç köpekbalığı var!\""},
+      {"en": "But Deniz, a journalist at a local paper, isn't so sure.", "tr": "Ama yerel bir gazetede çalışan gazeteci Deniz o kadar emin değil."},
+      {"en": "She looks for the source and finds the same shark in a 2015 article.", "tr": "Fotoğrafın kaynağını araştırıyor ve aynı köpekbalığını 2015 tarihli bir makalede buluyor."},
+      {"en": "Small details, like the light on the water, indicate a fake picture.", "tr": "Sudaki ışık gibi küçük ayrıntılar fotoğrafın sahte olduğunu gösteriyor."},
+      {"en": "The evidence is clear: the shark is real, but the street isn't.", "tr": "Kanıt açık: köpekbalığı gerçek ama sokak değil."},
+      {"en": "The city's mayor confirms it: there is no flood and no shark today.", "tr": "Şehrin belediye başkanı da bunu doğruluyor: bugün ne sel var ne de köpekbalığı."},
+      {"en": "Fear is a big factor in fake news, and misleading photos travel fast.", "tr": "Korku sahte haberlerde büyük bir etken ve yanıltıcı fotoğraflar hızla yayılıyor."}
+    ]
+  },
+  "translation": {
+    "title": "Ofisteki söylenti",
+    "lines": [
+      {"tr": "Görünüşe göre şirket gelecek ay ofisi kapatıyor.", "en": "Apparently, the company is closing the office next month."},
+      {"tr": "Ama bu bilginin kaynağı kim?", "en": "But who is the source of this information?"},
+      {"tr": "Biliyorsun, Ahmet her şeyi hep abartır.", "en": "You know, Ahmet always exaggerates everything."},
+      {"tr": "Elimizde hiç kanıt yok, o yüzden panik yapma.", "en": "We haven't got any evidence, so don't panic."},
+      {"tr": "Yarın müdürle konuşacağım ve haberi teyit edeceğim.", "en": "Tomorrow I'm going to talk to the manager and confirm the news."},
+      {"tr": "Bence mantıklı bir açıklama var: ofis kapanmıyor, taşınıyor.", "en": "I think there's a logical explanation: the office is moving, not closing."},
+      {"tr": "Yeni kira fiyatları da önemli bir etken.", "en": "The new rent prices are also an important factor."},
+      {"tr": "Kötü bir şey varsayma; sakin ol ve bekle.", "en": "Don't assume anything bad; stay calm and wait."}
+    ]
+  }
+}

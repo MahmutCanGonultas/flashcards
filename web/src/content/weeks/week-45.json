@@ -1,0 +1,32 @@
+{
+  "week": 45,
+  "theme_tr": "Güven ve dürüstlük",
+  "reading": {
+    "title": "The Rumor",
+    "lines": [
+      {"en": "There's a rumor in our building: my flatmate Ozan is moving out.", "tr": "Binamızda bir söylenti var: ev arkadaşım Ozan taşınıyor."},
+      {"en": "Ozan is a reliable friend, and he never breaks a promise.", "tr": "Ozan güvenilir bir arkadaş ve asla sözünden dönmez."},
+      {"en": "These days he's always on his phone, and he hides the screen from me.", "tr": "Bu aralar hep telefonunda ve ekranı benden saklıyor."},
+      {"en": "His intentions aren't clear, and I'm getting worried.", "tr": "Niyeti belli değil ve ben endişelenmeye başlıyorum."},
+      {"en": "Tonight I'm going to be frank with him.", "tr": "Bu akşam ona karşı açık sözlü olacağım."},
+      {"en": "At dinner, I ask him: 'Ozan, the truth, please: are you moving out?'", "tr": "Akşam yemeğinde ona soruyorum: 'Ozan, gerçeği söyle lütfen: taşınıyor musun?'"},
+      {"en": "He laughs and confesses everything: 'It's a surprise trip for your birthday!'", "tr": "Gülüyor ve her şeyi itiraf ediyor: 'Doğum günün için sürpriz bir gezi!'"},
+      {"en": "He's planning the whole thing, but he isn't going to reveal the city.", "tr": "Her şeyi o planlıyor ama şehri açıklamayacak."},
+      {"en": "So the rumor is wrong, and his loyalty is genuine.", "tr": "Yani söylenti yanlış ve sadakati gerçek."},
+      {"en": "'Just one rule,' he says. 'Don't cheat, and don't look at my phone!'", "tr": "'Tek bir kural var,' diyor. 'Hile yapma ve telefonuma bakma!'"}
+    ]
+  },
+  "translation": {
+    "title": "İkinci el telefon",
+    "lines": [
+      {"tr": "İnternette ikinci el bir telefon için bir satıcıyla konuşuyorum.", "en": "I'm talking to a seller online about a second-hand phone."},
+      {"tr": "Satıcı diyor ki: 'Telefon sahte değil, gerçek.'", "en": "The seller says: 'The phone is genuine, not a fake.'"},
+      {"tr": "Ama onun niyeti benim için net değil.", "en": "But his intentions aren't clear to me."},
+      {"tr": "İnternette bazı insanlar çok hile yapıyor.", "en": "Some people cheat a lot online."},
+      {"tr": "Bu sitedeki satıcılar hakkında bir sürü söylenti de var.", "en": "There are also a lot of rumors about the sellers on this site."},
+      {"tr": "Ayrıca satıcı adresini açıklamıyor; bu biraz garip.", "en": "Also, the seller doesn't reveal his address, and that's a bit strange."},
+      {"tr": "Güvenilir bir arkadaşım telefonu kontrol edecek.", "en": "A reliable friend of mine is going to check the phone."},
+      {"tr": "O her zaman açık sözlüdür; bana gerçeği söyleyecek.", "en": "She's always frank, and she's going to tell me the truth."}
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "week": 41,
+  "theme_tr": "Sorunlar ve çözümler",
+  "reading": {
+    "title": "The Monday Crisis",
+    "lines": [
+      {"en": "It's Monday at nine, and there's an urgent email for the whole office.", "tr": "Pazartesi, saat dokuz ve bütün ofise acil bir e-posta var."},
+      {"en": "The coffee machine isn't working, and for our team, that's a serious challenge.", "tr": "Kahve makinesi çalışmıyor ve ekibimiz için bu ciddi bir zorluk."},
+      {"en": "Our manager, Selin, is in a dilemma: a new machine or a repair?", "tr": "Müdürümüz Selin bir ikilemde: yeni bir makine mi, tamir mi?"},
+      {"en": "Both options cost a lot, and the budget is a big obstacle this month.", "tr": "İki seçenek de pahalı ve bu ay bütçe büyük bir engel."},
+      {"en": "She calls a meeting, because she wants a sensible and appropriate plan.", "tr": "Bir toplantı yapıyor, çünkü mantıklı ve uygun bir plan istiyor."},
+      {"en": "People talk for an hour, and the plan is getting long and complicated.", "tr": "Herkes bir saat konuşuyor ve plan gittikçe uzuyor, karmaşıklaşıyor."},
+      {"en": "Then Emre, the new intern, stands up: 'Let's simplify this problem.'", "tr": "Sonra yeni stajyer Emre ayağa kalkıyor: 'Bu sorunu basitleştirelim.'"},
+      {"en": "He walks to the kitchen and puts the plug back in the wall.", "tr": "Mutfağa gidiyor ve fişi yeniden prize takıyor."},
+      {"en": "The machine is working again, and the office overcomes the Monday crisis.", "tr": "Makine yine çalışıyor ve ofis pazartesi krizinin üstesinden geliyor."},
+      {"en": "Selin laughs: 'Emre, from now on, you tackle all our problems!'", "tr": "Selin gülüyor: 'Emre, bundan sonra bütün sorunlarımızı sen ele alıyorsun!'"}
+    ]
+  },
+  "translation": {
+    "title": "Apartman toplantısı",
+    "lines": [
+      {"tr": "Bu akşam apartmanımızda acil bir toplantı var.", "en": "There's an urgent meeting in our building this evening."},
+      {"tr": "Asansör yine çalışmıyor ve bu, yaşlı komşularımız için büyük bir engel.", "en": "The elevator isn't working again, and that's a big obstacle for our elderly neighbors."},
+      {"tr": "Apartman yöneticisi bu sorunu bu hafta ele alacak.", "en": "The building manager is going to tackle this problem this week."},
+      {"tr": "Ama bir ikilemimiz var: yeni bir asansör mü, ucuz bir tamir mi?", "en": "But we've got a dilemma: a new elevator or a cheap repair?"},
+      {"tr": "Bana göre tamir mantıklı bir seçenek.", "en": "In my opinion, a repair is a sensible option."},
+      {"tr": "Planı basitleştirelim ve kısa bir toplantı yapalım.", "en": "Let's simplify the plan and have a short meeting."},
+      {"tr": "Bu zorluğun birlikte üstesinden geleceğiz.", "en": "We're going to overcome this challenge together."},
+      {"tr": "Toplantıdan sonra çay ve kek var; herkes davetli!", "en": "After the meeting, there's tea and cake, and everyone is welcome!"}
+    ]
+  }
+}

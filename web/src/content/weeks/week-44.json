@@ -1,0 +1,31 @@
+{
+  "week": 44,
+  "theme_tr": "Derin duygular",
+  "reading": {
+    "title": "Two Friends, One Job",
+    "lines": [
+      {"en": "Elif and Sara both want the same job at a design studio.", "tr": "Elif de Sara da bir tasarım stüdyosundaki aynı işi istiyor."},
+      {"en": "Today the studio calls Sara, and she's thrilled: the job is hers!", "tr": "Bugün stüdyo Sara'yı arıyor ve Sara çok mutlu: iş onun!"},
+      {"en": "But she's also worried about Elif's reaction.", "tr": "Ama Elif'in tepkisinden biraz endişeli."},
+      {"en": "Elif is desperate for a job; she's got no money for the rent.", "tr": "Elif'in bir işe çok ihtiyacı var; kira için hiç parası yok."},
+      {"en": "At first, Elif feels a little envy, and then a lot of sadness.", "tr": "Elif önce biraz kıskançlık, sonra da derin bir üzüntü hissediyor."},
+      {"en": "She isn't furious with Sara, but she feels really let down.", "tr": "Sara'ya öfkeli değil ama kendini gerçekten kırgın hissediyor."},
+      {"en": "That evening, Sara comes to her flat with cake and a lot of sympathy.", "tr": "O akşam Sara, pasta ve büyük bir anlayışla onun evine geliyor."},
+      {"en": "She comforts her friend: 'You're going to get over this, I promise.'", "tr": "Arkadaşını teselli ediyor: 'Bunu atlatacaksın, söz veriyorum.'"},
+      {"en": "Then Sara's phone rings: the studio has got a second job, for Elif!", "tr": "Sonra Sara'nın telefonu çalıyor: stüdyonun bir işi daha var, Elif için!"},
+      {"en": "Now nobody regrets anything, and there are two thrilled designers in the room.", "tr": "Artık kimse hiçbir şeyden pişman değil ve odada çok mutlu iki tasarımcı var."}
+    ]
+  },
+  "translation": {
+    "title": "Zor günlerde bir mesaj",
+    "lines": [
+      {"tr": "Canım Deniz, bu hafta senin için çok zor, biliyorum.", "en": "Dear Deniz, this week is very hard for you, I know."},
+      {"tr": "Büyükannen için yasın çok derin ve bu çok normal.", "en": "Your grief for your grandmother is very deep, and that's normal."},
+      {"tr": "İş yerindeki herkes sana büyük bir anlayış gösteriyor.", "en": "Everyone at work shows a lot of sympathy for you."},
+      {"tr": "Lütfen kendini çaresiz hissetme ve hiçbir şeyden pişman olma.", "en": "Please don't feel desperate, and don't regret anything."},
+      {"tr": "Yarın akşam sana geliyorum; seni biraz teselli edeceğim.", "en": "I'm coming to your place tomorrow evening, and I'll comfort you a little."},
+      {"tr": "Senin gibi bir arkadaşı asla yüzüstü bırakmam.", "en": "I never let down a friend like you."},
+      {"tr": "Bunu birlikte atlatacağız, söz veriyorum. Seni seviyorum!", "en": "We're going to get over this together, I promise. I love you!"}
+    ]
+  }
+}

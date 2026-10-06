@@ -1,0 +1,31 @@
+{
+  "week": 30,
+  "theme_tr": "Bilim ve araştırma",
+  "reading": {
+    "title": "The Coffee Experiment",
+    "lines": [
+      { "en": "Dr Leyla Aksoy is doing research on coffee and memory.", "tr": "Dr. Leyla Aksoy kahve ve hafıza üzerine araştırma yapıyor." },
+      { "en": "Her experiment is simple: forty people, two groups, one month.", "tr": "Deneyi basit: kırk kişi, iki grup, bir ay." },
+      { "en": "Every morning, one group drinks coffee, and the other group drinks tea.", "tr": "Her sabah bir grup kahve, diğer grup çay içiyor." },
+      { "en": "She observes them carefully and measures their memory with short tests.", "tr": "Onları dikkatle gözlemliyor ve hafızalarını kısa testlerle ölçüyor." },
+      { "en": "Her data is accurate, and her method is fully scientific.", "tr": "Verileri doğru ve yöntemi tamamen bilimsel." },
+      { "en": "But the results are strange and very complex.", "tr": "Ama sonuçlar tuhaf ve çok karmaşık." },
+      { "en": "The tea group remembers almost everything, but the coffee group forgets a lot.", "tr": "Çay grubu neredeyse her şeyi hatırlıyor ama kahve grubu çok şey unutuyor." },
+      { "en": "Then Leyla discovers the truth about the old coffee machine.", "tr": "Sonra Leyla eski kahve makinesiyle ilgili gerçeği öğreniyor." },
+      { "en": "It is broken: every morning, the coffee group drinks warm brown water!", "tr": "Makine bozuk: kahve grubu her sabah ılık, kahverengi su içiyor!" },
+      { "en": "Next month she is going to prove her theory, this time with real coffee.", "tr": "Gelecek ay teorisini kanıtlayacak, bu sefer gerçek kahveyle." }
+    ]
+  },
+  "translation": {
+    "title": "Uyku araştırması",
+    "lines": [
+      { "tr": "Üniversitemiz uyku üzerine yeni bir araştırma yapıyor.", "en": "Our university is doing new research on sleep." },
+      { "tr": "Bu deneyde yüz öğrenci her gece akıllı saat takacak.", "en": "In this experiment, a hundred students are going to wear smart watches every night." },
+      { "tr": "Saatler kalp atışlarını ve uyku sürelerini ölçecek.", "en": "The watches are going to measure their heart rate and their hours of sleep." },
+      { "tr": "Araştırmacılar ayrıca öğrencileri bir laboratuvarda gözlemleyecek.", "en": "The researchers are also going to observe the students in a lab." },
+      { "tr": "Bütün veriler gizli kalacak.", "en": "All the data is going to stay private." },
+      { "tr": "Konu çok karmaşık ama yöntem tamamen bilimsel.", "en": "The subject is very complex, but the method is fully scientific." },
+      { "tr": "Belki kötü uykunun gerçek sebebini keşfedeceğiz.", "en": "Maybe we are going to discover the real reason for bad sleep." }
+    ]
+  }
+}

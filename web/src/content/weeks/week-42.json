@@ -1,0 +1,32 @@
+{
+  "week": 42,
+  "theme_tr": "Pazarlık ve anlaşmalar",
+  "reading": {
+    "title": "A Deal at the Bazaar",
+    "lines": [
+      {"en": "Every Saturday, Leyla goes to the old bazaar for a good deal.", "tr": "Leyla her cumartesi iyi bir fırsat için eski çarşıya gider."},
+      {"en": "Today she likes a red carpet, but the price is 900 euros.", "tr": "Bugün kırmızı bir halıyı beğeniyor ama fiyatı 900 euro."},
+      {"en": "'I'm willing, but not at that price,' she says with a smile.", "tr": "'İstekliyim ama o fiyata değil,' diyor gülümseyerek."},
+      {"en": "The seller rejects her first offer of 400 euros.", "tr": "Satıcı, Leyla'nın 400 euroluk ilk teklifini reddediyor."},
+      {"en": "Then he proposes 700, and they negotiate for half an hour over tea.", "tr": "Sonra o 700 öneriyor ve çay eşliğinde yarım saat pazarlık ediyorlar."},
+      {"en": "'Let's clarify the terms,' Leyla says. 'Is the delivery free?'", "tr": "'Şartları netleştirelim,' diyor Leyla. 'Teslimat ücretsiz mi?'"},
+      {"en": "'Yes, free delivery, and 600 is my firm price,' he answers.", "tr": "'Evet, teslimat ücretsiz ve 600 benim kesin fiyatım,' diye cevap veriyor."},
+      {"en": "They shake hands, and the outcome makes them both happy.", "tr": "El sıkışıyorlar ve sonuç ikisini de mutlu ediyor."},
+      {"en": "There's a lot of mutual respect between the two of them.", "tr": "İkisi arasında çok fazla karşılıklı saygı var."},
+      {"en": "At home, she finds the same carpet online for 300 euros.", "tr": "Evde aynı halıyı internette 300 euroya buluyor."}
+    ]
+  },
+  "translation": {
+    "title": "Yeni iş teklifi",
+    "lines": [
+      {"tr": "Yarın yeni şirketle maaşım için pazarlık edeceğim.", "en": "Tomorrow I'm going to negotiate my salary with the new company."},
+      {"tr": "Teklifleri iyi ama şartlar biraz belirsiz.", "en": "Their offer is good, but the terms are a bit unclear."},
+      {"tr": "Önce çalışma saatlerini netleştireceğim.", "en": "First, I'm going to clarify the working hours."},
+      {"tr": "Sonra dört günlük bir çalışma haftası önereceğim.", "en": "Then I'm going to propose a four-day week."},
+      {"tr": "Belki bu fikri reddedecekler ama ben istekliyim ve hazırım.", "en": "Maybe they're going to reject this idea, but I'm willing and ready."},
+      {"tr": "Bana göre iki taraf için de iyi bir anlaşma mümkün.", "en": "In my opinion, a good deal for both sides is possible."},
+      {"tr": "Sonucu bu akşam sana mesajla yazarım.", "en": "I'll text you the outcome this evening."},
+      {"tr": "Yarın için bana şans dile!", "en": "Wish me luck for tomorrow, please!"}
+    ]
+  }
+}
