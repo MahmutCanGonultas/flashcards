@@ -58,6 +58,9 @@ const DAY = 86_400_000;
  */
 const daysUntil = (t: number, now: number): number => Math.round((learnerDayStart(t) - learnerDayStart(now)) / DAY);
 
+/** Learner days until a met word comes back: 0 when it is waiting now (or later today). */
+export const dueInDays = (card: Pick<Card, "due_date">, now = Date.now()): number => Math.max(0, isDueAt(card, now) ? 0 : daysUntil(new Date(card.due_date).getTime(), now));
+
 export type Tone = "due" | "soon" | "later";
 
 /** Waiting at `now`; the same test as path.ts's isDue, with the clock passed in. */

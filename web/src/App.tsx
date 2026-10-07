@@ -13,7 +13,7 @@ import Grammar from "./pages/Grammar";
 import Flashcards from "./pages/Flashcards";
 import WordPage from "./pages/WordPage";
 import Kelimelerim from "./pages/Kelimelerim";
-import Hafta from "./pages/Hafta";
+import Tur from "./pages/Tur";
 import Defter from "./pages/Defter";
 import TontonPopups from "./components/TontonPopups";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -25,9 +25,6 @@ const GrammarHub = lazy(() => import("./pages/GrammarHub"));
 const GrammarTopic = lazy(() => import("./pages/GrammarTopic"));
 const GrammarQuiz = lazy(() => import("./pages/GrammarQuiz"));
 const GrammarRecall = lazy(() => import("./pages/GrammarRecall"));
-// The programme week's two texts, each in its own chunk.
-const WeekReading = lazy(() => import("./pages/WeekReading"));
-const WeekTranslation = lazy(() => import("./pages/WeekTranslation"));
 
 /** Signed in? Go to the decks. Otherwise, go sign in. */
 function RootRedirect() {
@@ -150,39 +147,21 @@ function App() {
         }
       />
       <Route
-        path="/bugun"
+        path="/tur"
         element={
           <ProtectedRoute>
-            <Hafta />
+            <Tur />
           </ProtectedRoute>
         }
       />
-      <Route path="/hafta" element={<Navigate to="/bugun" replace />} />
+      {/* The day's checklist, the week's reading and translation are gone: the app is the cards. */}
+      <Route path="/bugun" element={<Navigate to="/kartlar" replace />} />
+      <Route path="/hafta/*" element={<Navigate to="/kartlar" replace />} />
       <Route
         path="/defter"
         element={
           <ProtectedRoute>
             <Defter />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/hafta/:week/okuma"
-        element={
-          <ProtectedRoute>
-            <Suspense fallback={null}>
-              <WeekReading />
-            </Suspense>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/hafta/:week/ceviri"
-        element={
-          <ProtectedRoute>
-            <Suspense fallback={null}>
-              <WeekTranslation />
-            </Suspense>
           </ProtectedRoute>
         }
       />

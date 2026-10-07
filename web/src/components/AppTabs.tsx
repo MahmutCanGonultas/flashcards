@@ -1,21 +1,20 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { BookIcon, CardsIcon, PathIcon, PencilIcon } from "./icons";
+import { BookIcon, CardsIcon, PencilIcon, SearchIcon } from "./icons";
 
 /**
- * Four tabs: the cards (and the word list behind them), today (what to do
- * now, the week of the programme, the numbers), the notebook of the
- * learner's own words, and the grammar. The course is hidden while the programme runs (its pages still
- * open by address). The active tab sits in a blue key, the way a pressed
- * button looks here.
+ * Four tabs: the cards, the words (each with when it comes back), the
+ * notebook of the learner's own words, and the grammar. The course is
+ * hidden while the programme runs (its pages still open by address). The
+ * active tab sits in a blue key, the way a pressed button looks here.
  */
 function AppTabs() {
   const { pathname } = useLocation();
   const grammar = /^\/gramer/.test(pathname);
-  const week = /^\/(bugun|hafta)/.test(pathname);
+  const words = /^\/kelimelerim/.test(pathname);
   const notebook = /^\/defter/.test(pathname);
   const tabs = [
-    { to: "/kartlar", label: "Kartlar", icon: CardsIcon, active: !grammar && !week && !notebook },
-    { to: "/bugun", label: "Bugün", icon: PathIcon, active: week },
+    { to: "/kartlar", label: "Kartlar", icon: CardsIcon, active: !grammar && !words && !notebook },
+    { to: "/kelimelerim", label: "Kelimeler", icon: SearchIcon, active: words },
     { to: "/defter", label: "Defter", icon: PencilIcon, active: notebook },
     { to: "/gramer", label: "Gramer", icon: BookIcon, active: grammar },
   ];

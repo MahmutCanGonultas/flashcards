@@ -10,7 +10,6 @@ import { RECALL } from "../content/grammar/recall";
 import type { Recall, TopicMeta } from "../content/grammar/types";
 import { familyStyle } from "../lib/palette";
 import { plain } from "../lib/rich";
-import { markDone } from "../lib/dailyDone";
 
 /** One topic's card opened: the rules to keep, the examples that show them, the one trap. */
 function RecallBody({ topic, recall }: { topic: TopicMeta; recall: Recall }) {
@@ -73,8 +72,6 @@ function GrammarRecall() {
   const [open, setOpen] = useState<string | null>(asked);
 
   useEffect(() => {
-    // Looking at a reminder is the day's grammar step done.
-    markDone("grammar");
     if (asked) document.getElementById(`hatirla-${asked}`)?.scrollIntoView({ block: "start" });
   }, [asked]);
 

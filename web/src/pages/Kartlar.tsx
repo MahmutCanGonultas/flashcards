@@ -8,8 +8,8 @@ import { usePersonalCards, usePersonalDeck } from "../lib/personal";
 import { primeSpeech } from "../lib/speech";
 import { hasStarted, isDue } from "../lib/path";
 import { cardMinutes, usePlan, type DailyPlan } from "../lib/plan";
-import { STAGE_LABEL, byNextReview, stageCounts, stageOf } from "../lib/memory";
-import { STAGE_BG, STAGE_TEXT } from "../lib/stageStyle";
+import { byNextReview, forecast } from "../lib/memory";
+import { LADDER } from "../lib/round";
 import { tintStyle } from "../lib/tint";
 import type { Card } from "../types";
 
@@ -57,7 +57,7 @@ function CardStack({ top, behind, count, to }: { top: Card | null; behind: Card[
           style={tintStyle(top)}
           className="@container absolute inset-0 flex flex-col rounded-[26px] cover-ground p-4 text-white shadow-[0_8px_0_0_rgba(0,0,0,0.12)] transition-transform duration-150 group-active:scale-[0.97]"
         >
-          <span className="w-max rounded-full bg-white/25 px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.1em]">{hasStarted(top) ? STAGE_LABEL[stageOf(top)] : "Yeni"}</span>
+          <span className="w-max rounded-full bg-white/25 px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.1em]">{hasStarted(top) ? "Tekrar" : "Yeni"}</span>
           <span
             className="my-auto text-center font-black leading-[0.95] tracking-[-0.02em] [text-shadow:0_3px_0_rgba(0,0,0,0.14)] wrap-break-word"
             style={{ fontSize: wordSize(top.front) }}
@@ -72,7 +72,7 @@ function CardStack({ top, behind, count, to }: { top: Card | null; behind: Card[
             <CheckIcon className="h-8 w-8" />
           </span>
           <span className="text-[20px] font-black leading-tight text-ink">Bugünlük tamam!</span>
-          <span className="text-[13px] font-bold text-graphite">Dokun, karışık tekrar yap</span>
+          <span className="text-[13px] font-bold text-graphite">Dokun, serbest tekrar yap</span>
         </span>
       )}
       {top && count > 0 && (
@@ -85,50 +85,52 @@ function CardStack({ top, behind, count, to }: { top: Card | null; behind: Card[
 }
 
 /**
- * Kelime hazinen: how many of the programme's words are already yours, and
- * how firmly: learning, getting there and held, in their stage colours.
+ * Tekrar takvimi: how many words already met come back on each of the next
+ * seven days, so the learner can see the rhythm: a word known comes back
+ * later and later (1, 3, 7 days, then weeks), a word missed comes back
+ * tomorrow. New words come on top, three a day at most.
  */
-function Treasury({ cards }: { cards: Card[] }) {
-  const counts = stageCounts(cards);
+function Schedule({ cards, queued }: { cards: Card[]; queued: number }) {
+  const days = forecast(cards, 7);
   const met = cards.filter(hasStarted).length;
-  const total = cards.length;
-  const held = (["mature", "young", "learning"] as const).filter((stage) => counts[stage] > 0);
+  const top = Math.max(1, ...days.map((day) => day.count));
   return (
-    <section aria-labelledby="treasury-heading" className="card-3d mt-8 rounded-[22px] p-4">
+    <section aria-labelledby="schedule-heading" className="card-3d mt-8 rounded-[22px] p-4">
       <div className="flex items-center justify-between">
-        <h2 id="treasury-heading" className="text-[13px] font-black uppercase tracking-[0.1em] text-graphite">
-          Kelime hazinen
+        <h2 id="schedule-heading" className="text-[13px] font-black uppercase tracking-[0.1em] text-graphite">
+          Tekrar takvimi
         </h2>
         <Link to="/kelimelerim" viewTransition className="-m-2 p-2 text-[13px] font-black uppercase tracking-[0.08em] text-ocean-ink">
-          Tümü →
+          Kelimeler →
         </Link>
       </div>
-      <p className="mt-1 flex items-baseline gap-1.5">
-        <span className="text-[40px] font-black leading-none tabular-nums text-ink">{met}</span>
-        <span className="text-[18px] font-black text-hare">/ {total} kelime</span>
-      </p>
-      <div className="mt-3 flex h-3.5 overflow-hidden rounded-full bg-paper-deep" role="img" aria-label={`${total} kelimeden ${met} tanesiyle tanıştın`}>
-        {held.map((stage) => (
-          <span key={stage} className={`h-full ${STAGE_BG[stage]} animate-rule-draw`} style={{ width: `${Math.max(1.5, (counts[stage] / total) * 100)}%` }} />
-        ))}
-      </div>
-      {held.length > 0 && (
-        <p className="mt-2.5 flex flex-wrap gap-x-3 gap-y-1 text-[13px] font-bold text-graphite">
-          {held.map((stage) => (
-            <span key={stage}>
-              <span className={`font-black ${STAGE_TEXT[stage]}`}>{counts[stage]}</span> {STAGE_LABEL[stage].toLowerCase()}
+      <ol className="mt-3 grid grid-cols-7 gap-1.5">
+        {days.map((day) => (
+          <li key={day.label} className="flex flex-col items-center gap-1.5">
+            <span className="text-[15px] font-black tabular-nums text-ink">{day.count}</span>
+            <span className="flex h-16 w-full items-end overflow-hidden rounded-lg bg-paper-deep">
+              <span
+                className={`w-full rounded-lg ${day.today ? "bg-grass" : "bg-ocean"} animate-rule-draw`}
+                style={{ height: day.count === 0 ? 0 : `${Math.max(12, (day.count / top) * 100)}%` }}
+              />
             </span>
-          ))}
-        </p>
-      )}
+            <span className={`text-[11px] font-black ${day.today ? "text-grass-ink" : "text-graphite"}`}>{day.label}</span>
+          </li>
+        ))}
+      </ol>
+      <p className="mt-3.5 text-[14px] font-semibold leading-snug text-graphite">
+        Bildiğin kelime her seferinde daha geç gelir: {LADDER.join(" → ")} gün, sonra haftalar. Bilemediğin yarın yine gelir.
+      </p>
+      <p className="mt-2 text-[14px] font-bold text-ink">
+        {met} kelime öğreniyorsun{queued > 0 ? ` · ${queued} kelime sırada` : ""}
+      </p>
     </section>
   );
 }
 
 /**
- * Kartlar — the cards and nothing else: the day's pile, one button, and how
- * many words are already yours. The week's programme, the exercises and the
- * numbers live on the Hafta tab.
+ * Kartlar — the cards and nothing else: the day's pile, one button, and
+ * when the words come back.
  */
 function Kartlar() {
   const deckQuery = usePersonalDeck();
@@ -162,7 +164,7 @@ function Kartlar() {
   const count = plan ? plan.reviewsDue + plan.newIds.length : 0;
   const anyMet = cards?.some(hasStarted) ?? false;
   // With nothing waiting, the pile shuffles the words already met (only the due ones would count).
-  const to = deck ? (count > 0 ? `/decks/${deck.id}/flashcards` : anyMet ? `/decks/${deck.id}/flashcards?mode=all` : "/hafta") : "/kartlar";
+  const to = count > 0 ? "/tur" : anyMet ? "/tur?serbest=1" : "/kartlar";
 
   return (
     <div className="min-h-screen">
@@ -198,7 +200,7 @@ function Kartlar() {
                   <p className="mt-2 text-[15px] font-bold text-graphite">
                     {plan.tomorrow.reviews + plan.tomorrow.new > 0
                       ? `Yarın ${[plan.tomorrow.new > 0 ? `${plan.tomorrow.new} yeni kelime` : null, plan.tomorrow.reviews > 0 ? `${plan.tomorrow.reviews} tekrar` : null].filter(Boolean).join(" ve ")} var.`
-                      : "Yarın boş; istersen karışık tekrar yap."}
+                      : "Yarın boş; istersen serbest tekrar yap."}
                   </p>
                 </>
               )}
@@ -212,10 +214,10 @@ function Kartlar() {
                 count > 0 ? "bg-grass focus-visible:ring-grass/40" : "bg-ocean focus-visible:ring-ocean/40"
               }`}
             >
-              {count > 0 ? "Kartlara başla" : anyMet ? "Karışık tekrar" : "Haftana bak"}
+              {count > 0 ? "Başla" : anyMet ? "Serbest tekrar" : "Yarın yeni kelimeler gelecek"}
             </Link>
 
-            {cards.length > 0 && <Treasury cards={cards} />}
+            {cards.length > 0 && <Schedule cards={cards} queued={plan.queued} />}
           </>
         )}
       </main>

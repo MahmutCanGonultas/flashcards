@@ -95,7 +95,7 @@ const SILENT_REACT_CHANCE = 0.45;
 const REMEMBER = 24;
 
 /** He never interrupts a question (the grammar quiz has him on the page already). */
-const QUIET_ROUTES = [/^\/login/, /^\/register/, /\/placement/, /\/study/, /\/test$/, /\/alistirma$/];
+const QUIET_ROUTES = [/^\/login/, /^\/register/, /^\/tur$/, /\/placement/, /\/study/, /\/test$/, /\/alistirma$/];
 const WANDER_ROUTES = [/^\/kartlar$/, /^\/kurs$/, /^\/kelimelerim$/, /^\/gramer$/, /^\/gramer\/[a-z-]+$/, /^\/decks\/\d+$/, /^\/decks\/\d+\/words\/\d+$/];
 const WORD_ROUTE = /^\/decks\/\d+\/words\/\d+$/;
 const TOPIC_ROUTE = /^\/gramer\/[a-z-]+$/;
