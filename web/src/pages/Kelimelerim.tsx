@@ -145,7 +145,7 @@ function Kelimelerim() {
       <main className="mx-auto max-w-2xl px-5 pb-28 pt-5">
         <h1 className="text-[32px] font-black leading-[1.05] tracking-[-0.02em] text-ink">Kelimeler</h1>
         <p className="mt-1 text-[15px] font-bold text-graphite">
-          {!cards ? "Yükleniyor…" : `${met.length} kelime öğreniyorsun${queued > 0 ? ` · ${queued} sırada` : ""}`}
+          {!cards ? "Yükleniyor…" : cards.length === 0 ? "Henüz kelime yok" : `${met.length} kelime öğreniyorsun${queued > 0 ? ` · ${queued} sırada` : ""}`}
         </p>
 
         <div className="relative mt-5">
@@ -196,7 +196,9 @@ function Kelimelerim() {
             </ul>
           </section>
         ) : met.length === 0 ? (
-          <p className="mt-8 rounded-2xl bg-paper-deep p-4 text-[15px] font-bold text-graphite">Henüz hiçbir kelimeyle tanışmadın. İlk kelimeler Kartlar'da seni bekliyor.</p>
+          <p className="mt-8 rounded-2xl bg-paper-deep p-4 text-[15px] font-bold text-graphite">
+            {cards.length === 0 ? "Henüz kelime yok. Yeni kelimeler eklenince burada görünecek." : "Henüz hiçbir kelimeyle tanışmadın. İlk kelimeler Kartlar'da seni bekliyor."}
+          </p>
         ) : (
           groups.map((group) => (
             <section key={group.key} aria-label={group.label} className="mt-5">

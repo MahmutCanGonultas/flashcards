@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import AppTabs from "../components/AppTabs";
 import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
-import { CheckIcon } from "../components/icons";
+import { BookIcon, CheckIcon } from "../components/icons";
 import { usePersonalCards, usePersonalDeck } from "../lib/personal";
 import { primeSpeech } from "../lib/speech";
 import { hasStarted, isDue } from "../lib/path";
@@ -164,7 +164,7 @@ function Kartlar() {
   const count = plan ? plan.reviewsDue + plan.newIds.length : 0;
   const anyMet = cards?.some(hasStarted) ?? false;
   // With nothing waiting, the pile shuffles the words already met (only the due ones would count).
-  const to = count > 0 ? "/tur" : anyMet ? "/tur?serbest=1" : "/kartlar";
+  const to = count > 0 ? "/tur" : anyMet ? "/tur?serbest=1" : "/gramer";
 
   return (
     <div className="min-h-screen">
@@ -176,6 +176,21 @@ function Kartlar() {
             <Skeleton className="mx-auto mt-8 h-9 w-56 rounded-xl" />
             <Skeleton className="mt-6 h-[58px] w-full rounded-2xl" />
           </>
+        ) : cards.length === 0 ? (
+          // No words at all: a fresh start, the new ones not added yet.
+          <section className="card-3d mt-8 rounded-[26px] p-6 text-center animate-rise-in">
+            <span aria-hidden="true" className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-ocean-soft text-ocean">
+              <BookIcon className="h-8 w-8" />
+            </span>
+            <h1 className="mt-4 text-[26px] font-black leading-tight text-ink">Kelimeler yolda</h1>
+            <p className="mt-2 text-[15px] font-bold leading-snug text-graphite">Yeni kelimeler eklenince burada seni bekleyecek. Bu arada gramere göz atabilirsin.</p>
+            <Link
+              to="/gramer"
+              className="face mt-6 flex min-h-[58px] w-full items-center justify-center rounded-2xl bg-ocean text-[16px] font-black uppercase tracking-[0.08em] text-white shadow-button press-3d focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/40"
+            >
+              Gramere git
+            </Link>
+          </section>
         ) : (
           <>
             <CardStack top={count > 0 ? (today[0] ?? null) : null} behind={count > 0 ? today.slice(1) : byNextReview(cards.filter(hasStarted)).slice(0, 2)} count={count} to={to} />
@@ -214,7 +229,7 @@ function Kartlar() {
                 count > 0 ? "bg-grass focus-visible:ring-grass/40" : "bg-ocean focus-visible:ring-ocean/40"
               }`}
             >
-              {count > 0 ? "Başla" : anyMet ? "Serbest tekrar" : "Yarın yeni kelimeler gelecek"}
+              {count > 0 ? "Başla" : anyMet ? "Serbest tekrar" : "Gramere göz at"}
             </Link>
 
             {cards.length > 0 && <Schedule cards={cards} queued={plan.queued} />}

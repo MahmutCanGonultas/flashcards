@@ -20,7 +20,7 @@ It's a web app made for the phone (you can install it like a regular app), built
 
 ### The words
 
-- You don't pick them: a programme of 500 words, from the end of A2 to B2, ten a week, each week a theme (making decisions, money, work, feelings, health, the economy…). At most three new words come a day, and none on days when too many reviews are waiting.
+- The learner sends the words they want to learn, a few at a time, with the meaning they mean (*face* as "to face a problem", not the noun). Each is written as a card (part of speech, core meaning, a sentence inside the learner's grammar), checked by a lint and loaded with a script. At most three new words come a day, and none on days when too many reviews are waiting; the rest wait their turn in the order they were sent.
 - A card is the word and its part of speech on the front ("adjective · sıfat"), and its core meaning on the back. Nothing else to read or type.
 
 ### A round of cards
