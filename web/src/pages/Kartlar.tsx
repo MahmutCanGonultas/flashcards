@@ -3,13 +3,15 @@ import Header from "../components/Header";
 import AppTabs from "../components/AppTabs";
 import ErrorState from "../components/ErrorState";
 import Skeleton from "../components/Skeleton";
-import { BookIcon, CheckIcon } from "../components/icons";
+import Mascot from "../components/Mascot";
+import { BookIcon } from "../components/icons";
 import { usePersonalCards, usePersonalDeck } from "../lib/personal";
 import { primeSpeech } from "../lib/speech";
 import { hasStarted, isDue } from "../lib/path";
 import { cardMinutes, usePlan, type DailyPlan } from "../lib/plan";
-import { byNextReview, forecast } from "../lib/memory";
-import { LADDER } from "../lib/round";
+import { byNextReview, dueInDays } from "../lib/memory";
+import { learnerDayStart } from "../lib/day";
+import { dayName, greeting, howLong, inWords, todayPieces, type Piece } from "../lib/talk";
 import { tintStyle } from "../lib/tint";
 import type { Card } from "../types";
 
@@ -19,26 +21,42 @@ const delay = (ms: number) => ({ animationDelay: window.matchMedia?.("(prefers-r
 /** The word on the top card, as big as its width allows (a black letter is about 0.58em wide). */
 const wordSize = (word: string) => `min(46px, ${(100 / (0.6 * Math.max(word.length, 1))).toFixed(1)}cqw)`;
 
+/** The weekday a few learner days from now (0 = Sunday), read at noon so the hour never tips it. */
+const weekdayIn = (days: number) => new Date(learnerDayStart(Date.now(), days) + 12 * 3_600_000).getDay();
+
+const BUTTON = "face flex min-h-[58px] w-full items-center justify-center rounded-2xl text-[18px] font-black text-white shadow-button press-3d focus-visible:outline-none focus-visible:ring-4";
+
 /** Today's cards in the order the round meets them: the new words, then the reviews soonest due. */
-function todaysCards(cards: Card[], plan: DailyPlan): Card[] {
+function todaysCards(cards: Card[], plan: DailyPlan): { fresh: Card[]; reviews: Card[] } {
   const byId = new Map(cards.map((card) => [card.id, card]));
   const fresh = plan.newIds.map((id) => byId.get(id)).filter((card): card is Card => card !== undefined);
-  return [...fresh, ...byNextReview(cards.filter((card) => hasStarted(card) && isDue(card)))];
+  return { fresh, reviews: byNextReview(cards.filter((card) => hasStarted(card) && isDue(card))) };
 }
 
-/**
- * The day's cards as a real pile: the first word on top in its own colour,
- * two more fanned out behind it, the count on a white tab. Tapping the pile
- * starts the round. With nothing waiting, a white card says so.
- */
-function CardStack({ top, behind, count, to }: { top: Card | null; behind: Card[]; count: number; to: string }) {
+/** A sentence with its English words in their own colours. */
+function Said({ pieces, cards }: { pieces: Piece[]; cards: Card[] }) {
+  const byFront = new Map(cards.map((card) => [card.front, card]));
   return (
-    <Link
-      to={to}
-      onClick={primeSpeech}
-      aria-label={top ? `Kartlara başla: ${count} kart` : "Kartlara bak"}
-      className="group relative mx-auto mt-7 block aspect-[4/5] w-[min(62vw,250px)] animate-rise-spring focus-visible:outline-none"
-    >
+    <>
+      {pieces.map((piece, i) => {
+        const card = piece.word ? byFront.get(piece.text) : undefined;
+        return card ? (
+          <span key={i} style={tintStyle(card)} className="text-(--tint-ink)">
+            {piece.text}
+          </span>
+        ) : (
+          <span key={i}>{piece.text}</span>
+        );
+      })}
+    </>
+  );
+}
+
+/** The day's cards as a real pile: the first word on top in its own colour, two more fanned out behind it. A tap starts the round. */
+function Pile({ cards, to }: { cards: Card[]; to: string }) {
+  const [top, ...behind] = cards;
+  return (
+    <Link to={to} onClick={primeSpeech} aria-label="Başlayalım" className="group relative mx-auto mt-8 block aspect-[4/5] w-[min(56vw,230px)] animate-rise-spring focus-visible:outline-none">
       {behind
         .slice(0, 2)
         .reverse()
@@ -52,85 +70,88 @@ function CardStack({ top, behind, count, to }: { top: Card | null; behind: Card[
             }`}
           />
         ))}
-      {top ? (
-        <span
-          style={tintStyle(top)}
-          className="@container absolute inset-0 flex flex-col rounded-[26px] cover-ground p-4 text-white shadow-[0_8px_0_0_rgba(0,0,0,0.12)] transition-transform duration-150 group-active:scale-[0.97]"
-        >
-          <span className="w-max rounded-full bg-white/25 px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.1em]">{hasStarted(top) ? "Tekrar" : "Yeni"}</span>
-          <span
-            className="my-auto text-center font-black leading-[0.95] tracking-[-0.02em] [text-shadow:0_3px_0_rgba(0,0,0,0.14)] wrap-break-word"
-            style={{ fontSize: wordSize(top.front) }}
-          >
-            {top.front}
-          </span>
-          <span className="text-center text-[11px] font-black uppercase tracking-[0.12em] text-white/80">Dokun · başla</span>
+      <span style={tintStyle(top)} className="@container absolute inset-0 flex items-center justify-center rounded-[26px] cover-ground p-4 text-white shadow-[0_8px_0_0_rgba(0,0,0,0.12)] transition-transform duration-150 group-active:scale-[0.97]">
+        <span className="text-center font-black leading-[0.95] tracking-[-0.02em] [text-shadow:0_3px_0_rgba(0,0,0,0.14)] wrap-break-word" style={{ fontSize: wordSize(top.front) }}>
+          {top.front}
         </span>
-      ) : (
-        <span className="card-3d absolute inset-0 flex flex-col items-center justify-center gap-3 rounded-[26px] bg-white p-4 text-center">
-          <span className="grid h-16 w-16 place-items-center rounded-full bg-grass text-white shadow-[inset_0_-4px_0_0_rgba(0,0,0,0.15)]">
-            <CheckIcon className="h-8 w-8" />
-          </span>
-          <span className="text-[20px] font-black leading-tight text-ink">Bugünlük tamam!</span>
-          <span className="text-[13px] font-bold text-graphite">Dokun, serbest tekrar yap</span>
-        </span>
-      )}
-      {top && count > 0 && (
-        <span className="absolute -right-3 -top-3 grid h-12 min-w-12 place-items-center rounded-full bg-white px-2 text-[20px] font-black tabular-nums text-ink shadow-[0_3px_0_0_rgba(0,0,0,0.15)] ring-2 ring-rule">
-          {count}
-        </span>
-      )}
+      </span>
     </Link>
   );
 }
 
 /**
- * Tekrar takvimi: how many words already met come back on each of the next
- * seven days, so the learner can see the rhythm: a word known comes back
- * later and later (1, 3, 7 days, then weeks), a word missed comes back
- * tomorrow. New words come on top, three a day at most.
+ * Önümüzdeki günler: which words come back on which day, by name, so the
+ * learner sees the rhythm without counting bars.
  */
-function Schedule({ cards, queued }: { cards: Card[]; queued: number }) {
-  const days = forecast(cards, 7);
-  const met = cards.filter(hasStarted).length;
-  const top = Math.max(1, ...days.map((day) => day.count));
+function Upcoming({ cards, newTomorrow }: { cards: Card[]; newTomorrow: number }) {
+  const met = cards.filter(hasStarted);
+  const rows: { label: string; words: Card[]; extra: string | null }[] = [];
+  for (let day = 1; day <= 7 && rows.length < 4; day++) {
+    const words = met.filter((card) => dueInDays(card) === day);
+    const fresh = day === 1 ? newTomorrow : 0;
+    if (words.length === 0 && fresh === 0) continue;
+    rows.push({ label: dayName(day, weekdayIn(day)), words, extra: fresh > 0 ? `${words.length > 0 ? "+ " : ""}${inWords(fresh)} yeni kelime` : null });
+  }
+  const shownDays = new Set(rows.length > 0 ? met.filter((card) => rows.some((row) => row.words.includes(card))).map((card) => card.id) : []);
+  const later = met.filter((card) => dueInDays(card) > 0 && !shownDays.has(card.id)).length;
+  if (rows.length === 0 && later === 0) return null;
   return (
-    <section aria-labelledby="schedule-heading" className="card-3d mt-8 rounded-[22px] p-4">
-      <div className="flex items-center justify-between">
-        <h2 id="schedule-heading" className="text-[13px] font-black uppercase tracking-[0.1em] text-graphite">
-          Tekrar takvimi
+    <section aria-labelledby="upcoming-heading" className="card-3d mt-10 rounded-[22px] p-4 animate-rise-in" style={delay(240)}>
+      <div className="flex items-baseline justify-between">
+        <h2 id="upcoming-heading" className="text-[17px] font-black text-ink">
+          Önümüzdeki günler
         </h2>
-        <Link to="/kelimelerim" viewTransition className="-m-2 p-2 text-[13px] font-black uppercase tracking-[0.08em] text-ocean-ink">
+        <Link to="/kelimelerim" viewTransition className="-m-2 p-2 text-[14px] font-extrabold text-ocean-ink">
           Kelimeler →
         </Link>
       </div>
-      <ol className="mt-3 grid grid-cols-7 gap-1.5">
-        {days.map((day) => (
-          <li key={day.label} className="flex flex-col items-center gap-1.5">
-            <span className="text-[15px] font-black tabular-nums text-ink">{day.count}</span>
-            <span className="flex h-16 w-full items-end overflow-hidden rounded-lg bg-paper-deep">
-              <span
-                className={`w-full rounded-lg ${day.today ? "bg-grass" : "bg-ocean"} animate-rule-draw`}
-                style={{ height: day.count === 0 ? 0 : `${Math.max(12, (day.count / top) * 100)}%` }}
-              />
+      <ul className="mt-3 divide-y-2 divide-paper-deep">
+        {rows.map((row) => (
+          <li key={row.label} className="flex items-start gap-3 py-2.5">
+            <span className="w-24 shrink-0 pt-0.5 text-[15px] font-black text-ink">{row.label}</span>
+            <span className="flex min-w-0 flex-1 flex-wrap gap-1.5">
+              {row.words.slice(0, 4).map((card) => (
+                <span key={card.id} style={tintStyle(card)} className="rounded-full bg-(--tint-soft) px-2.5 py-0.5 text-[14px] font-black text-(--tint-ink)">
+                  {card.front}
+                </span>
+              ))}
+              {row.words.length > 4 && <span className="py-0.5 text-[14px] font-bold text-graphite">+{row.words.length - 4}</span>}
+              {row.extra && <span className="py-0.5 text-[14px] font-bold text-graphite">{row.extra}</span>}
             </span>
-            <span className={`text-[11px] font-black ${day.today ? "text-grass-ink" : "text-graphite"}`}>{day.label}</span>
           </li>
         ))}
-      </ol>
-      <p className="mt-3.5 text-[14px] font-semibold leading-snug text-graphite">
-        Bildiğin kelime her seferinde daha geç gelir: {LADDER.join(" → ")} gün, sonra haftalar. Bilemediğin yarın yine gelir.
-      </p>
-      <p className="mt-2 text-[14px] font-bold text-ink">
-        {met} kelime öğreniyorsun{queued > 0 ? ` · ${queued} kelime sırada` : ""}
-      </p>
+        {later > 0 && (
+          <li className="flex items-start gap-3 py-2.5">
+            <span className="w-24 shrink-0 text-[15px] font-black text-ink">Daha sonra</span>
+            <span className="text-[14px] font-bold text-graphite">{inWords(later)} kelime</span>
+          </li>
+        )}
+      </ul>
+      <p className="mt-2 text-[14px] font-semibold leading-snug text-graphite">Bildiğin kelime her seferinde biraz daha geç gelir; bilemediğin ertesi gün yine gelir.</p>
     </section>
   );
 }
 
+/** What tomorrow brings, said plainly, for the evening when today is done. */
+function tomorrowPieces(cards: Card[], newTomorrow: number): Piece[] {
+  const met = cards.filter(hasStarted);
+  const back = met.filter((card) => dueInDays(card) === 1).map((card) => card.front);
+  const named = (words: string[]): Piece[] =>
+    words.flatMap((word, i) => [...(i === 0 ? [] : [{ text: i === words.length - 1 ? " ve " : ", " }]), { text: word, word: true }]);
+  if (back.length > 0) {
+    const pieces: Piece[] = [{ text: "Yarın " }, ...(back.length <= 3 ? named(back) : [{ text: `${inWords(back.length)} kelime` }]), { text: " tekrar gelecek" }];
+    return [...pieces, { text: newTomorrow > 0 ? `, bir de ${inWords(newTomorrow)} yeni kelime var.` : "." }];
+  }
+  if (newTomorrow > 0) return [{ text: `Yarın ${inWords(newTomorrow)} yeni kelimeyle tanışacaksın.` }];
+  const next = met.map(dueInDays).filter((d) => d > 1).sort((a, b) => a - b)[0];
+  if (next !== undefined) return [{ text: `Sıradaki tekrar ${next <= 7 ? `${dayName(next, weekdayIn(next))} günü` : `${inWords(next)} gün sonra`}.` }];
+  return [{ text: "Şimdilik bekleyen bir şey yok." }];
+}
+
 /**
- * Kartlar — the cards and nothing else: the day's pile, one button, and
- * when the words come back.
+ * Kartlar, the way in: a greeting, today in one plain sentence with the
+ * words named, the pile and one button; when the day is done, what
+ * tomorrow brings. Then the coming days, word by word.
  */
 function Kartlar() {
   const deckQuery = usePersonalDeck();
@@ -139,6 +160,7 @@ function Kartlar() {
   const deck = deckQuery.data;
   const cards = cardsQuery.data;
   const plan = planQuery.data;
+  const hello = greeting(new Date().getHours());
 
   if (deckQuery.isError || cardsQuery.isError || planQuery.isError) {
     return (
@@ -160,79 +182,72 @@ function Kartlar() {
     );
   }
 
-  const today = cards && plan ? todaysCards(cards, plan) : [];
+  const today = cards && plan ? todaysCards(cards, plan) : { fresh: [], reviews: [] };
   const count = plan ? plan.reviewsDue + plan.newIds.length : 0;
   const anyMet = cards?.some(hasStarted) ?? false;
-  // With nothing waiting, the pile shuffles the words already met (only the due ones would count).
-  const to = count > 0 ? "/tur" : anyMet ? "/tur?serbest=1" : "/gramer";
+  const newTomorrow = plan?.tomorrow.new ?? 0;
 
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="mx-auto max-w-2xl px-5 pb-28 pt-4">
+      <main className="mx-auto max-w-2xl px-5 pb-28 pt-6">
         {!deck || !cards || !plan ? (
           <>
-            <Skeleton className="mx-auto mt-7 aspect-[4/5] w-[min(62vw,250px)] rounded-[26px]" />
-            <Skeleton className="mx-auto mt-8 h-9 w-56 rounded-xl" />
-            <Skeleton className="mt-6 h-[58px] w-full rounded-2xl" />
+            <Skeleton className="h-5 w-32 rounded-lg" />
+            <Skeleton className="mt-3 h-16 w-full rounded-xl" />
+            <Skeleton className="mx-auto mt-8 aspect-[4/5] w-[min(56vw,230px)] rounded-[26px]" />
+            <Skeleton className="mt-8 h-[58px] w-full rounded-2xl" />
           </>
         ) : cards.length === 0 ? (
           // No words at all: a fresh start, the new ones not added yet.
-          <section className="card-3d mt-8 rounded-[26px] p-6 text-center animate-rise-in">
-            <span aria-hidden="true" className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-ocean-soft text-ocean">
-              <BookIcon className="h-8 w-8" />
-            </span>
-            <h1 className="mt-4 text-[26px] font-black leading-tight text-ink">Kelimeler yolda</h1>
-            <p className="mt-2 text-[15px] font-bold leading-snug text-graphite">Yeni kelimeler eklenince burada seni bekleyecek. Bu arada gramere göz atabilirsin.</p>
-            <Link
-              to="/gramer"
-              className="face mt-6 flex min-h-[58px] w-full items-center justify-center rounded-2xl bg-ocean text-[16px] font-black uppercase tracking-[0.08em] text-white shadow-button press-3d focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/40"
-            >
-              Gramere git
+          <section className="animate-rise-in">
+            <p className="text-[16px] font-bold text-graphite">{hello}</p>
+            <h1 className="mt-1 text-[28px] font-black leading-[1.2] text-ink">Kelimeler yolda.</h1>
+            <p className="mt-2 text-[16px] font-semibold leading-snug text-graphite">Yeni kelimeler eklenince burada seni bekleyecek. Bu arada gramere göz atabilirsin.</p>
+            <Mascot mood="think" size={120} className="mx-auto mt-8 block" />
+            <Link to="/gramer" className={`${BUTTON} mt-8 gap-2 bg-ocean focus-visible:ring-ocean/40`}>
+              <BookIcon className="h-5 w-5" />
+              Gramere göz at
             </Link>
           </section>
+        ) : count > 0 ? (
+          <>
+            <section className="animate-rise-in">
+              <p className="text-[16px] font-bold text-graphite">{hello}</p>
+              <h1 className="mt-1 text-[28px] font-black leading-[1.2] tracking-[-0.01em] text-ink">
+                <Said pieces={todayPieces(today.reviews.map((c) => c.front), today.fresh.map((c) => c.front))} cards={cards} />
+              </h1>
+              <p className="mt-2 text-[15px] font-semibold text-graphite">
+                {howLong(cardMinutes(plan.reviewsDue, plan.newIds.length))}
+                {plan.paused && " Yeni kelimeler, tekrarlar biraz azalınca gelecek."}
+              </p>
+            </section>
+            <Pile cards={[...today.fresh, ...today.reviews]} to="/tur" />
+            <Link to="/tur" onClick={primeSpeech} style={delay(160)} className={`${BUTTON} mt-9 bg-grass animate-rise-in focus-visible:ring-grass/40`}>
+              Başlayalım
+            </Link>
+            <Upcoming cards={cards} newTomorrow={newTomorrow} />
+          </>
         ) : (
           <>
-            <CardStack top={count > 0 ? (today[0] ?? null) : null} behind={count > 0 ? today.slice(1) : byNextReview(cards.filter(hasStarted)).slice(0, 2)} count={count} to={to} />
-
-            <div className="mt-8 text-center animate-rise-in" style={delay(120)}>
-              {count > 0 ? (
-                <>
-                  <h1 className="text-[30px] font-black leading-[1.05] tracking-[-0.02em] text-ink">
-                    <span className="text-berry">{count} kart</span> seni bekliyor
-                  </h1>
-                  <p className="mt-2 text-[15px] font-bold text-graphite">
-                    {[plan.newIds.length > 0 ? `${plan.newIds.length} yeni kelime` : null, plan.reviewsDue > 0 ? `${plan.reviewsDue} tekrar` : null, `~${cardMinutes(plan.reviewsDue, plan.newIds.length)} dk`]
-                      .filter(Boolean)
-                      .join(" · ")}
-                  </p>
-                </>
-              ) : (
-                <>
-                  <h1 className="text-[30px] font-black leading-[1.05] tracking-[-0.02em] text-ink">
-                    Bugünlük <span className="text-grass">tamam!</span>
-                  </h1>
-                  <p className="mt-2 text-[15px] font-bold text-graphite">
-                    {plan.tomorrow.reviews + plan.tomorrow.new > 0
-                      ? `Yarın ${[plan.tomorrow.new > 0 ? `${plan.tomorrow.new} yeni kelime` : null, plan.tomorrow.reviews > 0 ? `${plan.tomorrow.reviews} tekrar` : null].filter(Boolean).join(" ve ")} var.`
-                      : "Yarın boş; istersen serbest tekrar yap."}
-                  </p>
-                </>
-              )}
-            </div>
-
-            <Link
-              to={to}
-              onClick={primeSpeech}
-              style={delay(180)}
-              className={`face mt-6 flex min-h-[58px] w-full items-center justify-center rounded-2xl text-[16px] font-black uppercase tracking-[0.08em] text-white shadow-button press-3d animate-rise-in focus-visible:outline-none focus-visible:ring-4 ${
-                count > 0 ? "bg-grass focus-visible:ring-grass/40" : "bg-ocean focus-visible:ring-ocean/40"
-              }`}
-            >
-              {count > 0 ? "Başla" : anyMet ? "Serbest tekrar" : "Gramere göz at"}
-            </Link>
-
-            {cards.length > 0 && <Schedule cards={cards} queued={plan.queued} />}
+            <section className="animate-rise-in">
+              <p className="text-[16px] font-bold text-graphite">{hello}</p>
+              <h1 className="mt-1 text-[28px] font-black leading-[1.2] text-ink">{anyMet ? "Bugünlük bu kadar." : "Bugün yeni kelime yok."}</h1>
+              <p className="mt-2 text-[17px] font-bold leading-snug text-ink">
+                <Said pieces={tomorrowPieces(cards, newTomorrow)} cards={cards} />
+              </p>
+            </section>
+            <Mascot mood="happy" size={120} className="mx-auto mt-8 block" />
+            {anyMet && (
+              <Link
+                to="/tur?serbest=1"
+                onClick={primeSpeech}
+                className="mt-8 flex min-h-[54px] w-full items-center justify-center rounded-2xl border-2 border-rule bg-white text-[16px] font-black text-ocean-ink shadow-[0_2px_0_0_var(--color-rule)] press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ocean/30"
+              >
+                Bildiklerine bir göz at
+              </Link>
+            )}
+            <Upcoming cards={cards} newTomorrow={newTomorrow} />
           </>
         )}
       </main>

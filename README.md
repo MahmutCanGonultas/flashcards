@@ -5,7 +5,7 @@ An English vocabulary app for Turkish speakers, kept simple on purpose: a word, 
 It's a web app made for the phone (you can install it like a regular app), built around a few minutes of cards a day.
 
 <p align="center">
-  <img src="docs/screenshots/home-and-meet.png" alt="The home page with the day's pile and the review calendar, a new word being shown, and the back of a card" width="900">
+  <img src="docs/screenshots/home-and-meet.png" alt="The home page saying which words come today, a new word being shown, and the back of a card" width="900">
   <br><sub>The home page, a new word being shown, and the back of a card.</sub>
 </p>
 
@@ -13,7 +13,7 @@ It's a web app made for the phone (you can install it like a regular app), built
 
 ### Four tabs
 
-- **Kartlar**: the day's pile and one button. Under it, the review calendar: how many words come back on each of the next seven days.
+- **Kartlar**: a greeting and the day in one plain sentence, the words named rather than counted ("Bugün invest, hamper ve occupy ile tanışacaksın."), the pile and one button. When the day is done it says what tomorrow brings. Under it, the coming days word by word: which words come back on which day.
 - **Kelimeler**: every word you have met, grouped by when it comes back (today, tomorrow, this week, later), with its meaning, its part of speech and the day it returns.
 - **Defter**: your own notebook, apart from the programme: words met anywhere, written down with their meaning, shown as sticky notes, and shuffled into a round of cards that marks nothing.
 - **Gramer**: the grammar topics.
@@ -27,7 +27,7 @@ It's a web app made for the phone (you can install it like a regular app), built
 
 - A new word is shown first with its meaning, then asked twice later in the round with other cards in between. At its second right answer it is learned and comes back tomorrow. A miss asks it once more.
 - Every other word is asked once: tap to turn it, then *Biliyorum* or *Bilmiyorum*. That answer is the one that counts. A word you didn't know comes back later in the same round, and again tomorrow.
-- After every answer the app says when that word comes back ("3 gün sonra tekrar gelecek"), and the end of a round lists every word with its day.
+- After every answer the app says when that word comes back ("3 gün sonra tekrar gelecek"), and the end of a round names the words that gave trouble and lists every word with its day. No counters: a bar shows how far the round has come.
 - When nothing is due, *Serbest tekrar* goes through the words you have met without changing anything.
 - The cards come in a new order every round, so the order is never what gets learned. A right answer plays a short chime, a miss a soft low tone.
 

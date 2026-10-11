@@ -5,6 +5,7 @@ import SpeakButton from "../components/SpeakButton";
 import MeaningText from "../components/MeaningText";
 import Skeleton from "../components/Skeleton";
 import ErrorState from "../components/ErrorState";
+import Mascot from "../components/Mascot";
 import { CheckIcon, XIcon } from "../components/icons";
 import { api, ApiError } from "../lib/api";
 import { usePersonalCards, usePersonalDeck, usePractice } from "../lib/personal";
@@ -15,6 +16,7 @@ import { byNextReview } from "../lib/memory";
 import { coreGloss } from "../lib/senses";
 import { tintStyle } from "../lib/tint";
 import { speakAuto } from "../lib/speech";
+import { inWords, listOf } from "../lib/talk";
 import { playCorrect, playIncorrect, playLessonComplete } from "../lib/sound";
 import {
   FIRST_GAP,
@@ -46,7 +48,7 @@ type Last = { word: string; answer: Answer; note: string };
 /** Where each word ended the round, for the summary. */
 type Result = { first: Answer; nextDays: number | null };
 
-/** The way out and how much is left. */
+/** The way out and how far the round has come: a bar, not a countdown. */
 function TopBar({ done, total }: { done: number; total: number }) {
   return (
     <div className="flex items-center gap-3.5">
@@ -56,7 +58,6 @@ function TopBar({ done, total }: { done: number; total: number }) {
       <div className="h-3.5 flex-1 overflow-hidden rounded-full bg-rule" role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={done}>
         <div className="h-full rounded-full bg-grass transition-[width] duration-500 ease-soft" style={{ width: `${Math.max(4, Math.round((done / Math.max(1, total)) * 100))}%` }} />
       </div>
-      <span className="shrink-0 text-[13px] font-black tabular-nums text-graphite">{total - done} kaldı</span>
     </div>
   );
 }
@@ -153,9 +154,17 @@ function LastNote({ last, hint }: { last: Last | null; hint: boolean }) {
   );
 }
 
-const BUTTON = "face flex min-h-[58px] items-center justify-center rounded-2xl text-[16px] font-black uppercase tracking-[0.06em] text-white shadow-button press-3d focus-visible:outline-none focus-visible:ring-4";
+const BUTTON = "face flex min-h-[58px] items-center justify-center rounded-2xl text-[18px] font-black text-white shadow-button press-3d focus-visible:outline-none focus-visible:ring-4";
 
-/** The end: how it went, and when each word comes back. */
+/** The words that gave trouble, said plainly: "occupy biraz zorladı; yarın yine gelecek." */
+function hardLine(hard: string[], free: boolean): string {
+  if (hard.length === 0) return free ? "Serbest tekrardı; takvimin değişmedi." : "Her biri takvimde; zamanı gelince yine karşına çıkacak.";
+  const who = `Bu sefer ${hard.length <= 3 ? listOf(hard) : `${inWords(hard.length)} kelime`}`;
+  if (free) return `${who} biraz zorladı.`;
+  return `${who} biraz zorladı; yarın yine ${hard.length === 1 ? "gelecek" : "gelecekler"}.`;
+}
+
+/** The end: how it went, in words, and when each word comes back. */
 function Summary({ cards, results, free }: { cards: Map<number, Card>; results: Map<number, Result>; free: boolean }) {
   useEffect(() => {
     playLessonComplete();
@@ -164,21 +173,16 @@ function Summary({ cards, results, free }: { cards: Map<number, Card>; results: 
     .map(([id, result]) => ({ card: cards.get(id)!, ...result }))
     .filter((row) => row.card)
     .sort((a, b) => (a.nextDays ?? 0) - (b.nextDays ?? 0) || a.card.front.localeCompare(b.card.front));
-  const knew = rows.filter((row) => row.first === "knew").length;
+  const hard = rows.filter((row) => row.first === "missed").map((row) => row.card.front);
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col px-5 pb-8 pt-10">
-      <span className="mx-auto grid h-20 w-20 place-items-center rounded-full bg-grass text-white shadow-[inset_0_-5px_0_0_rgba(0,0,0,0.15)] animate-rise-spring">
-        <CheckIcon className="h-10 w-10" />
-      </span>
-      <h1 className="mt-5 text-center text-[32px] font-black leading-tight text-ink">Tur bitti!</h1>
-      <p className="mt-1 text-center text-[16px] font-bold text-graphite">
-        {rows.length} kelimenin {knew} tanesini ilk seferde bildin.
-        {free && " Serbest tekrar takvimi değiştirmez."}
-      </p>
+      <Mascot mood="happy" size={110} className="mx-auto block" />
+      <h1 className="mt-4 text-center text-[30px] font-black leading-tight text-ink">{hard.length === 0 && rows.length > 0 ? "Hepsini bildin!" : "Bitti, eline sağlık."}</h1>
+      <p className="mt-1 text-center text-[16px] font-bold leading-snug text-graphite">{hardLine(hard, free)}</p>
 
       {!free && rows.length > 0 && (
         <section aria-labelledby="when-heading" className="mt-8">
-          <h2 id="when-heading" className="text-[13px] font-black uppercase tracking-[0.1em] text-graphite">
+          <h2 id="when-heading" className="text-[17px] font-black text-ink">
             Ne zaman tekrar gelecekler?
           </h2>
           <ul className="mt-2 divide-y-2 divide-paper-deep rounded-2xl border-2 border-rule">
@@ -344,8 +348,8 @@ function Round({ deckId, cards, plan, free }: { deckId: number; cards: Card[]; p
   if (steps.length === 0) {
     return (
       <main className="mx-auto flex min-h-dvh max-w-md flex-col items-center justify-center px-5 text-center">
-        <h1 className="text-[28px] font-black text-ink">Şu an sorulacak kart yok</h1>
-        <p className="mt-2 text-[16px] font-bold text-graphite">Bugünün kartları bitti. İstersen bildiğin kelimeleri serbestçe tekrar et.</p>
+        <h1 className="text-[28px] font-black text-ink">Şimdilik soracak bir şey yok</h1>
+        <p className="mt-2 text-[16px] font-bold text-graphite">Bugünlük bu kadar. Kelimeler zamanı gelince yine karşına çıkacak.</p>
         <Link to="/kartlar" className={`${BUTTON} mt-8 w-full bg-ocean focus-visible:ring-ocean/40`}>
           Ana sayfa
         </Link>
@@ -358,7 +362,7 @@ function Round({ deckId, cards, plan, free }: { deckId: number; cards: Card[]; p
   return (
     <main className="mx-auto flex h-dvh max-w-md flex-col px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))]">
       <TopBar done={index} total={steps.length} />
-      {free && <p className="mt-3 text-center text-[12px] font-black uppercase tracking-[0.1em] text-ocean-ink">Serbest tekrar · takvim değişmez</p>}
+      {free && <p className="mt-3 text-center text-[14px] font-bold text-ocean-ink">Serbest tekrar: takvimin değişmez.</p>}
 
       <div className="mt-5 min-h-0 flex-1">
         {step.kind === "meet" ? <MeetCard key={`m${index}`} card={card} /> : <AskCard key={`a${index}`} card={card} flipped={flipped} onFlip={flip} />}
